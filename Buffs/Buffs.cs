@@ -138,12 +138,12 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Greatly Reduces Mana Usage while under the ffetc of Mana Sickness");
+            Description.SetDefault("Greatly Reduces Mana Usage while under the effect of Mana Sickness");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            //player.buffImmune[BuffID.ManaSickness] = true;
+            
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 player.manaCost *= 0.2f;
