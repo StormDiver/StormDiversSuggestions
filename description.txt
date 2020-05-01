@@ -1,0 +1,33 @@
+This mod attempts to add some of the ideas that I (Storm Diver Omega) have suggested on the forums, plus a bunch of new content I made up along the way.
+
+This mod includes:
+
+-35 New unique weapons
+-12 new ammos
+-New recipes for certain uncraftable vanilla items
+-2 new bars and ore
+-2 new accessories
+-7 new buffs and 3 new potions
+-6 new debuffs
+-New armour and Vanity sets
+-A new way to get the Rod of Discord :)
+-Some new shop items
+-New pets
+-New enemies, including many Derplings
+
+This mod also has some vanilla changes including:
+
+-Buffed Ore armour stats and cheaper recipe
+-Buffed Original Hardmode Ore armour defence
+-Buffed Frost and Forbidden armours plus new recipe
+-All Shroomite helmets buff all types of ranged damage, but you can still pick any of the three ;)
+-Buffed Vortex and Solar flare armour
+-New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
+-Gladiator armour now a ranged set
+-Mechanical souls recipes rebalanced
+-Cheaper Super Healing potion Recipe
+
+Also check the configuration options if you don't like modifications to vanilla items
+
+
+
