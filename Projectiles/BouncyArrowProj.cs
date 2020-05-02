@@ -53,11 +53,11 @@ namespace StormDiversSuggestions.Projectiles
                 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X *0.6f;
+                    projectile.velocity.X = -oldVelocity.X *0.8f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y *0.6f;
+                    projectile.velocity.Y = -oldVelocity.Y *0.8f;
                 }
             }
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
