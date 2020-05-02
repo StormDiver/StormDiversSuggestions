@@ -96,7 +96,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.CloneDefaults(ProjectileID.ChlorophyteBullet);
             aiType = ProjectileID.ChlorophyteBullet;
             projectile.timeLeft = 180;
-            drawOffsetX = -5;
+            drawOffsetX = -7;
             drawOriginOffsetY = 0;
         }
         

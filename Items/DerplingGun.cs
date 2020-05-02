@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Items
             if (secondfire <= 0)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.8), (int)(perturbedSpeed.Y * 0.8), mod.ProjectileType("DerpRangedProj"), (int)(damage * 1.4), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.4), (int)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DerpRangedProj"), (int)(damage * 1.4), knockBack, player.whoAmI);
                 secondfire = 3;
                 Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 22);
             }
