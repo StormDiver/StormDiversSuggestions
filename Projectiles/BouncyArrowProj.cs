@@ -50,7 +50,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             {
                 Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(SoundID.Item10, projectile.position);
+                
                 if (projectile.velocity.X != oldVelocity.X)
                 {
                     projectile.velocity.X = -oldVelocity.X *0.6f;

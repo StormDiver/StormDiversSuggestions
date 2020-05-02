@@ -29,13 +29,13 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.timeLeft = 400;
             projectile.penetrate = 1;
-
+            projectile.extraUpdates = 1;
             
             projectile.tileCollide = true;
             
 
             projectile.ranged = true;
-            projectile.extraUpdates = 1;
+           
             aiType = ProjectileID.Bullet;
 
             drawOffsetX = 2;
@@ -96,12 +96,12 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 400;
             projectile.penetrate = 1;
 
-
+            projectile.extraUpdates = 1;
             projectile.tileCollide = true;
 
 
             projectile.ranged = true;
-            projectile.extraUpdates = 1;
+            projectile.knockBack = 3f;
             aiType = ProjectileID.WoodenArrowFriendly;
             drawOffsetX = 2;
             drawOriginOffsetY = -0;
@@ -150,13 +150,13 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.timeLeft = 400;
             projectile.penetrate = 1;
-
+            projectile.knockBack = 3f;
 
             projectile.tileCollide = true;
-
+            projectile.extraUpdates = 1;
 
             projectile.ranged = true;
-            projectile.extraUpdates = 1;
+           
             aiType = ProjectileID.WoodenArrowFriendly;
 
             drawOffsetX = 2;
