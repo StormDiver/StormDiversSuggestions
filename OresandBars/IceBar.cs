@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Bar");
-            Tooltip.SetDefault("Used in the creation of a frosty armour");
+            Tooltip.SetDefault("Used in the creation of a frosty armour and weapons");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 79;
         }
 
@@ -70,7 +70,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Ore");
-            Tooltip.SetDefault("Retrived from the creatures of the frozen caves\nVery cold, but strangly mallable");
+            Tooltip.SetDefault("Retrived from the frozen caves\nVery cold, but strangly mallable");
 
         }
 

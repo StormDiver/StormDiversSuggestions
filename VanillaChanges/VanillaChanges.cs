@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.VanillaChanges
 
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "5% increase ranged damage and ranged critical strike chance";
+                            line.text = "5% increased ranged damage and ranged critical strike chance";
                         }
                        
                     }
@@ -83,11 +83,11 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
                         {
-                            line.text = "20% increased movement speed\n20% chance not to consume ammo";
+                            line.text = "20% increased movement and melee speed";
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "20% increased melee speed";
+                            line.text = "20% chance not to consume ammo";
                         }
                     }
 
@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases max health by 30\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.SolarFlareBreastplate)
@@ -146,7 +146,7 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases max health by 40\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 40\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.SolarFlareLeggings)
@@ -159,7 +159,7 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases max health by 30\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.VortexHelmet)
@@ -194,7 +194,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "15% increased ranaged damage";
+                            line.text = "15% increased ranged damage";
                         }
 
                     }
@@ -203,7 +203,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "15% increased ranaged damage";
+                            line.text = "15% increased ranged damage";
                         }
 
                     }
@@ -212,7 +212,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "15% increased ranaged damage";
+                            line.text = "15% increased ranged damage";
                         }
 
                     }
@@ -719,7 +719,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.fireWalk = true;
                     player.buffImmune[BuffID.OnFire] = true;
                     player.lavaRose = true;
-                    player.setBonus = "Immunity to fire blocks and fire";
+                    player.setBonus = "Immunity to fire blocks and onfire";
                 }
                 /* if (player.armor[0].type == ItemID.EskimoHood && player.armor[1].type == ItemID.EskimoCoat && player.armor[2].type == ItemID.EskimoPants)
                  {

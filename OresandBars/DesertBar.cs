@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Arid Bar");
-            Tooltip.SetDefault("Used in the creation of some forbidden armour");
+            Tooltip.SetDefault("Used in the creation of some forbidden armour and weapons");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 80;
         }
 
@@ -75,7 +75,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Arid Ore");
-            Tooltip.SetDefault("Retrived from the monsters of the deserted caves");
+            Tooltip.SetDefault("Retrived from the deserted caves");
 
         }
 

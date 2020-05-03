@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 9;
-            item.useAnimation = 9;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
             //item.shoot = ProjectileID.GrenadeI;
-            item.shootSpeed = 20f;
+            item.shootSpeed = 14f;
 
             item.useAmmo = AmmoID.Arrow;
 

@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vortex Launcher");
-            Tooltip.SetDefault("Fires out 2 Vortex rocket that split into multiple rockets\nRight click to rapidly fire a single high velocity rocket");
+            Tooltip.SetDefault("Fires out a barrage of vortex rockets\nRight click to rapidly fire a single high velocity rocket");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()

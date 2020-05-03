@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Arrow");
-            Tooltip.SetDefault("Pierces up to 2 enemies\nLeaves behind a trail of damaging mushrooms");
+            Tooltip.SetDefault("Can pierce once\nLeaves behind a trail of damaging mushrooms");
         }
         public override void SetDefaults()
         {

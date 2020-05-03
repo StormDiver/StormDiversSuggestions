@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.Pets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Golden Derpie <3");
+            DisplayName.SetDefault("Golden Derpie");
             Main.projFrames[projectile.type] = 8;
             Main.projPet[projectile.type] = true;
         }

@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Shotgun");
-            Tooltip.SetDefault("I know it looks cruel, but it had to be done.");
+            Tooltip.SetDefault("I know it looks cruel, but it had to be done\nFires out a homing Derpling head every third shot");
         }
         public override void SetDefaults()
         {

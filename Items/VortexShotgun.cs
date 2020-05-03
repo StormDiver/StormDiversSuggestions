@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Items
             item.width = 60;
             item.height = 20;
             item.maxStack = 1;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
             item.useTime = 40;
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item36;
 
-            item.damage = 75;
+            item.damage = 120;
             item.crit = 20;
             item.knockBack = 5f;
 

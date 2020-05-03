@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.friendly = true;
             projectile.timeLeft = 400;
-            projectile.penetrate = 4;
+            projectile.penetrate = 3;
             
             
             projectile.tileCollide = true;
@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
 
         }
-        int reflect = 4;
+        int reflect = 3;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             
@@ -142,7 +142,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.light = 0.5f;
             projectile.friendly = true;
             projectile.timeLeft = 300;
-            projectile.penetrate = 3;
+            projectile.penetrate = 2;
             projectile.arrow = true;
             projectile.tileCollide = true;
 

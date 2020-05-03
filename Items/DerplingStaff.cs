@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Staff");
-            Tooltip.SetDefault("Summons derpling heads that rain down upon your foes.");
+            Tooltip.SetDefault("Summons Derpling heads that rain down upon your foes.");
             Item.staff[item.type] = true;
         }
         public override void SetDefaults()

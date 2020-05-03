@@ -208,7 +208,7 @@ namespace StormDiversSuggestions.Items.Materials
             if (!GetInstance<Configurations>().DisableNewRecipes)
 
             {
-                Tooltip.SetDefault("Seems very insulatable, perhaps it could be used to keep warm");
+                Tooltip.SetDefault("Seems like a good insulator, perhaps it could be used to keep warm");
             }
             else
             {

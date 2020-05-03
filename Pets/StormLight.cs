@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Pets
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Suspicious looking helmet");
-            Tooltip.SetDefault("Sumons something unthinkable");
+            Tooltip.SetDefault("Summons something unthinkable");
 
         }
 

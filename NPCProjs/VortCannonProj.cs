@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.NPCProjs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vortex Rocket");
+            DisplayName.SetDefault("Vortexian Rocket");
             
             Main.projFrames[projectile.type] = 5;
         }

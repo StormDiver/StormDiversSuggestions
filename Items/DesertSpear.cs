@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Ancient Pike"); 
-			Tooltip.SetDefault("Unleash the power of the sand");
+			Tooltip.SetDefault("Unleash the power of the ancient sands");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
 

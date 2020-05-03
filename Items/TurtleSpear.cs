@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Turtle Pike"); 
-			Tooltip.SetDefault("Grants extra defense while attacking\nHas a chance to lower enemy defence");
+			Tooltip.SetDefault("Grants extra defense while attacking enemies\nHas a chance to lower enemy defence");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
 

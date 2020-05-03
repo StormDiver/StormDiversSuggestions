@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eye of the Dungeon");
-            Tooltip.SetDefault("Increased critical strike chance by 6%\nHonestly this was just the template accessory but I quickly added it as a real hidden one");
+            Tooltip.SetDefault("Increased critical strike chance by 8%");
         }
         public override void SetDefaults()
         {
@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.value = Item.buyPrice(0, 1, 0, 0);
             item.rare = 2;
 
-            item.defense = 4;
+            item.defense = 2;
             item.accessory = true;
         }
 
@@ -33,10 +33,10 @@ namespace StormDiversSuggestions.Items.Accessory
             
            
             
-            player.rangedCrit += 6;
-            player.magicCrit += 6;
-            player.meleeCrit += 6;
-            player.thrownCrit += 6;
+            player.rangedCrit += 8;
+            player.magicCrit += 8;
+            player.meleeCrit += 8;
+            player.thrownCrit += 8;
 
            /* if (skulltime <=0)
             {
@@ -58,16 +58,27 @@ namespace StormDiversSuggestions.Items.Accessory
             Projectile.NewProjectile(player.position.X + speedX, player.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(damage * 1.25), 0f);
         }
         */
-        public override void AddRecipes()
+        public class ModGlobalNPC : GlobalNPC
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Spike, 20);
-            recipe.AddRecipeGroup("IronBar", 20);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            public override void NPCLoot(NPC npc)
+            {
+                if (npc.type == NPCID.DarkCaster)
+                    if (Main.expertMode)
+                    {
+                        if (Main.rand.Next(15) == 0)
+                        {
 
-           
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TemplateAccessory"));
+                        }
+                    }
+                    else
+                    {
+                        if (Main.rand.Next(20) == 0)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TemplateAccessory"));
+                        }
+                    }
+            }
         }
     }
 }

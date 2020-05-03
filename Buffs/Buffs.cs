@@ -124,7 +124,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Allows most ranged projectiles to pierce once\nGreatly increases the velocity of all ranged projectiles");
+            Description.SetDefault("Allows most ranged projectiles to pierce once\nIncreases the velocity of all ranged projectiles");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -138,7 +138,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Greatly Reduces Mana Usage while under the effect of Mana Sickness");
+            Description.SetDefault("Greatly reduces Mana usage while under the effect of Mana Sickness");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -155,7 +155,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("Melee attacks have a chance to swarm enemies with mini beetle hindering their movement and defense");
+            Description.SetDefault("Melee attacks have a chance to swarm enemies with mini beetles, hindering their movement and defense");
         }
 
         public override void Update(Player player, ref int buffIndex)

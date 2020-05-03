@@ -60,6 +60,8 @@ namespace StormDiversSuggestions.Items
             for (int i = 0; i < 2; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));
+                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 1.4), (int)(perturbedSpeed.Y * 1.4), mod.ProjectileType("Rangedmushroom"), damage, knockBack, player.whoAmI);
             }
            

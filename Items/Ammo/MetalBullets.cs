@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tungsten Bullet");
-            Tooltip.SetDefault("About time this was added");
+            
         }
         public override void SetDefaults()
         {

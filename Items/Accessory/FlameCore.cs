@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's flame");
-            Tooltip.SetDefault("Grants infinite flight time");
+            Tooltip.SetDefault("Grants infinite flight time but reduces movement speed");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -31,7 +31,8 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             
-            player.wingTime *= 2;
+            player.wingTime += 0.5f;
+            player.moveSpeed *= 0.4f;
             
             //player.AddBuff(BuffID.Inferno, 1);
             
