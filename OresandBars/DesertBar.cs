@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.OresandBars
 
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 6));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 8));
                             }
                         }
                         else
@@ -139,7 +139,7 @@ namespace StormDiversSuggestions.OresandBars
 
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 6));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 8));
                             }
                         }
                     }

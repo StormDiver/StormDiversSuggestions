@@ -118,7 +118,7 @@ namespace StormDiversSuggestions.OresandBars
                             //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
                             // for (int i = 0; i < normaldrop; i++)
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 7));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 8));
                             }
                         }
                         else
@@ -128,7 +128,7 @@ namespace StormDiversSuggestions.OresandBars
                             //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
                             // for (int i = 0; i < normaldrop; i++)
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 7));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 8));
                             }
                         }
 
