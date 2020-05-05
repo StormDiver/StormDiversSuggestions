@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.OresandBars
 {
@@ -105,17 +106,35 @@ namespace StormDiversSuggestions.OresandBars
         {
             public override void NPCLoot(NPC npc)
             {
-                if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
-                    
-                        if (Main.rand.Next(2) == 0)
-
-                        //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
-                        // for (int i = 0; i < normaldrop; i++)
+                if (StormWorld.SpawnIceOre)
+                {
+                    //if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
+                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
+                    {
+                        if (Main.expertMode)
                         {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"));
+                            if (Main.rand.Next(2) == 0)
+
+                            //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                            // for (int i = 0; i < normaldrop; i++)
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 7));
+                            }
+                        }
+                        else
+                        {
+                            if (Main.rand.Next(3) == 0)
+
+                            //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                            // for (int i = 0; i < normaldrop; i++)
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(4, 7));
+                            }
                         }
 
-                    
+                    }
+                }
+               
             }
         }
     }

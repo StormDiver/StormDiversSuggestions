@@ -432,7 +432,18 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
                     item.defense = 4;
                 }
-
+                if (item.type == ItemID.ObsidianHelm)
+                {
+                    item.defense = 5;
+                }
+                if (item.type == ItemID.ObsidianShirt)
+                {
+                    item.defense = 6;
+                }
+                if (item.type == ItemID.ObsidianPants)
+                {
+                    item.defense = 5;
+                }
 
                 if (item.type == ItemID.FrostLeggings)
                 {

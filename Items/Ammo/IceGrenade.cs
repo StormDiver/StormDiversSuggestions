@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.AddIngredient(mod.ItemType("IceBar"), 1);
             recipe.AddIngredient(ItemID.ExplosivePowder, 3);
             recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 50);
+            recipe.SetResult(this, 60);
             recipe.AddRecipe();
         }
         public class VanillaShops : GlobalNPC

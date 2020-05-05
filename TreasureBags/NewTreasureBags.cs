@@ -49,29 +49,31 @@ namespace StormDiversSuggestions.TreasureBags
 
             if (context == "crate" && arg == ItemID.WoodenCrate)
             {
-                // if (StormWorld.iceOreCrate)
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
+                if (StormWorld.SpawnIceOre)
                 {
+                   // if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
+                
                     if (Main.rand.Next(16) == 0)
                     {
                         player.QuickSpawnItem(ItemType<IceOre>(), Main.rand.Next(8, 16));
                     }
                 }
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
+                if (StormWorld.SpawnDesertOre)
+                    //if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
                 {
                     if (Main.rand.Next(16) == 0)
                     {
                         player.QuickSpawnItem(ItemType<DesertOre>(), Main.rand.Next(8, 16));
                     }
                 }
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
+                if (StormWorld.SpawnIceOre)
                 {
                     if (Main.rand.Next(20) == 0)
                     {
                         player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(1, 4));
                     }
                 }
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
+                if (StormWorld.SpawnDesertOre)
                 {
                     if (Main.rand.Next(20) == 0)
                     {
@@ -82,35 +84,35 @@ namespace StormDiversSuggestions.TreasureBags
 
             if (context == "crate" && arg == ItemID.IronCrate)
             {
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
+                if (StormWorld.SpawnIceOre)
                 {
-                    if (Main.rand.Next(12) == 0)
+                    if (Main.rand.Next(15) == 0)
                     {
-                        player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(5, 12));
+                        player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(5, 10));
                     }
                 }
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
+                if (StormWorld.SpawnDesertOre)
                 {
-                    if (Main.rand.Next(12) == 0)
+                    if (Main.rand.Next(15) == 0)
                     {
-                        player.QuickSpawnItem(ItemType<DesertBar>(), Main.rand.Next(5, 12));
+                        player.QuickSpawnItem(ItemType<DesertBar>(), Main.rand.Next(5, 10));
                     }
                 }
             }
             if (context == "crate" && arg == ItemID.GoldenCrate)
             {
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
+                if (StormWorld.SpawnIceOre)
                 {
-                    if (Main.rand.Next(7) == 0)
+                    if (Main.rand.Next(10) == 0)
                     {
-                        player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(15, 20));
+                        player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(10, 14));
                     }
                 }
-                if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
+                if (StormWorld.SpawnDesertOre)
                 {
-                    if (Main.rand.Next(7) == 0)
+                    if (Main.rand.Next(10) == 0)
                     {
-                        player.QuickSpawnItem(ItemType<DesertBar>(), Main.rand.Next(15, 20));
+                        player.QuickSpawnItem(ItemType<DesertBar>(), Main.rand.Next(10, 14));
                     }
                 }
             }

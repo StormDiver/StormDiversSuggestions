@@ -1,3 +1,5 @@
+You can find update changes on the Github release page: https://github.com/StormDiver/StormDiversSuggestions/releases
+
 This mod attempts to add some of the ideas that I (Storm Diver Omega) have suggested on the forums, plus a bunch of new content I made up along the way.
 
 This mod includes:
@@ -5,7 +7,7 @@ This mod includes:
 -35 New unique weapons
 -12 new ammos
 -New recipes for certain uncraftable vanilla items
--2 new bars and ore
+-2 new bars and ore !WARNING if you created the world before installing this mod then the new ore will not spawn, but it will still drop from enemies in that biome and from crates!
 -2 new accessories
 -7 new buffs and 3 new potions
 -6 new debuffs

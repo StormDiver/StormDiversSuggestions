@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.OresandBars
 {
@@ -110,19 +111,40 @@ namespace StormDiversSuggestions.OresandBars
         {
             public override void NPCLoot(NPC npc)
             {
-                if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
-                   
-                        if (Main.rand.Next(2) == 0)
-
-                        // int normaldrop = 1 + Main.rand.Next(3); //This defines how many projectiles to shot.
-                        // for (int i = 0; i < normaldrop; i++)
-
+                if (StormWorld.SpawnDesertOre)
+                {
+                    // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
+                    if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
+                    {
+                        if (Main.expertMode)
                         {
 
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"));
-                        }
 
-                    
+                            if (Main.rand.Next(2) == 0)
+
+                            // int normaldrop = 1 + Main.rand.Next(3); //This defines how many projectiles to shot.
+                            // for (int i = 0; i < normaldrop; i++)
+
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 6));
+                            }
+                        }
+                        else
+                        {
+                            if (Main.rand.Next(3) == 0)
+
+                            // int normaldrop = 1 + Main.rand.Next(3); //This defines how many projectiles to shot.
+                            // for (int i = 0; i < normaldrop; i++)
+
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 6));
+                            }
+                        }
+                    }
+                }
+               
             }
         }
     }

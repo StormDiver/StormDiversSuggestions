@@ -39,10 +39,10 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MusketBall, 75);
+            recipe.AddIngredient(ItemID.MusketBall, 100);
             recipe.AddIngredient(mod.ItemType("IceBar"), 1);
             recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 75);
+            recipe.SetResult(this, 100);
             recipe.AddRecipe();
         }
 
