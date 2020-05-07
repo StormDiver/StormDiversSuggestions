@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Blizzard Baton"); 
-			Tooltip.SetDefault("Spins with the power of a blizzard");
+			Tooltip.SetDefault("Spins with the power of a small blizzard");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
 
