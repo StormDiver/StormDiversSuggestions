@@ -10,8 +10,8 @@ namespace StormDiversSuggestions.Items
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Frost Pole"); 
-			Tooltip.SetDefault("Spin this around to damage your enemies");
+			DisplayName.SetDefault("Blizzard Baton"); 
+			Tooltip.SetDefault("Spins with the power of a blizzard");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
 
