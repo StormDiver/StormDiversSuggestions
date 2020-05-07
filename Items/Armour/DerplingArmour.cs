@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("The true definition of cruelty\n8% increased damage");
+            Tooltip.SetDefault("The true definition of cruelty\n10% increased damage\nIncreases maximum mana by 40");
         }
 
         public override void SetDefaults()
@@ -29,7 +29,8 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.08f;
+            player.allDamage += 0.1f;
+            player.statManaMax2 += 40;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -46,7 +47,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Jump like a true Derpling\nGets stronger the lower your health";
+            player.setBonus = "Jump like a true Derpling\nGreatly increases take off speed";
 
             /*
             player.jumpSpeedBoost += 5;
@@ -55,21 +56,13 @@ namespace StormDiversSuggestions.Items.Armour
             
             player.maxRunSpeed += 2;
             */
-            if (player.statLife >= ((player.statLifeMax2) * 0.66f))
+            //if (!(player.wingTime < player.wingTimeMax))
+                if (player.velocity.Y == 0 || player.sliding)
             {
                 
-                player.AddBuff(mod.BuffType("DerpBuff"), 1);
+                player.AddBuff(mod.BuffType("DerpBuff"), 60);
             }
-            if (player.statLife <= ((player.statLifeMax2) * 0.66f) && player.statLife >= ((player.statLifeMax2) * 0.33f))
-            {
-
-                player.AddBuff(mod.BuffType("DerpBuffLv2"), 1);
-            }
-            if (player.statLife <= ((player.statLifeMax2) * 0.33f))
-            {
-
-                player.AddBuff(mod.BuffType("DerpBuffLv3"), 1);
-            }
+            
 
         }
         public override void AddRecipes()
@@ -109,7 +102,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Breastplate");
-            Tooltip.SetDefault("Hardened shell negates knockback\n7% increased critical strike chance");
+            Tooltip.SetDefault("Hardened shell negates knockback\n10% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -124,10 +117,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
             player.noKnockback = true;
-            player.meleeCrit += 7;
-            player.rangedCrit += 7;
-            player.magicCrit += 7;
-            player.thrownCrit += 7;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
+            player.thrownCrit += 10;
 
         }
         public override void AddRecipes()

@@ -20,8 +20,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 8;
+            projectile.width = 2;
+            projectile.height = 2;
 
             projectile.aiStyle = 1;
             projectile.light = 0.4f;
@@ -105,8 +105,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 8;
+            projectile.width = 2;
+            projectile.height = 2;
 
             projectile.aiStyle = 1;
             projectile.light = 0.4f;

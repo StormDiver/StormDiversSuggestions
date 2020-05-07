@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 20;
             projectile.height = 20;
-            projectile.light = 1f;
+           
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.ranged = true;

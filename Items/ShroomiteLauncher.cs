@@ -52,7 +52,11 @@ namespace StormDiversSuggestions.Items
             {
                 type = mod.ProjectileType("ShroomRocketProj"); 
             }
-            
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
 
             for (int i = 0; i < 1; i++)
             {

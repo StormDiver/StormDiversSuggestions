@@ -187,35 +187,8 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
                     }
 
-
-
-                if (item.type == ItemID.ShroomiteHeadgear)
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "15% increased ranged damage";
-                        }
-
-                    }
-                if (item.type == ItemID.ShroomiteHelmet)
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "15% increased ranged damage";
-                        }
-
-                    }
-                if (item.type == ItemID.ShroomiteMask)
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "15% increased ranged damage";
-                        }
-
-                    }
+               
+                
             }
         }
 
@@ -558,7 +531,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
                     item.defense = 15;
                 }
-
+               
 
             }
 
@@ -656,22 +629,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.moveSpeed += 0.5f;
 
                 }
-
-                if (item.type == ItemID.ShroomiteHeadgear)
-                {
-                    player.arrowDamage /= 1.15f;
-                    player.rangedDamage += 0.15f;
-                }
-                if (item.type == ItemID.ShroomiteHelmet)
-                {
-                    player.rocketDamage /= 1.15f;
-                    player.rangedDamage += 0.15f;
-                }
-                if (item.type == ItemID.ShroomiteMask)
-                {
-                    player.bulletDamage /= 1.15f;
-                    player.rangedDamage += 0.15f;
-                }
+               
             }
         }
     }
@@ -680,13 +638,20 @@ namespace StormDiversSuggestions.VanillaChanges
 
     public class Changes : ModPlayer
     {
+      
+
         // Credit to qwerty3.14
         public override void PostUpdateEquips()
         {
             if (!GetInstance<Configurations>().DisableVanillaBuff)
-
-
             {
+
+                {
+                    
+                }
+
+          
+              
                 if (player.armor[0].type == ItemID.GoldHelmet && player.armor[1].type == ItemID.GoldChainmail && player.armor[2].type == ItemID.GoldGreaves)
                 {
                     player.statDefense -= 3; // cancel out the vanilla bonus
@@ -786,6 +751,8 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.setBonus = "12% increased melee critical strike chance";
 
                 }
+
+                
             }
 
         }

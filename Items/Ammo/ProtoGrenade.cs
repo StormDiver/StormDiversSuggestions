@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Items.Ammo
                 {
                     case NPCID.Demolitionist:
 
-                        if (Main.LocalPlayer.HasItem(mod.ItemType("ProtoLauncher")) || Main.hardMode)
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("ProtoLauncher")))
                         {
                             shop.item[nextSlot].SetDefaults(mod.ItemType("ProtoGrenade"));
                             nextSlot++;

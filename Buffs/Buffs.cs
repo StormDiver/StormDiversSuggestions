@@ -52,55 +52,17 @@ namespace StormDiversSuggestions.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.jumpSpeedBoost += 4f;
+            player.jumpSpeedBoost += 10f;
 
             player.autoJump = true;
 
-            player.maxRunSpeed *= 1f;
+            
 
             //player.runAcceleration += 1f;
         }
     }
     //______________________________________________________________________________
-    public class DerpBuffLv2 : ModBuff
-    {
-        public override void SetDefaults()
-        {
-            DisplayName.SetDefault("Super Derpling Jump");
-            Description.SetDefault("Grants you the jump power that surpasses that of a true Derpling");
-        }
-        public override void Update(Player player, ref int buffIndex)
-        {
-
-            player.jumpSpeedBoost += 6.5f;
-            player.dash = 2;
-            player.autoJump = true;
-
-            player.maxRunSpeed *= 1.5f;
-
-            //player.runAcceleration += 1.5f;
-        }
-    }
-    //_______________________________________________________________________________
-    public class DerpBuffLv3 : ModBuff
-    {
-        public override void SetDefaults()
-        {
-            DisplayName.SetDefault("Hyper Derpling Jump");
-            Description.SetDefault("Grants you the ultimate jump power that no Derpling has ever seen");
-        }
-        public override void Update(Player player, ref int buffIndex)
-        {
-
-            player.jumpSpeedBoost += 9f;
-            player.dash = 1;
-            player.autoJump = true;
-
-            player.maxRunSpeed *= 2f;
-
-            //player.runAcceleration += 2f;
-        }
-    }
+    
     //_______________________________________________________________________________
    
     public class TurtleBuff : ModBuff
@@ -124,7 +86,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Allows most ranged projectiles to pierce once\nIncreases the velocity of all ranged projectiles");
+            Description.SetDefault("Allows all ranged weapons to fire extra explosive bullets");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -155,13 +117,18 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("Melee attacks have a chance to swarm enemies with mini beetles, hindering their movement and defense");
+            Description.SetDefault("While holding any melee weapon; your movement speed, acceleration and invincibility frames are greatly increased");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-
-            player.meleeSpeed += 0.15f;
+            if (player.HeldItem.melee)
+            {
+ 
+                player.longInvince = true;
+                player.maxRunSpeed *= 2.5f;
+                player.runAcceleration *= 4;
+            }
 
         }
     }

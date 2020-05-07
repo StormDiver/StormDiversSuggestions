@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items.Accessory
 {
@@ -12,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's flame");
-            Tooltip.SetDefault("Grants infinite flight time but reduces movement speed");
+            Tooltip.SetDefault("Doubles your flight time");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -31,11 +32,8 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             
-            player.wingTime += 0.5f;
-            player.moveSpeed *= 0.4f;
-            
-            //player.AddBuff(BuffID.Inferno, 1);
-            
+  
+            player.GetModPlayer<StormPlayer>().flameCore = true;
             particle--;
             if (particle <= 0)
                 {

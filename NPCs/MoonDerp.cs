@@ -137,7 +137,7 @@ namespace StormDiversSuggestions.NPCs
                     var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 89);
                 }
 
-                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -2, ProjectileID.PhantasmalEye, 30, 6f, Main.myPlayer);
+                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -2, ProjectileID.PhantasmalEye, 35, 6f, Main.myPlayer);
 
 
             }

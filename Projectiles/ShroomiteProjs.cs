@@ -428,5 +428,138 @@ namespace StormDiversSuggestions.Projectiles
         }
 
     }
-   
+    public class ShroomSetRocketProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("ShroomiteProj");
+
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 8;
+            projectile.height = 8;
+
+            projectile.aiStyle = 1;
+            projectile.light = 0.1f;
+
+            projectile.friendly = true;
+            projectile.timeLeft = 400;
+            projectile.penetrate = -1;
+
+
+            projectile.tileCollide = true;
+
+
+            projectile.ranged = true;
+            projectile.extraUpdates = 1;
+            aiType = ProjectileID.Bullet;
+
+
+        }
+
+
+        // int dusttime = 10;
+        public override void AI()
+        {
+
+
+            /*  Dust dust;
+
+              Vector2 position = projectile.Center;
+              dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+              dust.noGravity = true;*/
+
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            for (int i = 0; i < 10; i++)
+            {
+                float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
+                float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
+                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 45);
+                //Main.dust[num165].alpha = alpha;
+                Main.dust[j].position.X = x2;
+                Main.dust[j].position.Y = y2;
+                Main.dust[j].velocity *= 0.1f;
+                Main.dust[j].noGravity = true;
+                Main.dust[j].scale = 1f;
+            }
+
+            if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
+            {
+                projectile.velocity.X = 0f;
+                projectile.velocity.Y = 0f;
+                projectile.tileCollide = false;
+                // Set to transparent. This projectile technically lives as  transparent for about 3 frames
+                projectile.alpha = 255;
+                // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
+                projectile.position = projectile.Center;
+
+                projectile.width = 100;
+                projectile.height = 100;
+                projectile.Center = projectile.position;
+
+
+                projectile.knockBack = 3f;
+
+            }
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
+            return false;
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+
+            projectile.alpha = 255;
+
+            for (int i = 0; i < 50; i++)
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 31, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+                dust.scale = 2f;
+
+
+            }
+            for (int i = 0; i < 80; i++)
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 45, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+                dust.scale = 2f;
+            }
+
+            projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+            projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+            projectile.width = 16;
+            projectile.height = 16;
+            projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
+            projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+
+        }
+
+
+
+    }
+
 }

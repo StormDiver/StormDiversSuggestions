@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
 
             projectile.aiStyle = 1;
-            projectile.light = 0.2f;
+            
             projectile.friendly = true;
             projectile.timeLeft = 600;
             

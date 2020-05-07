@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 8;
 
             projectile.aiStyle = 1;
-            projectile.light = 0.1f;
+            
             
             projectile.friendly = true;
             projectile.timeLeft = 400;
@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 8;
 
             projectile.aiStyle = 1;
-            projectile.light = 0.1f;
+         
 
             projectile.friendly = true;
             projectile.timeLeft = 400;
@@ -145,7 +145,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 8;
 
             projectile.aiStyle = 1;
-            projectile.light = 0.1f;
+            
 
             projectile.friendly = true;
             projectile.timeLeft = 400;

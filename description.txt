@@ -4,11 +4,11 @@ This mod attempts to add some of the ideas that I (Storm Diver Omega) have sugge
 
 This mod includes:
 
--35 New unique weapons
--12 new ammos
+-37 New unique weapons
+-13 new ammos
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore !WARNING if you created the world before installing this mod then the new ore will not spawn, but it will still drop from enemies in that biome and from crates!
--2 new accessories
+-3 new accessories
 -7 new buffs and 3 new potions
 -6 new debuffs
 -New armour and Vanity sets
@@ -22,7 +22,6 @@ This mod also has some vanilla changes including:
 -Buffed Ore armour stats and cheaper recipe
 -Buffed Original Hardmode Ore armour defence
 -Buffed Frost and Forbidden armours plus new recipe
--All Shroomite helmets buff all types of ranged damage, but you can still pick any of the three ;)
 -Buffed Vortex and Solar flare armour
 -New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
 -Gladiator armour now a ranged set

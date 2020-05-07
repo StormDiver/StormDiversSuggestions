@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items.Ammo
                 {
                     case NPCID.Demolitionist:
 
-                        if (Main.LocalPlayer.HasItem(mod.ItemType("FrostLauncher")) || Main.hardMode)
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("FrostLauncher")))
                         {
                             shop.item[nextSlot].SetDefaults(mod.ItemType("IceGrenade"));
                             nextSlot++;

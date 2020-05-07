@@ -42,6 +42,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool turtled;
 
         public bool shroombuff;
+
+        public bool flameCore;
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -52,8 +54,50 @@ namespace StormDiversSuggestions.Basefiles
             goldDerpie = false;
             stormHelmet = false;
             shroombuff = false;
+            flameCore = false;
         }
-      
+        int shotCount = 0;
+        bool shot;
+        public override void PostUpdateEquips()
+        {
+            if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+            {
+                if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
+                {
+
+                    if (!shot)
+                    {
+                        shotCount++;
+                        if (shotCount > 3)
+                        {
+                            shotCount = 0;
+                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                            float velocity = 10f;
+                            int type = mod.ProjectileType("ShroomSetRocketProj");
+                            int damage = (int)(player.HeldItem.damage * 1.5f);
+                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
+                        }
+
+                    }
+                    shot = true;
+                }
+                else
+                {
+                    shot = false;
+                }
+                
+            }
+
+            if (flameCore)
+            {
+
+                player.wingTimeMax *= (int)2f;
+                
+                //player.moveSpeed *= 0.4f;
+            }
+           
+        }
         public override void UpdateBadLifeRegen()
         {
             {

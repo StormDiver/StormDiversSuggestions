@@ -318,7 +318,7 @@ namespace StormDiversSuggestions.Projectiles
 
             //Factors for calculations
 
-            double deg = (double)projectile.ai[1] * 5; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = (double)projectile.ai[1] * 5 ; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = distanceproj; //Distance away from the player
 
