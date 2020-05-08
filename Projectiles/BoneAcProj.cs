@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = 131;
             projectile.friendly = true;
             projectile.penetrate = 4;
-            projectile.ranged = true;
+            
             projectile.melee = false;
             projectile.timeLeft = 100;
             projectile.tileCollide = false;

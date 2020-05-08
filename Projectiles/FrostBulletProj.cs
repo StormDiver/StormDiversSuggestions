@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Projectiles
             
             aiType = ProjectileID.Bullet;
             projectile.tileCollide = true;
-
+            projectile.extraUpdates = 1;
         }
         
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 float speedX = projectile.velocity.X;
                 float speedY = projectile.velocity.Y;
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(16));
                 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("FrostBulletProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
             }

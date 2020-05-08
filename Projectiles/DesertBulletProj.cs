@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.magic = true;
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             aiType = ProjectileID.Bullet;
             projectile.aiStyle = 1;
@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Projectiles
            
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.magic = true;
+            projectile.ranged = true;
             projectile.timeLeft = 200;
             aiType = ProjectileID.Bullet;
             projectile.aiStyle = 1;

@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            
+            projectile.magic = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 120;
             projectile.extraUpdates = 3;
