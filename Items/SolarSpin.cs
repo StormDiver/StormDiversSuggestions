@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 150;
+			item.damage = 160;
             item.crit = 0;
 			item.melee = true;
 			item.width = 30;
@@ -31,7 +31,8 @@ namespace StormDiversSuggestions.Items
 			item.autoReuse = false;
            item.useTurn = true;
             item.channel = true;
-            //item.knockBack = 5f;
+            item.knockBack = 7f;
+            item.shootSpeed = 1f;
             item.shoot = mod.ProjectileType("SolarSpinProj");
             
             item.noMelee = true; 

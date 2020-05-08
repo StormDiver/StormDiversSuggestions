@@ -34,14 +34,14 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
         }
         public override void AI()
         {
-            //-------------------------------------------------------------Sound-------------------------------------------------------
+           
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)
             {
                 Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 7);    
                 projectile.soundDelay = 45;    
             }
-            //-----------------------------------------------How the projectile works---------------------------------------------------------------------
+           
             Player player = Main.player[projectile.owner];
             if (Main.myPlayer == projectile.owner)
             {
@@ -50,27 +50,31 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
                     projectile.Kill();
                 }
             }
-            Lighting.AddLight(projectile.Center, 0f, 0.5f, 0.5f);     //this is the projectile light color R, G, B (Red, Green, Blue)
+            Lighting.AddLight(projectile.Center, 0f, 0.5f, 0.5f);     
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;  
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 0.3f * player.direction; //this is the projectile rotation/spinning speed
-            if (projectile.rotation > MathHelper.TwoPi)
+            projectile.rotation += 0.3f * player.direction; 
+           /* if (projectile.rotation > MathHelper.TwoPi)
             {
                 projectile.rotation -= MathHelper.TwoPi;
             }
             else if (projectile.rotation < 0)
             {
                 projectile.rotation += MathHelper.TwoPi;
-            }
+            }*/ 
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
+
+
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135);  //this is the dust that this projectile will spawn
             Main.dust[dust].velocity /= 1f;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 6;
+            projectile.localNPCHitCooldown = 10;
+            
+           
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player

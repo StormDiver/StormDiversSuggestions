@@ -60,14 +60,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             projectile.spriteDirection = player.direction;
             
             projectile.rotation += 0.25f * player.direction; //this is the projectile rotation/spinning speed
-            if (projectile.rotation > MathHelper.TwoPi)
-            {
-                projectile.rotation -= MathHelper.TwoPi;
-            }
-            else if (projectile.rotation < 0)
-            {
-                projectile.rotation += MathHelper.TwoPi;
-            }
+           
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
@@ -76,7 +69,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             Main.dust[dust].velocity /= 1f;
             Main.dust[dust].scale = 0.6f;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 3;
+            projectile.localNPCHitCooldown = 5;
 
 
         }

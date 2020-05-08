@@ -17,8 +17,8 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 40;
-            item.crit = 0;
+			item.damage = 38;
+            
 			item.melee = true;
 			item.width = 30;
 			item.height = 30;
@@ -31,9 +31,9 @@ namespace StormDiversSuggestions.Items
 			item.autoReuse = false;
             item.useTurn = true;
             item.channel = true;
-            item.knockBack = 5f;
+            item.knockBack = 3f;
             item.shoot = mod.ProjectileType("FrostSpinProj");
-            
+            item.shootSpeed = 1f;
             item.noMelee = true; 
             item.noUseGraphic = true; 
             
