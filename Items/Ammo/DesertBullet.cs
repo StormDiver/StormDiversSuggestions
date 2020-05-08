@@ -10,8 +10,8 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Bullet");
-            Tooltip.SetDefault("Has a chance to spilt into 2-3 bullets mid-flight");
+            DisplayName.SetDefault("Arid Bullet");
+            Tooltip.SetDefault("Has a chance to spilt into three bullets mid-flight");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
