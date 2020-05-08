@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items
             item.rare = 10;
 			item.UseSound = SoundID.Item116;
 			item.autoReuse = false;
-           item.useTurn = true;
+           item.useTurn = false;
             item.channel = true;
             item.knockBack = 7f;
             item.shootSpeed = 1f;

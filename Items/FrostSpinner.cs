@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items
             item.rare = 5;
 			item.UseSound = SoundID.Item7;
 			item.autoReuse = false;
-            item.useTurn = true;
+            item.useTurn = false;
             item.channel = true;
             item.knockBack = 3f;
             item.shoot = mod.ProjectileType("FrostSpinProj");
