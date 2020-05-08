@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
 
                 item.shootSpeed = 0f;
 
-                item.mana = 100;
+               
             
             //item.useAmmo = AmmoID.Arrow;
                 
@@ -65,11 +65,12 @@ namespace StormDiversSuggestions.Items
                     NPC.ShieldStrengthTowerNebula = 0;
                     NPC.ShieldStrengthTowerStardust = 0;
                     Main.NewText("The Shields guarding the Celestial pillars have been stripped away", 0, 204, 170);
+                    
                     for (int i = 0; i < 50; i++)
                     {
 
                         Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                        int dust2 = Dust.NewDust(position, player.width, player.height, 229, 0f, 0f, 200, default, 0.8f);
+                        int dust2 = Dust.NewDust(player.position, player.width, player.height, 229, 0f, 0f, 200, default, 0.8f);
                         Main.dust[dust2].velocity *= -5f;
                         Main.dust[dust2].noGravity = true;
                         Main.dust[dust2].scale = 1.5f;
@@ -77,8 +78,17 @@ namespace StormDiversSuggestions.Items
                 }
                 else
                 {
-                    Main.PlaySound(2, (int)position.X, (int)position.Y, 16);
-                    //Main.NewText("There are no active shields", 150, 75, 76);
+                    Main.PlaySound(4, (int)position.X, (int)position.Y, 6);
+                    for (int i = 0; i < 10; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.position.X + 1f, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
+                        Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+
+                    Main.NewText("There are no active shields", 150, 75, 76);
                 }
                 /*if (NPC.ShieldStrengthTowerSolar > 0)
                 {
