@@ -116,30 +116,21 @@ namespace StormDiversSuggestions.OresandBars
                     // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
                     {
-                        if (Main.expertMode)
+                        if (Main.rand.Next(3) == 0)
+
                         {
+                            if (Main.expertMode)
 
-
-                            if (Main.rand.Next(2) == 0)
-
-                            // int normaldrop = 1 + Main.rand.Next(3); //This defines how many projectiles to shot.
-                            // for (int i = 0; i < normaldrop; i++)
 
                             {
-
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 6));
                             }
-                        }
-                        else
-                        {
-                            if (Main.rand.Next(3) == 0)
 
-                            // int normaldrop = 1 + Main.rand.Next(3); //This defines how many projectiles to shot.
-                            // for (int i = 0; i < normaldrop; i++)
-
+                            else
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(2, 5));
+
                             }
                         }
                     }

@@ -111,27 +111,23 @@ namespace StormDiversSuggestions.OresandBars
                     //if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
                     {
-                        if (Main.expertMode)
-                        {
-                            if (Main.rand.Next(2) == 0)
+                        if (Main.rand.Next(3) == 0)
 
-                            //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
-                            // for (int i = 0; i < normaldrop; i++)
+                        {
+                            if (Main.expertMode)
+
+                           
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 5));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 6));
+                            }
+
+                            else
+                            {
+                               
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 5));
+                              
                             }
                         }
-                        else
-                        {
-                            if (Main.rand.Next(3) == 0)
-
-                            //int normaldrop = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
-                            // for (int i = 0; i < normaldrop; i++)
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 5));
-                            }
-                        }
-
                     }
                 }
                
