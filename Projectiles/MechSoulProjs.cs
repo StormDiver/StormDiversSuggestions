@@ -91,7 +91,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.hide = true;
-            //projectile.ownerHitCheck = true; //so you can't hit enemies through walls
+            projectile.ownerHitCheck = true; //so you can't hit enemies through walls
             projectile.melee = true;
             
             drawOffsetX = 5;

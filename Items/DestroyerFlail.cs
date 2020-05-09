@@ -10,6 +10,7 @@ namespace StormDiversSuggestions.Items
 {
     public class DestroyerFlail : ModItem
     {
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Vaporiser");
@@ -31,8 +32,10 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 5;
             item.UseSound = SoundID.Item1;
             item.melee = true;
-
+            
         }
+       // public override bool IgnoreDamageModifiers => true;
+       
         public override bool AltFunctionUse(Player player)
         {
             return true;
