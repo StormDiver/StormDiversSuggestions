@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 8;
-            projectile.height = 12;
+            projectile.height = 8;
 
             
             projectile.light = 1f;
@@ -33,7 +33,10 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
 
             projectile.timeLeft = 300;
-                
+
+            drawOffsetX = -4;
+            drawOriginOffsetY = 0;
+
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -79,52 +82,56 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.CloneDefaults(509);
-            aiType = 509;
+            projectile.width = 40;
+            projectile.height = 40;
+            //projectile.CloneDefaults(509);
+            // aiType = 509;
+            projectile.aiStyle = 20;
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.hide = true;
-            projectile.ownerHitCheck = true; //so you can't hit enemies through walls
+            //projectile.ownerHitCheck = true; //so you can't hit enemies through walls
             projectile.melee = true;
-            projectile.damage = 60;
-            drawOffsetX = -4;
+            
+            drawOffsetX = 5;
             drawOriginOffsetY = 0;
+
+            
         }
 
         public override void AI()
         {
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default, 1.9f);
             Main.dust[dust].noGravity = true;
-            
-            for (int i = 0; i < 100; i++)
-            {
-                NPC target = Main.npc[i];
-                target.TargetClosest(true);
-                float shootToX = target.Center.X - projectile.Center.X;
-                float shootToY = target.Center.Y - projectile.Center.Y;
-                float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
-                if (distance < 300f && !target.friendly && target.active && lineOfSight)
-                {
-                    if (projectile.ai[0] > 10f)
-                    {
-                        distance = 3f / distance;
-                        shootToX *= distance * 5;
-                        shootToY *= distance * 5;
-                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("SawBladeProj"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
-                        Main.projectile[proj].timeLeft = 30;
-                        Main.projectile[proj].netUpdate = true;
-                        projectile.netUpdate = true;
-                        Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 34);
-                        projectile.ai[0] = -60f;
-                    }
-                }
-            }
-            projectile.ai[0] += 1f;
-
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 6;
+            /* for (int i = 0; i < 100; i++)
+             {
+                 NPC target = Main.npc[i];
+                 target.TargetClosest(true);
+                 float shootToX = target.Center.X - projectile.Center.X;
+                 float shootToY = target.Center.Y - projectile.Center.Y;
+                 float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+                 bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
+                 if (distance < 300f && !target.friendly && target.active && lineOfSight)
+                 {
+                     if (projectile.ai[0] > 10f)
+                     {
+                         distance = 3f / distance;
+                         shootToX *= distance * 5;
+                         shootToY *= distance * 5;
+                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("SawBladeProj"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                         Main.projectile[proj].timeLeft = 30;
+                         Main.projectile[proj].netUpdate = true;
+                         projectile.netUpdate = true;
+                         Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 34);
+                         projectile.ai[0] = -60f;
+                     }
+                 }
+             }
+             projectile.ai[0] += 1f;*/
+            AnimateProjectile();
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -173,7 +180,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 8;
-            projectile.height = 12;
+            projectile.height = 8;
             projectile.light = 1f;
             projectile.friendly = true;
             projectile.penetrate = 1;
@@ -182,6 +189,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.aiStyle = 1;
 
             projectile.timeLeft = 90;
+            drawOffsetX = -4;
+            drawOriginOffsetY = 0;
         }
 
         public override void AI()
@@ -498,7 +507,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (Main.rand.Next(3) == 0) // the chance
             {
-                target.AddBuff(BuffID.OnFire, 120);
+                target.AddBuff(BuffID.OnFire, 240);
 
             }
 
@@ -535,7 +544,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (Main.rand.Next(5) == 0) // the chance
             {
-                target.AddBuff(BuffID.OnFire, 120);
+                target.AddBuff(BuffID.OnFire, 240);
             }
 
         }
@@ -565,7 +574,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width = 10, projectile.height = 10, 55);
+                    var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 55);
                 }
 
             }
@@ -632,7 +641,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width = 10, projectile.height = 10, 55);
+                    var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 55);
                 }
 
             }

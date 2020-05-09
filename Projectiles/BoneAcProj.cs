@@ -30,8 +30,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 100;
             projectile.tileCollide = false;
 
-            drawOffsetX = 2;
-            drawOriginOffsetY = 2;
+            //drawOffsetX = 2;
+            //drawOriginOffsetY = 2;
 
         }
 

@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Items.Accessory
                
                 int damage = 20;
                 float speedX = 0f;
-                float speedY = -30f;
+                float speedY = -24f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));
                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                 perturbedSpeed = perturbedSpeed * scale;

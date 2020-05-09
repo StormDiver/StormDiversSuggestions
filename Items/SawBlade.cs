@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Obliterator");
-            Tooltip.SetDefault("Shoots mini destroyer heads at nearby enemies");
+            Tooltip.SetDefault("Shreads any enemy that comes into contact with it");
         }
 
         public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
-            item.knockBack = 1f;
+            item.knockBack = 1.5f;
             item.damage = 80;
             item.useTurn = true;
             item.shoot = mod.ProjectileType("SawBladeChain");

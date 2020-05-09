@@ -42,10 +42,10 @@ namespace StormDiversSuggestions.Items
         {
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 55;
-                item.useAnimation = 55;
+                item.useTime = 40;
+                item.useAnimation = 40;
                 item.shoot = mod.ProjectileType("DestroyerFlailProj2");
-                item.shootSpeed = 7f;
+                item.shootSpeed = 9f;
                 item.noUseGraphic = true;
                 item.useStyle = 1;
 
