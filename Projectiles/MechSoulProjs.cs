@@ -105,7 +105,7 @@ namespace StormDiversSuggestions.Projectiles
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default, 1.9f);
             Main.dust[dust].noGravity = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 8;
             Player player = Main.player[projectile.owner];
             if (Main.rand.Next(8) == 0)
             {
@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(22));
                     float scale = 1f - (Main.rand.NextFloat() * .3f);
                     perturbedSpeed = perturbedSpeed * scale;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (int) (perturbedSpeed.X * 0.12f), (int)(perturbedSpeed.Y * 0.12f), ProjectileID.Spark, 35, 0, player.whoAmI);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (int) (perturbedSpeed.X * 0.12f), (int)(perturbedSpeed.Y * 0.12f), ProjectileID.Spark, 33, 0, player.whoAmI);
                 
             }
 
