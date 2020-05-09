@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 65;
+            item.damage = 40;
             //item.crit = 4;
             item.knockBack = 4f;
 
@@ -79,6 +79,25 @@ namespace StormDiversSuggestions.Items
 
             }
             return base.CanUseItem(player);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                return true;
+            }
+            else
+            {
+                int numberProjectiles = 1 + Main.rand.Next(2); ; //This defines how many projectiles to shot.
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
+                return false;
+            }
+            
         }
         public override void AddRecipes()
         {

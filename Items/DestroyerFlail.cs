@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items
                 item.useTime = 40;
                 item.useAnimation = 40;
                 item.shoot = mod.ProjectileType("DestroyerFlailProj2");
-                item.shootSpeed = 9f;
+                item.shootSpeed = 8f;
                 item.noUseGraphic = true;
                 item.useStyle = 1;
 

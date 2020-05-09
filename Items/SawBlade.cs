@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Obliterator");
-            Tooltip.SetDefault("Shreads any enemy that comes into contact with it");
+            Tooltip.SetDefault("Shreads any enemy that it come into contact with, emits sparks when using");
         }
 
         public override void SetDefaults()

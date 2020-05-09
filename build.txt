@@ -1,4 +1,4 @@
 displayName = Storm Diver's Additions and Changes
 author = Storm Diver Omega
-version = 1.1.0.7
+version = 1.1.1
 homepage = https://forums.terraria.org/index.php?threads/storm-divers-additions-and-changes.88234/

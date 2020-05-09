@@ -106,6 +106,15 @@ namespace StormDiversSuggestions.Projectiles
             Main.dust[dust].noGravity = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 6;
+            Player player = Main.player[projectile.owner];
+            if (Main.rand.Next(5) == 0)
+            {
+                Vector2 perturbedSpeed = new Vector2(0, -6).RotatedByRandom(MathHelper.ToRadians(360));
+                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.Spark, 40, 0, player.whoAmI);
+            }
+
             /* for (int i = 0; i < 100; i++)
              {
                  NPC target = Main.npc[i];
@@ -222,68 +231,7 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
     }
-    //_______________________________________________________________________________________
-    public class SkullSeek : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Skull Seeker");
-        }
-
-        public override void SetDefaults()
-        {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.aiStyle = 8;
-            projectile.friendly = true;
-            projectile.penetrate = 3;
-            projectile.magic = true;
-            projectile.timeLeft = 200;
-            projectile.tileCollide = true;
-
-        }
-        public override void AI()
-        {
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
-            projectile.spriteDirection = projectile.direction;
-        }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            if (Main.rand.Next(2) == 0) // the chance
-            {
-                target.AddBuff(BuffID.Confused, 120);
-
-            }
-            else
-            {
-                target.AddBuff(BuffID.OnFire, 120);
-            }
-            for (int i = 0; i < 10; i++)
-            {
-
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
-            }
-        }
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.owner == Main.myPlayer)
-            {
-
-                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(SoundID.Item10, projectile.position);
-                for (int i = 0; i < 10; i++)
-                {
-
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
-                }
-            }
-        }
-
-    }
+    
     //_______________________________________________________________________________________
     public class DestroyerFlailProj : ModProjectile
     {
@@ -302,7 +250,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.melee = true; // Deals melee dmg.
 
             projectile.aiStyle = 15; // Set the aiStyle to that of a flail.
-
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()
@@ -532,6 +481,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
             aiType = ProjectileID.Meteor1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()
@@ -580,6 +531,73 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
     }
+    //_________________________________________________________________________________________
+    //_______________________________________________________________________________________
+    public class SkullSeek : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Prime Skull");
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.aiStyle = 8;
+            projectile.friendly = true;
+            projectile.penetrate = 3;
+            projectile.magic = true;
+            projectile.timeLeft = 300;
+            projectile.tileCollide = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            drawOffsetX = -6;
+            drawOriginOffsetY = 0;
+
+        }
+        public override void AI()
+        {
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
+            projectile.spriteDirection = projectile.direction;
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (Main.rand.Next(2) == 0) // the chance
+            {
+                target.AddBuff(BuffID.Confused, 120);
+
+            }
+            else
+            {
+                target.AddBuff(BuffID.OnFire, 120);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
+                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
+            }
+        }
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.owner == Main.myPlayer)
+            {
+
+                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+                Main.PlaySound(SoundID.Item10, projectile.position);
+                for (int i = 0; i < 10; i++)
+                {
+
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
+                }
+            }
+        }
+
+    }
     //_______________________________________________________________________________________
     public class Primeheadspin : ModProjectile
     {
@@ -600,6 +618,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 600;
             projectile.tileCollide = false;
             projectile.MaxUpdates = 1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
         public override void AI()
         {
@@ -611,7 +631,7 @@ namespace StormDiversSuggestions.Projectiles
             //Factors for calculations
             double deg = (double)projectile.ai[1] * 5; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
-            double dist = 80; //Distance away from the player
+            double dist = 100; //Distance away from the player
 
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
