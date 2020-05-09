@@ -114,7 +114,7 @@ namespace StormDiversSuggestions.OresandBars
                 if (StormWorld.SpawnDesertOre)
                 {
                     // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
-                    if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
+                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
                     {
                         if (Main.expertMode)
                         {
@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.OresandBars
 
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 8));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
                             }
                         }
                         else
@@ -139,7 +139,7 @@ namespace StormDiversSuggestions.OresandBars
 
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 8));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
                             }
                         }
                     }
