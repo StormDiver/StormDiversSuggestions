@@ -107,12 +107,15 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 6;
             Player player = Main.player[projectile.owner];
-            if (Main.rand.Next(5) == 0)
+            if (Main.rand.Next(4) == 0)
             {
-                Vector2 perturbedSpeed = new Vector2(0, -6).RotatedByRandom(MathHelper.ToRadians(360));
-                float scale = 1f - (Main.rand.NextFloat() * .5f);
-                perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.Spark, 40, 0, player.whoAmI);
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(0, -7).RotatedByRandom(MathHelper.ToRadians(360));
+                    float scale = 1f - (Main.rand.NextFloat() * .5f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.Spark, 40, 0, player.whoAmI);
+                }
             }
 
             /* for (int i = 0; i < 100; i++)
