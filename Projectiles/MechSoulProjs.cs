@@ -568,12 +568,12 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (Main.rand.Next(2) == 0) // the chance
             {
-                target.AddBuff(BuffID.Confused, 120);
+                target.AddBuff(BuffID.Confused, 240);
 
             }
             else
             {
-                target.AddBuff(BuffID.OnFire, 120);
+                target.AddBuff(BuffID.OnFire, 240);
             }
             for (int i = 0; i < 10; i++)
             {

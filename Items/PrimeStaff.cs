@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 40;
+            item.damage = 50;
             //item.crit = 4;
             item.knockBack = 4f;
 
@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items
             {
                 item.useTime = 20;
                 item.useAnimation = 20;
-                item.mana = 12;
+                item.mana = 9;
                 item.shoot = mod.ProjectileType("SkullSeek");
                 item.shootSpeed = 10f;
                 item.magic = true;
