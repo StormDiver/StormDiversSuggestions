@@ -12,13 +12,13 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Beetle Lance"); 
-			Tooltip.SetDefault("Summons beetles that attack your foes");
+			Tooltip.SetDefault("Summons beetles that attack and swarm your foes");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
 
 		public override void SetDefaults() 
 		{
-			item.damage = 90;
+			item.damage = 100;
             //item.crit = 0;
 			item.melee = true;
 			item.width = 30;

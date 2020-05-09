@@ -11,13 +11,13 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Giant Beetle Shell");
-            Tooltip.SetDefault("Summons beetles to attack your foes on impact\nRight click to throw 4 at once");
+            Tooltip.SetDefault("Summons beetles to attack and swarm your foes on impact\nRight click to throw 4 at once");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
         public override void SetDefaults()
         {
             
-            item.damage = 95;
+            item.damage = 90;
             item.melee = true;
             item.width = 30;
             item.height = 30;
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Items
                 item.useAnimation = 15;
                 
             }
-            return player.ownedProjectileCounts[item.shoot] < 4;
+            return player.ownedProjectileCounts[item.shoot] < 6;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

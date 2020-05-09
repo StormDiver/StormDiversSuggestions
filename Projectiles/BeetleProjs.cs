@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("BeetleYoyo");
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 15f;
+            //ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 15f;
 
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
 
@@ -314,7 +314,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("BeetleDebuff"), 300);
             }
