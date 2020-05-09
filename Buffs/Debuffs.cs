@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Shelled");
+            DisplayName.SetDefault("De-Shelled");
             Description.SetDefault("Lowered Defense");
             Main.debuff[Type] = true;
             // Main.pvpBuff[Type] = true;
@@ -130,7 +130,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Beetled");
+            DisplayName.SetDefault("Beetle Swarm");
             Description.SetDefault("Lowered Defense and speed");
             Main.debuff[Type] = true;
             // Main.pvpBuff[Type] = true;
