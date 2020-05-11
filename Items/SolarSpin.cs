@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Blazing Star"); 
-			Tooltip.SetDefault("Spins around with the force of a star");
+			Tooltip.SetDefault("Spins around with the force of a star\nKnocks enemies in the direction you're facing");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
 

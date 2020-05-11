@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Basefiles
             
             if (npc.boss)
             {
-                npc.buffImmune[(BuffType<BeetleBuff>())] = true;
+                npc.buffImmune[(BuffType<BeetleDebuff>())] = true;
             }
         }
 

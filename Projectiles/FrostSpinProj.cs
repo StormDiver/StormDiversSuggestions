@@ -32,9 +32,9 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
 
             }
         }
-        float hitbox = 150;
-        bool hitboxup;
-        bool hitboxdown;
+       // float hitbox = 150;
+       // bool hitboxup;
+       // bool hitboxdown;
         public override void AI()
         {
            
@@ -77,12 +77,12 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
 
-            if (hitbox == 150)
+           /* if (hitbox == 160)
             {
                 hitboxup = false;
                 hitboxdown = true;
             }
-            if (hitbox == 140)
+            if (hitbox == 150)
             {
                 hitboxup = true;
                 hitboxdown = false;
@@ -99,7 +99,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
                 hitbox--;
             }
             projectile.width = (int)hitbox;
-            projectile.height = (int)hitbox;
+            projectile.height = (int)hitbox;*/
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
