@@ -79,7 +79,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 1;
             item.useAnimation = 1;
             item.useTurn = false;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.UseSound = SoundID.Item43;
             //item.melee = true;
             //item.ranged = true;
@@ -91,8 +91,8 @@ namespace StormDiversSuggestions.Items
             //item.crit = 4;
             item.knockBack = 1f;
 
-            //item.shoot = mod.ProjectileType("LeadShot");
-            item.shoot = ProjectileID.Meowmere;
+            item.shoot = mod.ProjectileType("BeetleProj");
+            //item.shoot = ProjectileID.Meowmere;
             item.shootSpeed = 10f;
 
             //item.useAmmo = AmmoID.Arrow;

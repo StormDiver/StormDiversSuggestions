@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.NPCProjs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar Fireball");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 2;
         }
 
         public override void SetDefaults()
@@ -51,6 +51,12 @@ namespace StormDiversSuggestions.NPCProjs
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 153, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
             }
+            Dust dust2;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position2 = projectile.Center;
+            dust2 = Terraria.Dust.NewDustPerfect(position2, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+            dust2.noGravity = true;
+            projectile.rotation += (float)projectile.direction * 0.2f;
 
             AnimateProjectile();
         }
@@ -91,7 +97,7 @@ namespace StormDiversSuggestions.NPCProjs
             if (projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
             {
                 projectile.frame++;
-                projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
+                projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
                 projectile.frameCounter = 0;
             }
         }

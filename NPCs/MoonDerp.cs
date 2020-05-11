@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.NPCs
         {
             Main.npcFrameCount[npc.type] = 4;
 
-            npc.width = 62;
+            npc.width = 60;
             npc.height = 42;
 
             npc.aiStyle = 86; // This npc has a completely unique AI, so we set this to -1. The default aiStyle 0 will face the player, which might conflict with custom AI code.
