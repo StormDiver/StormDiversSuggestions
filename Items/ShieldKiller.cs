@@ -112,11 +112,11 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarBar, 20);
-            recipe.AddIngredient(ItemID.FragmentSolar, 20);
-            recipe.AddIngredient(ItemID.FragmentVortex, 20);
-            recipe.AddIngredient(ItemID.FragmentNebula, 20);
-            recipe.AddIngredient(ItemID.FragmentStardust, 20);
+            recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddIngredient(ItemID.FragmentSolar, 40);
+            recipe.AddIngredient(ItemID.FragmentVortex, 40);
+            recipe.AddIngredient(ItemID.FragmentNebula, 40);
+            recipe.AddIngredient(ItemID.FragmentStardust, 40);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();
