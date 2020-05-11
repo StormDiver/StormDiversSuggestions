@@ -43,17 +43,17 @@ namespace StormDiversSuggestions.Items
             
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 40;
-                item.useAnimation = 40;
+                item.useTime = 30;
+                item.useAnimation = 30;
 
             }
             else
             {
-                item.useTime = 15;
-                item.useAnimation = 15;
+                item.useTime = 12;
+                item.useAnimation = 12;
                 
             }
-            return player.ownedProjectileCounts[item.shoot] < 6;
+            return player.ownedProjectileCounts[item.shoot] < 8;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

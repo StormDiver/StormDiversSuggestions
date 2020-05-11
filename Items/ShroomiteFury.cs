@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items
         {
 
             float numberProjectiles = 3 + Main.rand.Next(2); 
-            float rotation = MathHelper.ToRadians(10);
+            float rotation = MathHelper.ToRadians(9);
             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             for (int i = 0; i < numberProjectiles; i++)
             {

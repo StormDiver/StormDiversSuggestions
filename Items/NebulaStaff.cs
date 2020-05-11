@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 50, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
-            item.useTime = 8;
-            item.useAnimation = 8;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -32,9 +32,9 @@ namespace StormDiversSuggestions.Items
             item.mana = 8;
             item.UseSound = SoundID.Item13;
 
-            item.damage = 85;
+            item.damage = 70;
             //item.crit = 4;
-            item.knockBack = 3f;
+            item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("NebulaStaffProj");
 

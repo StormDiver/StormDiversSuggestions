@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Projectiles
             if (split == 18)
             {
 
-                if (Main.rand.Next(2) == 0)
+                if (Main.rand.Next(3) == 0)
                 {
 
                     for (int i = 0; i < 10; i++)

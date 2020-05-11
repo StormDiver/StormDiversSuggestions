@@ -117,7 +117,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("While holding any melee weapon; your movement speed, acceleration and invincibility frames are greatly increased");
+            Description.SetDefault("While holding any melee weapon your movement speed and acceleration are greatly increased\nIncreases armour penetration by 30");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -128,6 +128,7 @@ namespace StormDiversSuggestions.Buffs
                 player.longInvince = true;
                 player.maxRunSpeed *= 2.5f;
                 player.runAcceleration *= 4;
+                player.armorPenetration = 30;
             }
 
         }

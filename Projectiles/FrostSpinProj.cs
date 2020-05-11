@@ -32,6 +32,9 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
 
             }
         }
+        float hitbox = 150;
+        bool hitboxup;
+        bool hitboxdown;
         public override void AI()
         {
            
@@ -73,8 +76,30 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             Main.dust[dust].velocity /= 1f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            
-           
+
+            if (hitbox == 150)
+            {
+                hitboxup = false;
+                hitboxdown = true;
+            }
+            if (hitbox == 140)
+            {
+                hitboxup = true;
+                hitboxdown = false;
+            }
+            if (hitboxup == true)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    hitbox++;
+                }
+            }
+            if (hitboxdown == true)
+            {
+                hitbox--;
+            }
+            projectile.width = (int)hitbox;
+            projectile.height = (int)hitbox;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player

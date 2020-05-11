@@ -16,8 +16,8 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
         public override void SetDefaults()
         {
            
-            projectile.width = 300;     
-            projectile.height = 300;      
+            //projectile.width = 300;     
+           // projectile.height = 300;      
             projectile.friendly = true;    
             projectile.penetrate = -1;    
             projectile.tileCollide = false; 
@@ -33,6 +33,11 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
 
             }
         }
+
+        float hitbox = 300;
+        bool hitboxup;
+        bool hitboxdown;
+
         public override void AI()
         {
 
@@ -70,8 +75,29 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             Main.dust[dust].scale = 0.6f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 5;
-
-
+            if (hitbox == 300)
+            {
+                hitboxup = false;
+                hitboxdown = true;
+            }
+            if (hitbox == 270)
+            {
+                hitboxup = true;
+                hitboxdown = false;
+            }
+            if (hitboxup == true)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    hitbox++;
+                }
+            }
+            if (hitboxdown == true)
+            {
+                hitbox--;
+            }
+            projectile.width = (int)hitbox;
+            projectile.height = (int)hitbox;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player

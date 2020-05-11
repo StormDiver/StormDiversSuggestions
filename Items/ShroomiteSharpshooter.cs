@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nSummons damaging mushrooms while firing");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nFires completely accurately");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -35,13 +35,13 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item40;
 
-            item.damage = 65;
+            item.damage = 70;
             item.crit = 16;
             item.knockBack = 2f;
 
             item.shoot = ProjectileID.Bullet;
             item.shootSpeed = 20f;
-
+            
             item.useAmmo = AmmoID.Bullet;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -56,14 +56,15 @@ namespace StormDiversSuggestions.Items
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            
-            for (int i = 0; i < 2; i++)
+
+           /* if (Main.rand.Next(3) == 0)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));
-                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(40));
+                float scale = 1f - (Main.rand.NextFloat() * .9f);
                 perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 1.4), (int)(perturbedSpeed.Y * 1.4), mod.ProjectileType("Rangedmushroom"), damage, knockBack, player.whoAmI);
-            }
+                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 4), (int)(perturbedSpeed.Y * 4), mod.ProjectileType("Rangedmushroom"), damage, knockBack, player.whoAmI);
+            }*/
            
 
                 return true;

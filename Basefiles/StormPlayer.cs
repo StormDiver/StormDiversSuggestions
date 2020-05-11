@@ -72,9 +72,9 @@ namespace StormDiversSuggestions.Basefiles
                         {
                             shotCount = 0;
                             float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 10f;
+                            float velocity = 14f;
                             int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 1.5f);
+                            int damage = (int)(player.HeldItem.damage * 1.6f);
                             Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
                         }

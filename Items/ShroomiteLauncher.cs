@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 35;
-            item.useAnimation = 35;
+            item.useTime = 34;
+            item.useAnimation = 34;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = ProjectileID.RocketI;
             item.useAmmo = AmmoID.Rocket;
-            
+            item.UseSound = SoundID.Item92;
             item.damage = 50;
             //item.crit = 4;
             item.knockBack = 6f;
@@ -58,14 +58,7 @@ namespace StormDiversSuggestions.Items
                 position += muzzleOffset;
             }
 
-            for (int i = 0; i < 1; i++)
-            {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); // This defines the projectiles random spread . 3 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)position.X, (int)position.Y, 92);
-
-            }
-
+           
             if (Main.rand.Next(3) == 0)
             { 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
@@ -74,7 +67,7 @@ namespace StormDiversSuggestions.Items
             }
             
             
-            return false;
+            return true;
         }
 
 

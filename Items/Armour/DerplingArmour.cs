@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("The true definition of cruelty\n10% increased damage\nIncreases maximum mana by 40");
+            Tooltip.SetDefault("The true definition of cruelty\n20% increased damage");
         }
 
         public override void SetDefaults()
@@ -29,8 +29,8 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.1f;
-            player.statManaMax2 += 40;
+            player.allDamage += 0.2f;
+         
         }
 
         public override void ArmorSetShadows(Player player)
@@ -102,7 +102,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Breastplate");
-            Tooltip.SetDefault("Hardened shell negates knockback\n10% increased critical strike chance");
+            Tooltip.SetDefault("Hardened shell negates knockback\n21% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -111,17 +111,17 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
-            item.defense = 15;
+            item.defense = 20;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.noKnockback = true;
-            player.meleeCrit += 10;
-            player.rangedCrit += 10;
-            player.magicCrit += 10;
-            player.thrownCrit += 10;
-
+            player.meleeCrit += 1;
+            player.rangedCrit += 21;
+            player.magicCrit += 21;
+            player.thrownCrit += 21;
+           
         }
         public override void AddRecipes()
         {
@@ -143,7 +143,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Greaves");
-            Tooltip.SetDefault("Super bouncy, prevents fall damage\n15% increased melee and movement speed");
+            Tooltip.SetDefault("Prevents fall damage\n25% increased melee and movement speed");
         }
 
         public override void SetDefaults()
@@ -152,14 +152,14 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
-            item.defense = 12;
+            item.defense = 15;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.noFallDmg = true;
-            player.meleeSpeed += 0.15f;
-            player.moveSpeed += 0.15f;
+            player.meleeSpeed += 0.25f;
+            player.moveSpeed += 0.25f;
 
         }
         public override void AddRecipes()
