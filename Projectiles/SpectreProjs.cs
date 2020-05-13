@@ -108,9 +108,9 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 18;
             projectile.light = 1f;
             projectile.friendly = true;
-            projectile.penetrate = 8;
+            projectile.penetrate = 12;
             projectile.magic = true;
-            projectile.timeLeft = 200;
+            projectile.timeLeft = 240;
             aiType = ProjectileID.Bullet;
             projectile.aiStyle = 1;
             projectile.scale = 1f;
@@ -120,8 +120,8 @@ namespace StormDiversSuggestions.Projectiles
             drawOffsetX = -4;
             drawOriginOffsetY = 0;
         }
-        
-        
+
+        int speedup = 0;
         public override void AI()
         {
             /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
@@ -142,12 +142,13 @@ namespace StormDiversSuggestions.Projectiles
                 Main.dust[j].noGravity = true;
 
             }
-           
+            speedup++;
+            if (speedup <= 40)
+            {
+                projectile.velocity.X *= 1.05f;
+                projectile.velocity.Y *= 1.05f;
 
-                    projectile.velocity.X *= 1.05f;
-                    projectile.velocity.Y *= 1.05f;
-                
-
+            }
 
           
         }

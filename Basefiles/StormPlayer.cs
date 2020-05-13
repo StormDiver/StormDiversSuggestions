@@ -56,11 +56,11 @@ namespace StormDiversSuggestions.Basefiles
             shroombuff = false;
             flameCore = false;
         }
-        int shotCount = 0;
-        bool shot;
+       // int shotCount = 0;
+        //bool shot;
         public override void PostUpdateEquips()
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+            /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
             {
                 if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
                 {
@@ -87,7 +87,7 @@ namespace StormDiversSuggestions.Basefiles
                     shot = false;
                 }
                 
-            }
+            }*/
 
             if (flameCore)
             {

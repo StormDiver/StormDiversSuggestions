@@ -34,7 +34,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 1);
+            recipe.AddIngredient(ItemID.Moonglow);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 2);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -70,7 +71,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.Ectoplasm, 2);
+            recipe.AddIngredient(ItemID.Ectoplasm, 4);
+            recipe.AddIngredient(ItemID.Waterleaf);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -106,7 +108,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.BeetleHusk, 2);
+            recipe.AddIngredient(ItemID.BeetleHusk, 3);
+            recipe.AddIngredient(ItemID.Fireblossom);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -86,13 +86,18 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Allows all ranged weapons to fire extra explosive bullets");
+            Description.SetDefault("Increases armour penetration of ranged weapons by 30");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             
-            player.GetModPlayer<StormPlayer>().shroombuff = true;
+            
+            if (player.HeldItem.ranged)
+            {
+                player.armorPenetration = 30;
+                player.rangedCrit += 5;
+            }
         }
     }
     public class SpectreBuff : ModBuff
@@ -100,15 +105,16 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Greatly reduces Mana usage while under the effect of Mana Sickness");
+            Description.SetDefault("Increases armour penetration of magic weapons by 30");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
-            if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
+
+            if (player.HeldItem.magic)
             {
-                player.manaCost *= 0.2f;
+                player.armorPenetration = 30;
+                player.manaCost -= 0.10f;
             }
         }
     }
@@ -117,18 +123,15 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("While holding any melee weapon your movement speed and acceleration are greatly increased\nIncreases armour penetration by 30");
+            Description.SetDefault("Increases armour penetration of melee weapons by 45");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
- 
-                player.longInvince = true;
-                player.maxRunSpeed *= 2.5f;
-                player.runAcceleration *= 4;
-                player.armorPenetration = 30;
+                player.armorPenetration = 45;
+                player.meleeSpeed += 0.15f;
             }
 
         }

@@ -96,6 +96,7 @@ namespace StormDiversSuggestions.Items.Armour
 
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
+    
     public class DerplingBreastplate : ModItem
     {
         public override void SetStaticDefaults()
