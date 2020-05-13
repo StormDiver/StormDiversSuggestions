@@ -34,8 +34,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.Moonglow);
             recipe.AddIngredient(ItemID.ShroomiteBar, 2);
+            recipe.AddIngredient(ItemID.Moonglow);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();

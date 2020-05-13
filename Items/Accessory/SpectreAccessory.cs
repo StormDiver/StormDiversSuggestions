@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             item.width = 30;
             item.height = 28;
-
+           
             Item.sellPrice(0, 20, 0, 0);
             item.rare = 8;
             item.defense = 5;
