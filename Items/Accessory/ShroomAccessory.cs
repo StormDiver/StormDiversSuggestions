@@ -82,8 +82,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 18);
-            recipe.AddIngredient(ItemID.RocketI, 30);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 20);
+            recipe.AddIngredient(ItemID.RocketI, 250);
+            recipe.AddIngredient(ItemID.SoulofSight, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

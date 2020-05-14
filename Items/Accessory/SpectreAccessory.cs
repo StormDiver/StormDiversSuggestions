@@ -70,8 +70,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SpectreBar, 18);
-            recipe.AddIngredient(ItemID.SuperManaPotion, 10);
+            recipe.AddIngredient(ItemID.SpectreBar, 20);
+            recipe.AddIngredient(ItemID.SuperManaPotion, 30);
+            recipe.AddIngredient(ItemID.SoulofFright, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
