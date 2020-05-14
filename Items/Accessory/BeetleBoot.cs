@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Boots");
-            Tooltip.SetDefault("Greatly Increased movement speed and flight time while holding any melee weapon");
+            Tooltip.SetDefault("Greatly Increased movement speed and flight time while holding any melee weapon\n15% increased melee speed");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items.Accessory
             if (player.HeldItem.melee)
             {
 
-                player.longInvince = true;
+                player.meleeSpeed += 0.15f;
                 player.maxRunSpeed *= 2.5f;
                 player.runAcceleration *= 4;
                 player.wingTimeMax += (int)0.5f;

@@ -86,7 +86,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Increases armour penetration of ranged weapons by 30");
+            Description.SetDefault("Increases armour penetration of ranged weapons by 35");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -95,8 +95,8 @@ namespace StormDiversSuggestions.Buffs
             
             if (player.HeldItem.ranged)
             {
-                player.armorPenetration = 30;
-                player.rangedCrit += 5;
+                player.armorPenetration = 35;
+                
             }
         }
     }
@@ -105,7 +105,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Increases armour penetration of magic weapons by 30");
+            Description.SetDefault("Increases armour penetration of magic weapons by 35");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -113,8 +113,8 @@ namespace StormDiversSuggestions.Buffs
 
             if (player.HeldItem.magic)
             {
-                player.armorPenetration = 30;
-                player.manaCost -= 0.10f;
+                player.armorPenetration = 35;
+               
             }
         }
     }
@@ -123,15 +123,15 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("Increases armour penetration of melee weapons by 45");
+            Description.SetDefault("Increases armour penetration of melee weapons by 50");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
-                player.armorPenetration = 45;
-                player.meleeSpeed += 0.15f;
+                player.armorPenetration = 50;
+               
             }
 
         }

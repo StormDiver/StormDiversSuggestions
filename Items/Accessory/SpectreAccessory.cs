@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Skull");
-            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness");
+            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 60");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
@@ -44,9 +44,10 @@ namespace StormDiversSuggestions.Items.Accessory
 
             
         }
-        int soundDelay = 0;
+        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.statManaMax2 += 60;
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 
@@ -58,12 +59,7 @@ namespace StormDiversSuggestions.Items.Accessory
                     dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 76, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                     dust.noGravity = true;
 
-                soundDelay++;
-                if (soundDelay >= 10)
-                {
-                    Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 13);
-                    soundDelay = 0;
-                }
+                
 
 
             }

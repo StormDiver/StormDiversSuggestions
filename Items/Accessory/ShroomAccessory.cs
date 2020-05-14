@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Launcher Attachment");
-            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles");
+            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n8% increased ranged critical strike chance");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -45,22 +45,22 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 
-            
-       
-           
-                if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
+
+            player.rangedCrit += 8;
+
+            if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
                 {
 
                     if (!shot)
                     {
                         shotCount++;
-                        if (shotCount > 3)
+                        if (shotCount >= 4)
                         {
                             shotCount = 0;
                             float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 14f;
+                            float velocity = 15f;
                             int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 2f);
+                            int damage = (int)(player.HeldItem.damage * 3f);
                             Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
                         }
