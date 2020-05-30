@@ -86,7 +86,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Increases armour penetration of ranged weapons by 35");
+            Description.SetDefault("Increases armour penetration of ranged weapons by 20");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -95,7 +95,7 @@ namespace StormDiversSuggestions.Buffs
             
             if (player.HeldItem.ranged)
             {
-                player.armorPenetration = 35;
+                player.armorPenetration = 20;
                 
             }
         }
@@ -105,7 +105,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Increases armour penetration of magic weapons by 35");
+            Description.SetDefault("Increases armour penetration of magic weapons by 25");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Buffs
 
             if (player.HeldItem.magic)
             {
-                player.armorPenetration = 35;
+                player.armorPenetration = 25;
                
             }
         }
@@ -123,14 +123,14 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("Increases armour penetration of melee weapons by 50");
+            Description.SetDefault("Increases armour penetration of melee weapons by 30");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
-                player.armorPenetration = 50;
+                player.armorPenetration = 30;
                
             }
 
