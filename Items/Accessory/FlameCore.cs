@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's flame");
-            Tooltip.SetDefault("Doubles your flight time");
+            Tooltip.SetDefault("Multiples your flight time by 3, allows you to perform a damaging dash while in the air\n");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -43,17 +43,12 @@ namespace StormDiversSuggestions.Items.Accessory
                     var dust4 = Dust.NewDustDirect(new Vector2(player.position.X + 5f, player.position.Y + 20f), 15, 15, 258);
                    
                 }
-            /*
+            
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.Burning] = true;
-            player.lavaImmune = true;
-            player.magmaStone = true;
             
-            if (player.statLife >= (player.statLifeMax2))
-            {
-                player.allDamage *= 1.5f;
-            }
-            */
+            
+            
         }
         
        

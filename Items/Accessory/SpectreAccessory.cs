@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Skull");
-            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 60");
+            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 100");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items.Accessory
            
             Item.sellPrice(0, 20, 0, 0);
             item.rare = 8;
-            item.defense = 5;
+            
             item.accessory = true;
 
 
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Accessory
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statManaMax2 += 60;
+            player.statManaMax2 += 100;
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 
@@ -59,7 +59,6 @@ namespace StormDiversSuggestions.Items.Accessory
                     dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 76, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                     dust.noGravity = true;
 
-                
 
 
             }
@@ -70,9 +69,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SpectreBar, 20);
+            recipe.AddIngredient(ItemID.SpectreBar, 14);
             recipe.AddIngredient(ItemID.SuperManaPotion, 30);
-            recipe.AddIngredient(ItemID.SoulofFright, 15);
+            recipe.AddIngredient(ItemID.SoulofFright, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

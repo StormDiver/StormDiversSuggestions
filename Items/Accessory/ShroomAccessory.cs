@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Launcher Attachment");
-            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n8% increased ranged critical strike chance");
+            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n12% increased ranged critical strike chance");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items.Accessory
            
             Item.sellPrice(0, 20, 0, 0);
             item.rare = 8;
-            item.defense = 5;
+           
             item.accessory = true;
             
         }
@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
 
 
-            player.rangedCrit += 8;
+            player.rangedCrit += 12;
 
             if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
                 {
@@ -72,8 +72,7 @@ namespace StormDiversSuggestions.Items.Accessory
                 {
                     shot = false;
                 }
-
-            
+  
 
         }
 
@@ -82,9 +81,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 20);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 14);
             recipe.AddIngredient(ItemID.RocketI, 250);
-            recipe.AddIngredient(ItemID.SoulofSight, 15);
+            recipe.AddIngredient(ItemID.SoulofSight, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

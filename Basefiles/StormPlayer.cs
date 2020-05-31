@@ -92,8 +92,12 @@ namespace StormDiversSuggestions.Basefiles
             if (flameCore)
             {
 
-                player.wingTimeMax *= (int)2f;
-                
+                player.wingTimeMax *= (int)3f;
+                if (player.velocity.Y != 0)
+                {
+
+                    player.dash = 3;
+                }
                 //player.moveSpeed *= 0.4f;
             }
            
