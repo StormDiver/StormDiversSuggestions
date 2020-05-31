@@ -32,11 +32,11 @@ namespace StormDiversSuggestions.Items.Accessory
         int soundDelay = 0;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
+            player.meleeSpeed += 0.25f;
             if (player.HeldItem.melee)
             {
 
-                player.meleeSpeed += 0.25f;
+                
                 player.maxRunSpeed *= 2.5f;
                 player.runAcceleration *= 4;
                 player.wingTimeMax += (int)0.5f;
