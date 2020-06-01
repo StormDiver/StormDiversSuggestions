@@ -118,7 +118,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
             player.noKnockback = true;
-            player.meleeCrit += 1;
+            player.meleeCrit += 21;
             player.rangedCrit += 21;
             player.magicCrit += 21;
             player.thrownCrit += 21;

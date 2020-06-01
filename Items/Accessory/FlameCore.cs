@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Accessory
            
             Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
-            item.defense = 5;
+            item.defense = 7;
             item.accessory = true;
             item.expert = true;
         }
@@ -38,9 +38,9 @@ namespace StormDiversSuggestions.Items.Accessory
             if (particle <= 0)
                 {
                     particle = 5;
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(2, 2));
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                     
-                    var dust4 = Dust.NewDustDirect(new Vector2(player.position.X + 5f, player.position.Y + 20f), 15, 15, 258);
+                    var dust4 = Dust.NewDustDirect(new Vector2(player.Center.X, player.Center.Y), 0, 0, 258);
                    
                 }
             

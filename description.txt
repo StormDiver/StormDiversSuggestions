@@ -4,18 +4,19 @@ This mod attempts to add some of the ideas that I (Storm Diver Omega) have sugge
 
 This mod includes:
 
--37 New unique weapons
+-38 New unique weapons
 -13 new ammos
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore !WARNING if you created the world before installing this mod then the new ore will not spawn, but it will still drop from enemies in that biome and from crates!
--3 new accessories
+-6 new accessories
 -7 new buffs and 3 new potions
 -6 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
 -Some new shop items
--New pets
+-2 new pets
 -New enemies, including many Derplings
+-A way to remove the shields from the pillars prematurely 
 
 This mod also has some vanilla changes including:
 
