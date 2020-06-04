@@ -108,7 +108,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 18;
             projectile.light = 1f;
             projectile.friendly = true;
-            projectile.penetrate = 12;
+            projectile.penetrate = 6;
             projectile.magic = true;
             projectile.timeLeft = 240;
             aiType = ProjectileID.Bullet;
@@ -119,11 +119,16 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = -1;
             drawOffsetX = -4;
             drawOriginOffsetY = 0;
+            
         }
 
         int speedup = 0;
         public override void AI()
         {
+            if (speedup < 1)
+            {
+                projectile.damage = 80;
+            }
             /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
             projectile.spriteDirection = projectile.direction;
@@ -143,11 +148,12 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             speedup++;
-            if (speedup <= 40)
+            if (speedup <= 60)
             {
-                projectile.velocity.X *= 1.05f;
-                projectile.velocity.Y *= 1.05f;
-
+                projectile.velocity.X *= 1.04f;
+                projectile.velocity.Y *= 1.04f;
+                projectile.damage += 1;
+               
             }
 
           
@@ -303,7 +309,7 @@ namespace StormDiversSuggestions.Projectiles
 
         }
         int distime = 0;
-        int timeleft2 = 1064;
+        int timeleft2 = 2000;
         public override void AI()
         {
             if (distime <= 400)
@@ -426,7 +432,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
-            projectile.penetrate = 5;
+            projectile.penetrate = 15;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

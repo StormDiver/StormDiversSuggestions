@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Hose");
-            Tooltip.SetDefault("Rapidly fires mini Spectre skulls that speed up rapidly");
+            Tooltip.SetDefault("Rapidly fires mini Spectre skulls that speed up rapidly\nDeals more damage the faster the skulls travels");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
         }
@@ -23,22 +23,22 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 14;
+            item.useAnimation = 14;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 5;
+            item.mana = 8;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 75;
+            item.damage = 80;
           
             item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("SpectreGunProj");
 
-            item.shootSpeed = 6f;
+            item.shootSpeed = 3f;
             
             //item.useAmmo = AmmoID.Arrow;
                 
@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 35f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;

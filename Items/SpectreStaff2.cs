@@ -52,12 +52,12 @@ namespace StormDiversSuggestions.Items
             //item.channel = true; //Speical conditons when held down
            
         }
-       /*
+       
         public override bool CanUseItem(Player player)
         {
             return player.ownedProjectileCounts[item.shoot] < 10;
             
-        }*/
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
