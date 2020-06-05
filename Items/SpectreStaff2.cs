@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spectre Orbitor");
+            DisplayName.SetDefault("Spectre Orbiter");
             Tooltip.SetDefault("Summons lost souls that orbit around you");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
