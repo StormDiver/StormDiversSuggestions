@@ -23,13 +23,13 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 4;
-            item.useTime = 50;
-            item.useAnimation = 50;
+            item.useTime = 35;
+            item.useAnimation = 35;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 40;
+            item.mana = 25;
             item.UseSound = SoundID.Item43;
 
             item.damage = 75;

@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Celestial Guardian");
-            Description.SetDefault("The powers of the Celestial spirits rapidly regenerates your life");
+            Description.SetDefault("The powers of the Celestial spirits rapidly regenerates your life and grants additonal defence");
         }
         int particle = 10;
         public override void Update(Player player, ref int buffIndex)
@@ -26,8 +26,8 @@ namespace StormDiversSuggestions.Buffs
             particle--;
             if (player.statLife <= ((player.statLifeMax2) * 0.33f))
             {
-                player.lifeRegen += 30;
-
+                player.lifeRegen += 32;
+                player.statDefense += 50;
                 if (particle <= 0)
                 {
                     particle = 10;

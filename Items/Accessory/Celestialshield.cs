@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Celestial barrier");
-            Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nRapidly regenerates life back up to 33%");
+            Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nProtects you when below 33% life");
             
         }
 

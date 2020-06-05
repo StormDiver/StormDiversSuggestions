@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.NPCs
             npc.DeathSound = SoundID.NPCDeath62;
             npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 1, 0, 0);
-            npc.rarity = 1;
+            npc.rarity = 5;
             banner = npc.type;
             bannerItem = mod.ItemType("MoonDerpBannerItem");
         }

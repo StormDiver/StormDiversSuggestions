@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spectre Staff MKII");
+            DisplayName.SetDefault("Spectre Orbitor");
             Tooltip.SetDefault("Summons lost souls that orbit around you");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
@@ -32,12 +32,12 @@ namespace StormDiversSuggestions.Items
             item.magic = true;
             
 
-            item.damage = 60;
+            item.damage = 65;
       
             item.knockBack = 0f;
 
-            item.useTime = 40;
-            item.useAnimation = 40;
+            item.useTime = 15;
+            item.useAnimation = 15;
             //item.reuseDelay = 20;
             item.shoot = mod.ProjectileType("SpectreStaffSpinProj");
             item.shootSpeed = 4.5f;
@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Items
        
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[item.shoot] < 10;
+            return player.ownedProjectileCounts[item.shoot] < 7;
             
         }
         public override void AddRecipes()

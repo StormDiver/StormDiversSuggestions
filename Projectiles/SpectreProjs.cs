@@ -108,7 +108,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 18;
             projectile.light = 1f;
             projectile.friendly = true;
-            projectile.penetrate = 6;
+            projectile.penetrate = 10;
             projectile.magic = true;
             projectile.timeLeft = 240;
             aiType = ProjectileID.Bullet;
@@ -117,7 +117,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
-            drawOffsetX = -4;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
             
         }
@@ -309,7 +309,7 @@ namespace StormDiversSuggestions.Projectiles
 
         }
         int distime = 0;
-        int timeleft2 = 2000;
+        int timeleft2 = 3100;
         public override void AI()
         {
             if (distime <= 400)
@@ -432,7 +432,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
-            projectile.penetrate = 15;
+            projectile.penetrate = 10;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
