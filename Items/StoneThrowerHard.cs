@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
-            
+            item.damage = 20;
 
             item.shoot = mod.ProjectileType("StoneHardProj");
             item.useAmmo = ItemType<Ammo.StoneShot>();
@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 0;
             item.knockBack = 8f;
 
-            item.shootSpeed = 18f;
+            item.shootSpeed = 13f;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

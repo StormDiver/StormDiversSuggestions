@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 28;
             projectile.height = 28;
             projectile.friendly = true;
-            projectile.penetrate = 6;
+            projectile.penetrate = 3;
            
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
@@ -184,7 +184,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            int numberProjectiles = 4 + Main.rand.Next(2); //This defines how many projectiles to shot.
+            int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 
@@ -210,7 +210,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 28;
             projectile.height = 28;
             projectile.friendly = true;
-            projectile.penetrate = 6;
+            projectile.penetrate = 3;
            
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
@@ -305,7 +305,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            int numberProjectiles = 4 + Main.rand.Next(3); //This defines how many projectiles to shot.
+            int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 
@@ -395,7 +395,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 9;
             projectile.height = 9;
             projectile.friendly = true;
-            projectile.penetrate = 2;
+            projectile.penetrate = 1;
             
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;

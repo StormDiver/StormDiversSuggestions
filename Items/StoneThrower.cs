@@ -22,11 +22,11 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 15, 0, 0);
             item.rare = 2;
             item.useStyle = 5;
-            item.useTime = 35;
-            item.useAnimation = 35;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
-
+            item.damage = 10;
             
 
             item.shoot = mod.ProjectileType("StoneProj");
