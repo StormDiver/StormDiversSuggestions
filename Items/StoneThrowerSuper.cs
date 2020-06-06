@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Items
             item.width = 20;
             item.height = 20;
             item.maxStack = 1;
-            item.value = Item.buyPrice(1, 50, 0, 0);
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
             item.useTime = 30;
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items
             for (int i = 0; i < 3; i++)
             {
 
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
                 Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneSuperProj"), damage, knockBack, player.whoAmI);
             }
 
