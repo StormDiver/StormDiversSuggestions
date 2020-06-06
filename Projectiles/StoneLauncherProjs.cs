@@ -73,7 +73,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = -projectile.velocity.X * Main.rand.NextFloat(.3f, .5f);
                     float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.3f, .5f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
                     float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
                 }
             }
             Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -191,7 +191,7 @@ namespace StormDiversSuggestions.Projectiles
                 float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
                 float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
             }
 
         }
@@ -283,7 +283,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
                     float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
                 }
             }
             Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -312,7 +312,7 @@ namespace StormDiversSuggestions.Projectiles
                 float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
                 float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
             }
 
 

@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
-            item.damage = 20;
+            item.damage = 45;
 
             item.shoot = mod.ProjectileType("StoneHardProj");
             item.useAmmo = ItemType<Ammo.StoneShot>();
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 Center, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-            Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), (int)(damage * 2f), knockBack, player.whoAmI);
+            Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), damage, knockBack, player.whoAmI);
             
 
             return false;

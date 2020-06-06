@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
-            item.damage = 10;
+            item.damage = 16;
             
 
             item.shoot = mod.ProjectileType("StoneProj");

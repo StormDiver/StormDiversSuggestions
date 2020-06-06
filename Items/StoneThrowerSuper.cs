@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
-            item.damage = 50;
+            item.damage = 90;
 
 
             item.shoot = mod.ProjectileType("StoneSuperProj");
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Items
             {
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneSuperProj"), (int)(damage * 2.5f), knockBack, player.whoAmI);
+                Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneSuperProj"), damage, knockBack, player.whoAmI);
             }
 
             return false;
