@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 30;
             item.height = 28;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 50, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 5;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 30;
             item.height = 28;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 3, 0);
+            item.value = Item.sellPrice(0, 0, 3, 0);
             item.rare = 1;
 
         }
@@ -221,7 +221,8 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 30;
             item.height = 28;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 1, 0);
+            
+            item.value = Item.sellPrice(0, 0, 1, 0);
             item.rare = 1;
 
         }
@@ -296,7 +297,8 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 16;
             item.height = 24;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 5, 0);
+            item.value = Item.sellPrice(0, 0, 10, 0);
+            
             item.rare = 7;
 
         }
