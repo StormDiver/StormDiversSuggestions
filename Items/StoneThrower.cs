@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.autoReuse = false;
             item.damage = 16;
-            
+            item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneProj");
             item.useAmmo = ItemType<Ammo.StoneShot>();
@@ -45,7 +45,15 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-10, 0);
         }
-
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 35f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
+            return true;
+        }
 
 
         public class VanillaShops : GlobalNPC

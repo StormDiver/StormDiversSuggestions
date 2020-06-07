@@ -22,10 +22,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.maxStack = 999;
             item.value = Item.buyPrice(0, 0, 0, 1);
             item.rare = 1;
-
-            
-            
-           
+            item.ranged = true;
 
             item.damage = 20;
             

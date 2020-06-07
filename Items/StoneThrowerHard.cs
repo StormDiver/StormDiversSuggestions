@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.autoReuse = false;
             item.damage = 45;
-
+            item.ranged = true;
             item.shoot = mod.ProjectileType("StoneHardProj");
             item.useAmmo = ItemType<Ammo.StoneShot>();
             item.UseSound = SoundID.Item61;
@@ -45,16 +45,32 @@ namespace StormDiversSuggestions.Items
             return new Vector2(-10, 0);
         }
 
-        public override bool Shoot(Player player, ref Vector2 Center, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-            Projectile.NewProjectile(Center.X, Center.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), damage, knockBack, player.whoAmI);
             
 
             return false;
         }
-
-        public class VanillaShops : GlobalNPC
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("StoneThrower"), 1);
+            recipe.AddIngredient(ItemID.SoulofFright, 5);
+            recipe.AddIngredient(ItemID.SoulofMight, 5);
+            recipe.AddIngredient(ItemID.SoulofSight, 5);
+            recipe.AddIngredient(ItemID.HallowedBar, 8);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+        /*public class VanillaShops : GlobalNPC
         {
             public override void SetupShop(int type, Chest shop, ref int nextSlot)
             {
@@ -73,6 +89,6 @@ namespace StormDiversSuggestions.Items
                         break;
                 }
             }
-        }
+        }*/
     }
 }
