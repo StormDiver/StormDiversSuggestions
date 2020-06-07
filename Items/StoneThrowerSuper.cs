@@ -69,6 +69,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.ShroomiteBar, 5);
             recipe.AddIngredient(ItemID.SpectreBar, 5);
             recipe.AddIngredient(ItemID.BeetleHusk, 5);
+            recipe.AddIngredient(ItemID.LunarTabletFragment, 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

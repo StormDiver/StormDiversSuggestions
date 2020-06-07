@@ -166,7 +166,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("BoulderDebuff"), 1200);
+            target.AddBuff(mod.BuffType("BoulderDebuff"), 800);
         }
 
         public override void Kill(int timeLeft)
@@ -247,7 +247,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 1200);
+            target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 800);
         }
 
         int reflect = 2;
@@ -427,7 +427,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 600);
+            target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 400);
         }
 
 
