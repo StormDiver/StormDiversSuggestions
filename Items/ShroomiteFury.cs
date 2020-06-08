@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Fury");
-            Tooltip.SetDefault("Shoots out multiple arrows in an even spread");
+            Tooltip.SetDefault("Shoots out two bouncy mushroom arrows each shot");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 23;
+            item.useAnimation = 23;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
 
-            item.shootSpeed = 80f;
+            item.shootSpeed = 16f;
             
             item.useAmmo = AmmoID.Arrow;
                 
@@ -51,21 +51,21 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-            float numberProjectiles = 3 + Main.rand.Next(2); 
-            float rotation = MathHelper.ToRadians(9);
-            //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
-            for (int i = 0; i < numberProjectiles; i++)
+            for (int i = 0; i < 2; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                float scale = 1f - (Main.rand.NextFloat() * .2f);
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("MushroomArrowProj"), (int)(damage*0.8), knockBack, player.whoAmI);
             }
+            
             /* int numberProjectiles = 3 + Main.rand.Next(1); //This defines how many projectiles to shot.
              for (int i = 0; i < numberProjectiles; i++)
              {
                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
                  Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
              }*/
-            return false;
+            return true;
         }
 
         public override void AddRecipes()

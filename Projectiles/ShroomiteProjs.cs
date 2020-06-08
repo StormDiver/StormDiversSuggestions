@@ -561,5 +561,112 @@ namespace StormDiversSuggestions.Projectiles
 
 
     }
+    public class MushroomArrowProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Mushroom arrow");
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 7;
+            projectile.height = 7;
+
+
+            //projectile.light = 1f;
+            projectile.friendly = true;
+
+             //projectile.CloneDefaults(225);
+            //aiType = 225;
+            aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.aiStyle = 1;
+            projectile.penetrate = 5;
+            projectile.tileCollide = true;
+            projectile.ranged = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            projectile.timeLeft = 300;
+            drawOffsetX = 0;
+            drawOriginOffsetY = 0;
+        }
+        int reflect = 3;
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+            }
+            {
+                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 1.6f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 1.6f;
+                }
+            }
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
+            return false;
+        }
+
+
+        public override void AI()
+        {
+            /*for (int i = 0; i < 200; i++)
+            {
+                NPC target = Main.npc[i];
+                //If the npc is hostile
+
+                //Get the shoot trajectory from the projectile and target
+                float shootToX = target.Center.X - projectile.Center.X;
+                float shootToY = target.Center.Y - projectile.Center.Y;
+                float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+
+                //If the distance between the live targeted npc and the projectile is less than 480 pixels
+                if (distance < 300f && target.active)
+                {
+
+                    distance = 0.5f / distance;
+
+                    //Multiply the distance by a multiplier proj faster
+                    shootToX *= distance * 12;
+                    shootToY *= distance * 12;
+
+                    //Set the velocities to the shoot values
+                    projectile.velocity.X = shootToX;
+                    projectile.velocity.Y = shootToY;
+                }
+
+            }*/
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+
+
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+            Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+            Main.PlaySound(SoundID.Item10, projectile.position);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
+            }
+
+        }
+
+    }
 
 }

@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nFires completely accurately");
+            Tooltip.SetDefault("40% Chance not to consume Ammo\nRight click to fire a burst of inaccurate bullets");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -26,21 +26,20 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 10;
-            item.useAnimation = 10;
+            
             item.useTurn = false;
             item.autoReuse = true;
 
             item.ranged = true;
 
-            item.UseSound = SoundID.Item40;
+            //item.UseSound = SoundID.Item40;
 
-            item.damage = 70;
+            item.damage = 60;
             item.crit = 16;
             item.knockBack = 2f;
 
             item.shoot = ProjectileID.Bullet;
-            item.shootSpeed = 20f;
+            item.shootSpeed = 15f;
             
             item.useAmmo = AmmoID.Bullet;
 
@@ -52,28 +51,58 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-8, 0);
         }
+        
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+        public override bool CanUseItem(Player player)
+        {
 
+            if (player.altFunctionUse == 2)
+            {
+                item.useTime = 4;
+                item.useAnimation = 20;
+                item.reuseDelay = 20;
+            }
+            else
+            {
+                item.useTime = 10;
+                item.useAnimation = 10;
+                item.reuseDelay = 0;
+            }
+            
+            return true;
+        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-
-           /* if (Main.rand.Next(3) == 0)
+            
+            if (player.altFunctionUse == 2)
             {
-                
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(40));
-                float scale = 1f - (Main.rand.NextFloat() * .9f);
-                perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 4), (int)(perturbedSpeed.Y * 4), mod.ProjectileType("Rangedmushroom"), damage, knockBack, player.whoAmI);
-            }*/
-           
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                }
+            }
+            else
+            {
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                }
+            }
 
-                return true;
+                return false;
 
         }
+       
 
         public override bool ConsumeAmmo(Player player)
         {
-            return Main.rand.NextFloat() >= .33f;
+            return Main.rand.NextFloat() >= .4f;
         }
 
 

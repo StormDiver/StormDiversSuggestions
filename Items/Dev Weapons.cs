@@ -91,7 +91,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 4;
             item.knockBack = 1f;
 
-            item.shoot = mod.ProjectileType("BeetleProj");
+            item.shoot = mod.ProjectileType("MushroomArrowProj");
             //item.shoot = ProjectileID.Meowmere;
             item.shootSpeed = 10f;
 
