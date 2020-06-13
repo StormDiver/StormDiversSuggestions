@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.magic = true;
             projectile.timeLeft = 300;
-            aiType = ProjectileID.Bullet;
-            projectile.aiStyle = 1;
+            //aiType = ProjectileID.Bullet;
+            projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
@@ -173,8 +173,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = 4;
             projectile.magic = true;
             projectile.timeLeft = 200;
-            aiType = ProjectileID.Bullet;
-            projectile.aiStyle = 1;
+            //aiType = ProjectileID.Bullet;
+            projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
@@ -185,8 +185,8 @@ namespace StormDiversSuggestions.Projectiles
         
         public override void AI()
         {
-            /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
             projectile.spriteDirection = projectile.direction;
 
             AnimateProjectile();

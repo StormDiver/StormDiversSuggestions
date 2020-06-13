@@ -111,8 +111,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = 10;
             projectile.magic = true;
             projectile.timeLeft = 240;
-            aiType = ProjectileID.Bullet;
-            projectile.aiStyle = 1;
+            //aiType = ProjectileID.Bullet;
+            projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;

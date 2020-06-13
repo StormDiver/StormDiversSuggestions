@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.magic = true;
             projectile.timeLeft = 180;
-            aiType = ProjectileID.Bullet;
-            projectile.aiStyle = 1;
+            //aiType = ProjectileID.Bullet;
+            projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
@@ -181,8 +181,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = 1;
             projectile.magic = true;
             projectile.timeLeft = 200;
-            aiType = ProjectileID.WoodenArrowFriendly;
-            projectile.aiStyle = 1;
+            //aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.aiStyle = 0;
             projectile.scale = 0.8f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;

@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Items
        
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[item.shoot] < 7;
+            return player.ownedProjectileCounts[item.shoot] < 8;
             
         }
         public override void AddRecipes()

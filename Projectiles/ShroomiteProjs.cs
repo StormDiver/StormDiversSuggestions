@@ -318,9 +318,9 @@ namespace StormDiversSuggestions.Projectiles
 
             // projectile.CloneDefaults(134);
             // aiType = 134;
-            projectile.aiStyle = 1;
+            projectile.aiStyle = 0;
             projectile.extraUpdates = 1;
-            aiType = ProjectileID.Bullet;
+            //aiType = ProjectileID.Bullet;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.ranged = true;
@@ -455,7 +455,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 8;
             projectile.height = 8;
 
-            projectile.aiStyle = 1;
+            projectile.aiStyle = 0;
             projectile.light = 0.1f;
 
             projectile.friendly = true;
@@ -468,7 +468,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.ranged = true;
             projectile.extraUpdates = 1;
-            aiType = ProjectileID.Bullet;
+            //aiType = ProjectileID.Bullet;
 
 
         }
