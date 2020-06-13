@@ -129,8 +129,8 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.damage = 80;
             }
-            /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
             projectile.spriteDirection = projectile.direction;
 
             AnimateProjectile();
