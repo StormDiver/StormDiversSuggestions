@@ -316,13 +316,15 @@ namespace StormDiversSuggestions.Projectiles
             projectile.light = 2f;
             projectile.friendly = true;
 
-            projectile.CloneDefaults(134);
-            aiType = 134;
-
+            // projectile.CloneDefaults(134);
+            // aiType = 134;
+            projectile.aiStyle = 1;
+            projectile.extraUpdates = 1;
+            aiType = ProjectileID.Bullet;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.ranged = true;
-
+            
             projectile.timeLeft = 300;
             drawOffsetX = -3;
             drawOriginOffsetY = 0;
@@ -343,7 +345,18 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.Kill();
             }
-
+            for (int i = 0; i < 10; i++)
+            {
+                float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
+                float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
+                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 45);
+                //Main.dust[num165].alpha = alpha;
+                Main.dust[j].position.X = x2;
+                Main.dust[j].position.Y = y2;
+                Main.dust[j].velocity *= 0.1f;
+                Main.dust[j].noGravity = true;
+                Main.dust[j].scale = 1f;
+            }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -428,6 +441,7 @@ namespace StormDiversSuggestions.Projectiles
         }
 
     }
+    //____________________________________________________________________________________________________________________________________________
     public class ShroomSetRocketProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -561,6 +575,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
     }
+    //____________________________________________________________________________________________________________________________________________
     public class MushroomArrowProj : ModProjectile
     {
         public override void SetStaticDefaults()
