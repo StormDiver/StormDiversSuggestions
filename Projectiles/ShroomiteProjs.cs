@@ -224,7 +224,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
 
 
-            projectile.light = 2f;
+            projectile.light = 0.1f;
             projectile.friendly = true;
 
             projectile.CloneDefaults(133);
@@ -251,7 +251,10 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.Kill();
             }
-
+            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 45, 0f, 0f, 100, default, 1f);
+            Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+            Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+            Main.dust[dustIndex].noGravity = true;
 
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -313,7 +316,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
 
 
-            projectile.light = 2f;
+            projectile.light = 0.2f;
             projectile.friendly = true;
 
             // projectile.CloneDefaults(134);
