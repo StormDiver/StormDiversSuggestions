@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 1f;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+            
             projectile.magic = true;
             projectile.timeLeft = 180;
             aiType = ProjectileID.Bullet;
@@ -38,6 +38,7 @@ namespace StormDiversSuggestions.Projectiles
         int shoottime = 0;
         public override void AI()
         {
+            
             /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
             projectile.spriteDirection = projectile.direction;
@@ -77,11 +78,11 @@ namespace StormDiversSuggestions.Projectiles
 
 
                     projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-                    projectile.penetrate = 1;
+                   
 
                 if (shoottime >= 16)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 8, mod.ProjectileType("CursedHammerProj2"), (int)(projectile.damage * 0.9f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 8, mod.ProjectileType("CursedHammerProj2"), (int)(projectile.damage * 0.7f), 0f, projectile.owner, 0f, 0f);
                     for (int i = 0; i < 10; i++)
                     {
 
@@ -93,10 +94,13 @@ namespace StormDiversSuggestions.Projectiles
                 }
 
             }
+            if (speedup == 60)
+            {
+                projectile.penetrate = 3;
+            }
 
-               
-            
-            
+
+
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

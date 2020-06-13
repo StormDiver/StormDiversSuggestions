@@ -48,7 +48,12 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-            position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
             Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
            

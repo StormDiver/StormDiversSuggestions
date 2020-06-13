@@ -26,21 +26,21 @@ namespace StormDiversSuggestions.NPCs
             npc.width = 60;
             npc.height = 42;
 
-            npc.aiStyle = 86; // This npc has a completely unique AI, so we set this to -1. The default aiStyle 0 will face the player, which might conflict with custom AI code.
+            npc.aiStyle = 86; 
             
             animationType = NPCID.Harpy;
 
             npc.damage = 150;
 
-            npc.defense = 30;
-            npc.lifeMax = 4000;
+            npc.defense = 60;
+            npc.lifeMax = 10000;
             npc.alpha = 3;
 
 
             npc.HitSound = SoundID.NPCHit56;
             npc.DeathSound = SoundID.NPCDeath62;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.buyPrice(0, 10, 0, 0);
             npc.rarity = 5;
             banner = npc.type;
             bannerItem = mod.ItemType("MoonDerpBannerItem");
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (NPC.downedMoonlord)
+            if (NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("MoonDerp")))
             {
                 return SpawnCondition.Sky.Chance * 0.2f;
             }
@@ -84,9 +84,9 @@ namespace StormDiversSuggestions.NPCs
                 
                 if (shoottime >= 120)
                 {
-                    float projectileSpeed = 5f; // The speed of your projectile (in pixels per second).
-                    int damage = 60; // The damage your projectile deals.
-                    float knockBack = 3;
+                    float projectileSpeed = 6f; // The speed of your projectile (in pixels per second).
+                    int damage = 55; // The damage your projectile deals.
+                    float knockBack = 2;
                     //int type = mod.ProjectileType("ScanDroneProj");
                     int type = ProjectileID.PhantasmalBolt;
                     shootspeed++;
@@ -137,7 +137,7 @@ namespace StormDiversSuggestions.NPCs
                     var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 89);
                 }
 
-                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -2, ProjectileID.PhantasmalEye, 35, 6f, Main.myPlayer);
+                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -2, ProjectileID.PhantasmalEye, 60, 6f, Main.myPlayer);
 
 
             }
@@ -154,7 +154,7 @@ namespace StormDiversSuggestions.NPCs
         public override void NPCLoot()
         {
 
-            int drops = 5 + Main.rand.Next(4); //This defines how many projectiles to shot.
+            int drops = 5 + Main.rand.Next(4); 
             for (int i = 0; i < drops; i++)
             {
                 Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.LunarOre);

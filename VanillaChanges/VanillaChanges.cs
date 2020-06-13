@@ -646,10 +646,6 @@ namespace StormDiversSuggestions.VanillaChanges
             if (!GetInstance<Configurations>().DisableVanillaBuff)
             {
 
-                {
-                    
-                }
-
           
               
                 if (player.armor[0].type == ItemID.GoldHelmet && player.armor[1].type == ItemID.GoldChainmail && player.armor[2].type == ItemID.GoldGreaves)
@@ -744,15 +740,72 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.setBonus = "Double tap Down/Up to call an ancient storm to the cursor location\nImmunity to Suffocation and Mighty wind";
 
                 }
+               
+
+                if (player.armor[0].type == ItemID.CobaltMask && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
+                {
+
+                    player.endurance += 24;
+                    player.setBonus = "15% increased melee speed\n24% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.CobaltHat && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
+                {
+
+                    player.endurance += 24;
+                    player.setBonus = "20% chance to not consume ammo\n24% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.CobaltHelmet && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
+                {
+
+                    player.endurance += 24;
+                    player.setBonus = "14% reduced mana usage\n24% Damage reduction";
+
+                }
                 if (player.armor[0].type == ItemID.MythrilHelmet && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
                 {
 
+                    player.endurance += 18;
                     player.meleeCrit += 7;
-                    player.setBonus = "12% increased melee critical strike chance";
+                    player.setBonus = "12% increased melee critical strike chance\n18% Damage reduction";
 
                 }
+                if (player.armor[0].type == ItemID.MythrilHat && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
+                {
 
-                
+                    player.endurance += 18;
+                    player.setBonus = "20% chance to not consume ammo\n18% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.MythrilHood && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
+                {
+
+                    player.endurance += 18;
+                    player.setBonus = "17% reduced mana usage\n18% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.AdamantiteHelmet && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
+                {
+
+                    player.endurance += 12;
+                    player.setBonus = "18% increased melee and movement speed\n12% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.AdamantiteMask && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
+                {
+
+                    player.endurance += 12;
+                    player.setBonus = "25% chance to not consume ammo\n12% Damage reduction";
+
+                }
+                if (player.armor[0].type == ItemID.AdamantiteHeadgear && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
+                {
+
+                    player.endurance += 12;
+                    player.setBonus = "19% reduced mana usage\n12% Damage reduction";
+
+                }
             }
 
         }

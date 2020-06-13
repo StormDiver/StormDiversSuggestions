@@ -229,6 +229,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
         }
     }
 }
+
 ////then add this to the custom npc you want to drop the banner and in public override void SetDefaults()
 /*  banner = npc.type;
   bannerItem = mod.ItemType("CustomBannerItem"); //this defines what banner this npc will drop       */

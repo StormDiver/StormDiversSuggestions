@@ -96,8 +96,12 @@ namespace StormDiversSuggestions.Projectiles
                 
                    
                     projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-                    projectile.penetrate = 3;
+                   
                 
+            }
+            if (speedup == 60)
+            {
+                projectile.penetrate = 4;
             }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -166,7 +170,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 1f;
             projectile.friendly = true;
-            projectile.penetrate = 2;
+            projectile.penetrate = 4;
             projectile.magic = true;
             projectile.timeLeft = 200;
             aiType = ProjectileID.Bullet;
@@ -199,14 +203,18 @@ namespace StormDiversSuggestions.Projectiles
                 
             }
         }
-
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            return true;
+        }
 
         public override void Kill(int timeLeft)
         {
 
 
 
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 
