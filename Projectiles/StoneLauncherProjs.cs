@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hard Stone boulder");
+            DisplayName.SetDefault("Hard Stone Boulder");
         }
         public override void SetDefaults()
         {

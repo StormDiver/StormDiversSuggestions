@@ -596,7 +596,7 @@ namespace StormDiversSuggestions.Projectiles
             //aiType = 225;
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.aiStyle = 1;
-            projectile.penetrate = 5;
+            projectile.penetrate = 6;
             projectile.tileCollide = true;
             projectile.ranged = true;
             projectile.usesLocalNPCImmunity = true;
@@ -620,14 +620,14 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 1.6f;
+                    projectile.velocity.X = -oldVelocity.X * 1.5f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 1.6f;
+                    projectile.velocity.Y = -oldVelocity.Y * 1.5f;
                 }
             }
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 53);
             return false;
         }
 
