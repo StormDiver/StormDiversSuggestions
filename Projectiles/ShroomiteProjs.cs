@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShroomiteBullet");
+            DisplayName.SetDefault("Shroomite Bullet");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -130,7 +130,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShroomiteArrow");
+            DisplayName.SetDefault("Shroomite Arrow");
         }
 
         public override void SetDefaults()
@@ -215,7 +215,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShroomiteGrenade");
+            DisplayName.SetDefault("Shroomite Grenade");
         }
 
         public override void SetDefaults()
@@ -304,7 +304,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShroomiteRocket");
+            DisplayName.SetDefault("Shroomite Rocket");
         }
 
         public override void SetDefaults()
@@ -408,7 +408,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spinning Mushroom Ranged");
+            DisplayName.SetDefault("Spinning Mushroom");
         }
 
         public override void SetDefaults()
@@ -446,7 +446,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShroomiteProj");
+            DisplayName.SetDefault("Shroomite Set Rocket");
 
         }
 
@@ -602,7 +602,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             projectile.timeLeft = 300;
-            drawOffsetX = 0;
+            drawOffsetX = -4;
             drawOriginOffsetY = 0;
         }
         int reflect = 3;
@@ -679,6 +679,14 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
+
+        }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = mod.GetTexture("Projectiles/MushroomArrowProj_Glow");
+
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+
 
         }
 

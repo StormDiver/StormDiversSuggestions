@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertArrow");
+            DisplayName.SetDefault("Desert Arrow");
         }
 
         public override void SetDefaults()
@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertArrowDust");
+            DisplayName.SetDefault("Desert Arrow Dust");
 
         }
 
@@ -150,7 +150,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertSpear");
+            DisplayName.SetDefault("Desert Spear");
         }
 
         public override void SetDefaults()
@@ -248,7 +248,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertSpearTip");
+            DisplayName.SetDefault("Desert Spear Tip");
 
         }
 
@@ -310,7 +310,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertSpell");
+            DisplayName.SetDefault("Desert Spell");
         }
         public override void SetDefaults()
         {

@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TungstenBullet");
+            DisplayName.SetDefault("Tungsten Bullet");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -79,7 +79,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("IronBullet");
+            DisplayName.SetDefault("Iron Bullet");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
@@ -134,7 +134,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("LeadBullet");
+            DisplayName.SetDefault("Lead Bullet");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }

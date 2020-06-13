@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("VortexRocket");
+            DisplayName.SetDefault("Vortex Rocket");
         }
 
         public override void SetDefaults()
@@ -170,7 +170,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("VortexRocket");
+            DisplayName.SetDefault("Vortex Rocket");
         }
 
         public override void SetDefaults()

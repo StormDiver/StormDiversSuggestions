@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bone Proj");
+            DisplayName.SetDefault("Spinning bone");
         }
 
         public override void SetDefaults()

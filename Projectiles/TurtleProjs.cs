@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TurtleSpear");
+            DisplayName.SetDefault("Turtle Spear");
         }
 
         public override void SetDefaults()
@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TurtleShell");
+            DisplayName.SetDefault("Turtle Shell");
         }
         public override void SetDefaults()
         {
@@ -182,7 +182,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TurtleYoyo");
+            DisplayName.SetDefault("Turtle Yoyo");
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 10f;
 
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 250f;
@@ -268,7 +268,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("TurtleYoyo");
+            DisplayName.SetDefault("Turtle Yoyo");
 
         }
         public override void SetDefaults()

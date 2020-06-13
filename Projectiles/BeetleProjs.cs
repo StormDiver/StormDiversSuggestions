@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("BeetleSpear");
+            DisplayName.SetDefault("Beetle Spear");
         }
 
         public override void SetDefaults()
@@ -132,7 +132,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("BeetleYoyo");
+            DisplayName.SetDefault("Beetle Yoyo");
             //ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 15f;
 
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
@@ -187,7 +187,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("BeetleShell");
+            DisplayName.SetDefault("Beetle Shell");
         }
         public override void SetDefaults()
         {

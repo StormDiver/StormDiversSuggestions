@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SpectreGlobeBolt");
+            DisplayName.SetDefault("Spectre Sky Orb");
             Main.projFrames[projectile.type] = 4;
         }
         int ignoretile = 0;
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SpectreGunbolt");
+            DisplayName.SetDefault("Spectre Skull");
             Main.projFrames[projectile.type] = 4;
         }
 
@@ -288,7 +288,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SpectreStaffSpin");
+            DisplayName.SetDefault("Spectre Orb");
             Main.projFrames[projectile.type] = 4;
         }
 
@@ -395,7 +395,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SpectreDaggerProj");
+            DisplayName.SetDefault("Spectre Dagger");
            
         }
 

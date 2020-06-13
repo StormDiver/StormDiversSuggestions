@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SolarSpinner");
+            DisplayName.SetDefault("Solar Spinner");
         }
         public override void SetDefaults()
         {

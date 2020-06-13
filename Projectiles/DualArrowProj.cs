@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DualArrow");
+            DisplayName.SetDefault("Dual Arrow");
            
         }
 

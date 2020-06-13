@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DerpMeleeHead");
+            DisplayName.SetDefault("Derpling Head");
             
         }
 
@@ -79,7 +79,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DerpRangedHead");
+            DisplayName.SetDefault("Derpling Head");
 
         }
 
@@ -180,7 +180,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DerpMagicHead");
+            DisplayName.SetDefault("Derpling Head");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 5;
         }
@@ -266,7 +266,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DerpMagicHeadSpin");
+            DisplayName.SetDefault("Derpie Head");
 
         }
 

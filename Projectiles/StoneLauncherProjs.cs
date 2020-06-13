@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("StoneProjectile");
+            DisplayName.SetDefault("Stone Boulder");
         }
         public override void SetDefaults()
         {
@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("StoneHardProjectile");
+            DisplayName.SetDefault("Hard Stone boulder");
         }
         public override void SetDefaults()
         {
@@ -202,7 +202,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("StoneSuperProjectile");
+            DisplayName.SetDefault("Flaming Stone Boulder");
         }
         public override void SetDefaults()
         {
@@ -324,7 +324,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("StonePebble");
+            DisplayName.SetDefault("Stone Fragment");
         }
         public override void SetDefaults()
         {
@@ -387,7 +387,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("StoneSuperPebble");
+            DisplayName.SetDefault("Flaming Fragment");
         }
         public override void SetDefaults()
         {

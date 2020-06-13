@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("CursedHammer");
+            DisplayName.SetDefault("Cursed Hammer");
             Main.projFrames[projectile.type] = 2;
         }
 
@@ -168,7 +168,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("CursedHammer");
+            DisplayName.SetDefault("Cursed Hammer");
             Main.projFrames[projectile.type] = 2;
         }
 

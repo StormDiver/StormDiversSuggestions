@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Fury");
-            Tooltip.SetDefault("Shoots out two bouncy mushroom arrows each shot");
+            Tooltip.SetDefault("Shoots out two super bouncy piercing arrows each shot");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()

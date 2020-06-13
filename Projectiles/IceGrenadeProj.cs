@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("IceGrenade");
+            DisplayName.SetDefault("Ice Grenade");
         }
 
         public override void SetDefaults()

@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertBullet");
+            DisplayName.SetDefault("Desert Bullet");
           
         }
 
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DesertBullet");
+            DisplayName.SetDefault("Desert Bullet");
             
         }
 

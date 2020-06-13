@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Frost ");
+            DisplayName.SetDefault("Frost");
         }
         public override void SetDefaults()
         {

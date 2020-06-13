@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SeekerBoltProj");
+            DisplayName.SetDefault("Seeker Bolt");
             ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
