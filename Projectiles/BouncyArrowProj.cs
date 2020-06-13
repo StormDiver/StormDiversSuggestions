@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("BouncyArrow");
+            DisplayName.SetDefault("Bouncy Arrow");
         }
 
         public override void SetDefaults()
