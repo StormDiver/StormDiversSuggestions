@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Giant Turtle Shell");
-            Tooltip.SetDefault("Breaks on enemy impact\nRight click to throw 3 at once");
+            Tooltip.SetDefault("Toss the shells back at your foes");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
         public override void SetDefaults()
@@ -22,19 +22,19 @@ namespace StormDiversSuggestions.Items
             item.width = 30;
             item.height = 30;
            
-            //item.useTime = 13;
-            //item.useAnimation = 13;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;
             item.value = Item.buyPrice(0, 5, 0, 0);
             item.rare = 8;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("TurtleShellProj");
-            item.UseSound = SoundID.Item1;
+            //item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
-        public override bool AltFunctionUse(Player player)
+        /*public override bool AltFunctionUse(Player player)
         {
             return true;
         }
@@ -54,23 +54,17 @@ namespace StormDiversSuggestions.Items
                 
             }
             return player.ownedProjectileCounts[item.shoot] < 3;
-        }
+        }*/
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (player.altFunctionUse == 2)
-            {
-                
-                for (int i = 0; i < 3; i++)
+            Main.PlaySound(2, (int)position.X, (int)position.Y, 1);
+            for (int i = 0; i < 3; i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // This defines the projectiles random spread . 10 degree spread.
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
                 }
                 return false;
-            }
-            else
-            {
-                return true;
-            }
+           
         }
         public override void AddRecipes()
         {

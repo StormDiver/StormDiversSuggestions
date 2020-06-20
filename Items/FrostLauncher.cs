@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Items
 
             for (int i = 0; i < 1; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); 
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); 
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
                 Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
 

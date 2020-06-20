@@ -253,8 +253,8 @@ namespace StormDiversSuggestions.Projectiles
             {
                 // Calculate new speeds for other projectiles.
                 // Rebound at 40% to 70% speed, plus a random amount between -8 and 8
-                float speedX = -projectile.velocity.X * Main.rand.NextFloat(-.7f, .7f);
-                float speedY = -projectile.velocity.Y * Main.rand.NextFloat(-.7f, .7f);
+                float speedX = Main.rand.NextFloat(-5f, 5f);
+                float speedY = Main.rand.NextFloat(-5f, 5f);
 
                 Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
             }

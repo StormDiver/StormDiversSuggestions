@@ -91,9 +91,9 @@ namespace StormDiversSuggestions.Items
             //item.crit = 4;
             item.knockBack = 1f;
 
-            item.shoot = mod.ProjectileType("MushroomArrowProj");
+            item.shoot = mod.ProjectileType("StoneVortex");
             //item.shoot = ProjectileID.Meowmere;
-            item.shootSpeed = 10f;
+            item.shootSpeed = 15f;
 
             //item.useAmmo = AmmoID.Arrow;
 
@@ -104,7 +104,7 @@ namespace StormDiversSuggestions.Items
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            player.AddBuff(mod.BuffType("TurtleDebuff"), 120);
+            player.AddBuff(mod.BuffType("LunarBoulderDebuff"), 120);
             return true;
         }
         public override void AddRecipes()

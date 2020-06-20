@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Vaporiser");
-            Tooltip.SetDefault("Right Click to throw an unchained ball");
+            Tooltip.SetDefault("Also throws an unchained ball");
         }
 
         public override void SetDefaults()
@@ -25,50 +25,32 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 5;
             item.crit = 4;
-            item.useAnimation = 20; 
-            item.useTime = 20; 
+           
             item.knockBack = 4f;
             item.damage = 65;
             item.useStyle = 5;
             item.UseSound = SoundID.Item1;
             item.melee = true;
-            
+            item.noMelee = true;
+            item.useTime = 20;
+            item.useAnimation = 20;
+            item.shoot = mod.ProjectileType("DestroyerFlailProj");
+            item.shootSpeed = 24f;
+            item.channel = true;
+            item.noUseGraphic = true;
         }
-       // public override bool IgnoreDamageModifiers => true;
+      
        
-        public override bool AltFunctionUse(Player player)
+       
+        //int shoot = 0;
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+           
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY);
+                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.4), (int)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DestroyerFlailProj2"), (int)(damage * 1.4), knockBack, player.whoAmI);
+  
             return true;
         }
-
-        public override bool CanUseItem(Player player)
-        {
-            if (player.altFunctionUse == 2)
-            {
-                item.useTime = 40;
-                item.useAnimation = 40;
-                item.shoot = mod.ProjectileType("DestroyerFlailProj2");
-                item.shootSpeed = 8f;
-                item.noUseGraphic = true;
-                item.useStyle = 1;
-
-            }
-            else
-            {
-                item.useTime = 20;
-                item.useAnimation = 20;
-                item.shoot = mod.ProjectileType("DestroyerFlailProj");
-                item.shootSpeed = 24f;
-                item.melee = true;
-                item.noMelee = true;
-                
-                item.channel = true;
-                item.noUseGraphic = true;
-                item.useStyle = 5;
-            }
-            return base.CanUseItem(player);
-        }
-        
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

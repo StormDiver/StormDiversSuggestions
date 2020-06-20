@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Ammo
             
             item.knockBack = 4f;
             item.consumable = true;
-
+            
             item.shoot = mod.ProjectileType("StoneProj");
             item.shootSpeed = 5f;
             item.ammo = item.type;

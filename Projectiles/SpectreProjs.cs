@@ -176,7 +176,8 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+
             for (int i = 0; i < 10; i++)
             {
 

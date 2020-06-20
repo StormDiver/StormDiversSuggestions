@@ -79,9 +79,9 @@ namespace StormDiversSuggestions.Projectiles
             }
 
             splittime++;
-            if (splittime >= 20)
+            if (splittime >= 30)
             {
-                float numberProjectiles = 3 + Main.rand.Next(2);
+                float numberProjectiles = 4 + Main.rand.Next(2);
                 float rotation = MathHelper.ToRadians(10);
                 //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                 for (int i = 0; i < numberProjectiles; i++)

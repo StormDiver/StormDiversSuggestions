@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Items
             item.useTime = 30;
             item.useAnimation = 30;
             item.useTurn = false;
-            item.autoReuse = false;
-            item.damage = 45;
+            item.autoReuse = true;
+            item.damage = 55;
             item.ranged = true;
             item.shoot = mod.ProjectileType("StoneHardProj");
             item.useAmmo = ItemType<Ammo.StoneShot>();
@@ -62,10 +62,10 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("StoneThrower"), 1);
-            recipe.AddIngredient(ItemID.SoulofFright, 5);
-            recipe.AddIngredient(ItemID.SoulofMight, 5);
-            recipe.AddIngredient(ItemID.SoulofSight, 5);
-            recipe.AddIngredient(ItemID.HallowedBar, 8);
+            recipe.AddIngredient(ItemID.SoulofFright, 10);
+            recipe.AddIngredient(ItemID.SoulofMight, 10);
+            recipe.AddIngredient(ItemID.SoulofSight, 10);
+            recipe.AddIngredient(ItemID.HallowedBar, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

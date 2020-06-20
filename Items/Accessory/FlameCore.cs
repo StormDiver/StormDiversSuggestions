@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's flame");
-            Tooltip.SetDefault("Multiples your flight time by 3, allows you to perform a damaging dash while in the air\n");
+            Tooltip.SetDefault("Multiples your flight time by 3\nAllows you to perform a damaging dash while in the air");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -28,13 +28,13 @@ namespace StormDiversSuggestions.Items.Accessory
             item.accessory = true;
             item.expert = true;
         }
-        int particle = 5;
+        //int particle = 5;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             
   
             player.GetModPlayer<StormPlayer>().flameCore = true;
-            particle--;
+            /*particle--;
             if (particle <= 0)
                 {
                     particle = 5;
@@ -42,7 +42,7 @@ namespace StormDiversSuggestions.Items.Accessory
                     
                     var dust4 = Dust.NewDustDirect(new Vector2(player.Center.X, player.Center.Y), 0, 0, 258);
                    
-                }
+                }*/
             
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.Burning] = true;

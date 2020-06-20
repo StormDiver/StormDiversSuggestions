@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
-            item.useTime = 40;
-            item.useAnimation = 40;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item36;
 
-            item.damage = 120;
+            item.damage = 100;
             item.crit = 20;
             item.knockBack = 5f;
 

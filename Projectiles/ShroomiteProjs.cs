@@ -141,7 +141,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.aiStyle = 1;
             projectile.light = 0.5f;
             projectile.friendly = true;
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 600;
             projectile.penetrate = 2;
             projectile.arrow = true;
             projectile.tileCollide = true;
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Projectiles
 
             int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("ShroomArrow")) : 0;
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(SoundID.Item10, projectile.position);
+           
             for (int i = 0; i < 10; i++)
             {
 
@@ -200,6 +200,11 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
 
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Main.PlaySound(SoundID.Item10, projectile.position);
+            return true;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -251,11 +256,13 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.Kill();
             }
-            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 45, 0f, 0f, 100, default, 1f);
-            Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-            Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-            Main.dust[dustIndex].noGravity = true;
-
+            if ((projectile.velocity.X >= 0.5 || projectile.velocity.X <= -0.5) || (projectile.velocity.Y >= 0.5 || projectile.velocity.Y <= -0.5))
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 45, 0f, 0f, 100, default, 1f);
+                //Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                // Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+            }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -675,7 +682,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(SoundID.Item10, projectile.position);
+           
             for (int i = 0; i < 10; i++)
             {
 

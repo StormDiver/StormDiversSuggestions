@@ -226,11 +226,12 @@ namespace StormDiversSuggestions.Projectiles
 
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
+            if (Main.rand.Next(2) == 0)
+            {
+                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
-            Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
-
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+            }
 
             projectile.Kill();
         }
@@ -238,11 +239,12 @@ namespace StormDiversSuggestions.Projectiles
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
+            if (Main.rand.Next(2) == 0)
+            {
+                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
-            Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
-
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+            }
 
             return true;
         }

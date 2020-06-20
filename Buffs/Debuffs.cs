@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("SuperBouldered");
+            DisplayName.SetDefault("Super Bouldered");
             Description.SetDefault("Now it REALLY hurts, reduced movement speed and constant burning");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
@@ -100,6 +100,30 @@ namespace StormDiversSuggestions.Buffs
         }
         
        
+    }
+    //____________________________________________________________
+    public class LunarBoulderDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Lunar Bouldered");
+            Description.SetDefault("Inflicts unimaginable pain, reduced movement speed and constant burning");
+            Main.debuff[Type] = true;
+            Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.moveSpeed = 0.2f;
+            player.GetModPlayer<StormPlayer>().lunarBoulderDB = true;
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().lunarBoulderDB = true;
+        }
+
+
     }
     //___________________________________________________________
     public class TurtleDebuff : ModBuff

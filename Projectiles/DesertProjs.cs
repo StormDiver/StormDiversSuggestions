@@ -23,7 +23,6 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.timeLeft = 600;
            
-            
             projectile.tileCollide = true;
             projectile.penetrate = 1; 
             projectile.ranged = true;
@@ -71,8 +70,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
             
-             int item = Main.rand.NextBool(3) ? Item.NewItem(projectile.getRect(), ItemID.WoodenArrow) : 0;
-             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+             
              Main.PlaySound(SoundID.Item10, projectile.position);
             for (int i = 0; i < 10; i++)
             {

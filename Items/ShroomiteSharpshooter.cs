@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("40% Chance not to consume Ammo\nRight click to fire a burst of inaccurate bullets");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage but less accurately (Doesn't work with Chlorophyte bullets)");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -40,7 +40,8 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = ProjectileID.Bullet;
             item.shootSpeed = 15f;
-            
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useAmmo = AmmoID.Bullet;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -61,15 +62,11 @@ namespace StormDiversSuggestions.Items
 
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 4;
-                item.useAnimation = 20;
-                item.reuseDelay = 20;
+               
             }
             else
             {
-                item.useTime = 10;
-                item.useAnimation = 10;
-                item.reuseDelay = 0;
+                
             }
             
             return true;
@@ -80,9 +77,14 @@ namespace StormDiversSuggestions.Items
             
             if (player.altFunctionUse == 2)
             {
+                if (type == ProjectileID.ChlorophyteBullet)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    type = ProjectileID.Bullet;
+                    
+                }
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int) (damage * 1.5f), knockBack, player.whoAmI);
                     Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
                 }
             }
@@ -102,7 +104,7 @@ namespace StormDiversSuggestions.Items
 
         public override bool ConsumeAmmo(Player player)
         {
-            return Main.rand.NextFloat() >= .4f;
+            return Main.rand.NextFloat() >= .33f;
         }
 
 

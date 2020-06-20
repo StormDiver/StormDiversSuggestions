@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Launcher");
-            Tooltip.SetDefault("Fires Shroomite Rockets which explode into mushrooms\nOccasionally fires out Shroomite Grenades");
+            Tooltip.SetDefault("Fires Shroomite Rockets which explode into mushrooms\nFires out a Shroomite Grenade every 3 shots");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -45,9 +45,10 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-10, 0);
         }
-
+        int gren = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            gren++;
             if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV) 
             {
                 type = mod.ProjectileType("ShroomRocketProj"); 
@@ -59,12 +60,16 @@ namespace StormDiversSuggestions.Items
             }
 
            
-            if (Main.rand.Next(3) == 0)
-            { 
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X *0.75), (int)(perturbedSpeed.Y * 0.75), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
-            }
+            //if (Main.rand.Next(3) == 0)
+            //{
+                if (gren >= 3)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                    Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.75), (int)(perturbedSpeed.Y * 0.75), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
+                    Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
+                gren = 0;
+                }
+            //}
             
             
             return true;

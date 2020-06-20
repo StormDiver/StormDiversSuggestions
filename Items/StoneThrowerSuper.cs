@@ -66,10 +66,10 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("StoneThrowerHard"), 1);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 5);
-            recipe.AddIngredient(ItemID.SpectreBar, 5);
-            recipe.AddIngredient(ItemID.BeetleHusk, 5);
-            recipe.AddIngredient(ItemID.LunarTabletFragment, 8);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 15);
+            recipe.AddIngredient(ItemID.SpectreBar, 15);
+            recipe.AddIngredient(ItemID.LunarTabletFragment, 10);
+            recipe.AddIngredient(ItemID.BeetleHusk, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

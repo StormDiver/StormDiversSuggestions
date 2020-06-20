@@ -26,23 +26,10 @@ namespace StormDiversSuggestions.Items
             
             item.useTime = 60;
             item.useAnimation = 60;
-            //item.reuseDelay = 60;
             item.useTurn = false;
             item.autoReuse = false;
-
-            
-            
-           
-                //item.UseSound = SoundID.Item122;
-
                 item.shoot = 629;
-
                 item.shootSpeed = 0f;
-
-               
-            
-            //item.useAmmo = AmmoID.Arrow;
-                
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

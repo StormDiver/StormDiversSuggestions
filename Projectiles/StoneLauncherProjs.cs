@@ -20,8 +20,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 18;
             projectile.height = 18;
             projectile.friendly = true;
-            projectile.penetrate = 2; 
-           
+            projectile.penetrate = 2;
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14; 
             aiType = ProjectileID.WoodenArrowFriendly;
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 28;
             projectile.friendly = true;
             projectile.penetrate = 3;
-           
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
             projectile.scale = 0.75f;
@@ -149,10 +149,10 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < numberProjectiles; i++)
                 {
 
-                    float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
-                    float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
+                    float speedX = Main.rand.NextFloat(-5f, 5f);
+                    float speedY = Main.rand.NextFloat(-5f, 5f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
                 }
             }
             Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -162,11 +162,23 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("BoulderDebuff"), 480);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 1);
+            }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
             target.AddBuff(mod.BuffType("BoulderDebuff"), 800);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 1);
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -188,10 +200,10 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < numberProjectiles; i++)
             {
 
-                float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
-                float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
+                float speedX = Main.rand.NextFloat(-5f, 5f);
+                float speedY = Main.rand.NextFloat(-5f, 5f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
             }
 
         }
@@ -211,7 +223,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 28;
             projectile.friendly = true;
             projectile.penetrate = 3;
-           
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
             projectile.scale = 0.75f;
@@ -243,11 +255,23 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 600);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 55);
+            }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
             target.AddBuff(mod.BuffType("SuperBoulderDebuff"), 800);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 55);
+            }
         }
 
         int reflect = 2;
@@ -276,14 +300,14 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (reflect >= 1)
             {
-                int numberProjectiles = 4 + Main.rand.Next(3); //This defines how many projectiles to shot.
+                int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
 
-                    float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
-                    float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
+                    float speedX = Main.rand.NextFloat(-7f, 7f);
+                    float speedY = Main.rand.NextFloat(-7f, 7f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
                 }
             }
             Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -309,10 +333,10 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < numberProjectiles; i++)
             {
 
-                float speedX = projectile.velocity.X * Main.rand.NextFloat(-.6f, .6f);
-                float speedY = projectile.velocity.Y * Main.rand.NextFloat(-.6f, .6f);
+                float speedX = Main.rand.NextFloat(-7f, 7f);
+                float speedY = Main.rand.NextFloat(-7f, 7f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragSuperProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
             }
 
 
@@ -333,7 +357,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 9;
             projectile.friendly = true;
             projectile.penetrate = 1;
-          
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
             aiType = ProjectileID.WoodenArrowFriendly;
@@ -396,7 +420,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 9;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            
+            projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
             aiType = ProjectileID.WoodenArrowFriendly;

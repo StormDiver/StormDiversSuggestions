@@ -24,6 +24,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public override bool InstancePerEntity => true;
 
+        public bool lunarBoulderDB;
+
         public bool superBoulderDB;
         // npc.GetGlobalNPC<StormNPC>().boulderDB = true; in debuff.cs
         // target.AddBuff(mod.BuffType("BoulderDebuff"), 1200)
@@ -40,6 +42,7 @@ namespace StormDiversSuggestions.Basefiles
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
+            lunarBoulderDB = false;
             superBoulderDB = false;
             sandBurn = false;
             turtled = false;
@@ -82,6 +85,13 @@ namespace StormDiversSuggestions.Basefiles
                     damage = 8;
                 
             }
+            if (lunarBoulderDB)
+            {
+                npc.lifeRegen -= 400;
+
+                damage = 16;
+
+            }
             if (sandBurn)
             {
                 npc.lifeRegen -= 40;
@@ -91,7 +101,7 @@ namespace StormDiversSuggestions.Basefiles
             }
            
         }
-
+        int particle = 0;
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             if (boulderDB)
@@ -115,6 +125,39 @@ namespace StormDiversSuggestions.Basefiles
                 if (Main.rand.Next(4) < 3)
                 {
                     int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 55, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default, 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 1f, 0.5f, 0f);
+            }
+            if (lunarBoulderDB)
+            {
+                int choice = Main.rand.Next(4);
+                if (choice == 0)
+                {
+                    particle = 244;
+                }
+                else if (choice == 1)
+                {
+                    particle = 110;
+                }
+                else if (choice == 2)
+                {
+                    particle = 111; ;
+                }
+                else if (choice == 3)
+                {
+                    particle = 112;
+                }
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, particle, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default, 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1f;
                     Main.dust[dust].velocity.Y -= 0.5f;

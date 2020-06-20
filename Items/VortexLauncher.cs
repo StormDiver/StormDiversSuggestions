@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vortex Launcher");
-            Tooltip.SetDefault("Fires out a barrage of vortex rockets\nRight click to rapidly fire a single high velocity rocket");
+            Tooltip.SetDefault("Fires out a barrage of vortex rockets, right click to fire a single more damaging rocket");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()
@@ -22,8 +22,7 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
-           // item.useTime = 28;
-            //item.useAnimation = 28;
+           
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -39,7 +38,8 @@ namespace StormDiversSuggestions.Items
             item.shootSpeed = 9f;
            
             item.useAmmo = AmmoID.Rocket;
-          
+            item.useTime = 28;
+            item.useAnimation = 28;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -53,14 +53,12 @@ namespace StormDiversSuggestions.Items
 
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 15;
-                item.useAnimation = 15;
+              
 
             }
             else
             {
-                item.useTime = 36;
-                item.useAnimation = 36;
+                
 
             }
             return base.CanUseItem(player);
@@ -88,9 +86,9 @@ namespace StormDiversSuggestions.Items
                 {
                     type = mod.ProjectileType("VortexRocketProj2");
                 }
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 3f;
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 4f;
                    
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.2f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (int) (perturbedSpeed.X), (int)(perturbedSpeed.Y), type, (int)(damage * 2f), knockBack, player.whoAmI);
                 
             }
             else
@@ -104,8 +102,8 @@ namespace StormDiversSuggestions.Items
                 {
                     type = mod.ProjectileType("VortexRocketProj");
                 }
-                int numberProjectiles = 2 + Main.rand.Next(1); ; //This defines how many projectiles to shot.
-                for (int i = 0; i < numberProjectiles; i++)
+               
+                for (int i = 0; i < 2; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                     float scale = 1f - (Main.rand.NextFloat() * .2f);

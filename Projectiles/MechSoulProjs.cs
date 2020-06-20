@@ -255,7 +255,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }
-
+        
         public override void AI()
         {
             // Spawn some dust visuals
@@ -301,7 +301,12 @@ namespace StormDiversSuggestions.Projectiles
                     // If we reach maxChainLength, we change behavior.
                     projectile.ai[0] = 1f;
                     projectile.netUpdate = true;
-
+                   
+                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                   
+                
+                       
+                    
                 }
                 else if (!player.channel)
                 {
@@ -315,6 +320,8 @@ namespace StormDiversSuggestions.Projectiles
             }
             else if (projectile.ai[0] == 1f)
             {
+                
+
                 // When ai[0] == 1f, the projectile has either hit a tile or has reached maxChainLength, so now we retract the projectile
                 float elasticFactorA = 14f / player.meleeSpeed;
                 float elasticFactorB = 0.9f / player.meleeSpeed;
@@ -478,7 +485,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 34;
             projectile.height = 34;
             projectile.friendly = true;
-            projectile.penetrate = 10;
+            projectile.penetrate = 1;
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
@@ -512,8 +519,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     Main.PlaySound(SoundID.Item10, projectile.position);
                 }
-                else
-                { }
+                
             }
             return true;
         }
