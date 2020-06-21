@@ -33,7 +33,6 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.StoneShot>();
             item.UseSound = SoundID.Item38;
 
-            
             item.crit = 12;
             item.knockBack = 8f;
 

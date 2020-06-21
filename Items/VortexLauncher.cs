@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Items
                 }
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 4f;
                    
-                    Projectile.NewProjectile(position.X, position.Y, (int) (perturbedSpeed.X), (int)(perturbedSpeed.Y), type, (int)(damage * 2f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (int) (perturbedSpeed.X), (int)(perturbedSpeed.Y), type, (int)(damage * 2.5f), knockBack, player.whoAmI);
                 
             }
             else
