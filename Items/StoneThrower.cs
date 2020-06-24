@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.StoneBlock, 250);
             recipe.anyIronBar = true;
             recipe.AddIngredient(ItemID.IronBar, 25);
-            recipe.AddIngredient(ItemID.DemoniteBar, 18);
+            recipe.AddIngredient(ItemID.ShadowScale, 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -72,7 +72,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.StoneBlock, 250);
             recipe.anyIronBar = true;
             recipe.AddIngredient(ItemID.IronBar, 25);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 18);
+            recipe.AddIngredient(ItemID.TissueSample, 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
