@@ -4,8 +4,8 @@ This mod attempts to add some of the ideas that I (Storm Diver Omega) have sugge
 
 This mod includes:
 
--38 New unique weapons
--13 new ammos
+-39 New unique weapons
+-12 new ammos
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore !WARNING if you created the world before installing this mod then the new ore will not spawn, but it will still drop from enemies in that biome and from crates!
 -6 new accessories
