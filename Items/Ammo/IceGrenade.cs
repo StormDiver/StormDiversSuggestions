@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo Grenade");
-            Tooltip.SetDefault("For use with The Cryo Grenade Launcher");
+            Tooltip.SetDefault("Used to be used with The Cryo Grenade Launcher");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -40,7 +40,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.ammo = item.type;
         }
 
-        public override void AddRecipes()
+       /* public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("IceBar"), 1);
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items.Ammo
                         break;
                 }
             }
-        }
+        }*/
        
     }
 }

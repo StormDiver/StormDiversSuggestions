@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 244, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+            dust = Terraria.Dust.NewDustPerfect(position, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
 
@@ -264,7 +264,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 110, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+            dust = Terraria.Dust.NewDustPerfect(position, 110, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
             
@@ -482,7 +482,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 112, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+            dust = Terraria.Dust.NewDustPerfect(position, 112, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
 
@@ -706,7 +706,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 111, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+            dust = Terraria.Dust.NewDustPerfect(position, 111, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
 

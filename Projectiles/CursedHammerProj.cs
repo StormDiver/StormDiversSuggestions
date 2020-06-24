@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             projectile.friendly = true;
             
             projectile.magic = true;
@@ -176,7 +176,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.magic = true;

@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prototype Grenade");
-            Tooltip.SetDefault("For use with The Prototype Launcher");
+            Tooltip.SetDefault("For use with certain launchers");
 
         }
         public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items.Ammo
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 28;
+            item.damage = 30;
 
             item.knockBack = 1f;
             item.consumable = true;
@@ -39,7 +39,20 @@ namespace StormDiversSuggestions.Items.Ammo
             item.shootSpeed = 3f;
             item.ammo = item.type;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Grenade, 50);
+            recipe.AddIngredient(ItemID.ExplosivePowder, 1);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 50);
+            recipe.AddRecipe();
 
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("IceGrenade"), 50);
+            recipe.SetResult(this, 50);
+            recipe.AddRecipe();
+        }
 
         public class VanillaShops : GlobalNPC
         {
@@ -49,7 +62,7 @@ namespace StormDiversSuggestions.Items.Ammo
                 {
                     case NPCID.Demolitionist:
 
-                        if (Main.LocalPlayer.HasItem(mod.ItemType("ProtoLauncher")))
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("ProtoLauncher")) || Main.LocalPlayer.HasItem(mod.ItemType("FrostLauncher")))
                         {
                             shop.item[nextSlot].SetDefaults(mod.ItemType("ProtoGrenade"));
                             nextSlot++;

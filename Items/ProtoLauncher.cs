@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prototype Launcher");
-            Tooltip.SetDefault("Fires out a burst of impact-exploding grenades\nRequires prototype grenades");
+            Tooltip.SetDefault("Fires out a burst of impact-exploding grenades\nRequires Prototype Grenades");
         }
         public override void SetDefaults()
         {
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 3;
             item.useStyle = 5;
-            item.useTime = 15;
-            item.useAnimation = 45;
+            item.useTime = 12;
+            item.useAnimation = 36;
             item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;
@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.ProtoGrenade>();
             item.UseSound = SoundID.Item61;
 
-            item.damage = 28;
+            item.damage = 30;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 10f;
@@ -64,19 +64,19 @@ namespace StormDiversSuggestions.Items
             
             return false;
         }
-       /* public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-            recipe.AddIngredient(ItemID.Bone, 50);
+            recipe.AddIngredient(ItemID.Bone, 100);
             recipe.anyIronBar = true;
             recipe.AddIngredient(ItemID.IronBar, 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }*/
+        }
        
-        public class VanillaShops : GlobalNPC
+       /* public class VanillaShops : GlobalNPC
        {
            public override void SetupShop(int type, Chest shop, ref int nextSlot)
            {
@@ -94,7 +94,7 @@ namespace StormDiversSuggestions.Items
                        break;
                }
            }
-       }
+       }*/
    }
 }
  

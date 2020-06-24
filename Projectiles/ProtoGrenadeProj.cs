@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 14;
 
 
-            projectile.light = 2f;
+           
             projectile.friendly = true;
 
             projectile.aiStyle = 2;
@@ -56,7 +56,8 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.knockBack = 3f;
                 projectile.velocity.X = 0;
                 projectile.velocity.Y = 0;
-                //projectile.hostile = true;
+                
+                
             }
             else
             {

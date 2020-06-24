@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
-            item.damage = 16;
+            item.damage = 20;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneProj");
@@ -55,8 +55,29 @@ namespace StormDiversSuggestions.Items
             return true;
         }
 
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.IllegalGunParts);
+            recipe.AddIngredient(ItemID.StoneBlock, 250);
+            recipe.anyIronBar = true;
+            recipe.AddIngredient(ItemID.IronBar, 25);
+            recipe.AddIngredient(ItemID.DemoniteBar, 18);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 
-        public class VanillaShops : GlobalNPC
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.IllegalGunParts);
+            recipe.AddIngredient(ItemID.StoneBlock, 250);
+            recipe.anyIronBar = true;
+            recipe.AddIngredient(ItemID.IronBar, 25);
+            recipe.AddIngredient(ItemID.CrimtaneBar, 18);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+       /* public class VanillaShops : GlobalNPC
         {
             public override void SetupShop(int type, Chest shop, ref int nextSlot)
             {
@@ -75,6 +96,6 @@ namespace StormDiversSuggestions.Items
                         break;
                 }
             }
-        }
+        }*/
     }
 }

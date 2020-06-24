@@ -261,7 +261,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.melee = true;
             // projectile.aiStyle = 1;
             projectile.extraUpdates = 3;
-            projectile.timeLeft = 100;
+            projectile.timeLeft = 60;
             projectile.penetrate = 2;
         }
 

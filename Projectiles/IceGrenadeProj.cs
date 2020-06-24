@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 14;
 
 
-            projectile.light = 2f;
+            projectile.light = 0.1f;
             projectile.friendly = true;
 
             projectile.aiStyle = 2;

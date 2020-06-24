@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Miniature Boulder");
-            Tooltip.SetDefault("For use with The Stone launcher\nTry asking the Demolitionist if he has one");
+            Tooltip.SetDefault("For use with Stone Launchers");
             
         }
         public override void SetDefaults()

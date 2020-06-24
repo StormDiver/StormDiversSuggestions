@@ -599,7 +599,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 7;
 
 
-            //projectile.light = 1f;
+            //projectile.light = 0.6f;
             projectile.friendly = true;
 
              //projectile.CloneDefaults(225);

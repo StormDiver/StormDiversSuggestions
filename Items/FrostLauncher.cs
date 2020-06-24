@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo grenade Launcher");
-            Tooltip.SetDefault("Fires out impact-exploding grenades that inflict frostburn\nRequires Cryo Grenades");
+            Tooltip.SetDefault("Fires out impact-exploding grenades that inflict frostburn\nRequires Prototype Grenades");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -23,19 +23,19 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 24;
-            item.useAnimation = 24;
+            item.useTime = 18;
+            item.useAnimation = 18;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;
 
             item.ranged = true;
 
-            item.shoot = mod.ProjectileType("IceGrenadeProj");
-            item.useAmmo = ItemType<Ammo.IceGrenade>();
+            item.shoot = mod.ProjectileType("ProtoGrenadeProj");
+            item.useAmmo = ItemType<Ammo.ProtoGrenade>();
             item.UseSound = SoundID.Item61;
 
-            item.damage = 38;
+            item.damage = 52;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 10f;
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items
             for (int i = 0; i < 1; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); 
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("IceGrenadeProj"), (int)(damage * 1f), knockBack, player.whoAmI);
                 Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
 
             }

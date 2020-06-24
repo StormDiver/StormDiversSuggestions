@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.magic = true;
             projectile.timeLeft = 200;
             projectile.CloneDefaults(297);
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             aiType = 297;
 
         }
@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             projectile.friendly = true;
             projectile.penetrate = 10;
             projectile.magic = true;
@@ -210,7 +210,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             projectile.friendly = true;
             projectile.penetrate = 8;
             projectile.magic = true;
@@ -404,7 +404,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.light = 1f;
+            projectile.light = 0.6f;
             projectile.friendly = true;
             
             projectile.magic = true;

@@ -239,14 +239,12 @@ namespace StormDiversSuggestions.Projectiles
        
         public override void AI()
         {
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 55, 0f, 0f, 0, new Color(255, 255, 255), 1.2f)];
-                dust.noGravity = true;
-            }
+            Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
+            dust.noGravity = true;
+           
 
             projectile.rotation += (float)projectile.direction * 0.2f;
         }

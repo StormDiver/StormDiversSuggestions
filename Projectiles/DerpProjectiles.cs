@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 24;
-            projectile.light = 0.1f;
+           
             projectile.friendly = true;
             
             projectile.tileCollide = true;
@@ -87,7 +87,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.light = 0.1f;
+            
             projectile.friendly = true;
 
             projectile.tileCollide = true;
@@ -189,7 +189,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 18;
             projectile.height = 24;
-            projectile.light = 0.1f;
+           
             projectile.friendly = true;
 
             projectile.tileCollide = true;
@@ -274,7 +274,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 10;
             projectile.height = 18;
-            projectile.light = 0.1f;
+           
             projectile.friendly = true;
 
             projectile.tileCollide = true;

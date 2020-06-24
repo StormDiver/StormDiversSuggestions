@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 8;
 
             
-            projectile.light = 1f;
+            projectile.light = 0.3f;
             projectile.friendly = true;
 
             projectile.CloneDefaults(338);
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 8;
             projectile.height = 8;
-            projectile.light = 1f;
+          
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
