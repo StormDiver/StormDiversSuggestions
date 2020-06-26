@@ -12,8 +12,8 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo Grenade");
-            Tooltip.SetDefault("Used to be used with The Cryo Grenade Launcher");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
+            Tooltip.SetDefault("No longer has a use, convert them to Prototype Grenades");
+            //ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
         {
@@ -21,15 +21,15 @@ namespace StormDiversSuggestions.Items.Ammo
             item.height = 14;
             item.maxStack = 999;
             item.value = Item.buyPrice(0, 0, 1, 50);
-            item.rare = 3;
+            item.rare = -1;
 
             //item.melee = true;
-            item.ranged = true;
+            //item.ranged = true;
             //item.magic = true;
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 38;
+           /* item.damage = 38;
 
             item.knockBack = 1f;
             item.consumable = true;
@@ -38,6 +38,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.shoot = mod.ProjectileType("IceGrenadeProj");
             item.shootSpeed = 3f;
             item.ammo = item.type;
+            */
         }
 
        /* public override void AddRecipes()

@@ -873,7 +873,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("LunarBoulderDebuff"), 500);
+            target.AddBuff(mod.BuffType("LunarBoulderDebuff"), 240);
             for (int i = 0; i < 3; i++)
             {
 
