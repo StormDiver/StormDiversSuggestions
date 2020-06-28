@@ -43,13 +43,13 @@ namespace StormDiversSuggestions.Projectiles
                 int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
             }
             dropdust--;
-            if (dropdust <= 0 && (projectile.velocity.X >= 3 || projectile.velocity.X <= -3))
- 
-            {
+            if ((projectile.velocity.X >= 3 || projectile.velocity.X <= -3))
+                if (Main.rand.Next(10) == 0)
+                {
                 int speedX = 0;
-                int speedY = 2;
+                int speedY = 3;
 
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DesertArrowDust"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DesertArrowDust"), (int)(projectile.damage * 0.7), 0f, projectile.owner, 0f, 0f);
                 dropdust = 10;
             }
 
@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.Projectiles
                     int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                    Main.dust[dust].velocity *= 2.5f;
+                    Main.dust[dust].velocity *= 0.5f;
                     int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
@@ -261,7 +261,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.melee = true;
             // projectile.aiStyle = 1;
             projectile.extraUpdates = 3;
-            projectile.timeLeft = 60;
+            projectile.timeLeft = 75;
             projectile.penetrate = 2;
         }
 
@@ -276,7 +276,7 @@ namespace StormDiversSuggestions.Projectiles
                     int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                    Main.dust[dust].velocity *= 2.5f;
+                    Main.dust[dust].velocity *= 0.5f;
                     int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
@@ -334,7 +334,7 @@ namespace StormDiversSuggestions.Projectiles
                     int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                    Main.dust[dust].velocity *= 2.5f;
+                    Main.dust[dust].velocity *= 0.5f;
                     int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
