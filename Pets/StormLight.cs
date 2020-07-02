@@ -14,6 +14,7 @@ namespace StormDiversSuggestions.Pets
         {
             DisplayName.SetDefault("Suspicious looking helmet");
             Tooltip.SetDefault("Summons something unthinkable");
+            item.rare = 10;
 
         }
 
@@ -23,10 +24,10 @@ namespace StormDiversSuggestions.Pets
             item.height = 24;
             item.maxStack = 999;
             Item.sellPrice(0, 3, 0, 0);
-            item.rare = 10;
             item.CloneDefaults(ItemID.ZephyrFish);
             item.shoot = ProjectileType<StormLightProj>();
             item.buffType = BuffType<StormLightBuff>();
+            item.rare = 10;
 
         }
 
