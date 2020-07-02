@@ -14,19 +14,21 @@ namespace StormDiversSuggestions.Pets
         {
             DisplayName.SetDefault("Mysterious vine");
             Tooltip.SetDefault("Seems to be infused with some strange energy");
-
+            
         }
 
         public override void SetDefaults()
         {
+            item.CloneDefaults(ItemID.ZephyrFish);
             item.width = 16;
             item.height = 24;
             item.maxStack = 999;
-            Item.sellPrice(0, 1, 0, 0);
-            item.rare = 8;
-            item.CloneDefaults(ItemID.ZephyrFish);
+            item.value = Item.sellPrice(0, 7, 50, 0);
+            
+            
             item.shoot = ProjectileType<GoldDerpie>();
             item.buffType = BuffType<GoldDerpieBuff>();
+            item.rare = 8;
         }
 
 

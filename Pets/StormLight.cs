@@ -14,17 +14,18 @@ namespace StormDiversSuggestions.Pets
         {
             DisplayName.SetDefault("Suspicious looking helmet");
             Tooltip.SetDefault("Summons something unthinkable");
-            item.rare = 10;
+         
 
         }
 
         public override void SetDefaults()
         {
+            item.CloneDefaults(ItemID.ZephyrFish);
             item.width = 16;
             item.height = 24;
             item.maxStack = 999;
-            Item.sellPrice(0, 3, 0, 0);
-            item.CloneDefaults(ItemID.ZephyrFish);
+            item.value = Item.sellPrice(0, 10, 0, 0);
+            
             item.shoot = ProjectileType<StormLightProj>();
             item.buffType = BuffType<StormLightBuff>();
             item.rare = 10;
