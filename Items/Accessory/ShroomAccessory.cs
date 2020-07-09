@@ -76,8 +76,6 @@ namespace StormDiversSuggestions.Items.Accessory
 
         }
 
-
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
