@@ -59,15 +59,15 @@ namespace StormDiversSuggestions.Projectiles
                         dust2.noGravity = true;
                     }
 
-                    float numberProjectiles = 3;
+                    float numberProjectiles = 2;
                     float rotation = MathHelper.ToRadians(4);
                     //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                     for (int i = 0; i < numberProjectiles; i++)
                     {
                         float speedX = projectile.velocity.X;
                         float speedY = projectile.velocity.Y;
-                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("DesertBulletProj2"), (int) (projectile.damage * 0.8f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) ;
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertBulletProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                     }
                     projectile.Kill();
 
@@ -153,4 +153,104 @@ namespace StormDiversSuggestions.Projectiles
         }
 
     }
+    //____________________________________________________________________________
+    public class DesertArrowProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Arid Arrow");
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 8;
+            projectile.height = 8;
+
+            projectile.aiStyle = 1;
+            projectile.light = 0.5f;
+            projectile.friendly = true;
+            projectile.timeLeft = 600;
+            projectile.penetrate = 1;
+            projectile.arrow = true;
+            projectile.tileCollide = true;
+
+            projectile.ranged = true;
+
+            projectile.arrow = true;
+           
+            //Creates no immunity frames
+  
+
+            drawOffsetX = -4;
+            drawOriginOffsetY = 0;
+        }
+        int spinspeed = 0;
+        
+
+        int reflect = 2;
+        bool spin = false;
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+            }
+            {
+                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 0.8f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 0.8f;
+                }
+                spin = true;
+            }
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+            return false;
+        }
+
+        public override void AI()
+        {
+
+            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0f, 0f, 100, default, 0.7f);
+            Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+            Main.dust[dustIndex].noGravity = true;
+
+            if (spin)
+            {
+               
+                spinspeed++;
+                projectile.rotation = (0.4f * spinspeed);
+                projectile.penetrate = -1;
+               drawOffsetX = 6;
+                //drawOriginOffsetY = -8;
+                projectile.width = 32;
+                projectile.height = 32;
+            }
+
+
+
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+            Main.PlaySound(SoundID.Item10, projectile.position);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                dust2.noGravity = true;
+            }
+        }
+
+    }
+    
 }

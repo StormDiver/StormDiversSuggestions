@@ -44,6 +44,11 @@ namespace StormDiversSuggestions.Basefiles
         public bool shroombuff;
 
         public bool flameCore;
+
+        public bool frostSpike;
+
+        public bool frostSpikeCooldown;
+        
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -56,6 +61,8 @@ namespace StormDiversSuggestions.Basefiles
             stormHelmet = false;
             shroombuff = false;
             flameCore = false;
+            frostSpike = false;
+            frostSpikeCooldown = false;
         }
        // int shotCount = 0;
         //bool shot;
@@ -101,7 +108,42 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 //player.moveSpeed *= 0.4f;
             }
-           
+          
+        }
+        
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
+        {
+            if (frostSpike)
+            {
+                if (!frostSpikeCooldown)
+                {
+                    Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
+                    float numberProjectiles = 10 + Main.rand.Next(5);
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+
+
+                        float speedX = 0f;
+                        float speedY = -10f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(150));
+                        float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), 50, 3f, player.whoAmI);
+
+
+                    }
+                    for (int i = 0; i < 30; i++)
+                    {
+
+                        Dust dust;
+                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                        Vector2 position = Main.LocalPlayer.position;
+                        dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                        dust.noGravity = true;
+                    }
+                    player.AddBuff(mod.BuffType("FrozenBuff"), 300);
+                }
+            }
         }
         public override void UpdateBadLifeRegen()
         {

@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            item.useTime = 20;
+            item.useAnimation = 20;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.ProtoGrenade>();
             item.UseSound = SoundID.Item61;
 
-            item.damage = 52;
+            item.damage = 50;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 10f;
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items
             for (int i = 0; i < 1; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); 
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("IceGrenadeProj"), (int)(damage * 1f), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostGrenadeProj"), (int)(damage * 1f), knockBack, player.whoAmI);
                 Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
 
             }

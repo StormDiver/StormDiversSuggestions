@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void SetDefaults()
         {
-            npc.width = 32;
-            npc.height = 32;
+            npc.width = 64;
+            npc.height = 64;
 
             npc.aiStyle = 25; 
             aiType = NPCID.Mimic;

@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item92;
 
-            item.damage = 75;
+            item.damage = 65;
             
             item.knockBack = 5f;
 

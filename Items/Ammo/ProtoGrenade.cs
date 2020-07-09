@@ -48,10 +48,7 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.SetResult(this, 50);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("IceGrenade"), 50);
-            recipe.SetResult(this, 50);
-            recipe.AddRecipe();
+           
         }
 
         public class VanillaShops : GlobalNPC

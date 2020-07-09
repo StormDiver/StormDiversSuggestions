@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,40 +6,38 @@ using Terraria.ModLoader;
 using StormDiversSuggestions.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace StormDiversSuggestions.Projectiles
 {
-
     public class IceGrenadeProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ice Grenade");
+            DisplayName.SetDefault("Frost Grenade");
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 12;
+            projectile.height = 12;
 
 
             projectile.light = 0.1f;
             projectile.friendly = true;
 
-            projectile.aiStyle = 2;
+            projectile.CloneDefaults(30);
+            aiType = 30;
 
             projectile.penetrate = -1;
             projectile.tileCollide = true;
             projectile.ranged = true;
 
-            projectile.timeLeft = 200;
+            projectile.timeLeft = 180;
 
         }
-       
-       
+
+
         public override void AI()
         {
-
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
             {
                 projectile.tileCollide = false;
@@ -55,32 +53,24 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.velocity.X = 0;
                 projectile.velocity.Y = 0;
                 projectile.knockBack = 3f;
-                
+
             }
             else
             {
-                
+
                 if (Main.rand.NextBool())
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
-                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustIndex].noGravity = true;
-                    
-                    dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 1f);
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 1f);
                     Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].noGravity = true;
-                   
+
                 }
             }
-            }
+        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (projectile.timeLeft > 3)
-            {
-                projectile.timeLeft = 3;
-            }
-            return false;
+            
+            return true;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -91,7 +81,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (Main.rand.Next(1) == 0) // the chance
             {
-                target.AddBuff(BuffID.Frostburn, 1200);
+                target.AddBuff(BuffID.Frostburn, 600);
 
             }
         }
@@ -99,7 +89,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
 
 
 
@@ -124,6 +114,6 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
-
     }
+
 }

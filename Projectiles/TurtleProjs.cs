@@ -197,7 +197,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.melee = true;
-            projectile.timeLeft = 500;
+            projectile.timeLeft = 600;
 
             projectile.scale = 1f;
             projectile.aiStyle = 99;
@@ -215,11 +215,11 @@ namespace StormDiversSuggestions.Projectiles
             dust.noGravity = true;
             dust.noLight = true;
             shoottime++;
-            if (shoottime >= 35)
+            if (shoottime >= 40)
             {
 
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     // Calculate new speeds for other projectiles.
                     // Rebound at 40% to 70% speed, plus a random amount between -8 and 8

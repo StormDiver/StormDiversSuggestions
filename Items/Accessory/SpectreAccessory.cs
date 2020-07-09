@@ -40,8 +40,6 @@ namespace StormDiversSuggestions.Items.Accessory
             item.rare = 8;
             
             item.accessory = true;
-
-
             
         }
         

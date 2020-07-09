@@ -100,8 +100,8 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
         }
 
         public override void AI()
@@ -114,6 +114,9 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 1, 0f, 0f, 0, new Color(255, 255, 255), 1.2f)];
                 dust.noGravity = true;
             }
+
+            projectile.width = 28;
+            projectile.height = 28;
         }
 
 
@@ -232,8 +235,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
 
         }
        
@@ -247,6 +250,9 @@ namespace StormDiversSuggestions.Projectiles
            
 
             projectile.rotation += (float)projectile.direction * 0.2f;
+
+            projectile.width = 28;
+            projectile.height = 28;
         }
 
 

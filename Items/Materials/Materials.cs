@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Shard");
+            DisplayName.SetDefault("Chaos Orb");
             if (!GetInstance<Configurations>().DisableNewRecipes)
 
             {
@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Materials
             {
                 Tooltip.SetDefault("Enable New recipes in the config to use this item");
             }
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 5));
         }
 
         public override void SetDefaults()
@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Items.Materials
 
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
+                recipe.AddIngredient(this, 12);
                 recipe.AddIngredient(ItemID.CrystalShard, 30);
                 recipe.AddIngredient(ItemID.SoulofLight, 25);
                 recipe.AddIngredient(ItemID.HallowedBar, 20);
@@ -224,7 +224,6 @@ namespace StormDiversSuggestions.Items.Materials
             
             item.value = Item.sellPrice(0, 0, 1, 0);
             item.rare = 1;
-
         }
 
         public override void AddRecipes()
@@ -302,8 +301,6 @@ namespace StormDiversSuggestions.Items.Materials
             item.rare = 7;
 
         }
-
-
 
 
         public class ModGlobalNPC : GlobalNPC

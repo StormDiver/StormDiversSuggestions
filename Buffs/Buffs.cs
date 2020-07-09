@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Celestial Guardian");
-            Description.SetDefault("The powers of the Celestial spirits rapidly regenerates your life and grants additonal defence");
+            Description.SetDefault("The powers of the Celestial spirits rapidly regenerates your life and grants additonal defence, as well as lowing aggro");
         }
         int particle = 10;
         public override void Update(Player player, ref int buffIndex)
@@ -28,6 +28,8 @@ namespace StormDiversSuggestions.Buffs
             {
                 player.lifeRegen += 32;
                 player.statDefense += 50;
+                player.aggro -= 1000;
+                
                 if (particle <= 0)
                 {
                     particle = 10;
@@ -148,6 +150,28 @@ namespace StormDiversSuggestions.Buffs
         {
 
             player.moveSpeed += 0.6f;
+        }
+    }
+    public class FrozenBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Frost Spiked");
+            Description.SetDefault("Your movement speed and critical strike chance are greatly increased");
+            Main.debuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            player.runAcceleration *= 1.5f;
+            player.maxRunSpeed *= 2f;
+            player.meleeCrit += 15;
+            player.rangedCrit += 15;
+            player.magicCrit += 15;
+      
+            player.thrownCrit += 15;
+            player.GetModPlayer<StormPlayer>().frostSpikeCooldown = true;
         }
     }
 }

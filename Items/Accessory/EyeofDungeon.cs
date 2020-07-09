@@ -50,16 +50,7 @@ namespace StormDiversSuggestions.Items.Accessory
                 skulltime = 0;
             }
         }
-        /*
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            float speedX = -player.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-            float speedY = -player.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-            
-
-            Projectile.NewProjectile(player.position.X + speedX, player.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(damage * 1.25), 0f);
-        }
-        */
+       
         public class ModGlobalNPC : GlobalNPC
         {
             public override void NPCLoot(NPC npc)

@@ -14,14 +14,13 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             DisplayName.SetDefault("Betsy's flame");
             Tooltip.SetDefault("Multiples your flight time by 3\nAllows you to perform a damaging dash while in the air");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
         public override void SetDefaults()
         {
             item.width = 30;
             item.height = 28;
-           
             Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
             item.defense = 7;

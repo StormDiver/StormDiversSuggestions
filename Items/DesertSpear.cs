@@ -43,7 +43,6 @@ namespace StormDiversSuggestions.Items
             return player.ownedProjectileCounts[item.shoot] < 1;
         }
         
-        
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 

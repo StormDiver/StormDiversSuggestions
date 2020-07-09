@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.OresandBars
             item.height = 16;
             item.maxStack = 999;
             Item.sellPrice(0, 0, 30, 0);
-            item.rare = 4;
+            item.rare = 5;
             item.useStyle = 1;
             item.useTurn = true;
             item.useAnimation = 15;
@@ -34,12 +34,7 @@ namespace StormDiversSuggestions.OresandBars
             item.consumable = true;
             item.autoReuse = true;
         }
-        public override void AddRecipes()
-        {
-
-
-           
-        }
+     
         //_____________________________________________________________________________________________________________
         public class DesertBarPlaced : ModTile
         {
@@ -86,7 +81,7 @@ namespace StormDiversSuggestions.OresandBars
             item.height = 16;
             item.maxStack = 999;
             Item.sellPrice(0, 0, 10, 0);
-            item.rare = 4;
+            item.rare = 5;
             item.useStyle = 1;
             item.useTurn = true;
             item.useAnimation = 15;

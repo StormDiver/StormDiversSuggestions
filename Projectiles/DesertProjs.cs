@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace StormDiversSuggestions.Projectiles
 {
-    public class DesertArrowProj : ModProjectile
+    public class AridArrowProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -44,7 +44,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             dropdust--;
             if ((projectile.velocity.X >= 3 || projectile.velocity.X <= -3))
-                if (Main.rand.Next(10) == 0)
+                if (Main.rand.Next(15) == 0)
                 {
                 int speedX = 0;
                 int speedY = 3;
@@ -92,11 +92,11 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 24;
+            projectile.width = 20;
+            projectile.height = 20;
             projectile.light = 0.1f;
             projectile.friendly = true;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             projectile.tileCollide = true;
             projectile.ranged = true;
             // projectile.aiStyle = 1;
@@ -246,22 +246,22 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Spear Tip");
+            DisplayName.SetDefault("Desert Spear Dust");
 
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 24;
+            projectile.width = 20;
+            projectile.height = 20;
             projectile.light = 0.1f;
             projectile.friendly = true;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             projectile.tileCollide = true;
             projectile.melee = true;
             // projectile.aiStyle = 1;
             projectile.extraUpdates = 3;
-            projectile.timeLeft = 75;
+            projectile.timeLeft = 80;
             projectile.penetrate = 2;
         }
 
@@ -304,11 +304,12 @@ namespace StormDiversSuggestions.Projectiles
 
     }
     //________________________________________________________________________________________
+   
     public class DesertSpellProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Spell");
+            DisplayName.SetDefault("Burning Sand");
         }
         public override void SetDefaults()
         {
@@ -316,18 +317,20 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 12;
             projectile.height = 12;
             projectile.friendly = true;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             projectile.magic = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 180;
             projectile.extraUpdates = 3;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()
         {
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
 
-            if (projectile.ai[0] > 12f)  //this defines where the flames starts
+            if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {
                 if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
                 {
@@ -361,4 +364,162 @@ namespace StormDiversSuggestions.Projectiles
             return false;
         }
     }
+    //______________________________________________________________________________________________________
+    public class DesertJarProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Desert Jar Dust");
+
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 12;
+            projectile.height = 12;
+
+            projectile.aiStyle = 1;
+            projectile.light = 0.1f;
+
+            projectile.friendly = true;
+           
+            projectile.timeLeft = 100;
+            projectile.penetrate = -1;
+
+
+            projectile.tileCollide = true;
+            projectile.scale = 1f;
+
+
+
+            projectile.aiStyle = 14;
+            
+
+
+        }
+
+        public override void AI()
+        { 
+            projectile.velocity.X = 0;
+            projectile.velocity.Y = 0;
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
+
+            if (projectile.ai[0] > 0f)  //this defines where the flames starts
+            {
+                if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
+                {
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
+
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust].velocity *= 0.5f;
+                   // int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                }
+            }
+            else
+            {
+                projectile.ai[0] += 1f;
+            }
+            return;
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 120);
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+
+        {
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 180);
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            
+            return false;
+        }
+        public override void Kill(int timeLeft)
+        {
+
+            Collision.HitTiles(projectile.Center, projectile.velocity, projectile.width, projectile.height);
+            
+
+        }
+
+    }
+    //______________________________________________________________________________________________________
+    public class DesertStaffProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sand Blast");
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 12;
+            projectile.height = 12;
+            projectile.friendly = true;
+            projectile.ignoreWater = false;
+            projectile.magic = true;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 140;
+            projectile.extraUpdates = 3;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            projectile.scale = 2f;
+        }
+        public override void AI()
+        {
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
+
+            if (projectile.ai[0] > 20f)  //this defines where the flames starts
+            {
+                if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
+                {
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
+
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust].velocity *= 0.5f;
+                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                }
+            }
+            else
+            {
+                projectile.ai[0] += 1f;
+            }
+            return;
+        }
+
+        
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+
+        {
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+        }
+        public override void Kill(int timeLeft)
+        {
+            float numberProjectiles = 4 + Main.rand.Next(2);
+            float rotation = MathHelper.ToRadians(180);
+            //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                float speedX = projectile.velocity.X * 0.6f;
+                float speedY = projectile.velocity.Y * 0.6f;
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+            }
+
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);
+
+
+           
+
+        }
+
+    }
+    
 }

@@ -162,7 +162,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             spwmushroom--;
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(12) == 0)
             {
                 
                 

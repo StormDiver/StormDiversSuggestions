@@ -31,8 +31,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
 
         }
        
@@ -44,8 +44,9 @@ namespace StormDiversSuggestions.Projectiles
             dust = Terraria.Dust.NewDustPerfect(position, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.width = 28;
+            projectile.height = 28;
 
-            
         }
 
 
@@ -254,8 +255,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
 
         }
 
@@ -267,7 +268,8 @@ namespace StormDiversSuggestions.Projectiles
             dust = Terraria.Dust.NewDustPerfect(position, 110, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1.5f);
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
-            
+            projectile.width = 26;
+            projectile.height = 26;
         }
 
 
@@ -472,8 +474,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
 
         }
        
@@ -486,8 +488,9 @@ namespace StormDiversSuggestions.Projectiles
             dust.noGravity = true;
             projectile.rotation += (float)projectile.direction * 0.2f;
 
-            
-            
+            projectile.width = 26;
+            projectile.height = 26;
+
 
         }
 
@@ -696,8 +699,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            drawOffsetX = -5;
-            drawOriginOffsetY = -5;
+            //drawOffsetX = -5;
+            //drawOriginOffsetY = -5;
 
         }
        
@@ -724,6 +727,9 @@ namespace StormDiversSuggestions.Projectiles
 
                 }
             }
+
+            projectile.width = 28;
+            projectile.height = 28;
 
         }
 

@@ -13,20 +13,21 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             DisplayName.SetDefault("Celestial barrier");
             Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nProtects you when below 33% life");
-            
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
         public override void SetDefaults()
         {
             item.width = 30;
             item.height = 28;
-           
             Item.sellPrice(0, 0, 50, 0);
             item.rare = 10;
             item.defense = 10;
             item.accessory = true;
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            
         }
-       // int particle = 10;
+       
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 
@@ -43,13 +44,7 @@ namespace StormDiversSuggestions.Items.Accessory
                 player.AddBuff(mod.BuffType("CelestialBuff"), 1);
                 
             }
-           /*
-            if (player.statLife >= (player.statLifeMax2))
-            {
-                player.allDamage *= 1.5f;
-            }
-            */
-            }
+        }
         
         public override void AddRecipes()
         {

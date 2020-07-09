@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Arid Fury");
-            Tooltip.SetDefault("Rains down the heat of the Desert");
+            Tooltip.SetDefault("Makes all arrows rain down the heat of the Desert");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items
             item.height = 20;
             item.maxStack = 1;
             item.value = Item.buyPrice(0, 40, 0, 0);
-            item.rare = 8;
+            item.rare = 5;
             item.useStyle = 5;
             item.useTime = 28;
             item.useAnimation = 28;
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-            Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("DesertArrowProj"), damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("AridArrowProj"), damage, knockBack, player.whoAmI);
            /* if (type == ProjectileID.WoodenArrowFriendly || type == ProjectileID.FlamingArrow) 
             {
                 type = mod.ProjectileType("DesertArrowProj");

@@ -48,4 +48,46 @@ namespace StormDiversSuggestions.Items.Ammo
 
         
     }
+    //________________________________________________________________________
+    public class FrostArrow : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Frost Arrow");
+            Tooltip.SetDefault("Explodes into shards on impact");
+        }
+        public override void SetDefaults()
+        {
+            item.width = 14;
+            item.height = 14;
+            item.maxStack = 999;
+            item.value = Item.buyPrice(0, 0, 2, 0);
+            item.rare = 5;
+
+            //item.melee = true;
+            item.ranged = true;
+            //item.magic = true;
+            //item.summon = true;
+            //item.thrown = true;
+
+            item.damage = 15;
+     
+            item.knockBack = 2f;
+            item.consumable = true;
+
+            item.shoot = mod.ProjectileType("FrostArrowProj");
+            item.shootSpeed = 3f;
+            item.ammo = AmmoID.Arrow;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.WoodenArrow, 100);
+            recipe.AddIngredient(mod.ItemType("IceBar"), 1);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 100);
+            recipe.AddRecipe();
+        }
+    }
 }
