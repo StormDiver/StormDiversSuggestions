@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
                 item.shoot = 629;
                 item.shootSpeed = 0f;
 
-            item.noMelee = true; //Does the weapon itself inflict damage?
+            item.noMelee = true; 
         }
         public override Vector2? HoldoutOffset()
         {
