@@ -13,8 +13,8 @@ namespace StormDiversSuggestions.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Jar of mystery");
-            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving at speed");
+            DisplayName.SetDefault("Pharaoh's Urn");
+            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough");
         }
         public override void SetDefaults()
         {

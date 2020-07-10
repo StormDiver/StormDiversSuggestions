@@ -23,7 +23,7 @@ This mod also has some vanilla changes including:
 -Buffed Ore armour stats and cheaper recipe
 -Buffed Original Hardmode Ore armour defence
 -Buffed Frost and Forbidden armours plus new recipe
--Buffed Vortex and Solar flare armour
+-Buffed Solar flare armour
 -New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
 -Gladiator armour now a ranged set
 -Mechanical souls recipes rebalanced

@@ -118,7 +118,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (!frostSpikeCooldown)
                 {
                     Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
-                    float numberProjectiles = 10 + Main.rand.Next(5);
+                    float numberProjectiles = 10 + Main.rand.Next(6);
                     for (int i = 0; i < numberProjectiles; i++)
                     {
 
@@ -128,7 +128,7 @@ namespace StormDiversSuggestions.Basefiles
                         Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(150));
                         float scale = 1f - (Main.rand.NextFloat() * .5f);
                         perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), 50, 3f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), 45, 3f, player.whoAmI);
 
 
                     }
