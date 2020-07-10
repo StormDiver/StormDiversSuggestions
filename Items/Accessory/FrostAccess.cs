@@ -32,11 +32,11 @@ namespace StormDiversSuggestions.Items.Accessory
             
         }
 
-        public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
+       /* public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
         {
-            // Make the item heal half the player's max health normally, or one fourth if used with quick heal
+            
         
-        }
+        }*/
 
         public override void AddRecipes()
         {
