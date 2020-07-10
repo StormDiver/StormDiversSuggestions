@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Skull");
-            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 80");
+            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 60");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Accessory
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statManaMax2 += 80;
+            player.statManaMax2 += 60;
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 

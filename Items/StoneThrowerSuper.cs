@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher MKIII");
-            Tooltip.SetDefault("Superheats the boulders and fires 3 at a time\nRequires Miniature Boulders to work");
+            Tooltip.SetDefault("Superheats the boulders and fires 2 to 3 at a time\nRequires Miniature Boulders to work");
         }
         public override void SetDefaults()
         {
@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
-            item.damage = 90;
+            item.damage = 65;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneSuperProj");
@@ -53,7 +53,8 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            for (int i = 0; i < 3; i++)
+            int numberProjectiles = 2 + Main.rand.Next(2); //This defines how many projectiles to shot.
+            for (int i = 0; i < numberProjectiles; i++)
             {
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));

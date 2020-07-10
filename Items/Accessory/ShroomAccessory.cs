@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Launcher Attachment");
-            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n10% increased ranged critical strike chance");
+            Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n8% increased ranged critical strike chance");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
 
 
-            player.rangedCrit += 10;
+            player.rangedCrit += 8;
 
             if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
                 {

@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher MKIV");
-            Tooltip.SetDefault("Empowers boulders with the power of the celestial fragmets\nRequires Miniature Boulders to work");
+            Tooltip.SetDefault("Empowers boulders with the power of the celestial fragments\nRequires Miniature Boulders to work");
         }
         public override void SetDefaults()
         {
@@ -22,11 +22,11 @@ namespace StormDiversSuggestions.Items
             item.value = Item.buyPrice(3, 0, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 18;
+            item.useAnimation = 18;
             item.useTurn = false;
             item.autoReuse = true;
-            item.damage = 125;
+            item.damage = 100;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneSuperProj");

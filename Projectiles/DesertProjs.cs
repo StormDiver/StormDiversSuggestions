@@ -383,7 +383,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.friendly = true;
            
-            projectile.timeLeft = 100;
+            projectile.timeLeft = 120;
             projectile.penetrate = -1;
 
 

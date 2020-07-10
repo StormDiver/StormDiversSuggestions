@@ -24,9 +24,9 @@ namespace StormDiversSuggestions.Buffs
         {
 
             particle--;
-            if (player.statLife <= ((player.statLifeMax2) * 0.33f))
+           
             {
-                player.lifeRegen += 32;
+                player.lifeRegen += 30;
                 player.statDefense += 50;
                 player.aggro -= 1000;
                 

@@ -166,10 +166,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     foreach (TooltipLine line in tooltips)
                     {
 
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "16% increased ranged damage and critical strike chance";
-                        }
+                        
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
                             line.text = "Increased night vision";
@@ -615,7 +612,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 }
                 if (item.type == ItemID.VortexHelmet)
                 {
-                    player.rangedCrit += 9;
+                    
                     player.nightVision = true;
                     player.dangerSense = true;
 

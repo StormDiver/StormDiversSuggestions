@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Celestial barrier");
-            Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nProtects you when below 33% life");
+            Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nProtects you when below 40% life");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items.Accessory
             player.noKnockback = true;
             
             
-            if (player.statLife <= ((player.statLifeMax2) * 0.33f))
+            if (player.statLife <= ((player.statLifeMax2) * 0.4f))
             {
                 player.AddBuff(mod.BuffType("CelestialBuff"), 1);
                 

@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Potion");
-            Tooltip.SetDefault("Enchances your Ranged skills");
+            Tooltip.SetDefault("Enhances your Ranged skills");
         }
 
         public override void SetDefaults()
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.ShroomiteBar, 2);
-            recipe.AddIngredient(ItemID.Moonglow);
+            recipe.AddIngredient(ItemID.Moonglow, 5);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Potion");
-            Tooltip.SetDefault("Enchances your Magic skills");
+            Tooltip.SetDefault("Enhances your Magic skills");
         }
 
         public override void SetDefaults()
@@ -72,7 +72,7 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.Ectoplasm, 4);
-            recipe.AddIngredient(ItemID.Waterleaf);
+            recipe.AddIngredient(ItemID.Waterleaf, 5);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Potion");
-            Tooltip.SetDefault("Enchances your Melee skills");
+            Tooltip.SetDefault("Enhances your Melee skills");
         }
 
         public override void SetDefaults()
@@ -109,7 +109,7 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.BeetleHusk, 3);
-            recipe.AddIngredient(ItemID.Fireblossom);
+            recipe.AddIngredient(ItemID.Fireblossom, 5);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();

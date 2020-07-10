@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 
-            if ((player.velocity.X > 3 || player.velocity.X < -3) || (player.velocity.Y > 3 || player.velocity.Y < -3))
+            if ((player.velocity.X > 4 || player.velocity.X < -4) || (player.velocity.Y > 4 || player.velocity.Y < -4))
             {
 
                 dropdust++;
@@ -46,13 +46,13 @@ namespace StormDiversSuggestions.Items.Accessory
                         float scale = 1f - (Main.rand.NextFloat() * .5f);
                         perturbedSpeed = perturbedSpeed * scale;
 
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertJarProj"), 35, 1f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertJarProj"), 30, 1f, player.whoAmI);
                         dropdust = 0;
 
                         //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 13);
                     
                 }
-
+               
                
             }
         }

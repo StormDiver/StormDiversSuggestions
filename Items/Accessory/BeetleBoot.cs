@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Boots");
-            Tooltip.SetDefault("Greatly Increased movement speed and immunity frames while holding any melee weapon\n25% increased melee speed");
+            Tooltip.SetDefault("Greatly Increased movement speed and immunity frames while holding any melee weapon\n20% increased melee speed");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
 
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items.Accessory
         int soundDelay = 0;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.meleeSpeed += 0.25f;
+            player.meleeSpeed += 0.2f;
             if (player.HeldItem.melee)
             {
 

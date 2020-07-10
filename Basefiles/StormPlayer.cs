@@ -141,6 +141,7 @@ namespace StormDiversSuggestions.Basefiles
                         dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                         dust.noGravity = true;
                     }
+                    
                     player.AddBuff(mod.BuffType("FrozenBuff"), 300);
                 }
             }

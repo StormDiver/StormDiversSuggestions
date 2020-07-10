@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.width = 14;
             item.height = 14;
             item.value = Item.buyPrice(0, 2, 0, 0);
-            item.rare = 6;
+            item.rare = 5;
 
             item.defense = 8;
             item.accessory = true;
@@ -32,7 +32,12 @@ namespace StormDiversSuggestions.Items.Accessory
             
         }
 
+        public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
+        {
+            // Make the item heal half the player's max health normally, or one fourth if used with quick heal
         
+        }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
