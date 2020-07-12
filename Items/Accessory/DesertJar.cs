@@ -15,6 +15,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             DisplayName.SetDefault("Pharaoh's Urn");
             Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough");
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
         {

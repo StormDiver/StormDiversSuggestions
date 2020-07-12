@@ -367,7 +367,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 125;
             projectile.extraUpdates = 3;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = -1;
         }
 
         public override void AI()

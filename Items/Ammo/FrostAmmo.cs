@@ -54,7 +54,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Arrow");
-            Tooltip.SetDefault("Explodes into shards on impact");
+            Tooltip.SetDefault("Explodes into tiny shards on impact");
         }
         public override void SetDefaults()
         {

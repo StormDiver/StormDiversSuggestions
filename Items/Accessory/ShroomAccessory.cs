@@ -27,6 +27,7 @@ namespace StormDiversSuggestions.Items.Accessory
             DisplayName.SetDefault("Launcher Attachment");
             Tooltip.SetDefault("Makes all ranged weapons fire off exploding projectiles\n8% increased ranged critical strike chance");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
 
         public override void SetDefaults()

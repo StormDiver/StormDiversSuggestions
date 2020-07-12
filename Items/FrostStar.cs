@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         {
             DisplayName.SetDefault("Frost Frizbee");
             Tooltip.SetDefault("Bounces around after being thrown");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
         {

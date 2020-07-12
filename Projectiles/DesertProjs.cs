@@ -320,10 +320,10 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = false;
             projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 140;
             projectile.extraUpdates = 3;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = -1;
         }
 
         public override void AI()

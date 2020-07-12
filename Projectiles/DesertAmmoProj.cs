@@ -189,6 +189,7 @@ namespace StormDiversSuggestions.Projectiles
 
         int reflect = 2;
         bool spin = false;
+        int enlarge = 0;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
@@ -218,9 +219,6 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
 
-            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0f, 0f, 100, default, 0.7f);
-            Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
-            Main.dust[dustIndex].noGravity = true;
 
             if (spin)
             {
@@ -230,8 +228,17 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.penetrate = -1;
                drawOffsetX = 6;
                 //drawOriginOffsetY = -8;
-                projectile.width = 32;
-                projectile.height = 32;
+                enlarge++;
+                if (enlarge >= 3)
+                {
+                    projectile.width = 32;
+                    projectile.height = 32;
+                }
+
+
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0f, 0f, 100, default, 0.7f);
+                Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
             }
 
 

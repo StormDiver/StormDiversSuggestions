@@ -218,35 +218,9 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            int numberProjectiles = 2 + Main.rand.Next(2); //This defines how many projectiles to shot.
-            for (int i = 0; i < numberProjectiles; i++)
-            {
-
-                float speedX = Main.rand.NextFloat(-4f, 4f);
-                float speedY = Main.rand.NextFloat(-4f, 4f);
-
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("FrostAccessProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
-            }
+           
         }
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            
-
-                int numberProjectiles = 2 + Main.rand.Next(2); //This defines how many projectiles to shot.
-                for (int i = 0; i < numberProjectiles; i++)
-                {
-
-                    float speedX = Main.rand.NextFloat(-4f, 4f);
-                    float speedY = Main.rand.NextFloat(-4f, 4f);
-
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("FrostAccessProj"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
-                }
-                
-
-
-            
-            return true;
-        }
+       
        
 
         public override void Kill(int timeLeft)
@@ -261,9 +235,20 @@ namespace StormDiversSuggestions.Projectiles
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.position;
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 0.7f)];
-
+                dust.noGravity = true;
 
             }
+
+            int numberProjectiles = 2 + Main.rand.Next(2); //This defines how many projectiles to shot.
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+
+                float speedX = Main.rand.NextFloat(-3f, 3f);
+                float speedY = Main.rand.NextFloat(-3f, 3f);
+
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, ProjectileID.CrystalShard, (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+            }
+
         }
        
     }

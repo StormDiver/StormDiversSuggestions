@@ -48,6 +48,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool frostSpike;
 
         public bool frostSpikeCooldown;
+
+        public bool lunarBarrier;
         
         public override void ResetEffects()
         {
@@ -63,6 +65,7 @@ namespace StormDiversSuggestions.Basefiles
             flameCore = false;
             frostSpike = false;
             frostSpikeCooldown = false;
+            lunarBarrier = false;
         }
        // int shotCount = 0;
         //bool shot;
@@ -110,25 +113,54 @@ namespace StormDiversSuggestions.Basefiles
             }
           
         }
+        int attackdmg = 0;
+        
         
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
+            
+            attackdmg = (int)damage;
+            if (lunarBarrier)
+            {
+                
+           
+                if ((attackdmg >= 90 && Main.expertMode))
+                {
+                   
+                    
+                        if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+                        {
+                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
+                            player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
+
+                        }
+                    
+                }
+                if (attackdmg >= 60 && !Main.expertMode)
+                {
+                    if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+                    {
+                        Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
+                        player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
+                    }
+                }
+            }
             if (frostSpike)
             {
                 if (!frostSpikeCooldown)
                 {
                     Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
-                    float numberProjectiles = 10 + Main.rand.Next(6);
+                    float numberProjectiles = 10 + Main.rand.Next(4);
                     for (int i = 0; i < numberProjectiles; i++)
                     {
 
 
                         float speedX = 0f;
-                        float speedY = -10f;
+                        float speedY = -9f;
                         Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(150));
                         float scale = 1f - (Main.rand.NextFloat() * .5f);
                         perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), 45, 3f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), (int)((attackdmg * 1f)), 3f, player.whoAmI);
 
 
                     }
@@ -142,9 +174,18 @@ namespace StormDiversSuggestions.Basefiles
                         dust.noGravity = true;
                     }
                     
-                    player.AddBuff(mod.BuffType("FrozenBuff"), 300);
+                    player.AddBuff(mod.BuffType("FrozenBuff"), 360);
                 }
             }
+        }
+        public override void UpdateLifeRegen()
+        {
+            if (Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+            {
+                
+                player.lifeRegen += 30;
+            }
+         
         }
         public override void UpdateBadLifeRegen()
         {

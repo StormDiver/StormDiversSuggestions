@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items.Accessory
 {
@@ -11,18 +12,21 @@ namespace StormDiversSuggestions.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            
             DisplayName.SetDefault("Celestial barrier");
-            Tooltip.SetDefault("Grants immunity to debuffs inflicted by the strongest of enemies\nProtects you when below 40% life");
+            Tooltip.SetDefault("Grants immunity to debuffs inflicted by extra-terrestrial creatures\nTaking heavy damage greatly increases health regeneration while protecting you\nDuration depends on the amount of damage received");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
         public override void SetDefaults()
         {
+
+            
             item.width = 30;
             item.height = 28;
-            Item.sellPrice(0, 0, 50, 0);
+            Item.sellPrice(0, 1, 0, 0);
             item.rare = 10;
-            item.defense = 10;
+           
             item.accessory = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             
@@ -33,15 +37,13 @@ namespace StormDiversSuggestions.Items.Accessory
 
             player.buffImmune[BuffID.VortexDebuff] = true;
             player.buffImmune[BuffID.Obstructed] = true;
-            player.buffImmune[BuffID.Blackout] = true;
             player.buffImmune[BuffID.Electrified] = true;
         
             player.noKnockback = true;
-            
-            
-            if (player.statLife <= ((player.statLifeMax2) * 0.4f))
-            {
-                player.AddBuff(mod.BuffType("CelestialBuff"), 1);
+            player.GetModPlayer<StormPlayer>().lunarBarrier = true;
+
+            if (player.statLife <= ((player.statLifeMax2) * 0.5f))
+            { 
                 
             }
         }

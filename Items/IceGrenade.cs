@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         {
             DisplayName.SetDefault("Ice Grenade");
             Tooltip.SetDefault("Inflicts frostburn on enemies");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 69;
         }
         public override void SetDefaults()
         {
