@@ -21,7 +21,6 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetDefaults()
         {
 
-            
             item.width = 30;
             item.height = 28;
             Item.sellPrice(0, 1, 0, 0);
@@ -38,7 +37,8 @@ namespace StormDiversSuggestions.Items.Accessory
             player.buffImmune[BuffID.VortexDebuff] = true;
             player.buffImmune[BuffID.Obstructed] = true;
             player.buffImmune[BuffID.Electrified] = true;
-        
+            player.buffImmune[mod.BuffType("ScanDroneDebuff")] = true;
+            player.buffImmune[mod.BuffType("NebulaDebuff")] = true;
             player.noKnockback = true;
             player.GetModPlayer<StormPlayer>().lunarBarrier = true;
 

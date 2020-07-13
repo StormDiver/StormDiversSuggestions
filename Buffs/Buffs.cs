@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Celestial Guardian");
-            Description.SetDefault("The powers of the Celestial spirits rapidly regenerates your life and grants additonal defence");
+            Description.SetDefault("The powers of the Celestial spirits rapidly regenerate your life and grant additonal defense");
         }
         int particle = 10;
         public override void Update(Player player, ref int buffIndex)
@@ -26,11 +26,8 @@ namespace StormDiversSuggestions.Buffs
             particle--;
            
             {
-
-                
                 player.statDefense += 50;
-               
-                
+  
                 if (particle <= 0)
                 {
                     particle = 10;
@@ -83,6 +80,15 @@ namespace StormDiversSuggestions.Buffs
             player.statDefense += 30;
 
             player.GetModPlayer<StormPlayer>().turtled = true;
+
+            if (Main.rand.Next(10) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 273, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
         }
     }
     //_______________________________________________________________________________
@@ -174,7 +180,7 @@ namespace StormDiversSuggestions.Buffs
             player.magicCrit += 15;
       
             player.thrownCrit += 15;
-            player.GetModPlayer<StormPlayer>().frostSpikeCooldown = true;
+            
         }
     }
 }

@@ -52,12 +52,12 @@ namespace StormDiversSuggestions.NPCProjs       //We need this to basically indi
             }
             return;
         }
-        /*
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.Frostburn, 300);   //this make so when the projectile/flame hit a npc, gives it the buff  onfire , 80 = 3 seconds
+            
+                target.AddBuff(mod.BuffType("NebulaDebuff"), 500);
+            
         }
-        */
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();

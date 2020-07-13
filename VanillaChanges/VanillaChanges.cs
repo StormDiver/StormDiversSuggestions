@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.VanillaChanges
                         
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increased night vision";
+                            line.text = "7% increased ranged critical strike chance\nIncreased night vision";
                         }
                     }
 

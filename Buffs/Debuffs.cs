@@ -27,6 +27,21 @@ namespace StormDiversSuggestions.Buffs
            
             
             player.GetModPlayer<StormPlayer>().sandBurn = true;
+
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 138, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                if (Main.rand.NextBool(4))
+                {
+                    Main.dust[dust].noGravity = false;
+                    Main.dust[dust].scale *= 0.5f;
+                }
+            }
+            Lighting.AddLight(player.position, 1f, 0.5f, 0f);
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -50,6 +65,19 @@ namespace StormDiversSuggestions.Buffs
 
             player.moveSpeed = 0.25f;
             player.GetModPlayer<StormPlayer>().boulderDB = true;
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 1, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                if (Main.rand.NextBool(4))
+                {
+                    Main.dust[dust].noGravity = false;
+                    Main.dust[dust].scale *= 0.5f;
+                }
+            }
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -93,6 +121,19 @@ namespace StormDiversSuggestions.Buffs
             player.moveSpeed = 0.2f;
             player.GetModPlayer<StormPlayer>().superBoulderDB = true;
 
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 55, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                if (Main.rand.NextBool(4))
+                {
+                    Main.dust[dust].noGravity = false;
+                    Main.dust[dust].scale *= 0.5f;
+                }
+            }
+            Lighting.AddLight(player.position, 1f, 0.5f, 0f);
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -111,11 +152,38 @@ namespace StormDiversSuggestions.Buffs
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
         }
-
+        int particle = 0;
         public override void Update(Player player, ref int buffIndex)
         {
             player.moveSpeed = 0.2f;
             player.GetModPlayer<StormPlayer>().lunarBoulderDB = true;
+
+            int choice = Main.rand.Next(4);
+            if (choice == 0)
+            {
+                particle = 244;
+            }
+            else if (choice == 1)
+            {
+                particle = 110;
+            }
+            else if (choice == 2)
+            {
+                particle = 111; ;
+            }
+            else if (choice == 3)
+            {
+                particle = 112;
+            }
+            if (Main.rand.Next(3) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, particle, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 0.5f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1.8f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+            Lighting.AddLight(player.position, 1f, 0.5f, 0.8f);
 
         }
         public override void Update(NPC npc, ref int buffIndex)
@@ -170,6 +238,44 @@ namespace StormDiversSuggestions.Buffs
             npc.GetGlobalNPC<StormNPC>().beetled = true;
             npc.defense -= 60;
             
+
+        }
+    }
+    //___________________________________________________________
+    public class NebulaDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Nebula Blazed");
+            Description.SetDefault("You are being burnt by the full power of a nebula");
+            Main.debuff[Type] = true;
+            // Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().nebula = true;
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 130, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                if (Main.rand.NextBool(4))
+                {
+                    Main.dust[dust].noGravity = false;
+                    Main.dust[dust].scale *= 0.5f;
+                }
+            }
+            Lighting.AddLight(player.position, 1f, 0.5f, 0.8f);
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().nebula = true;
+
 
         }
     }

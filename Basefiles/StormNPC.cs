@@ -37,6 +37,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool beetled;
 
+        public bool nebula;
         
 
         public override void ResetEffects(NPC npc)
@@ -47,6 +48,7 @@ namespace StormDiversSuggestions.Basefiles
             sandBurn = false;
             turtled = false;
             beetled = false;
+            nebula = false;
         }
         public override void AI(NPC npc)
 
@@ -98,6 +100,11 @@ namespace StormDiversSuggestions.Basefiles
                 
                     damage = 2;
                 
+            }
+            if (nebula)
+            {
+                npc.lifeRegen -= 180;
+                damage = 10;
             }
            
         }
@@ -168,6 +175,22 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
                 Lighting.AddLight(npc.position, 1f, 0.5f, 0f);
+            }
+            if (nebula)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 130, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default, 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 1f, 0.5f, 0.8f);
             }
             if (sandBurn)
             {

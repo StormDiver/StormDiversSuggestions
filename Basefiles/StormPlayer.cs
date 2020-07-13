@@ -47,9 +47,11 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool frostSpike;
 
-        public bool frostSpikeCooldown;
+        
 
         public bool lunarBarrier;
+
+        public bool nebula;
         
         public override void ResetEffects()
         {
@@ -64,8 +66,9 @@ namespace StormDiversSuggestions.Basefiles
             shroombuff = false;
             flameCore = false;
             frostSpike = false;
-            frostSpikeCooldown = false;
+            
             lunarBarrier = false;
+            nebula = false;
         }
        // int shotCount = 0;
         //bool shot;
@@ -128,7 +131,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                    
                     
-                        if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+                        //if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
                         {
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
                             player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
@@ -138,7 +141,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 if (attackdmg >= 60 && !Main.expertMode)
                 {
-                    if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+                    //if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
                     {
                         Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
                         player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
@@ -147,7 +150,7 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (frostSpike)
             {
-                if (!frostSpikeCooldown)
+                if (!Main.LocalPlayer.HasBuff(mod.BuffType("FrozenBuff")))
                 {
                     Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
                     float numberProjectiles = 10 + Main.rand.Next(4);
@@ -184,164 +187,68 @@ namespace StormDiversSuggestions.Basefiles
             {
                 
                 player.lifeRegen += 30;
+                
             }
          
         }
+      
         public override void UpdateBadLifeRegen()
         {
             {
                 if (boulderDB)
                 {
-                    if (player.lifeRegen > 0)
-                    {
-                        player.lifeRegen = 0;
-                    }
-                    player.lifeRegen -= 10;
+                   
+                    player.lifeRegen = -10;
 
                 }
                 if (superBoulderDB)
                 {
 
-                    if (player.lifeRegen > 0)
-                    {
-                        player.lifeRegen = 0;
-                    }
-                    player.lifeRegen -= 30;
+                    
+                    player.lifeRegen = -20;
                 }
                 if (lunarBoulderDB)
                 {
 
-                    if (player.lifeRegen > 0)
-                    {
-                        player.lifeRegen = 0;
-                    }
-                    player.lifeRegen -= 50;
+                    
+                    player.lifeRegen = -30;
                 }
                 if (sandBurn)
                 {
 
-                    if (player.lifeRegen > 0)
-                    {
-                        player.lifeRegen = 0;
-                    }
-                    player.lifeRegen -= 10;
+                    
+                    player.lifeRegen = -10;
+                }
+                if (nebula)
+                {
+                    player.lifeRegen = -30;
+                    
                 }
             }
         }
 
-        int particle = 0;
+        
         public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
-            {
-                if (boulderDB)
-                {
-                    if (Main.rand.Next(4) < 3)
-                    {
-                        int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 1, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].velocity *= 1.8f;
-                        Main.dust[dust].velocity.Y -= 0.5f;
-                        Main.playerDrawDust.Add(dust);
-                    }
-                    
-                }
-            }
-                if (superBoulderDB)
-                {
-                    if (Main.rand.Next(3) < 3)
-                    {
-                        int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 55, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 0.5f);
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].velocity *= 1.8f;
-                        Main.dust[dust].velocity.Y -= 0.5f;
-                    Main.playerDrawDust.Add(dust);
-                }
-                r *= 1f;
-                g *= 0.5f;
-                b *= 0f;
-                fullBright = true;
-            }
-            if (lunarBoulderDB)
-            {
-                int choice = Main.rand.Next(4);
-                if (choice == 0)
-                {
-                    particle = 244;
-                }
-                else if (choice == 1)
-                {
-                    particle = 110;
-                }
-                else if (choice == 2)
-                {
-                    particle = 111; ;
-                }
-                else if (choice == 3)
-                {
-                    particle = 112;
-                }
-                if (Main.rand.Next(3) < 3)
-                {
-                    int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, particle, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 0.5f);
-                    Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1.8f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    Main.playerDrawDust.Add(dust);
-                }
-                r *= 1f;
-                g *= 0.5f;
-                b *= 0f;
-                fullBright = true;
-            }
-            if (sandBurn)
-            {
-                if (Main.rand.Next(3) < 3)
-                {
-                    int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 138, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
-                    Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1.8f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    Main.playerDrawDust.Add(dust);
-                }
-                r *= 1f;
-                g *= 0.5f;
-                b *= 0f;
-                fullBright = true;
-            }
+           
             if (SSBuff)
             {
-                if (Main.rand.Next(10) < 3)
+                if (Main.rand.Next(4) < 3)
                 {
                     int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 57, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
                     Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1.8f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    Main.playerDrawDust.Add(dust);
-                }
-                r *= 1f;
-                g *= 1f;
-                b *= 0f;
-                fullBright = true;
-            }
-            if (turtled)
-            {
-
-                if (Main.rand.Next(10) < 3)
-                {
-                    int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 273, player.velocity.X, player.velocity.Y, 100, default, 1f);
-                    Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1f;
                     Main.dust[dust].velocity.Y -= 0.5f;
-                    Main.playerDrawDust.Add(dust);
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
                 }
-
-
-               
-               
+                Lighting.AddLight(player.position, 1f, 1f, 0f);
                 
-
-
             }
+           
     
         }
         /*
