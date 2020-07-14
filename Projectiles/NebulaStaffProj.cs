@@ -150,7 +150,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("NebulaDebuff"), 600);
+            target.AddBuff(mod.BuffType("NebulaDebuff"), 450);
         }
         
         public override bool OnTileCollide(Vector2 oldVelocity)

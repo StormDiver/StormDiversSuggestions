@@ -65,8 +65,7 @@ namespace StormDiversSuggestions.Buffs
     }
     //______________________________________________________________________________
     
-    //_______________________________________________________________________________
-   
+  
     public class TurtleBuff : ModBuff
     {
         public override void SetDefaults()
@@ -111,6 +110,8 @@ namespace StormDiversSuggestions.Buffs
             }
         }
     }
+    //_______________________________________________________________________________
+
     public class SpectreBuff : ModBuff
     {
         public override void SetDefaults()
@@ -129,6 +130,8 @@ namespace StormDiversSuggestions.Buffs
             }
         }
     }
+    //_______________________________________________________________________________
+
     public class BeetleBuff : ModBuff
     {
         public override void SetDefaults()
@@ -147,6 +150,8 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    //_______________________________________________________________________________
+
     public class RainBuff : ModBuff
     {
         public override void SetDefaults()
@@ -161,6 +166,8 @@ namespace StormDiversSuggestions.Buffs
             player.moveSpeed += 0.6f;
         }
     }
+    //_______________________________________________________________________________
+
     public class FrozenBuff : ModBuff
     {
         public override void SetDefaults()
@@ -175,11 +182,11 @@ namespace StormDiversSuggestions.Buffs
 
             player.runAcceleration *= 1.5f;
             player.maxRunSpeed *= 1.5f;
-            player.meleeCrit += 15;
-            player.rangedCrit += 15;
-            player.magicCrit += 15;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
       
-            player.thrownCrit += 15;
+            player.thrownCrit += 10;
             
         }
     }

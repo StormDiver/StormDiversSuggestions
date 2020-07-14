@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.NPCProjs       //We need this to basically indi
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             
-                target.AddBuff(mod.BuffType("NebulaDebuff"), 500);
+                target.AddBuff(mod.BuffType("NebulaDebuff"), 300);
             
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
