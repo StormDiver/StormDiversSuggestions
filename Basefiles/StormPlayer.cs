@@ -131,7 +131,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (skulltime == 24)
                 {
 
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 80, 0f, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 65, 0f, player.whoAmI);
 
                     skulltime = 0;
                 }

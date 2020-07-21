@@ -78,7 +78,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (lineOfSight)
             {
-                projectile.damage = 80;
+                projectile.damage = 65;
             }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
