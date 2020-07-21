@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magical Crimson Axe");
+            DisplayName.SetDefault("Crimson Axe");
             Tooltip.SetDefault("Summons mini Crimson Axes that split into multiple axes");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
@@ -33,9 +33,9 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 46;
+            item.damage = 35;
             //item.crit = 4;
-            item.knockBack = 5f;
+            item.knockBack = 2f;
 
             item.shoot = mod.ProjectileType("CrimsonAxeProj");
             
@@ -81,9 +81,10 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.PearlwoodHammer);
             recipe.AddIngredient(ItemID.SoulofNight, 8);
             recipe.AddIngredient(ItemID.Ichor, 15);
-            recipe.AddIngredient(ItemID.PearlwoodHammer);
+            recipe.AddIngredient(ItemID.DarkShard);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

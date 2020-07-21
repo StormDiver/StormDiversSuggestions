@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.NPCProjs
             Vector2 position2 = projectile.Center;
             dust2 = Terraria.Dust.NewDustPerfect(position2, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
             dust2.noGravity = true;
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
 
             AnimateProjectile();
         }

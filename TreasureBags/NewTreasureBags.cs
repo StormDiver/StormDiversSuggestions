@@ -25,6 +25,13 @@ namespace StormDiversSuggestions.TreasureBags
             {
                 player.QuickSpawnItem(ItemType<FlameCore>(), Main.rand.Next(1, 1));
             }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                if (context == "bossBag" && arg == ItemID.SkeletronPrimeBossBag || arg == ItemID.TwinsBossBag || arg == ItemID.DestroyerBossBag)
+                {
+                    player.QuickSpawnItem(ItemType<PrimeAccess>(), Main.rand.Next(1, 1));
+                }
+            }
 
             if (context == "bossBag" && Main.hardMode)
             {

@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-            
+           
             projectile.magic = true;
             projectile.timeLeft = 180;
             //aiType = ProjectileID.Bullet;
@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Projectiles
             if (speedup < 60)
             {
                 projectile.rotation = (0.4f * speedup);
-               
+                projectile.penetrate = -1;
             }
             if (speedup == 60)
             {
@@ -82,7 +82,13 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (shoottime >= 16)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 8, mod.ProjectileType("CursedHammerProj2"), (int)(projectile.damage * 0.7f), 0f, projectile.owner, 0f, 0f);
+                    float speedX = 0f;
+                    float speedY = -4f;
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
+                    float scale = 1f - (Main.rand.NextFloat() * .5f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("CursedHammerProj2"), (int)(projectile.damage * 0.7f), 0f, projectile.owner, 0f, 0f);
+
                     for (int i = 0; i < 10; i++)
                     {
 
@@ -178,17 +184,17 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = 3;
             projectile.magic = true;
             projectile.timeLeft = 200;
             //aiType = ProjectileID.WoodenArrowFriendly;
-            projectile.aiStyle = 0;
+            projectile.aiStyle = 1;
             projectile.scale = 0.8f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
-            drawOffsetX = -3;
-            drawOriginOffsetY = -10;
+            drawOffsetX = -6;
+            //drawOriginOffsetY = -10;
         }
         int spin = 0;
         public override void AI()
@@ -215,7 +221,7 @@ namespace StormDiversSuggestions.Projectiles
 
            
             
-                target.AddBuff(BuffID.CursedInferno, 1200);
+                target.AddBuff(BuffID.CursedInferno, 400);
 
             
 
@@ -228,7 +234,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
             for (int i = 0; i < 10; i++)
             {
 

@@ -53,6 +53,10 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool nebula;
         
+        public bool primeSpin;
+
+       
+
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -69,9 +73,13 @@ namespace StormDiversSuggestions.Basefiles
             
             lunarBarrier = false;
             nebula = false;
+            primeSpin = false;
+            
         }
-       // int shotCount = 0;
+        // int shotCount = 0;
         //bool shot;
+        public int skulltime = 0;
+       
         public override void PostUpdateEquips()
         {
             /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
@@ -114,7 +122,27 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 //player.moveSpeed *= 0.4f;
             }
-          
+            if (primeSpin)
+            {
+                if (!player.dead)
+                {
+                    skulltime++;
+                }
+                if (skulltime == 24)
+                {
+
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 80, 0f, player.whoAmI);
+
+                    skulltime = 0;
+                }
+
+              
+            }
+            if (!primeSpin || player.dead)
+            {
+                skulltime = 0;
+            }
+
         }
         int attackdmg = 0;
         

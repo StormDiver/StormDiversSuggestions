@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Arrow");
+            DisplayName.SetDefault("Arid Arrow");
         }
 
         public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.penetrate = 1; 
             projectile.ranged = true;
-            projectile.extraUpdates = 1;
+            //projectile.extraUpdates = 1;
             projectile.arrow = true;
             aiType = ProjectileID.WoodenArrowFriendly;
             

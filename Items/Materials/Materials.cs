@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Cloth");
+            DisplayName.SetDefault("Gladiator Cloth");
             
             if (!GetInstance<Configurations>().DisableNewRecipes)
 
@@ -203,7 +203,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blue Cloth");
+            DisplayName.SetDefault("Eskimo Cloth");
             
             if (!GetInstance<Configurations>().DisableNewRecipes)
 

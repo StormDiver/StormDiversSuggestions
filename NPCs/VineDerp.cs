@@ -84,11 +84,9 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void NPCLoot()
         {
-            int drops = 8 + Main.rand.Next(4); //This defines how many projectiles to shot.
-            for (int i = 0; i < drops; i++)
-            {
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.ChlorophyteOre);
-            }
+           
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.ChlorophyteOre, Main.rand.Next(8, 12));
+            
             if (Main.expertMode)
             {
                 if (Main.rand.Next(5) == 0)

@@ -38,8 +38,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool beetled;
 
         public bool nebula;
-        
 
+        public bool heartDrop;
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -49,6 +49,7 @@ namespace StormDiversSuggestions.Basefiles
             turtled = false;
             beetled = false;
             nebula = false;
+            heartDrop = false;
         }
         public override void AI(NPC npc)
 
@@ -96,7 +97,7 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (sandBurn)
             {
-                npc.lifeRegen -= 40;
+                npc.lifeRegen -= 30;
                 
                     damage = 2;
                 
@@ -242,6 +243,29 @@ namespace StormDiversSuggestions.Basefiles
 
             }
         }
+        public override void HitEffect(NPC npc, int hitDirection, double damage)
+        {
+            if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
+            {
+                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss)
+                {
+                    if (Main.rand.Next(18) == 0)
+                    {
+                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
+                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                        for (int i = 0; i < 15; i++)
+                        {
+                            Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
+                            //dust.noGravity = true;
+                        }
+                        npc.life = 0;
+                    }
+                }
+            }
+        }
+        
+        
 
-    }
+        }
 }

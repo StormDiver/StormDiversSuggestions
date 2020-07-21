@@ -154,45 +154,37 @@ namespace StormDiversSuggestions.NPCs
         public override void NPCLoot()
         {
 
-            int drops = 5 + Main.rand.Next(4); 
-            for (int i = 0; i < drops; i++)
+            
             {
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.LunarOre);
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.LunarOre, Main.rand.Next(5, 7));
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart, Main.rand.Next(3, 5));
             }
 
 
                 int choice = Main.rand.Next(4);
             if (choice == 0)
             {
-                int vortdrop = 2 + Main.rand.Next(4); 
-                for (int i = 0; i < vortdrop; i++)
-                {
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentVortex);
-                }
+                
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentVortex, Main.rand.Next(2, 4));
+                
             }
             else if (choice == 1)
             {
-                int solardrop = 2 + Main.rand.Next(4);
-                for (int i = 0; i < solardrop; i++)
-                {
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentSolar);
-                }
+                
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentSolar, Main.rand.Next(2, 4));
+                
             }
             else if (choice == 2)
             {
-                int nebdrop = 2 + Main.rand.Next(4);
-                for (int i = 0; i < nebdrop; i++)
-                {
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentNebula);
-                }
+                
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentNebula, Main.rand.Next(2, 4));
+                
             }
             else if (choice == 3)
             {
-                int stardrop = 2 + Main.rand.Next(4);
-                for (int i = 0; i < stardrop; i++)
-                {
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentStardust);
-                }
+                
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentStardust, Main.rand.Next(2, 4));
+                
             }
         }
     }

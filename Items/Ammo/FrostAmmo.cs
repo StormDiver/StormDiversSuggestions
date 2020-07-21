@@ -64,11 +64,9 @@ namespace StormDiversSuggestions.Items.Ammo
             item.value = Item.buyPrice(0, 0, 2, 0);
             item.rare = 5;
 
-            //item.melee = true;
+      
             item.ranged = true;
-            //item.magic = true;
-            //item.summon = true;
-            //item.thrown = true;
+        
 
             item.damage = 15;
      

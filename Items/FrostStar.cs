@@ -21,9 +21,8 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 20;
             item.height = 20;
-            
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 28;
+            item.useAnimation = 28;
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;
@@ -35,12 +34,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = false;
         }
        
-         public override bool CanUseItem(Player player)       
-         {
-
-             
-             return player.ownedProjectileCounts[item.shoot] < 6;
-         }
+       
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Main.PlaySound(2, (int)position.X, (int)position.Y, 1);

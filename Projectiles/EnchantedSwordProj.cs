@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-
+            
             projectile.magic = true;
             projectile.timeLeft = 300;
             //aiType = ProjectileID.Bullet;
@@ -46,11 +46,11 @@ namespace StormDiversSuggestions.Projectiles
             if (speedup < 60)
             {
                 projectile.rotation = (0.4f * speedup);
-                projectile.penetrate = 1;
+                projectile.penetrate = -1;
             }
             if (speedup == 60)
             {
-
+                // REMOVE THIS AND REPLACE IT IT A HIGH VELOCITY SWORD THAT BOUCNES AROUND AND PIERCES INFINITELY!!!
                
                 Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 30);
                 for (int i = 0; i < 10; i++)
@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                     var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 }
-                for (int i = 0; i < 10; i++)
+               /* for (int i = 0; i < 10; i++)
                 {
                     NPC target = Main.npc[i];
                     target.TargetClosest(true);
@@ -81,13 +81,14 @@ namespace StormDiversSuggestions.Projectiles
 
                         projectile.Kill();
                     }
-                }
+                }*/
                     
                     {
                         
-                        projectile.velocity.X *= 15f;
-                        projectile.velocity.Y *= 15f;
-                    }
+                        projectile.velocity.X *= 25f;
+                        projectile.velocity.Y *= 25f;
+                    projectile.penetrate = 5;
+                }
                 
 
             }
@@ -99,10 +100,7 @@ namespace StormDiversSuggestions.Projectiles
                    
                 
             }
-            if (speedup == 60)
-            {
-                projectile.penetrate = 4;
-            }
+           
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -115,18 +113,40 @@ namespace StormDiversSuggestions.Projectiles
                 Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
         }
+        int reflect = 5;
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
-            return true;
+
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+            }
+            {
+                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 1f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 1f;
+                }
+
+                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+            }
+           
+            return false;
         }
 
         public override void Kill(int timeLeft)
         {
 
 
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
-            
             for (int i = 0; i < 10; i++)
             {
 

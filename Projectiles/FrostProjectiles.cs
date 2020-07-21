@@ -240,20 +240,19 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
             projectile.light = 0.2f;
-            projectile.width = 30;
-            projectile.height = 30;
+            projectile.width = 38;
+            projectile.height = 38;
             projectile.friendly = true;
             projectile.penetrate = 3;
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
-
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-            // drawOffsetX = -5;
+             //drawOffsetX = -4;
             //drawOriginOffsetY = -5;
 
         }
@@ -265,10 +264,9 @@ namespace StormDiversSuggestions.Projectiles
             Main.dust[dustIndex].noGravity = true;
 
 
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
 
-            projectile.width = 30;
-            projectile.height = 30;
+            
 
 
         }
@@ -437,7 +435,7 @@ namespace StormDiversSuggestions.Projectiles
             Main.dust[dustIndex].noGravity = true;
 
 
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
 
         }
 

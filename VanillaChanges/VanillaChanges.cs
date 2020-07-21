@@ -690,19 +690,20 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.lavaRose = true;
                     player.setBonus = "Immunity to fire blocks and onfire";
                 }
-                /* if (player.armor[0].type == ItemID.EskimoHood && player.armor[1].type == ItemID.EskimoCoat && player.armor[2].type == ItemID.EskimoPants)
+                 if (player.armor[0].type == ItemID.EskimoHood && player.armor[1].type == ItemID.EskimoCoat && player.armor[2].type == ItemID.EskimoPants)
                  {
 
                      player.resistCold = true;
-
-                     player.setBonus = "Reduced damage from cold themed enemies";
-                 }*/
-                if (player.armor[0].type == ItemID.PinkEskimoHood || player.armor[0].type == ItemID.EskimoHood && player.armor[1].type == ItemID.PinkEskimoCoat || player.armor[0].type == ItemID.EskimoCoat && player.armor[2].type == ItemID.PinkEskimoPants || player.armor[0].type == ItemID.EskimoPants)
+                    player.buffImmune[BuffID.Chilled] = true;
+                    player.setBonus = "Reduced damage from cold themed enemies and immunity to Chilled";
+                 }
+                if (player.armor[0].type == ItemID.PinkEskimoHood && player.armor[1].type == ItemID.PinkEskimoCoat && player.armor[2].type == ItemID.PinkEskimoPants)
                 {
 
                     player.resistCold = true;
                     player.buffImmune[BuffID.Chilled] = true;
-                    player.setBonus = "Reduced damage from cold themed enemies and immunity to Chilled";
+                    player.buffImmune[BuffID.Frozen] = true;
+                    player.setBonus = "Reduced damage from cold themed enemies, immunity to Chilled and Frozen";
                 }
                 if (player.armor[0].type == ItemID.GladiatorHelmet && player.armor[1].type == ItemID.GladiatorBreastplate && player.armor[2].type == ItemID.GladiatorLeggings)
                 {

@@ -250,7 +250,7 @@ namespace StormDiversSuggestions.Projectiles
             dust.noGravity = true;
            
 
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
 
             projectile.width = 28;
             projectile.height = 28;
@@ -382,7 +382,7 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 1, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
                 dust.noGravity = true;
             }
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
         }
 
 
@@ -444,7 +444,7 @@ namespace StormDiversSuggestions.Projectiles
             Vector2 position = projectile.Center;
             dust = Terraria.Dust.NewDustPerfect(position, 174, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
             dust.noGravity = true;
-            projectile.rotation += (float)projectile.direction * 0.2f;
+            projectile.rotation += (float)projectile.direction * -0.2f;
 
 
         }

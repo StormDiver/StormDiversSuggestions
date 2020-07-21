@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Derpling Jump");
+            DisplayName.SetDefault("Derpling Legs");
             Description.SetDefault("Grants you the jump power of a true Derpling");
         }
         public override void Update(Player player, ref int buffIndex)
@@ -188,6 +188,29 @@ namespace StormDiversSuggestions.Buffs
       
             player.thrownCrit += 10;
             
+        }
+    }
+    //____________________________________________
+    public class HeartBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Heart Stealer");
+            Description.SetDefault("Steal the hearts of your enemies, literally");
+           
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            /*if (Main.rand.Next(10) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 273, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }*/
         }
     }
 }

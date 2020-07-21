@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Enchanted Sword");
-            Tooltip.SetDefault("Summons mini Enchanted swords that charge at enemies");
+            Tooltip.SetDefault("Summons mini Enchanted swords that pierce and ricochet");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
@@ -33,9 +33,9 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 60;
+            item.damage = 45;
             //item.crit = 4;
-            item.knockBack = 5f;
+            item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("EnchantedSwordProj");
             
@@ -82,9 +82,10 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.PearlwoodSword);
             recipe.AddIngredient(ItemID.SoulofLight, 8);
             recipe.AddIngredient(ItemID.CrystalShard, 25);
-            recipe.AddIngredient(ItemID.PearlwoodSword);
+            recipe.AddIngredient(ItemID.LightShard);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+           
             projectile.magic = true;
             projectile.timeLeft = 300;
             //aiType = ProjectileID.Bullet;
@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Projectiles
             if (speedup < 60)
             {
                 projectile.rotation = (0.4f * speedup);
-               
+                projectile.penetrate = -1;
             }
             if (speedup == 60)
             {
@@ -179,7 +179,7 @@ namespace StormDiversSuggestions.Projectiles
             }
 
            
-            if (Main.rand.Next(3) == 0) // the chance
+            if (Main.rand.Next(2) == 0) // the chance
             {
                 target.AddBuff(BuffID.Ichor, 600);
 

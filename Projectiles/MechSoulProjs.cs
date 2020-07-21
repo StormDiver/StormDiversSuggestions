@@ -248,8 +248,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 28;
             projectile.height = 28;
             projectile.friendly = true;
-            projectile.penetrate = -1; // Penetrates NPCs infinitely.
-            projectile.melee = true; // Deals melee dmg.
+            projectile.penetrate = -1; 
+            projectile.melee = true; 
 
             projectile.aiStyle = 15; // Set the aiStyle to that of a flail.
             projectile.usesLocalNPCImmunity = true;
@@ -606,74 +606,5 @@ namespace StormDiversSuggestions.Projectiles
         }
 
     }
-    //_______________________________________________________________________________________
-    public class Primeheadspin : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Skull Spinner");
-        }
-
-        public override void SetDefaults()
-        {
-            projectile.width = 46;
-            projectile.height = 46;
-
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-
-            projectile.magic = true;
-            projectile.timeLeft = 600;
-            projectile.tileCollide = false;
-            projectile.MaxUpdates = 1;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
-        }
-        public override void AI()
-        {
-            var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
-            projectile.rotation += (float)projectile.direction * 0.2f;
-            //Making player variable "p" set as the projectile's owner
-            Player p = Main.player[projectile.owner];
-
-            //Factors for calculations
-            double deg = (double)projectile.ai[1] * 5; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
-            double rad = deg * (Math.PI / 180); //Convert degrees to radians
-            double dist = 100; //Distance away from the player
-
-            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
-            /distance for the desired distance away from the player minus the projectile's width   /
-            /and height divided by two so the center of the projectile is at the right place.     */
-
-            projectile.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - projectile.width / 2;
-            projectile.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - projectile.height / 2;
-
-            //Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
-            projectile.ai[1] += 1f;
-            var player = Main.player[projectile.owner];
-            if (player.dead)
-            {
-                projectile.Kill();
-                return;
-            }
-
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.owner == Main.myPlayer)
-            {
-                Main.PlaySound(SoundID.Item14, projectile.position);
-
-                for (int i = 0; i < 20; i++)
-                {
-
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 55);
-                }
-
-            }
-        }
-
-    }
+   
 }

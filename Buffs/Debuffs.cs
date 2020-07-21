@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("ScanDroned");
+            DisplayName.SetDefault("Marked for target");
             Description.SetDefault("All your defense and damage resistance has been taken away");
             Main.debuff[Type] = true;
 

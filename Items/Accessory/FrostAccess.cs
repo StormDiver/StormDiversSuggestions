@@ -33,11 +33,7 @@ namespace StormDiversSuggestions.Items.Accessory
             
         }
 
-       /* public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
-        {
-            
-        
-        }*/
+    
 
         public override void AddRecipes()
         {
