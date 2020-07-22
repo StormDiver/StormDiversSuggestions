@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;  
             item.consumable = true;  
             item.rare = 1; 
-            item.value = Item.buyPrice(0, 0, 10, 0);  
+            item.value = Item.sellPrice(0, 0, 2, 0);  
             item.createTile = mod.TileType("BabyDerpBannerPlace"); //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("VineDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -73,7 +73,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("ScanDroneBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("StormDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -123,7 +123,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("VortCannonBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -148,7 +148,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("NebulaDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -173,7 +173,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("StardustDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -198,7 +198,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("SolarDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
@@ -223,7 +223,7 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.useStyle = 1;
             item.consumable = true;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("MoonDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }

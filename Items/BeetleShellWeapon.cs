@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;
-            item.value = Item.buyPrice(0, 8, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 8;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("BeetleShellProj");

@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.width = 14;
             item.height = 14;
             item.maxStack = 999;
-            item.value = Item.buyPrice(0, 0, 0, 1);
+            item.value = Item.sellPrice(0, 0, 0, 1);
             item.rare = 1;
             item.ranged = true;
 

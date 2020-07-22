@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Items
             item.width = 20;
             item.height = 20;
             item.maxStack = 1;
-            item.value = Item.buyPrice(0, 45, 0, 0);
+            item.value = Item.sellPrice(0, 7, 50, 0);
             item.rare = 6;
             item.useStyle = 5;
             item.useTime = 30;

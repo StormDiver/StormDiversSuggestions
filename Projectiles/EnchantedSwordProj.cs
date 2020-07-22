@@ -50,7 +50,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (speedup == 60)
             {
-                // REMOVE THIS AND REPLACE IT IT A HIGH VELOCITY SWORD THAT BOUCNES AROUND AND PIERCES INFINITELY!!!
+               
                
                 Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 30);
                 for (int i = 0; i < 10; i++)

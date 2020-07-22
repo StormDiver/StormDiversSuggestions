@@ -65,7 +65,7 @@ namespace StormDiversSuggestions.Basefiles
         }
         public override void SetDefaults(NPC npc)
         {
-            
+
             if (npc.boss)
             {
                 npc.buffImmune[(BuffType<BeetleDebuff>())] = true;
@@ -77,16 +77,16 @@ namespace StormDiversSuggestions.Basefiles
             if (boulderDB)
             {
                 npc.lifeRegen -= 60;
-                
-                    damage = 4;
-                
+
+                damage = 4;
+
             }
             if (superBoulderDB)
             {
                 npc.lifeRegen -= 160;
-                
-                    damage = 8;
-                
+
+                damage = 8;
+
             }
             if (lunarBoulderDB)
             {
@@ -98,16 +98,16 @@ namespace StormDiversSuggestions.Basefiles
             if (sandBurn)
             {
                 npc.lifeRegen -= 30;
-                
-                    damage = 2;
-                
+
+                damage = 2;
+
             }
             if (nebula)
             {
                 npc.lifeRegen -= 180;
                 damage = 10;
             }
-           
+
         }
         int particle = 0;
         public override void DrawEffects(NPC npc, ref Color drawColor)
@@ -126,7 +126,7 @@ namespace StormDiversSuggestions.Basefiles
                         Main.dust[dust].scale *= 0.5f;
                     }
                 }
-                
+
             }
             if (superBoulderDB)
             {
@@ -223,7 +223,7 @@ namespace StormDiversSuggestions.Basefiles
                         Main.dust[dust].scale *= 0.5f;
                     }
                 }
-                
+
             }
 
             if (beetled)
@@ -243,13 +243,13 @@ namespace StormDiversSuggestions.Basefiles
 
             }
         }
-        public override void HitEffect(NPC npc, int hitDirection, double damage)
+        public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss)
+                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss && !npc.friendly)
                 {
-                    if (Main.rand.Next(18) == 0)
+                    if (Main.rand.Next(20) == 0)
                     {
                         Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                         Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -264,8 +264,32 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
         }
-        
-        
-
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
+        {
+            if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
+            {
+                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss && !npc.friendly)
+                {
+                    if (Main.rand.Next(20) == 0)
+                    {
+                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
+                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                        for (int i = 0; i < 15; i++)
+                        {
+                            Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
+                            //dust.noGravity = true;
+                        }
+                        npc.life = 0;
+                    }
+                }
+            }
         }
+        public override void HitEffect(NPC npc, int hitDirection, double damage)
+        {
+        }
+
+
+    }
+        
 }

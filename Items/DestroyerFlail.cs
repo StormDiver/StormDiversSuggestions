@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items
    
             item.width = 30;
             item.height = 10;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
             item.crit = 4;
            

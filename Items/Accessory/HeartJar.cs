@@ -22,7 +22,7 @@ using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items.Accessory
 {
-   //MAKE IT MAKE ENEMIES DORP HEARTS WHEN HIT
+  
     public class HeartJar : ModItem
     {
         public override void SetStaticDefaults()
@@ -37,8 +37,8 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             item.width = 30;
             item.height = 28;
-           
-            Item.sellPrice(0, 1, 0, 0);
+
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 2;
             
             item.accessory = true;
@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddIngredient(ItemID.Bottle);
             recipe.AddIngredient(ItemID.LifeCrystal, 10);
             recipe.AddIngredient(ItemID.BandofRegeneration, 1);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 8);
+            recipe.AddIngredient(ItemID.CrimtaneBar, 14);
            
  
             recipe.AddTile(TileID.DemonAltar);
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddIngredient(ItemID.Bottle);
             recipe.AddIngredient(ItemID.LifeCrystal, 10);
             recipe.AddIngredient(ItemID.BandofRegeneration, 1);
-            recipe.AddIngredient(ItemID.DemoniteBar, 8);
+            recipe.AddIngredient(ItemID.DemoniteBar, 14);
  
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);

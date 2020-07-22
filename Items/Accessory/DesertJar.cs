@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             item.width = 14;
             item.height = 14;
-            item.value = Item.buyPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
 
 

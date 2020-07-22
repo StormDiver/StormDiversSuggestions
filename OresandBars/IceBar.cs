@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.OresandBars
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 30, 0);
+            item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = 5;
             item.useStyle = 1;
             item.useTurn = true;
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.OresandBars
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
-            Item.sellPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 10, 0);
             item.rare = 5;
             item.useStyle = 1;
             item.useTurn = true;

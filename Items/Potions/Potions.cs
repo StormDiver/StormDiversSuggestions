@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.maxStack = 99;
             item.consumable = true;
             item.rare = 8;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.ShroomiteBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }
@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.maxStack = 99;
             item.consumable = true;
             item.rare = 8;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.SpectreBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }
@@ -99,7 +99,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.maxStack = 99;
             item.consumable = true;
             item.rare = 8;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.BeetleBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }

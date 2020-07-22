@@ -20,7 +20,7 @@ using Terraria.ModLoader;
             item.width = 14;
             item.height = 14;
             item.maxStack = 999;
-            item.value = Item.buyPrice(0, 0, 0, 80);
+            item.value = Item.sellPrice(0, 0, 0, 16);
             item.rare = 8;
 
             //item.melee = true;

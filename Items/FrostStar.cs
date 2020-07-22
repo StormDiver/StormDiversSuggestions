@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;
-            item.value = Item.buyPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 6;
             item.shootSpeed = 8f;
             item.shoot = mod.ProjectileType("FrostStarProj");
