@@ -61,6 +61,7 @@ namespace StormDiversSuggestions.NPCProjs
                     Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
                 }
             */
+
         }
         
 

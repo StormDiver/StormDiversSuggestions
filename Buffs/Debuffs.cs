@@ -42,6 +42,9 @@ namespace StormDiversSuggestions.Buffs
                 }
             }
             Lighting.AddLight(player.position, 1f, 0.5f, 0f);
+
+
+            
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

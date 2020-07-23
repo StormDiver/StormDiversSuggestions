@@ -194,7 +194,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
             drawOffsetX = -6;
-            //drawOriginOffsetY = -10;
+            drawOriginOffsetY = -15;
         }
         int spin = 0;
         public override void AI()

@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 1, 60, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
 
@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 1f;
 
-            item.mana = 8;
+            item.mana = 12;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

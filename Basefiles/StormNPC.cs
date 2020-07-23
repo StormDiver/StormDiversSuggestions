@@ -74,39 +74,41 @@ namespace StormDiversSuggestions.Basefiles
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
+            if (sandBurn)
+            {
+                npc.lifeRegen -= 30;
+
+                damage = 5;
+
+            }
             if (boulderDB)
             {
                 npc.lifeRegen -= 60;
 
-                damage = 4;
+                damage = 8;
 
             }
             if (superBoulderDB)
             {
                 npc.lifeRegen -= 160;
 
-                damage = 8;
-
-            }
-            if (lunarBoulderDB)
-            {
-                npc.lifeRegen -= 400;
-
-                damage = 16;
-
-            }
-            if (sandBurn)
-            {
-                npc.lifeRegen -= 30;
-
-                damage = 2;
+                damage = 18;
 
             }
             if (nebula)
             {
                 npc.lifeRegen -= 180;
-                damage = 10;
+                damage = 20;
             }
+            if (lunarBoulderDB)
+            {
+                npc.lifeRegen -= 400;
+
+                damage = 40;
+
+            }
+           
+           
 
         }
         int particle = 0;
@@ -247,20 +249,24 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
                 {
-                    if (Main.rand.Next(20) == 0)
-                    {
-                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
-                        for (int i = 0; i < 15; i++)
+                    if (npc.type != NPCID.TheDestroyerBody &&
+                       npc.type != NPCID.TheDestroyerTail)
+                    { 
+                        if (Main.rand.Next(20) == 0)
                         {
-                            Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
-                            //dust.noGravity = true;
+                            Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
+                            Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                            for (int i = 0; i < 15; i++)
+                            {
+                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
+                                //dust.noGravity = true;
+                            }
+                            npc.life = 0;
                         }
-                        npc.life = 0;
-                    }
+                }
                 }
             }
         }
@@ -268,19 +274,23 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.2f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
                 {
-                    if (Main.rand.Next(20) == 0)
+                    if (npc.type != NPCID.TheDestroyerBody &&
+                        npc.type != NPCID.TheDestroyerTail)
                     {
-                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                        Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
-                        for (int i = 0; i < 15; i++)
+                        if (Main.rand.Next(20) == 0)
                         {
-                            Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
-                            //dust.noGravity = true;
+                            Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
+                            Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                            for (int i = 0; i < 15; i++)
+                            {
+                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
+                                //dust.noGravity = true;
+                            }
+                            npc.life = 0;
                         }
-                        npc.life = 0;
                     }
                 }
             }

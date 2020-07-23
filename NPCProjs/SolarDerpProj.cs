@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.NPCProjs
           
 
             projectile.aiStyle = 14;
-            aiType = ProjectileID.Meteor1;
+           // aiType = ProjectileID.Meteor1;
 
 
         }

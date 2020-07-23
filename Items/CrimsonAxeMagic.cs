@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 1f;
 
-            item.mana = 8;
+            item.mana = 12;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

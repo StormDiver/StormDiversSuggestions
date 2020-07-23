@@ -227,7 +227,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                    
                     player.lifeRegen = -10;
-
+                    
                 }
                 if (superBoulderDB)
                 {
