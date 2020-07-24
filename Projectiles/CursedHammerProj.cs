@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            
             
             return true;
         }
@@ -138,8 +138,8 @@ namespace StormDiversSuggestions.Projectiles
         {
 
 
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
-            
             for (int i = 0; i < 10; i++)
             {
 
@@ -233,8 +233,8 @@ namespace StormDiversSuggestions.Projectiles
         {
 
 
-
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+            
+           Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
             for (int i = 0; i < 10; i++)
             {
 
