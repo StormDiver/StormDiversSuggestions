@@ -61,8 +61,8 @@ namespace StormDiversSuggestions.Projectiles
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                    var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-                    //dust2.noGravity = true;
+                    var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+                    dust2.noGravity = true;
                 }
                
                 
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
                    
 
-                if (shoottime >= 16)
+                if (shoottime >= 18)
                 {
                     float speedX = 0f;
                     float speedY = -4f;
@@ -93,8 +93,8 @@ namespace StormDiversSuggestions.Projectiles
                     {
 
                         Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                        var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-                        //dust2.noGravity = true;
+                        var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+                        dust2.noGravity = true;
                     }
                     shoottime = 0;
                 }
@@ -102,7 +102,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (speedup == 60)
             {
-                projectile.penetrate = 3;
+                projectile.penetrate = 2;
             }
 
 
@@ -115,9 +115,9 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-                //dust.noGravity = true;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+                dust.noGravity = true;
+                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
             }
 
            
@@ -144,8 +144,8 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-               // dust.noGravity = true;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+                dust.noGravity = true;
             }
 
         }
@@ -214,8 +214,8 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-               // dust.noGravity = true;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+               dust.noGravity = true;
                 
             }
 
@@ -239,8 +239,8 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 74);
-               // dust.noGravity = true;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
+               dust.noGravity = true;
             }
 
         }

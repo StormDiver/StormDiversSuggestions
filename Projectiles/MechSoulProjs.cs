@@ -497,6 +497,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
             var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
+            dust.noGravity = true;
         }
 
 

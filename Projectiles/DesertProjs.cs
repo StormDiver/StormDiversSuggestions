@@ -389,12 +389,12 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.tileCollide = true;
             projectile.scale = 1f;
-
+            projectile.knockBack = 0;
 
 
             projectile.aiStyle = 14;
-            
 
+            
 
         }
 

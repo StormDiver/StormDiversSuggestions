@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 87);
                 dust.noGravity = true;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
+                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
         }
 

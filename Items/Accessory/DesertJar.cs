@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Accessory
                         float scale = 1f - (Main.rand.NextFloat() * .5f);
                         perturbedSpeed = perturbedSpeed * scale;
 
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertJarProj"), 30, 1f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertJarProj"), 35, 0f, player.whoAmI);
                         dropdust = 0;
 
                         //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 13);

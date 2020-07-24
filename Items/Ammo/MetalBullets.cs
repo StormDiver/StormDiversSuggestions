@@ -68,7 +68,7 @@ namespace StormDiversSuggestions.Items.Ammo
 
             item.damage = 6;
 
-            item.knockBack = 4f;
+            item.knockBack = 5f;
             item.consumable = true;
 
             item.shoot = mod.ProjectileType("IronShotProj");
@@ -110,7 +110,7 @@ namespace StormDiversSuggestions.Items.Ammo
 
             item.damage = 7;
 
-            item.knockBack = 3f;
+            item.knockBack = 5f;
             item.consumable = true;
 
             item.shoot = mod.ProjectileType("LeadShotProj");

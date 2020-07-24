@@ -110,7 +110,7 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
+                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
         }
         int reflect = 5;
@@ -123,22 +123,30 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.Kill();
             }
+            if (speedup >= 60)
             {
-                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-
-                if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 1f;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y * 1f;
-                }
+                    Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 
-                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+                    if (projectile.velocity.X != oldVelocity.X)
+                    {
+                        projectile.velocity.X = -oldVelocity.X * 1f;
+                    }
+                    if (projectile.velocity.Y != oldVelocity.Y)
+                    {
+                        projectile.velocity.Y = -oldVelocity.Y * 1f;
+                    }
+
+                    Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+
+                    return false;
+                }
             }
-           
-            return false;
+            else
+            {
+                return true;
+            }
+            
         }
 
         public override void Kill(int timeLeft)
