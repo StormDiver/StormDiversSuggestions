@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jar of hearts");
-            Tooltip.SetDefault("While below 90% life, you have a chance to instantly kill non-boss enemies who are below 25% life, making them drop a heart\n'Heart Stealer'");
+            Tooltip.SetDefault("While below 70% life, you have a chance to instantly kill non-boss enemies who are below 25% life, making them drop a heart\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -47,46 +47,48 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.statLife <= (player.statLifeMax2 * 0.9f))
+            if (player.statLife <= (player.statLifeMax2 * 0.7f))
             {
-                /*player.allDamage += 0.08f;
-                player.moveSpeed += 0.10f;
-                player.meleeCrit += 6;
-                player.rangedCrit += 6;
-                player.magicCrit += 6;
-                player.thrownCrit += 6;
-                player.statDefense += 5;*/
+                
                 player.AddBuff(mod.BuffType("HeartBuff"), 1);
                 
             }
            
         }
 
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Bottle);
-            recipe.AddIngredient(ItemID.LifeCrystal, 10);
-            recipe.AddIngredient(ItemID.BandofRegeneration, 1);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 14);
-           
- 
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.AddIngredient(ItemID.LifeCrystal, 2);
+            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 5);
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Bottle);
-            recipe.AddIngredient(ItemID.LifeCrystal, 10);
-            recipe.AddIngredient(ItemID.BandofRegeneration, 1);
-            recipe.AddIngredient(ItemID.DemoniteBar, 14);
- 
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 
+       /* public class ModGlobalNPC : GlobalNPC
+        {
+            public override void NPCLoot(NPC npc)
+            {
+                
+                    if (Main.expertMode && npc.lifeMax >= 250)
+                    { 
+                        if (Main.rand.Next(100) == 0)
+                        {
 
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                        }
+                    }
+                    if (!Main.expertMode && npc.lifeMax >= 150)
+                    {
+                        if (Main.rand.Next(150) == 0)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                        }
+                    }
+            }
+        }*/
     }
 }

@@ -10,8 +10,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Derpling Shotgun");
-            Tooltip.SetDefault("I know it looks cruel, but it had to be done\nFires out a homing Derpling head every other shot");
+            DisplayName.SetDefault("Derpling Rifle");
+            Tooltip.SetDefault("I know it looks cruel, but it had to be done\nThree round burst, only the first shot consumes ammo");
         }
         public override void SetDefaults()
         {
@@ -22,21 +22,22 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 7;
             item.useStyle = 5;
-            item.useTime = 32;
-            item.useAnimation = 32;
+            item.useTime = 4;
+            item.useAnimation = 12;
+            item.reuseDelay = 14;
             item.useTurn = false;
             item.autoReuse = true;
-            item.UseSound = SoundID.Item38;
+            //item.UseSound = SoundID.Item38;
             item.ranged = true;
 
            //item.UseSound = SoundID.Item40;
 
             item.damage = 30;
             item.crit = 6;
-            item.knockBack = 4f;
+            item.knockBack = 2f;
             
             item.shoot = ProjectileID.Bullet;
-            item.shootSpeed = 15f;
+            item.shootSpeed = 13f;
 
             item.useAmmo = AmmoID.Bullet;
             
@@ -48,16 +49,17 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-3, -3);
         }
-
-        int secondfire = 0;
+        
+        //int secondfire = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 4; //This defines how many projectiles to shot.
-            for (int i = 0; i < numberProjectiles; i++)
-            {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 3 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-            }
+            Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+            /* int numberProjectiles = 4; //This defines how many projectiles to shot.
+             for (int i = 0; i < numberProjectiles; i++)
+             {
+                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 3 degree spread.
+                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+             }
             secondfire++;
             if (secondfire >= 2)
             {
@@ -70,19 +72,19 @@ namespace StormDiversSuggestions.Items
                 Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.4), (int)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DerpRangedProj"), (int)(damage * 1.25), knockBack, player.whoAmI);
                 secondfire = 0;
                 Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 22);
-            }
+            }*/
             
 
-            return false;
+            return true;
 
         }
-        /*
-        public override bool ConsumeAmmo(Player player)
+       
+public override bool ConsumeAmmo(Player player)
         {
-            return Main.rand.NextFloat() >= .33f;
+            // Because of how the game works, player.itemAnimation will be 11, 7, and finally 3. (UseAmination - 1, then - useTime until less than 0.) 
+            // We can get the Clockwork Assault Riffle Effect by not consuming ammo when itemAnimation is lower than the first shot.
+            return !(player.itemAnimation < item.useAnimation - 2);
         }
-        */
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

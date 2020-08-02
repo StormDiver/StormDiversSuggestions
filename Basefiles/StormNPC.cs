@@ -40,6 +40,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool nebula;
 
         public bool heartDrop;
+
+        public bool spectreDebuff;
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -50,6 +52,7 @@ namespace StormDiversSuggestions.Basefiles
             beetled = false;
             nebula = false;
             heartDrop = false;
+            spectreDebuff = false;
         }
         public override void AI(NPC npc)
 
@@ -88,6 +91,13 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 8;
 
             }
+            if (spectreDebuff)
+            {
+                npc.lifeRegen -= 120;
+
+                damage = 14;
+
+            }
             if (superBoulderDB)
             {
                 npc.lifeRegen -= 160;
@@ -95,6 +105,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 18;
 
             }
+           
             if (nebula)
             {
                 npc.lifeRegen -= 180;
@@ -244,6 +255,22 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
+            if (spectreDebuff)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 16, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 0, default, 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+
+            }
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
@@ -269,6 +296,11 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 }
             }
+        }
+        public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+        {
+            
+            
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
         {

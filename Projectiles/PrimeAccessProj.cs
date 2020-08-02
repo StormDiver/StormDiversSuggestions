@@ -127,7 +127,9 @@ namespace StormDiversSuggestions.Projectiles
                         projectile.type != ProjectileID.VortexVortexLightning &&
                         projectile.type != ProjectileID.Sharknado &&
                         projectile.type != ProjectileID.SharknadoBolt &&
-                        projectile.type != ProjectileID.Cthulunado
+                        projectile.type != ProjectileID.Cthulunado &&
+                        projectile.type != ProjectileID.SandBallFalling &&
+                        projectile.type != ProjectileID.SiltBall
 
                         )
                     {

@@ -319,6 +319,7 @@ namespace StormDiversSuggestions.Projectiles
             if (Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("BeetleDebuff"), 480);
+                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
             }
             projectile.Kill();
         }

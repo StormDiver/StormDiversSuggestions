@@ -24,12 +24,13 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.tileCollide = true;
             projectile.melee = true;
-           // projectile.aiStyle = 1;
-            projectile.CloneDefaults(48);
-            aiType = 48;
-            projectile.timeLeft = 180;
+           projectile.aiStyle = 1;
+            //projectile.CloneDefaults(48);
+            //aiType = 48;
+            projectile.timeLeft = 60;
             drawOffsetX = -3;
             drawOriginOffsetY = 0;
+            projectile.scale = 0.7f;
         }
         
         public override void AI()
@@ -37,7 +38,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 172, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
+            dust = Terraria.Dust.NewDustPerfect(position, 33, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
 
 
@@ -48,6 +49,7 @@ namespace StormDiversSuggestions.Projectiles
                */
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+
             projectile.penetrate = 1;
             projectile.melee = true;
         }
@@ -64,7 +66,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
+                //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -111,7 +113,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 172, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
+            dust = Terraria.Dust.NewDustPerfect(position, 33, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
             dust.noGravity = true;
 
 
@@ -197,9 +199,11 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.aiStyle = 0;
             projectile.timeLeft = 60;
+            projectile.scale = 0.7f;
+
         }
 
-        int dropproj = 9;
+        
 
 
         public override void AI()
@@ -209,20 +213,21 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 172, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 2f);
+            dust = Terraria.Dust.NewDustPerfect(position, 33, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
-            dropproj--;
-            if (dropproj <= 0 && (projectile.velocity.X >= 1.5f || projectile.velocity.X <= -1.5f))
-
-            {
+            
+            if ((projectile.velocity.X >= 1.5f || projectile.velocity.X <= -1.5f))
+                if (Main.rand.Next(10) == 0)
+                {
+                    
                 int speedX = 0;
-                int speedY = 3;
+                int speedY = 6;
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
-                dropproj = 9;
+                
             }
         }
 
@@ -295,7 +300,7 @@ namespace StormDiversSuggestions.Projectiles
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 172, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            dust = Terraria.Dust.NewDustPerfect(position, 33, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 0.5f);
             dust.noGravity = true;
 
 
@@ -313,7 +318,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
+            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
             for (int i = 0; i < 5; i++)
             {
 

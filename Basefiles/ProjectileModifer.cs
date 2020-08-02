@@ -37,121 +37,127 @@ namespace StormDiversSuggestions.Basefiles
             }
         }
         */
-            
 
-       /* public override void AI(Projectile projectile)
-        {
-            var player = Main.player[projectile.owner];
-           
-            
-            if (player.GetModPlayer<StormPlayer>().primeSpin == true)
 
-            {
-                
-                if (projectile.hostile)
-                {
-                    if (projectile.type != ProjectileID.PhantasmalDeathray &&
-                        projectile.type != ProjectileID.SaucerDeathray &&
-                        projectile.type != ProjectileID.CultistRitual &&
-                        projectile.type != ProjectileID.CultistBossIceMist &&
-                        projectile.type != ProjectileID.CultistBossLightningOrb &&
-                        projectile.type != ProjectileID.VortexVortexPortal &&
-                        projectile.type != ProjectileID.VortexVortexLightning &&
-                        projectile.type != ProjectileID.Sharknado &&
-                        projectile.type != ProjectileID.SharknadoBolt &&
-                        projectile.type != ProjectileID.Cthulunado
+        /* public override void AI(Projectile projectile)
+         {
+             var player = Main.player[projectile.owner];
 
-                        )
-                    {
-                        //Player player = Main.player[npc.target];
 
-                        float distanceX = player.Center.X - projectile.Center.X;
-                        float distanceY = player.Center.Y - projectile.Center.Y;
-                        float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+             if (player.GetModPlayer<StormPlayer>().primeSpin == true)
 
-                        { }
-                        if (distance >= 150 && distance <= 160 && Main.rand.Next(5) == 0)
-                        {
-                            
-                            {
-                                Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 4);
-                                projectile.Kill();
-                            }
-                        }
-                    }
-                    }
-                      Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 59, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                    dust.noGravity = true;
-                
-            }*/
-            
-                /* if (projectile.ranged)
+             {
+
+                 if (projectile.hostile)
                  {
+                     if (projectile.type != ProjectileID.PhantasmalDeathray &&
+                         projectile.type != ProjectileID.SaucerDeathray &&
+                         projectile.type != ProjectileID.CultistRitual &&
+                         projectile.type != ProjectileID.CultistBossIceMist &&
+                         projectile.type != ProjectileID.CultistBossLightningOrb &&
+                         projectile.type != ProjectileID.VortexVortexPortal &&
+                         projectile.type != ProjectileID.VortexVortexLightning &&
+                         projectile.type != ProjectileID.Sharknado &&
+                         projectile.type != ProjectileID.SharknadoBolt &&
+                         projectile.type != ProjectileID.Cthulunado
 
-                     rangedincrease++;
-                     if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+                         )
                      {
+                         //Player player = Main.player[npc.target];
 
+                         float distanceX = player.Center.X - projectile.Center.X;
+                         float distanceY = player.Center.Y - projectile.Center.Y;
+                         float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-                         dust.scale = 1.2f;
-                         if (rangedincrease == 1)
+                         { }
+                         if (distance >= 150 && distance <= 160 && Main.rand.Next(5) == 0)
                          {
-                             if (projectile.penetrate >= 1)
+
                              {
-                                 projectile.penetrate = (projectile.penetrate + 1);
+                                 Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 4);
+                                 projectile.Kill();
                              }
-                             projectile.knockBack *= 2f;
-                             projectile.usesLocalNPCImmunity = true;
-                             projectile.localNPCHitCooldown = 10;
-                             projectile.extraUpdates += (int)1.5f;
                          }
                      }
-                 }*/
+                     }
+                       Dust dust;
+                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                     Vector2 position = projectile.position;
+                     dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 59, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                     dust.noGravity = true;
+
+             }*/
+
+        /* if (projectile.ranged)
+         {
+
+             rangedincrease++;
+             if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+             {
+
+ Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.position;
+            dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 59, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+            dust.noGravity = true;
+
+            
+                 dust.scale = 1.2f;
+                 if (rangedincrease == 1)
+                 {
+                     if (projectile.penetrate >= 1)
+                     {
+                         projectile.penetrate = (projectile.penetrate + 1);
+                     }
+                     projectile.knockBack *= 2f;
+                     projectile.usesLocalNPCImmunity = true;
+                     projectile.localNPCHitCooldown = 10;
+                     projectile.extraUpdates += (int)1.5f;
+                 }
+             }
+         }*/
 
 
-            }
-       /* public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
-        {
-            if (projectile.melee)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()))
-                {
-                    if (Main.rand.Next(5) == 0)
-                    {
-                        target.AddBuff(mod.BuffType("BeetleDebuff"), 300);
-                    }
-                    
-                }
-            }
-            if (projectile.ranged)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
-                {
-
-                }
-                
-            }
-     
-            if (projectile.magic)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
-                {
-                    
-                }
-            }
-        }
-        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
-        {
-            if (projectile.magic)
-            {
-                
-            }
-            return true;
-        }*/
     }
+    /* public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
+     {
+         if (projectile.melee)
+         {
+             if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()))
+             {
+                 if (Main.rand.Next(5) == 0)
+                 {
+                     target.AddBuff(mod.BuffType("BeetleDebuff"), 300);
+                 }
+
+             }
+         }
+         if (projectile.ranged)
+         {
+             if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+             {
+
+             }
+
+         }
+
+         if (projectile.magic)
+         {
+             if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+             {
+
+             }
+         }
+     }
+     public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+     {
+         if (projectile.magic)
+         {
+
+         }
+         return true;
+     }*/
+}
     
 
         

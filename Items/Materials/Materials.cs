@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gladiator Cloth");
+            DisplayName.SetDefault("Warrior Cloth");
             
             if (!GetInstance<Configurations>().DisableNewRecipes)
 
@@ -203,12 +203,12 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eskimo Cloth");
+            DisplayName.SetDefault("Insulated Fabric");
             
             if (!GetInstance<Configurations>().DisableNewRecipes)
 
             {
-                Tooltip.SetDefault("Seems like a good insulator, perhaps it could be used to keep warm");
+                Tooltip.SetDefault("Can be used to keep warm");
             }
             else
             {
@@ -328,9 +328,54 @@ namespace StormDiversSuggestions.Items.Materials
        
     }
 
-   
-    
+
+
     //____________________________________________________________________________________
-    //____________________________________________________________________________________
-    //____________________________________________________________________________________
-}
+
+    public class CrackedHeart : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Broken heart");
+
+            Tooltip.SetDefault("Almost devoid of life");
+            ItemID.Sets.ItemIconPulse[item.type] = true;
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 30;
+            item.height = 28;
+            item.maxStack = 999;
+            item.value = Item.sellPrice(0, 0, 50, 0);
+            item.rare = 3;
+       
+        }
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override void NPCLoot(NPC npc)
+            {
+                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
+                {
+                    if (Main.expertMode && npc.lifeMax >= 80)
+                    {
+                        if (Main.rand.Next(15) == 0)
+                        {
+
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
+                        }
+                    }
+                    if (!Main.expertMode && npc.lifeMax >= 40)
+                    {
+                        if (Main.rand.Next(20) == 0)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
+                        }
+                    }
+                }
+            }
+        }
+    }
+        //____________________________________________________________________________________
+        //____________________________________________________________________________________
+    }

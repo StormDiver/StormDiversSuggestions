@@ -2,6 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
+using StormDiversSuggestions.Buffs;
+using Microsoft.Xna.Framework;
 
 namespace StormDiversSuggestions.Items.Potions
 {
@@ -9,8 +12,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shroomite Potion");
-            Tooltip.SetDefault("Enhances your Ranged skills");
+            DisplayName.SetDefault("Ranged Enhancement Potion");
+            Tooltip.SetDefault("Increases the velocity and knockback of most ranged projectiles");
         }
 
         public override void SetDefaults()
@@ -35,7 +38,9 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.ShroomiteBar, 2);
-            recipe.AddIngredient(ItemID.Moonglow, 5);
+            recipe.AddIngredient(ItemID.Moonglow, 3);
+            recipe.AddIngredient(ItemID.DoubleCod);
+
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -46,8 +51,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spectre Potion");
-            Tooltip.SetDefault("Enhances your Magic skills");
+            DisplayName.SetDefault("Magic Enhancement Potion");
+            Tooltip.SetDefault("All magic projectiles can inflict a damaging debuff on enemies");
         }
 
         public override void SetDefaults()
@@ -72,7 +77,9 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.Ectoplasm, 4);
-            recipe.AddIngredient(ItemID.Waterleaf, 5);
+            recipe.AddIngredient(ItemID.Waterleaf, 3);
+            recipe.AddIngredient(ItemID.PrincessFish);
+
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -83,8 +90,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Beetle Potion");
-            Tooltip.SetDefault("Enhances your Melee skills");
+            DisplayName.SetDefault("Melee Enhancement Potion");
+            Tooltip.SetDefault("Increases armor penetration of all melee weapons by 40");
         }
 
         public override void SetDefaults()
@@ -109,11 +116,80 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.BeetleHusk, 3);
-            recipe.AddIngredient(ItemID.Fireblossom, 5);
+            recipe.AddIngredient(ItemID.Fireblossom, 3);
+            recipe.AddIngredient(ItemID.Hemopiranha);
+
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(this);
             recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddIngredient(ItemID.BeetleHusk, 3);
+            recipe.AddIngredient(ItemID.Fireblossom, 3);
+            recipe.AddIngredient(ItemID.Ebonkoi);
 
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
+
+    public class BuffedProjs : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        int rangedincrease;
+        public override void AI(Projectile projectile)
+        {
+            var player = Main.player[projectile.owner];
+            
+                if (projectile.ranged && projectile.friendly)
+                {
+                    rangedincrease++;
+                    if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+                    {
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        Dust dust;
+                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                        Vector2 position = projectile.position;
+                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 59, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                        dust.noGravity = true;
+                    }
+
+
+                        if (rangedincrease == 1)
+                        {
+                            /*if (projectile.penetrate >= 1)
+                            {
+                                projectile.penetrate = (projectile.penetrate + 1);
+                            }
+
+                            projectile.usesLocalNPCImmunity = true;
+                            projectile.localNPCHitCooldown = 10;*/
+                            projectile.knockBack *= 1.5f;
+                            projectile.extraUpdates += (int)1f;
+                        }
+                    }
+                }
+           
+
+        }
+             public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
+        {
+            if (projectile.magic && projectile.friendly)
+            {
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+                {
+                    if (Main.rand.Next(1) == 0)
+                    {
+                        target.AddBuff(mod.BuffType("SpectreDebuff"), 600);
+                    }
+
+                }
+            }
+        }
+
+    
+    }
+    
 }

@@ -282,4 +282,28 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    //___________________________________________________________
+    public class SpectreDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Spectred");
+            Description.SetDefault("Losing life");
+            Main.debuff[Type] = true;
+            // Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().spectreDebuff = true;
+            
+            //npc.damage *= (int)0.8;
+
+        }
+    }
 }

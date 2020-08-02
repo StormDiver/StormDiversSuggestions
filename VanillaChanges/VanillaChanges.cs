@@ -657,19 +657,19 @@ namespace StormDiversSuggestions.VanillaChanges
                 if (player.armor[0].type == ItemID.SilverHelmet && player.armor[1].type == ItemID.SilverChainmail && player.armor[2].type == ItemID.SilverGreaves)
                 {
                     player.statDefense -= 3; // cancel out the vanilla bonus
-                    player.moveSpeed *= 1.10f;
+                    player.moveSpeed += 0.10f;
                     player.setBonus = "10% increased movement speed";
                 }
                 if (player.armor[0].type == ItemID.IronHelmet && player.armor[1].type == ItemID.IronChainmail && player.armor[2].type == ItemID.IronGreaves)
                 {
                     player.statDefense -= 2; // cancel out the vanilla bonus
-                    player.allDamage *= 1.06f;
+                    player.allDamage += 0.06f;
                     player.setBonus = "6% increased damage";
                 }
                 if (player.armor[0].type == ItemID.CopperHelmet && player.armor[1].type == ItemID.CopperChainmail && player.armor[2].type == ItemID.CopperGreaves)
                 {
                     player.statDefense -= 2; // cancel out the vanilla bonus
-                    player.meleeSpeed *= 1.1f;
+                    player.meleeSpeed += 0.1f;
                     player.setBonus = "10% increased melee speed";
                 }
                 if (player.armor[0].type == ItemID.RainHat && player.armor[1].type == ItemID.RainCoat)

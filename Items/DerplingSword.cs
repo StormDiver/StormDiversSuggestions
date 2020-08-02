@@ -28,10 +28,10 @@ namespace StormDiversSuggestions.Items
             item.rare = 7;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.useTurn = true;
+            //item.useTurn = true;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("DerpMeleeProj");
-            item.shootSpeed = 15f;
+            item.shootSpeed = 10f;
         }
         int weaponattack = 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -42,7 +42,7 @@ namespace StormDiversSuggestions.Items
                 int numberProjectiles = 2 + Main.rand.Next(3); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(35)); // This defines the projectiles random spread . 10 degree spread.
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(45)); // This defines the projectiles random spread . 10 degree spread.
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
                 Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 22);

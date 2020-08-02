@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Basefiles
         
         public bool primeSpin;
 
-       
+        public bool bootFall;
 
         public override void ResetEffects()
         {
@@ -74,12 +74,12 @@ namespace StormDiversSuggestions.Basefiles
             lunarBarrier = false;
             nebula = false;
             primeSpin = false;
-            
+            bootFall = false;
         }
         // int shotCount = 0;
         //bool shot;
         public int skulltime = 0;
-       
+        public bool falling;
         public override void PostUpdateEquips()
         {
             /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
@@ -142,11 +142,50 @@ namespace StormDiversSuggestions.Basefiles
             {
                 skulltime = 0;
             }
+            if (bootFall)
+            {
+                player.maxFallSpeed *= 2;
 
+                if (player.velocity.Y >= 9)
+                {
+
+
+
+
+                    falling = true;
+
+
+                }
+                if (player.velocity.Y == 0 && falling)
+                {
+
+                    for (int i = 0; i < 30; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.position.X + 1f, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
+                        Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+                    Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
+                    Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
+                    falling = false;
+                }
+            }
+        }
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            
         }
         int attackdmg = 0;
+        public override void OnHitByNPC(NPC npc, int damage, bool crit)
+        {
+           
+        }
+
         
-        
+
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
             
@@ -176,6 +215,7 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
+
             if (frostSpike)
             {
                 if (!Main.LocalPlayer.HasBuff(mod.BuffType("FrozenBuff")))
@@ -208,6 +248,7 @@ namespace StormDiversSuggestions.Basefiles
                     player.AddBuff(mod.BuffType("FrozenBuff"), 360);
                 }
             }
+
         }
         public override void UpdateLifeRegen()
         {

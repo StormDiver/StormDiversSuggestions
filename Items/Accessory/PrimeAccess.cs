@@ -30,12 +30,12 @@ namespace StormDiversSuggestions.Items.Accessory
         }
 
 
-        int skulltime = 0;
+        //int skulltime = 0;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             
             player.GetModPlayer<StormPlayer>().primeSpin = true;
-            skulltime++;
+            //skulltime++;
 
             /*
             if (skulltime >=20)

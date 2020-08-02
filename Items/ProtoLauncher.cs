@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prototype Launcher");
-            Tooltip.SetDefault("Fires out a burst of impact-exploding grenades\nRequires Prototype Grenades");
+            Tooltip.SetDefault("Fires out an impact-exploding grenade that have a small chance to prematurely explode into shrapnel\nRequires Prototype Grenades");
         }
         public override void SetDefaults()
         {
@@ -22,9 +22,9 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 3;
             item.useStyle = 5;
-            item.useTime = 12;
-            item.useAnimation = 36;
-            item.reuseDelay = 30;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;
 

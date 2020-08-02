@@ -95,17 +95,17 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Shroomite Enchancement");
-            Description.SetDefault("Increases armour penetration of ranged weapons by 20");
+            DisplayName.SetDefault("Ranged Enchancement");
+            Description.SetDefault("Increased ranged projectile velocity and knockback");
         }
-
+        //Increase extra updates of all ranaged projectiles?
         public override void Update(Player player, ref int buffIndex)
         {
             
             
             if (player.HeldItem.ranged)
             {
-                player.armorPenetration = 20;
+                
                 
             }
         }
@@ -116,16 +116,16 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Spectre Enchancement");
-            Description.SetDefault("Increases armour penetration of magic weapons by 25");
+            DisplayName.SetDefault("Magic Enchancement");
+            Description.SetDefault("Magic projectiles inflict a damaging debuff on enemies");
         }
-
+        //Maybe move the spectre orbitor abiltiy here??
         public override void Update(Player player, ref int buffIndex)
         {
 
             if (player.HeldItem.magic)
             {
-                player.armorPenetration = 25;
+                
                
             }
         }
@@ -136,16 +136,17 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Beetle Enchancement");
-            Description.SetDefault("Increases armour penetration of melee weapons by 30");
+            DisplayName.SetDefault("Melee Enchancement");
+            Description.SetDefault("Increases armour penetration for melee weapons");
         }
-
+        //Perhaps an on hit effect, inflicts beetled?
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
-                player.armorPenetration = 30;
-               
+                player.armorPenetration = 40;
+             
+                
             }
 
         }
@@ -187,6 +188,7 @@ namespace StormDiversSuggestions.Buffs
             player.magicCrit += 10;
       
             player.thrownCrit += 10;
+            
             
         }
     }

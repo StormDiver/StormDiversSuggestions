@@ -35,11 +35,27 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 200;
 
         }
-       
-       
+
+        int shrapnel = 0;
         public override void AI()
         {
+            shrapnel++;
+            if (shrapnel == 25)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    int numberProjectiles = 4 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
 
+                        float speedX = Main.rand.NextFloat(-6f, 6f);
+                        float speedY = Main.rand.NextFloat(-6f, 6f);
+
+                        Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("ProtoGrenadeProj2"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    }
+                    projectile.Kill();
+                }
+            }
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
             {
                 projectile.tileCollide = false;
@@ -119,8 +135,73 @@ namespace StormDiversSuggestions.Projectiles
 
 
             }
-
+           
         }
 
+    }
+    //_____________________________________________________________________________________________________________________________________________
+    public class ProtoGrenadeProj2 : ModProjectile
+    {
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sharpnel");
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 9;
+            projectile.height = 9;
+            projectile.friendly = true;
+            projectile.penetrate = 1;
+            projectile.ranged = true;
+            projectile.timeLeft = 300;
+            projectile.aiStyle = 14;
+            aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            drawOffsetX = -2;
+            drawOriginOffsetY = -2;
+        }
+
+        public override void AI()
+        {
+            if (Main.rand.NextBool())
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+
+               
+
+            }
+            projectile.rotation += (float)projectile.direction * -0.2f;
+        }
+
+
+
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+
+        {
+            projectile.Kill();
+            return true;
+        }
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.owner == Main.myPlayer)
+            {
+                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+
+                for (int i = 0; i < 5; i++)
+                {
+
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 1);
+                }
+
+            }
+        }
     }
 }
