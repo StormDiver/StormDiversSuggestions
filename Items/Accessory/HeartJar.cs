@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jar of hearts");
-            Tooltip.SetDefault("While below 70% life, you have a chance to instantly kill non-boss enemies who are below 25% life, making them drop a heart\n'Heart Stealer'");
+            Tooltip.SetDefault("While below 70% life, you have a chance to make enemies below 25% life drop a heart whiling inflicting a debuff\nEnemies cannot drop more than one heart this way\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -60,8 +60,8 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Bottle);
-            recipe.AddIngredient(ItemID.LifeCrystal, 2);
-            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 5);
+            recipe.AddIngredient(ItemID.LifeCrystal, 5);
+            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 3);
 
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

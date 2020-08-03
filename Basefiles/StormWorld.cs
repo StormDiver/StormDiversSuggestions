@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     Main.NewText("Frozen ores can now be obtained from the depths of the Ice biome", 0, 255, 255);
 
-                    for (int k = 0; k < (int)((double)(WorldGen.rockLayer * Main.maxTilesY) * 300E-05); k++)   //40E-05 is how many veins ore is going to spawn , change 40 to a lover value if you want less vains ore or higher value for more veins ore
+                   /* for (int k = 0; k < (int)((double)(WorldGen.rockLayer * Main.maxTilesY) * 300E-05); k++)   //40E-05 is how many veins ore is going to spawn , change 40 to a lover value if you want less vains ore or higher value for more veins ore
                     {
                         int X = WorldGen.genRand.Next(0, Main.maxTilesX);
                         int Y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY - 100);
@@ -121,7 +121,7 @@ namespace StormDiversSuggestions.Basefiles
                         {
                             WorldGen.TileRunner(X, Y, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(15, 28), mod.TileType("IceOrePlaced"));   // is the vein ore sizes, so 9 to 15 blocks or 5 to 9 blocks, 
                         }
-                    }
+                    }*/
                     StormWorld.SpawnIceOre = true;
                 }
             }
@@ -132,7 +132,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     Main.NewText("Arid ores can now be obtained from the depths of the Desert biome", 204, 132, 0);
 
-                    for (int k = 0; k < (int)((double)(WorldGen.worldSurfaceLow * Main.maxTilesY) * 2800E-05); k++)   //40E-05 is how many veins ore is going to spawn , change 40 to a lover value if you want less vains ore or higher value for more veins ore
+                    /*for (int k = 0; k < (int)((double)(WorldGen.worldSurfaceLow * Main.maxTilesY) * 2800E-05); k++)   //40E-05 is how many veins ore is going to spawn , change 40 to a lover value if you want less vains ore or higher value for more veins ore
                     {
                         int X = WorldGen.genRand.Next((int)0, Main.maxTilesX);
                         int Y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY); //this is the coordinates where the veins ore will spawn, so in Cavern layer
@@ -141,7 +141,7 @@ namespace StormDiversSuggestions.Basefiles
                         {
                             WorldGen.TileRunner(X, Y, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(10, 18), mod.TileType("DesertOrePlaced"));   //is the vein ore sizes, so 9 to 15 blocks or 5 to 9 blocks, 
                         }
-                    }
+                    }*/
                     StormWorld.SpawnDesertOre = true;
                 }
 

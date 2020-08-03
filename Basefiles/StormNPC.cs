@@ -42,6 +42,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool heartDrop;
 
         public bool spectreDebuff;
+
+        public bool heartDebuff;
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -53,6 +55,7 @@ namespace StormDiversSuggestions.Basefiles
             nebula = false;
             heartDrop = false;
             spectreDebuff = false;
+            heartDebuff = false;
         }
         public override void AI(NPC npc)
 
@@ -77,6 +80,13 @@ namespace StormDiversSuggestions.Basefiles
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
+            if (heartDebuff)
+            {
+                npc.lifeRegen -= 30;
+
+                damage = 5;
+
+            }
             if (sandBurn)
             {
                 npc.lifeRegen -= 30;
@@ -84,6 +94,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 5;
 
             }
+            
             if (boulderDB)
             {
                 npc.lifeRegen -= 60;
@@ -91,6 +102,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 8;
 
             }
+           
             if (spectreDebuff)
             {
                 npc.lifeRegen -= 120;
@@ -271,17 +283,33 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
+            if (heartDebuff)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 72, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 0, default, 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+
+            }
         }
+        bool heartSteal = false;
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
                 if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
                 {
-                    if (npc.type != NPCID.TheDestroyerBody &&
-                       npc.type != NPCID.TheDestroyerTail)
+                    
                     { 
-                        if (Main.rand.Next(20) == 0)
+                        if (Main.rand.Next(25) == 0 && !heartSteal)
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -291,7 +319,8 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.life = 0;
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 1800);
+                            heartSteal = true;
                         }
                 }
                 }
@@ -308,10 +337,9 @@ namespace StormDiversSuggestions.Basefiles
             {
                 if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
                 {
-                    if (npc.type != NPCID.TheDestroyerBody &&
-                        npc.type != NPCID.TheDestroyerTail)
+                    
                     {
-                        if (Main.rand.Next(20) == 0)
+                        if (Main.rand.Next(25) == 0 && !heartSteal)
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -321,7 +349,8 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.life = 0;
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 1800);
+                            heartSteal = true;
                         }
                     }
                 }

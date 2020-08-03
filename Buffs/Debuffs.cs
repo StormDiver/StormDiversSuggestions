@@ -252,7 +252,7 @@ namespace StormDiversSuggestions.Buffs
             DisplayName.SetDefault("Nebula Blazed");
             Description.SetDefault("You are being burnt by the full power of a nebula");
             Main.debuff[Type] = true;
-            // Main.pvpBuff[Type] = true;
+            Main.pvpBuff[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -287,8 +287,45 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Spectred");
-            Description.SetDefault("Losing life");
+            DisplayName.SetDefault("Soul Drain");
+            Description.SetDefault("You have been hit by an enhanced magic projectile");
+            Main.debuff[Type] = true;
+            Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().spectreDebuff = true;
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 16, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                if (Main.rand.NextBool(4))
+                {
+                    Main.dust[dust].noGravity = false;
+                    Main.dust[dust].scale *= 0.5f;
+                }
+            }
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().spectreDebuff = true;
+            
+           
+
+        }
+    }
+    //___________________________________________________________
+    public class HeartDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Stolen Heart");
+            Description.SetDefault("You cannot live without a heart");
             Main.debuff[Type] = true;
             // Main.pvpBuff[Type] = true;
         }
@@ -300,9 +337,9 @@ namespace StormDiversSuggestions.Buffs
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<StormNPC>().spectreDebuff = true;
+            npc.GetGlobalNPC<StormNPC>().heartDebuff = true;
+
             
-            //npc.damage *= (int)0.8;
 
         }
     }

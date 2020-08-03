@@ -141,12 +141,29 @@ namespace StormDiversSuggestions.Items.Potions
         public override void AI(Projectile projectile)
         {
             var player = Main.player[projectile.owner];
-            
-                if (projectile.ranged && projectile.friendly)
+            if (projectile.melee && projectile.friendly)
+            {
+
+
+                if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()))
                 {
-                    rangedincrease++;
-                    if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+                    if (Main.rand.Next(3) == 0)
                     {
+                        Dust dust;
+                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                        Vector2 position = projectile.position;
+                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 98, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                        dust.noGravity = true;
+
+                        
+                    }
+                }
+            }
+            if (projectile.ranged && projectile.friendly)
+            {
+                rangedincrease++;
+                if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+                {
                     if (Main.rand.Next(3) == 0)
                     {
                         Dust dust;
@@ -157,22 +174,31 @@ namespace StormDiversSuggestions.Items.Potions
                     }
 
 
-                        if (rangedincrease == 1)
+                    if (rangedincrease == 1)
+                    {
+                        /*if (projectile.penetrate >= 1)
                         {
-                            /*if (projectile.penetrate >= 1)
-                            {
-                                projectile.penetrate = (projectile.penetrate + 1);
-                            }
-
-                            projectile.usesLocalNPCImmunity = true;
-                            projectile.localNPCHitCooldown = 10;*/
-                            projectile.knockBack *= 1.5f;
-                            projectile.extraUpdates += (int)1f;
+                            projectile.penetrate = (projectile.penetrate + 1);
                         }
+
+                        projectile.usesLocalNPCImmunity = true;
+                        projectile.localNPCHitCooldown = 10;*/
+                        projectile.knockBack *= 1.5f;
+                        projectile.extraUpdates += (int)1f;
                     }
                 }
-           
-
+            }
+            if (projectile.magic && projectile.friendly)
+            {
+                if (Main.rand.Next(3) == 0)
+                {
+                    Dust dust;
+                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                    Vector2 position = projectile.position;
+                    dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 16, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                    dust.noGravity = true;
+                }
+            }
         }
              public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
         {
@@ -188,8 +214,21 @@ namespace StormDiversSuggestions.Items.Potions
                 }
             }
         }
+        public override void OnHitPvp(Projectile projectile, Player target, int damage, bool crit)
+        {
+            if (projectile.magic && projectile.friendly)
+            {
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+                {
+                    if (Main.rand.Next(1) == 0)
+                    {
+                        target.AddBuff(mod.BuffType("SpectreDebuff"), 600);
+                    }
 
-    
+                }
+            }
+        }
+
     }
     
 }

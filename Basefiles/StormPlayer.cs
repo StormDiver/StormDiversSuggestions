@@ -57,6 +57,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool bootFall;
 
+        public bool spectreDebuff;
+
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -75,6 +77,7 @@ namespace StormDiversSuggestions.Basefiles
             nebula = false;
             primeSpin = false;
             bootFall = false;
+            spectreDebuff = false;
         }
         // int shotCount = 0;
         //bool shot;
@@ -292,6 +295,12 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     player.lifeRegen = -30;
                     
+                }
+                if (spectreDebuff)
+                {
+
+
+                    player.lifeRegen = -18;
                 }
             }
         }
