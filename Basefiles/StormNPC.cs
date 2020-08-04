@@ -300,12 +300,17 @@ namespace StormDiversSuggestions.Basefiles
 
             }
         }
+        public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+        {
+
+
+        }
         bool heartSteal = false;
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.33f) && !npc.boss && !npc.friendly)
                 {
                     
                     { 
@@ -319,23 +324,19 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 1800);
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 18000);
                             heartSteal = true;
                         }
                 }
                 }
             }
         }
-        public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
-        {
-            
-            
-        }
+       
         public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.25f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.33f) && !npc.boss && !npc.friendly)
                 {
                     
                     {
@@ -349,7 +350,7 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 1800);
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 18000);
                             heartSteal = true;
                         }
                     }

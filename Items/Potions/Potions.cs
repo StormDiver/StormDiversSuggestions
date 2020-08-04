@@ -190,13 +190,16 @@ namespace StormDiversSuggestions.Items.Potions
             }
             if (projectile.magic && projectile.friendly)
             {
-                if (Main.rand.Next(3) == 0)
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
                 {
-                    Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 16, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                    dust.noGravity = true;
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        Dust dust;
+                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                        Vector2 position = projectile.position;
+                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 16, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                        dust.noGravity = true;
+                    }
                 }
             }
         }

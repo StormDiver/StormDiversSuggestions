@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.knockBack = 0;
-            projectile.magic = true;
+          
             projectile.timeLeft = 72;
             projectile.tileCollide = false;
             projectile.MaxUpdates = 1;
