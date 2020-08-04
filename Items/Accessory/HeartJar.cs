@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jar of hearts");
-            Tooltip.SetDefault("While below 70% life, you have a chance to make enemies below 25% life drop a heart whiling inflicting a debuff\nEnemies cannot drop more than one heart this way\n'Heart Stealer'");
+            Tooltip.SetDefault("While below 70% life, you have a chance to make enemies below 33% life drop a heart\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
