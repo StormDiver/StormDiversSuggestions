@@ -114,13 +114,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 8;
 
             }
-           if (superFrost)
-            {
-                npc.lifeRegen -= 100;
-
-                damage = 10;
-
-            }
+           
             if (spectreDebuff)
             {
                 npc.lifeRegen -= 120;
