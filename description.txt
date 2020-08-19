@@ -4,13 +4,13 @@ This mod attempts to add some of the ideas that I (Storm Diver) have suggested o
 
 This mod includes:
 
--43 New unique weapons
+-44 New unique weapons
 -14 new ammos
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore 
 -14 new accessories
 -11 new buffs and 6 new potions
--10 new debuffs
+-11 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
 -Some new shop items
