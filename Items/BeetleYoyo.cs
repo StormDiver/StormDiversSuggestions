@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("The Thorax"); 
-			Tooltip.SetDefault("Summons beetles to attack and swarm your foes");
+			Tooltip.SetDefault("Summons beetles that attack and swarm your foes");
             ItemID.Sets.Yoyo[item.type] = true;
             ItemID.Sets.GamepadExtraRange[item.type] = 30;
             ItemID.Sets.GamepadSmartQuickReach[item.type] = true;

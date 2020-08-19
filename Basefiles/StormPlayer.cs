@@ -33,6 +33,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool lunarBoulderDB;
         public bool sandBurn;
 
+        public bool superFrost;
+
         public bool SSBuff;
 
         public bool goldDerpie;
@@ -59,12 +61,18 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool spectreDebuff;
 
+        public bool frostCube;
+
+        public bool spooked;
+
+        public bool lifeBarrier;
         public override void ResetEffects()
         {
             boulderDB = false;
             superBoulderDB = false;
             lunarBoulderDB = false;
             sandBurn = false;
+            superFrost = false;
             SSBuff = false;
             turtled = false;
             goldDerpie = false;
@@ -78,11 +86,16 @@ namespace StormDiversSuggestions.Basefiles
             primeSpin = false;
             bootFall = false;
             spectreDebuff = false;
+            frostCube = false;
+            spooked = false;
+            lifeBarrier = false;
         }
         // int shotCount = 0;
         //bool shot;
         public int skulltime = 0;
         public bool falling;
+       
+        bool shot;
         public override void PostUpdateEquips()
         {
             /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
@@ -113,7 +126,10 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 
             }*/
-
+            if (frostCube)
+            {
+                player.maxMinions += 2;
+            }
             if (flameCore)
             {
 
@@ -176,6 +192,41 @@ namespace StormDiversSuggestions.Basefiles
                     falling = false;
                 }
             }
+            if (spooked)
+            {
+                if (player.itemAnimation > 1 && (player.HeldItem.melee || player.HeldItem.ranged || player.HeldItem.magic || player.HeldItem.summon || player.HeldItem.thrown)) //ranged item is in use
+                {
+
+                    if (!shot)
+                    {
+                        if (Main.rand.Next(4) == 0)
+                        {
+                            
+                            
+                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 34);
+
+                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                            float velocity = 0f;
+                            int type = mod.ProjectileType("SpookyProj");
+                            int damage = (int)(player.HeldItem.damage * 1f);
+                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                        }
+
+                    }
+                    shot = true;
+                    
+                }
+                else
+                {
+                    shot = false;
+                }
+
+            }
+            if (lifeBarrier)
+            {
+                player.endurance += 0.5f;
+                player.noKnockback = true;
+            }
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
@@ -191,7 +242,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
-            
+            player.ClearBuff(mod.BuffType("HeartBarrierBuff"));
             attackdmg = (int)damage;
             if (lunarBarrier)
             {
@@ -289,7 +340,13 @@ namespace StormDiversSuggestions.Basefiles
                 {
 
                     
-                    player.lifeRegen = -10;
+                    player.lifeRegen = -16;
+                }
+                if (superFrost)
+                {
+
+
+                    player.lifeRegen = -16;
                 }
                 if (nebula)
                 {

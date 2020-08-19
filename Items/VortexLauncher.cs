@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         {
             DisplayName.SetDefault("Vortex Launcher");
             Tooltip.SetDefault("Fires out a barrage of vortex rockets, right click to fire a single more damaging rocket");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
         }
         public override void SetDefaults()
         {

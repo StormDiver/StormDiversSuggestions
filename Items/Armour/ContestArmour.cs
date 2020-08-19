@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Mask");
-            Tooltip.SetDefault("Created by Storm Diver Omega");
+            Tooltip.SetDefault("Created by Storm Diver");
         }
 
         public override void SetDefaults()
@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Chestplate");
-            Tooltip.SetDefault("Created by Storm Diver Omega");
+            Tooltip.SetDefault("Created by Storm Diver");
         }
 
         public override void SetDefaults()
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Greaves");
-            Tooltip.SetDefault("Created by Storm Diver Omega");
+            Tooltip.SetDefault("Created by Storm Diver");
         }
 
         public override void SetDefaults()

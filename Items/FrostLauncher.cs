@@ -11,8 +11,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryo grenade Launcher");
-            Tooltip.SetDefault("Fires out impact-exploding grenades that inflict frostburn\nRequires Prototype Grenades");
+            DisplayName.SetDefault("Cryo Grenade Launcher");
+            Tooltip.SetDefault("Fires out impact-exploding grenades that inflict extreme frostburn\nRequires Prototype Grenades");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()

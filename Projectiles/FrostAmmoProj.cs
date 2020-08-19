@@ -75,6 +75,8 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
 
+
+
         public override void Kill(int timeLeft)
         {
 
@@ -210,15 +212,7 @@ namespace StormDiversSuggestions.Projectiles
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;*/
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            {
-                target.AddBuff(BuffID.Frostburn, 600);
-
-            }
-
-           
-        }
+        
        
        
 

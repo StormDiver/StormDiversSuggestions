@@ -52,6 +52,35 @@ namespace StormDiversSuggestions.Buffs
             npc.GetGlobalNPC<StormNPC>().sandBurn = true;
         }
     }
+    //___________________________________________________________
+    public class SuperFrostBurn : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Extreme FrostBurn");
+            Description.SetDefault("Rapidly Losing life");
+            Main.debuff[Type] = true;
+            // Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().superFrost = true;
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 187, player.velocity.X * 1.2f, player.velocity.Y * 1.2f, 130, default, 3f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                Main.dust[dust].velocity *= 2.5f;
+                int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 187, player.velocity.X, player.velocity.Y, 130, default, 1f);
+            }
+            Lighting.AddLight(player.position, 0f, 1f, 1f);
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().superFrost = true;
+
+        }
+    }
     //________________________________________
     public class BoulderDebuff : ModBuff
     {
@@ -343,4 +372,5 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    
 }

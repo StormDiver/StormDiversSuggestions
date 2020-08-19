@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Pets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mysterious vine");
+            DisplayName.SetDefault("Mysterious Vine");
             Tooltip.SetDefault("Seems to be infused with some strange energy");
             
         }
@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Pets
             item.CloneDefaults(ItemID.ZephyrFish);
             item.width = 16;
             item.height = 24;
-            item.maxStack = 999;
+            item.maxStack = 1;
             item.value = Item.sellPrice(0, 7, 50, 0);
             
             

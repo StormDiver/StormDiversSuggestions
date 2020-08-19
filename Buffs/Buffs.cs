@@ -193,11 +193,11 @@ namespace StormDiversSuggestions.Buffs
         }
     }
     //____________________________________________
-    public class HeartBuff : ModBuff
+    public class JarBuff : ModBuff
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Heart Stealer");
+            DisplayName.SetDefault("Heart Collector");
             Description.SetDefault("Steal the hearts of your enemies, literally");
            
         }
@@ -213,6 +213,60 @@ namespace StormDiversSuggestions.Buffs
                 Main.dust[dust].velocity.Y -= 0.5f;
                 Main.playerDrawDust.Add(dust);
             }*/
+        }
+    }
+    //___________________________________________________________________
+    public class HeartBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Life Vial");
+            Description.SetDefault("Max life increased by 20");
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            
+            player.statLifeMax2 += 20;
+        }
+    }
+    //___________________________________________________________________
+    public class FruitHeartBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Life Fruit Vial");
+            Description.SetDefault("Max life increased by 25");
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            player.statLifeMax2 += 25;
+        }
+    }
+    //___________________________________________________________________
+    public class HeartBarrierBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Life Barrier");
+            Description.SetDefault("The next incoming attack will be reduced by 50% and will deal no knockback");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().lifeBarrier = true;
+            if (Main.rand.Next(10) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 72, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
         }
     }
 }

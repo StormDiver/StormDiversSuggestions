@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Celestial barrier");
+            DisplayName.SetDefault("Celestial Barrier");
             Tooltip.SetDefault("Grants immunity to debuffs inflicted by extra-terrestrial creatures\nTaking heavy damage greatly increases health regeneration while protecting you\nDuration depends on the amount of damage received");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }

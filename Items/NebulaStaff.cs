@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         {
             DisplayName.SetDefault("Nebula Storm");
             Tooltip.SetDefault("Summons Explosive nebula flame blasts");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
             Item.staff[item.type] = true;
         }
         public override void SetDefaults()
@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 10;
             item.useStyle = 5;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("NebulaStaffProj");
 
-            item.shootSpeed = 5f;
+            item.shootSpeed = 6f;
             
             //item.useAmmo = AmmoID.Arrow;
                 

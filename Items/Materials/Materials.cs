@@ -185,7 +185,7 @@ namespace StormDiversSuggestions.Items.Materials
                         {
                             
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"), Main.rand.Next(1, 2));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"), Main.rand.Next(1, 3));
                             
                         }
                         else
@@ -268,7 +268,7 @@ namespace StormDiversSuggestions.Items.Materials
                         {
 
 
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueCloth"));
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueCloth"), Main.rand.Next(1, 3));
 
                         }
                         else
@@ -310,15 +310,15 @@ namespace StormDiversSuggestions.Items.Materials
                 if (npc.type == NPCID.Derpling)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(2) == 0)
                         {
 
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"), Main.rand.Next(1, 3));
                         }
                     }
-                    else
-                    {
-                        if (Main.rand.Next(5) == 0)
+                else
+                {
+                        if (Main.rand.Next(2) == 0)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
                         }
@@ -359,7 +359,7 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.expertMode && npc.lifeMax >= 80)
                     {
-                        if (Main.rand.Next(20) == 0)
+                        if (Main.rand.Next(9) == 0)
                         {
 
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
@@ -367,7 +367,7 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     if (!Main.expertMode && npc.lifeMax >= 40)
                     {
-                        if (Main.rand.Next(25) == 0)
+                        if (Main.rand.Next(10) == 0)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
                         }

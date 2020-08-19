@@ -44,6 +44,9 @@ namespace StormDiversSuggestions.Basefiles
         public bool spectreDebuff;
 
         public bool heartDebuff;
+
+        public bool superFrost;
+
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -56,11 +59,13 @@ namespace StormDiversSuggestions.Basefiles
             heartDrop = false;
             spectreDebuff = false;
             heartDebuff = false;
+            superFrost = false;
         }
         public override void AI(NPC npc)
 
         {
 
+           
 
             if (beetled && !npc.boss)
             {
@@ -77,14 +82,15 @@ namespace StormDiversSuggestions.Basefiles
                 npc.buffImmune[(BuffType<BeetleDebuff>())] = true;
             }
         }
-
+        
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
+            
             if (heartDebuff)
             {
-                npc.lifeRegen -= 30;
+                npc.lifeRegen -= 100;
 
-                damage = 5;
+                damage = 10;
 
             }
             if (sandBurn)
@@ -94,7 +100,13 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 5;
 
             }
-            
+            if (superFrost)
+            {
+                npc.lifeRegen -= 30;
+
+                damage = 5;
+
+            }
             if (boulderDB)
             {
                 npc.lifeRegen -= 60;
@@ -102,7 +114,13 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 8;
 
             }
-           
+           if (superFrost)
+            {
+                npc.lifeRegen -= 100;
+
+                damage = 10;
+
+            }
             if (spectreDebuff)
             {
                 npc.lifeRegen -= 120;
@@ -110,6 +128,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 14;
 
             }
+            
             if (superBoulderDB)
             {
                 npc.lifeRegen -= 160;
@@ -299,6 +318,17 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
+            if (superFrost)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 187, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 130, default, 3f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust].velocity *= 2.5f;
+                    int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 187, npc.velocity.X, npc.velocity.Y, 130, default, 1f);
+                }
+
+            }
         }
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
         {
@@ -308,13 +338,13 @@ namespace StormDiversSuggestions.Basefiles
         bool heartSteal = false;
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.33f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5)
                 {
                     
                     { 
-                        if (Main.rand.Next(25) == 0 && !heartSteal)
+                        if (Main.rand.Next(8) == 0 )
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -324,7 +354,11 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 18000);
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 3600);
+                            heartSteal = true;
+                        }
+                        else
+                        {
                             heartSteal = true;
                         }
                 }
@@ -334,13 +368,13 @@ namespace StormDiversSuggestions.Basefiles
        
         public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<HeartBuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.33f) && !npc.boss && !npc.friendly)
+                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5)
                 {
                     
                     {
-                        if (Main.rand.Next(25) == 0 && !heartSteal)
+                        if (Main.rand.Next(8) == 0)
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -350,7 +384,11 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 18000);
+                            npc.AddBuff(mod.BuffType("HeartDebuff"), 3600);
+                            heartSteal = true;
+                        }
+                        else
+                        {
                             heartSteal = true;
                         }
                     }
@@ -359,6 +397,7 @@ namespace StormDiversSuggestions.Basefiles
         }
         public override void HitEffect(NPC npc, int hitDirection, double damage)
         {
+            
         }
 
 

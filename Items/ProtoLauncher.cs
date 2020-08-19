@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prototype Launcher");
-            Tooltip.SetDefault("Fires out an impact-exploding grenade that have a small chance to prematurely explode into shrapnel\nRequires Prototype Grenades");
+            Tooltip.SetDefault("Fires out impact-exploding grenades that have a small chance to prematurely explode into shrapnel\nRequires Prototype Grenades");
         }
         public override void SetDefaults()
         {

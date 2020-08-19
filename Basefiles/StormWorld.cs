@@ -15,6 +15,7 @@ using static Terraria.ModLoader.ModContent;
 
 using StormDiversSuggestions.Items;
 using StormDiversSuggestions.Items.Ammo;
+using StormDiversSuggestions.Items.Accessory;
 
 
 namespace StormDiversSuggestions.Basefiles
@@ -62,8 +63,10 @@ namespace StormDiversSuggestions.Basefiles
 
             int[] ChestLauncher = { ItemType<ProtoLauncher>() };
             int[] ChestAmmo = { ItemType<ProtoGrenade>() };
+            int[] ChestHeart = { ItemType<HeartJar>() };
             int ChestLauncherCount = 0;
             int ChestAmmoCount = 0;
+            int ChestHeartCount = 0;
 
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -85,6 +88,29 @@ namespace StormDiversSuggestions.Basefiles
                                 chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestAmmo));
                                 chest.item[inventoryIndex].stack = WorldGen.genRand.Next(52, 80);
                                 ChestAmmoCount = (ChestAmmoCount + 1) % ChestAmmo.Length;
+
+                            }
+
+                            break;
+                        }
+                    }
+
+                }
+                Chest chest2 = Main.chest[chestIndex];
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+                if (chest2 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 4 * 36)
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest2.item[inventoryIndex].type == 0)
+                        {
+                            if (WorldGen.genRand.NextBool(3))
+                            {
+
+                                chest2.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestHeart));
+                                ChestHeartCount = (ChestHeartCount + 1) % ChestHeart.Length;
+                               
+                                
 
                             }
 

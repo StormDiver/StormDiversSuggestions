@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 5;
             item.useTime = 4;
             item.useAnimation = 12;
-            item.reuseDelay = 14;
+            item.reuseDelay = 12;
             item.useTurn = false;
             item.autoReuse = true;
             //item.UseSound = SoundID.Item38;
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
 
            //item.UseSound = SoundID.Item40;
 
-            item.damage = 30;
+            item.damage = 36;
             item.crit = 6;
             item.knockBack = 2f;
             

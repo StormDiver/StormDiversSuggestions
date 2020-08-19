@@ -91,7 +91,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (Main.rand.Next(1) == 0) // the chance
             {
-                target.AddBuff(BuffID.Frostburn, 1200);
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
 
             }
         }
@@ -148,7 +148,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             {
-                target.AddBuff(BuffID.Frostburn, 900);
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
 
             }
         }
@@ -275,7 +275,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             {
-                target.AddBuff(BuffID.Frostburn, 600);
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
 
             }
         }
@@ -394,7 +394,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Frostburn, 300);   //this make so when the projectile/flame hit a npc, gives it the buff  onfire , 80 = 3 seconds
+         
+            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -442,7 +443,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             {
-                target.AddBuff(BuffID.Frostburn, 900);
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
 
             }
         }

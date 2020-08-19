@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Celestial Globe");
-            Tooltip.SetDefault("Removes the shields from all current pillars");
+            Tooltip.SetDefault("Removes the shields from all active pillars");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
         }

@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 240;
+            projectile.timeLeft = 200;
             projectile.extraUpdates = 2;
             projectile.scale = 2f;
             projectile.usesLocalNPCImmunity = true;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             }
             if (projectile.ai[0] > 12f)  //this defines where the flames starts
             {
-                if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
+                if (Main.rand.Next(1) == 0)     //this defines how many dust to spawn
                 {
                     
                     
@@ -77,13 +77,13 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void Kill(int timeLeft)
         {
-            float numberProjectiles = 7 + Main.rand.Next(2);
+            float numberProjectiles = 7 + Main.rand.Next(3);
             float rotation = MathHelper.ToRadians(180);
             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             for (int i = 0; i < numberProjectiles; i++)
             {
-                float speedX = projectile.velocity.X * 0.6f;
-                float speedY = projectile.velocity.Y * 0.6f;
+                float speedX = projectile.velocity.X * 0.5f;
+                float speedY = projectile.velocity.Y * 0.5f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("NebulaStaffProj2"), (int)(projectile.damage * 0.8f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
@@ -112,9 +112,9 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 240;
+            projectile.timeLeft = 200;
             projectile.extraUpdates = 3;
-            
+            projectile.scale = 1.5f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }

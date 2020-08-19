@@ -4,12 +4,12 @@ This mod attempts to add some of the ideas that I (Storm Diver) have suggested o
 
 This mod includes:
 
--42 New unique weapons
+-43 New unique weapons
 -14 new ammos
 -New recipes for certain uncraftable vanilla items
--2 new bars and ore !WARNING if you created the world before installing this mod then the new ore will not spawn, but it will still drop from enemies in that biome and from crates!
--12 new accessories
--9 new buffs and 3 new potions
+-2 new bars and ore 
+-14 new accessories
+-11 new buffs and 6 new potions
 -10 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)

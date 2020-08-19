@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework;
 
 namespace StormDiversSuggestions.Items.Potions
 {
+
+    
     public class ShroomitePotion : ModItem
     {
         public override void SetStaticDefaults()

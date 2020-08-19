@@ -27,8 +27,8 @@ namespace StormDiversSuggestions.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Jar of hearts");
-            Tooltip.SetDefault("While below 70% life, you have a chance to make enemies below 33% life drop a heart\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
+            DisplayName.SetDefault("Jar of Hearts");
+            Tooltip.SetDefault("While below 70% life, enemies below 30% life have a chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -50,45 +50,48 @@ namespace StormDiversSuggestions.Items.Accessory
             if (player.statLife <= (player.statLifeMax2 * 0.7f))
             {
                 
-                player.AddBuff(mod.BuffType("HeartBuff"), 1);
+                player.AddBuff(mod.BuffType("JarBuff"), 1);
                 
             }
            
         }
 
-        public override void AddRecipes()
+       /* public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Bottle);
-            recipe.AddIngredient(ItemID.LifeCrystal, 5);
-            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 3);
-
+            recipe.AddIngredient(ItemID.ClayPot);
+            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 4);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
-
-       /* public class ModGlobalNPC : GlobalNPC
-        {
-            public override void NPCLoot(NPC npc)
-            {
-                
-                    if (Main.expertMode && npc.lifeMax >= 250)
-                    { 
-                        if (Main.rand.Next(100) == 0)
-                        {
-
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
-                        }
-                    }
-                    if (!Main.expertMode && npc.lifeMax >= 150)
-                    {
-                        if (Main.rand.Next(150) == 0)
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
-                        }
-                    }
-            }
         }*/
+
+         public class ModGlobalNPC : GlobalNPC
+         {
+             public override void NPCLoot(NPC npc)
+             {
+
+                      if (Main.expertMode)
+                     {
+                         if (Main.rand.Next(50) == 0)
+                         {
+                             if (npc.type == NPCID.Demon)
+                             {
+                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                             }
+                         }
+                     }
+                     else
+                     {
+                         if (Main.rand.Next(60) == 0)
+                         {
+                             if (npc.type == NPCID.Demon)
+                             {
+                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                             }
+                         }
+                     }
+             }
+         }
     }
 }

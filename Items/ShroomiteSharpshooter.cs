@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage but less accurately (Doesn't work with Chlorophyte bullets)");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage but less accurately");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()

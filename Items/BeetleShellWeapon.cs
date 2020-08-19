@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Giant Beetle Shell");
-            Tooltip.SetDefault("Summons beetles to attack and swarm your foes on impact");
+            Tooltip.SetDefault("Summons beetles on impact that attack and swarm your foes");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
         public override void SetDefaults()

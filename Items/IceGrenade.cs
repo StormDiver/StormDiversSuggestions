@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 1;
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 0, 0, 16);
-            item.rare = 8;
+            item.rare = 1;
             item.shootSpeed = 7f;
             item.shoot = mod.ProjectileType("IceGrenadeProj");
             //item.UseSound = SoundID.Item1;

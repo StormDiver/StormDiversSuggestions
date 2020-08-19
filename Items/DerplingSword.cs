@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Derpling Sword"); 
-			Tooltip.SetDefault("Sends out a bunch of Derpling heads every third swing.");
+			Tooltip.SetDefault("Sends out a bunch of Derpling heads every third swing");
 		}
 
 		public override void SetDefaults() 

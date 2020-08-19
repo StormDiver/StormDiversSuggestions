@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Pets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Suspicious looking helmet");
+            DisplayName.SetDefault("Suspicious Looking Helmet");
             Tooltip.SetDefault("Summons something unthinkable");
          
 
@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Pets
             item.CloneDefaults(ItemID.ZephyrFish);
             item.width = 16;
             item.height = 24;
-            item.maxStack = 999;
+            item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
             
             item.shoot = ProjectileType<StormLightProj>();

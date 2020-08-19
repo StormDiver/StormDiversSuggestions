@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Iron shot");
+            DisplayName.SetDefault("Iron Shot");
             Tooltip.SetDefault("Heavy bullet that obeys gravity and has a strong knockback");
         }
         public override void SetDefaults()
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Lead shot");
+            DisplayName.SetDefault("Lead Shot");
             Tooltip.SetDefault("Heavy bullet that obeys gravity and has a strong knockback");
         }
         public override void SetDefaults()
