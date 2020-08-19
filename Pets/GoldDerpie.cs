@@ -112,18 +112,6 @@ namespace StormDiversSuggestions.Pets
             }*/
             if (!projectile.tileCollide)
             {
-                /*for (int i = 0; i < 10; i++)
-                {
-                    float x2 = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
-                    float y2 = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
-                    int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 19);
-                    //Main.dust[num165].alpha = alpha;
-                    Main.dust[j].position.X = x2;
-                    Main.dust[j].position.Y = y2;
-                    Main.dust[j].velocity *= 0f;
-                    Main.dust[j].noGravity = true;
-                   
-                }*/
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.Center;

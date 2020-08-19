@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Minions
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
 
-            item.damage = 50;
+            item.damage = 38;
             item.knockBack = 3f;
             item.UseSound = SoundID.Item43;
 
@@ -122,8 +122,6 @@ namespace StormDiversSuggestions.Items.Minions
         {
             // Makes the minion go through tiles freely
             projectile.tileCollide = false;
-
-            // These below are needed for a minion weapon
             // Only controls if it deals damage to enemies on contact (more on that later)
             projectile.friendly = true;
             // Only determines the damage type
