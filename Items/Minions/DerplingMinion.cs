@@ -176,11 +176,11 @@ namespace StormDiversSuggestions.Items.Minions
 
            
 
-            if (Main.rand.Next(2) == 0) // the chance
+            /*if (Main.rand.Next(2) == 0) // the chance
             {
                 target.AddBuff(BuffID.Venom, 600);
 
-            }
+            }*/
 
 
         }
