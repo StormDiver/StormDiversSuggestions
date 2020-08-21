@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Summoner's Heart");
-            Tooltip.SetDefault("Increases your max number of minions by 2 while holding any summoner weapon and for 3 seconds afterwards\nIncreases minion damage by 8%");
+            Tooltip.SetDefault("Increases your max number of minions by 2 while holding any summoner weapon and for 3 seconds afterwards\nIncreases minion damage by 10%");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
@@ -49,6 +49,7 @@ namespace StormDiversSuggestions.Items.Accessory
             {
                 player.GetModPlayer<StormPlayer>().frostCube = true;
             }
+            player.minionDamage += 0.1f;
         }
 
         public class ModGlobalNPC : GlobalNPC

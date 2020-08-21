@@ -56,12 +56,12 @@ namespace StormDiversSuggestions.Items.Minions
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
 
-            item.damage = 38;
+            item.damage = 45;
             item.knockBack = 3f;
             item.UseSound = SoundID.Item43;
 
             
-            item.mana = 20;
+            item.mana = 10;
 
             item.noMelee = true; 
             item.summon = true;
@@ -72,8 +72,11 @@ namespace StormDiversSuggestions.Items.Minions
             item.buffType = BuffType<DerplingMinionBuff>();
             item.shoot = mod.ProjectileType("DerplingMinionProj");
         }
-       
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-8, 0);
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
@@ -156,6 +159,7 @@ namespace StormDiversSuggestions.Items.Minions
             drawOffsetX = -1;
             drawOriginOffsetY = -6;
             projectile.usesLocalNPCImmunity = true;
+           
             //projectile.extraUpdates = 1;
             if (!projectile.tileCollide)
             {
@@ -167,7 +171,19 @@ namespace StormDiversSuggestions.Items.Minions
                 projectile.extraUpdates = 0;
             }
         }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
 
+           
+
+            if (Main.rand.Next(2) == 0) // the chance
+            {
+                target.AddBuff(BuffID.Venom, 600);
+
+            }
+
+
+        }
 
 
     }

@@ -26,7 +26,8 @@ namespace StormDiversSuggestions.Items
             item.useTime = 30;
             item.useAnimation = 30;
             item.damage = 120;
-            item.mana = 20;
+            item.knockBack = 3f;
+            item.mana = 10;
             item.useTurn = false;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType("StardustSentryProj");

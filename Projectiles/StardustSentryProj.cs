@@ -28,12 +28,17 @@ namespace StormDiversSuggestions.Projectiles
            
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.tileCollide = true;
-            
+          
             //drawOffsetX = 2;
             //drawOriginOffsetY = 2;
             projectile.sentry = true;
-            //projectile.minion = true;
+           
             
+        }
+        public override bool CanDamage()
+        {
+        
+            return false;
         }
         int shoottime = 0;
         int supershot = 0;
@@ -65,9 +70,9 @@ namespace StormDiversSuggestions.Projectiles
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                 float shootToY = target.position.Y + (float)target.height * 0.5f - projectile.Center.Y;
                 float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                //bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
+                //bool lineOfSight = Collision.CanHitLine(projectile.Center, 1, 1, target.Center, 1, 1);
                 //If the distance between the projectile and the live target is active
-                if (distance < 500f && !target.friendly && target.active)  
+                if (distance < 500f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5)  
                 {
                     if (shoottime > 50)
                     {
@@ -85,7 +90,7 @@ namespace StormDiversSuggestions.Projectiles
                         for (int j = 0; j < 3; j++)
                         {
                             Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(75));
-                            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("StardustSentryProj2"), projectile.damage, 0, Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
+                            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("StardustSentryProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
                             Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Top.Y, 8);
                             shoottime = 0;
                         }
@@ -93,7 +98,7 @@ namespace StormDiversSuggestions.Projectiles
                     if (supershot > 4)
                     {
                         
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX * 3, shootToY * 3, mod.ProjectileType("StardustSentryProj3"), (int) (projectile.damage * 3f), 0, Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX * 3, shootToY * 3, mod.ProjectileType("StardustSentryProj3"), (int) (projectile.damage * 3f), (int)(projectile.knockBack * 2), Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
                         Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 60);
                         supershot = 0;
 
@@ -298,6 +303,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.scale = 1f;
             projectile.tileCollide = false;
             projectile.aiStyle = 0;
+         
             drawOffsetX = -10;
             //drawOriginOffsetY = -9;
             //projectile.CloneDefaults(338);

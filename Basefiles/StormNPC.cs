@@ -95,16 +95,16 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (sandBurn)
             {
-                npc.lifeRegen -= 30;
+                npc.lifeRegen -= 50;
 
-                damage = 5;
+                damage = 6;
 
             }
             if (superFrost)
             {
-                npc.lifeRegen -= 30;
+                npc.lifeRegen -= 50;
 
-                damage = 5;
+                damage = 6;
 
             }
             if (boulderDB)
