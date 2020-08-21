@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Derpling Staff");
+            DisplayName.SetDefault("Derpling Minion");
             Description.SetDefault("Buffed baby Derplings will fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Derpling Minion");
+            DisplayName.SetDefault("Derpling Staff");
             Tooltip.SetDefault("Summons buffed baby Derplings to fight for you");
             ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
             ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
@@ -75,7 +75,7 @@ namespace StormDiversSuggestions.Items.Minions
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-8, 0);
+            return new Vector2(-8, -8);
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
