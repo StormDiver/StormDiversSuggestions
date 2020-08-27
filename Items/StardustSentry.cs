@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Star Invader Staff");
-            Tooltip.SetDefault("Sentry that launches mini Flow Invaders that home in on enemies\nEvery 5th shot fires a much faster and more damaging piercing projectile that does not home");
+            Tooltip.SetDefault("Summons a floating Sentry that launches mini homing Flow Invaders at enemies\nEvery 5th shot fires a much faster and more damaging piercing projectile that does not home");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
 
         }
