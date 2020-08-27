@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.maxStack = 30;
             item.consumable = true;
             item.rare = 4;
-            item.healLife = 90;
+            item.healLife = 99;
             item.value = Item.sellPrice(0, 0, 10, 0);
             item.potion = true;
            
@@ -45,23 +45,24 @@ namespace StormDiversSuggestions.Items.Potions
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.GreaterHealingPotion, 4);
+            recipe.AddIngredient(ItemID.GreaterHealingPotion, 3);
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
             recipe.AddIngredient(ItemID.UnicornHorn);
            
 
             recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(this, 4);
+            recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
 
     }
     public class DoubleHealingPotion : ModItem
     {
+        bool pstones;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Enhanced Healing Potion");
-            Tooltip.SetDefault("Potion sickness lasts 1.66 times longer than normal");
+            Tooltip.SetDefault("Potion sickness lasts longer than normal");
 
         }
         
@@ -98,12 +99,12 @@ namespace StormDiversSuggestions.Items.Potions
             if (player.pStone)
             {
                 player.AddBuff(BuffID.PotionSickness, 4500);
-                
+                pstones = true;
             }
             else
             {
                 player.AddBuff(BuffID.PotionSickness, 6000);
-
+                pstones = false;
             }
             
         }
@@ -114,11 +115,11 @@ namespace StormDiversSuggestions.Items.Potions
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.GreaterHealingPotion, 4);
+            recipe.AddIngredient(ItemID.GreaterHealingPotion, 3);
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
             recipe.AddIngredient(ItemID.LifeFruit);
             recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(this, 4);
+            recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
 
@@ -153,12 +154,12 @@ namespace StormDiversSuggestions.Items.Potions
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BottledWater, 5);
+            recipe.AddIngredient(ItemID.BottledWater, 4);
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
             recipe.AddIngredient(ItemID.Daybloom);
             recipe.AddIngredient(ItemID.Blinkroot);
             recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(this, 5);
+            recipe.SetResult(this, 4);
             recipe.AddRecipe();
         }
 

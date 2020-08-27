@@ -724,7 +724,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.buffImmune[BuffID.Frozen] = true;
 
 
-                    player.setBonus = "Melee and ranged attacks cause frostburn\nImmunity to Chilled and Frozen";
+                    player.setBonus = "Melee and ranged attacks cause Extreme Frostburn on top of Regular Frostburn\nImmunity to Chilled and Frozen";
 
                 }
                 if (player.armor[0].type == ItemID.AncientBattleArmorHat && player.armor[1].type == ItemID.AncientBattleArmorShirt && player.armor[2].type == ItemID.AncientBattleArmorPants)
@@ -871,4 +871,96 @@ namespace StormDiversSuggestions.VanillaChanges
             }
         }
     }
+    public class FrostBurnEx : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        
+        public override void AI(Projectile projectile)
+        {
+
+            /*if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, projectile.velocity.X * 1.2f, projectile.velocity.Y * 1.2f, 130, default, 3f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                Main.dust[dust].velocity *= 2.5f;
+            }*/
+            }
+        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
+        {
+            var player = Main.player[projectile.owner];
+            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            {
+                if (projectile.melee && projectile.friendly)
+                {
+
+
+                    if (player.frostArmor)
+                    {
+
+                       
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                    }
+                }
+                if (projectile.ranged && projectile.friendly)
+                {
+
+                    if (player.frostArmor)
+                    {
+
+                        
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                       
+                    }
+                }
+            }
+        }
+        public override void OnHitPvp(Projectile projectile, Player target, int damage, bool crit)
+        {
+            var player = Main.player[projectile.owner];
+            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            {
+                if (projectile.melee && projectile.friendly)
+                {
+
+
+                    if (player.frostArmor)
+                    {
+
+                        target.ClearBuff(BuffID.Frostburn);
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                    }
+                }
+                if (projectile.ranged && projectile.friendly)
+                {
+
+                    if (player.frostArmor)
+                    {
+
+
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                        target.ClearBuff(BuffID.Frostburn);
+                    }
+                }
+            }
+        }
+        
+
+    }
+    public class FrostBruinExMelee : ModPlayer
+    {
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            {
+                if (player.frostArmor)
+                {
+                    
+
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+
+                }
+            }
+        }
+    }
+
 }

@@ -174,13 +174,9 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/EnchantedSwordProj_Glow");
-
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
-
+            return Color.White;
         }
     }
     //___________________________________________________________________________________________
@@ -196,7 +192,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.light = 0.6f;
+            projectile.light = 0.3f;
             projectile.friendly = true;
             projectile.penetrate = 4;
             projectile.magic = true;
@@ -262,13 +258,9 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/EnchantedSwordProj_Glow");
-
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
-
+            return Color.White;
         }
     }
 }

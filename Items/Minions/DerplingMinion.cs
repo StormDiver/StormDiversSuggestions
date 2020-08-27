@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.Items.Minions
         }
         public override void SetDefaults()
         {
-            item.width = 46;
-            item.height = 46;
+            item.width = 15;
+            item.height = 15;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 7;
@@ -75,7 +75,7 @@ namespace StormDiversSuggestions.Items.Minions
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-8, -8);
+            return new Vector2(8, 8);
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

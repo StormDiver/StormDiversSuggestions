@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Star Invader Staff");
-            Tooltip.SetDefault("Launches mini Flow Invaders that home in on enemies\nEvery 5th shot fires a much faster and more damaging piercing projectile that does not home");
+            Tooltip.SetDefault("Sentry that launches mini Flow Invaders that home in on enemies\nEvery 5th shot fires a much faster and more damaging piercing projectile that does not home");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
 
         }
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.sentry = true;
            
             item.noMelee = true;
-            //item.UseSound = SoundID.Item9;
+            item.UseSound = SoundID.Item78;
         }
         public override Vector2? HoldoutOffset()
         {
@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             
-            Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 5);
+            
             
                 position = Main.MouseWorld;   
                

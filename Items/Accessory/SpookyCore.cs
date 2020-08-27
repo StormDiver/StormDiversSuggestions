@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items.Accessory
 
             
             player.GetModPlayer<StormPlayer>().spooked = true;
-            player.pStone = true;
+            
         }
 
 
