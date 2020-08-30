@@ -12,183 +12,7 @@ namespace StormDiversSuggestions.VanillaChanges
     public class VanillaChanges : GlobalItem
     {
 
-        //=====================================================TOOLTIPS==============================================================
-
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
-
-
-            {
-                if (item.type == ItemID.GladiatorHelmet)
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Defense")
-                        {
-                            line.text = line.text + "\n5% increased ranged damage";
-                        }
-
-                    }
-                if (item.type == ItemID.GladiatorBreastplate) /// Only for the item
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Defense") /// "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
-                        {
-                            line.text = line.text + "\n5% increased ranged critical strike chance";
-                        }
-
-                    }
-                if (item.type == ItemID.GladiatorLeggings) /// Only for the item
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Defense") /// "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
-                        {
-                            line.text = line.text + "\n10% increased movement speed";
-                        }
-
-                    }
-
-
-               
-                if (item.type == ItemID.NecroBreastplate)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "5% increased ranged damage and ranged critical strike chance";
-                        }
-                       
-                    }
-
-               
-
-
-                if (item.type == ItemID.FrostBreastplate)
-                {
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "15% increased melee and ranged critical strike chance";
-                        }
-
-                    }
-                    
-                }
-
-                if (item.type == ItemID.FrostLeggings)
-                    foreach (TooltipLine line in tooltips)
-                    {
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
-                        {
-                            line.text = "20% increased movement and melee speed";
-                        }
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "20% chance not to consume ammo";
-                        }
-                    }
-
-
-
-
-
-                if (item.type == ItemID.AncientBattleArmorShirt)
-                {
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "8% increased magic critical strike chance\n8% increased minion damage\nIncreases maximum mana by 80";
-                        }
-                    }
-                    
-                }
-
-                if (item.type == ItemID.AncientBattleArmorPants)
-                {
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "Increases your max number of minions by 2\n12% reduced mana usage";
-                        }
-                    }
-                    
-                }
-
-
-
-                if (item.type == ItemID.SolarFlareHelmet)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "30% increased melee critical strike chance";
-                        }
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
-                        }
-                    }
-                if (item.type == ItemID.SolarFlareBreastplate)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "35% increased melee damage";
-                        }
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "Increases maximum health by 40\nEnemies are more likely to target you";
-                        }
-                    }
-                if (item.type == ItemID.SolarFlareLeggings)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
-                        {
-                            line.text = "35% increased melee speed\n50% increased movement speed";
-                        }
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
-                        }
-                    }
-                if (item.type == ItemID.VortexHelmet)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-                        
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "7% increased ranged critical strike chance\nIncreased night vision";
-                        }
-                    }
-
-                if (item.type == ItemID.VortexLeggings)
-                    foreach (TooltipLine line in tooltips)
-                    {
-
-
-                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
-                        {
-                            line.text = "50% increased movement speed";
-                        }
-                    }
-
-               
-                
-            }
-        }
-
+       
 
 
         //==============================================DEFENSE====================================================
@@ -377,17 +201,17 @@ namespace StormDiversSuggestions.VanillaChanges
                 }
                 if (item.type == ItemID.PinkEskimoHood)
                 {
-                    item.defense = 4;
+                    item.defense = 5;
 
                 }
                 if (item.type == ItemID.PinkEskimoCoat)
                 {
-                    item.defense = 4;
+                    item.defense = 6;
 
                 }
                 if (item.type == ItemID.PinkEskimoPants)
                 {
-                    item.defense = 4;
+                    item.defense = 5;
 
                 }
                 if (item.type == ItemID.GladiatorHelmet)
@@ -415,119 +239,71 @@ namespace StormDiversSuggestions.VanillaChanges
                     item.defense = 5;
                 }
 
-                if (item.type == ItemID.FrostLeggings)
-                {
-                    item.defense = 15;
-                }
-                if (item.type == ItemID.AncientBattleArmorHat)
-                {
-                    item.defense = 8;
-                }
-                if (item.type == ItemID.AncientBattleArmorPants)
-                {
-                    item.defense = 10;
-                }
+                
                 if (item.type == ItemID.CobaltLeggings)
                 {
-                    item.defense = 10;
+                    item.defense = 8;
                 }
                 if (item.type == ItemID.CobaltBreastplate)
                 {
-                    item.defense = 12;
+                    item.defense = 10;
                 }
                 if (item.type == ItemID.CobaltHat)
                 {
-                    item.defense = 4;
+                    item.defense = 3;
                 }
                 if (item.type == ItemID.CobaltMask)
                 {
-                    item.defense = 6;
+                    item.defense = 5;
                 }
                 if (item.type == ItemID.CobaltHelmet)
                 {
-                    item.defense = 15;
+                    item.defense = 14;
                 }
                 if (item.type == ItemID.MythrilGreaves)
                 {
-                    item.defense = 12;
+                    item.defense = 10;
                 }
                 if (item.type == ItemID.MythrilChainmail)
                 {
-                    item.defense = 15;
+                    item.defense = 13;
                 }
                 if (item.type == ItemID.MythrilHood)
                 {
-                    item.defense = 5;
+                    item.defense = 4;
                 }
                 if (item.type == ItemID.MythrilHat)
                 {
-                    item.defense = 8;
+                    item.defense = 7;
                 }
                 if (item.type == ItemID.MythrilHelmet)
                 {
-                    item.defense = 20;
+                    item.defense = 19;
                 }
                 if (item.type == ItemID.AdamantiteLeggings)
                 {
-                    item.defense = 13;
+                    item.defense = 11;
                 }
                 if (item.type == ItemID.AdamantiteBreastplate)
                 {
-                    item.defense = 17;
+                    item.defense = 15;
                 }
                 if (item.type == ItemID.AdamantiteHelmet)
                 {
-                    item.defense = 24;
+                    item.defense = 23;
                 }
                 if (item.type == ItemID.AdamantiteMask)
                 {
-                    item.defense = 9;
+                    item.defense = 8;
                 }
                 if (item.type == ItemID.AdamantiteHeadgear)
                 {
-                    item.defense = 5;
+                    item.defense = 4;
                 }
-                if (item.type == ItemID.HallowedGreaves)
-                {
-                    item.defense = 14;
-                }
-                if (item.type == ItemID.HallowedPlateMail)
-                {
-                    item.defense = 18;
-                }
-                if (item.type == ItemID.HallowedHelmet)
-                {
-                    item.defense = 10;
-                }
-                if (item.type == ItemID.HallowedMask)
-                {
-                    item.defense = 25;
-                }
-                if (item.type == ItemID.HallowedHeadgear)
-                {
-                    item.defense = 6;
-                }
+                
+                
 
-                if (item.type == ItemID.ChlorophyteHelmet)
-                {
-                    item.defense = 14;
-                }
-                if (item.type == ItemID.ChlorophyteMask)
-                {
-                    item.defense = 26;
-                }
-                if (item.type == ItemID.ChlorophyteHeadgear)
-                {
-                    item.defense = 8;
-                }
-                if (item.type == ItemID.ChlorophytePlateMail)
-                {
-                    item.defense = 19;
-                }
-                if (item.type == ItemID.ChlorophyteGreaves)
-                {
-                    item.defense = 15;
-                }
+                
                
 
             }
@@ -545,14 +321,16 @@ namespace StormDiversSuggestions.VanillaChanges
             {
                 if (item.type == ItemID.GladiatorHelmet)
                 {
-                    player.rangedDamage += 0.05f;
+                    player.rangedDamage += 0.03f;
                 }
                 if (item.type == ItemID.GladiatorBreastplate)
                 {
-                    player.rangedCrit += 5;
+                    player.rangedCrit += 2;
+                    player.rangedDamage += 0.02f;
                 }
                 if (item.type == ItemID.GladiatorLeggings)
                 {
+                    player.rangedCrit += 3;
                     player.moveSpeed += 0.1f;
                 }
                 if (item.type == ItemID.FrostsparkBoots)
@@ -576,7 +354,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 if (item.type == ItemID.FrostLeggings)
                 {
                     player.moveSpeed += 0.12f;
-                    player.ammoCost80 = true;
+                    
                     player.meleeSpeed += 0.13f;
                 }
 
@@ -615,7 +393,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     
                     player.nightVision = true;
                     player.dangerSense = true;
-
+                   
                 }
                 if (item.type == ItemID.VortexBreastplate)
                 {
@@ -709,11 +487,10 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
 
 
-                    if (Main.rand.Next(2) == 0)
-                    {
+                    
                         player.ammoCost80 = true;
-                    }
-                    player.setBonus = "10% chance not to consume ammo";
+                    
+                    player.setBonus = "20% chance not to consume ammo";
 
                 }
                 if (player.armor[0].type == ItemID.FrostHelmet && player.armor[1].type == ItemID.FrostBreastplate && player.armor[2].type == ItemID.FrostLeggings)
@@ -722,86 +499,87 @@ namespace StormDiversSuggestions.VanillaChanges
 
                     player.buffImmune[BuffID.Chilled] = true;
                     player.buffImmune[BuffID.Frozen] = true;
-
-
-                    player.setBonus = "Melee and ranged attacks cause Extreme Frostburn on top of Regular Frostburn\nImmunity to Chilled and Frozen";
+                    player.resistCold = true;
+                   // player.frostArmor = false;
+                    player.frostBurn = false;
+                    player.setBonus = "Melee and ranged attacks cause Extreme Frostburn\nImmunity to Chilled and Frozen plus reduced damage from cold themed enemies";
 
                 }
                 if (player.armor[0].type == ItemID.AncientBattleArmorHat && player.armor[1].type == ItemID.AncientBattleArmorShirt && player.armor[2].type == ItemID.AncientBattleArmorPants)
                 {
 
 
-                    player.buffImmune[BuffID.Suffocation] = true;
+                    //player.buffImmune[BuffID.Suffocation] = true;
                     player.buffImmune[BuffID.WindPushed] = true;
 
 
-                    player.setBonus = "Double tap Down/Up to call an ancient storm to the cursor location\nImmunity to Suffocation and Mighty wind";
+                    player.setBonus = "Double tap Down/Up to call an ancient storm to the cursor location\nImmunity to Mighty wind";
 
                 }
                
 
+                if (player.armor[0].type == ItemID.CobaltHelmet && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
+                {
+
+                    player.endurance += 0.2f;
+                    player.setBonus = "15% increased melee speed\nReduces damage taken by 20%";
+
+                }
                 if (player.armor[0].type == ItemID.CobaltMask && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
                 {
 
-                    player.endurance += 0.24f;
-                    player.setBonus = "15% increased melee speed\n24% Damage reduction";
+                    player.endurance += 0.2f;
+                    player.setBonus = "20% chance to not consume ammo\nReduces damage taken by 20%";
 
                 }
                 if (player.armor[0].type == ItemID.CobaltHat && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
                 {
 
-                    player.endurance += 0.24f;
-                    player.setBonus = "20% chance to not consume ammo\n24% Damage reduction";
-
-                }
-                if (player.armor[0].type == ItemID.CobaltHelmet && player.armor[1].type == ItemID.CobaltBreastplate && player.armor[2].type == ItemID.CobaltLeggings)
-                {
-
-                    player.endurance += 0.24f;
-                    player.setBonus = "14% reduced mana usage\n24% Damage reduction";
+                    player.endurance += 0.2f;
+                    player.setBonus = "14% reduced mana usage\nReduces damage taken by 20%";
 
                 }
                 if (player.armor[0].type == ItemID.MythrilHelmet && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
                 {
 
-                    player.endurance += 0.18f;
+                    player.endurance += 0.16f;
                     player.meleeCrit += 7;
-                    player.setBonus = "12% increased melee critical strike chance\n18% Damage reduction";
+                    player.setBonus = "12% increased melee critical strike chance\nReduces damage taken by 16%";
 
                 }
                 if (player.armor[0].type == ItemID.MythrilHat && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
                 {
 
-                    player.endurance += 0.18f;
-                    player.setBonus = "20% chance to not consume ammo\n18% Damage reduction";
+                    player.endurance += 0.16f;
+                    player.setBonus = "20% chance to not consume ammo\nReduces damage taken by 16%";
 
                 }
                 if (player.armor[0].type == ItemID.MythrilHood && player.armor[1].type == ItemID.MythrilChainmail && player.armor[2].type == ItemID.MythrilGreaves)
                 {
 
-                    player.endurance += 0.18f;
-                    player.setBonus = "17% reduced mana usage\n18% Damage reduction";
+                    player.endurance += 0.16f;
+                    player.setBonus = "17% reduced mana usage\nReduces damage taken by 16%";
 
                 }
                 if (player.armor[0].type == ItemID.AdamantiteHelmet && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
                 {
 
                     player.endurance += 0.12f;
-                    player.setBonus = "18% increased melee and movement speed\n12% Damage reduction";
+                    player.setBonus = "18% increased melee and movement speed\nReduces damage taken by 12%";
 
                 }
                 if (player.armor[0].type == ItemID.AdamantiteMask && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
                 {
 
                     player.endurance += 0.12f;
-                    player.setBonus = "25% chance to not consume ammo\n12% Damage reduction";
+                    player.setBonus = "25% chance to not consume ammo\nReduces damage taken by 12%";
 
                 }
                 if (player.armor[0].type == ItemID.AdamantiteHeadgear && player.armor[1].type == ItemID.AdamantiteBreastplate && player.armor[2].type == ItemID.AdamantiteLeggings)
                 {
 
                     player.endurance += 0.12f;
-                    player.setBonus = "19% reduced mana usage\n12% Damage reduction";
+                    player.setBonus = "19% reduced mana usage\nReduces damage taken by 12%";
 
                 }
             }
@@ -874,17 +652,26 @@ namespace StormDiversSuggestions.VanillaChanges
     public class FrostBurnEx : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        
+
         public override void AI(Projectile projectile)
         {
-
-            /*if (Main.rand.Next(4) < 3)
+            var player = Main.player[projectile.owner];
+            if (!GetInstance<Configurations>().DisableVanillaBuff)
             {
-                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, projectile.velocity.X * 1.2f, projectile.velocity.Y * 1.2f, 130, default, 3f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
-                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                Main.dust[dust].velocity *= 2.5f;
-            }*/
+                if ((projectile.melee || projectile.ranged) && projectile.friendly)
+                {
+                    if (player.frostArmor)
+                    {
+                        if (Main.rand.Next(4) < 3)
+                        {
+                            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 0.7f);
+                            Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+                            Main.dust[dustIndex].noGravity = true;
+                        }
+                    }
+                }
             }
+        }
         public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
         {
             var player = Main.player[projectile.owner];
@@ -946,21 +733,52 @@ namespace StormDiversSuggestions.VanillaChanges
         
 
     }
-    public class FrostBruinExMelee : ModPlayer
+   
+   
+    public class FrostburnExMelee2 : GlobalItem
     {
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Item item, Player player, NPC target, int damage, float knockBack, bool crit)
         {
+           
+        
             if (!GetInstance<Configurations>().DisableVanillaBuff)
             {
                 if (player.frostArmor)
                 {
-                    
+
 
                     target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
 
                 }
             }
         }
-    }
+        public override void OnHitPvp(Item item, Player player, Player target, int damage, bool crit)
+        {
+           
+            if (player.frostArmor)
+            {
 
+
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+
+            }
+        }
+        public override void MeleeEffects(Item item, Player player, Rectangle hitbox)
+        {
+            
+            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            {
+                if (player.frostArmor)
+                {
+                    if (Main.rand.Next(4) < 3)
+                    {
+                        int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 187, 0f, 0f, 100, default, 1f);
+                        Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+                }
+            }
+        }
+       
+    }
 }

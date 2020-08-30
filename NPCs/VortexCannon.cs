@@ -67,8 +67,8 @@ namespace StormDiversSuggestions.NPCs
             float distanceX = player.Center.X - npc.Center.X;
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
-            bool lineOfSight = Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height);
-            if (lineOfSight && distance <= 750f)
+            
+            if (distance <= 750f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
                 
 

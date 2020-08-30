@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items.Potions
     }
     public class DoubleHealingPotion : ModItem
     {
-        bool pstones;
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Enhanced Healing Potion");
@@ -99,12 +99,12 @@ namespace StormDiversSuggestions.Items.Potions
             if (player.pStone)
             {
                 player.AddBuff(BuffID.PotionSickness, 4500);
-                pstones = true;
+                
             }
             else
             {
                 player.AddBuff(BuffID.PotionSickness, 6000);
-                pstones = false;
+                
             }
             
         }
