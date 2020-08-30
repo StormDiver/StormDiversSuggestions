@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Linq;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
+
 
 namespace StormDiversSuggestions.VanillaChanges
 {
@@ -502,6 +504,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.resistCold = true;
                    // player.frostArmor = false;
                     player.frostBurn = false;
+                    player.GetModPlayer<StormPlayer>().FrostCryoSet = true;
                     player.setBonus = "Melee and ranged attacks inflict CryoBurn\nImmunity to Chilled and Frozen plus reduced damage from cold themed enemies";
 
                 }
@@ -660,7 +663,7 @@ namespace StormDiversSuggestions.VanillaChanges
             {
                 if ((projectile.melee || projectile.ranged) && projectile.friendly)
                 {
-                    if (player.frostArmor)
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                     {
                         if (Main.rand.Next(4) < 2)
                         {
@@ -681,7 +684,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
 
 
-                    if (player.frostArmor)
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                     {
 
                        
@@ -691,7 +694,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 if (projectile.ranged && projectile.friendly)
                 {
 
-                    if (player.frostArmor)
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                     {
 
                         
@@ -710,7 +713,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
 
 
-                    if (player.frostArmor)
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                     {
 
                         target.ClearBuff(BuffID.Frostburn);
@@ -720,7 +723,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 if (projectile.ranged && projectile.friendly)
                 {
 
-                    if (player.frostArmor)
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                     {
 
 
@@ -743,7 +746,7 @@ namespace StormDiversSuggestions.VanillaChanges
         
             if (!GetInstance<Configurations>().DisableVanillaBuff)
             {
-                if (player.frostArmor)
+                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                 {
 
 
@@ -755,7 +758,7 @@ namespace StormDiversSuggestions.VanillaChanges
         public override void OnHitPvp(Item item, Player player, Player target, int damage, bool crit)
         {
            
-            if (player.frostArmor)
+            if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
             {
 
 
@@ -768,7 +771,7 @@ namespace StormDiversSuggestions.VanillaChanges
             
             if (!GetInstance<Configurations>().DisableVanillaBuff)
             {
-                if (player.frostArmor)
+                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                 {
                     if (Main.rand.Next(4) < 3)
                     {

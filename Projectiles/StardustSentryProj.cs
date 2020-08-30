@@ -99,12 +99,12 @@ namespace StormDiversSuggestions.Projectiles
                             distance = 1.6f / distance;
 
                             //Multiplying the shoot trajectory with distance times a multiplier if you so choose to
-                            shootToX *= distance * 3.3f;
-                            shootToY *= distance * 3.3f;
+                            shootToX *= distance * 3.5f;
+                            shootToY *= distance * 3.5f;
 
                             for (int j = 0; j < 3; j++)
                             {
-                                Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(70));
+                                Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(60));
                                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("StardustSentryProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
                                 Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Top.Y, 8);
                                 shoottime = 0;

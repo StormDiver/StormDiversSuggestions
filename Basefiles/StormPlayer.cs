@@ -66,6 +66,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool spooked;
 
         public bool lifeBarrier;
+
+        public bool FrostCryoSet;
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -89,6 +91,7 @@ namespace StormDiversSuggestions.Basefiles
             frostCube = false;
             spooked = false;
             lifeBarrier = false;
+            FrostCryoSet = false;
         }
         // int shotCount = 0;
         //bool shot;
@@ -128,7 +131,7 @@ namespace StormDiversSuggestions.Basefiles
             }*/
             if (frostCube)
             {
-                player.maxMinions += 2;
+                
             }
             if (flameCore)
             {
