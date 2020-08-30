@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo Freezer");
-            Tooltip.SetDefault("Fires out frozen gas\nUses gel as ammo");
+            Tooltip.SetDefault("Fires out frozen gas which inflicts CryoBurn\nUses gel as ammo");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()

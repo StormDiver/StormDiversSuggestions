@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Staff");
-            Tooltip.SetDefault("Fires out a sand blast");
+            Tooltip.SetDefault("Fires out a burning sand blast");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
             Item.staff[item.type] = true;
         }

@@ -502,7 +502,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.resistCold = true;
                    // player.frostArmor = false;
                     player.frostBurn = false;
-                    player.setBonus = "Melee and ranged attacks cause Extreme Frostburn\nImmunity to Chilled and Frozen plus reduced damage from cold themed enemies";
+                    player.setBonus = "Melee and ranged attacks inflict CryoBurn\nImmunity to Chilled and Frozen plus reduced damage from cold themed enemies";
 
                 }
                 if (player.armor[0].type == ItemID.AncientBattleArmorHat && player.armor[1].type == ItemID.AncientBattleArmorShirt && player.armor[2].type == ItemID.AncientBattleArmorPants)
@@ -662,9 +662,9 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
                     if (player.frostArmor)
                     {
-                        if (Main.rand.Next(4) < 3)
+                        if (Main.rand.Next(4) < 2)
                         {
-                            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 0.7f);
+                            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 1f);
                             Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                             Main.dust[dustIndex].noGravity = true;
                         }

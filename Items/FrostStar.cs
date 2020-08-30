@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Frizbee");
-            Tooltip.SetDefault("Bounces around after being thrown");
+            Tooltip.SetDefault("Bounces around after being thrown and inflicts CryoBurn");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()

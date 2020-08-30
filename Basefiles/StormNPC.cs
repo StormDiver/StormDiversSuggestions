@@ -316,10 +316,11 @@ namespace StormDiversSuggestions.Basefiles
             {
                 if (Main.rand.Next(4) < 3)
                 {
-                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 187, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 130, default, 3f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 156, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 130, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                    Main.dust[dust].velocity *= 2.5f;
-                    int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 187, npc.velocity.X, npc.velocity.Y, 130, default, 1f);
+                    
+                    int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 156, npc.velocity.X, npc.velocity.Y, 130, default, .3f);
+                    Main.dust[dust].velocity *= 0.5f;
                 }
 
             }
