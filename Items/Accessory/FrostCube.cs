@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Summoner's Heart");
-            Tooltip.SetDefault("Increases your max number of minions and Sentries by 1\nIncreases minion damage by 12%");
+            Tooltip.SetDefault("Increases your max number of minions and sentries by 1\nIncreases minion damage by 10%\nMakes minions and sentries require no mana to summon");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
@@ -40,7 +40,11 @@ namespace StormDiversSuggestions.Items.Accessory
             
             player.maxMinions += 1;
             player.maxTurrets += 1;
-            player.minionDamage += 0.12f;
+            player.minionDamage += 0.1f;
+            if (player.HeldItem.summon)
+            {
+                player.manaCost = 0;
+            }
         }
 
         public class ModGlobalNPC : GlobalNPC

@@ -83,9 +83,12 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
                         {
-                            line.text = "20% increased movement and melee speed";
+                            line.text = "20% increased melee speed";
                         }
-                        
+                        if (line.mod == "Terraria" && line.Name == "Tooltip1") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
+                        {
+                            line.text = "25% increased movement speed";
+                        }
                     }
 
 

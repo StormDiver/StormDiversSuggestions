@@ -199,7 +199,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 14;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.minion = true;
+            //projectile.minion = true;
             projectile.timeLeft = 300;
             //projectile.light = 0.5f;
             projectile.scale = 1f;
@@ -344,7 +344,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 19;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            projectile.minion = true;
+           // projectile.minion = true;
             projectile.timeLeft = 180;
             projectile.light = 0.2f;
             projectile.scale = 1f;

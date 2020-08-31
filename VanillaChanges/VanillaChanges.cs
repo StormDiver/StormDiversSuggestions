@@ -355,7 +355,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 }
                 if (item.type == ItemID.FrostLeggings)
                 {
-                    player.moveSpeed += 0.12f;
+                    player.moveSpeed += 0.17f;
                     
                     player.meleeSpeed += 0.13f;
                 }
