@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Ore");
-            Tooltip.SetDefault("Retrived from the frozen caves\nVery cold, but strangly mallable");
+            Tooltip.SetDefault("Retrived from the frozen caves\nVery cold, but strangely malleable");
 
         }
 
