@@ -77,13 +77,13 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void Kill(int timeLeft)
         {
-            float numberProjectiles = 7 + Main.rand.Next(3);
+            float numberProjectiles = 7 + Main.rand.Next(4);
             float rotation = MathHelper.ToRadians(180);
             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             for (int i = 0; i < numberProjectiles; i++)
             {
-                float speedX = projectile.velocity.X * 0.5f;
-                float speedY = projectile.velocity.Y * 0.5f;
+                float speedX = 3f;
+                float speedY = 3f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("NebulaStaffProj2"), (int)(projectile.damage * 0.8f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }

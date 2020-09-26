@@ -23,13 +23,13 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 8;
             item.useStyle = 4;
-            item.useTime = 35;
-            item.useAnimation = 35;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 25;
+            item.mana = 20;
             item.UseSound = SoundID.Item43;
 
             item.damage = 75;
@@ -40,7 +40,6 @@ namespace StormDiversSuggestions.Items
 
             item.shootSpeed = 10f;
             
-            //item.useAmmo = AmmoID.Arrow;
                 
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -79,6 +78,14 @@ namespace StormDiversSuggestions.Items
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
+
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
 
         }
     }

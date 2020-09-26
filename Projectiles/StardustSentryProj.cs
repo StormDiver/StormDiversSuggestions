@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             //drawOffsetX = 2;
             //drawOriginOffsetY = 2;
-            projectile.sentry = true;      
+            projectile.sentry = true;
             
         }
         public override bool CanDamage()
@@ -45,6 +45,7 @@ namespace StormDiversSuggestions.Projectiles
         int opacity = 0;
         public override void AI()
         {
+            projectile.alpha = (int)0.5f;
             opacity++;
             
             Main.player[projectile.owner].UpdateMaxTurrets();
@@ -160,28 +161,37 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
-        public override Color? GetAlpha(Color lightColor)
-        {
-
-
+      
+  
+         /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+         {
             if (opacity > 30)
             {
-                return Color.White;
+                Texture2D texture = mod.GetTexture("Projectiles/StardustSentryProj");
+
+                spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, texture.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame), projectile.GetAlpha(Color.White), projectile.rotation, projectile.Size / 2f, projectile.scale, projectile.spriteDirection == 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+                
+            }
+
+         }*/
+       public override Color? GetAlpha(Color lightColor)
+        {
+
+            
+            if (opacity > 30)
+            {
+                
+                Color color = Color.White;
+                color.A = 150;
+                return color;
+
             }
             else
             {
                 return null;
             }
+            
         }
-        /* public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-         {
-             Texture2D texture = mod.GetTexture("Projectiles/StardustSentryProj_Glow");
-
-             spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, texture.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame), Color.White, projectile.rotation, projectile.Size / 2f, projectile.scale, projectile.spriteDirection == 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
-
-         }*/
-
     }
 
     //____________________________________________________________
@@ -217,7 +227,7 @@ namespace StormDiversSuggestions.Projectiles
         int hometime = 0;
         public override void AI()
         {
-            
+           
 
             dusttime++;
             if (dusttime >= 5)
@@ -233,7 +243,7 @@ namespace StormDiversSuggestions.Projectiles
             hometime++;
            if (hometime > 6)
             {
-                projectile.Opacity = 1f;
+                projectile.alpha = (int)0.5f;
             }
             if (hometime > 30)
             {
@@ -318,14 +328,21 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override Color? GetAlpha(Color lightColor)
         {
+
+
             if (hometime > 6)
             {
-                return Color.White;
+
+                Color color = Color.White;
+                color.A = 150;
+                return color;
+
             }
             else
             {
                 return null;
             }
+
         }
 
     }
@@ -353,7 +370,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = true;
             drawOffsetX = -10;
             //drawOriginOffsetY = -9;
-            //projectile.CloneDefaults(338);
+            //projectile.CloneDefaults(625);
             //aiType = 338;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
@@ -362,7 +379,9 @@ namespace StormDiversSuggestions.Projectiles
         int dusttime = 0;
         public override void AI()
         {
-            Lighting.AddLight(base.projectile.Center, 0.2f, 0.6f, 0.7f);
+
+            projectile.alpha = (int)0.5f;
+            
 
             dusttime++;
             if (dusttime >= 2)
@@ -427,8 +446,17 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override Color? GetAlpha(Color lightColor)
         {
+
+
             
-            return Color.White;
+
+                Color color = Color.White;
+                color.A = 150;
+                return color;
+
+            
+           
+
         }
 
     }

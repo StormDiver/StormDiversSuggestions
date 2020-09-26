@@ -46,8 +46,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -76,7 +76,7 @@ namespace StormDiversSuggestions.NPCs
                 {
                     npc.velocity.X = 0;
                     //float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
-                    int damage = 40; // The damage your projectile deals.
+                    int damage = 50; // The damage your projectile deals.
                     float knockBack = 3;
                     int projectileSpeed = 6;
                     int type = mod.ProjectileType("VortCannonProj");

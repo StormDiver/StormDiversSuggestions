@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void SetDefaults()
         {
-            npc.width = 12;
-            npc.height = 12;
+            npc.width = 24;
+            npc.height = 24;
 
             npc.aiStyle = 41; 
             aiType = NPCID.Derpling;

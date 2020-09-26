@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.NPCs
             animationType = NPCID.Derpling;
             npc.alpha = 3;
 
-            npc.damage = 120;
+            npc.damage = 90;
             
             npc.defense = 20;
             npc.lifeMax = 1000;
@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

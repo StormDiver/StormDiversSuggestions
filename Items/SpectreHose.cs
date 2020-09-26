@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 14;
-            item.useAnimation = 14;
+            item.useTime = 12;
+            item.useAnimation = 12;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -32,16 +32,15 @@ namespace StormDiversSuggestions.Items
             item.mana = 8;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 80;
+            item.damage = 90;
           
             item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("SpectreGunProj");
 
-            item.shootSpeed = 3f;
+            item.shootSpeed = 4f;
             
-            //item.useAmmo = AmmoID.Arrow;
-                
+    
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -66,6 +65,14 @@ namespace StormDiversSuggestions.Items
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
+
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
 
         }
     }

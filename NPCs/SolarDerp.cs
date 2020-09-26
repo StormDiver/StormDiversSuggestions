@@ -28,10 +28,10 @@ namespace StormDiversSuggestions.NPCs
             animationType = NPCID.Derpling;
             npc.alpha = 3;
 
-            npc.damage = 150;
+            npc.damage = 120;
             
             npc.defense = 25;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 1200;
 
 
             
@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -86,7 +86,7 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 240)
                 {
                     float projectileSpeed = 2f; // The speed of your projectile (in pixels per second).
-                    int damage = 35; // The damage your projectile deals.
+                    int damage = 30; // The damage your projectile deals.
                     float knockBack = 3;
                      int type = mod.ProjectileType("SolarDerpProj");
 

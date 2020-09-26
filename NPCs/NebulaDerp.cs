@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.NPCs
             animationType = NPCID.Derpling;
             npc.alpha = 3;
 
-            npc.damage = 90;
+            npc.damage = 80;
             
             npc.defense = 20;
             npc.lifeMax = 1000;
@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -75,7 +75,7 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 120)
                 {
                    // float projectileSpeed = 5f; // The speed of your projectile (in pixels per second).
-                    int damage = 50; // The damage your projectile deals.
+                    int damage = 30; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("NebulaFlame");
                     

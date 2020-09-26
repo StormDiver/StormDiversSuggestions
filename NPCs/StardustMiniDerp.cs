@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.NPCs
            // aiType = NPCID.AncientCultistSquidhead;
             animationType = NPCID.DemonEye;
 
-            npc.damage = 120;
+            npc.damage = 100;
             
             npc.defense = 0;
             npc.lifeMax = 100;
@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
 
        

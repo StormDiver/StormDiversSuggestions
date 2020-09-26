@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jar of Hearts");
-            Tooltip.SetDefault("While below 70% life, enemies below 30% life have a chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
+            Tooltip.SetDefault("While below 75% life, enemies below 30% life have a chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.statLife <= (player.statLifeMax2 * 0.7f))
+            if (player.statLife <= (player.statLifeMax2 * 0.75f))
             {
                 
                 player.AddBuff(mod.BuffType("JarBuff"), 1);
@@ -70,27 +70,29 @@ namespace StormDiversSuggestions.Items.Accessory
          {
              public override void NPCLoot(NPC npc)
              {
-
-                      if (Main.expertMode)
-                     {
-                         if (Main.rand.Next(50) == 0)
-                         {
-                             if (npc.type == NPCID.Demon)
-                             {
-                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
-                             }
-                         }
-                     }
-                     else
-                     {
-                         if (Main.rand.Next(60) == 0)
-                         {
-                             if (npc.type == NPCID.Demon)
-                             {
-                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
-                             }
-                         }
-                     }
+                if (NPC.downedBoss3)
+                {
+                    if (Main.expertMode)
+                    {
+                        if (Main.rand.Next(50) == 0)
+                        {
+                            if (npc.type == NPCID.Demon)
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Main.rand.Next(60) == 0)
+                        {
+                            if (npc.type == NPCID.Demon)
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
+                            }
+                        }
+                    }
+                }
              }
          }
     }

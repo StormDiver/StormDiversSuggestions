@@ -28,10 +28,10 @@ namespace StormDiversSuggestions.NPCs
             aiType = NPCID.Mimic;
             animationType = NPCID.Mimic;
 
-            npc.damage = 120;
+            npc.damage = 80;
             
             npc.defense = 25;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 2000;
 
 
             
@@ -45,8 +45,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

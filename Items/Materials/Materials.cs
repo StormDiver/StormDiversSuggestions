@@ -336,7 +336,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Broken heart");
+            DisplayName.SetDefault("Broken Heart");
 
             Tooltip.SetDefault("Almost devoid of life");
             ItemID.Sets.ItemIconPulse[item.type] = true;

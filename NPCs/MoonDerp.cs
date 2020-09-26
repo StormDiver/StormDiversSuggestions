@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.NPCs
             
             animationType = NPCID.Harpy;
 
-            npc.damage = 150;
+            npc.damage = 125;
 
             npc.defense = 60;
             npc.lifeMax = 10000;
@@ -47,8 +47,8 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            npc.damage = (int)(npc.damage * 0.75f);
+            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
+            //npc.damage = (int)(npc.damage * 0.75f);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 120)
                 {
                     float projectileSpeed = 6f; // The speed of your projectile (in pixels per second).
-                    int damage = 55; // The damage your projectile deals.
+                    int damage = 50; // The damage your projectile deals.
                     float knockBack = 2;
                     //int type = mod.ProjectileType("ScanDroneProj");
                     int type = ProjectileID.PhantasmalBolt;

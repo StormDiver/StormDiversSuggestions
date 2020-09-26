@@ -148,7 +148,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             speedup++;
-            if (speedup <= 60)
+            if (speedup <= 80)
             {
                 projectile.velocity.X *= 1.04f;
                 projectile.velocity.Y *= 1.04f;
@@ -196,6 +196,15 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
+
     }
     //_______________________________________________________________________________________________
     public class SpectreGunProj2 : ModProjectile
@@ -295,38 +304,41 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 46;
-            projectile.height = 46;
+            projectile.width = 18;
+            projectile.height = 18;
 
             projectile.friendly = true;
 
-
             projectile.magic = true;
             //projectile.timeLeft = 750;
-
-            projectile.MaxUpdates = 1;
+            
+            
             projectile.CloneDefaults(297);
             aiType = 297;
 
         }
         int distime = 0;
-        int timeleft2 = 3100;
+        
         public override void AI()
         {
-            if (distime <= 400)
+            if (distime <= 1)
+            {
+                projectile.timeLeft = 3100;
+            }
+            if (distime <= 500)
             {
                 distime++;
             }
-            timeleft2--;
+            
             int distanceproj = (distime / 2) + 10;
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 175);
+            
 
             //Making player variable "p" set as the projectile's owner
             Player p = Main.player[projectile.owner];
 
             //Factors for calculations
 
-            double deg = (double)projectile.ai[1] * 5 ; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = (double)projectile.ai[1] * 5f ; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = distanceproj; //Distance away from the player
 
@@ -354,10 +366,7 @@ namespace StormDiversSuggestions.Projectiles
                 Main.dust[dust].velocity *= 2.5f;
 
             }
-            if (timeleft2 <= 0)
-            {
-                projectile.Kill();
-            }
+            
             projectile.tileCollide = false;
             projectile.penetrate = 20;
             projectile.usesLocalNPCImmunity = true;
@@ -370,7 +379,114 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
+            }
+
+        }
+        public void AnimateProjectile() // Call this every frame, for example in the AI method.
+        {
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+            {
+                projectile.frame++;
+                projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
+                projectile.frameCounter = 0;
+            }
+        }
+
+
+    }
+    //_______________________________________________________________________________________________
+    public class SpectreStaffSpinProj2 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Spectre Orb");
+            Main.projFrames[projectile.type] = 4;
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 46;
+            projectile.height = 46;
+
+            projectile.friendly = true;
+
+            projectile.magic = true;
+            //projectile.timeLeft = 750;
+
+            
+            projectile.CloneDefaults(297);
+            aiType = 297;
+        }
+        int distime = 0;
+       
+        public override void AI()
+        {
+            if (distime <= 1)
+            {
+                projectile.timeLeft = 3100;
+            }
+            if (distime <= 500)
+            {
+                distime++;
+            }
+            
+            int distanceproj = (distime / 2) + 10;
+            //Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 175);
+
+            //Making player variable "p" set as the projectile's owner
+            Player p = Main.player[projectile.owner];
+
+            //Factors for calculations
+
+            double deg = (double)projectile.ai[1] * -5f; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double rad = deg * (Math.PI / 180); //Convert degrees to radians
+            double dist = distanceproj; //Distance away from the player
+
+            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
+            /distance for the desired distance away from the player minus the projectile's width   /
+            /and height divided by two so the center of the projectile is at the right place.     */
+
+            projectile.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - projectile.width / 2;
+            projectile.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - projectile.height / 2;
+
+            //Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
+            projectile.ai[1] += 1f;
+            var player = Main.player[projectile.owner];
+            if (player.dead)
+            {
+                projectile.Kill();
+                return;
+            }
+            AnimateProjectile();
+            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+            {
+                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 204);
+
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                Main.dust[dust].velocity *= 2.5f;
+
+            }
+            
+            projectile.tileCollide = false;
+            projectile.penetrate = 20;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            projectile.light = 0.1f;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+
+
+            
             for (int i = 0; i < 10; i++)
             {
 
@@ -391,6 +507,7 @@ namespace StormDiversSuggestions.Projectiles
         }
 
     }
+    
     //_______________________________________________________________________________________________
     public class SpectreDaggerProj : ModProjectile
     {
