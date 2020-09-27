@@ -125,10 +125,7 @@ namespace StormDiversSuggestions.Projectiles
         int speedup = 0;
         public override void AI()
         {
-            if (speedup < 1)
-            {
-                projectile.damage = 80;
-            }
+            
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
             projectile.spriteDirection = projectile.direction;
@@ -148,11 +145,11 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             speedup++;
-            if (speedup <= 80)
+            if (speedup <= 50)
             {
                 projectile.velocity.X *= 1.04f;
                 projectile.velocity.Y *= 1.04f;
-                projectile.damage += 1;
+                projectile.damage += 2;
                
             }
 
@@ -310,27 +307,50 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
 
             projectile.magic = true;
-            //projectile.timeLeft = 750;
-            
-            
-            projectile.CloneDefaults(297);
-            aiType = 297;
+            projectile.timeLeft = 3600;
+
+            projectile.tileCollide = false;
+            projectile.penetrate = -1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
+            projectile.light = 0.1f;
+
+
+            //projectile.CloneDefaults(297);
+            //aiType = 297;
 
         }
         int distime = 0;
-        
+        readonly int orbit = Main.rand.Next(1, 4);
+        int orbittime = 0;
+        int speed;
+        bool lineOfSight;
         public override void AI()
         {
-            if (distime <= 1)
+
+            if (orbit == 1)
             {
-                projectile.timeLeft = 3100;
+                orbittime = 60;
+                speed = 8;
             }
-            if (distime <= 500)
+            else if (orbit == 2)
+            {
+                orbittime = 140;
+                speed = 7;
+            }
+            else if (orbit == 3)
+            {
+                orbittime = 220;
+                speed = 6;
+            }
+           
+
+            if (distime <= orbittime)
             {
                 distime++;
             }
             
-            int distanceproj = (distime / 2) + 10;
+            int distanceproj = (distime) + 10;
             
 
             //Making player variable "p" set as the projectile's owner
@@ -338,7 +358,7 @@ namespace StormDiversSuggestions.Projectiles
 
             //Factors for calculations
 
-            double deg = (double)projectile.ai[1] * 5f ; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = (double)projectile.ai[1] * speed ; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = distanceproj; //Distance away from the player
 
@@ -358,20 +378,30 @@ namespace StormDiversSuggestions.Projectiles
                 return;
             }
             AnimateProjectile();
-            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+
+            Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 185, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            dust.noGravity = true;
+
+
+            lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height);
+
+           
+
+        }
+        
+        public override bool CanDamage()
+        {
+            if (!lineOfSight)
             {
-                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 204);
-
-                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                Main.dust[dust].velocity *= 2.5f;
-
+                return false;
             }
-            
-            projectile.tileCollide = false;
-            projectile.penetrate = 20;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
-            projectile.light = 0.1f;
+            else
+            {
+                return true;
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -398,7 +428,13 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+        }
 
     }
     //_______________________________________________________________________________________________
@@ -412,32 +448,54 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 46;
-            projectile.height = 46;
+            projectile.width = 18;
+            projectile.height = 18;
 
             projectile.friendly = true;
 
             projectile.magic = true;
-            //projectile.timeLeft = 750;
+            projectile.timeLeft = 3600;
 
-            
-            projectile.CloneDefaults(297);
-            aiType = 297;
+            projectile.tileCollide = false;
+            projectile.penetrate = -1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
+            projectile.light = 0.1f;
+            //projectile.CloneDefaults(297);
+            // aiType = 297;
         }
         int distime = 0;
-       
+
+        readonly int orbit = Main.rand.Next(1, 4);
+        int orbittime = 0;
+        bool lineOfSight;
+        int speed;
         public override void AI()
         {
-            if (distime <= 1)
+
+            if (orbit == 1)
             {
-                projectile.timeLeft = 3100;
+                orbittime = 100;
+                speed = -8;
             }
-            if (distime <= 500)
+            else if (orbit == 2)
+            {
+                orbittime = 180;
+                speed = -7;
+            }
+            else if (orbit == 3)
+            {
+                orbittime = 260;
+                speed = -6;
+            }
+            
+
+            if (distime <= orbittime)
             {
                 distime++;
             }
-            
-            int distanceproj = (distime / 2) + 10;
+
+            int distanceproj = (distime) + 10;
             //Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 175);
 
             //Making player variable "p" set as the projectile's owner
@@ -445,7 +503,7 @@ namespace StormDiversSuggestions.Projectiles
 
             //Factors for calculations
 
-            double deg = (double)projectile.ai[1] * -5f; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = (double)projectile.ai[1] * speed; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = distanceproj; //Distance away from the player
 
@@ -465,22 +523,28 @@ namespace StormDiversSuggestions.Projectiles
                 return;
             }
             AnimateProjectile();
-            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
-            {
-                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 204);
+            Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 185, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            dust.noGravity = true;
 
-                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                Main.dust[dust].velocity *= 2.5f;
+             lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height);
 
-            }
-            
-            projectile.tileCollide = false;
-            projectile.penetrate = 20;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
-            projectile.light = 0.1f;
+         
+
         }
-
+        public override bool CanDamage()
+        {
+            if (!lineOfSight)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public override void Kill(int timeLeft)
         {
 
@@ -504,6 +568,13 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
                 projectile.frameCounter = 0;
             }
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
         }
 
     }

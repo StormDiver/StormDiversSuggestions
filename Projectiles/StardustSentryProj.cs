@@ -447,16 +447,9 @@ namespace StormDiversSuggestions.Projectiles
         public override Color? GetAlpha(Color lightColor)
         {
 
-
-            
-
                 Color color = Color.White;
                 color.A = 150;
                 return color;
-
-            
-           
-
         }
 
     }

@@ -32,13 +32,13 @@ namespace StormDiversSuggestions.Items
             item.mana = 8;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 90;
+            item.damage = 100;
           
             item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("SpectreGunProj");
 
-            item.shootSpeed = 4f;
+            item.shootSpeed = 6f;
             
     
 

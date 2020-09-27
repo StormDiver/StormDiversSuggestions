@@ -30,12 +30,12 @@ namespace StormDiversSuggestions.Items
             
             item.magic = true;
     
-            item.damage = 65;
+            item.damage = 75;
       
             item.knockBack = 0f;
 
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useTime = 12;
+            item.useAnimation = 12;
             //item.reuseDelay = 20;
             item.shoot = mod.ProjectileType("SpectreStaffSpinProj");
             item.shootSpeed = 4.5f;

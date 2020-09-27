@@ -98,12 +98,12 @@ namespace StormDiversSuggestions.Items.Potions
         {
             if (player.pStone)
             {
-                player.AddBuff(BuffID.PotionSickness, 4320);
+                player.AddBuff(BuffID.PotionSickness, 4140);
                 
             }
             else
             {
-                player.AddBuff(BuffID.PotionSickness, 5760);
+                player.AddBuff(BuffID.PotionSickness, 5520);
                 
             }
             
