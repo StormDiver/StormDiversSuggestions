@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Dagger");
-            Tooltip.SetDefault("Rapidly throws daggers that bounce through enemies");
+            Tooltip.SetDefault("Rapidly throws 2 daggers that bounce through enemies\nDaggers deal more damage each time they bounce");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item1;
 
-            item.damage = 60;
+            item.damage = 66;
             //item.crit = 4;
             item.knockBack = 5f;
 

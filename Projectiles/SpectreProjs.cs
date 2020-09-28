@@ -638,6 +638,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.velocity.X = projectile.velocity.X * 1.1f;
 
             projectile.velocity.Y = -4f;
+            projectile.damage += 12;
         }
 
 
@@ -646,7 +647,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 

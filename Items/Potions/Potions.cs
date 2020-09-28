@@ -87,6 +87,14 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddRecipe();
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
     }
     public class BeetlePotion : ModItem
     {

@@ -58,8 +58,6 @@ namespace StormDiversSuggestions.Items.Accessory
                     dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 15, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                     dust.noGravity = true;
 
-
-
             }
 
         }
@@ -76,6 +74,13 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddRecipe();
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
     }
 }
