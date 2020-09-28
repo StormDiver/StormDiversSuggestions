@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Orbiter");
-            Tooltip.SetDefault("Summons lost souls that orbit around you");
+            Tooltip.SetDefault("Summons spectre orbs that orbit around you at varying distances");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
             Item.staff[item.type] = true;
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
             
             item.magic = true;
     
-            item.damage = 75;
+            item.damage = 65;
       
             item.knockBack = 0f;
 

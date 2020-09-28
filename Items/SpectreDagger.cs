@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 8;
             item.useStyle = 1;
-            item.useTime = 8;
-            item.useAnimation = 8;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useTurn = false;
             item.autoReuse = true;
             item.noUseGraphic = true;
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item1;
 
-            item.damage = 85;
+            item.damage = 60;
             //item.crit = 4;
             item.knockBack = 5f;
 
@@ -42,7 +42,13 @@ namespace StormDiversSuggestions.Items
             item.mana = 5;
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
-
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+            Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.25f), knockBack, player.whoAmI);
+            
+            return true;
+        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(0, 0);

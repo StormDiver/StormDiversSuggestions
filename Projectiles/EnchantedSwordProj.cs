@@ -184,7 +184,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Enchancted Sword");
+            DisplayName.SetDefault("Enchanted Sword");
             Main.projFrames[projectile.type] = 2;
         }
 
