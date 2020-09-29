@@ -86,7 +86,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<StormPlayer>().bootFall = true;
-
+            player.noFallDmg = true;
         }
 
         public override void AddRecipes()
