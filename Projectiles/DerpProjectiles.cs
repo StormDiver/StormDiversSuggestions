@@ -222,11 +222,13 @@ namespace StormDiversSuggestions.Projectiles
             if ((projectile.velocity.X >= 1.5f || projectile.velocity.X <= -1.5f))
                 if (Main.rand.Next(10) == 0)
                 {
+                    float speedX = 0f;
+                    float speedY = -4f;
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
+                    float scale = 1f - (Main.rand.NextFloat() * .5f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 1.5f), 0f, projectile.owner, 0f, 0f);
                     
-                int speedX = 0;
-                int speedY = 6;
-
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
                 
             }
         }

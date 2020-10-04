@@ -319,6 +319,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe = new ModRecipe(mod);
                 // recipe.AddIngredient(ItemID.FrostCore);
                 recipe.AddIngredient(mod, "IceBar", 10);
+                recipe.AddIngredient(ItemID.FrostCore);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.FrostHelmet);
                 recipe.AddRecipe();
@@ -326,7 +327,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe = new ModRecipe(mod);
                 
                 recipe.AddIngredient(mod, "IceBar", 18);
-                recipe.AddIngredient(ItemID.FrostCore, 2);
+                recipe.AddIngredient(ItemID.FrostCore);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.FrostBreastplate);
                 recipe.AddRecipe();
@@ -341,6 +342,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe = new ModRecipe(mod);
                 //recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddIngredient(mod, "DesertBar", 10);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.AncientBattleArmorHat);
                 recipe.AddRecipe();
@@ -348,7 +350,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe = new ModRecipe(mod);
                 
                 recipe.AddIngredient(mod, "DesertBar", 18);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 2);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.AncientBattleArmorShirt);
                 recipe.AddRecipe();

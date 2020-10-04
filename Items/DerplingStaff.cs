@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 7;
             item.useStyle = 5;
-            item.useTime = 25;
-            item.useAnimation = 25;  
+            item.useTime = 22;
+            item.useAnimation = 22;  
             item.autoReuse = true;
            // item.UseSound = SoundID.Item43;
             item.magic = true;
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
             item.UseSound = SoundID.Item43;
             item.shoot = mod.ProjectileType("DerpMagicProj");
             item.shootSpeed = 15f;
-            item.mana = 10;
+            item.mana = 9;
             
             item.noMelee = true; //Does the weapon itself inflict damage?
 

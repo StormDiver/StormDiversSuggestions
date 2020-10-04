@@ -6,6 +6,7 @@ This mod includes:
 
 -44 New unique weapons
 -14 new ammos
+-7 new tools
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore 
 -14 new accessories

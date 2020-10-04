@@ -507,8 +507,8 @@ namespace StormDiversSuggestions.Projectiles
             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             for (int i = 0; i < numberProjectiles; i++)
             {
-                float speedX = projectile.velocity.X * 0.6f;
-                float speedY = projectile.velocity.Y * 0.6f;
+                float speedX = 1.5f;
+                float speedY = 1.5f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }

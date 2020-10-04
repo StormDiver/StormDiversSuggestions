@@ -171,11 +171,11 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 0.5f;
+                    projectile.velocity.X = -oldVelocity.X * 0.6f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.5f;
+                    projectile.velocity.Y = -oldVelocity.Y * 0.6f;
                 }
 
 

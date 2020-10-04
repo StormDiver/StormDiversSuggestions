@@ -45,7 +45,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.GetItem("IceBar"), 12);
+            recipe.AddIngredient(mod.GetItem("IceBar"), 16);
+            recipe.AddIngredient(ItemID.FrostCore);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -92,7 +93,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.GetItem("IceBar"), 12);
+            recipe.AddIngredient(mod.GetItem("IceBar"), 15);
+            
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

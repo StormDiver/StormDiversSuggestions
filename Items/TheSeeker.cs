@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.useTime = 18;
+            item.useAnimation = 18;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 0;
             item.knockBack = 2f;
 
-            item.shootSpeed = 8f;
+            item.shootSpeed = 10f;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -45,7 +45,14 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-10, 0);
         }
-
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
+            }
+            return false;
+        }
 
 
         public override void AddRecipes()

@@ -563,27 +563,18 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
-            projectile.light = 0.1f;
+            projectile.light = 0.3f;
         }
-        public override void AI()
-        {
-            projectile.rotation += (float)projectile.direction * -0.4f;
-
-            //projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
-            projectile.spriteDirection = projectile.direction;
-        }
-        int reflect = 3;
-
+        bool reflect = false;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
-            reflect--;
-            if (reflect <= 0)
+            reflect = true;
+            /*if (reflect <= 0)
             {
                 projectile.Kill();
 
-            }
+            }*/
             Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
 
 
@@ -609,15 +600,65 @@ namespace StormDiversSuggestions.Projectiles
             }
             return false;
         }
+        public override void AI()
+        {
+            projectile.rotation += (float)projectile.direction * -0.4f;
+
+            //projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
+            projectile.spriteDirection = projectile.direction;
+
+            if (reflect == true)
+            {
+                if (projectile.localAI[0] == 0f)
+                {
+                    AdjustMagnitude(ref projectile.velocity);
+                    projectile.localAI[0] = 1f;
+                }
+                Vector2 move = Vector2.Zero;
+                float distance = 800f;
+                bool target = false;
+                for (int k = 0; k < 200; k++)
+                {
+                    if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
+                    {
+                        Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (distanceTo < distance)
+                        {
+                            move = newMove;
+                            distance = distanceTo;
+                            target = true;
+                        }
+                    }
+                }
+
+                if (target)
+                {
+                    AdjustMagnitude(ref move);
+                    projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                    AdjustMagnitude(ref projectile.velocity);
+                }
+            }
+        }
+    
+         private void AdjustMagnitude(ref Vector2 vector)
+         {
+            if (reflect == true)
+            {
+                float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+               if (magnitude > 10f)
+                {
+                   vector *= 10f / magnitude;
+              }
+            }
+         }
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            reflect = true;
             if (Main.rand.Next(2) == 0) // the chance
-            {
-                target.AddBuff(BuffID.Confused, 240);
-
-            }
-            else
-            {
+            { 
                 target.AddBuff(BuffID.OnFire, 240);
             }
             for (int i = 0; i < 10; i++)
