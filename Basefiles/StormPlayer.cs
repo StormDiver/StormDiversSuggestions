@@ -59,6 +59,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool bootFall;
 
+        public bool derpJump;
+
         public bool spectreDebuff;
 
         public bool frostCube;
@@ -87,6 +89,7 @@ namespace StormDiversSuggestions.Basefiles
             nebula = false;
             primeSpin = false;
             bootFall = false;
+            derpJump = false;
             spectreDebuff = false;
             frostCube = false;
             spooked = false;
@@ -167,6 +170,7 @@ namespace StormDiversSuggestions.Basefiles
             if (bootFall)
             {
                 player.maxFallSpeed *= 2;
+                
 
                 if (player.velocity.Y >= 8)
                 {
@@ -178,23 +182,50 @@ namespace StormDiversSuggestions.Basefiles
 
 
                 }
-               
-                if (player.velocity.Y == 0 && falling)
+                if (derpJump)
                 {
-
-                    for (int i = 0; i < 30; i++)
+                    if (player.velocity.Y == 0 && falling)
                     {
 
-                        int dustIndex = Dust.NewDust(new Vector2(player.position.X + 1f, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
-                        Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-                        Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-                        Main.dust[dustIndex].noGravity = true;
+
+                        for (int i = 0; i < 15; i++)
+                        {
+
+                            int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
+                            Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                            Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                            Main.dust[dustIndex].noGravity = true;
+                        }
+                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 4, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -4, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                       
+                        Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
+                        falling = false;
+
                     }
-                    Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
-                    Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
-                    falling = false;
-                    
+                }
+                else
+                {
+                    if (player.velocity.Y == 0 && falling)
+                    {
+
+
+                        for (int i = 0; i < 30; i++)
+                        {
+
+                            int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
+                            Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                            Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                            Main.dust[dustIndex].noGravity = true;
+                        }
+                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -4, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
+                        Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
+                        falling = false;
+
+                    }
                 }
                 if (player.velocity.Y <= 2)
                 {

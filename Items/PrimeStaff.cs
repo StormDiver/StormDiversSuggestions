@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prime Staff");
-            Tooltip.SetDefault("Fires out bouncing piercing skulls");
+            Tooltip.SetDefault("Fires out spinning skulls that bounce and pierce\nHas a chance to fire faster more damaging skulls");
             Item.staff[item.type] = true;
         }
 
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
 
             item.useTime = 18;
             item.useAnimation = 18;
-            item.mana = 8;
+            item.mana = 7;
             item.shoot = mod.ProjectileType("SkullSeek");
             item.shootSpeed = 14f;
    
@@ -61,13 +61,20 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            int numberProjectiles = 1 + Main.rand.Next(2); ; //This defines how many projectiles to shot.
-                for (int i = 0; i < numberProjectiles; i++)
-                {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                }
-                return false;
+            if (Main.rand.Next(3) == 0)
+            {//This defines how many projectiles to shot.
+               
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 1.5f, perturbedSpeed.Y *1.5f, type, (int)(damage * 1.5f), knockBack, player.whoAmI);
+                Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 60);
+
+            }
+            else
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // This defines the projectiles random spread . 10 degree spread.
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
+            }
+            return false;
             
             
         }

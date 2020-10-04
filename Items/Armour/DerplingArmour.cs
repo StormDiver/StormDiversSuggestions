@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases take off speed, plus immunity to fall damage";
+            player.setBonus = "Greatly increases take off and falling speed, creates a shockwave upon impacting the ground with enough speed";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -59,11 +59,11 @@ namespace StormDiversSuggestions.Items.Armour
             player.jumpSpeedBoost += 7f;
 
             player.autoJump = true;
-            player.noFallDmg = true;
+          
 
+            player.GetModPlayer<StormPlayer>().bootFall = true;
+            player.GetModPlayer<StormPlayer>().derpJump = true;
 
-    
-        
         }
         public override void AddRecipes()
         {
@@ -145,7 +145,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Greaves");
-            Tooltip.SetDefault("7% increased damage and critical strike chance\n50% increased movement speed");
+            Tooltip.SetDefault("7% increased damage and critical strike chance\n50% increased movement speed and immunity to fall damage");
         }
 
         public override void SetDefaults()
@@ -165,6 +165,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 7;
             player.thrownCrit += 7;
             player.moveSpeed += 0.5f;
+
+            player.noFallDmg = true;
         }
         public override void AddRecipes()
         {
@@ -220,7 +222,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases take off speed, plus immunity to fall damage\nIncreases your max number of minions by 2";
+            player.setBonus = "Greatly increases take off and falling speed, creates a shockwave upon impacting the ground with enough speed\nIncreases your max number of minions by 2";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -228,9 +230,10 @@ namespace StormDiversSuggestions.Items.Armour
             player.jumpSpeedBoost += 7f;
 
             player.autoJump = true;
-            player.noFallDmg = true;
+           
 
-
+            player.GetModPlayer<StormPlayer>().bootFall = true;
+            player.GetModPlayer<StormPlayer>().derpJump = true;
 
 
         }

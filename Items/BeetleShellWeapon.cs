@@ -17,13 +17,13 @@ namespace StormDiversSuggestions.Items
         public override void SetDefaults()
         {
             
-            item.damage = 90;
+            item.damage = 75;
             item.melee = true;
             item.width = 30;
             item.height = 30;
            
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;
@@ -59,12 +59,12 @@ namespace StormDiversSuggestions.Items
         {
 
             Main.PlaySound(2, (int)position.X, (int)position.Y, 1);
-            for (int i = 0; i < 3; i++)
+            /*for (int i = 0; i < 3; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(18)); // This defines the projectiles random spread . 10 degree spread.
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
-                }
-                return false;
+                }*/
+                return true;
             
         }
         public override void AddRecipes()

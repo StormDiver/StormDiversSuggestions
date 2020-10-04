@@ -30,7 +30,6 @@ namespace StormDiversSuggestions.Items
             //item.UseSound = SoundID.Item38;
             item.ranged = true;
 
-           //item.UseSound = SoundID.Item40;
 
             item.damage = 36;
             item.crit = 6;

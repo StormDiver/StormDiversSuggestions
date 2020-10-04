@@ -99,8 +99,8 @@ namespace StormDiversSuggestions.Projectiles
             if (shoottime == 10 && lineOfSight)
             {
 
-                
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+
+                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -168,7 +168,7 @@ namespace StormDiversSuggestions.Projectiles
             if (shoottime >= 20)
             {
 
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
                 Vector2 perturbedSpeed = new Vector2(0, -2).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -192,20 +192,19 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
 
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 26;
+            projectile.height = 26;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = 5;
             projectile.melee = true;
             projectile.timeLeft = 400;
             projectile.aiStyle = 14;
-            projectile.scale = 1.5f;
-            projectile.CloneDefaults(106);
-            aiType = 106;
+            projectile.scale = 1f;
+            
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            drawOffsetX = -3;
-            drawOriginOffsetY = 1;
+            drawOffsetX = 0;
+            drawOriginOffsetY = 2;
         }
 
         public override void AI()
@@ -217,7 +216,12 @@ namespace StormDiversSuggestions.Projectiles
             dust.noGravity = true;
             dust.noLight = true;
 
+            projectile.rotation += (float)projectile.direction * -0.6f;
 
+            drawOffsetX = 0;
+            drawOriginOffsetY = 2;
+            projectile.width = 26;
+            projectile.height = 26;
         }
 
 
@@ -226,27 +230,67 @@ namespace StormDiversSuggestions.Projectiles
 
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
-            if (Main.rand.Next(2) == 0)
+
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
+                dust.noGravity = true;
+            }
+            if (Main.rand.Next(5) == 0)
             {
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-            }
+                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
-            projectile.Kill();
+            }
         }
+        int reflect = 4;
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
-            if (Main.rand.Next(2) == 0)
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+
+            }
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+
+
+            if (Main.rand.Next(5) == 0)
             {
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-            }
+                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
-            return true;
+            }
+            {
+                Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 0.6f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 0.6f;
+                }
+
+
+            }
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
+                dust.noGravity = true;
+            }
+            return false;
         }
 
         public override void Kill(int timeLeft)
@@ -258,7 +302,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-20, -20), Main.rand.NextFloat(20, 20));
                     var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
                     dust.noGravity = true;
                 }
@@ -319,7 +363,7 @@ namespace StormDiversSuggestions.Projectiles
             if (Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("BeetleDebuff"), 480);
-                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                //Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
             }
             projectile.Kill();
         }

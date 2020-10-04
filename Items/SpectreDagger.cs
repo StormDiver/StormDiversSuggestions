@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Dagger");
-            Tooltip.SetDefault("Rapidly throws 2 daggers that bounce through enemies\nDaggers deal more damage each time they bounce");
+            Tooltip.SetDefault("Rapidly throws daggers that bounce through enemies\nHas a chance to throw out a second faster and more damaging dagger");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()
@@ -44,9 +44,11 @@ namespace StormDiversSuggestions.Items
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
-            Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.25f), knockBack, player.whoAmI);
-            
+            if (Main.rand.Next(5) == 0)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 1.25f, perturbedSpeed.Y * 1.25f, type, (int)(damage * 1.5f), knockBack, player.whoAmI);
+            }
             return true;
         }
         public override Vector2? HoldoutOffset()

@@ -308,6 +308,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.magic = true;
             projectile.timeLeft = 3600;
+            projectile.ignoreWater = true;
 
             projectile.tileCollide = false;
             projectile.penetrate = -1;
@@ -455,6 +456,7 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.magic = true;
             projectile.timeLeft = 3600;
+            projectile.ignoreWater = true;
 
             projectile.tileCollide = false;
             projectile.penetrate = -1;
@@ -604,7 +606,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 6;
             drawOffsetX = -1;
-            drawOriginOffsetY = -6;
+            drawOriginOffsetY = -20;
             projectile.penetrate = 8;
         }
 
@@ -638,7 +640,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.velocity.X = projectile.velocity.X * 1.1f;
 
             projectile.velocity.Y = -4f;
-            projectile.damage += 12;
+            //projectile.damage += 12;
         }
 
 

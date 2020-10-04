@@ -249,24 +249,24 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void SetDefaults()
         {
-            projectile.light = 0.2f;
+
             projectile.width = 38;
             projectile.height = 38;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
-            aiType = ProjectileID.WoodenArrowFriendly;
+            projectile.scale = 1f;
+           projectile.CloneDefaults(272);
+           aiType = 272;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
-             //drawOffsetX = -4;
-            //drawOriginOffsetY = -5;
-
+            drawOffsetX = -6;
+            drawOriginOffsetY = -6;
         }
 
+        
         public override void AI()
         {
             int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 0.7f);
@@ -274,57 +274,19 @@ namespace StormDiversSuggestions.Projectiles
             Main.dust[dustIndex].noGravity = true;
 
 
-            projectile.rotation += (float)projectile.direction * -0.2f;
+            projectile.rotation += (float)projectile.direction * -0.6f;
 
-            
 
+            projectile.tileCollide = true;
 
         }
-
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            {
-                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
-
-            }
-        }
-        public override void OnHitPvp(Player target, int damage, bool crit)
-
-        {
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
-        }
-
-        int reflect = 4;
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-
-            reflect--;
-            if (reflect <= 0)
-            {
-                projectile.Kill();
-
-            }
-
-            {
-                Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-
-                if (projectile.velocity.X != oldVelocity.X)
-                {
-                    projectile.velocity.X = -oldVelocity.X * 0.6f;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.6f;
-                }
-
-
-            }
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
-
             for (int i = 0; i < 10; i++)
             {
+
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.position;
@@ -332,28 +294,59 @@ namespace StormDiversSuggestions.Projectiles
 
 
             }
+            {
+                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+
+            }
+            for (int i = 0; i < 3; i++)
+            {
+
+                float speedX = Main.rand.NextFloat(-3f, 3f);
+                float speedY = Main.rand.NextFloat(-3f, 3f);
+
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, ProjectileID.CrystalShard, (int)(projectile.damage * 0.33f), 0f, projectile.owner, 0f, 0f);
+            }
+            projectile.Kill();
+
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+
+        {
+            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+            for (int i = 0; i < 10; i++)
+            {
+
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 0.7f)];
 
 
+            }
+            for (int i = 0; i < 3; i++)
+            {
+
+                float speedX = Main.rand.NextFloat(-3f, 3f);
+                float speedY = Main.rand.NextFloat(-3f, 3f);
+
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, ProjectileID.CrystalShard, (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
+            }
+            projectile.Kill();
             return false;
         }
-
+       
         public override void Kill(int timeLeft)
         {
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 
-                for (int i = 0; i < 10; i++)
-                {
-
-                    Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 0.7f)];
-
-
-                }
+               
 
             }
 

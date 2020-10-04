@@ -11,23 +11,23 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Shredder");
-            Tooltip.SetDefault("Shreds any enemy that it come into contact with, emits sparks that linger on the ground");
+            Tooltip.SetDefault("Shreds any enemy that it come into contact with\nEmits sparks that linger on the ground");
         }
 
         public override void SetDefaults()
         {
-            
+             item.damage = 60;
             item.crit = 10;
             item.melee = true;
             item.width = 86;
             item.height = 26;
-            
-            item.useAnimation = 4;
+            item.useTime = 10;
+            item.useAnimation = 30;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
             item.knockBack = 1.5f;
-            item.damage = 80;
+           
             item.useTurn = true;
             item.shoot = mod.ProjectileType("SawBladeChain");
             item.shootSpeed = 50f;
@@ -38,8 +38,8 @@ namespace StormDiversSuggestions.Items
             item.noUseGraphic = true; 
             item.channel = true; 
             item.autoReuse = true;
-            item.damage = 60;
-            item.useTime = 10;
+           
+            
         }
 
        

@@ -551,9 +551,9 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.aiStyle = 8;
+            projectile.width = 30;
+            projectile.height = 30;
+            //projectile.aiStyle = 8;
             projectile.friendly = true;
             projectile.penetrate = 3;
             projectile.magic = true;
@@ -561,15 +561,53 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            drawOffsetX = -6;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
-
+            projectile.light = 0.1f;
         }
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation += (float)projectile.direction * -0.4f;
+
+            //projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
             projectile.spriteDirection = projectile.direction;
+        }
+        int reflect = 3;
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+
+            }
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+
+
+            {
+                Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 1;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 1f;
+                }
+
+
+            }
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 5);
+            }
+            return false;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -586,8 +624,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 5);
             }
         }
         public override void Kill(int timeLeft)
