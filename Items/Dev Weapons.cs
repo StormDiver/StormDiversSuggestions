@@ -52,13 +52,7 @@ namespace StormDiversSuggestions.Items
         {
             return Main.rand.NextFloat() >= 1f;
         }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.GetItem("Weapontester"));
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+       
     }
     public class Weapontester : ModItem
     {
@@ -108,13 +102,7 @@ namespace StormDiversSuggestions.Items
             //player.AddBuff(BuffID.ManaSickness, 1200);
             return true;
         }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(mod.GetItem("WepKillerRep"));
-            recipe.SetResult(this);
-        recipe.AddRecipe();
-        }
+        
 
 }
 }

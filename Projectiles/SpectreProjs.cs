@@ -599,8 +599,8 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.magic = true;
             projectile.timeLeft = 200;
-            projectile.CloneDefaults(48);
-            aiType = 48;
+            projectile.CloneDefaults(93);
+            aiType = 93;
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
@@ -608,6 +608,7 @@ namespace StormDiversSuggestions.Projectiles
             drawOffsetX = -1;
             drawOriginOffsetY = -20;
             projectile.penetrate = 8;
+            
         }
 
         public override void AI()

@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
             item.axe = 30;
-            item.hammer = 85;
+            item.hammer = 80;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
