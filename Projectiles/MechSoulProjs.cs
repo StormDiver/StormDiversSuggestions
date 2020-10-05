@@ -255,16 +255,23 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }
-        
+        int shoottime = 0;
         public override void AI()
         {
+
+            
             // Spawn some dust visuals
             var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 100, default, 1.5f);
             dust.noGravity = true;
             dust.velocity /= 2f;
 
             var player = Main.player[projectile.owner];
-
+            shoottime++;
+                if (shoottime == 12)
+                {
+                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (int)projectile.velocity.X * 1.5f, (int)(projectile.velocity.Y * 1.5f), mod.ProjectileType("DestroyerFlailProj2"), (int)(projectile.damage), projectile.knockBack, player.whoAmI);
+    
+                 }
             // If owner player dies, remove the flail.
             if (player.dead)
             {
@@ -295,18 +302,18 @@ namespace StormDiversSuggestions.Projectiles
                 // This is how far the chain would go measured in pixels
                 float maxChainLength = 1000f;
                 projectile.tileCollide = true;
-
+               
                 if (currentChainLength > maxChainLength)
                 {
                     // If we reach maxChainLength, we change behavior.
                     projectile.ai[0] = 1f;
                     projectile.netUpdate = true;
-                   
-                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
-                   
-                
-                       
                     
+                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+
+
+
+
                 }
                 else if (!player.channel)
                 {
@@ -485,7 +492,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 34;
             projectile.height = 34;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
@@ -555,7 +562,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             //projectile.aiStyle = 8;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = 5;
             projectile.magic = true;
             projectile.timeLeft = 300;
             projectile.tileCollide = true;
@@ -569,13 +576,13 @@ namespace StormDiversSuggestions.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
-            reflect = true;
+            //reflect = true;
             /*if (reflect <= 0)
             {
                 projectile.Kill();
 
             }*/
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
 
 
             {
@@ -616,19 +623,22 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.localAI[0] = 1f;
                 }
                 Vector2 move = Vector2.Zero;
-                float distance = 800f;
+                float distance = 400f;
                 bool target = false;
                 for (int k = 0; k < 200; k++)
                 {
                     if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
                     {
-                        Vector2 newMove = Main.npc[k].Center - projectile.Center;
-                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
-                        if (distanceTo < distance)
+                        if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
                         {
-                            move = newMove;
-                            distance = distanceTo;
-                            target = true;
+                            Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                            float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                            if (distanceTo < distance)
+                            {
+                                move = newMove;
+                                distance = distanceTo;
+                                target = true;
+                            }
                         }
                     }
                 }

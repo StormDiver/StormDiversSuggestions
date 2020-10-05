@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Seeker");
-            Tooltip.SetDefault("Fires out homing eyes\nRequires Seeker Bolts");
+            Tooltip.SetDefault("Fires out miniature eyes that seek out nearby enemies\nRequires Seeker Bolts");
         }
         public override void SetDefaults()
         {

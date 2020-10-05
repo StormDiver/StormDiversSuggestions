@@ -45,11 +45,13 @@ namespace StormDiversSuggestions.Items
                 {
                     Main.PlaySound(2, (int)position.X, (int)position.Y, 122);
                     //Projectile.NewProjectile(position.X, position.Y, 0, 0, 629, damage, knockBack, player.whoAmI, NPC.FindFirstNPC(422));
+
                     NPC.ShieldStrengthTowerVortex = 0;
                     
                     NPC.ShieldStrengthTowerSolar = 0;
                     NPC.ShieldStrengthTowerNebula = 0;
                     NPC.ShieldStrengthTowerStardust = 0;
+                    Projectile.NewProjectile(player.Center.X, player.Bottom.Y, 0, 0, ProjectileID.DD2DarkMageHeal, 0, 0, player.whoAmI);
                     Main.NewText("The Shields guarding the Celestial pillars have been stripped away", 0, 204, 170);
                     
                     for (int i = 0; i < 50; i++)

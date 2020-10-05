@@ -250,7 +250,7 @@ namespace StormDiversSuggestions.Basefiles
                             float velocity = 0f;
                             int type = mod.ProjectileType("SpookyProj");
                             int damage = (int)(player.HeldItem.damage * 1f);
-                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage * 1.5f), 2f, player.whoAmI);
                         }
 
                     }

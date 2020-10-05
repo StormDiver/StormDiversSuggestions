@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prime Staff");
-            Tooltip.SetDefault("Fires out spinning skulls that home after impacting anything");
+            Tooltip.SetDefault("Fires out spinning skulls that will home in on touched enemies");
             Item.staff[item.type] = true;
         }
 
@@ -33,12 +33,12 @@ namespace StormDiversSuggestions.Items
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 45;
+            item.damage = 48;
             //item.crit = 4;
             item.knockBack = 4f;
 
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 24;
+            item.useAnimation = 24;
             item.mana = 10;
             item.shoot = mod.ProjectileType("SkullSeek");
             item.shootSpeed = 16f;
@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Items
             }
             else*/
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
             }
             return false;

@@ -51,20 +51,23 @@ namespace StormDiversSuggestions.Projectiles
             {
                 if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
                 {
-                    Vector2 newMove = Main.npc[k].Center - projectile.Center;
-                    float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
-                    if (distanceTo < distance)
+                    if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
                     {
-                        move = newMove;
-                        distance = distanceTo;
-                        target = true;
+                        Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (distanceTo < distance)
+                        {
+                            move = newMove;
+                            distance = distanceTo;
+                            target = true;
+                        }
                     }
                 }
             }
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                projectile.velocity = (11 * projectile.velocity + move) / 11f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 

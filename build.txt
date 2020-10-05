@@ -1,4 +1,4 @@
 displayName = Storm Diver's Additions and Changes
 author = Storm Diver
-version = 1.5.2
+version = 1.5.2.1
 homepage = https://forums.terraria.org/index.php?threads/storm-divers-additions-and-changes.88234/

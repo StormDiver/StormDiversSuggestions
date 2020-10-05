@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Shredder");
-            Tooltip.SetDefault("Shreds any enemy that it come into contact with\nEmits sparks that linger on the ground");
+            Tooltip.SetDefault("Shreds any enemy that it comes into contact with\nEmits sparks that linger on the ground");
         }
 
         public override void SetDefaults()
