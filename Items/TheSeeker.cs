@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.SeekerBolt>();
             item.UseSound = SoundID.Item11;
 
-            item.damage = 45;
+            item.damage = 46;
             //item.crit = 0;
             item.knockBack = 2f;
 
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
             }
             return false;

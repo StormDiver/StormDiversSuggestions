@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 50;
+			item.damage = 65;
             item.crit = 0;
 			item.melee = true;
 			item.width = 60;
@@ -53,8 +53,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
-            recipe.AddIngredient(mod.GetItem("DerplingShell"), 5);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+            recipe.AddIngredient(mod.GetItem("DerplingShell"), 6);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

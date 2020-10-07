@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Basefiles
         //bool shot;
         public int skulltime = 0;
         public bool falling;
-        
+        public int stopfall;
         bool shot;
         public override void PostUpdateEquips()
         {
@@ -172,14 +172,12 @@ namespace StormDiversSuggestions.Basefiles
                 player.maxFallSpeed *= 2;
                 
 
-                if (player.velocity.Y >= 8)
+                if (player.velocity.Y > 8)
                 {
 
 
-
-
                     falling = true;
-
+                    stopfall = 0;
 
                 }
                 if (derpJump)
@@ -201,7 +199,7 @@ namespace StormDiversSuggestions.Basefiles
                         Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 4, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
                         Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -4, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
                        
-                        Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
+                        Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 22);
                         falling = false;
 
                     }
@@ -229,8 +227,16 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 if (player.velocity.Y <= 2)
                 {
+                    
+                    stopfall++;
+                }
+                else
+                {
+                    stopfall = 0;
+                }
+                if (stopfall > 1)
+                {
                     falling = false;
-
                 }
             }
             if (spooked)

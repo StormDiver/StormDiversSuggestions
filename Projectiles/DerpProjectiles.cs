@@ -219,7 +219,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
             
-            if ((projectile.velocity.X >= 1.5f || projectile.velocity.X <= -1.5f))
+            
                 if (Main.rand.Next(10) == 0)
                 {
                     float speedX = 0f;
@@ -227,7 +227,7 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                     float scale = 1f - (Main.rand.NextFloat() * .5f);
                     perturbedSpeed = perturbedSpeed * scale;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 1.5f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.6f), 0f, projectile.owner, 0f, 0f);
                     
                 
             }
@@ -263,7 +263,7 @@ namespace StormDiversSuggestions.Projectiles
                 float speedX = Main.rand.NextFloat(-5f, 5f);
                 float speedY = Main.rand.NextFloat(-5f, 5f);
 
-                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
             }
         }
 

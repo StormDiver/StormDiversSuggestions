@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
             item.ranged = true;
 
 
-            item.damage = 36;
+            item.damage = 38;
             item.crit = 6;
             item.knockBack = 2f;
             
@@ -87,8 +87,8 @@ public override bool ConsumeAmmo(Player player)
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
-            recipe.AddIngredient(mod.GetItem("DerplingShell"), 5);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+            recipe.AddIngredient(mod.GetItem("DerplingShell"), 6);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -48,8 +48,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
-            recipe.AddIngredient(mod.GetItem("DerplingShell"), 5);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 14);
+            recipe.AddIngredient(mod.GetItem("DerplingShell"), 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -95,8 +95,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
-            recipe.AddIngredient(mod.GetItem("DerplingShell"), 5);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 14);
+            recipe.AddIngredient(mod.GetItem("DerplingShell"), 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -143,8 +143,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
-            recipe.AddIngredient(mod.GetItem("DerplingShell"), 5);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 14);
+            recipe.AddIngredient(mod.GetItem("DerplingShell"), 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
