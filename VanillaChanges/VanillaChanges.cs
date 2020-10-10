@@ -505,7 +505,7 @@ namespace StormDiversSuggestions.VanillaChanges
                    // player.frostArmor = false;
                     player.frostBurn = false;
                     player.GetModPlayer<StormPlayer>().FrostCryoSet = true;
-                    player.setBonus = "Melee and ranged attacks inflict CryoBurn\nImmunity to Chilled and Frozen plus reduced damage from cold themed enemies";
+                    player.setBonus = "Melee and ranged attacks inflict CryoBurn\nImmunity to Chilled and Frozen, plus reduced damage from cold themed enemies";
 
                 }
                 if (player.armor[0].type == ItemID.AncientBattleArmorHat && player.armor[1].type == ItemID.AncientBattleArmorShirt && player.armor[2].type == ItemID.AncientBattleArmorPants)

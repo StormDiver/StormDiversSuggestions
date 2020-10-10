@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.GetItem("DesertBar"), 16);
-            recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+            //recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.GetItem("DesertBar"), 15);
+            recipe.AddIngredient(mod.GetItem("DesertBar"), 16);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

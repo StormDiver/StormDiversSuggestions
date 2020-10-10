@@ -5,6 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using StormDiversSuggestions.Dusts;
 using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions.Basefiles;
+
 
 
 namespace StormDiversSuggestions.Projectiles
@@ -84,14 +86,24 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            
 
             if (projectile.timeLeft > 3)
             {
                 projectile.timeLeft = 3;
             }
+            var player = Main.player[projectile.owner];
             if (Main.rand.Next(1) == 0) // the chance
             {
-                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
+                }
+                else
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+
+                }
 
             }
         }
@@ -152,15 +164,25 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            var player = Main.player[projectile.owner];
+            if (Main.rand.Next(1) == 0) // the chance
             {
-                target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
+                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
+                }
+                else
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+
+                }
 
             }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 450);
+            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
         }
         // float hitbox = 150;
         // bool hitboxup;
@@ -295,8 +317,20 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             {
-                target.AddBuff(mod.BuffType("SuperFrostBurn"), 600);
+                var player = Main.player[projectile.owner];
+                if (Main.rand.Next(1) == 0) // the chance
+                {
+                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
+                    {
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
+                    }
+                    else
+                    {
+                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
 
+                    }
+
+                }
             }
             for (int i = 0; i < 3; i++)
             {
@@ -312,7 +346,13 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+            
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+
+                }
+        
+            
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -402,8 +442,21 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-         
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+
+            var player = Main.player[projectile.owner];
+            if (Main.rand.Next(1) == 0) // the chance
+            {
+                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
+                }
+                else
+                {
+                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+
+                }
+
+            }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 

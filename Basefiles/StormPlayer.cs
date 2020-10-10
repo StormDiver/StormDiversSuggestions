@@ -172,16 +172,17 @@ namespace StormDiversSuggestions.Basefiles
                 player.maxFallSpeed *= 2;
                 
 
-                if (player.velocity.Y > 8)
-                {
-
-
-                    falling = true;
-                    stopfall = 0;
-
-                }
+               
                 if (derpJump)
                 {
+                    if (player.velocity.Y > 12)
+                    {
+
+
+                        falling = true;
+                        stopfall = 0;
+
+                    }
                     if (player.velocity.Y == 0 && falling)
                     {
 
@@ -206,6 +207,14 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 else
                 {
+                    if (player.velocity.Y > 8)
+                    {
+
+
+                        falling = true;
+                        stopfall = 0;
+
+                    }
                     if (player.velocity.Y == 0 && falling)
                     {
 

@@ -64,7 +64,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
 
         public override void Kill(int timeLeft)
@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -238,7 +238,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
     }
     //________________________________________________________________________________________
@@ -293,7 +293,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -355,7 +355,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -498,7 +498,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("AridSandDebuff"), 600);
+            target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
         public override void Kill(int timeLeft)
         {
