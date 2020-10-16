@@ -50,7 +50,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.UnicornHorn);
            
 
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
@@ -118,7 +118,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.GreaterHealingPotion, 3);
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
             recipe.AddIngredient(ItemID.LifeFruit);
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
@@ -158,7 +158,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
             recipe.AddIngredient(ItemID.Daybloom);
             recipe.AddIngredient(ItemID.Blinkroot);
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this, 4);
             recipe.AddRecipe();
         }
@@ -196,7 +196,7 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.GetItem("HeartPotion"), 3);
             recipe.AddIngredient(ItemID.LifeFruit);
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this, 3);
             recipe.AddRecipe();
 

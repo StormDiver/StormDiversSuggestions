@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.Moonglow, 3);
             recipe.AddIngredient(ItemID.DoubleCod);
 
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.Waterleaf, 3);
             recipe.AddIngredient(ItemID.PrincessFish);
 
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.Fireblossom, 3);
             recipe.AddIngredient(ItemID.Hemopiranha);
 
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
@@ -138,7 +138,7 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.Fireblossom, 3);
             recipe.AddIngredient(ItemID.Ebonkoi);
 
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

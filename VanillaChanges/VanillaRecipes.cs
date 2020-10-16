@@ -368,7 +368,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 //recipe.anyFragment = true;
                 recipe.AddRecipeGroup("Fragment", 1);
                 // recipe.AddIngredient(ItemID.FragmentVortex);
-                recipe.AddTile(TileID.LunarCraftingStation);
+                recipe.AddTile(TileID.Bottles);
                 recipe.SetResult(ItemID.SuperHealingPotion, 5);
                 recipe.AddRecipe();
 
