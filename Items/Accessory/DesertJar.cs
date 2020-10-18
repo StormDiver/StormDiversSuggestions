@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pharaoh's Urn");
-            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough");
+            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough\nIncreases movement speed by 30%");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -33,21 +33,21 @@ namespace StormDiversSuggestions.Items.Accessory
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
-            if ((player.velocity.X > 4 || player.velocity.X < -4) || (player.velocity.Y > 4 || player.velocity.Y < -4))
+            player.moveSpeed += 0.3f;
+            if ((player.velocity.X > 3.5f || player.velocity.X < -3.5f) || (player.velocity.Y > 3.5f || player.velocity.Y < -3.5f))
             {
 
                 dropdust++;
                 if (dropdust == 2)
                 {
                     
-                        float speedX = 0f;
-                        float speedY = 0f;
-                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
-                        float scale = 1f - (Main.rand.NextFloat() * .5f);
-                        perturbedSpeed = perturbedSpeed * scale;
+                        //float speedX = 0f;
+                        //float speedY = 0f;
+                        //Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
+                        //float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        //perturbedSpeed = perturbedSpeed * scale;
 
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertJarProj"), 35, 0f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("DesertJarProj"), 35, 0f, player.whoAmI);
                         dropdust = 0;
 
                         //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 13);

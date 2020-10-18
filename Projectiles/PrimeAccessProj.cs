@@ -128,9 +128,8 @@ namespace StormDiversSuggestions.Projectiles
                         projectile.type != ProjectileID.Sharknado &&
                         projectile.type != ProjectileID.SharknadoBolt &&
                         projectile.type != ProjectileID.Cthulunado &&
-                        projectile.type != ProjectileID.SandBallFalling &&
-                        projectile.type != ProjectileID.SiltBall
-
+                        projectile.aiStyle != 10 &&
+                        projectile.aiStyle != 17
                         )
                     {
                         //Player player = Main.player[npc.target];
@@ -142,7 +141,7 @@ namespace StormDiversSuggestions.Projectiles
                         { }
                         if (distance >= 140 && distance <= 160 && !projCheck)
                         {
-                            int choice = Main.rand.Next(8);
+                            int choice = Main.rand.Next(7);
                             if (choice == 0)
                             {
                                 projCheck = true;
