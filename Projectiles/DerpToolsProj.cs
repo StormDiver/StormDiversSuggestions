@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Drill");
-            //Main.projFrames[projectile.type] = 2;
+            Main.projFrames[projectile.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -44,7 +44,7 @@ namespace StormDiversSuggestions.Projectiles
            
 
            
-            //AnimateProjectile();
+            AnimateProjectile();
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Projectiles
             
         }
 
-        /*public void AnimateProjectile() // Call this every frame, for example in the AI method.
+        public void AnimateProjectile() // Call this every frame, for example in the AI method.
         {
             projectile.frameCounter++;
             if (projectile.frameCounter >= 2) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
                 projectile.frameCounter = 0;
             }
-        }*/
+        }
 
 
     }

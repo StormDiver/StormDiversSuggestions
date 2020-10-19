@@ -36,7 +36,6 @@ namespace StormDiversSuggestions.Items
             
             item.noMelee = true; //Does the weapon itself inflict damage?
 
-           
         }
        
 

@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Projectiles
            projectile.aiStyle = 1;
             //projectile.CloneDefaults(48);
             //aiType = 48;
-            projectile.timeLeft = 60;
+            projectile.timeLeft = 180;
             drawOffsetX = -3;
             drawOriginOffsetY = 0;
             projectile.scale = 0.7f;

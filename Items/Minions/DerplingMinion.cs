@@ -68,7 +68,6 @@ namespace StormDiversSuggestions.Items.Minions
 
             item.UseSound = SoundID.Item44;
 
-
             item.buffType = BuffType<DerplingMinionBuff>();
             item.shoot = mod.ProjectileType("DerplingMinionProj");
         }

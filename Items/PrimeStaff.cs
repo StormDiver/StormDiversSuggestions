@@ -27,14 +27,11 @@ namespace StormDiversSuggestions.Items
             
             item.autoReuse = true;
             item.UseSound = SoundID.Item43;
-            //item.melee = true;
-            //item.ranged = true;
+         
             item.magic = true;
-            //item.summon = true;
-            //item.thrown = true;
+        
 
             item.damage = 48;
-            //item.crit = 4;
             item.knockBack = 4f;
 
             item.useTime = 24;
@@ -45,13 +42,8 @@ namespace StormDiversSuggestions.Items
    
             item.useStyle = 5;
 
+            item.noMelee = true; 
 
-            //item.useAmmo = AmmoID.Arrow;
-
-            item.noMelee = true; //Does the weapon itself inflict damage?
-            //item.noUseGraphic = true; //When uses no graphic is shown
-            //item.channel = true; //Speical conditons when held down
-           
         }
       
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

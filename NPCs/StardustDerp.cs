@@ -33,8 +33,6 @@ namespace StormDiversSuggestions.NPCs
             npc.defense = 10;
             npc.lifeMax = 800;
 
-
-            
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath18;
             npc.knockBackResist = 0.5f;

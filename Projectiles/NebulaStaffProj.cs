@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 200;
+            projectile.timeLeft = 100;
             projectile.extraUpdates = 2;
             projectile.scale = 2f;
             projectile.usesLocalNPCImmunity = true;
@@ -77,15 +77,15 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void Kill(int timeLeft)
         {
-            float numberProjectiles = 7 + Main.rand.Next(4);
+            float numberProjectiles = 5 + Main.rand.Next(3);
             float rotation = MathHelper.ToRadians(180);
             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             for (int i = 0; i < numberProjectiles; i++)
             {
-                float speedX = 3f;
-                float speedY = 3f;
+                float speedX = 1f;
+                float speedY = 1f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("NebulaStaffProj2"), (int)(projectile.damage * 0.8f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("NebulaStaffProj2"), (int)(projectile.damage * 0.4f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
 
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);

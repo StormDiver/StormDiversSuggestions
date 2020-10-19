@@ -86,8 +86,9 @@ namespace StormDiversSuggestions.Projectiles
                 //bool lineOfSight = Collision.CanHitLine(projectile.Center, 1, 1, target.Center, 1, 1);
                 //If the distance between the projectile and the live target is active
                 
-                if (distance < 600f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5)  
+                if (distance < 600f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5 && target.type != NPCID.TargetDummy)  
                 {
+                   
                     if (Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
                     {
                         if (shoottime > 50)
@@ -257,7 +258,7 @@ namespace StormDiversSuggestions.Projectiles
                 bool target = false;
                 for (int k = 0; k < 200; k++)
                 {
-                    if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
+                    if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
                     {
                         if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
                         {
