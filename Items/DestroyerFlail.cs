@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.rare = 5;
             item.crit = 4;
            
-            item.knockBack = 4f;
+            item.knockBack = 6f;
             item.damage = 65;
             item.useStyle = 5;
             item.UseSound = SoundID.Item1;
