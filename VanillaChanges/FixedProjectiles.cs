@@ -22,14 +22,7 @@ namespace StormDiversSuggestions.VanillaChanges
             if (GetInstance<Configurations>().EnableFixedProjs)
             
 
-            {
-                if (projectile.melee || projectile.ranged || projectile.magic || projectile.minion )
-                {
-                    projectile.usesLocalNPCImmunity = true;
-                    projectile.localNPCHitCooldown = 10;
-                }
-            }
-            /*
+            
             if(projectile.type == ProjectileID.MeteorShot)
             {
                
@@ -53,7 +46,7 @@ namespace StormDiversSuggestions.VanillaChanges
             {
                 projectile.usesLocalNPCImmunity = true;
                 projectile.localNPCHitCooldown = -1;
-            }*/
+            }
         }
 
         

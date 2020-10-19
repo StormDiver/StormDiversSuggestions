@@ -177,9 +177,9 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
 
             projectile.arrow = true;
-           
-            //Creates no immunity frames
-  
+
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = -1;
 
             drawOffsetX = -4;
             drawOriginOffsetY = 0;

@@ -117,6 +117,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.scale = 1.5f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
+            projectile.tileCollide = false;
         }
 
         public override void AI()

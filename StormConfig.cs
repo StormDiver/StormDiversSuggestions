@@ -43,8 +43,8 @@ namespace StormDiversSuggestions
         [ReloadRequired]
         public bool DisableNewRecipes{ get; set; }
 
-        [Label("Enable LocalNpcImmunity for most projectiles (EXPERIMENTAL)")]
-        [Tooltip("Allows all piercing projectiles to deal their own damage regardless of iframes, may break some weapons so enable at your own risk, Requires a Reload")]
+        [Label("Enable LocalNpcImmunity for piercing ammo")]
+        [Tooltip("Allows the vanilla piercing ammo to deal their own damage regardless of iframes, may make some weapon and ammo combinations overpowered, Requires a Reload")]
         [ReloadRequired]
         public bool EnableFixedProjs { get; set; }
     }

@@ -370,7 +370,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Desert Jar Dust");
-
+            projectile.usesIDStaticNPCImmunity = true;
+            
         }
 
         public override void SetDefaults()

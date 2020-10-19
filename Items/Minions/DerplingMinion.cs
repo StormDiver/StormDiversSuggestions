@@ -118,6 +118,8 @@ namespace StormDiversSuggestions.Items.Minions
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             // Don't mistake this with "if this is true, then it will automatically home". It is just for damage reduction for certain NPCs
             ProjectileID.Sets.Homing[projectile.type] = true;
+
+            
         }
 
         public sealed override void SetDefaults()
@@ -169,6 +171,8 @@ namespace StormDiversSuggestions.Items.Minions
             {
                 projectile.extraUpdates = 0;
             }
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
