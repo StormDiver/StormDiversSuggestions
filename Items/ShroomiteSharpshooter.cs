@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage but less accurately");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage and knockback, but with reduced accuracy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -37,14 +37,14 @@ namespace StormDiversSuggestions.Items
             item.damage = 60;
             item.crit = 16;
             item.knockBack = 2f;
-
+       
             item.shoot = ProjectileID.Bullet;
             item.shootSpeed = 15f;
             item.useTime = 10;
             item.useAnimation = 10;
             item.useAmmo = AmmoID.Bullet;
 
-            item.noMelee = true; //Does the weapon itself inflict damage?
+            item.noMelee = true; 
         }
 
 
@@ -79,13 +79,13 @@ namespace StormDiversSuggestions.Items
             {
                 if (type == ProjectileID.ChlorophyteBullet)
                 {
-                    type = ProjectileID.Bullet;
+                    type = ProjectileID.BulletHighVelocity;
                     
                 }
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int) (damage * 1.25f), knockBack, player.whoAmI);
-                    Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 2f, perturbedSpeed.Y * 2f, type, (int) (damage * 1.33f), knockBack * 1.5f, player.whoAmI);
+                    Main.PlaySound(2, (int)position.X, (int)position.Y, 41);
                 }
             }
             else
