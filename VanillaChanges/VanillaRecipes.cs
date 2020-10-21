@@ -378,6 +378,17 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.LihzahrdPowerCell);
                 recipe.AddRecipe();
+
+
+                recipe = new ModRecipe(mod)
+                {
+                    anyWood = true
+                };
+                recipe.AddIngredient(ItemID.Wood, 50);
+                recipe.AddIngredient(ItemID.Gel, 100);
+                recipe.AddTile(TileID.WorkBenches);
+                recipe.SetResult(ItemID.SlimeStaff);
+                recipe.AddRecipe();
             }
 
         }

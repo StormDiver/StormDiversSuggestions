@@ -369,8 +369,8 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Jar Dust");
-            projectile.usesIDStaticNPCImmunity = true;
+            DisplayName.SetDefault("Urn Dust");
+            
             
         }
 
@@ -394,8 +394,10 @@ namespace StormDiversSuggestions.Projectiles
 
 
             projectile.aiStyle = 14;
+            //projectile.usesIDStaticNPCImmunity = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 30;
 
-            
 
         }
 

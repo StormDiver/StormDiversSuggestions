@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = -1;
+            projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = -10;
         }
