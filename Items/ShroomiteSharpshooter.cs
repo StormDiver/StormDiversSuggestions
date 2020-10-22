@@ -77,13 +77,13 @@ namespace StormDiversSuggestions.Items
             
             if (player.altFunctionUse == 2)
             {
-                if (type == ProjectileID.ChlorophyteBullet)
+               /* if (type == ProjectileID.ChlorophyteBullet)
                 {
                     type = ProjectileID.BulletHighVelocity;
                     
-                }
+                }*/
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 2f, perturbedSpeed.Y * 2f, type, (int) (damage * 1.33f), knockBack * 1.5f, player.whoAmI);
                     Main.PlaySound(2, (int)position.X, (int)position.Y, 41);
                 }
