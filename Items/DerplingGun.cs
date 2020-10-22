@@ -24,19 +24,19 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 5;
             item.useTime = 4;
             item.useAnimation = 12;
-            item.reuseDelay = 12;
+            item.reuseDelay = 13;
             item.useTurn = false;
             item.autoReuse = true;
             //item.UseSound = SoundID.Item38;
             item.ranged = true;
 
 
-            item.damage = 38;
+            item.damage = 32;
             item.crit = 6;
             item.knockBack = 2f;
             
             item.shoot = ProjectileID.Bullet;
-            item.shootSpeed = 13f;
+            item.shootSpeed = 10f;
 
             item.useAmmo = AmmoID.Bullet;
             
@@ -53,28 +53,12 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
-            /* int numberProjectiles = 4; //This defines how many projectiles to shot.
-             for (int i = 0; i < numberProjectiles; i++)
-             {
-                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 3 degree spread.
-                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-             }
-            secondfire++;
-            if (secondfire >= 2)
             {
-                Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
-                if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-                {
-                    position += muzzleOffset;
-                }
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.4), (int)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DerpRangedProj"), (int)(damage * 1.25), knockBack, player.whoAmI);
-                secondfire = 0;
-                Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 22);
-            }*/
-            
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
 
-            return true;
+            return false;
 
         }
        

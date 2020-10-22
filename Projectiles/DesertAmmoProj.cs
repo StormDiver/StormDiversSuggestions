@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Bullet");
+            DisplayName.SetDefault("Arid Bullet");
           
         }
 
@@ -34,6 +34,7 @@ namespace StormDiversSuggestions.Projectiles
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
             projectile.extraUpdates = 1;
+            projectile.light = 0.3f;
         }
         int split = 0;
         public override void AI()
@@ -93,6 +94,14 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
+
+        }
 
     }
     //___________________________________________________________________________________________
@@ -100,7 +109,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Bullet");
+            DisplayName.SetDefault("Arid Bullet");
             
         }
 
@@ -122,6 +131,7 @@ namespace StormDiversSuggestions.Projectiles
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
             projectile.extraUpdates = 1;
+            projectile.light = 0.3f;
         }
 
         public override void AI()
@@ -149,6 +159,14 @@ namespace StormDiversSuggestions.Projectiles
                 var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
                 dust2.noGravity = true;
             }
+
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
 
         }
 

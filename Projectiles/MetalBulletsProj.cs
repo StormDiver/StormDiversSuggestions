@@ -40,6 +40,8 @@ namespace StormDiversSuggestions.Projectiles
 
             drawOffsetX = 2;
             drawOriginOffsetY = -0;
+
+            projectile.light = 0.2f;
         }
       
        
@@ -72,7 +74,14 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
         }
 
-        
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
+
+        }
 
     }
     public class IronShotProj : ModProjectile
@@ -105,7 +114,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             drawOffsetX = 2;
             drawOriginOffsetY = -0;
-
+            projectile.light = 0.2f;
         }
 
 
@@ -126,7 +135,14 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+
+
+            return Color.White;
+
+        }
 
 
     }
@@ -161,6 +177,8 @@ namespace StormDiversSuggestions.Projectiles
 
             drawOffsetX = 2;
             drawOriginOffsetY = -0;
+
+            projectile.light = 0.2f;
         }
 
 
@@ -193,7 +211,14 @@ namespace StormDiversSuggestions.Projectiles
 
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+
+
+            return Color.White;
+
+        }
 
     }
 

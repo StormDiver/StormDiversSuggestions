@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.timeLeft = 180;
             projectile.penetrate = 2;
-
+            
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
             projectile.tileCollide = false;
@@ -91,7 +91,14 @@ namespace StormDiversSuggestions.Projectiles
 
         }
 
-       
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
+    
+        }
 
     }
 
@@ -167,7 +174,14 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+
+
+            return Color.White;
+
+        }
 
 
     }
