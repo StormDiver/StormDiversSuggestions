@@ -194,9 +194,57 @@ namespace StormDiversSuggestions.VanillaChanges
                             line.text = "50% increased movement speed";
                         }
                     }
+                if (item.type == ItemID.ShroomiteLeggings)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "15% increased ranged critical strike chance";
+                        }
 
+                        if (line.mod == "Terraria" && line.Name == "Tooltip1")
+                        {
+                            line.text = "30% increased movement speed";
+                        }
+                    }
+                if (item.type == ItemID.TurtleHelmet)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "6% increased melee damage and critical strike chance";
+                        }
 
+                    }
+                if (item.type == ItemID.TurtleLeggings)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "4% increased melee damage and critical strike chance";
+                        }
 
+                    }
+
+                if (item.type == ItemID.BeetleHelmet)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "12% increased melee damage";
+                        }
+
+                    }
+                if (item.type == ItemID.BeetleLeggings)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "20% increased movement and melee speed";
+                        }
+
+                    }
+               
             }
         }
 

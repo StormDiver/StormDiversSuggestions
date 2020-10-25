@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item92;
 
-            item.damage = 65;
+            item.damage = 64;
             
             item.knockBack = 5f;
 
@@ -38,8 +38,8 @@ namespace StormDiversSuggestions.Items
             item.shootSpeed = 9f;
            
             item.useAmmo = AmmoID.Rocket;
-            item.useTime = 28;
-            item.useAnimation = 28;
+            item.useTime = 24;
+            item.useAnimation = 24;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -82,14 +82,16 @@ namespace StormDiversSuggestions.Items
                 {
                     position += muzzleOffset;
                 }
-                if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV)
+                /*if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV)
                 {
                     type = mod.ProjectileType("VortexRocketProj2");
-                }
+                }*/
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 4f;
-                   
-                    Projectile.NewProjectile(position.X, position.Y, (int) (perturbedSpeed.X), (int)(perturbedSpeed.Y), type, (int)(damage * 2.5f), knockBack, player.whoAmI);
-                
+                for (int i = 0; i < 2; i++)
+                {
+                    Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2.5f), knockBack, player.whoAmI);
+                }
+
             }
             else
             {
@@ -98,17 +100,17 @@ namespace StormDiversSuggestions.Items
                 {
                     position += muzzleOffset;
                 }
-                if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV)
+                /*if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV)
                 {
                     type = mod.ProjectileType("VortexRocketProj");
-                }
+                }*/
                
                 for (int i = 0; i < 2; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                     float scale = 1f - (Main.rand.NextFloat() * .2f);
                     perturbedSpeed = perturbedSpeed * scale;
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("VortexRocketProj"), damage, knockBack, player.whoAmI);
                 }
             }
             

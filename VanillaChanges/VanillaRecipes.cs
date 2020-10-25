@@ -168,148 +168,148 @@ namespace StormDiversSuggestions.VanillaChanges
                 //========================================ARMOURS================================
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.CopperBar, 6);
+                recipe.AddIngredient(ItemID.CopperBar, 8);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.CopperHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.CopperBar, 10);
+                recipe.AddIngredient(ItemID.CopperBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.CopperChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.CopperBar, 8);
+                recipe.AddIngredient(ItemID.CopperBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.CopperGreaves);
                 recipe.AddRecipe();
                 //
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TinBar, 6);
+                recipe.AddIngredient(ItemID.TinBar, 8);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TinHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TinBar, 10);
+                recipe.AddIngredient(ItemID.TinBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TinChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TinBar, 8);
+                recipe.AddIngredient(ItemID.TinBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TinGreaves);
                 recipe.AddRecipe();
                 //
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.IronBar, 8);
+                recipe.AddIngredient(ItemID.IronBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.IronHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.IronBar, 12);
+                recipe.AddIngredient(ItemID.IronBar, 14);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.IronChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.IronBar, 10);
+                recipe.AddIngredient(ItemID.IronBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.IronGreaves);
                 recipe.AddRecipe();
                 //
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.LeadBar, 8);
+                recipe.AddIngredient(ItemID.LeadBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.LeadHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.LeadBar, 12);
+                recipe.AddIngredient(ItemID.LeadBar, 14);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.LeadChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.LeadBar, 10);
+                recipe.AddIngredient(ItemID.LeadBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.LeadGreaves);
                 recipe.AddRecipe();
                 //
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.SilverBar, 8);
+                recipe.AddIngredient(ItemID.SilverBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.SilverHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.SilverBar, 14);
+                recipe.AddIngredient(ItemID.SilverBar, 16);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.SilverChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.SilverBar, 12);
+                recipe.AddIngredient(ItemID.SilverBar, 14);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.SilverGreaves);
                 recipe.AddRecipe();
                 //
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TungstenBar, 8);
+                recipe.AddIngredient(ItemID.TungstenBar, 10);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TungstenHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TungstenBar, 14);
+                recipe.AddIngredient(ItemID.TungstenBar, 16);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TungstenChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TungstenBar, 12);
+                recipe.AddIngredient(ItemID.TungstenBar, 14);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.TungstenGreaves);
                 recipe.AddRecipe();
                 //
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.GoldBar, 10);
+                recipe.AddIngredient(ItemID.GoldBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.GoldHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.GoldBar, 16);
+                recipe.AddIngredient(ItemID.GoldBar, 18);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.GoldChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.GoldBar, 14);
+                recipe.AddIngredient(ItemID.GoldBar, 16);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.GoldGreaves);
                 recipe.AddRecipe();
                 //
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.PlatinumBar, 10);
+                recipe.AddIngredient(ItemID.PlatinumBar, 12);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.PlatinumHelmet);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.PlatinumBar, 16);
+                recipe.AddIngredient(ItemID.PlatinumBar, 18);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.PlatinumChainmail);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.PlatinumBar, 14);
+                recipe.AddIngredient(ItemID.PlatinumBar, 16);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.PlatinumGreaves);
                 recipe.AddRecipe();

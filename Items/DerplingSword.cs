@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
             //item.useTurn = true;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("DerpMeleeProj");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 8f;
         }
         int weaponattack = 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

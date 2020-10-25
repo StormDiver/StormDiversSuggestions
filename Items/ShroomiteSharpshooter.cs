@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nRight click to fire bullets with increased damage and knockback, but with reduced accuracy");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds\nRight Click to zoom out");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -32,9 +32,9 @@ namespace StormDiversSuggestions.Items
 
             item.ranged = true;
 
-            //item.UseSound = SoundID.Item40;
+            item.UseSound = SoundID.Item40;
 
-            item.damage = 60;
+            item.damage = 65;
             item.crit = 16;
             item.knockBack = 2f;
        
@@ -52,48 +52,69 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-8, 0);
         }
+
+        /* public override bool AltFunctionUse(Player player)
+         {
+
+             return true;
+         }
+
+         public override bool CanUseItem(Player player)
+         {
+
+             if (player.altFunctionUse == 2)
+             {
+                 player.scope = true;
+             }
+             else
+             {
+             }
+
+             return true;
+         }*/
+        int accuracy = 20;
+        int resetaccuracy = 15;
+        public override void HoldItem(Player player)
+        {
+            player.scope = true;
+            if (resetaccuracy == 0)
+            {
+                accuracy = 20;
+            }
+            resetaccuracy--;
+        }
+
         
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-        public override bool CanUseItem(Player player)
-        {
-
-            if (player.altFunctionUse == 2)
-            {
-               
-            }
-            else
-            {
-                
-            }
-            
-            return true;
-        }
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            
-            if (player.altFunctionUse == 2)
+            if (accuracy > 0)
             {
-               /* if (type == ProjectileID.ChlorophyteBullet)
-                {
-                    type = ProjectileID.BulletHighVelocity;
-                    
-                }*/
-                {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 2f, perturbedSpeed.Y * 2f, type, (int) (damage * 1.33f), knockBack * 1.5f, player.whoAmI);
-                    Main.PlaySound(2, (int)position.X, (int)position.Y, 41);
-                }
+                accuracy -= 1;
             }
-            else
+            resetaccuracy = 15;
+            /* if (player.altFunctionUse == 2)
+             {
+                 if (type == ProjectileID.ChlorophyteBullet)
+                 {
+                     type = ProjectileID.BulletHighVelocity;
+
+                 }
+                 {
+                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
+                     float scale = 1f - (Main.rand.NextFloat() * .5f);
+                     perturbedSpeed = perturbedSpeed * scale;
+                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 6f, perturbedSpeed.Y * 6f, mod.ProjectileType("Rangedmushroom"), (int) (damage * 1.25f), knockBack * 1.5f, player.whoAmI);
+                     Main.PlaySound(2, (int)position.X, (int)position.Y, 38);
+                 }
+
+             }
+             else*/
+            
             {
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(accuracy));
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                    Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                    //Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
                 }
             }
 

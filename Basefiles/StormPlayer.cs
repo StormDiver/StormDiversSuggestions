@@ -102,6 +102,7 @@ namespace StormDiversSuggestions.Basefiles
         public bool falling;
         public int stopfall;
         bool shot;
+        
         public override void PostUpdateEquips()
         {
             /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
@@ -139,12 +140,19 @@ namespace StormDiversSuggestions.Basefiles
             if (flameCore)
             {
 
-                player.wingTimeMax *= (int)3f;
-                if (player.velocity.Y != 0)
-                {
+                player.wingTimeMax *= (int)2f;
 
+                if (player.velocity.Y == 0)
+                {
+                    //dashstop++;
+                    player.dash = 2;
+                }
+                else
+                {
                     player.dash = 3;
                 }
+               
+                
                 //player.moveSpeed *= 0.4f;
             }
             if (primeSpin)
@@ -247,6 +255,10 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     falling = false;
                 }
+            }
+            if (!bootFall)
+            {
+                falling = false;
             }
             if (spooked)
             {

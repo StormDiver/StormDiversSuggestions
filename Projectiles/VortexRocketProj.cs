@@ -89,7 +89,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = projectile.velocity.X;
                     float speedY = projectile.velocity.Y;
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("VortexRocketProj2"), (int)(projectile.damage * 0.9f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("VortexRocketProj2"), (int)(projectile.damage * 1), projectile.knockBack, Main.myPlayer, 0f, 0f);
                 }
                 projectile.Kill();
             }

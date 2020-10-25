@@ -47,5 +47,10 @@ namespace StormDiversSuggestions
         [Tooltip("Allows the vanilla piercing ammo to deal their own damage regardless of iframes, may make some weapon and ammo combinations overpowered, Requires a Reload")]
         [ReloadRequired]
         public bool EnableFixedProjs { get; set; }
+
+        [Label("Reduce expert enemy health and damage")]
+        [Tooltip("Reduces the health and damage of all non-boss enemies in expert mode to only 1.5x that of normal mode, Requires a Reload")]
+        [ReloadRequired]
+        public bool ReduceExpertHealth { get; set; }
     }
 }

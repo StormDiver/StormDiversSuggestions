@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
 
         }
-        int reflect = 3;
+        int reflect = 4;
         int trail = 0;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -197,6 +197,7 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 206);
             }
         }
+
         public override void Kill(int timeLeft)
         {
 
@@ -249,13 +250,28 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.ranged = true;
 
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 450;
 
         }
+        
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            //projectile.Kill();
 
+           
+             
+                //Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 0.5f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 0.5f;
+                }
+            
+           // Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
             return false;
         }
         int timeleft = 240;
@@ -306,7 +322,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
                     float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
 
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.9f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.6f), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -410,7 +426,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
                     float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
 
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }

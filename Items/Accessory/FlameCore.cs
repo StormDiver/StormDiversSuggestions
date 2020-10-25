@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's Flame");
-            Tooltip.SetDefault("Multiples your flight time by 3\nAllows you to perform a damaging dash while in the air");
+            Tooltip.SetDefault("Doubles your flight time\nAllows you to perform a powerful damaging dash while in the air\nCan perform a much weaker dash when grounded");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 
@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.height = 28;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = -12;
-            item.defense = 7;
+           
             item.accessory = true;
             item.expert = true;
         }

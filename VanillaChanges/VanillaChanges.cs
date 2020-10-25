@@ -407,6 +407,29 @@ namespace StormDiversSuggestions.VanillaChanges
 
                 }
                
+                if (item.type == ItemID.ShroomiteLeggings)
+                {
+                    player.rangedCrit += 8;
+                    player.moveSpeed += 0.18f;
+                }
+                if (item.type == ItemID.TurtleHelmet)
+                {
+                    player.meleeCrit += 6;
+                }
+                if (item.type == ItemID.TurtleLeggings)
+                {
+                    player.meleeDamage += 0.04f;
+                }
+                if (item.type == ItemID.BeetleHelmet)
+                {
+                    player.meleeDamage += 0.06f;
+                }
+                if (item.type == ItemID.BeetleLeggings)
+                {
+                    player.meleeSpeed += 0.14f;
+                    player.moveSpeed += 0.14f;
+                }
+               
             }
         }
     }
@@ -583,6 +606,27 @@ namespace StormDiversSuggestions.VanillaChanges
 
                     player.endurance += 0.12f;
                     player.setBonus = "19% reduced mana usage\nReduces damage taken by 12%";
+
+                }
+                if (player.armor[0].type == ItemID.ChlorophyteMask && player.armor[1].type == ItemID.ChlorophytePlateMail && player.armor[2].type == ItemID.ChlorophyteGreaves)
+                {
+
+                    player.meleeSpeed += 0.2f;
+                    player.setBonus = "Shoots crystal leaves at nearby enemies\nIncreased melee speed by 20%";
+
+                }
+                if (player.armor[0].type == ItemID.ChlorophyteHelmet && player.armor[1].type == ItemID.ChlorophytePlateMail && player.armor[2].type == ItemID.ChlorophyteGreaves)
+                {
+
+                    player.rangedCrit += 10;
+                    player.setBonus = "Shoots crystal leaves at nearby enemies\nIncreased ranged critical strike chance by 10%";
+
+                }
+                if (player.armor[0].type == ItemID.ChlorophyteHeadgear && player.armor[1].type == ItemID.ChlorophytePlateMail && player.armor[2].type == ItemID.ChlorophyteGreaves)
+                {
+
+                    player.magicCrit += 10;
+                    player.setBonus = "Shoots crystal leaves at nearby enemies\nIncreased magic critical strike chance by 10%";
 
                 }
             }

@@ -1,4 +1,5 @@
 You can find update changes on the Github release page: https://github.com/StormDiver/StormDiversSuggestions/releases
+Also join the Discord server: https://discord.gg/Qc32asc
 
 This mod attempts to add some of the ideas that I (Storm Diver) have suggested on the forums, plus a bunch of new content I made up along the way.
 
