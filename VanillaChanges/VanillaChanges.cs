@@ -429,7 +429,23 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.meleeSpeed += 0.14f;
                     player.moveSpeed += 0.14f;
                 }
-               
+               if (item.type == ItemID.ShadowHelmet)
+                {
+                    player.meleeSpeed -= 0.07f;
+                    player.allDamage += 0.05f;
+                }
+                if (item.type == ItemID.ShadowScalemail)
+                {
+                    player.meleeSpeed -= 0.07f;
+                    player.allDamage += 0.05f;
+
+                }
+                if (item.type == ItemID.ShadowGreaves)
+                {
+                    player.meleeSpeed -= 0.07f;
+                    player.allDamage += 0.05f;
+
+                }
             }
         }
     }
@@ -629,6 +645,16 @@ namespace StormDiversSuggestions.VanillaChanges
                     player.setBonus = "Shoots crystal leaves at nearby enemies\nIncreased magic critical strike chance by 10%";
 
                 }
+                if (player.armor[0].type == ItemID.ShadowHelmet && player.armor[1].type == ItemID.ShadowScalemail && player.armor[2].type == ItemID.ShadowGreaves)
+                {
+                    //player.runAcceleration = 2;
+                    //player.maxRunSpeed *= 2;
+                    player.moveSpeed -= 0.15f;
+                    //player.dash = 1;
+                    player.blackBelt = true;
+                    player.setBonus = "Gives you a small chance to dodge attacks";
+
+                }
             }
 
         }
@@ -636,66 +662,7 @@ namespace StormDiversSuggestions.VanillaChanges
     }
 
     
-    public class MiningArmour : GlobalItem
-    {
-        public override void AddRecipes()
-        {
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 25);
-                recipe.AddIngredient(ItemID.GoldOre, 35);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningShirt);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 25);
-                recipe.AddIngredient(ItemID.PlatinumOre, 35);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningShirt);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 20);
-                recipe.AddIngredient(ItemID.GoldOre, 30);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningPants);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 20);
-                recipe.AddIngredient(ItemID.PlatinumOre, 30);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningPants);
-                recipe.AddRecipe();
-            }
-        }
-        public class VanillaShops : GlobalNPC
-        {
-            public override void SetupShop(int type, Chest shop, ref int nextSlot)
-            {
-                switch (type)
-                {
-                    case NPCID.Merchant:
-
-
-                        if (Main.LocalPlayer.HasItem(ItemID.MiningHelmet))
-
-                        {
-                            shop.item[nextSlot].SetDefaults(ItemID.MiningShirt);
-                            nextSlot++;
-                            shop.item[nextSlot].SetDefaults(ItemID.MiningPants);
-                            nextSlot++;
-
-                        }
-
-                        break;
-                }
-            }
-        }
-    }
+   
     public class FrostBurnEx : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

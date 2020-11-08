@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Helmet");
-            Tooltip.SetDefault("8% increased damage and critical strike chance");
+            Tooltip.SetDefault("14% increased damage\n10% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -30,11 +30,11 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.08f;
-            player.meleeCrit += 8;
-            player.rangedCrit += 8;
-            player.magicCrit += 8;
-            player.thrownCrit += 8;
+            player.allDamage += 0.14f;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
+            player.thrownCrit += 10;
 
         }
 
@@ -51,18 +51,20 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases take off and falling speed, creates a shockwave upon impacting the ground with enough speed";
+            player.setBonus = "Increases assent and falling speed";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
            
-            player.jumpSpeedBoost += 6f;
-
+            player.jumpSpeedBoost += 5;
+            
             player.autoJump = true;
-          
+            player.maxFallSpeed *= 1.5f;
 
-            player.GetModPlayer<StormPlayer>().bootFall = true;
-            player.GetModPlayer<StormPlayer>().derpJump = true;
+           
+
+            //player.GetModPlayer<StormPlayer>().bootFall = true;
+            //player.GetModPlayer<StormPlayer>().derpJump = true;
 
         }
         public override void AddRecipes()
@@ -103,7 +105,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Breastplate");
-            Tooltip.SetDefault("8% increased damage and critical strike chance");
+            Tooltip.SetDefault("8% increased damage");
         }
 
         public override void SetDefaults()
@@ -119,10 +121,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.08f;
-            player.meleeCrit += 8;
-            player.rangedCrit += 8;
-            player.magicCrit += 8;
-            player.thrownCrit += 8;
+            /*player.meleeCrit += 4;
+            player.rangedCrit += 4;
+            player.magicCrit += 4;
+            player.thrownCrit += 4;*/
 
         }
         public override void AddRecipes()
@@ -145,7 +147,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Greaves");
-            Tooltip.SetDefault("8% increased damage and critical strike chance\n50% increased movement speed and immunity to fall damage");
+            Tooltip.SetDefault("8% increased critical strike chance\n50% increased movement speed and immunity to fall damage");
         }
 
         public override void SetDefaults()
@@ -159,7 +161,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.08f;
+            //player.allDamage += 0.04f;
             player.meleeCrit += 8;
             player.rangedCrit += 8;
             player.magicCrit += 8;
@@ -189,7 +191,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("Increases your max number of minions by 1\nIncreases summon damage by 15%");
+            Tooltip.SetDefault("Increases summon damage by 16%");
         }
 
         public override void SetDefaults()
@@ -205,7 +207,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.maxMinions += 1;
-            player.minionDamage += 0.15f;
+            player.minionDamage += 0.16f;
 
         }
 
@@ -222,18 +224,18 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases take off and falling speed, creates a shockwave upon impacting the ground with enough speed\nIncreases your max number of minions by 2";
+            player.setBonus = "Increases assent and falling speed\nIncreases your max number of minions by 2";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
             player.maxMinions += 2;
-            player.jumpSpeedBoost += 6f;
+            player.jumpSpeedBoost += 5f;
 
             player.autoJump = true;
-           
+            player.maxFallSpeed *= 1.5f;
 
-            player.GetModPlayer<StormPlayer>().bootFall = true;
-            player.GetModPlayer<StormPlayer>().derpJump = true;
+            //player.GetModPlayer<StormPlayer>().bootFall = true;
+            //player.GetModPlayer<StormPlayer>().derpJump = true;
 
 
         }

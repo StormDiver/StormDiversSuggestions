@@ -73,6 +73,42 @@ namespace StormDiversSuggestions.Projectiles
             return false;
         }
     }
+    public class StompBootProj2 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Stompwave");
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 40;
+            projectile.height = 40;
+            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.ignoreWater = true;
+            //projectile.magic = true;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 10;
+            projectile.extraUpdates = 1;
+            projectile.knockBack = 2f;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 30;
+        }
+
+        public override void AI()
+        {
+           
+        }
+
+
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            projectile.Kill();
+            return false;
+        }
+    }
     public class StompDerpProj : ModProjectile
     {
         public override void SetStaticDefaults()

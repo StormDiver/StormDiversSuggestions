@@ -372,6 +372,46 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.SetResult(ItemID.SuperHealingPotion, 5);
                 recipe.AddRecipe();
 
+              
+            }
+
+        }
+    }
+    public class Newrecipes : GlobalItem
+    {
+        public override void AddRecipes()
+        {
+            if (!GetInstance<Configurations>().DisableNewRecipes)
+
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Silk, 25);
+                recipe.AddIngredient(ItemID.GoldOre, 35);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.MiningShirt);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Silk, 25);
+                recipe.AddIngredient(ItemID.PlatinumOre, 35);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.MiningShirt);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Silk, 20);
+                recipe.AddIngredient(ItemID.GoldOre, 30);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.MiningPants);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.Silk, 20);
+                recipe.AddIngredient(ItemID.PlatinumOre, 30);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.MiningPants);
+                recipe.AddRecipe();
+
                 recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.FallenStar, 1);
                 recipe.AddIngredient(ItemID.LunarTabletFragment, 10);
@@ -390,7 +430,32 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.SetResult(ItemID.SlimeStaff);
                 recipe.AddRecipe();
             }
+        }
+        public class VanillaShops : GlobalNPC
+        {
+            public override void SetupShop(int type, Chest shop, ref int nextSlot)
+            {
+                switch (type)
+                {
+                    case NPCID.Merchant:
+                        if (!GetInstance<Configurations>().DisableNewRecipes)
 
+                        {
+
+                            if (Main.LocalPlayer.HasItem(ItemID.MiningHelmet))
+
+                            {
+                                shop.item[nextSlot].SetDefaults(ItemID.MiningShirt);
+                                nextSlot++;
+                                shop.item[nextSlot].SetDefaults(ItemID.MiningPants);
+                                nextSlot++;
+
+                            }
+                        }
+
+                        break;
+                }
+            }
         }
     }
 }

@@ -98,20 +98,47 @@ namespace StormDiversSuggestions.OresandBars
             recipe.AddTile(TileID.Hellforge);
             recipe.SetResult(mod.GetItem("DesertBar"));
             recipe.AddRecipe();
+            if (GetInstance<Configurations>().PreventOreSpawn)
+            {
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.AdamantiteBar, 20);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.Hellforge);
+                recipe.SetResult(mod.GetItem("DesertBar"), 20);
+                recipe.AddRecipe();
 
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.TitaniumBar, 20);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.Hellforge);
+                recipe.SetResult(mod.GetItem("DesertBar"), 20);
+                recipe.AddRecipe();
+            }
         }
 
 
         public class ModGlobalNPC : GlobalNPC
         {
+            public override bool InstancePerEntity => true;
+            int dropchance;
             public override void NPCLoot(NPC npc)
             {
+
+                if (!GetInstance<Configurations>().PreventOreSpawn)
+                {
+                    dropchance = 3;
+                }
+                else
+                {
+                    dropchance = 2;
+                }
+           
                 if (StormWorld.SpawnDesertOre)
                 {
                     // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
                     {
-                        if (Main.rand.Next(2) == 0)
+                        if (Main.rand.Next(dropchance) == 0)
 
                         {
                             if (Main.expertMode)

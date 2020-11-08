@@ -23,18 +23,8 @@ namespace StormDiversSuggestions.Basefiles
     public class StormNPC : GlobalNPC
     {
 
-        public override void ScaleExpertStats(NPC npc, int numPlayers, float bossLifeScale)
-        {
-            if (GetInstance<Configurations>().ReduceExpertHealth)
-            {
-                if (!npc.boss && npc.lifeMax > 5)
-                {
-                    npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-                    npc.damage = (int)(npc.damage * 0.75f);
-                }
-            }
-        
-    }
+       
+    
 
         public override bool InstancePerEntity => true;
 

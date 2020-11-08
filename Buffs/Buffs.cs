@@ -175,7 +175,7 @@ namespace StormDiversSuggestions.Buffs
         {
             DisplayName.SetDefault("Frost Spiked");
             Description.SetDefault("Your movement speed and critical strike chance are greatly increased");
-            Main.debuff[Type] = true;
+            //Main.debuff[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -267,6 +267,21 @@ namespace StormDiversSuggestions.Buffs
                 Main.dust[dust].velocity.Y -= 0.5f;
                 Main.playerDrawDust.Add(dust);
             }
+        }
+    }
+    public class TeddyBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Teddy Bear Love");
+            Description.SetDefault("The love of the Teddy bear increases life regen");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.lifeRegen += 3;
+            player.loveStruck = true; 
+            //player.moveSpeed = 0.1f;
         }
     }
 }

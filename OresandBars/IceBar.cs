@@ -98,20 +98,47 @@ namespace StormDiversSuggestions.OresandBars
             recipe.AddTile(TileID.Hellforge);
             recipe.SetResult(mod.GetItem("IceBar"));
             recipe.AddRecipe();
+            if (GetInstance<Configurations>().PreventOreSpawn)
+            {
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.AdamantiteBar, 20);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.Hellforge);
+                recipe.SetResult(mod.GetItem("IceBar"), 20);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.TitaniumBar, 20);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.Hellforge);
+                recipe.SetResult(mod.GetItem("IceBar"), 20);
+                recipe.AddRecipe();
+            }
 
         }
 
 
         public class ModGlobalNPC : GlobalNPC
         {
+            public override bool InstancePerEntity => true;
+            int dropchance;
             public override void NPCLoot(NPC npc)
             {
-                if (StormWorld.SpawnIceOre)
+                
+                if (!GetInstance<Configurations>().PreventOreSpawn)
+                {
+                    dropchance = 3;
+                }
+                else
+                {
+                    dropchance = 2;
+                }
+                    if (StormWorld.SpawnIceOre)
                 {
                     //if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
                     {
-                        if (Main.rand.Next(2) == 0)
+                        if (Main.rand.Next(dropchance) == 0)
 
                         {
                             if (Main.expertMode)

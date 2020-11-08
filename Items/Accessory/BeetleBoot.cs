@@ -49,9 +49,10 @@ namespace StormDiversSuggestions.Items.Accessory
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Main.LocalPlayer.Bottom;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 179, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                    
+                     dust = Dust.NewDustDirect(new Vector2(player.position.X + 5f, player.Bottom.Y - 3), 5, 5, 227);
                     dust.noGravity = true;
-
+                    dust.scale = 1.5f;
 
 
                     soundDelay++;

@@ -244,7 +244,33 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
 
                     }
-               
+                if (item.type == ItemID.ShadowHelmet)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "5% increased damage";
+                        }
+
+                    }
+                if (item.type == ItemID.ShadowScalemail)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "5% increased damage";
+                        }
+
+                    }
+                if (item.type == ItemID.ShadowGreaves)
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.mod == "Terraria" && line.Name == "Tooltip0")
+                        {
+                            line.text = "5% increased damage";
+                        }
+
+                    }
             }
         }
 

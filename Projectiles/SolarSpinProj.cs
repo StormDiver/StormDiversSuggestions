@@ -106,5 +106,13 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             return false;
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
+
+        }
     }
 }

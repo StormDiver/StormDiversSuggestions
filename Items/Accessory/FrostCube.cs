@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Summoner's Heart");
+            DisplayName.SetDefault("Summoner's Core");
             Tooltip.SetDefault("Increases your max number of minions and sentries by 1\nIncreases summon damage by 10%\nRemoves the mana requirement from minions and sentries");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;

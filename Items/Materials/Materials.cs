@@ -58,9 +58,16 @@ namespace StormDiversSuggestions.Items.Materials
         }
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.8f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
         }
-        
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+
+
+            return Color.White;
+
+        }
         public class ModGlobalNPC : GlobalNPC
         {
             public override void NPCLoot(NPC npc)

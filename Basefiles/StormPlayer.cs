@@ -70,6 +70,10 @@ namespace StormDiversSuggestions.Basefiles
         public bool lifeBarrier;
 
         public bool FrostCryoSet;
+
+        
+
+       
         public override void ResetEffects()
         {
             boulderDB = false;
@@ -95,45 +99,66 @@ namespace StormDiversSuggestions.Basefiles
             spooked = false;
             lifeBarrier = false;
             FrostCryoSet = false;
+            
+
+           
+
+        }
+        public override void UpdateDead()
+        {
+            bearcool = 0;
+            falling = false;
         }
         // int shotCount = 0;
         //bool shot;
+
+        bool shot;
         public int skulltime = 0;
         public bool falling;
         public int stopfall;
-        bool shot;
-        
+        public int falldmg;
+        public int bearcool;
+        public int stomptrail;
+
         public override void PostUpdateEquips()
         {
-            /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+            if (bearcool > 0)
             {
-                if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
+                bearcool--;
+            }
+            if (player.statLife < 1)
+            {
+               
+            }
+                /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
                 {
-
-                    if (!shot)
+                    if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
                     {
-                        shotCount++;
-                        if (shotCount > 3)
-                        {
-                            shotCount = 0;
-                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 14f;
-                            int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 1.6f);
-                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
-                        }
 
+                        if (!shot)
+                        {
+                            shotCount++;
+                            if (shotCount > 3)
+                            {
+                                shotCount = 0;
+                                float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                                float velocity = 14f;
+                                int type = mod.ProjectileType("ShroomSetRocketProj");
+                                int damage = (int)(player.HeldItem.damage * 1.6f);
+                                Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                                Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
+                            }
+
+                        }
+                        shot = true;
                     }
-                    shot = true;
-                }
-                else
-                {
-                    shot = false;
-                }
-                
-            }*/
-            if (frostCube)
+                    else
+                    {
+                        shot = false;
+                    }
+
+                }*/
+                if (frostCube)
             {
                 
             }
@@ -177,43 +202,50 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (bootFall)
             {
-                player.maxFallSpeed *= 2;
+
+
+                /* if (derpJump)
+                 {
+                     if (player.velocity.Y > 11)
+                     {
+
+
+                         falling = true;
+                         stopfall = 0;
+
+                     }
+                     if (player.velocity.Y == 0 && falling)
+                     {
+
+
+                         for (int i = 0; i < 15; i++)
+                         {
+
+                             int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
+                             Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                             Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                             Main.dust[dustIndex].noGravity = true;
+                         }
+                         Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                         Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                         Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 5, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+                         Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -5, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
+
+                         Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 22);
+                         falling = false;
+
+                     }
+                 }
+                 else*/
+
+                player.maxFallSpeed *= 2f;
                 
-
-               
-                if (derpJump)
+                /*if (player.velocity.Y > 0)
                 {
-                    if (player.velocity.Y > 11)
-                    {
+                    player.velocity.Y *= 1.1f;
+                }*/
 
 
-                        falling = true;
-                        stopfall = 0;
-
-                    }
-                    if (player.velocity.Y == 0 && falling)
-                    {
-
-
-                        for (int i = 0; i < 15; i++)
-                        {
-
-                            int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
-                            Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-                            Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-                            Main.dust[dustIndex].noGravity = true;
-                        }
-                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 7, 0, mod.ProjectileType("StompDerpProj"), 90, 10f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -7, 0, mod.ProjectileType("StompDerpProj"), 90, 10f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 6, -1, mod.ProjectileType("StompDerpProj"), 90, 10f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -6, -1, mod.ProjectileType("StompDerpProj"), 90, 10f, player.whoAmI);
-                       
-                        Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 22);
-                        falling = false;
-
-                    }
-                }
-                else
                 {
                     if (player.velocity.Y > 8)
                     {
@@ -221,11 +253,31 @@ namespace StormDiversSuggestions.Basefiles
 
                         falling = true;
                         stopfall = 0;
+                        player.noKnockback = true;
+                        player.turtleThorns = true;
+                        Vector2 position = player.position;
+                        int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1.5f);
+                            Main.dust[dustIndex].noGravity = true;
+                     
+                        stomptrail++;
+                        if (stomptrail > 2)
+                        {
+                            
+                            Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 0, 5, mod.ProjectileType("StompBootProj2"), 50, 6f, player.whoAmI);
+                            stomptrail = 0;
+                        }
+                        
+                        
 
                     }
+                    if (player.velocity.Y > 1)
+                    {
+                        //falldmg = ((int)player.velocity.Y * 2) + 25;
+                    }
+                    
                     if (player.velocity.Y == 0 && falling)
                     {
-
+                       
 
                         for (int i = 0; i < 30; i++)
                         {
@@ -235,8 +287,8 @@ namespace StormDiversSuggestions.Basefiles
                             Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
                             Main.dust[dustIndex].noGravity = true;
                         }
-                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 5, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -5, 0, mod.ProjectileType("StompBootProj"), 30, 8f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
                         Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
                         falling = false;
 
