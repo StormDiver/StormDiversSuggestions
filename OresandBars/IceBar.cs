@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.OresandBars
                 
                 if (!GetInstance<Configurations>().PreventOreSpawn)
                 {
-                    dropchance = 3;
+                    dropchance = 4;
                 }
                 else
                 {

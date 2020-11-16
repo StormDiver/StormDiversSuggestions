@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 float speedX = projectile.velocity.X;
                 float speedY = projectile.velocity.Y;
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(16));
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
                 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("FrostBulletProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
@@ -250,8 +250,8 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < numberProjectiles; i++)
             {
 
-                float speedX = Main.rand.NextFloat(-3f, 3f);
-                float speedY = Main.rand.NextFloat(-3f, 3f);
+                float speedX = Main.rand.NextFloat(-5f, 5f);
+                float speedY = Main.rand.NextFloat(-5f, 5f);
 
                 Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, ProjectileID.CrystalShard, (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
             }

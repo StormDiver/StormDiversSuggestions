@@ -383,6 +383,65 @@ namespace StormDiversSuggestions.Items.Materials
             }
         }
     }
-        //____________________________________________________________________________________
-        //____________________________________________________________________________________
+    //____________________________________________________________________________________
+    public class BloodDrop : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Bloody Drop");
+
+            Tooltip.SetDefault("Dripping with blood");
+
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 30;
+            item.height = 28;
+            item.maxStack = 999;
+
+            item.value = Item.sellPrice(0, 0, 0, 50);
+            item.rare = 2;
+        }
+
+        public override void AddRecipes()
+        {
+           
+   
+
+            
+        }
+
+
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override void NPCLoot(NPC npc)
+            {
+                if (NPC.downedBoss1)
+                {
+                    if (npc.type == NPCID.Drippler || npc.type == NPCID.BloodZombie)
+                    {
+                        if (Main.rand.Next(5) == 0)
+
+                        {
+                            if (Main.expertMode)
+                            {
+
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 3));
+                            }
+
+                            else
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+    //____________________________________________________________________________________
+}

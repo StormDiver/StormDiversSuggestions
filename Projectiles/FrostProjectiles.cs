@@ -335,8 +335,8 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 3; i++)
             {
 
-                float speedX = Main.rand.NextFloat(-3f, 3f);
-                float speedY = Main.rand.NextFloat(-3f, 3f);
+                float speedX = Main.rand.NextFloat(-5f, 5f);
+                float speedY = Main.rand.NextFloat(-5f, 5f);
 
                 Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, ProjectileID.CrystalShard, (int)(projectile.damage * 0.33f), 0f, projectile.owner, 0f, 0f);
             }

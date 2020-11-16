@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.knockBack = 4f;
             item.shoot = mod.ProjectileType("TurtleSpearProj");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 9f;
             item.noMelee = true; 
             item.noUseGraphic = true; 
             

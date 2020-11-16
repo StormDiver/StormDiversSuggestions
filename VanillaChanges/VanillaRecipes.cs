@@ -325,22 +325,20 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                
                 recipe.AddIngredient(mod, "IceBar", 18);
                 recipe.AddIngredient(ItemID.FrostCore);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.FrostBreastplate);
                 recipe.AddRecipe();
 
-                recipe = new ModRecipe(mod);
-                // recipe.AddIngredient(ItemID.FrostCore);
+                recipe = new ModRecipe(mod); 
                 recipe.AddIngredient(mod, "IceBar", 14);
+                recipe.AddIngredient(ItemID.FrostCore);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.FrostLeggings);
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                //recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddIngredient(mod, "DesertBar", 10);
                 recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddTile(TileID.MythrilAnvil);
@@ -348,7 +346,6 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                
                 recipe.AddIngredient(mod, "DesertBar", 18);
                 recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddTile(TileID.MythrilAnvil);
@@ -356,8 +353,8 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(mod);
-                // recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddIngredient(mod, "DesertBar", 14);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.AncientBattleArmorPants);
                 recipe.AddRecipe();

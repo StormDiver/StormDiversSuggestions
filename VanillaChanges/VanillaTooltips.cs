@@ -83,11 +83,11 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
                         {
-                            line.text = "20% increased melee speed";
+                            line.text = "5% increased melee and ranged damage";
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1") // "Tooltip0" is the first line it has. If you want to take out the second, you use "Tooltip1" and so on.  
                         {
-                            line.text = "25% increased movement speed";
+                            line.text = "25% increased melee and movement speed";
                         }
                     }
 
@@ -140,11 +140,11 @@ namespace StormDiversSuggestions.VanillaChanges
 
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "30% increased melee critical strike chance";
+                            line.text = "25% increased melee critical strike chance";
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 15\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.SolarFlareBreastplate)
@@ -153,11 +153,11 @@ namespace StormDiversSuggestions.VanillaChanges
 
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "35% increased melee damage";
+                            line.text = "30% increased melee damage";
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases maximum health by 40\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 20\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.SolarFlareLeggings)
@@ -170,7 +170,7 @@ namespace StormDiversSuggestions.VanillaChanges
                         }
                         if (line.mod == "Terraria" && line.Name == "Tooltip1")
                         {
-                            line.text = "Increases maximum health by 30\nEnemies are more likely to target you";
+                            line.text = "Increases maximum health by 15\nEnemies are more likely to target you";
                         }
                     }
                 if (item.type == ItemID.VortexHelmet)

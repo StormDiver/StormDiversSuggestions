@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool FrostCryoSet;
 
-        
+        public bool BloodDrop;
 
        
         public override void ResetEffects()
@@ -99,7 +99,7 @@ namespace StormDiversSuggestions.Basefiles
             spooked = false;
             lifeBarrier = false;
             FrostCryoSet = false;
-            
+            BloodDrop = false;
 
            
 
@@ -107,6 +107,8 @@ namespace StormDiversSuggestions.Basefiles
         public override void UpdateDead()
         {
             bearcool = 0;
+            bloodtime = 0;
+            frosttime = 0;
             falling = false;
         }
         // int shotCount = 0;
@@ -119,9 +121,18 @@ namespace StormDiversSuggestions.Basefiles
         public int falldmg;
         public int bearcool;
         public int stomptrail;
-
+        public int bloodtime;
+        public int frosttime;
         public override void PostUpdateEquips()
         {
+            if (bloodtime > 0)
+            {
+                bloodtime--;
+            }
+            if (frosttime > 0)
+            {
+                frosttime--;
+            }
             if (bearcool > 0)
             {
                 bearcool--;
@@ -350,17 +361,51 @@ namespace StormDiversSuggestions.Basefiles
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            
+           
         }
+       
         int attackdmg = 0;
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-           
+            
         }
-      
 
 
 
+        public override void OnHitAnything(float x, float y, Entity victim)
+        {
+            if (player.HeldItem.melee)
+            {
+                if (BloodDrop)
+                {
+
+                    if (bloodtime < 1)
+                    {
+
+                        Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
+
+                        float numberProjectiles = 7 + Main.rand.Next(3);
+
+                        for (int i = 0; i < numberProjectiles; i++)
+                        {
+                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+
+
+                            float speedX = 0f;
+                            float speedY = -6f;
+                            int blooddamage = (int)(player.HeldItem.damage * 1f);
+                            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(135));
+                            float scale = 1f - (Main.rand.NextFloat() * .5f);
+                            perturbedSpeed = perturbedSpeed * scale;
+                            Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BloodDropProj"), blooddamage, 1f, player.whoAmI);
+
+                            bloodtime = 300;
+                        }
+                    }
+                }
+            }
+            base.OnHitAnything(x, y, victim);
+        }
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
             player.ClearBuff(mod.BuffType("HeartBarrierBuff"));
@@ -390,10 +435,10 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
-
+            
             if (frostSpike)
             {
-                if (!Main.LocalPlayer.HasBuff(mod.BuffType("FrozenBuff")))
+                if (frosttime < 1)
                 {
                     Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
                     float numberProjectiles = 10 + Main.rand.Next(4);
@@ -419,7 +464,7 @@ namespace StormDiversSuggestions.Basefiles
                         dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 92, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                         dust.noGravity = true;
                     }
-                    
+                    frosttime = 360;
                     player.AddBuff(mod.BuffType("FrozenBuff"), 360);
                 }
             }

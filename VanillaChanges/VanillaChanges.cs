@@ -357,7 +357,10 @@ namespace StormDiversSuggestions.VanillaChanges
                 {
                     player.moveSpeed += 0.17f;
                     
-                    player.meleeSpeed += 0.13f;
+                    player.meleeSpeed += 0.17f;
+                    player.meleeDamage += 0.05f;
+                    player.rangedDamage += 0.05f;
+
                 }
 
 
@@ -376,19 +379,19 @@ namespace StormDiversSuggestions.VanillaChanges
 
                 if (item.type == ItemID.SolarFlareHelmet)
                 {
-                    player.meleeCrit += 13;
-                    player.statLifeMax2 += 30;
+                    player.meleeCrit += 8;
+                    player.statLifeMax2 += 15;
                 }
                 if (item.type == ItemID.SolarFlareBreastplate)
                 {
-                    player.meleeDamage += 0.13f;
-                    player.statLifeMax2 += 40;
+                    player.meleeDamage += 0.08f;
+                    player.statLifeMax2 += 20;
                 }
                 if (item.type == ItemID.SolarFlareLeggings)
                 {
                     player.meleeSpeed += 0.2f;
                     player.moveSpeed += 0.35f;
-                    player.statLifeMax2 += 30;
+                    player.statLifeMax2 += 15;
                 }
                 if (item.type == ItemID.VortexHelmet)
                 {

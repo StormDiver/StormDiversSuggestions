@@ -205,7 +205,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-
+       
             player.maxMinions += 1;
             player.minionDamage += 0.16f;
 

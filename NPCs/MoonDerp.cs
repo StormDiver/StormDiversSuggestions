@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("MoonDerp")))
             {
-                return SpawnCondition.Sky.Chance * 0.2f;
+                return SpawnCondition.Sky.Chance * 0.1f;
             }
             return SpawnCondition.Sky.Chance * 0f;
         }

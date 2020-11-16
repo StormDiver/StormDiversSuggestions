@@ -147,7 +147,7 @@ namespace StormDiversSuggestions.Items.Potions
 
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.buffType = BuffType<Buffs.HeartBuff>(); //Specify an existing buff to be applied when used.
-            item.buffTime = 14400;
+            item.buffTime = 28800;
         }
 
 
@@ -187,7 +187,7 @@ namespace StormDiversSuggestions.Items.Potions
 
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.buffType = BuffType<Buffs.FruitHeartBuff>(); //Specify an existing buff to be applied when used.
-            item.buffTime = 14400;
+            item.buffTime = 28800;
         }
 
 

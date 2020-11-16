@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items
             item.width = 15;
             item.height = 20;
             item.maxStack = 999;
-            item.value = Item.buyPrice(0, 0, 0, 50);
+            item.value = Item.buyPrice(0, 0, 0, 10);
             item.rare = 1;
             item.useStyle = 5;
             item.useTime = 8;
@@ -32,12 +32,12 @@ namespace StormDiversSuggestions.Items
            
             item.UseSound = SoundID.Item13;
 
-            item.damage = 5;
+            item.damage = 3;
             
-            item.knockBack = 4;
+            item.knockBack = 3;
             item.shoot = mod.ProjectileType("StompBootProj");
             
-            item.shootSpeed = 10f;
+            item.shootSpeed = 7f;
 
             //item.useAmmo = AmmoID.Gel;
 
@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                 Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 1), (int)(perturbedSpeed.Y * 1), type, (int)(damage * 1), knockBack * 10, player.whoAmI);

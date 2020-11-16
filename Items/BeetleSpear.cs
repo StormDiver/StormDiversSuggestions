@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.knockBack = 5f;
             item.shoot = mod.ProjectileType("BeetleSpearProj");
-            item.shootSpeed = 10f;
+            item.shootSpeed = 8f;
             item.noMelee = true; 
             item.noUseGraphic = true; 
             

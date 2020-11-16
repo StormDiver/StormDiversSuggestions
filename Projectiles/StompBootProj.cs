@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             //projectile.magic = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 40;
@@ -86,12 +86,12 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 40;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             //projectile.magic = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 10;
             projectile.extraUpdates = 1;
-            projectile.knockBack = 2f;
+            //projectile.knockBack = 2f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 30;
         }
