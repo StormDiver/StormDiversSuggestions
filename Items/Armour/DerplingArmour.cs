@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases assent and falling speed";
+            player.setBonus = "Increases assent and falling speed, and allows you to dash";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
             
             player.autoJump = true;
             player.maxFallSpeed *= 1.5f;
-
+            player.dash = 1;
            
 
             //player.GetModPlayer<StormPlayer>().bootFall = true;
@@ -191,7 +191,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("Increases summon damage by 16%");
+            Tooltip.SetDefault("Increases summon damage by 12%\nIncreases your max number of minions by 1");
         }
 
         public override void SetDefaults()
@@ -207,7 +207,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
        
             player.maxMinions += 1;
-            player.minionDamage += 0.16f;
+            player.minionDamage += 0.12f;
 
         }
 
@@ -224,7 +224,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases assent and falling speed\nIncreases your max number of minions by 2";
+            player.setBonus = "Increases assent and falling speed, and allows you to dash\nIncreases your max number of minions by 2";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -233,7 +233,7 @@ namespace StormDiversSuggestions.Items.Armour
 
             player.autoJump = true;
             player.maxFallSpeed *= 1.5f;
-
+            player.dash = 1;
             //player.GetModPlayer<StormPlayer>().bootFall = true;
             //player.GetModPlayer<StormPlayer>().derpJump = true;
 

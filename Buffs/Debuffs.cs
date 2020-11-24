@@ -373,5 +373,27 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
-    
+    public class BloodDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Blood Drain");
+            Description.SetDefault("Blood is being stolen from you");
+            Main.debuff[Type] = true;
+            Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().bloodDebuff = true;
+
+
+
+        }
+    }
 }

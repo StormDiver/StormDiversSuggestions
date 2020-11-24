@@ -73,6 +73,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool BloodDrop;
 
+        public bool BloodOrb;
+
        
         public override void ResetEffects()
         {
@@ -100,7 +102,7 @@ namespace StormDiversSuggestions.Basefiles
             lifeBarrier = false;
             FrostCryoSet = false;
             BloodDrop = false;
-
+            BloodOrb = false;
            
 
         }
@@ -110,6 +112,7 @@ namespace StormDiversSuggestions.Basefiles
             bloodtime = 0;
             frosttime = 0;
             falling = false;
+            bloodorbspawn = 0;
         }
         // int shotCount = 0;
         //bool shot;
@@ -123,6 +126,8 @@ namespace StormDiversSuggestions.Basefiles
         public int stomptrail;
         public int bloodtime;
         public int frosttime;
+        public int bloodorbspawn;
+
         public override void PostUpdateEquips()
         {
             if (bloodtime > 0)
@@ -141,42 +146,56 @@ namespace StormDiversSuggestions.Basefiles
             {
                
             }
-                /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+            if (BloodOrb)
+            {
+                bloodorbspawn++;
+                if (bloodorbspawn > 10)
                 {
-                    if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
-                    {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("BloodOrbitProj"), 0, 0, player.whoAmI);
 
-                        if (!shot)
+                    bloodorbspawn = 0;
+                }
+            }
+            if (!BloodOrb)
+            {
+                bloodorbspawn = 0;
+            }
+            /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+            {
+                if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
+                {
+
+                    if (!shot)
+                    {
+                        shotCount++;
+                        if (shotCount > 3)
                         {
-                            shotCount++;
-                            if (shotCount > 3)
-                            {
-                                shotCount = 0;
-                                float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                                float velocity = 14f;
-                                int type = mod.ProjectileType("ShroomSetRocketProj");
-                                int damage = (int)(player.HeldItem.damage * 1.6f);
-                                Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
-                                Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
-                            }
-
+                            shotCount = 0;
+                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                            float velocity = 14f;
+                            int type = mod.ProjectileType("ShroomSetRocketProj");
+                            int damage = (int)(player.HeldItem.damage * 1.6f);
+                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
                         }
-                        shot = true;
-                    }
-                    else
-                    {
-                        shot = false;
-                    }
 
-                }*/
-                if (frostCube)
+                    }
+                    shot = true;
+                }
+                else
+                {
+                    shot = false;
+                }
+
+            }*/
+            if (frostCube)
             {
                 
             }
             if (flameCore)
             {
 
-                player.wingTimeMax *= (int)2f;
+                player.wingTimeMax *= (int)3f;
 
                 if (player.velocity.Y == 0)
                 {
@@ -200,7 +219,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (skulltime == 24)
                 {
 
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 65, 0f, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 75, 0f, player.whoAmI);
 
                     skulltime = 0;
                 }
@@ -298,8 +317,8 @@ namespace StormDiversSuggestions.Basefiles
                             Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
                             Main.dust[dustIndex].noGravity = true;
                         }
-                        Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
                         Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
                         falling = false;
 
@@ -339,8 +358,8 @@ namespace StormDiversSuggestions.Basefiles
                             float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
                             float velocity = 0f;
                             int type = mod.ProjectileType("SpookyProj");
-                            int damage = (int)(player.HeldItem.damage * 1f);
-                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage * 1.5f), 2f, player.whoAmI);
+                            int damage = (int)(player.HeldItem.damage * 1.5f);
+                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage), 2f, player.whoAmI);
                         }
 
                     }
@@ -379,7 +398,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (BloodDrop)
                 {
 
-                    if (bloodtime < 1)
+                    if (bloodtime < 1 && !player.dead)
                     {
 
                         Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);

@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 36;
-            item.useAnimation = 36;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("DesertStaffProj");
 
-            item.shootSpeed = 3f;
+            item.shootSpeed = 3.5f;
             
                 
 

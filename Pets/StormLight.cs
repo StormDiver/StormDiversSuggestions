@@ -14,8 +14,7 @@ namespace StormDiversSuggestions.Pets
         {
             DisplayName.SetDefault("Suspicious Looking Helmet");
             Tooltip.SetDefault("Summons something unthinkable");
-         
-
+    
         }
 
         public override void SetDefaults()
@@ -63,8 +62,8 @@ namespace StormDiversSuggestions.Pets
         public override void SetDefaults()
         {
             
-            DisplayName.SetDefault("Sentient Helmet");
-            Description.SetDefault("A helmet gained sentience and now follows you");
+            DisplayName.SetDefault("Baby Storm Diver");
+            Description.SetDefault("It's not cute, it's not!!!");
             Main.buffNoTimeDisplay[Type] = true;
             Main.vanityPet[Type] = true;
         }
@@ -84,7 +83,7 @@ namespace StormDiversSuggestions.Pets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sentient Storm Helmet");
+            DisplayName.SetDefault("Baby Storm Diver");
             Main.projFrames[projectile.type] = 8;
             Main.projPet[projectile.type] = true;
         }

@@ -4,10 +4,12 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using StormDiversSuggestions.Basefiles;
 
-namespace StormDiversSuggestions.Projectiles       
+
+namespace StormDiversSuggestions.Projectiles
 {
-   
+
     public class BloodDropProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -35,17 +37,17 @@ namespace StormDiversSuggestions.Projectiles
         bool bloodspray = true;
         public override void AI()
         {
-            
 
-                if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
-                {
-                    Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-                    dust.noGravity = true;
-                }
-            
+
+            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+            }
+
 
             if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
             {
@@ -67,12 +69,12 @@ namespace StormDiversSuggestions.Projectiles
             }
             return;
         }
-        
-       
-        
+
+
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-           
+
             if (bloodspray)
             {
                 Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 13);
@@ -99,7 +101,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.hostile = false;
             projectile.ignoreWater = true;
             //projectile.magic = true;
-           
+
             projectile.penetrate = 2;
             projectile.timeLeft = 40;
             projectile.knockBack = 1f;
@@ -131,7 +133,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-          
+
             return;
         }
 
@@ -166,7 +168,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Blood Spear");
         }
-    
+
         public override void SetDefaults()
         {
             projectile.width = 18;
@@ -247,7 +249,7 @@ namespace StormDiversSuggestions.Projectiles
 
         }
 
-        
+
     }
     //___________________________________________________________________________________________________________________________________
     public class BloodBoomerangProj : ModProjectile
@@ -290,7 +292,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            
+
             for (int i = 0; i < 10; i++)
             {
                 Dust dust;
@@ -299,11 +301,12 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
 
             }
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 9);
 
 
 
         }
-        
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             for (int i = 0; i < 10; i++)
@@ -314,6 +317,8 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
 
             }
+            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 9);
+
             return true;
         }
 
@@ -332,4 +337,80 @@ namespace StormDiversSuggestions.Projectiles
 
         }
     }
+    //_______________________________________________
+    public class BloodOrbitProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Blood Orb");
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 14;
+            projectile.height = 14;
+            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.ignoreWater = true;
+  
+            projectile.tileCollide = false;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 90;
+           
+        }
+        public override bool CanDamage()
+        {
+            return false;
+        }
+        public override void AI()
+        {
+
+            projectile.rotation += (float)projectile.direction * -0.3f;
+
+            if (Main.rand.Next(1) == 0)     //this defines how many dust to spawn
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+            }
+
+
+            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.Center;
+                dust = Terraria.Dust.NewDustPerfect(position, 5, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+
+
+            }
+            Player p = Main.player[projectile.owner];
+
+            //Factors for calculations
+            double deg = (double)projectile.ai[1] * -4; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double rad = deg * (Math.PI / 180); //Convert degrees to radians
+            double dist = 175; //Distance away from the player
+
+            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
+            /distance for the desired distance away from the player minus the projectile's width   /
+            /and height divided by two so the center of the projectile is at the right place.     */
+
+            projectile.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - projectile.width / 2;
+            projectile.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - projectile.height / 2;
+
+            //Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
+            projectile.ai[1] += 1f;
+            var player = Main.player[projectile.owner];
+            if (player.GetModPlayer<StormPlayer>().BloodOrb == false || player.dead)
+            {
+                projectile.Kill();
+            }
+
+
+
+        }
+    }
+    
 }

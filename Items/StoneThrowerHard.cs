@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Items
                 position += muzzleOffset;
             }
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-            Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("StoneHardProj"), damage, knockBack, player.whoAmI);
             
 
             return false;

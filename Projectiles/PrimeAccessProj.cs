@@ -32,6 +32,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 5;
         }
+
+        bool lineOfSight;
         public override void AI()
         {
             var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
@@ -70,15 +72,26 @@ namespace StormDiversSuggestions.Projectiles
                 return;
             }
 
-            bool lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height);
+            lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height);
 
-            if (!lineOfSight)
+           /* if (!lineOfSight)
             {
                 projectile.damage = 0;
             }
             if (lineOfSight)
             {
                 projectile.damage = 65;
+            }*/
+        }
+        public override bool CanDamage()
+        {
+            if (!lineOfSight)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

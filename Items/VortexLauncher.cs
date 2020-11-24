@@ -103,7 +103,7 @@ namespace StormDiversSuggestions.Items
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 4f;
                 for (int i = 0; i < 2; i++)
                 {
-                    Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X), (int)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2.5f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2.5f), knockBack, player.whoAmI);
                 }
 
             }

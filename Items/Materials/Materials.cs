@@ -294,7 +294,7 @@ namespace StormDiversSuggestions.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Shell");
-            Tooltip.SetDefault("Tough, but malleable");
+            Tooltip.SetDefault("'Tough, but malleable'");
 
         }
 
@@ -345,7 +345,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("Broken Heart");
 
-            Tooltip.SetDefault("Almost devoid of life");
+            Tooltip.SetDefault("'Almost devoid of life'");
             ItemID.Sets.ItemIconPulse[item.type] = true;
         }
 
@@ -390,7 +390,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("Bloody Drop");
 
-            Tooltip.SetDefault("Dripping with blood");
+            Tooltip.SetDefault("A drop of blood that is somehow able to hold its shape");
 
         }
 
@@ -412,7 +412,7 @@ namespace StormDiversSuggestions.Items.Materials
             
         }
 
-
+    
         public class ModGlobalNPC : GlobalNPC
         {
             public override void NPCLoot(NPC npc)
@@ -421,23 +421,26 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (npc.type == NPCID.Drippler || npc.type == NPCID.BloodZombie)
                     {
-                        if (Main.rand.Next(5) == 0)
-
-                        {
+                       
                             if (Main.expertMode)
                             {
 
+                            if (Main.rand.Next(5) == 0)
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 3));
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 2));
+                            }
                             }
 
                             else
                             {
+                            if (Main.rand.Next(6) == 0)
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
-
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 2));
                             }
-                        }
+                          }
+                        
                     }
                 }
             }

@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Drill");
-            Tooltip.SetDefault("Drill through the ground");
+            Tooltip.SetDefault("'Drill through the ground'");
         }
 
         public override void SetDefaults()
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Chainsaw");
-            Tooltip.SetDefault("Cut down the trees");
+            Tooltip.SetDefault("'Cut down the trees'");
         }
 
         public override void SetDefaults()
@@ -107,7 +107,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Jackhammer");
-            Tooltip.SetDefault("Smash down the walls");
+            Tooltip.SetDefault("'Smash down the walls'");
         }
 
         public override void SetDefaults()

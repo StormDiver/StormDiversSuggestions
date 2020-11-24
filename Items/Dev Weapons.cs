@@ -7,59 +7,13 @@ using Terraria.ModLoader;
 namespace StormDiversSuggestions.Items
 {
 	
-    public class WepKillerRep : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("OP Repeater");
-            Tooltip.SetDefault("THIS IS FOR KILLING THINGS");
-        }
-        public override void SetDefaults()
-        {
-            item.width = 15;
-            item.height = 20;
-            item.maxStack = 1;
-            item.value = Item.sellPrice(127, 99, 3, 65);
-            item.rare = -12;
-            item.useStyle = 5;
-            item.useTime = 1;
-            item.useAnimation = 1;
-            item.useTurn = false;
-            item.autoReuse = true;
-
-            item.ranged = true;
-
-            item.UseSound = SoundID.Item113;
-
-            item.damage = 99999;
-            item.crit = 400;
-            item.knockBack = 30f;
-
-            item.shoot = ProjectileID.Bullet;
-            //item.shoot = ProjectileID.GrenadeI;
-            item.shootSpeed = 200f;
-
-            item.useAmmo = AmmoID.Bullet;
-
-            item.noMelee = true; //Does the weapon itself inflict damage?
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-6, 0);
-        }
-        public override bool ConsumeAmmo(Player player)
-        {
-            return Main.rand.NextFloat() >= 1f;
-        }
-       
-    }
+    
     public class Weapontester : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Weapon tester");
-            Tooltip.SetDefault("Used to test new projectiles");
+            Tooltip.SetDefault("Honestly I haven't really used this in ages");
             Item.staff[item.type] = true;
         }
         public override void SetDefaults()
@@ -96,9 +50,28 @@ namespace StormDiversSuggestions.Items
                                  //item.channel = true; //Speical conditons when held down
 
         }
+        public override void HoldItem(Player player)
+        {
+            player.AddBuff(mod.BuffType("SuperFrostBurn"), 1);
+            player.AddBuff(mod.BuffType("AridSandDebuff"), 1);
+            player.AddBuff(mod.BuffType("BoulderDebuff"), 1);
+            player.AddBuff(mod.BuffType("SuperBoulderDebuff"), 1);
+            player.AddBuff(mod.BuffType("LunarBoulderDebuff"), 1);
+            player.AddBuff(mod.BuffType("SpectreDebuff"), 1);
+            player.AddBuff(mod.BuffType("ScanDroneDebuff"), 1);
+            player.AddBuff(mod.BuffType("NebulaDebuff"), 1);
+
+            player.AddBuff(mod.BuffType("TurtleDebuff"), 1);
+            player.AddBuff(mod.BuffType("BloodDebuff"), 1);
+            player.AddBuff(mod.BuffType("BeetleDebuff"), 1);
+            player.AddBuff(mod.BuffType("HeartDebuff"), 1);
+
+
+
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            player.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+            
             //player.AddBuff(BuffID.ManaSickness, 1200);
             return true;
         }

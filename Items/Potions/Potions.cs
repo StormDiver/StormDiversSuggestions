@@ -8,8 +8,44 @@ using Microsoft.Xna.Framework;
 
 namespace StormDiversSuggestions.Items.Potions
 {
+    public class BloodPotion : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Bloody Orb Potion");
+            Tooltip.SetDefault("Summons bloody orbs aroudn you that drain the life of enemies");
+        }
 
-    
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 26;
+            item.useStyle = ItemUseStyleID.EatingUsing;
+            item.useAnimation = 15;
+            item.useTime = 15;
+            item.useTurn = true;
+            item.UseSound = SoundID.Item3;
+            item.maxStack = 99;
+            item.consumable = true;
+            item.rare = 2;
+            item.value = Item.sellPrice(0, 0, 2, 50);
+            item.buffType = BuffType<Buffs.BloodBuff>(); //Specify an existing buff to be applied when used.
+            item.buffTime = 18000; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddIngredient(mod.GetItem("BloodDrop"), 2);
+            recipe.AddTile(TileID.Bottles);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            
+        }
+    }
+    //____________________________________________________
+
     public class ShroomitePotion : ModItem
     {
         public override void SetStaticDefaults()

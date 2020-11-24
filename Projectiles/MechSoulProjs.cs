@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(25));
                     float scale = 1f - (Main.rand.NextFloat() * .3f);
                     perturbedSpeed = perturbedSpeed * scale;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (int) (perturbedSpeed.X * 0.22f), (int)(perturbedSpeed.Y * 0.22f), ProjectileID.MolotovFire, (int)(projectile.damage * 0.5f), 0, player.whoAmI);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float) (perturbedSpeed.X * 0.22f), (float)(perturbedSpeed.Y * 0.22f), ProjectileID.MolotovFire, (int)(projectile.damage * 0.5f), 0, player.whoAmI);
                 
             }
 

@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             projectile.width = 12;
-            projectile.height = 12;
+            projectile.height = 36;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = false;
@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Projectiles
                     
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = projectile.position;
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.Bottom.Y - 10), projectile.width, 12, 31, 0f, 0f, 100, default, 1f);
                     
                     Main.dust[dustIndex].scale = 0.5f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;

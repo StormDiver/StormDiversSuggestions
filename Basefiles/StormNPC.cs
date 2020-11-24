@@ -51,6 +51,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool superFrost;
 
+        public bool bloodDebuff;
+
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -64,6 +66,7 @@ namespace StormDiversSuggestions.Basefiles
             spectreDebuff = false;
             heartDebuff = false;
             superFrost = false;
+            bloodDebuff = false;
         }
         public override void AI(NPC npc)
 
@@ -77,6 +80,19 @@ namespace StormDiversSuggestions.Basefiles
                 npc.velocity.Y *= 0.9f;
 
             }
+            if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly)
+            {
+                var player = Main.LocalPlayer;
+                float distanceX = player.Center.X - npc.Center.X;
+                float distanceY = player.Center.Y - npc.Center.Y;
+                float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+                bool lineOfSight = Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height);
+                if (distance < 185 && lineOfSight)
+                {
+                    npc.AddBuff(mod.BuffType("BloodDebuff"), 1);
+                }
+            }
+
         }
         public override void SetDefaults(NPC npc)
         {
@@ -89,7 +105,13 @@ namespace StormDiversSuggestions.Basefiles
         
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            
+            if (bloodDebuff)
+            {
+                npc.lifeRegen -= 24;
+
+                damage = 3;
+
+            }
             if (heartDebuff)
             {
                 npc.lifeRegen -= 100;
@@ -328,6 +350,25 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
+            if (bloodDebuff)
+            {
+                if (Main.rand.Next(4) < 3)
+                /*{
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 5, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 0, default, 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 5f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }*/
+                {
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                    var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 5);
+                }
+            }
         }
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
         {
@@ -398,7 +439,7 @@ namespace StormDiversSuggestions.Basefiles
         {
             
         }
-
+        
 
     }
         

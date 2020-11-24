@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Blood Blade"); 
+			DisplayName.SetDefault("Bloody Blade"); 
 			Tooltip.SetDefault("Shoots out a trail of blood every other swing");
 		}
 
@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloody Trident");
+            DisplayName.SetDefault("Capillary Trident");
             Tooltip.SetDefault("Shoots out a trail of blood every stab");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
@@ -114,7 +114,7 @@ namespace StormDiversSuggestions.Items
 
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 1.7f), (int)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.7f), (float)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
                 }
                 Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
                 
@@ -141,8 +141,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blooderang");
-            Tooltip.SetDefault("Can throw 3 out at once");
+            DisplayName.SetDefault("The Jugular");
+            Tooltip.SetDefault("3 can be thrown out at a time");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
 
@@ -181,7 +181,7 @@ namespace StormDiversSuggestions.Items
 
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 1.7f), (int)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.7f), (float)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
             }
             Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
 

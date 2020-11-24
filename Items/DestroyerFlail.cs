@@ -45,10 +45,10 @@ namespace StormDiversSuggestions.Items
         //int shoot = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-           
-                //Vector2 perturbedSpeed = new Vector2(speedX, speedY);
-                //Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.4), (int)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DestroyerFlailProj2"), (int)(damage * 1.4), knockBack, player.whoAmI);
-  
+
+            //Vector2 perturbedSpeed = new Vector2(speedX, speedY);
+            //Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 0.4), (float)(perturbedSpeed.Y * 0.4), mod.ProjectileType("DestroyerFlailProj2"), (int)(damage * 1.4), knockBack, player.whoAmI);
+
             return true;
         }
         public override void AddRecipes()

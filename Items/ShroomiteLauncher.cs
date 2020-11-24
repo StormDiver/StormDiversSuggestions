@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Items
             if (player.altFunctionUse == 2)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-                Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X * 0.8), (int)(perturbedSpeed.Y * 0.8), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 0.8), (float)(perturbedSpeed.Y * 0.8), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
                 Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
             }
             else
