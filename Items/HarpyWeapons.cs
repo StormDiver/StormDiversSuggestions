@@ -78,8 +78,16 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 16);
-            recipe.AddIngredient(ItemID.Cloud, 10);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.GoldBar, 8);
+
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -178,8 +186,16 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 16);
-            recipe.AddIngredient(ItemID.Cloud, 10);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.GoldBar, 8);
+
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -241,8 +257,16 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 16);
-            recipe.AddIngredient(ItemID.Cloud, 10);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.GoldBar, 8);
+
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Feather, 10);
+            recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);

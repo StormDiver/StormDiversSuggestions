@@ -59,9 +59,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 30);
-            recipe.AddIngredient(ItemID.SharkFin, 3);
-
+            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.SharkFin, 1);
+            recipe.AddIngredient(ItemID.Starfish, 2);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -133,8 +133,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 30);
-            recipe.AddIngredient(ItemID.SharkFin, 3);
+            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.SharkFin, 1);
+            recipe.AddIngredient(ItemID.Starfish, 2);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -194,8 +195,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 30);
-            recipe.AddIngredient(ItemID.SharkFin, 3);
+            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.SharkFin, 1);
+            recipe.AddIngredient(ItemID.Starfish, 2);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);

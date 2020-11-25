@@ -5,14 +5,14 @@ This mod attempts to add some of the ideas that I (Storm Diver) have suggested o
 
 This mod includes:
 
--44 New unique weapons
--14 new ammos
--7 new tools
+-54 New unique weapons
+-15 new ammos
+-8 new tools
 -New recipes for certain uncraftable vanilla items
 -2 new bars and ore 
 -14 new accessories
--11 new buffs and 6 new potions
--11 new debuffs
+-13 new buffs and 7 new potions
+-12 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
 -Some new shop items
@@ -26,6 +26,7 @@ This mod also has some vanilla changes including:
 -Buffed Original Hardmode Ore armour defence
 -Buffed Frost and Forbidden armours plus new recipe
 -Buffed Solar flare armour
+-Buffed Shadow Armour
 -New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
 -Gladiator armour now a ranged set
 -Mechanical souls recipes rebalanced
