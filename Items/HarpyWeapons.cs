@@ -18,8 +18,8 @@ namespace StormDiversSuggestions.Items
         }
         public override void SetDefaults()
         {
-            item.width = 15;
-            item.height = 20;
+            item.width = 20;
+            item.height = 34;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = 1;
@@ -81,7 +81,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.GoldBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -89,7 +89,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -138,8 +138,8 @@ namespace StormDiversSuggestions.Items
         }
         public override void SetDefaults()
         {
-            item.width = 15;
-            item.height = 20;
+            item.width = 30;
+            item.height = 40;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = 1;
@@ -189,7 +189,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.GoldBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -197,7 +197,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -218,11 +218,11 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 15;
+            item.damage = 13;
             //item.crit = 0;
             item.melee = true;
-            item.width = 30;
-            item.height = 30;
+            item.width = 20;
+            item.height = 26;
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
@@ -260,7 +260,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.GoldBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -268,7 +268,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.Feather, 10);
             recipe.AddIngredient(ItemID.PlatinumBar, 8);
 
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

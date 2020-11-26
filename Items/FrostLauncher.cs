@@ -17,8 +17,8 @@ namespace StormDiversSuggestions.Items
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
+            item.width = 40;
+            item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;

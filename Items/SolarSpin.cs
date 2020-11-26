@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
 			item.damage = 155;
             item.crit = 0;
 			item.melee = true;
-			item.width = 30;
-			item.height = 30;
+			item.width = 70;
+			item.height = 82;
 			item.useTime = 10;
 			item.useAnimation = 10;
 			item.useStyle = 100;

@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Pets
         {
             item.CloneDefaults(ItemID.ZephyrFish);
             item.width = 16;
-            item.height = 24;
+            item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 7, 50, 0);
             

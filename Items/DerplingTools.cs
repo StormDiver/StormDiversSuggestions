@@ -19,8 +19,8 @@ namespace StormDiversSuggestions.Items
             
             item.damage = 35;
             item.melee = true;
-            item.width = 86;
-            item.height = 26;
+            item.width = 40;
+            item.height = 22;
 
             item.useTime = 7;
             item.useAnimation = 25;
@@ -68,8 +68,8 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 50;
             item.melee = true;
-            item.width = 86;
-            item.height = 26;
+            item.width = 60;
+            item.height = 20;
             item.useTime = 7;
             item.useAnimation = 25;
             item.useStyle = 5;
@@ -115,8 +115,8 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 45;
             item.melee = true;
-            item.width = 86;
-            item.height = 26;
+            item.width = 50;
+            item.height = 20;
             item.useTime = 7;
             item.useAnimation = 25;
             item.useStyle = 5;

@@ -12,12 +12,12 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher MKIII");
-            Tooltip.SetDefault("Superheats the boulders and fires 2 to 3 at a time\nRequires Miniature Boulders to work");
+            Tooltip.SetDefault("Superheats the boulders and fires 2 to 3 at a time\nRequires Compact Boulders to work");
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
+            item.width = 60;
+            item.height = 32;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 8;

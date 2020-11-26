@@ -12,12 +12,12 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher MKI");
-            Tooltip.SetDefault("Fire out all your unwanted stone at your foes\nRequires Miniature Boulders to work");
+            Tooltip.SetDefault("Fire out all your unwanted stone at your foes\nRequires Compact Boulders to work");
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
+            item.width = 40;
+            item.height = 22;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 2;

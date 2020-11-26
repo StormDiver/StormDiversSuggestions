@@ -20,8 +20,8 @@ namespace StormDiversSuggestions.Pets
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.ZephyrFish);
-            item.width = 16;
-            item.height = 24;
+            item.width = 24;
+            item.height = 22;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
             

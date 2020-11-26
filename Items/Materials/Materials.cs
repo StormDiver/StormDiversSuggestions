@@ -26,8 +26,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 5;
@@ -120,8 +120,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 26;
+            item.height = 26;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 3, 0);
             item.rare = 1;
@@ -225,8 +225,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 26;
+            item.height = 26;
             item.maxStack = 999;
             
             item.value = Item.sellPrice(0, 0, 1, 0);
@@ -351,8 +351,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 3;
@@ -396,8 +396,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 14;
+            item.height = 20;
             item.maxStack = 999;
 
             item.value = Item.sellPrice(0, 0, 0, 50);

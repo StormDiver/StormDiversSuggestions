@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items.Accessory
         }
         public override void SetDefaults()
         {
-            item.width = 14;
-            item.height = 14;
+            item.width = 30;
+            item.height = 30;
             item.value = Item.sellPrice(0, 1, 25, 0);
             item.rare = 3;
 
@@ -72,8 +72,8 @@ namespace StormDiversSuggestions.Items.Accessory
         }
         public override void SetDefaults()
         {
-            item.width = 14;
-            item.height = 14;
+            item.width = 30;
+            item.height = 30;
             item.value = Item.sellPrice(0, 1, 50, 0);
             item.rare = 3;
 

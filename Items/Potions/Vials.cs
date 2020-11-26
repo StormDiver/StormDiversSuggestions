@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetDefaults()
         {
             item.width = 20;
-            item.height = 26;
+            item.height = 30;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 17;
             item.useTime = 17;
@@ -134,8 +134,8 @@ namespace StormDiversSuggestions.Items.Potions
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 26;
+            item.width = 24;
+            item.height = 24;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 17;
             item.useTime = 17;
@@ -174,8 +174,8 @@ namespace StormDiversSuggestions.Items.Potions
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 26;
+            item.width = 24;
+            item.height = 24;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 17;
             item.useTime = 17;

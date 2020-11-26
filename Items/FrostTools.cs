@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items
             item.crit = 0;
             item.melee = true;
             item.width = 40;
-            item.height = 40;
+            item.height = 44;
             item.useTime = 8;
             item.useAnimation = 25;
             item.useStyle = 1;
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items
 
             item.melee = true;
             item.width = 40;
-            item.height = 40;
+            item.height = 50;
             item.useTime = 16;
             item.useAnimation = 35;
             item.useStyle = 1;

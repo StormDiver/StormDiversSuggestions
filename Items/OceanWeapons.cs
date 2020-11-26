@@ -18,8 +18,8 @@ namespace StormDiversSuggestions.Items
         }
         public override void SetDefaults()
         {
-            item.width = 15;
-            item.height = 15;
+            item.width = 20;
+            item.height = 30;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 1;
@@ -59,9 +59,11 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.Coral, 14);
             recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Starfish, 3);
+            recipe.AddIngredient(ItemID.Seashell, 3);
+
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -82,8 +84,8 @@ namespace StormDiversSuggestions.Items
             item.damage = 14;
             item.crit = 0;
             item.melee = true;
-            item.width = 40;
-            item.height = 40;
+            item.width = 30;
+            item.height = 38;
             item.useTime = 17;
             item.useAnimation = 17;
             item.useStyle = 1;
@@ -133,9 +135,10 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.Coral, 14);
             recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Starfish, 3);
+            recipe.AddIngredient(ItemID.Seashell, 3);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -153,7 +156,7 @@ namespace StormDiversSuggestions.Items
         }
         public override void SetDefaults()
         {
-            item.width = 20;
+            item.width = 30;
             item.height = 20;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
@@ -195,9 +198,10 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 18);
+            recipe.AddIngredient(ItemID.Coral, 14);
             recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Starfish, 3);
+            recipe.AddIngredient(ItemID.Seashell, 3);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);

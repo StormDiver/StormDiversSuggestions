@@ -17,8 +17,8 @@ namespace StormDiversSuggestions.Items.Ammo
         }
         public override void SetDefaults()
         {
-            item.width = 14;
-            item.height = 14;
+            item.width = 12;
+            item.height = 18;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 2);
             item.rare = 1;
@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.AddIngredient(ItemID.Coral, 1);
 
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this, 100);
+            recipe.SetResult(this, 150);
             recipe.AddRecipe();
         }
         public class VanillaShops : GlobalNPC

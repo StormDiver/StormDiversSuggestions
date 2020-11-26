@@ -16,8 +16,8 @@ namespace StormDiversSuggestions.Items.Ammo
         }
         public override void SetDefaults()
         {
-            item.width = 14;
-            item.height = 14;
+            item.width = 10;
+            item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 40);
             item.rare = 5;
@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetDefaults()
         {
             item.width = 14;
-            item.height = 14;
+            item.height = 44;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 40);
             item.rare = 5;

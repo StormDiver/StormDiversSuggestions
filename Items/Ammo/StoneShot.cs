@@ -11,14 +11,14 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Miniature Boulder");
+            DisplayName.SetDefault("Compact Boulder");
             Tooltip.SetDefault("For use with Stone Launchers");
             
         }
         public override void SetDefaults()
         {
-            item.width = 14;
-            item.height = 14;
+            item.width = 18;
+            item.height = 18;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 1);
             item.rare = 1;

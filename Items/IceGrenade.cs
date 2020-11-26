@@ -19,8 +19,8 @@ namespace StormDiversSuggestions.Items
             
             item.damage = 75;
             item.thrown = true;
-            item.width = 30;
-            item.height = 30;
+            item.width = 10;
+            item.height = 14;
             item.consumable = true;
             item.maxStack = 999;
             item.useTime = 40;

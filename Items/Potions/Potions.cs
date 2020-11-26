@@ -12,14 +12,14 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloody Orb Potion");
-            Tooltip.SetDefault("Summons bloody orbs aroudn you that drain the life of enemies");
+            DisplayName.SetDefault("Blood Potion");
+            Tooltip.SetDefault("Summons a ring of bloody orbs around you that drains the life of enemies");
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 26;
+            item.width = 16;
+            item.height = 30;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 15;
             item.useTime = 15;
@@ -56,8 +56,8 @@ namespace StormDiversSuggestions.Items.Potions
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 26;
+            item.width = 12;
+            item.height = 32;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 15;
             item.useTime = 15;
@@ -96,7 +96,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetDefaults()
         {
             item.width = 20;
-            item.height = 26;
+            item.height = 32;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 15;
             item.useTime = 15;
@@ -143,7 +143,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetDefaults()
         {
             item.width = 20;
-            item.height = 26;
+            item.height = 30;
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.useAnimation = 15;
             item.useTime = 15;

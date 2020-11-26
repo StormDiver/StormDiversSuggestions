@@ -12,12 +12,12 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher MKII");
-            Tooltip.SetDefault("An upgraded stone launcher which makes stone far more deadly\nRequires Miniature Boulders to work");
+            Tooltip.SetDefault("An upgraded stone launcher which makes stone far more deadly\nRequires Compact Boulders to work");
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
+            item.width = 50;
+            item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 7, 50, 0);
             item.rare = 6;

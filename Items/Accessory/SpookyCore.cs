@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void SetDefaults()
         {
-            item.width = 30;
+            item.width = 26;
             item.height = 28;
 
             item.value = Item.sellPrice(0, 3, 0, 0);

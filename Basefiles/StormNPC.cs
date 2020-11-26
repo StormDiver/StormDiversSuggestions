@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Basefiles
                 npc.velocity.Y *= 0.9f;
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly)
+            if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly && npc.lifeMax > 5)
             {
                 var player = Main.LocalPlayer;
                 float distanceX = player.Center.X - npc.Center.X;
@@ -107,9 +107,9 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (bloodDebuff)
             {
-                npc.lifeRegen -= 24;
+                npc.lifeRegen -= 12;
 
-                damage = 3;
+                damage = 2;
 
             }
             if (heartDebuff)
