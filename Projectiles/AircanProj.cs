@@ -12,13 +12,13 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shockwave");
+            DisplayName.SetDefault("Air Blast");
         }
         public override void SetDefaults()
         {
 
             projectile.width = 12;
-            projectile.height = 24;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = false;
