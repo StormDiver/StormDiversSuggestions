@@ -426,6 +426,12 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(ItemID.SlimeStaff);
                 recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.StoneBlock, 50);
+                recipe.AddTile(TileID.HeavyWorkBench);
+                recipe.SetResult(ItemID.Tombstone);
+                recipe.AddRecipe();
             }
         }
         public class VanillaShops : GlobalNPC

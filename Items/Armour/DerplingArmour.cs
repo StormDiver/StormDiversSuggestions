@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases assent and falling speed, and allows you to dash";
+            player.setBonus = "Increases ascent and falling speed";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -60,8 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
             
             player.autoJump = true;
             player.maxFallSpeed *= 1.5f;
-            player.dash = 1;
-           
+         
 
             //player.GetModPlayer<StormPlayer>().bootFall = true;
             //player.GetModPlayer<StormPlayer>().derpJump = true;
@@ -200,7 +199,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
-            item.defense = 10;
+            item.defense = 5;
         }
 
         public override void UpdateEquip(Player player)
@@ -224,7 +223,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases assent and falling speed, and allows you to dash\nIncreases your max number of minions by 2";
+            player.setBonus = "Increases ascent and falling speed\nIncreases your max number of minions by 2";
 
 
             //if (!(player.wingTime < player.wingTimeMax))
@@ -233,7 +232,7 @@ namespace StormDiversSuggestions.Items.Armour
 
             player.autoJump = true;
             player.maxFallSpeed *= 1.5f;
-            player.dash = 1;
+            
             //player.GetModPlayer<StormPlayer>().bootFall = true;
             //player.GetModPlayer<StormPlayer>().derpJump = true;
 

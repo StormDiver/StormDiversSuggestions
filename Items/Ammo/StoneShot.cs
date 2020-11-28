@@ -37,22 +37,30 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.StoneBlock, 333);           
+            recipe.AddIngredient(ItemID.StoneBlock, 333);
+            recipe.AddTile(TileID.WorkBenches);
+
             recipe.SetResult(this, 111);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(this, 111);            
+            recipe.AddIngredient(this, 111);
+            recipe.AddTile(TileID.WorkBenches);
+
             recipe.SetResult(ItemID.StoneBlock, 333);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.StoneBlock, 3);
+            recipe.AddTile(TileID.WorkBenches);
+
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this, 1);
+            recipe.AddTile(TileID.WorkBenches);
+
             recipe.SetResult(ItemID.StoneBlock, 3);
             recipe.AddRecipe();
 

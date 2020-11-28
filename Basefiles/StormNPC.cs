@@ -87,7 +87,7 @@ namespace StormDiversSuggestions.Basefiles
                 float distanceY = player.Center.Y - npc.Center.Y;
                 float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
                 bool lineOfSight = Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height);
-                if (distance < 185 && lineOfSight)
+                if (distance < 110 && lineOfSight)
                 {
                     npc.AddBuff(mod.BuffType("BloodDebuff"), 1);
                 }

@@ -412,7 +412,7 @@ namespace StormDiversSuggestions.Basefiles
 
                             float speedX = 0f;
                             float speedY = -6f;
-                            int blooddamage = (int)(player.HeldItem.damage * 1f);
+                            int blooddamage = (int)(player.HeldItem.damage * 0.8f);
                             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(135));
                             float scale = 1f - (Main.rand.NextFloat() * .5f);
                             perturbedSpeed = perturbedSpeed * scale;

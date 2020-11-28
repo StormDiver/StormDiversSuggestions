@@ -86,8 +86,8 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 17;
-            item.useAnimation = 17;
+            item.useTime = 22;
+            item.useAnimation = 22;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 1;
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("OceanSmallProj");
             
 
-            item.shootSpeed = 7f;
+            item.shootSpeed = 4f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

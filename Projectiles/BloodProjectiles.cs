@@ -389,9 +389,9 @@ namespace StormDiversSuggestions.Projectiles
             Player p = Main.player[projectile.owner];
 
             //Factors for calculations
-            double deg = (double)projectile.ai[1] * -4; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = (double)projectile.ai[1] * -4.1f; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
-            double dist = 175; //Distance away from the player
+            double dist = 100; //Distance away from the player
 
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /

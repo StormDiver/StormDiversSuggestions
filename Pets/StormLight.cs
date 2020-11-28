@@ -92,10 +92,10 @@ namespace StormDiversSuggestions.Pets
         {
             projectile.CloneDefaults(ProjectileID.DD2PetGato);
             aiType = ProjectileID.DD2PetGato;
-            projectile.width = 22;
-           projectile.height = 30;
+            projectile.width = 34;
+           projectile.height = 40;
             projectile.scale = 1;
-            drawOffsetX = -4;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
         }
 

@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.damage = 3;
             
             item.knockBack = 3;
-            item.shoot = mod.ProjectileType("StompBootProj");
+            item.shoot = mod.ProjectileType("AircanProj");
             
             item.shootSpeed = 7f;
 

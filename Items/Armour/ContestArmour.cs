@@ -22,6 +22,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
+            item.vanity = true;
 
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -68,9 +69,10 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
+            item.vanity = true;
 
         }
-        
+
     }
     //_________________________________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -89,8 +91,9 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
+            item.vanity = true;
 
         }
-      
+
     }
 }
