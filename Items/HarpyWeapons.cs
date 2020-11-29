@@ -79,19 +79,11 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.GoldBar, 8);
-
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.PlatinumBar, 8);
-
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
         /*public class ModGlobalNPC : GlobalNPC
         {
@@ -187,19 +179,11 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.GoldBar, 8);
-
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.PlatinumBar, 8);
-
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
 
         }
     }
@@ -258,19 +242,12 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.GoldBar, 8);
-
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddIngredient(ItemID.PlatinumBar, 8);
-
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+           
         }
     }
 }

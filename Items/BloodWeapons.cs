@@ -55,17 +55,12 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 10);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+           
         }
 
     }
@@ -124,17 +119,12 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 10);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            
         }
     }
     public class BloodBoomerang : ModItem
@@ -191,17 +181,12 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 10);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            
         }
     }
 }

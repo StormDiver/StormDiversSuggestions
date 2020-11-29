@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddIngredient(ItemID.SpectreBar, 14);
             recipe.AddIngredient(ItemID.SuperManaPotion, 30);
             recipe.AddIngredient(ItemID.SoulofFright, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

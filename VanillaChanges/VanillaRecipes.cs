@@ -383,31 +383,79 @@ namespace StormDiversSuggestions.VanillaChanges
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.Silk, 25);
-                recipe.AddIngredient(ItemID.GoldOre, 35);
+                recipe.AddRecipeGroup("StormDiversSuggestions:GoldOres", 35); 
                 recipe.AddTile(TileID.Loom);
                 recipe.SetResult(ItemID.MiningShirt);
                 recipe.AddRecipe();
 
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 25);
-                recipe.AddIngredient(ItemID.PlatinumOre, 35);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningShirt);
-                recipe.AddRecipe();
+               
 
                 recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.Silk, 20);
-                recipe.AddIngredient(ItemID.GoldOre, 30);
+                recipe.AddRecipeGroup("StormDiversSuggestions:GoldOres", 30);
                 recipe.AddTile(TileID.Loom);
                 recipe.SetResult(ItemID.MiningPants);
                 recipe.AddRecipe();
 
+
                 recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.Silk, 20);
-                recipe.AddIngredient(ItemID.PlatinumOre, 30);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.MiningPants);
+                recipe.AddIngredient(mod.GetItem("RedSilk"), 10);
+                recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.GladiatorHelmet);
                 recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("RedSilk"), 15);
+                recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 20);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.GladiatorBreastplate);
+                recipe.AddRecipe();
+
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("RedSilk"), 10);
+                recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 15);
+                recipe.AddTile(TileID.Anvils);
+                recipe.SetResult(ItemID.GladiatorLeggings);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("BlueCloth"), 10);
+                recipe.AddIngredient(ItemID.Silk, 10);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.EskimoHood);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("BlueCloth"), 20);
+                recipe.AddIngredient(ItemID.Silk, 20);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.EskimoCoat);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("BlueCloth"), 15);
+                recipe.AddIngredient(ItemID.Silk, 15);
+                recipe.AddTile(TileID.Loom);
+                recipe.SetResult(ItemID.EskimoPants);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("ChaosShard"), 12);
+                recipe.AddIngredient(ItemID.CrystalShard, 30);
+                recipe.AddIngredient(ItemID.SoulofLight, 25);
+                recipe.AddIngredient(ItemID.HallowedBar, 20);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.RodofDiscord);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("ChaosShard"), 2);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.SoulofLight);
+                recipe.AddRecipe();
+
 
                 recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.FallenStar, 1);

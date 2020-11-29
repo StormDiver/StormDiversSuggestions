@@ -62,20 +62,11 @@ namespace StormDiversSuggestions.Items
             recipe.AddIngredient(ItemID.StoneBlock, 250);
             recipe.anyIronBar = true;
             recipe.AddIngredient(ItemID.IronBar, 25);
-            recipe.AddIngredient(ItemID.ShadowScale, 25);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilMaterial", 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.IllegalGunParts);
-            recipe.AddIngredient(ItemID.StoneBlock, 250);
-            recipe.anyIronBar = true;
-            recipe.AddIngredient(ItemID.IronBar, 25);
-            recipe.AddIngredient(ItemID.TissueSample, 25);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+           
         }
        /* public class VanillaShops : GlobalNPC
         {

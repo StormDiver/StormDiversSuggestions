@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddIngredient(ItemID.ShroomiteBar, 14);
             recipe.AddIngredient(ItemID.RocketI, 250);
             recipe.AddIngredient(ItemID.SoulofSight, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -73,7 +73,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RubyStaff, 1);
+            recipe.AddRecipeGroup("StormDiversSuggestions:RDStaffs");
+           
             recipe.AddIngredient(ItemID.CrystalShard, 20);
             recipe.AddIngredient(ItemID.UnicornHorn, 2);
             recipe.AddIngredient(ItemID.SoulofFright, 20);
@@ -81,14 +82,7 @@ namespace StormDiversSuggestions.Items
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DiamondStaff, 1);
-            recipe.AddIngredient(ItemID.CrystalShard, 20);
-            recipe.AddIngredient(ItemID.UnicornHorn, 2);
-            recipe.AddIngredient(ItemID.SoulofFright, 20);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            
         }
     }
 }

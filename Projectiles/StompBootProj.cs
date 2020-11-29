@@ -33,20 +33,16 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
-            if (projectile.timeLeft > 125)
-            {
-                projectile.timeLeft = 125;
-            }
+            
             if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {
-                if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
+                if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
                 {
 
                     
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = projectile.position;
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.Bottom.Y - 10), projectile.width, 12, 31, 0f, 0f, 100, default, 1f);
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.Bottom.Y - 10), projectile.width, 12, 31, 0f, 0f, 100, default, 100f);
                     
                     Main.dust[dustIndex].scale = 0.5f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
@@ -134,11 +130,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
-            if (projectile.timeLeft > 125)
-            {
-                projectile.timeLeft = 125;
-            }
+            
             if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {
                 if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn

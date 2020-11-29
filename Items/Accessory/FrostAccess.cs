@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Items.Accessory
             
             recipe.AddIngredient(mod, "IceBar", 10);
             recipe.AddIngredient(ItemID.FrostCore, 2);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

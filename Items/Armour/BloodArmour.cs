@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Buffs;
 using StormDiversSuggestions.Basefiles;
+using Terraria.Localization;
 
 namespace StormDiversSuggestions.Items.Armour
 {
@@ -62,21 +63,22 @@ namespace StormDiversSuggestions.Items.Armour
             player.GetModPlayer<StormPlayer>().BloodDrop = true;
    
         }
+        
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 12);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 12);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
+           /* recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CrimtaneBar, 12);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.AddRecipe();*/
 
         }
     }
@@ -112,18 +114,13 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 18);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 18);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 4);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 18);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 4);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+           
 
         }
        
@@ -157,18 +154,13 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DemoniteBar, 15);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 15);
             recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 15);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+           
 
         }
     }

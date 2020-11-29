@@ -64,7 +64,7 @@ namespace StormDiversSuggestions.Items.Accessory
    
             recipe.AddIngredient(mod, "DesertBar", 10);
             recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 2);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -37,24 +37,10 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void AddRecipes()
         {
-            if (!GetInstance<Configurations>().DisableNewRecipes)
+            
 
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 12);
-                recipe.AddIngredient(ItemID.CrystalShard, 30);
-                recipe.AddIngredient(ItemID.SoulofLight, 25);
-                recipe.AddIngredient(ItemID.HallowedBar, 20);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.RodofDiscord);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 2);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.SoulofLight);
-                recipe.AddRecipe();
-            }
+                //VanillaRecipes
+            
         }
         public override void PostUpdate()
         {
@@ -130,52 +116,8 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void AddRecipes()
         {
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
-                recipe.AddIngredient(ItemID.GoldBar, 10);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorHelmet);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
-                recipe.AddIngredient(ItemID.PlatinumBar, 10);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorHelmet);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 15);
-                recipe.AddIngredient(ItemID.GoldBar, 20);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorBreastplate);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 15);
-                recipe.AddIngredient(ItemID.PlatinumBar, 20);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorBreastplate);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
-                recipe.AddIngredient(ItemID.GoldBar, 15);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorLeggings);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
-                recipe.AddIngredient(ItemID.PlatinumBar, 15);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(ItemID.GladiatorLeggings);
-                recipe.AddRecipe();
-            }
-
+            
+            //VanillaRecipes
 
         }
 
@@ -235,31 +177,7 @@ namespace StormDiversSuggestions.Items.Materials
 
         public override void AddRecipes()
         {
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 10);
-                recipe.AddIngredient(ItemID.Silk, 10);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.EskimoHood);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 20);
-                recipe.AddIngredient(ItemID.Silk, 20);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.EskimoCoat);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(this, 15);
-                recipe.AddIngredient(ItemID.Silk, 15);
-                recipe.AddTile(TileID.Loom);
-                recipe.SetResult(ItemID.EskimoPants);
-                recipe.AddRecipe();
-
-            }
+            //VanillaRecipes
         }
 
 

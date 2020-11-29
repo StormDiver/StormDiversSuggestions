@@ -43,19 +43,8 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddIngredient(ItemID.RocketBoots, 1);
             recipe.anyIronBar = true;
             recipe.AddIngredient(ItemID.IronBar, 20);
-            recipe.AddIngredient(ItemID.IronAnvil);
-            
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RocketBoots, 1);
-            recipe.anyIronBar = true;
-            recipe.AddIngredient(ItemID.IronBar, 20);
-            recipe.AddIngredient(ItemID.LeadAnvil);
-            
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddRecipeGroup("StormDiversSuggestions:Anvils");
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

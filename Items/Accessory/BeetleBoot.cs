@@ -71,27 +71,12 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BeetleHusk, 12);
-            recipe.AddIngredient(ItemID.HermesBoots);
+            recipe.AddRecipeGroup("StormDiversSuggestions:RunBoots");
             recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BeetleHusk, 12);
-            recipe.AddIngredient(ItemID.FlurryBoots);
-            recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BeetleHusk, 12);
-            recipe.AddIngredient(ItemID.SailfishBoots);
-            recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
 
 
