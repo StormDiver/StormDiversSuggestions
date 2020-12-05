@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 14);
+            recipe.AddIngredient(ItemID.Coral, 15);
             recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);
@@ -86,8 +86,8 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 22;
-            item.useAnimation = 22;
+            item.useTime = 21;
+            item.useAnimation = 21;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 1;
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("OceanSmallProj");
             
 
-            item.shootSpeed = 4f;
+            item.shootSpeed = 6f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -135,7 +135,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 14);
+            recipe.AddIngredient(ItemID.Coral, 15);
             recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);
@@ -198,7 +198,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 14);
+            recipe.AddIngredient(ItemID.Coral, 15);
             recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);

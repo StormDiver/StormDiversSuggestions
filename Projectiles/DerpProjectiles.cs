@@ -220,7 +220,7 @@ namespace StormDiversSuggestions.Projectiles
 
             
             
-                if (Main.rand.Next(10) == 0)
+                /*if (Main.rand.Next(10) == 0)
                 {
                     float speedX = 0f;
                     float speedY = -4f;
@@ -230,7 +230,7 @@ namespace StormDiversSuggestions.Projectiles
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.6f), 0f, projectile.owner, 0f, 0f);
                     
                 
-            }
+            }*/
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -260,10 +260,10 @@ namespace StormDiversSuggestions.Projectiles
             {
                 // Calculate new speeds for other projectiles.
                 // Rebound at 40% to 70% speed, plus a random amount between -8 and 8
-                float speedX = Main.rand.NextFloat(-5f, 5f);
-                float speedY = Main.rand.NextFloat(-5f, 5f);
+                float speedX = Main.rand.NextFloat(-7f, 7f);
+                float speedY = Main.rand.NextFloat(-7f, 7f);
 
-                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.6), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("DerpMagicProj2"), (int)(projectile.damage * 0.75), 0f, projectile.owner, 0f, 0f);
             }
         }
 
@@ -286,9 +286,9 @@ namespace StormDiversSuggestions.Projectiles
 
             projectile.tileCollide = true;
             projectile.magic = true;
-
+            //projectile.extraUpdates = 1;
             //projectile.CloneDefaults(297);
-            projectile.aiStyle = 1;
+            projectile.aiStyle = 2;
             //aiType = 297;
             //projectile.timeLeft = 240;
             projectile.timeLeft = 360;
@@ -315,17 +315,23 @@ namespace StormDiversSuggestions.Projectiles
 
            
         }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            return true;
+        }
         public override void Kill(int timeLeft)
         {
 
 
-            Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+            //Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
             //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 253);
+                dust.scale = 0.5f;
             }
 
         }

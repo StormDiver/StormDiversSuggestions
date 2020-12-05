@@ -48,6 +48,7 @@ namespace StormDiversSuggestions.Projectiles
             Vector2 position2 = projectile.Center;
             dust2 = Terraria.Dust.NewDustPerfect(position2, 45, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
             dust2.noGravity = true;
+            dust2.noLight = true;
 
 
         }
@@ -124,7 +125,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 12;
             projectile.height = 12;
             projectile.friendly = true;
-            projectile.penetrate = 2;
+            projectile.penetrate = 1;
             projectile.timeLeft = 60;
             projectile.aiStyle = 14;
             aiType = ProjectileID.WoodenArrowFriendly;

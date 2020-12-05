@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Ammo
                 {
                     case NPCID.ArmsDealer:
 
-                        if (Main.hardMode && Main.LocalPlayer.HasItem(mod.ItemType("OceanGun"))) //if it's hardmode the NPC will sell this
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("OceanGun"))) //if it's hardmode the NPC will sell this
                         {
                             shop.item[nextSlot].SetDefaults(mod.ItemType("OceanShard"));
                             nextSlot++;

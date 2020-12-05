@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Dagger");
-            Tooltip.SetDefault("Rapidly throws daggers that bounce through enemies\nHas a chance to throw out a second faster and more damaging dagger");
+            Tooltip.SetDefault("Right clicking will make daggers magically follow the cursor\nMaximum of 12 can be thrown out at any time");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 8;
             item.useStyle = 1;
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useTime = 12;
+            item.useAnimation = 12;
             item.useTurn = false;
             item.autoReuse = true;
             item.noUseGraphic = true;
@@ -31,9 +31,9 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item1;
 
-            item.damage = 66;
+            item.damage = 62;
             //item.crit = 4;
-            item.knockBack = 5f;
+            item.knockBack = 2f;
 
             item.shoot = mod.ProjectileType("SpectreDaggerProj");
             
@@ -42,14 +42,20 @@ namespace StormDiversSuggestions.Items
             item.mana = 5;
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            // Ensures no more than one spear can be thrown out, use this when using autoReuse
+            return player.ownedProjectileCounts[item.shoot] < 12;
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (Main.rand.Next(5) == 0)
+            
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 1.25f, perturbedSpeed.Y * 1.25f, type, (int)(damage * 1.5f), knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // This defines the projectiles random spread . 10 degree spread.
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
             }
-            return true;
+            return false;
         }
         public override Vector2? HoldoutOffset()
         {

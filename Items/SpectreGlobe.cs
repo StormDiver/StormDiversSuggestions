@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 20;
+            item.mana = 18;
             item.UseSound = SoundID.Item43;
 
             item.damage = 75;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("SpectreGlobeProj");
 
             item.shootSpeed = 10f;
-            
+         
                 
 
             item.noMelee = true; //Does the weapon itself inflict damage?

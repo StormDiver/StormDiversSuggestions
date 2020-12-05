@@ -209,7 +209,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.Center = player.MountedCenter;
             projectile.position.X += player.width / 2 * player.direction;
             projectile.spriteDirection = player.direction;
-            projectile.rotation += 0.3f * player.direction;
+            projectile.rotation += 0.2f * player.direction;
             /* if (projectile.rotation > MathHelper.TwoPi)
              {
                  projectile.rotation -= MathHelper.TwoPi;

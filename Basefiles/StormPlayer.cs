@@ -155,7 +155,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     bloodorbspawn = 0;
                 }
-            }
+            } 
             if (!BloodOrb)
             {
                 bloodorbspawn = 0;

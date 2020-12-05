@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Capillary Trident");
+            DisplayName.SetDefault("The Heart Attack");
             Tooltip.SetDefault("Great for stabbing in a hurry");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }

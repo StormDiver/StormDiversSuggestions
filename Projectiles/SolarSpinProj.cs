@@ -12,28 +12,30 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar Spinner");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 6;
         }
         public override void SetDefaults()
         {
            
-            projectile.width = 300;     
-            projectile.height = 300;      
+            projectile.width = 260;     
+            projectile.height = 260;      
             projectile.friendly = true;    
             projectile.penetrate = -1;    
             projectile.tileCollide = false; 
             projectile.ignoreWater = true;       
             projectile.melee = true;
+            //projectile.scale = 1.2f;
             
 
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             {
-                target.AddBuff(BuffID.Daybreak, 900);
+                target.AddBuff(BuffID.Daybreak, 600);
 
             }
         }
-
        // float hitbox = 300;
         //bool hitboxup;
         //bool hitboxdown;
@@ -46,8 +48,8 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 116);    
-                projectile.soundDelay = 45;    
+                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 7);    
+                projectile.soundDelay = 25;    
             }
             //-----------------------------------------------How the projectile works---------------------------------------------------------------------
             Player player = Main.player[projectile.owner];
@@ -64,17 +66,19 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             
             projectile.spriteDirection = player.direction;
             
-            projectile.rotation += 0.25f * player.direction; //this is the projectile rotation/spinning speed
+            projectile.rotation += 0.2f * player.direction; //this is the projectile rotation/spinning speed
            
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 259);  //this is the dust that this projectile will spawn
+
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);  //this is the dust that this projectile will spawn
             Main.dust[dust].velocity /= 1f;
-            Main.dust[dust].scale = 0.6f;
+            Main.dust[dust].scale = 2f;
+            Main.dust[dust].noGravity = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 4;
            /* if (hitbox == 300)
             {
                 hitboxup = false;
@@ -99,19 +103,41 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             projectile.width = (int)hitbox;
             projectile.height = (int)hitbox;*/
         }
+    
+         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+         {
+             Texture2D texture = Main.projectileTexture[projectile.type];
+             spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+             Player player = Main.player[projectile.owner];
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+             Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+             for (int k = 0; k < projectile.oldPos.Length * 0.7f; k++) //Distance between afterimages
+             {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                    
+                 Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length) * 0.5f; //Opactiy
+                 spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.oldRot[k], drawOrigin, (float)(projectile.scale * 0.9f), SpriteEffects.None, 0f);
+
+             }
+             return false;
+
+         }
+        public override void PostDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = Main.projectileTexture[projectile.type];
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, new Vector2(texture.Width / 2, texture.Height / 2), 1f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            return false;
+            
+            
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
 
 
 
-            return Color.White;
+                Color color = Color.White;
+                color.A = 75;
+                return color;
+
+           
 
         }
     }

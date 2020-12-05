@@ -435,18 +435,18 @@ namespace StormDiversSuggestions.VanillaChanges
                if (item.type == ItemID.ShadowHelmet)
                 {
                     player.meleeSpeed -= 0.07f;
-                    player.allDamage += 0.05f;
+                    player.allDamage += 0.04f;
                 }
                 if (item.type == ItemID.ShadowScalemail)
                 {
                     player.meleeSpeed -= 0.07f;
-                    player.allDamage += 0.05f;
+                    player.allDamage += 0.04f;
 
                 }
                 if (item.type == ItemID.ShadowGreaves)
                 {
                     player.meleeSpeed -= 0.07f;
-                    player.allDamage += 0.05f;
+                    player.allDamage += 0.04f;
 
                 }
             }

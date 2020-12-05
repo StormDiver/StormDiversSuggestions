@@ -249,7 +249,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "5% increased damage";
+                            line.text = "4% increased damage";
                         }
 
                     }
@@ -258,7 +258,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "5% increased damage";
+                            line.text = "4% increased damage";
                         }
 
                     }
@@ -267,7 +267,7 @@ namespace StormDiversSuggestions.VanillaChanges
                     {
                         if (line.mod == "Terraria" && line.Name == "Tooltip0")
                         {
-                            line.text = "5% increased damage";
+                            line.text = "4% increased damage";
                         }
 
                     }

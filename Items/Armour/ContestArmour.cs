@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = -12;
+            item.rare = 9;
             item.vanity = true;
 
         }
@@ -48,8 +48,7 @@ namespace StormDiversSuggestions.Items.Armour
 
             }
         }
-
-        
+       
        
     }
     //_________________________________________________________________________________________
@@ -62,17 +61,17 @@ namespace StormDiversSuggestions.Items.Armour
             DisplayName.SetDefault("Cryogenic Chestplate");
             Tooltip.SetDefault("Created by Storm Diver");
         }
-
+    
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = -12;
+            item.rare = 9;
             item.vanity = true;
 
         }
-
+    
     }
     //_________________________________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -90,7 +89,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = -12;
+            item.rare = 9;
             item.vanity = true;
 
         }

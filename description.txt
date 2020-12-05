@@ -26,11 +26,12 @@ This mod also has some vanilla changes including:
 -Buffed Original Hardmode Ore armour defence
 -Buffed Frost and Forbidden armours plus new recipe
 -Buffed Solar flare armour
--Buffed Shadow Armour
+-Revamped Shadow Armour
 -New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
 -Gladiator armour now a ranged set
 -Mechanical souls recipes rebalanced
 -Cheaper Super Healing potion Recipe
+-Craftable Slime Staff and Tombstones
 
 Also check the configuration options if you don't like modifications to vanilla items
 

@@ -13,7 +13,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Enchanted Sword");
-            Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
         }
 
         public override void SetDefaults()
@@ -35,13 +36,13 @@ namespace StormDiversSuggestions.Projectiles
             drawOriginOffsetY = -10;
         }
         int speedup = 0;
+        
         public override void AI()
         {
             /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
             projectile.spriteDirection = projectile.direction;
 
-            AnimateProjectile();
             speedup++;
             if (speedup < 60)
             {
@@ -59,20 +60,19 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                     var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 }
-               /* for (int i = 0; i < 10; i++)
+                //for (int i = 0; i < 10; i++)
                 {
-                    NPC target = Main.npc[i];
-                    target.TargetClosest(true);
-                    float shootToX = target.Center.X - projectile.Center.X;
-                    float shootToY = target.Center.Y - projectile.Center.Y;
+                    //target = Main.MouseWorld;
+                    //target.TargetClosest(true);
+                    float shootToX = Main.MouseWorld.X - projectile.Center.X;
+                    float shootToY = Main.MouseWorld.Y - projectile.Center.Y;
                     float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                    bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
-                    if (distance < 700f && !target.friendly && target.active && lineOfSight)
-                    {
+                    bool lineOfSight = Collision.CanHitLine(Main.MouseWorld, 0, 0, projectile.position, projectile.width, projectile.height);
+                    
 
                         distance = 3f / distance;
-                        shootToX *= distance * 5;
-                        shootToY *= distance * 5;
+                        shootToX *= distance * 7;
+                        shootToY *= distance * 7;
                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("EnchantedSwordProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
 
 
@@ -80,26 +80,14 @@ namespace StormDiversSuggestions.Projectiles
 
 
                         projectile.Kill();
-                    }
-                }*/
                     
-                    {
-                        
-                        projectile.velocity.X *= 25f;
-                        projectile.velocity.Y *= 25f;
-                    projectile.penetrate = 5;
                 }
+                    
+                    
                 
 
             }
-            if (speedup >= 60)
-            {
-                
-                   
-                    projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-                   
-                
-            }
+            
            
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -113,46 +101,9 @@ namespace StormDiversSuggestions.Projectiles
                 //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
         }
-        int reflect = 5;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
-            reflect--;
-            if (reflect <= 0)
-            {
-                projectile.Kill();
-            }
-            if (speedup >= 60)
-            {
-                {
-                    Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-
-                    if (projectile.velocity.X != oldVelocity.X)
-                    {
-                        projectile.velocity.X = -oldVelocity.X * 1f;
-                    }
-                    if (projectile.velocity.Y != oldVelocity.Y)
-                    {
-                        projectile.velocity.Y = -oldVelocity.Y * 1f;
-                    }
-
-                    Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
-
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
-            
-        }
-
-        public override void Kill(int timeLeft)
-        {
-
-
             Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
             for (int i = 0; i < 10; i++)
@@ -160,23 +111,44 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
+                dust.noGravity = true;
             }
+            return true;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+/*
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+
+            for (int i = 0; i < 10; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
+            }*/
 
         }
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
+        
 
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
     }
     //___________________________________________________________________________________________
@@ -185,7 +157,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Enchanted Sword");
-            Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
         }
 
         public override void SetDefaults()
@@ -202,7 +175,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = -1;
+            projectile.localNPCHitCooldown = 10;
             drawOffsetX = 2;
             drawOriginOffsetY = -10;
         }
@@ -213,7 +186,6 @@ namespace StormDiversSuggestions.Projectiles
             //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
             projectile.spriteDirection = projectile.direction;
 
-            AnimateProjectile();
            
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -227,18 +199,45 @@ namespace StormDiversSuggestions.Projectiles
                 
             }
         }
+    int reflect = 2;
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
-            return true;
+
+            reflect--;
+            if (reflect <= 0)
+            {
+                projectile.Kill();
+            }
+
+            {
+                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X * 1f;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y * 1f;
+                }
+
+                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+
+                return false;
+            }
         }
+        
+       
+
+
 
         public override void Kill(int timeLeft)
         {
 
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 
@@ -247,20 +246,25 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
+        
 
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
     }
 }

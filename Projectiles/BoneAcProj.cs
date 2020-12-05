@@ -34,7 +34,10 @@ namespace StormDiversSuggestions.Projectiles
             //drawOriginOffsetY = 2;
 
         }
-
+        public override void AI()
+        {
+            projectile.light = 0;
+        }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             

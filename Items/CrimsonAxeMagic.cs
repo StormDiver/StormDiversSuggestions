@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crimson Axe");
+            DisplayName.SetDefault("The Soul Splitter");
             Tooltip.SetDefault("Summons mini Crimson Axes that split into multiple axes");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;

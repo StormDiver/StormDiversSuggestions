@@ -11,8 +11,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Hammer");
-            Tooltip.SetDefault("Summons mini Cursed hammers that rain down more hammers");
+            DisplayName.SetDefault("The Dream Crusher");
+            Tooltip.SetDefault("Summons mini Cursed Hammers that rain down more hammers");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }

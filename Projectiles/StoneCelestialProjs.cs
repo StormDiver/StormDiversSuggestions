@@ -14,6 +14,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar Stone Boulder");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -29,8 +31,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+         
             //drawOffsetX = -5;
             //drawOriginOffsetY = -5;
 
@@ -144,6 +145,20 @@ namespace StormDiversSuggestions.Projectiles
                 Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
             }
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
     }
     //______________________________________________________________________________________
     
@@ -153,6 +168,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar Fragment");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -167,8 +184,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+        
             drawOffsetX = -2;
             drawOriginOffsetY = -2;
         }
@@ -229,6 +245,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+       
     }
     //______________________________________________________________________________________
     //______________________________________________________________________________________
@@ -238,6 +255,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vortex Stone Boulder");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -253,8 +272,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.Bullet;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+        
             //drawOffsetX = -5;
             //drawOriginOffsetY = -5;
 
@@ -363,6 +381,20 @@ namespace StormDiversSuggestions.Projectiles
 
 
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
     }
     //______________________________________________________________________________________
 
@@ -372,6 +404,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vortex Fragment");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -386,8 +420,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+         
             drawOffsetX = -3;
             drawOriginOffsetY = -3;
         }
@@ -448,6 +481,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+        
     }
     //_________________________________________________________________
     //_____________________________________________________________________
@@ -457,6 +491,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nebula Stone Boulder");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -472,8 +508,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+        
             //drawOffsetX = -5;
             //drawOriginOffsetY = -5;
 
@@ -586,6 +621,20 @@ namespace StormDiversSuggestions.Projectiles
 
 
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
     }
     //______________________________________________________________________________________
 
@@ -595,6 +644,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nebula Fragment");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -609,8 +660,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+           
             drawOffsetX = -3;
             drawOriginOffsetY = -3;
         }
@@ -671,6 +721,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+        
     }
     //________________________________________
     
@@ -682,6 +733,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stardust Stone Boulder");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -697,8 +750,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+           
             //drawOffsetX = -5;
             //drawOriginOffsetY = -5;
 
@@ -825,6 +877,20 @@ namespace StormDiversSuggestions.Projectiles
 
 
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
     }
     //______________________________________________________________________________________
 
@@ -834,6 +900,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stardust Fragment");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
         public override void SetDefaults()
         {
@@ -848,8 +916,7 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 180;
+           
             drawOffsetX = -3;
             drawOriginOffsetY = -3;
         }
@@ -910,5 +977,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+       
     }
+
 }

@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Orbiter");
-            Tooltip.SetDefault("Summons spectre orbs that orbit around you at varying distances");
+            Tooltip.SetDefault("Summons spectre orbs that orbit around you at varying distances\nRight click to launch any orbs at their maximum orbital distance towards the cursor");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 
             Item.staff[item.type] = true;
@@ -30,16 +30,16 @@ namespace StormDiversSuggestions.Items
             
             item.magic = true;
     
-            item.damage = 65;
+            item.damage = 60;
       
             item.knockBack = 0f;
 
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 15;
+            item.useAnimation = 15;
             //item.reuseDelay = 20;
             item.shoot = mod.ProjectileType("SpectreStaffSpinProj");
             item.shootSpeed = 4.5f;
-            item.mana = 15;
+            item.mana = 9;
            
 
 
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items
         {
                 
                     //Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
-                    Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("SpectreStaffSpinProj2"), (int)(damage * 1f), knockBack, player.whoAmI);
+                    //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("SpectreStaffSpinProj2"), (int)(damage * 1f), knockBack, player.whoAmI);
 
             return true;
             }

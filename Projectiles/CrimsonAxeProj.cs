@@ -13,7 +13,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crimson Axe");
-            Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
         }
 
         public override void SetDefaults()
@@ -41,7 +42,6 @@ namespace StormDiversSuggestions.Projectiles
             Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
             projectile.spriteDirection = projectile.direction;
 
-            AnimateProjectile();
             speedup++;
             if (speedup < 60)
             {
@@ -62,14 +62,14 @@ namespace StormDiversSuggestions.Projectiles
                 }
 
                 float numberProjectiles = 4 + Main.rand.Next(2);
-                float rotation = MathHelper.ToRadians(10);
+                float rotation = MathHelper.ToRadians(5);
                 //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     float speedX = projectile.velocity.X * 10f;
                     float speedY = projectile.velocity.Y * 10f;
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("CrimsonAxeProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1)));
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 2f, perturbedSpeed.Y * 2f, mod.ProjectileType("CrimsonAxeProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                 }
                 projectile.Kill();
 
@@ -109,20 +109,25 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
+        
 
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
     }
     //___________________________________________________________________________________________
@@ -131,7 +136,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crimson Axe");
-            Main.projFrames[projectile.type] = 2;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
         }
 
         public override void SetDefaults()
@@ -157,9 +163,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
-            projectile.spriteDirection = projectile.direction;
+            //projectile.spriteDirection = projectile.direction;
 
-            AnimateProjectile();
            
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -200,20 +205,25 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 2; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
+        
 
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
     }
 }

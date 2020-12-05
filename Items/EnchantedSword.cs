@@ -11,8 +11,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Enchanted Sword");
-            Tooltip.SetDefault("Summons mini Enchanted swords that pierce and ricochet");
+            DisplayName.SetDefault("The Blade of Light");
+            Tooltip.SetDefault("Summons mini Enchanted Swords that charge at the cursor and pierce\n'Not to be confused with the Light's Bane'");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
