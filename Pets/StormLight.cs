@@ -150,14 +150,14 @@ namespace StormDiversSuggestions.Pets
              }
          }*/
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)//Doesn't work >:(
+        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)//Doesn't work >:(
         {
             Texture2D texture = mod.GetTexture("Pets/StormLightProj_Glowmask");
 
             spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 100);
+           
 
-
-        }
+        }*/
        
         public override Color? GetAlpha(Color lightColor)
         {

@@ -28,21 +28,24 @@ namespace StormDiversSuggestions.Items.Armour
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 10;
             item.vanity = true;
+            
         }
         /*
         public override void UpdateEquip(Player player)
         {
- 
-           
+
+       
         }
 
     */
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawShadow = true;
+
            
-           
+            //Lighting.AddLight(player.Center, .2f, .2f, .2f);
         }
+        
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
