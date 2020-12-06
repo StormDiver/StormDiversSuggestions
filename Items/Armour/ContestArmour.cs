@@ -93,6 +93,5 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
-
     }
 }
