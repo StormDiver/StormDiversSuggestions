@@ -35,8 +35,18 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
                 target.AddBuff(BuffID.Daybreak, 600);
 
             }
+
+            for (int i = 0; i < 10; i++)
+            {
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(target.position, target.width, target.height, 6);
+                dust.scale = 2f;
+                dust.noGravity = true;
+                Main.PlaySound(2, (int)target.Center.X, (int)target.Center.Y, 74);
+            }
+
         }
-       // float hitbox = 300;
+        // float hitbox = 300;
         //bool hitboxup;
         //bool hitboxdown;
 
@@ -78,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             Main.dust[dust].scale = 2f;
             Main.dust[dust].noGravity = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 4;
+            projectile.localNPCHitCooldown = 5;
            /* if (hitbox == 300)
             {
                 hitboxup = false;

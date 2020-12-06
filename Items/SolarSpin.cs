@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
 			item.autoReuse = false;
            item.useTurn = false;
             item.channel = true;
-            item.knockBack = 9f;
+            item.knockBack = 10f;
             item.shootSpeed = 1f;
             item.shoot = mod.ProjectileType("SolarSpinProj");
            

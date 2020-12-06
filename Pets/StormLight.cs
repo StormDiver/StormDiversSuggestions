@@ -4,6 +4,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace StormDiversSuggestions.Pets
 {
@@ -119,19 +121,48 @@ namespace StormDiversSuggestions.Pets
             {
                 projectile.timeLeft = 2;
             }
+            if (projectile.velocity.X >= 8 || projectile.velocity.X <= -8 || projectile.velocity.Y <= -5)
+            {
+                /* Dust dust;
+                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                 Vector2 position = projectile.Center;
+                 dust = Terraria.Dust.NewDustPerfect(position, 111, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
+                 dust.noGravity = true;*/
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = (new Vector2(projectile.Center.X - 3, projectile.Center.Y - 3));
+                dust = Terraria.Dust.NewDustDirect(position, 6, 6, 206, projectile.velocity.X * -0.3f, 3, 0, new Color(255, 255, 255), 1f);
+                
+                
+                
+            }
             //AnimateProjectile();
 
         }
-       /* public void AnimateProjectile() // Call this every frame, for example in the AI method.
+        /* public void AnimateProjectile() // Call this every frame, for example in the AI method.
+         {
+             projectile.frameCounter++;
+             if (projectile.frameCounter >= 3) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+             {
+                 projectile.frame++;
+                 projectile.frame %= 3; // Will reset to the first frame if you've gone through them all.
+                 projectile.frameCounter = 0;
+             }
+         }*/
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)//Doesn't work >:(
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 3) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 3; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }*/
+            Texture2D texture = mod.GetTexture("Pets/StormLightProj_Glowmask");
+
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 100);
+
+
+        }
+       
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 }
 

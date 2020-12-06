@@ -529,7 +529,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
-            projectile.penetrate = 4;
+            projectile.penetrate = 5;
             
         }
 

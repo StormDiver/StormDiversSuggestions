@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Linq;
 using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace StormDiversSuggestions.Items.Armour
 {
@@ -69,6 +71,30 @@ namespace StormDiversSuggestions.Items.Armour
                 }
             }
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StormDiverMask_Glow");
+
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
+
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -90,7 +116,29 @@ namespace StormDiversSuggestions.Items.Armour
 
         }
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StormDiverBody_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -114,7 +162,29 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StormDiverLegs_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -180,6 +250,29 @@ namespace StormDiversSuggestions.Items.Armour
                 }
             }
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/SelenianMask_Glow");
+
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -202,7 +295,29 @@ namespace StormDiversSuggestions.Items.Armour
         }
 
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/SelenianBody_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
     }
     //______________________________________________________________________
@@ -225,7 +340,29 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/SelenianLegs_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -292,6 +429,29 @@ namespace StormDiversSuggestions.Items.Armour
                 }
             }
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/PredictorMask_Glow");
+
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -313,7 +473,29 @@ namespace StormDiversSuggestions.Items.Armour
 
         }
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/PredictorBody_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -337,7 +519,29 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/PredictorLegs_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -403,6 +607,29 @@ namespace StormDiversSuggestions.Items.Armour
                 }
             }
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StargazerMask_Glow");
+
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -424,7 +651,29 @@ namespace StormDiversSuggestions.Items.Armour
 
         }
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StargazerBody_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
 
     }
@@ -449,7 +698,29 @@ namespace StormDiversSuggestions.Items.Armour
 
         }
 
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/StargazerLegs_Glow");
 
+
+            //spriteBatch.Draw(texture, item.Center - Main.screenPosition, new Rectangle(0, 0, item.width, item.height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw
+           (
+               texture,
+               new Vector2
+               (
+                   item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                   item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+               ),
+               new Rectangle(0, 0, texture.Width, texture.Height),
+               Color.White,
+               rotation,
+               texture.Size() * 0.5f,
+               scale,
+               SpriteEffects.None,
+               0f
+           );
+        }
 
     }
 }
