@@ -34,12 +34,12 @@ namespace StormDiversSuggestions.Items
       
             item.knockBack = 0f;
 
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 14;
+            item.useAnimation = 14;
             //item.reuseDelay = 20;
             item.shoot = mod.ProjectileType("SpectreStaffSpinProj");
             item.shootSpeed = 4.5f;
-            item.mana = 9;
+            item.mana = 8;
            
 
 

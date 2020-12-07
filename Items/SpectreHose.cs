@@ -29,12 +29,12 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 8;
+            item.mana = 7;
             item.UseSound = SoundID.Item8;
 
             item.damage = 80;
           
-            item.knockBack = 1f;
+            item.knockBack = 3f;
 
             item.shoot = mod.ProjectileType("SpectreGunProj");
 

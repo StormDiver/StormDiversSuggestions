@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Projectiles
 {
@@ -15,7 +16,6 @@ namespace StormDiversSuggestions.Projectiles
             DisplayName.SetDefault("Spectre Sky Orb");
             Main.projFrames[projectile.type] = 4;
         }
-        int ignoretile = 0;
         public override void SetDefaults()
         {
             projectile.width = 16;
@@ -33,12 +33,13 @@ namespace StormDiversSuggestions.Projectiles
         int timeleft2 = 300;
         public override void AI()
         {
+            var player = Main.player[projectile.owner];
+
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 175, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
             projectile.spriteDirection = projectile.direction;
             AnimateProjectile();
-            ignoretile++;
-            if (ignoretile >= 60)
+            if (projectile.position.Y > player.position.Y)
             {
                 projectile.tileCollide = true;
             }
@@ -103,7 +104,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 240;
             //aiType = ProjectileID.Bullet;
             projectile.aiStyle = 0;
-            projectile.scale = 1f;
+            projectile.scale = 0.8f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
@@ -153,7 +154,6 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
         }
 
@@ -532,9 +532,10 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = 5;
             
         }
-
+        int releasetime = 0;
         public override void AI()
         {
+            releasetime++;
             projectile.magic = true;
 
             var player = Main.player[projectile.owner];
@@ -559,7 +560,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int k = 0; k < 200; k++)
             {
                 //if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
-                if (Main.mouseRight && player.HeldItem.magic && player.HasItem(mod.ItemType("SpectreDagger")))
+                if (Main.mouseLeft && player.GetModPlayer<StormPlayer>().holdDagger == true && !player.dead)
                 {
                     if (Collision.CanHit(projectile.Center, 0, 0, Main.MouseWorld, 0, 0))
                     {
@@ -577,11 +578,14 @@ namespace StormDiversSuggestions.Projectiles
                     }
                     
                 }
-                else
-                {
-                    projectile.tileCollide = true;
-                }
                 
+                
+            }
+            if (Main.mouseLeftRelease && releasetime >= 10)
+            {
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SpectreDaggerProj2"), projectile.damage, 0f, projectile.owner, 0f, 0f);
+
+                projectile.Kill();
             }
             if (target)
             {
@@ -595,15 +599,15 @@ namespace StormDiversSuggestions.Projectiles
         private void AdjustMagnitude(ref Vector2 vector)
         {
             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > 14f)
+            if (magnitude > 16f)
             {
-                vector *= 14f / magnitude;
+                vector *= 16f / magnitude;
             }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
@@ -643,6 +647,14 @@ namespace StormDiversSuggestions.Projectiles
             return true;
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
         /* public void AnimateProjectile() // Call this every frame, for example in the AI method.
          {
              projectile.frameCounter++;
@@ -655,5 +667,106 @@ namespace StormDiversSuggestions.Projectiles
          }*/
     }
     //_______________________________________________________________________________________________
-    
+    //_______________________________________________________________________________________________
+    public class SpectreDaggerProj2 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Spectre Dagger");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 14;
+            projectile.height = 14;
+            projectile.light = 0.4f;
+            projectile.friendly = true;
+
+            projectile.magic = true;
+            projectile.timeLeft = 180;
+            projectile.aiStyle = 0;
+            projectile.scale = 1f;
+            projectile.tileCollide = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            drawOffsetX = 0;
+            drawOriginOffsetY = 0;
+            projectile.penetrate = 2;
+
+        }
+
+        public override void AI()
+        {
+            projectile.magic = true;
+
+            var player = Main.player[projectile.owner];
+
+            Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 15, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            dust.noGravity = true;
+            dust.scale = 1f;
+
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+
+            
+
+        }
+       
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+
+            for (int i = 0; i < 3; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
+                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
+            }
+
+            //projectile.damage += 12;
+        }
+
+
+        public override void Kill(int timeLeft)
+        {
+
+
+
+            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            for (int i = 0; i < 5; i++)
+            {
+
+                Vector2 vel = new Vector2(Main.rand.NextFloat(5, 5), Main.rand.NextFloat(-5, -5));
+                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
+            }
+
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length * .75f; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
+       
+    }
 }

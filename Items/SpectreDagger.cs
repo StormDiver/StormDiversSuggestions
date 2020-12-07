@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items
 {
@@ -11,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Dagger");
-            Tooltip.SetDefault("Right clicking will make daggers magically follow the cursor\nMaximum of 12 can be thrown out at any time");
+            Tooltip.SetDefault("Summons magical controllable daggers\nMaximum of 5 can be controlled at any time");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
         public override void SetDefaults()
@@ -31,7 +32,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item1;
 
-            item.damage = 62;
+            item.damage = 60;
             //item.crit = 4;
             item.knockBack = 2f;
 
@@ -39,20 +40,23 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 16f;
 
-            item.mana = 5;
+            item.mana = 8;
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
-
+        public override void HoldItem(Player player)
+        {
+            player.GetModPlayer<StormPlayer>().holdDagger = true;
+        }
         public override bool CanUseItem(Player player)
         {
             // Ensures no more than one spear can be thrown out, use this when using autoReuse
-            return player.ownedProjectileCounts[item.shoot] < 12;
+            return player.ownedProjectileCounts[item.shoot] < 5;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // This defines the projectiles random spread . 10 degree spread.
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
             }
             return false;

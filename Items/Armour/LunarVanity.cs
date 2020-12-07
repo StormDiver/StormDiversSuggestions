@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items.Armour
         /*
         public override void UpdateEquip(Player player)
         {
-    
+  
        
         }
 

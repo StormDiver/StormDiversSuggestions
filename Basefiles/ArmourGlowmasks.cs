@@ -568,7 +568,7 @@ namespace StormDiversSuggestions.Basefiles
 
             if (drawPlayer.head != mod.GetEquipSlot("ContestArmourHelmet", EquipType.Head))
             {
-            
+           
 
                 return;
             }
