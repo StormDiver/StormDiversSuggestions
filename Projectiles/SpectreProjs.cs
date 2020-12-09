@@ -125,15 +125,15 @@ namespace StormDiversSuggestions.Projectiles
            
             for (int i = 0; i < 10; i++)
             {
-                float x2 = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
-                float y2 = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
-                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 66);
-                //Main.dust[num165].alpha = alpha;
-                Main.dust[j].position.X = x2;
-                Main.dust[j].position.Y = y2;
-                Main.dust[j].velocity *= 0f;
-                Main.dust[j].noGravity = true;
+                float X = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
+                float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
+               
 
+                int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 66, 0, 0, 100, default, 1f);
+                Main.dust[dust].position.X = X;
+                Main.dust[dust].position.Y = Y;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 0f;
             }
             speedup++;
             if (speedup <= 50)

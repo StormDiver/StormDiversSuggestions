@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.Projectiles
 {
@@ -87,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles
             // These dusts are added later, for the 'ExampleMod' effect
             if (Main.rand.NextBool(3))
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 186, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 186, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 50, Scale: 1.2f);
                 dust.noGravity = true;
                 dust.velocity += projectile.velocity * 0.3f;
                 dust.velocity *= 0.2f;
@@ -160,8 +161,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 186, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            Vector2 position = projectile.position;
+            dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 186, 0f, 0f, 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
 
             shoottime++;
@@ -188,6 +189,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Shell");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 10;
         }
         public override void SetDefaults()
         {
@@ -200,7 +203,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.timeLeft = 400;
             projectile.aiStyle = 14;
             projectile.scale = 1f;
-            
+            projectile.extraUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
@@ -209,12 +212,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
-            Dust dust;
-            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 186, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
-            dust.noGravity = true;
-            dust.noLight = true;
+            
 
             projectile.rotation += (float)projectile.direction * -0.6f;
 
@@ -235,7 +233,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 186);
                 dust.noGravity = true;
             }
             if (Main.rand.Next(5) == 0)
@@ -274,11 +272,11 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 0.7f;
+                    projectile.velocity.X = -oldVelocity.X * 0.8f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.7f;
+                    projectile.velocity.Y = -oldVelocity.Y * 0.8f;
                 }
 
 
@@ -287,7 +285,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 186);
                 dust.noGravity = true;
             }
             return false;
@@ -297,17 +295,31 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
+                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
 
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 25; i++)
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-20, -20), Main.rand.NextFloat(20, 20));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
-                    dust.noGravity = true;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 186);
                 }
 
             }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.oldRot[k], drawOrigin, projectile.scale * 0.9f, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
 
     }

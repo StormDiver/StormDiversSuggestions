@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Bullet");
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 10;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 
@@ -42,7 +42,6 @@ namespace StormDiversSuggestions.Projectiles
 
         }
         int reflect = 4;
-        int trail = 0;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             
@@ -65,24 +64,37 @@ namespace StormDiversSuggestions.Projectiles
             }
             return false;
         }
-       // int dusttime = 10;
+        int dusttime;
         public override void AI()
         {
 
-            // dusttime--;
+             dusttime++;
             /* if (Main.rand.Next(10) == 0)
              {
                  Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("ShroomDust"));
 
              }*/
-            trail++;
-            if (trail > 4)
-            {
-                Dust dust;
+           
+                /*Dust dust;
 
                 Vector2 position = projectile.Center;
-                dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
-                dust.noGravity = true;
+                dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);*/
+            //dust.noGravity = true;
+            if (dusttime > 3)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    float X = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
+                    float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
+                  
+
+                    int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 187, 0, 0, 100, default, 1f);
+                    Main.dust[dust].position.X = X;
+                    Main.dust[dust].position.Y = Y;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 0f;
+
+                }
             }
 
             /*
@@ -132,7 +144,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-            for (int k = 0; k < projectile.oldPos.Length; k++)
+            for (int k = 0; k < projectile.oldPos.Length * 0.5f; k++)
             {
                 Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
                 Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
@@ -156,8 +168,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 12;
+            projectile.width = 14;
+            projectile.height = 14;
 
             projectile.aiStyle = 1;
             projectile.light = 0.5f;
@@ -175,11 +187,11 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
 
-            drawOffsetX = -4;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
         }
         int spwmushroom = 8;
-        int trail = 0;
+        
         public override void AI()
         {
 
@@ -194,7 +206,7 @@ namespace StormDiversSuggestions.Projectiles
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
                 spwmushroom = 8;
             }
-            trail++;
+           /* trail++;
             if (trail > 2)
             {
                 Dust dust;
@@ -202,7 +214,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 position = projectile.Center;
                 dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
                 dust.noGravity = true;
-            }
+            }*/
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

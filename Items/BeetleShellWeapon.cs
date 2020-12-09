@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Items
         public override void SetDefaults()
         {
             
-            item.damage = 75;
+            item.damage = 70;
             item.melee = true;
             item.width = 20;
             item.height = 22;
@@ -26,10 +26,10 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 15;
             item.noUseGraphic = true;
             item.useStyle = 1;
-            item.knockBack = 12;
+            item.knockBack = 8;
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = 8;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("BeetleShellProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = true;

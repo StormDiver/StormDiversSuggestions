@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.Projectiles
 {
@@ -87,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles
             // These dusts are added later, for the 'ExampleMod' effect
             if (Main.rand.NextBool(3))
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 0, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 0, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 50, Scale: 1.2f);
                 dust.noGravity = true;
                 dust.velocity += projectile.velocity * 0.3f;
                 dust.velocity *= 0.2f;
@@ -117,6 +118,9 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Turtle Shell");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+
         }
         public override void SetDefaults()
         {
@@ -139,12 +143,12 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
-            Dust dust;
+            /*Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.Center;
             dust = Terraria.Dust.NewDustPerfect(position, 0, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
-            dust.noLight = true;
+            dust.noLight = true;*/
 
             projectile.rotation += (float)projectile.direction * -0.6f;
 
@@ -171,11 +175,11 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 0.6f;
+                    projectile.velocity.X = -oldVelocity.X * 0.75f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.6f;
+                    projectile.velocity.Y = -oldVelocity.Y * 0.75f;
                 }
 
 
@@ -192,7 +196,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 0);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0);
                 dust.noGravity = true;
             }
 
@@ -204,16 +208,30 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
+                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 25; i++)
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-20, -20), Main.rand.NextFloat(20, 20));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 0);
-                    dust.noGravity = true;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0);
                 }
 
             }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.oldRot[k], drawOrigin, projectile.scale * 0.9f, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
         }
 
     }
@@ -252,8 +270,9 @@ namespace StormDiversSuggestions.Projectiles
         {
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 0, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            Vector2 position = projectile.position;
+            dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 0, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+
             dust.noGravity = true;
             dust.noLight = true;
             shoottime++;
@@ -273,32 +292,7 @@ namespace StormDiversSuggestions.Projectiles
                     shoottime = 0;
                 }
             }
-            /*for (int i = 0; i < 200; i++)
-            {
-                NPC target = Main.npc[i];
-               target.TargetClosest(true);
-               bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
-                float shootToX = target.Center.X - projectile.Center.X;
-                float shootToY = target.Center.Y - projectile.Center.Y;
-                float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                if (distance < 200f && !target.friendly && target.active && lineOfSight)
-                {
-                    shoottime++;
-                    if (shoottime >= 40)
-                    {
-                        distance = 3f / distance;
-                        shootToX *= distance * 3;
-                        shootToY *= distance * 3;
-                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("TurtleYoyoProj2"), (int)(projectile.damage * 1.25f), projectile.knockBack, Main.myPlayer, 0f, 0f);
-                        Main.projectile[proj].timeLeft = 30;
-                        Main.projectile[proj].netUpdate = true;
-                        //Main.projectile[proj].rotation += 5f;
-                        projectile.netUpdate = true;
-                        Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 24);
-                        shoottime = 0;
-                    }
-                }
-            }*/
+            
         }
 
 
@@ -334,8 +328,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 0, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            Vector2 position = projectile.position;
+            dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 0, 0f, 0f, 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
             dust.noLight = true;
 

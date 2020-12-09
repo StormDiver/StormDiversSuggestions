@@ -26,10 +26,10 @@ namespace StormDiversSuggestions.Items
             item.useAnimation = 18;
             item.noUseGraphic = true;
             item.useStyle = 1;
-            item.knockBack = 10;
+            item.knockBack = 8;
             item.value = Item.sellPrice(0, 2, 40, 0);
             item.rare = 8;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TurtleShellProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = true;
