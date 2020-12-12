@@ -54,7 +54,7 @@ namespace StormDiversSuggestions.NPCs
             }
             return SpawnCondition.SurfaceJungle.Chance * 0f;
         }
-
+    
         public override void HitEffect(int hitDirection, double damage)
         {
             for (int i = 0; i < 3; i++)

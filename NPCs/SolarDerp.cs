@@ -74,7 +74,6 @@ namespace StormDiversSuggestions.NPCs
 
             shoottime++;
             
-
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             float distanceX = player.Center.X - npc.Center.X;

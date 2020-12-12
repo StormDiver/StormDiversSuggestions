@@ -251,92 +251,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
     }
-    //___________________________________________________________________________________________________________________________________
-    public class BloodBoomerangProj : ModProjectile
-    {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Blood Boomerang");
-        }
-        public override void SetDefaults()
-        {
-
-            projectile.width = 32;
-            projectile.height = 32;
-            projectile.friendly = true;
-
-            projectile.melee = true;
-            projectile.timeLeft = 300;
-            projectile.aiStyle = 14;
-            projectile.scale = 1f;
-            projectile.CloneDefaults(52);
-            aiType = 52;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
-            drawOffsetX = 0;
-            drawOriginOffsetY = 0;
-        }
-
-
-        public override void AI()
-        {
-            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 5, 0f, 0f, 100, default, 0.7f);
-            Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
-            Main.dust[dustIndex].noGravity = true;
-
-            projectile.width = 32;
-            projectile.height = 32;
-
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-
-            for (int i = 0; i < 10; i++)
-            {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-
-            }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 9);
-
-
-
-        }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-
-            }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 9);
-
-            return true;
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.owner == Main.myPlayer)
-            {
-
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
-
-
-
-            }
-
-
-
-        }
-    }
+   
     //_______________________________________________
     public class BloodOrbitProj : ModProjectile
     {
@@ -412,5 +327,62 @@ namespace StormDiversSuggestions.Projectiles
 
         }
     }
-    
+    //_________________________________________
+    public class BloodYoyoProj : ModProjectile
+    {
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Heart Attack Yoyo");
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 5f;
+
+            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 200f;
+
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 12f;
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 16;
+            projectile.height = 16;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.melee = true;
+            projectile.timeLeft = 360;
+
+            projectile.scale = 1f;
+            projectile.aiStyle = 99;
+
+            // drawOffsetX = -3;
+            // drawOriginOffsetY = 1;
+        }
+        int shoottime = 0;
+        public override void AI()
+        {
+            if (Main.rand.Next(2) == 0) // the chance
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                dust.noGravity = false;
+
+            }
+            shoottime++;
+            if (shoottime >= 5)
+            {
+
+
+               
+                    
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodSwordProj"), (int)(projectile.damage * .5f), 0f, projectile.owner, 0f, 0f);
+                    shoottime = 0;
+                
+            }
+
+        }
+
+
+    }
+
 }

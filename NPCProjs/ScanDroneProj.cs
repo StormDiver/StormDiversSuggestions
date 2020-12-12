@@ -102,6 +102,13 @@ namespace StormDiversSuggestions.NPCProjs
                 projectile.frameCounter = 0;
             }
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items
             item.useStyle = 1;
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 2, 40, 0);
-            item.rare = 8;
+            item.rare = 7;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TurtleShellProj");
             //item.UseSound = SoundID.Item1;

@@ -72,13 +72,13 @@ namespace StormDiversSuggestions.NPCs
             {
                 
 
-                if (shoottime >= 200)
+                if (shoottime >= 300)
                 {
                     npc.velocity.X = 0;
                     //float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
                     int damage = 50; // The damage your projectile deals.
                     float knockBack = 3;
-                    int projectileSpeed = 6;
+                    int projectileSpeed = 5;
                     int type = mod.ProjectileType("VortCannonProj");
                     //int type = ProjectileID.PinkLaser;
 
@@ -98,16 +98,16 @@ namespace StormDiversSuggestions.NPCs
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(18)); // 18 degree spread.
+                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 15 degree spread.
                                                                                                                                     // If you want to randomize the speed to stagger the projectiles
-                            float scale = 1f - (Main.rand.NextFloat() * .5f);
+                            float scale = 1f - (Main.rand.NextFloat() * .2f);
                             perturbedSpeed = perturbedSpeed * scale;
                             Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
                             Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 92);
                             firerate = 0;
                         }
                     }
-                    if (shoottime >= 240)
+                    if (shoottime >= 340)
                     {
                         shoottime = 0;
                     }
@@ -148,7 +148,6 @@ namespace StormDiversSuggestions.NPCs
             Texture2D texture = mod.GetTexture("NPCs/VortexCannon_Glow");
 
             spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
 
         }
 

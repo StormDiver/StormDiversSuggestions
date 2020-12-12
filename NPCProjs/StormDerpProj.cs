@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.NPCProjs
 {
@@ -13,7 +14,7 @@ namespace StormDiversSuggestions.NPCProjs
             DisplayName.SetDefault("Vortex Spike");
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            Main.projFrames[projectile.type] = 6;
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
@@ -91,6 +92,13 @@ namespace StormDiversSuggestions.NPCProjs
                 projectile.frameCounter = 0;
             }
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
 
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
     }
 }

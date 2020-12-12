@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.NPCs
             return SpawnCondition.StardustTower.Chance * 0.3f;
         }
 
-       
+      
         
        
         int shoottime = 0;

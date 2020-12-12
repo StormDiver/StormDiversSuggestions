@@ -34,7 +34,6 @@ namespace StormDiversSuggestions.NPCs
             npc.lifeMax = 1000;
 
 
-            
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath18;
             npc.knockBackResist = 0.5f;
@@ -73,8 +72,8 @@ namespace StormDiversSuggestions.NPCs
             {
                 if (shoottime >= 180)
                 {
-                    float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
-                    int damage = 50; // The damage your projectile deals.
+                    float projectileSpeed = 7f; // The speed of your projectile (in pixels per second).
+                    int damage = 40; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("StormDerpProj");
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 17);

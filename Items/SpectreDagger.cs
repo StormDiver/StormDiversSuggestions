@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items
         }
         public override void HoldItem(Player player)
         {
-            player.GetModPlayer<StormPlayer>().holdDagger = true;
+            
         }
         public override bool CanUseItem(Player player)
         {

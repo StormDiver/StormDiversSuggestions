@@ -62,6 +62,8 @@ namespace StormDiversSuggestions.NPCs
         int shoottime = 0;
         int shootspeed = 0;
         int dusttime = 0;
+        int eyetime = 0;
+        bool halflife3 = false;
         public override void AI()
         {
             dusttime++;
@@ -81,20 +83,20 @@ namespace StormDiversSuggestions.NPCs
             
             if (distance <= 900f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                
-                if (shoottime >= 120)
+                eyetime++;
+                if (shoottime >= 180)
                 {
-                    float projectileSpeed = 6f; // The speed of your projectile (in pixels per second).
-                    int damage = 50; // The damage your projectile deals.
+                    float projectileSpeed = 12f; // The speed of your projectile (in pixels per second).
+                    int damage = 40; // The damage your projectile deals.
                     float knockBack = 2;
-                    //int type = mod.ProjectileType("ScanDroneProj");
-                    int type = ProjectileID.PhantasmalBolt;
+                    int type = mod.ProjectileType("MoonDerpBoltProj");
+                    //int type = ProjectileID.PhantasmalBolt;
                     shootspeed++;
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) - new Vector2(npc.Center.X, npc.Top.Y)) * projectileSpeed;
 
 
                    
-                    if (shootspeed >= 10)
+                    if (shootspeed == 10)
                     {
                         for (int i = 0; i < 1; i++)
                         {
@@ -103,15 +105,29 @@ namespace StormDiversSuggestions.NPCs
                             float scale = 1f - (Main.rand.NextFloat() * .3f);
                             perturbedSpeed = perturbedSpeed * scale;
                             Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
+                            Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 124);
+
                         }
                         shootspeed = 0;
                     }
-                    if (shoottime >= 140)
+                    if (shoottime >= 200)
                     {
                         shoottime = 0;
+                        shootspeed = 0;
+                    }
+                    if (halflife3 && eyetime > 300)
+                    {
+                        Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -4, mod.ProjectileType("MoonDerpEyeProj"), 35, 6f, Main.myPlayer);
+                        Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 103);
+
+                        eyetime = 0;
                     }
                 }
-               
+               if (npc.life < npc.lifeMax / 2 && halflife3 == false)
+                {
+                    Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 101);
+                    halflife3 = true;
+                }
             }
         }
 
@@ -122,7 +138,7 @@ namespace StormDiversSuggestions.NPCs
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 89);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), npc.height, npc.width, 110);
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
@@ -137,7 +153,6 @@ namespace StormDiversSuggestions.NPCs
                     var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 89);
                 }
 
-                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -2, ProjectileID.PhantasmalEye, 60, 6f, Main.myPlayer);
 
 
             }
@@ -145,8 +160,9 @@ namespace StormDiversSuggestions.NPCs
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = mod.GetTexture("NPCs/MoonDerp_Glow");
+            Vector2 drawPos = new Vector2(0, 2) + npc.Center - Main.screenPosition;
 
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, drawPos, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 
     
         }

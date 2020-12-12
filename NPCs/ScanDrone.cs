@@ -64,6 +64,7 @@ namespace StormDiversSuggestions.NPCs
         {
             shoottime++;
             npc.noTileCollide = true;
+            
 
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
@@ -99,7 +100,7 @@ namespace StormDiversSuggestions.NPCs
                                             perturbedSpeed = perturbedSpeed * scale;
                                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
                                         }
-                                        
+                                       
                     shoottime = 0;
                 }
             }

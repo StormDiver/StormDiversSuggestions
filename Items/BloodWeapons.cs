@@ -127,57 +127,51 @@ namespace StormDiversSuggestions.Items
             
         }
     }
-    public class BloodBoomerang : ModItem
+    
+    //____________________________________
+    public class BloodYoyo : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Jugular");
-            Tooltip.SetDefault("3 can be thrown out at a time");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
+            DisplayName.SetDefault("The Heart Attack");
+            Tooltip.SetDefault("Leaves behind a trail of damaging blood");
+            ItemID.Sets.Yoyo[item.type] = true;
+            ItemID.Sets.GamepadExtraRange[item.type] = 25;
+            ItemID.Sets.GamepadSmartQuickReach[item.type] = true;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
 
         public override void SetDefaults()
         {
-            item.damage = 18;
-            item.crit = 0;
+            item.damage = 16;
+            //item.crit = 0;
             item.melee = true;
             item.width = 20;
-            item.height = 32;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.useStyle = 1;
+            item.height = 26;
+            item.useTime = 25;
+            item.useAnimation = 25;
+            item.useStyle = 5;
             item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
-            item.useTurn = false;
+            item.channel = true;
+            item.useTurn = true;
             item.knockBack = 4f;
-            item.shoot = mod.ProjectileType("BloodBoomerangProj");
-            item.shootSpeed = 8f;
+            item.shoot = mod.ProjectileType("BloodYoyoProj");
+            // item.shootSpeed = 9f;
             item.noMelee = true;
             item.noUseGraphic = true;
 
         }
-        public override bool CanUseItem(Player player)
-        {
-            return player.ownedProjectileCounts[item.shoot] < 3;
 
-        }
-        /*
+
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-
-
-
-            {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.7f), (float)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
-            }
-            Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
-
+            
             return true;
         }
-        */
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -186,7 +180,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
+
         }
     }
 }

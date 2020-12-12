@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StormDiversSuggestions.Items
+namespace StormDiversSuggestions.Items.Tools
 {
     public class ShieldKiller : ModItem
     {

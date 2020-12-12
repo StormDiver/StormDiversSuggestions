@@ -75,7 +75,6 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool BloodOrb;
 
-        public bool holdDagger;
        
         public override void ResetEffects()
         {
@@ -104,7 +103,6 @@ namespace StormDiversSuggestions.Basefiles
             FrostCryoSet = false;
             BloodDrop = false;
             BloodOrb = false;
-            holdDagger = false;
 
         }
         public override void UpdateDead()

@@ -12,13 +12,12 @@ namespace StormDiversSuggestions.NPCProjs
         {
             DisplayName.SetDefault("Vortexian Rocket");
             
-            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 12;
-            projectile.height = 12;
+            projectile.width = 10;
+            projectile.height = 10;
 
             
             projectile.light = 0.4f;
@@ -62,73 +61,75 @@ namespace StormDiversSuggestions.NPCProjs
                 //Main.dust[num165].alpha = alpha;
                 Main.dust[j].position.X = x2;
                 Main.dust[j].position.Y = y2;
-                Main.dust[j].velocity *= 0.5f;
+                Main.dust[j].velocity *= 0.3f;
                 Main.dust[j].noGravity = true;
                 Main.dust[j].scale = 0.8f;
             }
+            if (projectile.timeLeft <= 3)
+            {
+                projectile.velocity.X = 0f;
+                projectile.velocity.Y = 0f;
+                projectile.tileCollide = false;
+                // Set to transparent. This projectile technically lives as  transparent for about 3 frames
+                projectile.alpha = 255;
+                // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
+                projectile.position = projectile.Center;
 
+                projectile.width = 100;
+                projectile.height = 100;
+                projectile.Center = projectile.position;
+
+
+                projectile.knockBack = 6f;
+
+            }
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             
-            AnimateProjectile();
-          /*
-            for (int i = 0; i < 200; i++)
-            {
-                Player target = Main.player[i];
-                //If the npc is hostile
-                
-                    //Get the shoot trajectory from the projectile and target
-                    float shootToX = target.Center.X - projectile.Center.X;
-                    float shootToY = target.Center.Y - projectile.Center.Y;
-                    float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                
-                    //If the distance between the live targeted npc and the projectile is less than 480 pixels
-                    if (distance < 600f && target.active && hometime >= 120)
-                    {
-                        
-                        distance = 0.5f / distance;
-
-                        //Multiply the distance by a multiplier proj faster
-                        shootToX *= distance * 6;
-                        shootToY *= distance * 6;
-
-                        //Set the velocities to the shoot values
-                        projectile.velocity.X = shootToX;
-                        projectile.velocity.Y = shootToY;
-                    }
-                
-            }*/
+         
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            projectile.Kill();
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
         }
-
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
+            return false;
+        }
         public override void Kill(int timeLeft)
         {
 
             Collision.HitTiles(projectile.Center, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(SoundID.Item10, projectile.position);
-            for (int i = 0; i < 40; i++)
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+            
+            for (int i = 0; i < 60; i++)
             {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 229, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+                dust.scale = 2f;
+                dust.fadeIn = 1f;
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                int dust2 = Dust.NewDust(projectile.Center - projectile.velocity, projectile.width, projectile.height, 229, 0f, 0f, 200, default, 0.8f);
-                Main.dust[dust2].velocity *= -5f;
-                Main.dust[dust2].noGravity = true;
             }
 
         }
 
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
+      
+        public override Color? GetAlpha(Color lightColor)
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 5) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 5; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
 
+            Color color = Color.White;
+            color.A = 150;
+            return color;
+
+        }
     }
 }

@@ -146,6 +146,8 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 229, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
                 dust.scale = 2f;
+                dust.fadeIn = 1f;
+
             }
 
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
@@ -302,6 +304,8 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 229, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
                 dust.scale = 2f;
+                dust.fadeIn = 1f;
+
             }
 
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);

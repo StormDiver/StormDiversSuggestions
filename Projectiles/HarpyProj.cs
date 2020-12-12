@@ -240,8 +240,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
 
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 16;
+            projectile.height = 16;
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.melee = true;

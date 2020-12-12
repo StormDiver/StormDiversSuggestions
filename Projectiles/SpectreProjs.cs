@@ -560,7 +560,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int k = 0; k < 200; k++)
             {
                 //if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
-                if (Main.mouseLeft && player.GetModPlayer<StormPlayer>().holdDagger == true && !player.dead)
+                if (Main.mouseLeft && player.HeldItem.type == mod.ItemType("SpectreDagger") && !player.dead)
                 {
                     if (Collision.CanHit(projectile.Center, 0, 0, Main.MouseWorld, 0, 0))
                     {
@@ -581,7 +581,7 @@ namespace StormDiversSuggestions.Projectiles
                 
                 
             }
-            if (Main.mouseLeftRelease && releasetime >= 10)
+            if (Main.mouseLeftRelease && releasetime >= 10 || player.HeldItem.type != mod.ItemType("SpectreDagger"))
             {
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SpectreDaggerProj2"), projectile.damage, 0f, projectile.owner, 0f, 0f);
 

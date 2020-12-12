@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using StormDiversSuggestions.Basefiles;
 
-namespace StormDiversSuggestions.Items
+namespace StormDiversSuggestions.Items.Tools
 {
     public class TeddyBear : ModItem
     {

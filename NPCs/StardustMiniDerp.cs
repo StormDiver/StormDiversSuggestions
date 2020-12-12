@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.NPCs
             npc.lifeMax = 100;
             npc.noTileCollide = true;
                
-
+        
             
             npc.HitSound = SoundID.NPCHit5;
             npc.DeathSound = SoundID.NPCDeath7;
@@ -97,8 +97,8 @@ namespace StormDiversSuggestions.NPCs
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = mod.GetTexture("NPCs/StardustMiniDerp_Glow");
-
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+            Vector2 drawPos = new Vector2(0, 2) + npc.Center - Main.screenPosition;
+            spriteBatch.Draw(texture, drawPos, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 
         }
        
