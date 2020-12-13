@@ -338,7 +338,7 @@ namespace StormDiversSuggestions.Projectiles
 
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 200f;
 
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 12f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 13f;
         }
         public override void SetDefaults()
         {
@@ -375,7 +375,7 @@ namespace StormDiversSuggestions.Projectiles
 
                
                     
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodSwordProj"), (int)(projectile.damage * .5f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodSwordProj"), (int)(projectile.damage * .6f), 0f, projectile.owner, 0f, 0f);
                     shoottime = 0;
                 
             }

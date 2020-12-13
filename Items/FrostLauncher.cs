@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 30;
+            item.useAnimation = 30;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.ProtoGrenade>();
             item.UseSound = SoundID.Item61;
 
-            item.damage = 50;
+            item.damage = 40;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 10f;

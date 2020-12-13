@@ -13,47 +13,144 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Seeker Bolt");
-            ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 8;
+            projectile.width = 18;
+            projectile.height = 18;
 
             
-            projectile.light = 0.3f;
+            projectile.light = 0.5f;
             projectile.friendly = true;
 
-            projectile.CloneDefaults(338);
-            aiType = 338;
-
-            projectile.penetrate = 1;
+            // projectile.CloneDefaults(338);
+            // aiType = 338;
+            projectile.aiStyle = 0;
+            projectile.penetrate = -1;
             projectile.tileCollide = true;
             projectile.ranged = true;
 
             projectile.timeLeft = 300;
-
-            drawOffsetX = -4;
-            drawOriginOffsetY = 0;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = -1;
+            //drawOffsetX = -4;
+            //drawOriginOffsetY = 0;
 
         }
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.Kill();
-
-            return false;
-        }
+        //int homed;
         public override void AI()
         {
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+
+
+           /* Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.Center;
+            dust = Terraria.Dust.NewDustPerfect(position, 182, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+            dust.noGravity = true;
+            dust.fadeIn = 1;*/
+            for (int i = 0; i < 5; i++)
+            {
+                float X = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
+                float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
+
+
+                int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 6, 0, 0, 100, default, 1f);
+                Main.dust[dust].position.X = X;
+                Main.dust[dust].position.Y = Y;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 0f;
+            }
+
+            var player = Main.player[projectile.owner];
+
+            if (projectile.localAI[0] == 0f)
+            {
+                AdjustMagnitude(ref projectile.velocity);
+                projectile.localAI[0] = 1f;
+            }
+            Vector2 move = Vector2.Zero;
+            float distance = 500f;
+            bool target = false;
+            for (int k = 0; k < 200; k++)
+            {
+                //if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
+                if (Main.mouseRight && player.HeldItem.type == mod.ItemType("TheSeeker") && !player.dead && projectile.timeLeft > 60)
+                {
+                    if (Collision.CanHit(projectile.Center, 0, 0, Main.MouseWorld, 0, 0))
+                    {
+
+
+                        //projectile.timeLeft = 120;
+                        Vector2 newMove = Main.MouseWorld - projectile.Center;
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (distanceTo < distance)
+                        {
+                            move = newMove;
+                            distance = distanceTo;
+                            target = true;
+                        }
+                    }
+
+                }
+
+
+            }
+          
+            if (target)
+            {
+                AdjustMagnitude(ref move);
+                projectile.velocity = (10 * projectile.velocity + move) / 9.9f;
+                AdjustMagnitude(ref projectile.velocity);
+            }
+            if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
+            {
+                projectile.velocity.X = 0f;
+                projectile.velocity.Y = 0f;
+                projectile.tileCollide = false;
+                // Set to transparent. This projectile technically lives as  transparent for about 3 frames
+                projectile.alpha = 255;
+                // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
+                projectile.position = projectile.Center;
+
+                projectile.width = 100;
+                projectile.height = 100;
+                projectile.Center = projectile.position;
+
+
+                projectile.knockBack = 6;
+            }
+
+        }
+        private void AdjustMagnitude(ref Vector2 vector)
+        {
+            float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            if (magnitude > 15f)
+            {
+                vector *= 15f / magnitude;
+            }
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
+            return false;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            target.AddBuff(BuffID.OnFire, 500);
-            Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 108);
+            if (projectile.timeLeft > 3)
+            {
+                projectile.timeLeft = 3;
+            }
+            
+
+
         }
         public override void Kill(int timeLeft)
         {
@@ -61,16 +158,58 @@ namespace StormDiversSuggestions.Projectiles
             {
                 Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
                 
-                    for (int i = 0; i < 10; i++)
-                    {
-                        
-                        Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                        var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 90);
-                    }
-                
-                
+                for (int i = 0; i < 50; i++)
+                {
+                    Dust dust;
+                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                    Vector2 position = projectile.position;
+                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 31, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                    dust.noGravity = true;
+                    dust.scale = 2f;
+
+
+                }
+                for (int i = 0; i < 30; i++)
+                {
+                    Dust dust;
+                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                    Vector2 position = projectile.position;
+                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
+                    //dust.noGravity = true;
+                   
+
+
+                }
+                for (int i = 0; i < 30; i++)
+                {
+                    Dust dust;
+                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                    Vector2 position = projectile.position;
+                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 203, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
+                    //dust.noGravity = true;
+
+
+
+                }
+
+
             }
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length * 0.8f; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale * 0.9f, SpriteEffects.None, 0f);
+
+            }
+            return true;
+
+        }
+       
     }
     //_______________________________________________________________________________________
     public class SawBladeChain : ModProjectile
@@ -477,6 +616,14 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = mod.GetTexture("Projectiles/DestroyerFlailProj_Glow");
+
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+
+
+        }
     }
     //_______________________________________________________________________________________
     public class DestroyerFlailProj2 : ModProjectile
@@ -496,7 +643,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;
-            aiType = ProjectileID.Meteor1;
+            //aiType = ProjectileID.Meteor1;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }
@@ -546,6 +693,14 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = mod.GetTexture("Projectiles/DestroyerFlailProj_Glow");
+
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+
+
+        }
     }
     //_________________________________________________________________________________________
     //_______________________________________________________________________________________
@@ -570,7 +725,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
-            projectile.light = 0.3f;
+            projectile.light = 0.5f;
         }
         bool reflect = false;
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -612,7 +767,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.rotation += (float)projectile.direction * -0.4f;
 
             //projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 5, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
+            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 6, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
             projectile.spriteDirection = projectile.direction;
 
             if (reflect == true)
@@ -693,7 +848,14 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
         }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = mod.GetTexture("Projectiles/SkullSeek_Glow");
 
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+
+
+        }
     }
    
 }

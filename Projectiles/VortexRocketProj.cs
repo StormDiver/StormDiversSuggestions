@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 15; i++)
             {
                 float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
                 float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
@@ -227,7 +227,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 15; i++)
             {
                 float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
                 float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;

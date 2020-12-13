@@ -31,8 +31,8 @@ namespace StormDiversSuggestions.Projectiles
             aiType = 52;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            drawOffsetX = -4;
-            drawOriginOffsetY = -4;
+            drawOffsetX = 0;
+            drawOriginOffsetY = -6;
         }
 
 
@@ -40,8 +40,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             
 
-            projectile.width = 24;
-            projectile.height = 24;
+            projectile.width = 20;
+            projectile.height = 20;
 
         }
 

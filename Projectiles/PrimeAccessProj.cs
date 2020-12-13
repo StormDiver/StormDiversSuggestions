@@ -113,7 +113,14 @@ namespace StormDiversSuggestions.Projectiles
 
             }
         }
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = mod.GetTexture("Projectiles/PrimeAccessProj_Glow");
 
+            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+
+
+        }
     }
     public class PrimeAccessAI : GlobalProjectile
     {

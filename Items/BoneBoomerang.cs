@@ -12,11 +12,11 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bone Boomerang");
-            Tooltip.SetDefault("3 can be thrown out at a time");
+            DisplayName.SetDefault("Femurang");
+            Tooltip.SetDefault("3 can be thrown out at a time\n'What, you thought this was Humerus?'");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
-
+    
         public override void SetDefaults()
         {
             item.damage = 13;

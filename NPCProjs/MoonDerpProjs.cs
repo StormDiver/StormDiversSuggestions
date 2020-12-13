@@ -78,7 +78,7 @@ namespace StormDiversSuggestions.NPCProjs
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            projectile.Kill();
+            //projectile.Kill();
         }
 
         public override void Kill(int timeLeft)

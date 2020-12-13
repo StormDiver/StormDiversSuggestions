@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-             item.damage = 55;
+             item.damage = 60;
             item.crit = 10;
             item.melee = true;
             item.width = 60;

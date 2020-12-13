@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Seeker");
-            Tooltip.SetDefault("Fires out miniature eyes that seek out nearby enemies\nRequires Seeker Bolts");
+            Tooltip.SetDefault("Summons explosive bolts that can be guided towards the cursor when holding right click\nRequires Seeker Bolts");
         }
         public override void SetDefaults()
         {
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 18;
+            item.useAnimation = 18;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,9 +33,9 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.SeekerBolt>();
             item.UseSound = SoundID.Item11;
 
-            item.damage = 46;
+            item.damage = 40;
             //item.crit = 0;
-            item.knockBack = 2f;
+            item.knockBack = 6f;
 
             item.shootSpeed = 10f;
 
