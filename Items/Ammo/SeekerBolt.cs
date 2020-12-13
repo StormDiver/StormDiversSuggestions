@@ -48,24 +48,6 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.SetResult(this, 250);
             recipe.AddRecipe();
         }
-        public class VanillaShops : GlobalNPC
-        {
-            public override void SetupShop(int type, Chest shop, ref int nextSlot)
-            {
-                switch (type)
-                {
-                    case NPCID.ArmsDealer:  
-
-                        if (Main.hardMode && Main.LocalPlayer.HasItem(mod.ItemType("TheSeeker"))) //if it's hardmode the NPC will sell this
-                        {
-                            shop.item[nextSlot].SetDefaults(mod.ItemType("SeekerBolt"));  
-                            nextSlot++;
-                            
-                        }
-                       
-                        break;
-                }
-            }
-        }
+       
     }
 }
