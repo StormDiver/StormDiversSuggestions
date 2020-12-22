@@ -110,11 +110,10 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 25; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
             }
         }
 
@@ -221,8 +220,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 206);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
             }
         }
 

@@ -100,14 +100,12 @@ namespace StormDiversSuggestions.Projectiles
         {
             
             Player player = Main.player[projectile.owner];
-           
-                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
-
-            
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.Next(1) == 0)
             {
-                target.AddBuff(mod.BuffType("TurtleDebuff"), 300);
+                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
             }
+            
+           
         }
 
     }
@@ -200,7 +198,13 @@ namespace StormDiversSuggestions.Projectiles
                 dust.noGravity = true;
             }
 
-            // projectile.Kill();
+            Player player = Main.player[projectile.owner];
+
+            
+            if (Main.rand.Next(2) == 0)
+            {
+                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -294,7 +298,15 @@ namespace StormDiversSuggestions.Projectiles
             }
             
         }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
 
+            Player player = Main.player[projectile.owner];
+            if (Main.rand.Next(3) == 0)
+            {
+                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
+            }
+        }
 
     }
     //________________________________________________________________________________________________________________

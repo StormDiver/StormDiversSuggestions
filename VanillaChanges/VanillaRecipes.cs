@@ -13,11 +13,11 @@ namespace StormDiversSuggestions.VanillaChanges
     public class VanillaRecipes : GlobalItem
     {
 
-        public override void AddRecipes()
+       /* public override void AddRecipes()
         {
             if (!GetInstance<Configurations>().DisableVanillaRecipechanges)
-            //if (EnableVanillaRecipechanges)
-
+            
+            
             {
                 //=======================================================REMOVINGRECIPES===============================================
                 List<Recipe> rec = Main.recipe.ToList();
@@ -82,6 +82,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 Main.recipe = rec.ToArray();
                 Array.Resize(ref Main.recipe, Recipe.maxRecipes);
                 Recipe.numRecipes -= numberRecipesRemoved;
+                
 
                 //==================================================SOULRECIPES==========================================
 
@@ -372,7 +373,7 @@ namespace StormDiversSuggestions.VanillaChanges
               
             }
 
-        }
+        }*/
     }
     public class Newrecipes : GlobalItem
     {
@@ -479,6 +480,49 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddIngredient(ItemID.StoneBlock, 50);
                 recipe.AddTile(TileID.HeavyWorkBench);
                 recipe.SetResult(ItemID.Tombstone);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                // recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddIngredient(mod, "IceBar", 10);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostHelmet);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "IceBar", 18);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostBreastplate);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "IceBar", 14);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostLeggings);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 10);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorHat);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 18);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorShirt);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 14);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorPants);
                 recipe.AddRecipe();
             }
         }

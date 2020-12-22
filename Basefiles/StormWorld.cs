@@ -75,10 +75,10 @@ namespace StormDiversSuggestions.Basefiles
 
             int[] ChestLauncher = { ItemType<ProtoLauncher>() };
             int[] ChestAmmo = { ItemType<ProtoGrenade>() };
-            int[] ChestHeart = { ItemType<HeartJar>() };
+          
             int ChestLauncherCount = 0;
             int ChestAmmoCount = 0;
-            int ChestHeartCount = 0;
+           
 
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
@@ -108,6 +108,9 @@ namespace StormDiversSuggestions.Basefiles
                     }
 
                 }
+                int[] ChestHeart = { ItemType<HeartJar>() };
+                int ChestHeartCount = 0;
+
                 Chest chest2 = Main.chest[chestIndex];
                 // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
                 if (chest2 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 4 * 36)
@@ -121,6 +124,32 @@ namespace StormDiversSuggestions.Basefiles
 
                                 chest2.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestHeart));
                                 ChestHeartCount = (ChestHeartCount + 1) % ChestHeart.Length;
+
+
+
+                            }
+
+                            break;
+                        }
+                    }
+
+                }
+
+                int[] ChestWeb = { ItemType<WebStaff>() };
+                int ChestWebCount = 0;
+                Chest chest3 = Main.chest[chestIndex];
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+                if (chest3 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 15 * 36)
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest3.item[inventoryIndex].type == 0)
+                        {
+                            if (WorldGen.genRand.NextBool(1))
+                            {
+
+                                chest3.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestWeb));
+                                ChestWebCount = (ChestWebCount + 1) % ChestWeb.Length;
 
 
 

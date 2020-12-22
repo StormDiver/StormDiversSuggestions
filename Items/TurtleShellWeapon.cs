@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Giant Turtle Shell");
-            Tooltip.SetDefault("Toss the shells back at your foes");
+            Tooltip.SetDefault("Toss the shells back at your foes\nGrants extra defense while attacking enemies");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
         public override void SetDefaults()

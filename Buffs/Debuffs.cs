@@ -124,7 +124,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Marked for target");
-            Description.SetDefault("All your defense and damage resistance has been taken away");
+            Description.SetDefault("All your defense has been taken away");
             Main.debuff[Type] = true;
 
         }
@@ -132,9 +132,7 @@ namespace StormDiversSuggestions.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.statDefense -= 500;
-            player.endurance = 0;
-            // player.wingTime = 0;
-            //player.wings = 0;
+            
         }
 
     }
@@ -226,30 +224,7 @@ namespace StormDiversSuggestions.Buffs
 
 
     }
-    //___________________________________________________________
-    public class TurtleDebuff : ModBuff
-    {
-        public override void SetDefaults()
-        {
-            DisplayName.SetDefault("De-Shelled");
-            Description.SetDefault("Lowered Defense");
-            Main.debuff[Type] = true;
-            // Main.pvpBuff[Type] = true;
-        }
-
-        public override void Update(Player player, ref int buffIndex)
-        {
-
-
-        }
-        public override void Update(NPC npc, ref int buffIndex)
-        {
-            npc.GetGlobalNPC<StormNPC>().turtled = true;
-            npc.defense -= 60;
-            //npc.damage *= (int)0.8;
-
-        }
-    }
+    
     //___________________________________________________________
     public class BeetleDebuff : ModBuff
     {

@@ -149,7 +149,8 @@ namespace StormDiversSuggestions.Projectiles
                         projectile.type != ProjectileID.SharknadoBolt &&
                         projectile.type != ProjectileID.Cthulunado &&
                         projectile.aiStyle != 10 &&
-                        projectile.aiStyle != 17
+                        projectile.aiStyle != 17 &&
+                        projectile.aiStyle != -1
                         )
                     {
                         //Player player = Main.player[npc.target];

@@ -40,16 +40,16 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("OceanSpellProj");
 
             item.shootSpeed = 10f;
-
+            item.scale = 0.9f;
             //item.useAmmo = AmmoID.Arrow;
 
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
-        /* public override Vector2? HoldoutOffset()
-         {
-             return new Vector2(5, 0);
-         }*/
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(2, 0);
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             

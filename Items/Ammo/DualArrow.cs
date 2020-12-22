@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items.Ammo
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WoodenArrow, 50);
             recipe.AddIngredient(ItemID.Rope, 5);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 50);
             recipe.AddRecipe();
         }

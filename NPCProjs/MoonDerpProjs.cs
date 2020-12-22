@@ -40,7 +40,7 @@ namespace StormDiversSuggestions.NPCProjs
            
             projectile.timeLeft = 600;
             //aiType = ProjectileID.LostSoulHostile;
-            projectile.aiStyle = -1;
+            projectile.aiStyle = 0;
             // projectile.CloneDefaults(452);
             //aiType = 452;
             drawOffsetX = 0;

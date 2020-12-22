@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items.Ammo
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WoodenArrow, 25);
             recipe.AddIngredient(ItemID.PinkGel, 1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 25);
             recipe.AddRecipe();
         }

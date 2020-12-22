@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Projectiles
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.position;
-                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 33, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 33, projectile.velocity.X * 1, projectile.velocity.Y * 1, 0, new Color(255, 255, 255), 1f);
                 dust.noGravity = true;
 
             }
@@ -76,8 +76,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 33);
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 33);
                 }
 
             }
@@ -143,7 +142,7 @@ namespace StormDiversSuggestions.Projectiles
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.position;
-                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 33, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 33, projectile.velocity.X * 1, projectile.velocity.Y * 1, 0, new Color(255, 255, 255), 1f);
                 dust.noGravity = true;
 
             }
@@ -168,8 +167,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 5; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 33);
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 33);
                 }
 
             }
@@ -244,8 +242,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 5; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 25);
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 25);
                     dust.scale = 0.7f;
                 }
 

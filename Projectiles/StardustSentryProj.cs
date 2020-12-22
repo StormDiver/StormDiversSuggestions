@@ -78,7 +78,6 @@ namespace StormDiversSuggestions.Projectiles
             {
                 
                 NPC target = Main.npc[i];
-
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                 float shootToY = target.position.Y + (float)target.height * 0.5f - projectile.Center.Y;
@@ -95,6 +94,7 @@ namespace StormDiversSuggestions.Projectiles
                         {
                             supershot++;
 
+                            target.TargetClosest(true);
 
 
                             //Dividing the factor of 2f which is the desired velocity by distance
@@ -314,6 +314,8 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width * 2, projectile.height * 2, 135, projectile.velocity.X, projectile.velocity.Y, 120, default, 1f);   //this make so when this projectile disappear will spawn dust, change PinkPlame to what dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                     Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 2f;
+
                     //Main.dust[dust].velocity *= 2.5f;
                 }
 
@@ -432,7 +434,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width * 2, projectile.height * 2, 135, projectile.velocity.X, projectile.velocity.Y, 120, default, 1f);   //this make so when this projectile disappear will spawn dust, change PinkPlame to what dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                     Main.dust[dust].noGravity = true;
-                    //Main.dust[dust].velocity *= 2.5f;
+                    Main.dust[dust].velocity *= 2.5f;
                 }
 
             }

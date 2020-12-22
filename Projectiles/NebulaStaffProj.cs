@@ -137,12 +137,12 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 {
 
 
-                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 27, projectile.velocity.X, projectile.velocity.Y, 1, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 72, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                     Main.dust[dust].velocity *= -0.3f;
-                    //var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 72);
-                    //int dust2 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 72, projectile.velocity.X, projectile.velocity.Y, 130, default, 1.5f);
-                    //dust2.noGravity = true;
+                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 27, projectile.velocity.X, projectile.velocity.Y, 130, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust2].velocity *= -0.3f;
 
                 }
             }
@@ -208,8 +208,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             for (int i = 0; i < 5; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(5, 5), Main.rand.NextFloat(-5, -5));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 72);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 72, 0, 0, 130, default, 0.5f);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 27, 0, 0, 130, default, 0.5f);
             }
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player

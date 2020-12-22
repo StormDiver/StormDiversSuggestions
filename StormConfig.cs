@@ -32,12 +32,6 @@ namespace StormDiversSuggestions
         [ReloadRequired]
         public bool DisableVanillaBuff{ get; set; }
 
-
-        [Label("Disable Vanilla recipe modifications")]
-        [Tooltip("Disable the modified recipes for vanilla armours, and reverts the soul recipes, Requires a Reload")]
-        [ReloadRequired]
-        public bool DisableVanillaRecipechanges{ get; set; }
-
         [Label("Disable New recipes and drops for Vanilla items")]    
         [Tooltip("Disable the new recipes and item drops for certain armour and the Rod of Discord, Requires a Reload")]
         [ReloadRequired]

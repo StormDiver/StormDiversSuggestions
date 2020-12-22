@@ -103,7 +103,6 @@ namespace StormDiversSuggestions.Basefiles
             FrostCryoSet = false;
             BloodDrop = false;
             BloodOrb = false;
-
         }
         public override void UpdateDead()
         {

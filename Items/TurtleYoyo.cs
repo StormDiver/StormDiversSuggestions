@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("The Spinning Tortoise"); 
-			Tooltip.SetDefault("Fires out yoyo heads randomly");
+			Tooltip.SetDefault("Fires out yoyo heads randomly\nGrants extra defense while attacking enemies");
             ItemID.Sets.Yoyo[item.type] = true;
             ItemID.Sets.GamepadExtraRange[item.type] = 25;
             ItemID.Sets.GamepadSmartQuickReach[item.type] = true;

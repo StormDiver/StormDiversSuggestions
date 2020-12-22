@@ -128,7 +128,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void NPCLoot(NPC npc)
         {
-            if (Main.rand.Next(40) == 0)
+            if (Main.rand.Next(50) == 0)
             {
                 if (npc.type == NPCID.VortexRifleman)
                 {

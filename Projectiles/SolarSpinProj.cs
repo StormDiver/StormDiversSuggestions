@@ -151,4 +151,69 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
 
         }
     }
+    public class SelenianReflect : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        
+    
+        bool reflected;
+        public override void AI(Projectile projectile)
+        {
+            var player = Main.player[projectile.owner];
+            //var projreflect = Main.projectile[mod.ProjectileType("SelenianBladeProj")];
+
+            //if (Main.LocalPlayer.HasBuff(BuffType<SelenianBuff>()))
+            if (player.itemAnimation > 1 && Main.mouseLeft && player.HeldItem.type == mod.ItemType("SolarSpin"))
+            {
+
+                if (projectile.hostile)
+                {
+                    if (
+                        projectile.aiStyle == 0 ||
+                        projectile.aiStyle == 1 ||
+                        projectile.aiStyle == 2
+
+
+                        )
+                    {
+                        //Player player = Main.player[npc.target];
+
+                        float distanceX = player.Center.X - projectile.Center.X;
+                        float distanceY = player.Center.Y - projectile.Center.Y;
+                        float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+
+
+                        if (distance <= 100 && !reflected)
+                        {
+
+                            int choice = Main.rand.Next(2);
+                            if (choice == 0)
+                            {
+                                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
+                                //projectile.Kill();
+                                projectile.velocity.X *= -1f;
+
+
+                                projectile.velocity.Y *= -1f;
+
+                                projectile.friendly = true;
+                                projectile.hostile = false;
+
+                                projectile.damage *= 4;
+                                reflected = true;
+                            }
+                            else
+                            {
+                                reflected = true;
+                            }
+
+
+                        }
+                    }
+                }
+
+                
+            }
+        }
+    }
 }

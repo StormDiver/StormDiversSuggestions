@@ -37,7 +37,6 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool sandBurn;
 
-        public bool turtled;
 
         public bool beetled;
 
@@ -59,7 +58,7 @@ namespace StormDiversSuggestions.Basefiles
             lunarBoulderDB = false;
             superBoulderDB = false;
             sandBurn = false;
-            turtled = false;
+           
             beetled = false;
             nebula = false;
             heartDrop = false;
@@ -273,22 +272,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
             }
-            if (turtled)
-            {
-                if (Main.rand.Next(4) < 3)
-                {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 138, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 0, default, 1f);
-                    Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    if (Main.rand.NextBool(4))
-                    {
-                        Main.dust[dust].noGravity = false;
-                        Main.dust[dust].scale *= 0.5f;
-                    }
-                }
-
-            }
+            
 
             if (beetled)
             {
