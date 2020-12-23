@@ -65,19 +65,26 @@ namespace StormDiversSuggestions.Projectiles
             {
                 for (int i = 0; i < 50; i++) //this i a for loop tham make the dust spawn , the higher is the value the more dust will spawn
                 {
-                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 135, projectile.velocity.X * 1.2f, projectile.velocity.Y * 1.2f, 120, default, 2f);   //this make so when this projectile disappear will spawn dust, change PinkPlame to what dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 135, projectile.velocity.X * 1, projectile.velocity.Y * 1, 120, default, 2f);   //this make so when this projectile disappear will spawn dust, change PinkPlame to what dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 2.5f;
                 }
                 Main.PlaySound(3, (int)projectile.Center.X, (int)projectile.Center.Y, 5);
             }
-            
+            if (opacity >= 30)
+            {
+                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 111, 0, 10, 130, default, 1f);
+
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                Main.dust[dust].velocity *= 0.5f;
+            }
             shoottime++;
             //Getting the npc to fire at
             for (int i = 0; i < 200; i++)
             {
                 
                 NPC target = Main.npc[i];
+
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                 float shootToY = target.position.Y + (float)target.height * 0.5f - projectile.Center.Y;
@@ -85,16 +92,18 @@ namespace StormDiversSuggestions.Projectiles
                 //bool lineOfSight = Collision.CanHitLine(projectile.Center, 1, 1, target.Center, 1, 1);
                 //If the distance between the projectile and the live target is active
                 
+
                 if (distance < 600f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5 && target.type != NPCID.TargetDummy)  
                 {
                    
                     if (Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
                     {
+                        target.TargetClosest(true);
                         if (shoottime > 50)
                         {
                             supershot++;
+                            
 
-                            target.TargetClosest(true);
 
 
                             //Dividing the factor of 2f which is the desired velocity by distance
@@ -106,7 +115,8 @@ namespace StormDiversSuggestions.Projectiles
 
                             for (int j = 0; j < 3; j++)
                             {
-                                Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(60));
+
+                                Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(45));
                                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("StardustSentryProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
                                 Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Top.Y, 8);
                                 shoottime = 0;
@@ -118,20 +128,21 @@ namespace StormDiversSuggestions.Projectiles
 
                                 dust2 = Main.dust[Terraria.Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
                                 dust2.noGravity = true;
+                                dust2.velocity *= 2;
                             }
                         }
                     }
                     if (supershot > 4)
                     {
-                        
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX * 3, shootToY * 3, mod.ProjectileType("StardustSentryProj3"), (int) (projectile.damage * 3f), (int)(projectile.knockBack * 2), Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
+                        target.TargetClosest(true);
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX * 3, shootToY * 3, mod.ProjectileType("StardustSentryProj3"), (int) (projectile.damage * 2f), (int)(projectile.knockBack * 2), Main.myPlayer, 0f, 0f); //Spawning a projectile mod.ProjectileType("FlamethrowerProj") is an example of how to spawn a modded projectile. if you want to shot a terraria prjectile add instead ProjectileID.Nameofterrariaprojectile
                         Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 60);
                         supershot = 0;
 
                     }
                 }
             }
-            projectile.ai[0] += 1f;
+            //projectile.ai[0] += 1f;
 
         }
 
@@ -246,7 +257,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.alpha = (int)0.5f;
             }
-            if (hometime > 30)
+            if (hometime > 35)
             {
                 if (projectile.localAI[0] == 0f)
                 {
@@ -286,9 +297,9 @@ namespace StormDiversSuggestions.Projectiles
             if (hometime > 30)
             {
                 float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-                if (magnitude > 10f)
+                if (magnitude > 12f)
                 {
-                    vector *= 10f / magnitude;
+                    vector *= 12f / magnitude;
                 }
             }
         }
@@ -366,7 +377,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 19;
             projectile.height = 19;
             projectile.friendly = true;
-            projectile.penetrate = -1;
+            projectile.penetrate = 5;
            // projectile.minion = true;
             projectile.timeLeft = 180;
             projectile.light = 0.2f;
@@ -408,6 +419,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
+            projectile.damage -= (projectile.damage / 20);
 
             Main.PlaySound(4, projectile.Center, 7);
             for (int i = 0; i < 20; i++) //this i a for loop tham make the dust spawn , the higher is the value the more dust will spawn

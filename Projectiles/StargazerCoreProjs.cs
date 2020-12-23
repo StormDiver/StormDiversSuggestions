@@ -16,7 +16,6 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stargazer Sentry");
-            
         }
         public override void SetDefaults()
         {
@@ -44,7 +43,10 @@ namespace StormDiversSuggestions.Projectiles
         int stopfire = 0;
         int rotate;
         int opacity = 255;
-        bool shoot;
+
+
+
+
         public override void AI()
         {
             if (opacity > 150)
@@ -77,8 +79,9 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-            
-            shoottime++;
+           
+        
+        shoottime++;
             for (int i = 0; i < 200; i++)
             {
 
@@ -97,11 +100,10 @@ namespace StormDiversSuggestions.Projectiles
 
                     if (Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
                     {
+                        target.TargetClosest(true);
 
                         if (shoottime > 90)
                         {
-                            shoot = true;
-                            target.TargetClosest(true);
 
                             firerate++;
                             stopfire++;
@@ -112,16 +114,7 @@ namespace StormDiversSuggestions.Projectiles
                             shootToX *= distance * 15f;
                             shootToY *= distance * 15f;
 
-                            /* float numberProjectiles = 12;
-                             float rotation = MathHelper.ToRadians(180);
-                             //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
-                             for (int j = 0; j < numberProjectiles; j++)
-                             {
-                                 float speedX = 0f;
-                                 float speedY = 8f;
-                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, j / (numberProjectiles)));
-                                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("StargazerCoreProj2"), (int)(projectile.damage * 1f), projectile.knockBack, Main.myPlayer, 0f, 0f);
-                             }*/
+                            
                             if (firerate >= 5)
                             {
                                 Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(0));
@@ -147,13 +140,9 @@ namespace StormDiversSuggestions.Projectiles
                         }
                     }
                 }
-                if (shoot)
-                {
-
-                }
+               
             }
-            projectile.ai[0] += 1f;
-
+           
 
 
 
@@ -205,7 +194,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 22;
             projectile.friendly = true;
             projectile.ignoreWater = false;
-            projectile.magic = true;
+            //projectile.sentry = true;
             projectile.penetrate = 10;
             projectile.timeLeft = 180;
             projectile.usesLocalNPCImmunity = true;

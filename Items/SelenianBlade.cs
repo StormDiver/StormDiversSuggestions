@@ -19,12 +19,12 @@ namespace StormDiversSuggestions.Items
         public override void SetDefaults()
         {
            
-            item.damage = 90;
+            item.damage = 80;
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 13;
-            item.useAnimation = 13;
+            item.useTime = 14;
+            item.useAnimation = 14;
             item.noUseGraphic = true;
             item.useStyle = 1;
             item.knockBack = 8;

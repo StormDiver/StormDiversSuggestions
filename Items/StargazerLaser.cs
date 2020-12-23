@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items
 
             return true;
         }
-
+       
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(6, 0);
