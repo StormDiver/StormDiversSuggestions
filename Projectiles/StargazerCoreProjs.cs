@@ -46,7 +46,6 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-
         public override void AI()
         {
             if (opacity > 150)
