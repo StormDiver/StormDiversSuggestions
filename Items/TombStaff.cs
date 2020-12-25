@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tomb Staff");
+            DisplayName.SetDefault("Tome of Tombstones");
             Tooltip.SetDefault("Fires out magical tombstones that bounce around\nTombstones spawn a miniture ghost upon hitting an enemy");
             Item.staff[item.type] = true;
 
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 25;
          
-            item.knockBack = 8f;
+            item.knockBack = 10f;
 
             item.shoot = mod.ProjectileType("TombProj");
 

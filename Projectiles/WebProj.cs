@@ -60,6 +60,8 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.velocity.X = 0;
                 projectile.velocity.Y = 0;
+                projectile.knockBack = 0;
+
             }
 
         }
@@ -93,7 +95,6 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
             stick = true;
-            
             return false;
         }
         public override void Kill(int timeLeft)

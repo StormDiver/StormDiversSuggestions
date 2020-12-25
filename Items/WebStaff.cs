@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 18;
          
-            item.knockBack = 2f;
+            item.knockBack = 4f;
             
             item.shoot = mod.ProjectileType("WebProj");
 

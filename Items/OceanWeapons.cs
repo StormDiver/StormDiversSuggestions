@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Coral, 15);
-            recipe.AddIngredient(ItemID.SharkFin, 1);
+            //recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);
 
@@ -81,7 +81,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 14;
+            item.damage = 18;
             item.crit = 0;
             item.melee = true;
             item.width = 30;
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("OceanSmallProj");
             
 
-            item.shootSpeed = 6f;
+            item.shootSpeed = 7f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -136,7 +136,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Coral, 15);
-            recipe.AddIngredient(ItemID.SharkFin, 1);
+            //recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);
 
@@ -199,7 +199,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Coral, 15);
-            recipe.AddIngredient(ItemID.SharkFin, 1);
+            //recipe.AddIngredient(ItemID.SharkFin, 1);
             recipe.AddIngredient(ItemID.Starfish, 3);
             recipe.AddIngredient(ItemID.Seashell, 3);
 

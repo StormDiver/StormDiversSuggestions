@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Predictor Brain");
-            Tooltip.SetDefault("Summons projectiles that charge towards the cursor'");
+            Tooltip.SetDefault("Summons projectiles that charge towards the cursor");
             
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 75;
+            item.damage = 80;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 5f;
 
-            item.mana = 14;
+            item.mana = 13;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

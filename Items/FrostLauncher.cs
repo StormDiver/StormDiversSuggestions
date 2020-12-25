@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 5;
             item.useStyle = 5;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 28;
+            item.useAnimation = 28;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = false;

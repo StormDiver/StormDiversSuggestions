@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.AddIngredient(ItemID.Coral, 1);
 
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this, 150);
+            recipe.SetResult(this, 200);
             recipe.AddRecipe();
         }
         public class VanillaShops : GlobalNPC
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Ammo
                 {
                     case NPCID.ArmsDealer:
 
-                        if (Main.LocalPlayer.HasItem(mod.ItemType("OceanGun"))) //if it's hardmode the NPC will sell this
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("OceanGun"))) 
                         {
                             shop.item[nextSlot].SetDefaults(mod.ItemType("OceanShard"));
                             nextSlot++;

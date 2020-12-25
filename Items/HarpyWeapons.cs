@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("HarpyProj");
 
-            item.shootSpeed = 7f;
+            item.shootSpeed = 8.5f;
    
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -54,7 +54,7 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            int choice = Main.rand.Next(4);
+            int choice = Main.rand.Next(3);
             if (choice == 0)
             {
                 {
@@ -78,8 +78,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
+            recipe.AddIngredient(ItemID.Feather, 8);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -150,7 +150,7 @@ namespace StormDiversSuggestions.Items
             item.knockBack = 3f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
-            item.shootSpeed = 7f;
+            item.shootSpeed = 6f;
             item.useAmmo = AmmoID.Arrow;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -178,8 +178,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
+            recipe.AddIngredient(ItemID.Feather, 8);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -241,8 +241,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 10);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 8);
+            recipe.AddIngredient(ItemID.Feather, 8);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
