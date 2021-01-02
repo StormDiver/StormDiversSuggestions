@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                     var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 }
-                //for (int i = 0; i < 10; i++)
+                if (projectile.owner == Main.myPlayer)
                 {
                     //target = Main.MouseWorld;
                     //target.TargetClosest(true);

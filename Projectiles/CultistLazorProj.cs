@@ -6,16 +6,20 @@ using Terraria.ModLoader;
 using StormDiversSuggestions.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Enums;
+using StormDiversSuggestions.Buffs;
+using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Projectiles
 {
-    public class UNUSEDStargazerLaserProj : ModProjectile
+    public class CultistLazorProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stargazer Laser");
+            DisplayName.SetDefault("Cultist Laser");
           
         }
+
 
 
         // The maximum charge value
@@ -43,12 +47,12 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 26;
+            projectile.height = 26;
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.minion = true;
+            projectile.magic = true;
             projectile.hide = true;
         }
 
@@ -59,6 +63,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], Main.player[projectile.owner].Center,
                     projectile.velocity, 10, projectile.damage, -1.57f, 1f, 1000f, Color.White, (int)MOVE_DISTANCE);
+            
             }
             return false;
         }
@@ -74,17 +79,17 @@ namespace StormDiversSuggestions.Projectiles
                 Color c = Color.White;
                 var origin = start + i * unit;
                 spriteBatch.Draw(texture, origin - Main.screenPosition,
-                    new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
-                    new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                    new Rectangle(0, 26, 26, 12), i < transDist ? Color.Transparent : c, r,
+                    new Vector2(26 * .5f, 12 * .5f), scale, 0, 0);
             }
         
             // Draws the laser 'tail'
             spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
-                new Rectangle(0, 0, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 0, 26, 26), Color.White, r, new Vector2(26 * .5f, 26 * .5f), scale, 0, 0);
 
             // Draws the laser 'head'
             spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
-                new Rectangle(0, 52, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 52, 26, 26), Color.White, r, new Vector2(26 * .5f, 26 * .5f), scale, 0, 0);
         }
 
         // Change the way of collision check of the projectile
@@ -105,10 +110,19 @@ namespace StormDiversSuggestions.Projectiles
         // Set custom immunity time on hitting an NPC
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.immune[projectile.owner] = 5;
+            target.immune[projectile.owner] = 7;
+            for (int i = 0; i < 20; i++)
+            {
+                int dust = Dust.NewDust(target.Center, 0, 0, 135, projectile.velocity.X * 5, projectile.velocity.Y * 5, 50, default, 2f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 5f;
+            }
         }
 
+
+
         // The AI of the projectile
+        bool firesound = false;
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
@@ -131,41 +145,78 @@ namespace StormDiversSuggestions.Projectiles
             SpawnDusts(player);
             CastLights();
 
+
+            Vector2 offset = projectile.velocity;
+            offset *= MOVE_DISTANCE - 20;
+            Vector2 pos = player.Center + offset - new Vector2(5, 5);
+
+            if (IsAtMaxCharge && firesound == false)
+            {
+                //Only plays once, when the laser begins to fire
+               Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 125, 1.5f, -0.3f);
+                for (int i = 0; i < 100; i++) 
+                {
+                    int dust = Dust.NewDust(pos, 0, 0, 135, projectile.velocity.X * 2, projectile.velocity.Y * 2, 50, default, 3f);   
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 3f;
+                }
+                firesound = true;
+            }
+            projectile.soundDelay--;
+        
+            if (IsAtMaxCharge)
+            {
+                
+                if (projectile.soundDelay <= 0)
+                {
+                    Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 13, 1.5f, -0.2f);
+                    projectile.soundDelay = 30;
+                }
+                if (player.statMana >= 0)
+                    {
+                    if (player.GetModPlayer<StormPlayer>().SpectreSkull == true)
+                        {
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            player.statMana -= 1;
+                        }
+                    }
+                    else
+                    {
+                        if (Main.rand.Next(1) == 0)
+                        {
+                            player.statMana -= 1;
+                        }
+                    }
+                }
+                if (player.statMana <= 0)
+                {
+                    projectile.Kill();
+                }
+                
+            }
+                    
         }
 
         private void SpawnDusts(Player player)
         {
             Vector2 unit = projectile.velocity * -1;
-            Vector2 dustPos = player.Center + projectile.velocity * Distance;
-
-            for (int i = 0; i < 2; ++i)
+            Vector2 dustPos = player.position + projectile.velocity * Distance - new Vector2(-5, -17); 
+            //Dust for the end of the projectile
+            for (int i = 0; i < 10; ++i)
             {
-                float num1 = projectile.velocity.ToRotation() + (Main.rand.Next(2) == 1 ? -1.0f : 1.0f) * 1.57f;
-                float num2 = (float)(Main.rand.NextDouble() * 0.8f + 1.0f);
-                Vector2 dustVel = new Vector2((float)Math.Cos(num1) * num2, (float)Math.Sin(num1) * num2);
-                Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 111, dustVel.X, dustVel.Y)];
+                
+                Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 111, 0, 0)];
                 dust.noGravity = true;
-                dust.scale = 1.2f;
-                dust = Dust.NewDustDirect(Main.player[projectile.owner].Center, 0, 0, 31,
-                    -unit.X * Distance, -unit.Y * Distance);
-                dust.fadeIn = 0f;
+                dust.scale = 1.5f;
+                
+                dust.fadeIn = 1f;
                 dust.noGravity = true;
-                dust.scale = 0.88f;
-                dust.color = Color.Cyan;
+               
+                //dust.color = Color.Cyan;
             }
 
-           /* if (Main.rand.NextBool(5))
-            {
-                Vector2 offset = projectile.velocity.RotatedBy(1.57f) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-                Dust dust = Main.dust[Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
-                dust.velocity *= 0.5f;
-                dust.velocity.Y = -Math.Abs(dust.velocity.Y);
-                unit = dustPos - Main.player[projectile.owner].Center;
-                unit.Normalize();
-                dust = Main.dust[Dust.NewDust(Main.player[projectile.owner].Center + 55 * unit, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
-                dust.velocity = dust.velocity * 0.5f;
-                dust.velocity.Y = -Math.Abs(dust.velocity.Y);
-            }*/
+          
         }
 
         /*
@@ -173,7 +224,7 @@ namespace StormDiversSuggestions.Projectiles
 		 */
         private void SetLaserPosition(Player player)
         {
-            for (Distance = MOVE_DISTANCE; Distance <= 500f; Distance += 5f)
+            for (Distance = MOVE_DISTANCE; Distance <= 650f; Distance += 5f)
             {
                 var start = player.Center + projectile.velocity * Distance;
                 if (!Collision.CanHitLine(player.Center, 1, 1, start, 1, 1))
@@ -194,15 +245,22 @@ namespace StormDiversSuggestions.Projectiles
             }
             else
             {
-
-                // Do we still have enough mana? If not, we kill the projectile because we cannot use it anymore
                 if (Main.time % 10 < 1 && !player.CheckMana(player.inventory[player.selectedItem].mana, true))
                 {
                     projectile.Kill();
                 }
-                Vector2 offset = projectile.velocity;
+                if (!IsAtMaxCharge)
+                {
+                    if (projectile.soundDelay <= 0)
+                    {
+                        Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15, 2, -0.5f);
+                        projectile.soundDelay = 15;
+                    }
+                }
+                //This is for the projectiles at the held weapon
+                Vector2 offset = projectile.velocity * 1.8f;
                 offset *= MOVE_DISTANCE - 20;
-                Vector2 pos = player.Center + offset - new Vector2(10, 10);
+                Vector2 pos = player.Center + offset - new Vector2(5, 5);
                 if (Charge < MAX_CHARGE)
                 {
                     Charge++;
@@ -210,14 +268,21 @@ namespace StormDiversSuggestions.Projectiles
                 int chargeFact = (int)(Charge / 20f);
                 Vector2 dustVelocity = Vector2.UnitX * 18f;
                 dustVelocity = dustVelocity.RotatedBy(projectile.rotation - 1.57f);
-                Vector2 spawnPos = projectile.Center + dustVelocity;
+                Vector2 spawnPos = projectile.Center;
                 for (int k = 0; k < chargeFact + 1; k++)
                 {
                     Vector2 spawn = spawnPos + ((float)Main.rand.NextDouble() * 6.28f).ToRotationVector2() * (12f - chargeFact * 2);
-                    Dust dust = Main.dust[Dust.NewDust(pos, 20, 20, 111, projectile.velocity.X / 2f, projectile.velocity.Y / 2f)];
+                    Dust dust = Main.dust[Dust.NewDust(pos, 0, 0, 111, projectile.velocity.X, projectile.velocity.Y)];
                     dust.velocity = Vector2.Normalize(spawnPos - spawn) * 1.5f * (10f - chargeFact * 2f) / 10f;
                     dust.noGravity = true;
-                    dust.scale = Main.rand.Next(10, 20) * 0.05f;
+                    if (IsAtMaxCharge)
+                    {
+                        dust.scale = 1.8f;
+                    }
+                    else
+                    {
+                        dust.scale = 1f;
+                    }
                 }
             }
         }

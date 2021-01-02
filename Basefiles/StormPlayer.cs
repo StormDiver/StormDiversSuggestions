@@ -34,9 +34,7 @@ namespace StormDiversSuggestions.Basefiles
         public bool sandBurn;
 
         public bool superFrost;
-
-        public bool SSBuff;
-
+        
         public bool goldDerpie;
 
         public bool stormHelmet;
@@ -75,6 +73,9 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool BloodOrb;
 
+        public bool SpectreSkull;
+
+        public bool desertJar;
        
         public override void ResetEffects()
         {
@@ -83,7 +84,7 @@ namespace StormDiversSuggestions.Basefiles
             lunarBoulderDB = false;
             sandBurn = false;
             superFrost = false;
-            SSBuff = false;
+            
             turtled = false;
             goldDerpie = false;
             stormHelmet = false;
@@ -103,14 +104,18 @@ namespace StormDiversSuggestions.Basefiles
             FrostCryoSet = false;
             BloodDrop = false;
             BloodOrb = false;
+            SpectreSkull = false;
+            desertJar = false;
         }
         public override void UpdateDead()
         {
+            //Reset all ints and bools if dead======================
             bearcool = 0;
             bloodtime = 0;
             frosttime = 0;
             falling = false;
             bloodorbspawn = 0;
+            desertdusttime = 0;
         }
         // int shotCount = 0;
         //bool shot;
@@ -125,9 +130,12 @@ namespace StormDiversSuggestions.Basefiles
         public int bloodtime;
         public int frosttime;
         public int bloodorbspawn;
+        public int desertdusttime;
 
+        public bool hasstomped;
         public override void PostUpdateEquips()
         {
+            //Reduces ints if they are above 0======================
             if (bloodtime > 0)
             {
                 bloodtime--;
@@ -140,10 +148,15 @@ namespace StormDiversSuggestions.Basefiles
             {
                 bearcool--;
             }
+            if (desertdusttime > 0)
+            {
+                desertdusttime--;
+            }
             if (player.statLife < 1)
             {
                
             }
+            //Spawns the blood ring around the player======================
             if (BloodOrb)
             {
                 bloodorbspawn++;
@@ -158,38 +171,12 @@ namespace StormDiversSuggestions.Basefiles
             {
                 bloodorbspawn = 0;
             }
-            /*if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
-            {
-                if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
-                {
-
-                    if (!shot)
-                    {
-                        shotCount++;
-                        if (shotCount > 3)
-                        {
-                            shotCount = 0;
-                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 14f;
-                            int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 1.6f);
-                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
-                        }
-
-                    }
-                    shot = true;
-                }
-                else
-                {
-                    shot = false;
-                }
-
-            }*/
+           
             if (frostCube)
             {
                 
             }
+            //For Betsy's Flame======================
             if (flameCore)
             {
 
@@ -208,6 +195,7 @@ namespace StormDiversSuggestions.Basefiles
                 
                 //player.moveSpeed *= 0.4f;
             }
+            //For the Mechanical Spikes===========================
             if (primeSpin)
             {
                 if (!player.dead)
@@ -228,54 +216,19 @@ namespace StormDiversSuggestions.Basefiles
             {
                 skulltime = 0;
             }
-            if (bootFall)
+
+            //For the Heavy Boots===========================
+            if (bootFall) 
             {
 
-
-                /* if (derpJump)
-                 {
-                     if (player.velocity.Y > 11)
-                     {
-
-
-                         falling = true;
-                         stopfall = 0;
-
-                     }
-                     if (player.velocity.Y == 0 && falling)
-                     {
-
-
-                         for (int i = 0; i < 15; i++)
-                         {
-
-                             int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1f);
-                             Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-                             Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-                             Main.dust[dustIndex].noGravity = true;
-                         }
-                         Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
-                         Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -6, 0, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
-                         Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 5, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
-                         Projectile.NewProjectile(player.Center.X, player.BottomLeft.Y - 10, -5, -1, mod.ProjectileType("StompDerpProj"), 60, 10f, player.whoAmI);
-
-                         Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 22);
-                         falling = false;
-
-                     }
-                 }
-                 else*/
-
-                player.maxFallSpeed *= 2f;
-                
-                /*if (player.velocity.Y > 0)
+                if (player.controlDown && player.velocity.Y != 0)
                 {
-                    player.velocity.Y *= 1.1f;
-                }*/
+                   
+                    //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 15, 2, -0.5f);
+                    player.gravity += 5;
+                    player.maxFallSpeed *= 1.5f;
 
-
-                {
-                    if (player.velocity.Y > 8)
+                    if (player.velocity.Y > 12)
                     {
 
 
@@ -285,25 +238,22 @@ namespace StormDiversSuggestions.Basefiles
                         player.turtleThorns = true;
                         Vector2 position = player.position;
                         int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1.5f);
-                            Main.dust[dustIndex].noGravity = true;
-                     
+                        Main.dust[dustIndex].noGravity = true;
+
                         stomptrail++;
                         if (stomptrail > 2)
                         {
-                            
+
                             Projectile.NewProjectile(player.Center.X, player.BottomRight.Y - 10, 0, 5, mod.ProjectileType("StompBootProj2"), 50, 6f, player.whoAmI);
                             stomptrail = 0;
                         }
-                        
-                        
+
 
                     }
-                    if (player.velocity.Y > 1)
-                    {
-                        //falldmg = ((int)player.velocity.Y * 2) + 25;
-                    }
-                    
-                    if (player.velocity.Y == 0 && falling)
+
+                }
+                //For impacting the ground at speed
+                    if (player.velocity.Y == 0 && falling && player.controlDown)
                     {
                        
 
@@ -321,7 +271,8 @@ namespace StormDiversSuggestions.Basefiles
                         falling = false;
 
                     }
-                }
+                    
+                //If the player slows down too much then the stomp bool is cancelled
                 if (player.velocity.Y <= 2)
                 {
                     
@@ -335,11 +286,14 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     falling = false;
                 }
+
             }
+            //If boots are unequipped then cancel the bool
             if (!bootFall)
             {
                 falling = false;
             }
+            //For the Spooky Core ======================
             if (spooked)
             {
                 if (player.itemAnimation > 1 && (player.HeldItem.melee || player.HeldItem.ranged || player.HeldItem.magic || player.HeldItem.summon || player.HeldItem.thrown)) //ranged item is in use
@@ -370,6 +324,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
+            //For the Celestial Barrier ======================
             if (lifeBarrier)
             {
                 player.endurance += 0.5f;
@@ -391,6 +346,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public override void OnHitAnything(float x, float y, Entity victim)
         {
+            //For the Hemogoblin armour setbonus ======================
             if (player.HeldItem.melee)
             {
                 if (BloodDrop)
@@ -421,12 +377,53 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
+            //For the Desert urn
+            if (desertJar)
+            {
+
+                if (desertdusttime < 1 && !player.dead)
+                {
+
+                    Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 20);
+
+                    /*float numberProjectiles = 5 + Main.rand.Next(3);
+
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+
+
+                        float speedX = 0f;
+                        float speedY = -1f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
+                        float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), 35, 0f, player.whoAmI);
+
+                        desertdusttime = 300;
+                    }*/
+                    float numberProjectiles = 8 + Main.rand.Next(0);
+                    float rotation = MathHelper.ToRadians(180);
+                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        float speedX = -1f;
+                        float speedY = 0f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), 35, 0f, player.whoAmI);
+
+                        desertdusttime = 240;
+
+                    }
+                }
+            }
             base.OnHitAnything(x, y, victim);
         }
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
         {
-            player.ClearBuff(mod.BuffType("HeartBarrierBuff"));
+            
+            player.ClearBuff(mod.BuffType("HeartBarrierBuff")); //Removes buff on hit
             attackdmg = (int)damage;
+            //Grant buff for celestial barrier based on incoming damage======================
             if (lunarBarrier)
             {
                 
@@ -452,7 +449,7 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
-            
+            //Creates the shards for the frost core when hit ======================
             if (frostSpike)
             {
                 if (frosttime < 1)
@@ -489,6 +486,7 @@ namespace StormDiversSuggestions.Basefiles
         }
         public override void UpdateLifeRegen()
         {
+            //Regeneration, can also be done in buffs.cs
             if (Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
             {
                 
@@ -500,7 +498,7 @@ namespace StormDiversSuggestions.Basefiles
       
         public override void UpdateBadLifeRegen()
         {
-            {
+            { //For DoT debuffs
                 if (boulderDB)
                 {
                    
@@ -549,34 +547,10 @@ namespace StormDiversSuggestions.Basefiles
         public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
            
-            if (SSBuff)
-            {
-                if (Main.rand.Next(4) < 3)
-                {
-                    int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 57, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
-                    Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    if (Main.rand.NextBool(4))
-                    {
-                        Main.dust[dust].noGravity = false;
-                        Main.dust[dust].scale *= 0.5f;
-                    }
-                }
-                Lighting.AddLight(player.position, 1f, 1f, 0f);
-                
-            }
+            //This is done in buffs.cs
            
     
         }
-        /*
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            Texture2D texture = mod.GetTexture("Buffs/TurtleBarrier");
-
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
-
-        }*/
+      
     }
 }

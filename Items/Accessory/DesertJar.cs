@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pharaoh's Urn");
-            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough\nIncreases movement speed by 30%");
+            Tooltip.SetDefault("Leaves behind a damaging trail of sand when moving fast enough\nAttacking enemies makes you create a small sand blast");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -33,7 +33,9 @@ namespace StormDiversSuggestions.Items.Accessory
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.moveSpeed += 0.3f;
+            player.GetModPlayer<StormPlayer>().desertJar = true;
+
+            
             if ((player.velocity.X > 3.5f || player.velocity.X < -3.5f) || (player.velocity.Y > 3.5f || player.velocity.Y < -3.5f))
             {
 

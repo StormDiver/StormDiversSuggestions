@@ -32,11 +32,6 @@ namespace StormDiversSuggestions
         [ReloadRequired]
         public bool DisableVanillaBuff{ get; set; }
 
-        [Label("Disable New recipes and drops for Vanilla items")]    
-        [Tooltip("Disable the new recipes and item drops for certain armour and the Rod of Discord, Requires a Reload")]
-        [ReloadRequired]
-        public bool DisableNewRecipes{ get; set; }
-
         [Label("Disable Frost and Arid ore Generation")]
         [Tooltip("This will prevent the 2 ores in this mod from generating, but they will still drop from NPCs and crates")]
         [ReloadRequired]

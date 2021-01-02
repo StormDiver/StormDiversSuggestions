@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tome of Tombstones");
+            DisplayName.SetDefault("Tombstone Staff");
             Tooltip.SetDefault("Fires out magical tombstones that bounce around\nTombstones spawn a miniture ghost upon hitting an enemy");
             Item.staff[item.type] = true;
 
@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = 2;
             item.useStyle = 5;
-            item.useTime = 24;
-            item.useAnimation = 24;
+            item.useTime = 23;
+            item.useAnimation = 23;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 10;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 25;
+            item.damage = 26;
          
             item.knockBack = 10f;
 

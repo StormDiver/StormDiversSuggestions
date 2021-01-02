@@ -127,6 +127,8 @@ namespace StormDiversSuggestions.Projectiles
         public override bool InstancePerEntity => true;
 
         bool projCheck = false;
+
+
         public override void AI(Projectile projectile)
         {
             var player = Main.player[projectile.owner];

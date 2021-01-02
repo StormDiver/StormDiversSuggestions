@@ -18,6 +18,8 @@ using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Buffs;
+using StormDiversSuggestions.Basefiles;
+
 
 namespace StormDiversSuggestions.Items.Accessory
 {
@@ -46,7 +48,7 @@ namespace StormDiversSuggestions.Items.Accessory
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statManaMax2 += 60;
+            player.statManaMax2 += 40;
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 
@@ -57,8 +59,9 @@ namespace StormDiversSuggestions.Items.Accessory
                     Vector2 position = Main.LocalPlayer.position;
                     dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 15, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                     dust.noGravity = true;
-
+                player.GetModPlayer<StormPlayer>().SpectreSkull = true;
             }
+            
 
         }
 

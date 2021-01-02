@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.SeekerBolt>();
             item.UseSound = SoundID.Item11;
 
-            item.damage = 40;
+            item.damage = 45;
             //item.crit = 0;
             item.knockBack = 6f;
 

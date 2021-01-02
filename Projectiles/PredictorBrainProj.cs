@@ -72,6 +72,7 @@ namespace StormDiversSuggestions.Projectiles
 
                 }
                 //for (int i = 0; i < 10; i++)
+                if (projectile.owner == Main.myPlayer)
                 {
                     //target = Main.MouseWorld;
                     //target.TargetClosest(true);

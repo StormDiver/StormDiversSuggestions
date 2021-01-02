@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heavy Boots");
-            Tooltip.SetDefault("Allows you to fall faster and creates a shockwave when impacting the ground with enough speed\nAllows you to fall through enemies and deal damage to them\n'What did you think would happen if you attached an Anvil to a pair of boots?'");
+            Tooltip.SetDefault("Hold down to fall faster and create a shockwave upon hitting the ground\nWhile falling faster you will damage any enemy you fall on\n'What did you think would happen if you attached an Anvil to a pair of boots?'");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heavy Horseshoe Boots");
-            Tooltip.SetDefault("Allows you to fall faster and creates a shockwave when impacting the ground with enough speed\nAllows you to fall through enemies and deal damage to them\nNegates fall damage");
+            Tooltip.SetDefault("Hold down to fall faster and create a shockwave upon hitting the ground\nWhile falling faster you will damage any enemy you fall on\nNegates fall damage");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()

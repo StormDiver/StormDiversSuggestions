@@ -101,7 +101,7 @@ namespace StormDiversSuggestions.Projectiles
                     if (Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
                     {
                         target.TargetClosest(true);
-                        if (shoottime > 45)
+                        if (shoottime > 40)
                         {
                             //supershot++;
 

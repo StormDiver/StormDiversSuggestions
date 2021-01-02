@@ -40,62 +40,53 @@ namespace StormDiversSuggestions.Projectiles
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
 
+
             projectile.extraUpdates = 1;
 
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
         }
-       
 
-        int splittime = 0;
+
+        int dusttime;
         public override void AI()
         {
+            dusttime++;
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            for (int i = 0; i < 15; i++)
+            if (dusttime > 1)
             {
-                float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
-                float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
-                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 229);
-                //Main.dust[num165].alpha = alpha;
-                Main.dust[j].position.X = x2;
-                Main.dust[j].position.Y = y2;
-                Main.dust[j].velocity *= 0.1f;
-                Main.dust[j].noGravity = true;
-                Main.dust[j].scale = 1f;
+                for (int i = 0; i < 15; i++)
+                {
+                    float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
+                    float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
+                    int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 229);
+                    //Main.dust[num165].alpha = alpha;
+                    Main.dust[j].position.X = x2;
+                    Main.dust[j].position.Y = y2;
+                    Main.dust[j].velocity *= 0.1f;
+                    Main.dust[j].noGravity = true;
+                    Main.dust[j].scale = 1f;
+                }
             }
-
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
             {
+                projectile.velocity.X = 0f;
+                projectile.velocity.Y = 0f;
                 projectile.tileCollide = false;
                 // Set to transparent. This projectile technically lives as  transparent for about 3 frames
                 projectile.alpha = 255;
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 projectile.position = projectile.Center;
-                
+
                 projectile.width = 150;
                 projectile.height = 150;
                 projectile.Center = projectile.position;
-               
-                
+
+
                 projectile.knockBack = 6f;
-                
+
             }
 
-            splittime++;
-            if (splittime >= 30)
-            {
-                float numberProjectiles = 3 + Main.rand.Next(2);
-                float rotation = MathHelper.ToRadians(10);
-                //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
-                for (int i = 0; i < numberProjectiles; i++)
-                {
-                    float speedX = projectile.velocity.X;
-                    float speedY = projectile.velocity.Y;
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X * 10f, perturbedSpeed.Y * 10f, mod.ProjectileType("VortexRocketProj2"), (int)(projectile.damage * 1), projectile.knockBack, Main.myPlayer, 0f, 0f);
-                }
-                projectile.Kill();
-            }
 
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -109,14 +100,9 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            for (int i = 0; i < 40; i++)
+            if (projectile.timeLeft > 3)
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 229, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-                dust.noGravity = true;
-                dust.scale = 2f;
+                projectile.timeLeft = 3;
             }
         }
 
@@ -135,7 +121,7 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 31, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
                 dust.scale = 2f;
-               
+
 
             }
             for (int i = 0; i < 80; i++)
@@ -184,6 +170,7 @@ namespace StormDiversSuggestions.Projectiles
 
         }
     }
+
     //________________________________________________________________________________________________________________________________________________________________________________________________________________
     public class VortexRocketProj2 : ModProjectile
     {
@@ -223,23 +210,26 @@ namespace StormDiversSuggestions.Projectiles
         }
 
 
-
+        int dusttime;
         public override void AI()
         {
+            dusttime++;
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            for (int i = 0; i < 15; i++)
+            if (dusttime > 2)
             {
-                float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
-                float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
-                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 229);
-                //Main.dust[num165].alpha = alpha;
-                Main.dust[j].position.X = x2;
-                Main.dust[j].position.Y = y2;
-                Main.dust[j].velocity *= 0.1f;
-                Main.dust[j].noGravity = true;
-                Main.dust[j].scale = 1f;
+                for (int i = 0; i < 25; i++)
+                {
+                    float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
+                    float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
+                    int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 229);
+                    //Main.dust[num165].alpha = alpha;
+                    Main.dust[j].position.X = x2;
+                    Main.dust[j].position.Y = y2;
+                    Main.dust[j].velocity *= 0.1f;
+                    Main.dust[j].noGravity = true;
+                    Main.dust[j].scale = 1f;
+                }
             }
-
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
             {
                 projectile.velocity.X = 0f;
@@ -250,8 +240,8 @@ namespace StormDiversSuggestions.Projectiles
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 projectile.position = projectile.Center;
 
-                projectile.width = 150;
-                projectile.height = 150;
+                projectile.width = 200;
+                projectile.height = 200;
                 projectile.Center = projectile.position;
 
 
@@ -285,7 +275,7 @@ namespace StormDiversSuggestions.Projectiles
             
             projectile.alpha = 255;
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 60; i++)
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -296,7 +286,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
             }
-            for (int i = 0; i < 80; i++)
+            for (int i = 0; i < 120; i++)
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -304,7 +294,7 @@ namespace StormDiversSuggestions.Projectiles
                 dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 229, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
                 dust.scale = 2f;
-                dust.fadeIn = 1f;
+                dust.fadeIn = 2f;
 
             }
 

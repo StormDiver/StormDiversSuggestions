@@ -19,69 +19,7 @@ namespace StormDiversSuggestions.VanillaChanges
             
             
             {
-                //=======================================================REMOVINGRECIPES===============================================
-                List<Recipe> rec = Main.recipe.ToList();
-                int numberRecipesRemoved = 0;
-                // The Recipes to remove.
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.Flamethrower);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.Megashark);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.PumpkinMoonMedallion);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.LogicSensor_Above);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.MagicalHarp);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.RainbowRod);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.OpticStaff);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.NaughtyPresent);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.FairyBell);
-                //Armours
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.CopperHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.CopperChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.CopperGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TinHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TinChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TinGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.IronHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.IronChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.IronGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.LeadHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.LeadChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.LeadGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.SilverHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.SilverChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.SilverGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TungstenHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TungstenChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.TungstenGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.GoldHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.GoldChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.GoldGreaves);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.PlatinumHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.PlatinumChainmail);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.PlatinumGreaves);
-                //misc
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.SuperHealingPotion);
                 
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.FrostHelmet);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.FrostBreastplate);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.FrostLeggings);
-
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.AncientBattleArmorHat);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.AncientBattleArmorShirt);
-                numberRecipesRemoved += rec.RemoveAll(x => x.createItem.type == ItemID.AncientBattleArmorPants);
-                
-
-
-
-                Main.recipe = rec.ToArray();
-                Array.Resize(ref Main.recipe, Recipe.maxRecipes);
-                Recipe.numRecipes -= numberRecipesRemoved;
                 
 
                 //==================================================SOULRECIPES==========================================
@@ -375,12 +313,15 @@ namespace StormDiversSuggestions.VanillaChanges
 
         }*/
     }
-    public class Newrecipes : GlobalItem
+
+    
+
+        public class Newrecipes : GlobalItem
     {
         public override void AddRecipes()
         {
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
+            
+            //I consider these to be additions and therefore will always be enabled 
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.Silk, 25);
@@ -533,8 +474,7 @@ namespace StormDiversSuggestions.VanillaChanges
                 switch (type)
                 {
                     case NPCID.Merchant:
-                        if (!GetInstance<Configurations>().DisableNewRecipes)
-
+                        
                         {
 
                             if (Main.LocalPlayer.HasItem(ItemID.MiningHelmet))

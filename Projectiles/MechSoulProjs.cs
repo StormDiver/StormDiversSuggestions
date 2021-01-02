@@ -41,28 +41,32 @@ namespace StormDiversSuggestions.Projectiles
 
         }
         //int homed;
+        int dusttime;
         public override void AI()
         {
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            dusttime++;
 
-
-           /* Dust dust;
-            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.Center;
-            dust = Terraria.Dust.NewDustPerfect(position, 182, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
-            dust.noGravity = true;
-            dust.fadeIn = 1;*/
-            for (int i = 0; i < 5; i++)
+            /* Dust dust;
+             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+             Vector2 position = projectile.Center;
+             dust = Terraria.Dust.NewDustPerfect(position, 182, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+             dust.noGravity = true;
+             dust.fadeIn = 1;*/
+            if (dusttime > 5)
             {
-                float X = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
-                float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
+                for (int i = 0; i < 5; i++)
+                {
+                    float X = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
+                    float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
 
 
-                int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 6, 0, 0, 100, default, 1f);
-                Main.dust[dust].position.X = X;
-                Main.dust[dust].position.Y = Y;
-                Main.dust[dust].noGravity = true;
-                Main.dust[dust].velocity *= 0f;
+                    int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 6, 0, 0, 100, default, 1f);
+                    Main.dust[dust].position.X = X;
+                    Main.dust[dust].position.Y = Y;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 0f;
+                }
             }
 
             var player = Main.player[projectile.owner];
@@ -78,7 +82,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int k = 0; k < 200; k++)
             {
                 //if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
-                if (Main.mouseRight && player.HeldItem.type == mod.ItemType("TheSeeker") && !player.dead && projectile.timeLeft > 60)
+                if (player.controlUseTile && player.HeldItem.type == mod.ItemType("TheSeeker") && !player.dead && projectile.timeLeft > 60 && projectile.owner == Main.myPlayer)
                 {
                     if (Collision.CanHit(projectile.Center, 0, 0, Main.MouseWorld, 0, 0))
                     {
@@ -103,7 +107,7 @@ namespace StormDiversSuggestions.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (10 * projectile.velocity + move) / 9.9f;
+                projectile.velocity = (11 * projectile.velocity + move) / 11f;
                 AdjustMagnitude(ref projectile.velocity);
             }
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)

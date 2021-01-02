@@ -160,6 +160,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
         public override void AI(Projectile projectile)
         {
             var player = Main.player[projectile.owner];
+
             //var projreflect = Main.projectile[mod.ProjectileType("SelenianBladeProj")];
 
             //if (Main.LocalPlayer.HasBuff(BuffType<SelenianBuff>()))

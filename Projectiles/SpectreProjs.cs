@@ -321,7 +321,7 @@ namespace StormDiversSuggestions.Projectiles
             lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, player.position, player.width, player.height);
 
 
-            if (Main.mouseRight && lineOfSight && distime >= orbittime) //will fire projectile once it reaches maximum orbit and has a line of sight with the player
+            if (player.controlUseTile && lineOfSight && distime >= orbittime) //will fire projectile once it reaches maximum orbit and has a line of sight with the player
             {
 
 
@@ -560,7 +560,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int k = 0; k < 200; k++)
             {
                 //if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
-                if (Main.mouseLeft && player.HeldItem.type == mod.ItemType("SpectreDagger") && !player.dead)
+                if (player.controlUseItem && player.HeldItem.type == mod.ItemType("SpectreDagger") && !player.dead)
                 {
                     if (Collision.CanHit(projectile.Center, 0, 0, Main.MouseWorld, 0, 0))
                     {
@@ -581,7 +581,7 @@ namespace StormDiversSuggestions.Projectiles
                 
                 
             }
-            if (Main.mouseLeftRelease && releasetime >= 10 || player.HeldItem.type != mod.ItemType("SpectreDagger"))
+            if (player.releaseUseItem && releasetime >= 10 || player.HeldItem.type != mod.ItemType("SpectreDagger"))
             {
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SpectreDaggerProj2"), projectile.damage, 0f, projectile.owner, 0f, 0f);
 

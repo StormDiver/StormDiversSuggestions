@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items
             item.knockBack = 5f;
 
             item.shoot = ProjectileID.RocketI;
-            item.shootSpeed = 9f;
+            item.shootSpeed = 18f;
            
             item.useAmmo = AmmoID.Rocket;
             item.useTime = 24;
@@ -84,23 +84,18 @@ namespace StormDiversSuggestions.Items
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            
 
-            
-           
 
             if (player.altFunctionUse == 2)
             {
-                Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 55f;
+                
+                Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 5f;
                 if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 {
                     position += muzzleOffset;
                 }
-                /*if (type == ProjectileID.RocketI || type == ProjectileID.RocketII || type == ProjectileID.RocketIII || type == ProjectileID.RocketIV)
-                {
-                    type = mod.ProjectileType("VortexRocketProj2");
-                }*/
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 4f;
+               
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 3f;
                 for (int i = 0; i < 2; i++)
                 {
                     Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2.5f), knockBack, player.whoAmI);
@@ -109,6 +104,7 @@ namespace StormDiversSuggestions.Items
             }
             else
             {
+               
                 Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
                 if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 {
@@ -118,10 +114,10 @@ namespace StormDiversSuggestions.Items
                 {
                     type = mod.ProjectileType("VortexRocketProj");
                 }*/
-               
-                for (int i = 0; i < 2; i++)
+                int numberProjectiles = 7 + Main.rand.Next(2);
+                for (int i = 0; i < numberProjectiles; i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
                     float scale = 1f - (Main.rand.NextFloat() * .2f);
                     perturbedSpeed = perturbedSpeed * scale;
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("VortexRocketProj"), damage, knockBack, player.whoAmI);

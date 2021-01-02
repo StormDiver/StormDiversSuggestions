@@ -12,15 +12,9 @@ namespace StormDiversSuggestions.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Orb");
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
+            
                 Tooltip.SetDefault("'Imbued with pure chaos'");
-            }
-            else
-            {
-                Tooltip.SetDefault("Enable New recipes in the config to use this item");
-            }
+           
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 5));
         }
 
@@ -58,7 +52,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             public override void NPCLoot(NPC npc)
             {
-                if (!GetInstance<Configurations>().DisableNewRecipes)
+                
 
                 {
                     if (Main.expertMode)
@@ -93,15 +87,9 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("Warrior Cloth");
             
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
+           
                 Tooltip.SetDefault("Used to create the armour of a fallen Gladiator");
-            }
-            else
-            {
-                Tooltip.SetDefault("Enable new recipes in the config to use this item");
-            }
+            
         }
 
         public override void SetDefaults()
@@ -126,7 +114,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             public override void NPCLoot(NPC npc)
             {
-                if (!GetInstance<Configurations>().DisableNewRecipes)
+               
 
                 {
                     if (npc.type == NPCID.GreekSkeleton)
@@ -154,15 +142,9 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("Insulated Fabric");
             
-            if (!GetInstance<Configurations>().DisableNewRecipes)
-
-            {
+           
                 Tooltip.SetDefault("Can be used to keep warm");
-            }
-            else
-            {
-                Tooltip.SetDefault("Enable new recipes in the config to use this item");
-            }
+           
         }
 
         public override void SetDefaults()
@@ -185,7 +167,6 @@ namespace StormDiversSuggestions.Items.Materials
         {
             public override void NPCLoot(NPC npc)
             {
-                if (!GetInstance<Configurations>().DisableNewRecipes)
 
                 {
                     if (npc.type == NPCID.ZombieEskimo || npc.type == NPCID.ArmedZombieEskimo)
