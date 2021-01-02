@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Items
             item.width = 50;
             item.height = 22;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 0, 50, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 1;
             item.useStyle = 5;
             
@@ -50,7 +50,7 @@ namespace StormDiversSuggestions.Items
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-8, 0);
+            return new Vector2(0, 0);
         }
 
 

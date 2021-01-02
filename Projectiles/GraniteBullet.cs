@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.light = 0.1f;
             
             projectile.friendly = true;
-            projectile.timeLeft = 400;
+            projectile.timeLeft = 180;
             projectile.penetrate = 2;
             
             
@@ -73,6 +73,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 65, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
+                dust.noGravity = true;
             }
         }
 
@@ -85,6 +86,8 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 65);
+                dust.noGravity = true;
+
             }
 
         }

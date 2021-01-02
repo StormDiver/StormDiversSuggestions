@@ -13,14 +13,12 @@ namespace StormDiversSuggestions.VanillaChanges
     public class VanillaRecipes : GlobalItem
     {
 
-       /* public override void AddRecipes()
+        public override void AddRecipes()
         {
-            if (!GetInstance<Configurations>().DisableVanillaRecipechanges)
-            
-            
+            if (GetInstance<Configurations>().EnableAltRecipes)
             {
-                
-                
+
+
 
                 //==================================================SOULRECIPES==========================================
 
@@ -252,51 +250,6 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(ItemID.PlatinumGreaves);
                 recipe.AddRecipe();
-
-                //=======================================================NEWBARSARMOUR============================================
-
-                recipe = new ModRecipe(mod);
-                // recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddIngredient(mod, "IceBar", 10);
-                recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.FrostHelmet);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "IceBar", 18);
-                recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.FrostBreastplate);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod); 
-                recipe.AddIngredient(mod, "IceBar", 14);
-                recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.FrostLeggings);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "DesertBar", 10);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.AncientBattleArmorHat);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "DesertBar", 18);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.AncientBattleArmorShirt);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "DesertBar", 14);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(ItemID.AncientBattleArmorPants);
-                recipe.AddRecipe();
                 //==========================================OTHER==========================================
 
                 recipe = new ModRecipe(mod);
@@ -307,11 +260,10 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddTile(TileID.Bottles);
                 recipe.SetResult(ItemID.SuperHealingPotion, 5);
                 recipe.AddRecipe();
-
-              
             }
 
-        }*/
+
+        }
     }
 
     
@@ -323,6 +275,8 @@ namespace StormDiversSuggestions.VanillaChanges
             
             //I consider these to be additions and therefore will always be enabled 
             {
+
+
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.Silk, 25);
                 recipe.AddRecipeGroup("StormDiversSuggestions:GoldOres", 35); 
@@ -465,6 +419,50 @@ namespace StormDiversSuggestions.VanillaChanges
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(ItemID.AncientBattleArmorPants);
                 recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                // recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddIngredient(mod, "IceBar", 10);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostHelmet);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "IceBar", 18);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostBreastplate);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "IceBar", 14);
+                recipe.AddIngredient(ItemID.FrostCore);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.FrostLeggings);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 10);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorHat);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 18);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorShirt);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod, "DesertBar", 14);
+                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.AncientBattleArmorPants);
+                recipe.AddRecipe();
+
             }
         }
         public class VanillaShops : GlobalNPC

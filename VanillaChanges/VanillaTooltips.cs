@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.VanillaChanges
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
 
 
             {

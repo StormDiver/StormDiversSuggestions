@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vortex Launcher");
-            Tooltip.SetDefault("Fires out a barrage of vortex rockets\nRight click to fire a single more damaging rocket");
+            Tooltip.SetDefault("Fires out a barrage of vortex rockets\nRight click to fire a single faster, fully accurate, and more damaging rocket");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
         }
         public override void SetDefaults()
@@ -114,7 +114,7 @@ namespace StormDiversSuggestions.Items
                 {
                     type = mod.ProjectileType("VortexRocketProj");
                 }*/
-                int numberProjectiles = 7 + Main.rand.Next(2);
+                int numberProjectiles = 7 + Main.rand.Next(3);
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));

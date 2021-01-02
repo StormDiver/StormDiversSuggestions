@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rubber Duck");
-            Tooltip.SetDefault("'QUACK'");
+            Tooltip.SetDefault("'QUACK!'");
 
         }
         public override void SetDefaults()
@@ -20,13 +20,13 @@ namespace StormDiversSuggestions.Items.Tools
             item.width = 20;
             item.height = 20;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 0, 50, 0);
+            item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 0;
             item.useStyle = 4;
-            item.useTime = 60;
-            item.useAnimation = 60;
+            item.useTime = 70;
+            item.useAnimation = 70;
             item.useTurn = true;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.holdStyle = 0;
             item.noMelee = true; 
         }
@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Items.Tools
             }
             else
             {
-                pitch = -0.75f;
+                pitch = -0.6f;
             }
 
 

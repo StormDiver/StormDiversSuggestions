@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.VanillaChanges
 
         public override void SetDefaults(Item item)
         {
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
 
 
             {
@@ -317,7 +317,7 @@ namespace StormDiversSuggestions.VanillaChanges
 
         public override void UpdateEquip(Item item, Player player)
         {
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
 
 
             {
@@ -462,7 +462,7 @@ namespace StormDiversSuggestions.VanillaChanges
         // Credit to qwerty3.14
         public override void PostUpdateEquips()
         {
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
 
           
@@ -673,7 +673,7 @@ namespace StormDiversSuggestions.VanillaChanges
         public override void AI(Projectile projectile)
         {
             var player = Main.player[projectile.owner];
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
                 if ((projectile.melee || projectile.ranged) && projectile.friendly)
                 {
@@ -692,7 +692,7 @@ namespace StormDiversSuggestions.VanillaChanges
         public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
         {
             var player = Main.player[projectile.owner];
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
                 if (projectile.melee && projectile.friendly)
                 {
@@ -721,7 +721,7 @@ namespace StormDiversSuggestions.VanillaChanges
         public override void OnHitPvp(Projectile projectile, Player target, int damage, bool crit)
         {
             var player = Main.player[projectile.owner];
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
                 if (projectile.melee && projectile.friendly)
                 {
@@ -758,7 +758,7 @@ namespace StormDiversSuggestions.VanillaChanges
         {
            
         
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
                 if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                 {
@@ -783,7 +783,7 @@ namespace StormDiversSuggestions.VanillaChanges
         public override void MeleeEffects(Item item, Player player, Rectangle hitbox)
         {
             
-            if (!GetInstance<Configurations>().DisableVanillaBuff)
+            if (GetInstance<Configurations>().EnableVanillaBuff)
             {
                 if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
                 {

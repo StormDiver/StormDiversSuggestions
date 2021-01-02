@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mysterious Cultist Hood");
-            Tooltip.SetDefault("Charge up and fire a damaging laser from this strange cultist hood\n'Wait, What!?'");
+            Tooltip.SetDefault("Charge up and fire a damaging laser from this strange cultist hood\nWait, What!?");
         }
         public override void SetDefaults()
         {
