@@ -3,15 +3,13 @@ Also join the Discord server for sneek peaks at upcoming content: https://discor
 
 Storm Diver's Additions Mod is a smallish content mod made by one guy (@Storm Diver), that adds content throughout the entire game where it seemed that something was missing, along with unique items thrown in here and there
 
-There's over 100 total modded items for you to discover; including weapons, accessories, ammo, tools, armour, vanity sets, enemies, and more. Many are crafted with vanilla items, but some have their own modded ingredients added to the recipes
+There's over 100 total modded items for you to discover; including weapons, accessories, ammo, tools, armour, vanity sets, enemies, and more. Many are crafted with vanilla items, but some have their own modded ingredients added to the recipes. There's also some new recipes for certain things that did not have a crafting recipe before.
 
-It also has some vanilla tweaks to certain armour sets, plus there are some recipes changes along with new recipes for a few rare items that lacked one, which if you don't like you can always disable via the config menu
-
-This mod is constantly updated, adding new content and tweaking existing, so join the server to keep up to date with all the additions and changes
+This mod is constantly updated, adding new content and tweaking existing, so join the server to keep up to date with all the new additions and tweaks
 
 This mod includes:
 
--60 New unique weapons
+-62 New unique weapons
 -15 new ammos
 -8 new tools
 -New recipes for certain uncraftable vanilla items
@@ -26,16 +24,6 @@ This mod includes:
 -New enemies, including many Derplings
 -A way to remove the shields from the pillars prematurely 
 
-This mod also has some vanilla changes including:
-
--Buffed Ore armour stats 
--Buffed Original Hardmode Ore armour defence
--Buffed Frost and Forbidden armours plus new alternate recipe
--Buffed Solar flare armour
--Revamped Shadow Armour
--New set bonuses for Copper, Iron, Silver, Gold, Rain, Eskimo and Obsidian armour
--Gladiator armour now a ranged set
-
-Also check the configuration options if you don't like modifications to vanilla items
+Also if you're wondering what happened to the vanilla changes, they can be enabled as legacy options in the config menu 
 
 
