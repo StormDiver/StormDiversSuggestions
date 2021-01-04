@@ -306,7 +306,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.Next(7) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
