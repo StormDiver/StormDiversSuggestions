@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spooky Core");
-            Tooltip.SetDefault("Creates Spooky flames that home in on enemies when using any weapon\nIncreases damage by 5%");
+            Tooltip.SetDefault("Creates Spooky flames that home in on enemies when using any weapon");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
@@ -33,11 +33,8 @@ namespace StormDiversSuggestions.Items.Accessory
         }
       
         public override void UpdateAccessory(Player player, bool hideVisual)
-        {
-
-            
+        { 
             player.GetModPlayer<StormPlayer>().spooked = true;
-            player.allDamage += 0.05f;
         }
 
 

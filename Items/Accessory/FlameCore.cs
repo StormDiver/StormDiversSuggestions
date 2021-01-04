@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's Flame");
-            Tooltip.SetDefault("Triples your flight time\nAllows you to perform a powerful damaging dash while in the air\nCan perform a much weaker dash when grounded");
+            Tooltip.SetDefault("Triples your flight time\nAllows you to perform a powerful damaging dash");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 

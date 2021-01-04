@@ -81,7 +81,7 @@ namespace StormDiversSuggestions.Items
 
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(80) == 0)
+                        if (Main.rand.Next(150) == 0)
 
                         {
 
@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Items
                     }
 
                     else
-                     if (Main.rand.Next(100) == 0)
+                     if (Main.rand.Next(200) == 0)
 
                     {
                         {

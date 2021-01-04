@@ -77,11 +77,13 @@ namespace StormDiversSuggestions.Items
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(100) == 0)
+                if (Main.rand.Next(60) == 0)
                 {
                     if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteRifle"));
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MusketBall, Main.rand.Next(25, 50));
+
                     }
                 }
             }

@@ -22,10 +22,12 @@ namespace StormDiversSuggestions.Basefiles
 {
     public class StormWorld : ModWorld
     {
-        public static bool SpawnIceOre;
-        public static bool SpawnDesertOre;
-        public  bool IceSpawned;
-        public  bool DesertSpawned;
+        //All of this is to save a boolean for ever per world
+
+        public static bool SpawnIceOre; //This is for when you kill the Ice Golem
+        public static bool SpawnDesertOre; //Ditto with Sand Elemental
+        public  bool IceSpawned; //This is for when the frost ore first generates, so it will not generate again
+        public  bool DesertSpawned; //Ditto with Arid ore
 
         public override void Initialize()
         {
@@ -70,21 +72,23 @@ namespace StormDiversSuggestions.Basefiles
             IceSpawned = flags[2];
             DesertSpawned = flags[3];
         }
+
         public override void PostWorldGen()
         {
-
-            int[] ChestLauncher = { ItemType<ProtoLauncher>() };
-            int[] ChestAmmo = { ItemType<ProtoGrenade>() };
-          
-            int ChestLauncherCount = 0;
-            int ChestAmmoCount = 0;
-           
+            //Make items appears in chests
 
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
-                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36)
+
+                //For the Proto Launcher in Dungeons
+                int[] ChestLauncher = { ItemType<ProtoLauncher>() };
+                int ChestLauncherCount = 0;
+
+                int[] ChestLauncherAmmo = { ItemType<ProtoGrenade>() };
+                int ChestLauncherAmmoCount = 0;
+
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36) //Look in Tiles_21 for the tile, start from 0
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
@@ -97,9 +101,9 @@ namespace StormDiversSuggestions.Basefiles
                                 ChestLauncherCount = (ChestLauncherCount + 1) % ChestLauncher.Length;
                                 inventoryIndex++;
 
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestAmmo));
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestLauncherAmmo));
                                 chest.item[inventoryIndex].stack = WorldGen.genRand.Next(52, 80);
-                                ChestAmmoCount = (ChestAmmoCount + 1) % ChestAmmo.Length;
+                                ChestLauncherAmmoCount = (ChestLauncherAmmoCount + 1) % ChestLauncherAmmo.Length;
 
                             }
 
@@ -108,21 +112,21 @@ namespace StormDiversSuggestions.Basefiles
                     }
 
                 }
+
+                //For the Jar of Hearts in shadwo chests
                 int[] ChestHeart = { ItemType<HeartJar>() };
                 int ChestHeartCount = 0;
 
-                Chest chest2 = Main.chest[chestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
-                if (chest2 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 4 * 36)
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 4 * 36)//Look in Tiles_21 for the tile, start from 0
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest2.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == 0)
                         {
                             if (WorldGen.genRand.NextBool(3))
                             {
 
-                                chest2.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestHeart));
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestHeart));
                                 ChestHeartCount = (ChestHeartCount + 1) % ChestHeart.Length;
 
 
@@ -135,20 +139,19 @@ namespace StormDiversSuggestions.Basefiles
 
                 }
 
+                //For the Webstaff in Web chests
                 int[] ChestWeb = { ItemType<WebStaff>() };
                 int ChestWebCount = 0;
-                Chest chest3 = Main.chest[chestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
-                if (chest3 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 15 * 36)
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 15 * 36)//Look in Tiles_21 for the tile, start from 0
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest3.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == 0)
                         {
                             if (WorldGen.genRand.NextBool(1))
                             {
 
-                                chest3.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestWeb));
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestWeb));
                                 ChestWebCount = (ChestWebCount + 1) % ChestWeb.Length;
 
 
@@ -160,23 +163,29 @@ namespace StormDiversSuggestions.Basefiles
                     }
 
                 }
+
+                //For the Granite Rifle in Granite chests
                 int[] ChestGranite = { ItemType<GraniteRifle>() };
                 int ChestGraniteCount = 0;
-                Chest chest4 = Main.chest[chestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
-                if (chest4 != null && Main.tile[chest2.x, chest2.y].type == TileID.Containers && Main.tile[chest2.x, chest2.y].frameX == 50 * 36)
+                int[] ChestGraniteAmmo = { ItemID.MusketBall };
+                int ChestGraniteCountAmmo = 0;
+
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 50 * 36)//Look in Tiles_21 for the tile, start from 0
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest3.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == 0)
                         {
                             if (WorldGen.genRand.NextBool(2))
                             {
 
-                                chest3.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGranite));
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGranite));
                                 ChestGraniteCount = (ChestGraniteCount + 1) % ChestGranite.Length;
+                                inventoryIndex++;
 
-
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGraniteAmmo));
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(25, 40);
+                                ChestGraniteCountAmmo = (ChestGraniteCountAmmo + 1) % ChestGraniteAmmo.Length;
 
                             }
 
@@ -194,6 +203,7 @@ namespace StormDiversSuggestions.Basefiles
         
         public override void PreUpdate()
         {
+            //To spawn the ores
             if (SpawnIceOre && !IceSpawned)
             {
                 if (!GetInstance<Configurations>().PreventOreSpawn)
@@ -256,6 +266,7 @@ namespace StormDiversSuggestions.Basefiles
     {
         public override void NPCLoot(NPC npc)
         {
+            //set bools when the enemy is killed for the first time, these are saved at the top
             if (npc.type == NPCID.IceGolem) //this is where you choose what vanilla npc you want  , for a modded npc add this instead  if (npc.type == mod.NPCType("ModdedNpcName"))
             {
                 if (!StormWorld.SpawnIceOre)

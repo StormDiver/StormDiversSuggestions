@@ -196,7 +196,7 @@ namespace StormDiversSuggestions.Projectiles
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                     Main.dust[dust].velocity *= 0.5f;
-                    //int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                    int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
             else

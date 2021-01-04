@@ -117,10 +117,9 @@ namespace StormDiversSuggestions.Basefiles
             bloodorbspawn = 0;
             desertdusttime = 0;
         }
-        // int shotCount = 0;
-        //bool shot;
+       
 
-        bool shot;
+        public bool shotflame;
         public int skulltime = 0;
         public bool falling;
         public int stopfall;
@@ -182,17 +181,24 @@ namespace StormDiversSuggestions.Basefiles
 
                 player.wingTimeMax *= (int)3f;
 
-                if (player.velocity.Y == 0)
-                {
-                    //dashstop++;
-                    player.dash = 2;
-                }
-                else
-                {
-                    player.dash = 3;
-                }
-               
                 
+                    player.dash = 3;
+               
+              /* if (player.controlUp) Maybe add to new item in 1.7
+                {
+                    player.jumpSpeedBoost += 3;
+                    if (player.velocity.Y < 1)
+                    {
+
+
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6);
+                        dust.scale = 1.5f;
+                        dust.noGravity = true;
+
+
+                    }
+                }*/
+               
                 //player.moveSpeed *= 0.4f;
             }
             //For the Mechanical Spikes===========================
@@ -235,7 +241,6 @@ namespace StormDiversSuggestions.Basefiles
                         falling = true;
                         stopfall = 0;
                         player.noKnockback = true;
-                        player.turtleThorns = true;
                         Vector2 position = player.position;
                         int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default, 1.5f);
                         Main.dust[dustIndex].noGravity = true;
@@ -265,8 +270,8 @@ namespace StormDiversSuggestions.Basefiles
                             Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
                             Main.dust[dustIndex].noGravity = true;
                         }
-                        Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
-                        Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 5, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -5, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
                         Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
                         falling = false;
 
@@ -299,28 +304,54 @@ namespace StormDiversSuggestions.Basefiles
                 if (player.itemAnimation > 1 && (player.HeldItem.melee || player.HeldItem.ranged || player.HeldItem.magic || player.HeldItem.summon || player.HeldItem.thrown)) //ranged item is in use
                 {
 
-                    if (!shot)
+                    if (!shotflame)
                     {
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(8) == 0)
                         {
-                            
-                            
+                            for (int i = 0; i < 20; i++)
+                            {
+
+                                Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 244);
+
+                                dust.noGravity = true;
+
+                            }
+
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 34);
 
-                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 0f;
-                            int type = mod.ProjectileType("SpookyProj");
-                            int damage = (int)(player.HeldItem.damage * 1.5f);
-                            Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage), 2f, player.whoAmI);
+                            //float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                           // float velocity = 0f;
+                            //int type = mod.ProjectileType("SpookyProj");
+                            //int damage = (int)(player.HeldItem.damage * 1.5f);
+                            //Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage), 2f, player.whoAmI);
+
+                            float numberProjectiles = 2 + Main.rand.Next(2);
+
+                            for (int i = 0; i < numberProjectiles; i++)
+                            {
+                                float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+
+
+                                float speedX = 0f;
+                                float speedY = -2f;
+                                int damage = (int)(player.HeldItem.damage * 1f);
+                                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
+                                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                                perturbedSpeed = perturbedSpeed * scale;
+                                Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpookyProj"), damage, 1f, player.whoAmI);
+
+                                
+                            }
                         }
 
                     }
-                    shot = true;
+                    shotflame = true;
                     
                 }
                 else
                 {
-                    shot = false;
+                    shotflame = false;
                 }
 
             }
@@ -328,6 +359,15 @@ namespace StormDiversSuggestions.Basefiles
             if (lifeBarrier)
             {
                 player.endurance += 0.5f;
+                player.noKnockback = true;
+            }
+            //for Derpling armour
+            if (derpJump)
+            {
+                player.jumpSpeedBoost += 5;
+
+                player.autoJump = true;
+                player.maxFallSpeed *= 1.5f;
                 player.noKnockback = true;
             }
         }

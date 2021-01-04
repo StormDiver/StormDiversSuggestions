@@ -53,17 +53,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback";
 
-
-            //if (!(player.wingTime < player.wingTimeMax))
-           
-            player.jumpSpeedBoost += 5;
-            
-            player.autoJump = true;
-            player.maxFallSpeed *= 1.5f;
-            player.noKnockback = true;
-
-            //player.GetModPlayer<StormPlayer>().bootFall = true;
-            //player.GetModPlayer<StormPlayer>().derpJump = true;
+            player.GetModPlayer<StormPlayer>().derpJump = true;
 
         }
         public override void AddRecipes()
@@ -225,16 +215,9 @@ namespace StormDiversSuggestions.Items.Armour
         {
             player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nIncreases your max number of minions by 2";
 
-
-            //if (!(player.wingTime < player.wingTimeMax))
             player.maxMinions += 2;
-            player.jumpSpeedBoost += 5f;
 
-            player.autoJump = true;
-            player.maxFallSpeed *= 1.5f;
-            player.noKnockback = true;
-            //player.GetModPlayer<StormPlayer>().bootFall = true;
-            //player.GetModPlayer<StormPlayer>().derpJump = true;
+            player.GetModPlayer<StormPlayer>().derpJump = true;
 
 
         }

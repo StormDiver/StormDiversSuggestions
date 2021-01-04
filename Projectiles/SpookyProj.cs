@@ -38,6 +38,11 @@ namespace StormDiversSuggestions.Projectiles
         {
            
             AnimateProjectile();
+            Dust dust;
+            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+            Vector2 position = projectile.position;
+            dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+            dust.noGravity = true;
 
             if (projectile.localAI[0] == 0f)
             {
@@ -45,7 +50,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 500f;
+            float distance = 600f;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {
@@ -67,7 +72,7 @@ namespace StormDiversSuggestions.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (11 * projectile.velocity + move) / 11f;
+                projectile.velocity = (15 * projectile.velocity + move) / 5f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 
@@ -100,11 +105,11 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 10; i++)
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 244);
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 6);
 
                     dust.noGravity = true;
 

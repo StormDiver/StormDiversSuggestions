@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Skull");
-            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 60");
+            Tooltip.SetDefault("Mana usage is almost negated when under the effects of mana sickness\nIncreases maximum mana by 40");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
