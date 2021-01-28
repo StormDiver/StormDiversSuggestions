@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Harpy Staff");
+            DisplayName.SetDefault("Feather Scepter");
             Tooltip.SetDefault("Fires out damaging feathers\nHas a chance to fire out a larger spinning feather");
             Item.staff[item.type] = true;
 
@@ -78,8 +78,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 8);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -178,8 +178,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 8);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -241,8 +241,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Feather, 8);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Water Tome");
+            DisplayName.SetDefault("Tidal Wave");
             Tooltip.SetDefault("Summons an orb of water that splashes on impact");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 1;
             item.useStyle = 5;
-            item.useTime = 32;
-            item.useAnimation = 32;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -59,10 +59,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 15);
-            //recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 3);
-            recipe.AddIngredient(ItemID.Seashell, 3);
+            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Seashell, 2);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -75,7 +74,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ocean Blade");
+            DisplayName.SetDefault("Blade of the sea");
             Tooltip.SetDefault("Fires out a blast of water each swing");
         }
 
@@ -135,10 +134,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 15);
-            //recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 3);
-            recipe.AddIngredient(ItemID.Seashell, 3);
+            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Seashell, 2);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
@@ -151,7 +149,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Coral Gun");
+            DisplayName.SetDefault("Coral Blaster");
             Tooltip.SetDefault("Fires out pieces of coral that are not affected by water\nRequires Coral Shards");
         }
         public override void SetDefaults()
@@ -198,10 +196,9 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 15);
-            //recipe.AddIngredient(ItemID.SharkFin, 1);
-            recipe.AddIngredient(ItemID.Starfish, 3);
-            recipe.AddIngredient(ItemID.Seashell, 3);
+            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Starfish, 2);
+            recipe.AddIngredient(ItemID.Seashell, 2);
 
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);

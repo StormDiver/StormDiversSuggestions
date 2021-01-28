@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Basefiles
 {
     public class ArmourGlowmasks : ModPlayer
     {
-
+       
         public static readonly PlayerLayer StormDiverMaskGlowmask = new PlayerLayer("StormDiversSuggestions", "StormDiverMaskGlowmask", PlayerLayer.Head, delegate (PlayerDrawInfo drawInfo)
         {
             if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)

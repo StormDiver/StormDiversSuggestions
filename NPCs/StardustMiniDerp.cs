@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starling Minion"); // Automatic from .lang files
+            DisplayName.SetDefault("Star Hopper Minion"); // Automatic from .lang files
             Main.npcFrameCount[npc.type] = 2; // make sure to set this for your modnpcs.
         }
         public override void SetDefaults()
@@ -68,7 +68,7 @@ namespace StormDiversSuggestions.NPCs
             if (dustnpc >= 3)
             {
                 //var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
-                int dust = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                int dust = Dust.NewDust(new Vector2(npc.Center.X - 3, npc.Center.Y - 3), 6, 6, 111);
                 Main.dust[dust].velocity *= -2f;
                 Main.dust[dust].noGravity = true;
                 dustnpc = 0;
@@ -76,10 +76,11 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 5, npc.Center.Y - 5), 10, 10, 111);
+                dust.scale = 0.5f;
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
@@ -90,7 +91,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 111);
                 }
             }
         }

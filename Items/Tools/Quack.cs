@@ -31,10 +31,6 @@ namespace StormDiversSuggestions.Items.Tools
             item.noMelee = true; 
         }
 
-        public override void HoldItem(Player player)
-        {
-            //item.holdStyle = 1;
-        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(0, 0);

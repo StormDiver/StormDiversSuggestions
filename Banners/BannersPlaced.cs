@@ -137,7 +137,7 @@ namespace StormDiversSuggestions.Banners
                 TileObjectData.addTile(Type);
                 disableSmartCursor = true;
                 ModTranslation name = CreateMapEntryName();
-                name.SetDefault("Stormling Banner");
+                name.SetDefault("Storm Hopper Banner");
                 AddMapEntry(new Color(0, 255, 127), name);
             }
 
@@ -207,7 +207,7 @@ namespace StormDiversSuggestions.Banners
                 TileObjectData.addTile(Type);
                 disableSmartCursor = true;
                 ModTranslation name = CreateMapEntryName();
-                name.SetDefault("Brainling Banner");
+                name.SetDefault("Brain Hopper Banner");
                 AddMapEntry(new Color(255, 0, 127), name);
             }
 
@@ -242,7 +242,7 @@ namespace StormDiversSuggestions.Banners
                 TileObjectData.addTile(Type);
                 disableSmartCursor = true;
                 ModTranslation name = CreateMapEntryName();
-                name.SetDefault("Starling Banner");
+                name.SetDefault("Star Hopper Banner");
                 AddMapEntry(new Color(0, 127, 255), name);
             }
 
@@ -277,7 +277,7 @@ namespace StormDiversSuggestions.Banners
             TileObjectData.addTile(Type);
             disableSmartCursor = true;
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Blazling Banner");
+            name.SetDefault("Blazing Hopper Banner");
             AddMapEntry(new Color(0, 127, 255), name);
         }
 
@@ -327,6 +327,146 @@ namespace StormDiversSuggestions.Banners
             {
                 Player player = Main.LocalPlayer;
                 player.NPCBannerBuff[mod.NPCType("MoonDerp")] = true;  // give to player the npcbannerBuff. for a specific npc. change NpcName to your npc name
+                player.hasBanner = true;
+            }
+        }
+    }
+    public class SpaceRockHeadBannerPlace : ModTile
+    {
+        public override void SetDefaults()
+        {
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = true;
+            Main.tileLavaDeath[Type] = true;  //This defines if the tile is destroyed by lava
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);//
+            TileObjectData.newTile.Height = 3;  //this is how many parts the sprite is devided (height)
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };  //this is how many pixels are in each devided part(pink square) (height)   so there are 3 parts with 16 x 16
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.StyleWrapLimit = 111;
+            TileObjectData.addTile(Type);
+            disableSmartCursor = true;
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Asteroid Orbiter Banner");
+            AddMapEntry(new Color(0, 255, 180), name);
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("SpaceRockHeadBannerItem"));//this defines what to drop when this tile is destroyed
+        }
+
+        public override void NearbyEffects(int i, int j, bool closer)   //this make so the banner give an effect to nearby players
+        {
+            if (closer)  //so if a player is close to the banner
+            {
+                Player player = Main.LocalPlayer;
+                player.NPCBannerBuff[mod.NPCType("SpaceRockHead")] = true;  // give to player the npcbannerBuff. for a specific npc. change NpcName to your npc name
+                player.hasBanner = true;
+            }
+        }
+    }
+    public class SpaceRockHeadLargeBannerPlace : ModTile
+    {
+        public override void SetDefaults()
+        {
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = true;
+            Main.tileLavaDeath[Type] = true;  //This defines if the tile is destroyed by lava
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);//
+            TileObjectData.newTile.Height = 3;  //this is how many parts the sprite is devided (height)
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };  //this is how many pixels are in each devided part(pink square) (height)   so there are 3 parts with 16 x 16
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.StyleWrapLimit = 111;
+            TileObjectData.addTile(Type);
+            disableSmartCursor = true;
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Asteroid Charger Banner");
+            AddMapEntry(new Color(0, 255, 180), name);
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("SpaceRockHeadLargeBannerItem"));//this defines what to drop when this tile is destroyed
+        }
+
+        public override void NearbyEffects(int i, int j, bool closer)   //this make so the banner give an effect to nearby players
+        {
+            if (closer)  //so if a player is close to the banner
+            {
+                Player player = Main.LocalPlayer;
+                player.NPCBannerBuff[mod.NPCType("SpaceRockHeadLarge")] = true;  // give to player the npcbannerBuff. for a specific npc. change NpcName to your npc name
+                player.hasBanner = true;
+            }
+        }
+    }
+    public class GladiatorMiniBossBannerPlace : ModTile
+    {
+        public override void SetDefaults()
+        {
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = true;
+            Main.tileLavaDeath[Type] = true;  //This defines if the tile is destroyed by lava
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);//
+            TileObjectData.newTile.Height = 3;  //this is how many parts the sprite is devided (height)
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };  //this is how many pixels are in each devided part(pink square) (height)   so there are 3 parts with 16 x 16
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.StyleWrapLimit = 111;
+            TileObjectData.addTile(Type);
+            disableSmartCursor = true;
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Fallen Champion Banner");
+            AddMapEntry(new Color(0, 255, 180), name);
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("GladiatorMiniBossBannerItem"));//this defines what to drop when this tile is destroyed
+        }
+
+        public override void NearbyEffects(int i, int j, bool closer)   //this make so the banner give an effect to nearby players
+        {
+            if (closer)  //so if a player is close to the banner
+            {
+                Player player = Main.LocalPlayer;
+                player.NPCBannerBuff[mod.NPCType("GladiatorMiniBoss")] = true;  // give to player the npcbannerBuff. for a specific npc. change NpcName to your npc name
+                player.hasBanner = true;
+            }
+        }
+    }
+    public class GraniteMiniBossBannerPlace : ModTile
+    {
+        public override void SetDefaults()
+        {
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = true;
+            Main.tileLavaDeath[Type] = true;  //This defines if the tile is destroyed by lava
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);//
+            TileObjectData.newTile.Height = 3;  //this is how many parts the sprite is devided (height)
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };  //this is how many pixels are in each devided part(pink square) (height)   so there are 3 parts with 16 x 16
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.StyleWrapLimit = 111;
+            TileObjectData.addTile(Type);
+            disableSmartCursor = true;
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Surged Granite Core Banner");
+            AddMapEntry(new Color(0, 255, 180), name);
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("GraniteMiniBossBannerItem"));//this defines what to drop when this tile is destroyed
+        }
+
+        public override void NearbyEffects(int i, int j, bool closer)   //this make so the banner give an effect to nearby players
+        {
+            if (closer)  //so if a player is close to the banner
+            {
+                Player player = Main.LocalPlayer;
+                player.NPCBannerBuff[mod.NPCType("GraniteMiniBoss")] = true;  // give to player the npcbannerBuff. for a specific npc. change NpcName to your npc name
                 player.hasBanner = true;
             }
         }

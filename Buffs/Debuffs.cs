@@ -262,7 +262,7 @@ namespace StormDiversSuggestions.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<StormPlayer>().nebula = true;
+            player.GetModPlayer<StormPlayer>().nebulaBurn = true;
 
             if (Main.rand.Next(4) < 3)
             {
@@ -348,6 +348,7 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    //________________________________________________
     public class BloodDebuff : ModBuff
     {
         public override void SetDefaults()

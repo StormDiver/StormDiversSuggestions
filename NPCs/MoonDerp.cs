@@ -67,12 +67,8 @@ namespace StormDiversSuggestions.NPCs
         public override void AI()
         {
             dusttime++;
-            if (dusttime >= 5)
-            {
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 265);
-                dusttime = 0;
-            }
-            shoottime++;
+            
+            
             npc.noTileCollide = true;
 
             Player player = Main.player[npc.target];
@@ -81,10 +77,11 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance <= 900f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if (distance <= 1000f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
+                shoottime++;
                 eyetime++;
-                if (shoottime >= 180)
+                if (shoottime >= 160)
                 {
                     float projectileSpeed = 12f; // The speed of your projectile (in pixels per second).
                     int damage = 40; // The damage your projectile deals.
@@ -100,34 +97,46 @@ namespace StormDiversSuggestions.NPCs
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.
-                                                                                                                                    // If you want to randomize the speed to stagger the projectiles
-                            float scale = 1f - (Main.rand.NextFloat() * .3f);
-                            perturbedSpeed = perturbedSpeed * scale;
-                            Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
+                            if (Main.netMode != 1)
+                            {
+                                Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.
+                                                                                                                                        // If you want to randomize the speed to stagger the projectiles
+                                float scale = 1f - (Main.rand.NextFloat() * .3f);
+                                perturbedSpeed = perturbedSpeed * scale;
+                                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                                
+                            }
                             Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 124);
-
                         }
                         shootspeed = 0;
                     }
-                    if (shoottime >= 200)
+                    if (shoottime >= 180)
                     {
                         shoottime = 0;
                         shootspeed = 0;
                     }
-                    if (halflife3 && eyetime > 300)
+                    if (halflife3 && eyetime > 240 && Main.expertMode)
                     {
-                        Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -4, mod.ProjectileType("MoonDerpEyeProj"), 35, 6f, Main.myPlayer);
+                        if (Main.netMode != 1)
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -4, mod.ProjectileType("MoonDerpEyeProj"), 35, 6f);
+                            
+                        }
                         Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 103);
-
                         eyetime = 0;
                     }
                 }
-               if (npc.life < npc.lifeMax / 2 && halflife3 == false)
+               if (npc.life < npc.lifeMax * 0.4f && halflife3 == false && Main.expertMode)
                 {
                     Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 101);
                     halflife3 = true;
                 }
+            }
+            else
+            {
+                shoottime = 0;
+                shootspeed = 0;
+                eyetime = 0;
             }
         }
 
@@ -138,7 +147,7 @@ namespace StormDiversSuggestions.NPCs
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), npc.height, npc.width, 110);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 10, npc.Center.Y - 10), 20, 20, 265);
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
@@ -150,7 +159,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 89);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 265);
                 }
 
 
@@ -176,32 +185,29 @@ namespace StormDiversSuggestions.NPCs
                 Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart, Main.rand.Next(3, 5));
             }
 
+            int fragdrop;
+            int choice = Main.rand.Next(4);
+            {
+                if (choice == 0)
+                {
+                    fragdrop = ItemID.FragmentVortex;
+                }
+                else if (choice == 1)
+                {
+                    fragdrop = ItemID.FragmentSolar;
+                }
+                else if (choice == 2)
+                {
+                    fragdrop = ItemID.FragmentStardust;
+                }
+                else 
+                {
+                    fragdrop = ItemID.FragmentNebula;
+                }
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, fragdrop, Main.rand.Next(2, 4));
 
-                int choice = Main.rand.Next(4);
-            if (choice == 0)
-            {
-                
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentVortex, Main.rand.Next(2, 4));
-                
             }
-            else if (choice == 1)
-            {
-                
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentSolar, Main.rand.Next(2, 4));
-                
-            }
-            else if (choice == 2)
-            {
-                
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentNebula, Main.rand.Next(2, 4));
-                
-            }
-            else if (choice == 3)
-            {
-                
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.FragmentStardust, Main.rand.Next(2, 4));
-                
-            }
+
         }
     }
 }

@@ -24,76 +24,98 @@ namespace StormDiversSuggestions.Basefiles
 {
     public class StormPlayer : ModPlayer
     {
+        //Bools activated from Armours and accessories
 
-        public bool boulderDB;
+        public bool boulderDB; //The player has the Boulder Debuff
         // player.GetGlobalplayer<Stormplayer>().boulderDB = true; in debuff.cs
         // target.AddBuff(mod.BuffType("BoulderDebuff"), 180)
-        public bool superBoulderDB;
+        public bool superBoulderDB;//The player has the Super Boulder Debuff
 
-        public bool lunarBoulderDB;
-        public bool sandBurn;
+        public bool lunarBoulderDB; //The player has the Lunar Boulder Debuff
 
-        public bool superFrost;
+        public bool sandBurn; //The player has the Aridburn Debuff
+
+        public bool superFrost; //The player has the CryoBurn Debuff
+
+        public bool goldDerpie; //The player has the Golden Derpie Pet
+
+        public bool stormHelmet; //The player has the Storm Diver Pet
+
+        public bool turtled; //The Player has the turtled Buff
+
+        public bool shroombuff; //The Player has the Ranged enhancement potion buff
+
+        public bool flameCore; //The player has Betsy's Flame equipped
+
+        public bool frostSpike; //The PLayer has the Cryo Core equipped
+
+        public bool lunarBarrier; //The player has the Celestial Barrier equipped
+
+        public bool nebulaBurn; //The player has the nebula Blaze Debuff
         
-        public bool goldDerpie;
+        public bool primeSpin; //The player has the Mech Spikes equipped
 
-        public bool stormHelmet;
+        public bool bootFall; //The player has either heavy boots equipped
 
-        public bool turtled;
+        public bool derpJump; //The player has a full set of Derpling armour equipped
 
-        public bool shroombuff;
+        public bool spectreDebuff; //Player has the Spectre Debuff
 
-        public bool flameCore;
+        public bool frostCube; //Player has the Summoners Core equipped
 
-        public bool frostSpike;
+        public bool spooked; //Player has the Spooky Core equipped
 
-        
+        public bool lifeBarrier;  //Player has the life barrier buff from the endurance potion
 
-        public bool lunarBarrier;
+        public bool FrostCryoSet; //Was for when you had a full set of frost armour, now unused
 
-        public bool nebula;
-        
-        public bool primeSpin;
+        public bool BloodDrop; //The player has a full set of hemo Armour
 
-        public bool bootFall;
+        public bool BloodOrb; //Player has taken a Blood potion
 
-        public bool derpJump;
+        public bool SpectreSkull; //Player has the Spectre Skull equipped
 
-        public bool spectreDebuff;
+        public bool desertJar; //Player has the Pharoh's Urn equipped
 
-        public bool frostCube;
+        public bool graniteBuff; //Player has the granite accessory equipped
 
-        public bool spooked;
+        public bool spaceRockOffence; //Player has the Space armour with helmet equipped
 
-        public bool lifeBarrier;
+        public bool spaceRockDefence; //Player has the Space armour with mask equipped
 
-        public bool FrostCryoSet;
 
-        public bool BloodDrop;
+        //Ints and Bools activated from this file
 
-        public bool BloodOrb;
+        public bool shotflame; //Indicates whether the SPooky Core has fired its flames or not
+        public int skulltime = 0; //Time for the mechanical spikes to spawn
+        public bool falling; //Wheter the player is falling at speed
+        public int stopfall; //If the player has stopped falling
+        public int bearcool; //Cooldown for the Teddy Bear
+        public int stomptrail; //Delay of the projectuiles of the trail when falling with the boots
+        public int bloodtime; //Cooldown for the orbs from the Hemo Armour set bonus
+        public int frosttime; //Cooldown of the forst shards from the Cryo Core
+        public int bloodorbspawn; //How often the blood orbs spawn from the potion
+        public int desertdusttime; //Cooldown for the sand balst from the Phar0oh's Urn
+        public int granitebufftime; //Cooldown for the granite Accessory Buff to be reapplied
+        public bool granitesurge; //Makes it so the granite accessory cooldown can start and makes it so the next attack removes the buff
+        public int spaceStrikecooldown; //Cooldown for the Offensive Space Armour set bonus
+        public int spaceBarriercooldown; //Cooldown for the Defensive Space Armour set bonus
 
-        public bool SpectreSkull;
-
-        public bool desertJar;
-       
-        public override void ResetEffects()
+        public override void ResetEffects() //Resets bools if the item is unequipped
         {
             boulderDB = false;
             superBoulderDB = false;
             lunarBoulderDB = false;
             sandBurn = false;
             superFrost = false;
-            
             turtled = false;
             goldDerpie = false;
             stormHelmet = false;
             shroombuff = false;
             flameCore = false;
             frostSpike = false;
-            
             lunarBarrier = false;
-            nebula = false;
+            nebulaBurn = false;
             primeSpin = false;
             bootFall = false;
             derpJump = false;
@@ -106,33 +128,26 @@ namespace StormDiversSuggestions.Basefiles
             BloodOrb = false;
             SpectreSkull = false;
             desertJar = false;
+            graniteBuff = false;
+            spaceRockOffence = false;
+            spaceRockDefence = false;
         }
-        public override void UpdateDead()
+        public override void UpdateDead()//Reset all ints and bools if dead======================
         {
-            //Reset all ints and bools if dead======================
             bearcool = 0;
             bloodtime = 0;
             frosttime = 0;
             falling = false;
             bloodorbspawn = 0;
             desertdusttime = 0;
+            granitebufftime = 0;
+            granitesurge = false;
+            spaceStrikecooldown = 0;
+            spaceBarriercooldown = 0;
         }
+     
        
-
-        public bool shotflame;
-        public int skulltime = 0;
-        public bool falling;
-        public int stopfall;
-        public int falldmg;
-        public int bearcool;
-        public int stomptrail;
-        public int bloodtime;
-        public int frosttime;
-        public int bloodorbspawn;
-        public int desertdusttime;
-
-        public bool hasstomped;
-        public override void PostUpdateEquips()
+        public override void PostUpdateEquips() //Updates every frame
         {
             //Reduces ints if they are above 0======================
             if (bloodtime > 0)
@@ -151,10 +166,37 @@ namespace StormDiversSuggestions.Basefiles
             {
                 desertdusttime--;
             }
-            if (player.statLife < 1)
+            
+            if (spaceBarriercooldown < 480 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
             {
-               
+                spaceBarriercooldown++;
             }
+            if (spaceBarriercooldown == 480)
+            {
+                player.AddBuff(mod.BuffType("SpaceRockDefence"), 1);
+
+            }
+            if (!spaceRockDefence) //Clears buff if player removes armour
+            {
+                player.ClearBuff(mod.BuffType("SpaceRockDefence"));
+                spaceBarriercooldown = 0;
+            }
+            if (spaceStrikecooldown < 300) //Ditto for offence
+            {
+                spaceStrikecooldown++;
+            }
+            if (spaceStrikecooldown == 300)
+            {
+                player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
+
+            }
+            if (!spaceRockOffence)
+            {
+                player.ClearBuff(mod.BuffType("SpaceRockOffence"));
+                spaceStrikecooldown = 0;
+            }
+           
+
             //Spawns the blood ring around the player======================
             if (BloodOrb)
             {
@@ -170,11 +212,7 @@ namespace StormDiversSuggestions.Basefiles
             {
                 bloodorbspawn = 0;
             }
-           
-            if (frostCube)
-            {
-                
-            }
+
             //For Betsy's Flame======================
             if (flameCore)
             {
@@ -315,16 +353,10 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(player.position, player.width, player.height, 244);
 
                                 dust.noGravity = true;
-
+                                
                             }
 
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 34);
-
-                            //float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                           // float velocity = 0f;
-                            //int type = mod.ProjectileType("SpookyProj");
-                            //int damage = (int)(player.HeldItem.damage * 1.5f);
-                            //Projectile.NewProjectile(player.Top, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, (int)(damage), 2f, player.whoAmI);
 
                             float numberProjectiles = 2 + Main.rand.Next(2);
 
@@ -358,7 +390,7 @@ namespace StormDiversSuggestions.Basefiles
             //For the Celestial Barrier ======================
             if (lifeBarrier)
             {
-                player.endurance += 0.5f;
+                player.endurance += 0.33f;
                 player.noKnockback = true;
             }
             //for Derpling armour
@@ -370,23 +402,60 @@ namespace StormDiversSuggestions.Basefiles
                 player.maxFallSpeed *= 1.5f;
                 player.noKnockback = true;
             }
-        }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
-        {
+            //For the granite accessory cooldown
+            if (granitesurge)//This bool is set to true when you take damage and begins the cooldown timer
+            {
+                granitebufftime++;
+            }
+            if (granitebufftime >= 1200) //The cooldown for when the buff can be applied again, 20 seconds
+            {
+            
+                granitesurge = false; // Allows the buff to be applied again
+                granitebufftime = 0;
+            }
+            if (!graniteBuff)//If the player removes the accessory the buff is gone
+            {
+                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+            }
            
         }
-       
-        int attackdmg = 0;
-        public override void OnHitByNPC(NPC npc, int damage, bool crit)
+       //=====================For attacking an enemy with anything===========================================
+        public override void OnHitAnything(float x, float y, Entity victim) 
         {
             
-        }
+            if (granitesurge)//Clear the buff when attacking an enemy
+            {
+                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+            }
 
+            //For the SpaceArmour with the helmet (offence)
+            if (spaceRockOffence && spaceStrikecooldown == 300)
+            {
+                Projectile.NewProjectile(victim.Center.X, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned directly above and goes stright down
+                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned directly above and moves slighly left
+                Projectile.NewProjectile(victim.Center.X + 0, victim.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI);  //Summoned directly above and moves slighly right
+                Projectile.NewProjectile(victim.Center.X - 60, victim.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned to the left and slighlty moves left
+                Projectile.NewProjectile(victim.Center.X + 60, victim.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned to the right and slightly moves right
+                Projectile.NewProjectile(victim.Center.X - 250, victim.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned far to the left and moves right
+                Projectile.NewProjectile(victim.Center.X + 250, victim.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned far to the right and moves left
+                for (int i = 0; i < 30; i++)
+                {
 
+                    float speedX = Main.rand.NextFloat(-5f, 5f);
+                    float speedY = Main.rand.NextFloat(-5f, 5f);
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6, speedX, speedY, 130, default, 1.5f);
+                    dust.noGravity = true;
+                    dust.velocity *= 2;
+                    dust.noGravity = true;
+                    dust.velocity *= 2;
 
-        public override void OnHitAnything(float x, float y, Entity victim)
-        {
+                }
+                Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 45);
+                spaceStrikecooldown = 0;
+
+            }
             //For the Hemogoblin armour setbonus ======================
+
             if (player.HeldItem.melee)
             {
                 if (BloodDrop)
@@ -426,21 +495,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 20);
 
-                    /*float numberProjectiles = 5 + Main.rand.Next(3);
-
-                    for (int i = 0; i < numberProjectiles; i++)
-                    {
-
-
-                        float speedX = 0f;
-                        float speedY = -1f;
-                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
-                        float scale = 1f - (Main.rand.NextFloat() * .5f);
-                        perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), 35, 0f, player.whoAmI);
-
-                        desertdusttime = 300;
-                    }*/
+                    
                     float numberProjectiles = 8 + Main.rand.Next(0);
                     float rotation = MathHelper.ToRadians(180);
                     //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
@@ -456,13 +511,58 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
+           
             base.OnHitAnything(x, y, victim);
         }
-        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
+
+        //=====================For taking damage from any source===========================================
+
+        int attackdmg = 0;//This is for how much damage the player takes
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) //When you take damage for whatever reason
         {
-            
             player.ClearBuff(mod.BuffType("HeartBarrierBuff")); //Removes buff on hit
-            attackdmg = (int)damage;
+            attackdmg = (int)damage; //Int for the damage taken
+
+            //First trigger for the granite accessory buff for 20 seconds
+            if (graniteBuff && !granitesurge)
+            {
+                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 1200);
+                Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
+                for (int i = 0; i < 25; i++)
+                {
+
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 65);
+                    dust.noGravity = true;
+                    dust.scale = 2f;
+                    dust.velocity *= 2;
+                }
+                granitesurge = true; //Prevents the buff from being refreshed
+            }
+            
+            //For Space Armour with Mask (Defence)
+            if (spaceRockDefence && spaceBarriercooldown == 480)
+            {
+                Projectile.NewProjectile(player.Center.X, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned above and goes straight down
+                Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned above and moves slighly right
+                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI);  //Summoned above and moves slightly left
+                Projectile.NewProjectile(player.Center.X - 60, player.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned to the left and moves slightly left
+                Projectile.NewProjectile(player.Center.X + 60, player.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned to the right and moves slightly right
+                Projectile.NewProjectile(player.Center.X - 250, player.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned far to the left and moves quickly right
+                Projectile.NewProjectile(player.Center.X + 250, player.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), 180, 6f, player.whoAmI); //Summoned far to the right and moves quickly left
+                for (int i = 0; i < 30; i++)
+                {
+
+                    float speedX =  Main.rand.NextFloat(-5f, 5f);
+                    float speedY =  Main.rand.NextFloat(-5f, 5f);
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6, speedX, speedY, 130, default, 1.5f);
+                    dust.noGravity = true;
+                    dust.velocity *= 2;
+                }
+                Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 45);
+
+                spaceBarriercooldown = 0;
+            }
+
             //Grant buff for celestial barrier based on incoming damage======================
             if (lunarBarrier)
             {
@@ -524,6 +624,21 @@ namespace StormDiversSuggestions.Basefiles
             }
 
         }
+        //===================================Other hooks======================================
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) //True Melee Only
+        {
+
+        }
+
+        public override void OnHitByNPC(NPC npc, int damage, bool crit) //Hit by melee only
+        {
+
+        }
+        public override void OnHitByProjectile(Projectile proj, int damage, bool crit) //Hit by any projectile
+        {
+
+        }
+
         public override void UpdateLifeRegen()
         {
             //Regeneration, can also be done in buffs.cs
@@ -569,7 +684,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     player.lifeRegen = -16;
                 }
-                if (nebula)
+                if (nebulaBurn)
                 {
                     player.lifeRegen = -30;
                     

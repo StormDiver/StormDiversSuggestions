@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = false;
             projectile.MaxUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 10;
         }
 
         bool lineOfSight;
@@ -102,6 +102,13 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
+        }
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (target.defense <= 1000)
+            {
+                damage = damage + (int)(target.defense * 0.5f);
+            }
         }
         public override void Kill(int timeLeft)
         {

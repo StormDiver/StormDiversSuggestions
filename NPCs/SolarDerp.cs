@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blazling"); // Automatic from .lang files
+            DisplayName.SetDefault("Blazing Hopper"); // Automatic from .lang files
             Main.npcFrameCount[npc.type] = 3; // make sure to set this for your modnpcs.
         }
         public override void SetDefaults()
@@ -43,15 +43,18 @@ namespace StormDiversSuggestions.NPCs
             banner = npc.type;
             bannerItem = mod.ItemType("SolarDerpBannerItem");
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            //npc.damage = (int)(npc.damage * 0.75f);
-        }
+       
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            return SpawnCondition.SolarTower.Chance * 0.2f;
+            if (!GetInstance<Configurations>().PreventPillarEnemies)
+            {
+                return SpawnCondition.SolarTower.Chance * 0.2f;
+            }
+            else
+            {
+                return SpawnCondition.SolarTower.Chance * 0f;
+            }
         }
 
        
@@ -67,7 +70,7 @@ namespace StormDiversSuggestions.NPCs
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = npc.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, npc.width, npc.height, 153, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
+                dust = Main.dust[Terraria.Dust.NewDust(position, npc.width, npc.height, 127, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
             }
 
@@ -101,11 +104,15 @@ namespace StormDiversSuggestions.NPCs
                     firetime++;
                     if (firetime >= 10)
                     {
-                        Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(45)); 
-                                                                                                                
-                        float scale = 1f - (Main.rand.NextFloat() * .3f);
-                        perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                        if (Main.netMode != 1)
+                        {
+                            Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(45));
+
+                            float scale = 1f - (Main.rand.NextFloat() * .3f);
+                            perturbedSpeed = perturbedSpeed * scale;
+
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                        }
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 7);
                         
                         for (int i = 0; i < 10; i++)
@@ -123,14 +130,21 @@ namespace StormDiversSuggestions.NPCs
                     }
                 }
             }
+            else
+            {
+                shoottime = 0;
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int i = 0; i < 3; i++)
+            shoottime = 0;
+
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 244);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 10, npc.Center.Y - 10), 20, 20, 127);
+                dust.scale = 0.5f;
             }
 
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
@@ -143,7 +157,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 244);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 127);
                 }
                 if (NPC.ShieldStrengthTowerSolar > 0)
                 {

@@ -52,9 +52,16 @@ namespace StormDiversSuggestions.NPCs
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-           
-              
-            return SpawnCondition.VortexTower.Chance * 0.15f;
+
+
+            if (!GetInstance<Configurations>().PreventPillarEnemies)
+            {
+                return SpawnCondition.VortexTower.Chance * 0.15f;
+            }
+            else
+            {
+                return SpawnCondition.VortexTower.Chance * 0f;
+            }
         }
         int shoottime = 0;
         //private float rotation;
@@ -72,7 +79,7 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance  <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if (distance  <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
                 if (shoottime >= 120)
                 {
@@ -89,20 +96,27 @@ namespace StormDiversSuggestions.NPCs
                    // Projectile.NewProjectile(npc.Center.X + npc.width / 2, npc.Center.Y + npc.height / 2, velocity.X, velocity.Y, type, damage, knockBack, Main.myPlayer);
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 17);
 
-                    
-                                        //int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
 
-                                        for (int i = 0; i < 1; i++)
-                                        {
-                                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.
-                                                                                                                                                    // If you want to randomize the speed to stagger the projectiles
-                                            float scale = 1f - (Main.rand.NextFloat() * .3f);
-                                            perturbedSpeed = perturbedSpeed * scale;
-                                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
-                                        }
+                    //int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
+
+                    for (int i = 0; i < 1; i++)
+                    {
+                        if (Main.netMode != 1)
+                        {
+                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.
+                                                                                                                                    // If you want to randomize the speed to stagger the projectiles
+                            float scale = 1f - (Main.rand.NextFloat() * .3f);
+                            perturbedSpeed = perturbedSpeed * scale;
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                        }
+                    }
                                        
                     shoottime = 0;
                 }
+            }
+            else
+            {
+                shoottime = 0;
             }
         }
 
@@ -115,10 +129,14 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
+            shoottime = 0;
+
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 110);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 5, npc.Center.Y - 5), 10, 10, 229);
+                dust.scale = 0.5f;
+
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
@@ -128,7 +146,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 110);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 229);
                 }
                 //NPC.ShieldStrengthTowerVortex = (int)MathHelper.Clamp(NPC.ShieldStrengthTowerVortex - 1, 0f, NPC.ShieldStrengthTowerMax);
                 if (NPC.ShieldStrengthTowerVortex > 0)

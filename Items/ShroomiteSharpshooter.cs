@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds\nRight Click to zoom out");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds, with extra damage at max accuracy\nRight Click to zoom out");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item40;
 
-            item.damage = 65;
+            item.damage = 70;
             item.crit = 16;
             item.knockBack = 2f;
        
@@ -53,75 +53,51 @@ namespace StormDiversSuggestions.Items
             return new Vector2(-8, 0);
         }
 
-        /* public override bool AltFunctionUse(Player player)
-         {
-
-             return true;
-         }
-
-         public override bool CanUseItem(Player player)
-         {
-
-             if (player.altFunctionUse == 2)
-             {
-                 player.scope = true;
-             }
-             else
-             {
-             }
-
-             return true;
-         }*/
-        int accuracy = 20;
-        int resetaccuracy = 15;
+        int accuracy = 20; //The amount of spread
+        int resetaccuracy = 15; //How long to not fire for the accuracy to reset
         public override void HoldItem(Player player)
         {
             player.scope = true;
-            if (resetaccuracy == 0)
+            if (resetaccuracy == 0) //Resets accuracy when not firing
             {
                 accuracy = 20;
+               
             }
             resetaccuracy--;
         }
 
-        
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (accuracy > 0)
+            if (accuracy > 0)//Increases accuracy every shot
             {
                 accuracy -= 1;
+
             }
-            resetaccuracy = 15;
-            /* if (player.altFunctionUse == 2)
-             {
-                 if (type == ProjectileID.ChlorophyteBullet)
-                 {
-                     type = ProjectileID.BulletHighVelocity;
 
-                 }
-                 {
-                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
-                     float scale = 1f - (Main.rand.NextFloat() * .5f);
-                     perturbedSpeed = perturbedSpeed * scale;
-                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 6f, perturbedSpeed.Y * 6f, mod.ProjectileType("Rangedmushroom"), (int) (damage * 1.25f), knockBack * 1.5f, player.whoAmI);
-                     Main.PlaySound(2, (int)position.X, (int)position.Y, 38);
-                 }
+            resetaccuracy = 15; //Prevents the accuracy from reseting while firing
 
-             }
-             else*/
-            
             {
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(accuracy));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    if (accuracy == 0)//When at full accuracy damage and knockback of the projectile is increased by 10%
+                    {
+                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.1f), knockBack * 1.1f, player.whoAmI);
+
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+
+                    }
                     //Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
                 }
             }
 
-                return false;
+            return false;
 
         }
-       
+
 
         public override bool ConsumeAmmo(Player player)
         {
@@ -132,7 +108,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 20);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 14);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -82,8 +82,8 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stormling Banner");
-            Tooltip.SetDefault("Nearby players get a bonus against: Stormling");
+            DisplayName.SetDefault("Storm Hopper Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Storm Hopper");
         }
         public override void SetDefaults()
         {
@@ -132,8 +132,8 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Brainling Banner");
-            Tooltip.SetDefault("Nearby players get a bonus against: Brainling");
+            DisplayName.SetDefault("Brain Hopper Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Brain Hopper");
         }
         public override void SetDefaults()
         {
@@ -157,8 +157,8 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starling Banner");
-            Tooltip.SetDefault("Nearby players get a bonus against: Starling");
+            DisplayName.SetDefault("Star Hopper Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Star Hopper");
         }
         public override void SetDefaults()
         {
@@ -182,8 +182,8 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blazling Banner");
-            Tooltip.SetDefault("Nearby players get a bonus against: Blazling");
+            DisplayName.SetDefault("Blazing Hopper Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Blazing Hopper");
         }
         public override void SetDefaults()
         {
@@ -225,6 +225,105 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.rare = 1;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("MoonDerpBannerPlace");  //This defines what type of tile this item will place	
+            item.placeStyle = 0;
+        }
+    }
+    public class SpaceRockHeadBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Asteroid Orbiter Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Asteroid Orbiter");
+        }
+        public override void SetDefaults()
+        {
+
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("SpaceRockHeadBannerPlace");  //This defines what type of tile this item will place	
+            item.placeStyle = 0;
+        }
+    }
+    public class SpaceRockHeadLargeBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Asteroid Charger Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Asteroid Charger");
+        }
+        public override void SetDefaults()
+        {
+
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("SpaceRockHeadLargeBannerPlace");  //This defines what type of tile this item will place	
+            item.placeStyle = 0;
+        }
+    }
+    public class GladiatorMiniBossBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Fallen Champion Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Fallen Champion");
+        }
+        public override void SetDefaults()
+        {
+
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("GladiatorMiniBossBannerPlace");  //This defines what type of tile this item will place	
+            item.placeStyle = 0;
+        }
+    }
+    public class GraniteMiniBossBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Surged Granite Core Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Surged Granite Core");
+        }
+        public override void SetDefaults()
+        {
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("GraniteMiniBossBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
         }
     }

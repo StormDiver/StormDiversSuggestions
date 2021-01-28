@@ -164,7 +164,7 @@ namespace StormDiversSuggestions.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.moveSpeed += 0.6f;
+            player.moveSpeed += 0.5f;
         }
     }
     //_______________________________________________________________________________
@@ -253,7 +253,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Life Barrier");
-            Description.SetDefault("The next incoming attack will be reduced by 50% and will deal no knockback");
+            Description.SetDefault("The next incoming attack will be reduced by 33% and will deal no knockback");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -309,20 +309,118 @@ namespace StormDiversSuggestions.Buffs
             }
         }
     }
+   
     //_____________________________________________
-    public class SelenianBuff : ModBuff //UNUSED for now
+    public class GraniteBuff : ModBuff 
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Spinning Deflector");
-            Description.SetDefault("This is unused");
+            DisplayName.SetDefault("Granite Barrier");
+            Description.SetDefault("Reduces damage taken by by 12% and immunity to knockback");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-           
+            player.velocity.X *= 0.94f;
+            player.endurance += 0.12f;
+            player.noKnockback = true;
+            if (Main.rand.Next(4) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 65, player.velocity.X, player.velocity.Y, 100, default, 1.5f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+        }
+    }
+    //_____________________________________________
+    public class GraniteAccessBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Granite Surge");
+            Description.SetDefault("Damage of the next attack is doubled");
+        }
 
-            if (Main.rand.Next(4) < 3)
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.allDamage += 1f;
+            if (Main.rand.Next(4) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 70, player.velocity.X, player.velocity.Y, 100, default, 1.5f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y = 1f;
+                Main.playerDrawDust.Add(dust);
+            }
+        }
+    }
+    //_____________________________________________
+    public class GladiatorAccessBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Champion's Gift");
+            Description.SetDefault("Increases critical strike chance by 12%");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            player.meleeCrit += 12;
+            player.rangedCrit += 12;
+            player.magicCrit += 12;
+            player.thrownCrit += 12;
+
+            if (Main.rand.Next(5) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 57, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+        }
+    }
+    //_____________________________________________
+    public class SpaceRockDefence : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Orbital Defence");
+            Description.SetDefault("Damage taken from the next is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing meteors from the sky");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            player.endurance += .22f;
+            player.longInvince = true;
+            if (Main.rand.Next(3) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 6, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+        }
+    }
+    //_____________________________________________
+    public class SpaceRockOffence : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Orbital Strike");
+            Description.SetDefault("Your next attack will cause defense-piercing meteors to fall upon the attacked enemy");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            
+            if (Main.rand.Next(3) == 0)
             {
                 int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 6, player.velocity.X, player.velocity.Y, 100, default, 1f);
                 Main.dust[dust].noGravity = true;

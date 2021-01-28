@@ -44,16 +44,18 @@ namespace StormDiversSuggestions.NPCs
             banner = npc.type;
             bannerItem = mod.ItemType("VortCannonBannerItem");
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            //npc.damage = (int)(npc.damage * 0.75f);
-        }
+      
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            
+            if (!GetInstance<Configurations>().PreventPillarEnemies)
+            {
                 return SpawnCondition.VortexTower.Chance * 0.25f;
-         
+            }
+            else
+            {
+                return SpawnCondition.VortexTower.Chance * 0f;
+            }
+
         }
         int shoottime = 0;
         int firerate = 0;
@@ -98,11 +100,14 @@ namespace StormDiversSuggestions.NPCs
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 15 degree spread.
-                                                                                                                                    // If you want to randomize the speed to stagger the projectiles
-                            float scale = 1f - (Main.rand.NextFloat() * .2f);
-                            perturbedSpeed = perturbedSpeed * scale;
-                            Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
+                            if (Main.netMode != 1)
+                            {
+                                Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 15 degree spread.
+                                                                                                                                        // If you want to randomize the speed to stagger the projectiles
+                                float scale = 1f - (Main.rand.NextFloat() * .2f);
+                                perturbedSpeed = perturbedSpeed * scale;
+                                Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                            }
                             Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 92);
                             firerate = 0;
                         }
@@ -113,16 +118,24 @@ namespace StormDiversSuggestions.NPCs
                     }
                 }
             }
+            else
+            {
+                shoottime = 0;
+                firerate = 0;
+            }
         }
 
       
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            shoottime = 0;
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 265);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 10, npc.Center.Y - 10), 20, 20, 229);
+                dust.scale = 0.5f;
+
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
@@ -135,7 +148,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 265);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 229);
                 }
                 if (NPC.ShieldStrengthTowerVortex > 0)
                 {

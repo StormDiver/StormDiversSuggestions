@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starling"); // Automatic from .lang files
+            DisplayName.SetDefault("Star Hopper"); // Automatic from .lang files
             Main.npcFrameCount[npc.type] = 3; // make sure to set this for your modnpcs.
         }
         public override void SetDefaults()
@@ -41,15 +41,18 @@ namespace StormDiversSuggestions.NPCs
             banner = npc.type;
             bannerItem = mod.ItemType("StardustDerpBannerItem"); 
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            //npc.lifeMax = (int)(npc.lifeMax * 0.75f);
-            //npc.damage = (int)(npc.damage * 0.75f);
-        }
+        
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
+            if (!GetInstance<Configurations>().PreventPillarEnemies)
+            {
+                return SpawnCondition.StardustTower.Chance * 0.3f;
+            }
+            else
+            {
+                return SpawnCondition.StardustTower.Chance * 0f;
 
-            return SpawnCondition.StardustTower.Chance * 0.3f;
+            }
         }
 
       
@@ -73,22 +76,19 @@ namespace StormDiversSuggestions.NPCs
             {
                 if (shoottime >= 180)
                 {
-                    float projectileSpeed = 7f; // The speed of your projectile (in pixels per second).
-                    //int damage = 40; // The damage your projectile deals.
-                   // float knockBack = 3;
-                    int type = mod.NPCType("StardustMiniDerp");
                     
+                    int type = mod.NPCType("StardustMiniDerp");
 
-                    Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) -
-                    new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
+
+                    Main.PlaySound(3, (int)npc.Center.X, (int)npc.Center.Y, 5);
                     if (Main.netMode != 1)
                     {
                         NPC.NewNPC((int)Math.Round(npc.Center.X), (int)Math.Round(npc.Center.Y), type);
-                        Main.PlaySound(3, (int)npc.Center.X, (int)npc.Center.Y, 5);
+                        
                         for (int i = 0; i < 30; i++)
                         {
                             Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                            var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 15, npc.Center.Y - 15), 30, 30, 111);
                         }
                     }
  
@@ -98,14 +98,21 @@ namespace StormDiversSuggestions.NPCs
                     shoottime = 0;
                 }
             }
+            else
+            {
+                shoottime = 0;
+            }
         }
         
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int i = 0; i < 3; i++)
+            shoottime = 0;
+
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 10, npc.Center.Y - 10), 20, 20, 111);
+                dust.scale = 0.5f;
             }
 
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
@@ -119,7 +126,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 111);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 111);
                 }
                 if (NPC.ShieldStrengthTowerStardust > 0)
                 {

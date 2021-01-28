@@ -51,14 +51,11 @@ namespace StormDiversSuggestions.Items.Armour
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             return body.type == ItemType<BloodChainmail>() && legs.type == ItemType<BloodGreaves>();
-
         }
 
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = "Multiple damaging blood orbs explode out of you upon striking an enemy with a melee weapon";
-
-            //player.endurance += 0.1f;
 
             player.GetModPlayer<StormPlayer>().BloodDrop = true;
    
@@ -72,14 +69,7 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-
-           /* recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 12);
-            recipe.AddIngredient(mod.GetItem("BloodDrop"), 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();*/
-
+            
         }
     }
 

@@ -9,83 +9,8 @@ using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Projectiles
 {
-    public class SpectreGlobeProj : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Spectre Sky Orb");
-            Main.projFrames[projectile.type] = 4;
-        }
-        public override void SetDefaults()
-        {
-            projectile.width = 16;
-            projectile.height = 9;
-            projectile.aiStyle = 1;
-            projectile.friendly = true;
-            projectile.penetrate = 2;                  
-            projectile.magic = true;
-            projectile.timeLeft = 200;
-            projectile.CloneDefaults(297);
-            projectile.light = 0.6f;
-            aiType = 297;
-
-        }
-        int timeleft2 = 300;
-        public override void AI()
-        {
-            var player = Main.player[projectile.owner];
-
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 175, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f);
-            projectile.spriteDirection = projectile.direction;
-            AnimateProjectile();
-            if (projectile.position.Y > player.position.Y)
-            {
-                projectile.tileCollide = true;
-            }
-            else
-            {
-                projectile.tileCollide = false;
-
-            }
-            timeleft2--;
-            if (timeleft2 <= 0)
-            {
-                projectile.Kill();
-            }
-        }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            
-           
-        }
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
-            return true;
-        }
-        public override void Kill(int timeLeft)
-        {
-
-
-
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
-           
-            
-        }
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-            {
-                projectile.frame++;
-                projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
-                projectile.frameCounter = 0;
-            }
-        }
-    }
-    //_______________________________________________________________________________________________
-    public class SpectreGunProj : ModProjectile
+   
+    public class SpectreHoseProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {

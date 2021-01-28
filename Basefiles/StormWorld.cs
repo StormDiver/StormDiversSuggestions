@@ -165,10 +165,14 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
                 //For the Granite Rifle in Granite chests
-                int[] ChestGranite = { ItemType<GraniteRifle>() };
-                int ChestGraniteCount = 0;
+                int[] ChestGraniteRanged = { ItemType<GraniteRifle>() };
+                int ChestGraniteRangedCount = 0;
                 int[] ChestGraniteAmmo = { ItemID.MusketBall };
                 int ChestGraniteCountAmmo = 0;
+                int[] ChestGraniteMelee = { ItemType<GraniteSpear>() };
+                int ChestGraniteMeleeCount = 0;
+                int[] ChestGraniteMage = { ItemType<GraniteStaff>() };
+                int ChestGraniteMageCount = 0;
 
                 if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 50 * 36)//Look in Tiles_21 for the tile, start from 0
                 {
@@ -176,17 +180,68 @@ namespace StormDiversSuggestions.Basefiles
                     {
                         if (chest.item[inventoryIndex].type == 0)
                         {
-                            if (WorldGen.genRand.NextBool(2))
-                            {
+                            int choice = Main.rand.Next(3);
 
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGranite));
-                                ChestGraniteCount = (ChestGraniteCount + 1) % ChestGranite.Length;
+                            //if (WorldGen.genRand.NextBool(2))
+                            if (choice == 0)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGraniteRanged));
+                                ChestGraniteRangedCount = (ChestGraniteRangedCount + 1) % ChestGraniteRanged.Length;
                                 inventoryIndex++;
 
                                 chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGraniteAmmo));
-                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(25, 40);
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(35, 60);
                                 ChestGraniteCountAmmo = (ChestGraniteCountAmmo + 1) % ChestGraniteAmmo.Length;
 
+                            }
+                            if (choice == 1)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGraniteMelee));
+                                ChestGraniteMeleeCount = (ChestGraniteMeleeCount + 1) % ChestGraniteMelee.Length;
+                            }
+                            if (choice == 2)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestGraniteMage));
+                                ChestGraniteMageCount = (ChestGraniteMageCount + 1) % ChestGraniteMage.Length;
+                            }
+
+                            break;
+                        }
+                    }
+
+                }
+                //For the Marble weapons
+                int[] ChestMarbleRanged = { ItemType<GladiatorBow>() };
+                int ChestMarbleRangedCount = 0;
+                int[] ChestMarbleMelee = { ItemType<GladiatorSword>() };
+                int ChestMarbleMeleeCount = 0;
+                int[] ChestMarbleMage = { ItemType<GladiatorStaff>() };
+                int ChestMarbleMageCount = 0;
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 51 * 36)//Look in Tiles_21 for the tile, start from 0
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == 0)
+                        {
+                            int choice = Main.rand.Next(3);
+
+                            //if (WorldGen.genRand.NextBool(2))
+                            if (choice == 0)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMarbleRanged));
+                                ChestMarbleRangedCount = (ChestMarbleRangedCount + 1) % ChestMarbleRanged.Length;
+                               
+
+                            }
+                            if (choice == 1)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMarbleMelee));
+                                ChestMarbleMeleeCount = (ChestMarbleMeleeCount + 1) % ChestMarbleMelee.Length;
+                            }
+                            if (choice == 2)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMarbleMage));
+                                ChestMarbleMageCount = (ChestMarbleMageCount + 1) % ChestMarbleMage.Length;
                             }
 
                             break;

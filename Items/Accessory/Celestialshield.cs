@@ -61,8 +61,12 @@ namespace StormDiversSuggestions.Items.Accessory
 
            
         }
-        
+        public override Color? GetAlpha(Color lightColor)
+        {
 
-       
+            return Color.White;
+        }
+
+
     }
 }

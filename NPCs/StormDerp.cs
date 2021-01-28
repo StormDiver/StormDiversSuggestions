@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stormling"); // Automatic from .lang files
+            DisplayName.SetDefault("Storm Hopper"); // Automatic from .lang files
             Main.npcFrameCount[npc.type] = 3; // make sure to set this for your modnpcs.
         }
         public override void SetDefaults()
@@ -49,13 +49,19 @@ namespace StormDiversSuggestions.NPCs
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-
-            return SpawnCondition.VortexTower.Chance * 0.3f;
+            if (!GetInstance<Configurations>().PreventPillarEnemies)
+            {
+                return SpawnCondition.VortexTower.Chance * 0.3f;
+            }
+            else
+            {
+                return SpawnCondition.VortexTower.Chance * 0f;
+            }
         }
 
-       
-        
-       
+
+
+
         int shoottime = 0;
         public override void AI()
         {
@@ -90,24 +96,34 @@ namespace StormDiversSuggestions.NPCs
 
                     for (int i = 0; i < 5; i++)
                     {
-                        Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
-                                                                                                                                // If you want to randomize the speed to stagger the projectiles
-                        float scale = 1f - (Main.rand.NextFloat() * .3f);
-                        perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                        if (Main.netMode != 1)
+                        {
+                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
+                                                                                                                                    // If you want to randomize the speed to stagger the projectiles
+                            float scale = 1f - (Main.rand.NextFloat() * .3f);
+                            perturbedSpeed = perturbedSpeed * scale;
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                        }
                     }
 
                     shoottime = 0;
                 }
             }
+            else
+            {
+                shoottime = 0;
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int i = 0; i < 3; i++)
+            shoottime = 0;
+
+            for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 110);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 10, npc.Center.Y - 10), 20, 20, 229);
+                dust.scale = 0.5f;
             }
 
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
@@ -120,7 +136,7 @@ namespace StormDiversSuggestions.NPCs
                 for (int i = 0; i < 10; i++)
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));
-                    var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 110);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 229);
                 }
                 if (NPC.ShieldStrengthTowerVortex > 0)
                 {

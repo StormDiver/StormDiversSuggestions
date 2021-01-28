@@ -23,9 +23,6 @@ namespace StormDiversSuggestions.Basefiles
     public class StormNPC : GlobalNPC
     {
 
-       
-    
-
         public override bool InstancePerEntity => true;
 
         public bool lunarBoulderDB;
@@ -71,7 +68,6 @@ namespace StormDiversSuggestions.Basefiles
 
         {
 
-           
 
             if (beetled && !npc.boss)
             {
@@ -91,6 +87,11 @@ namespace StormDiversSuggestions.Basefiles
                     npc.AddBuff(mod.BuffType("BloodDebuff"), 1);
                 }
             }
+            //COVER YOURSELF IN OIL
+            /*if (npc.HasBuff(BuffID.Oiled) && Main.raining && !npc.boss)
+            {
+                npc.velocity.Y = -10;
+            }*/
 
         }
         public override void SetDefaults(NPC npc)

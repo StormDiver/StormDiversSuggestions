@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endurance Healing Potion");
-            Tooltip.SetDefault("Reduces the damage of the next incoming attack by 50%");
+            Tooltip.SetDefault("Reduces the damage of the next incoming attack by 33%");
         }
         public override void SetDefaults()
         {

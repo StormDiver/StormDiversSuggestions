@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SpectreBar, 14);
+            recipe.AddIngredient(ItemID.SpectreBar, 20);
             recipe.AddIngredient(ItemID.SuperManaPotion, 30);
             recipe.AddIngredient(ItemID.SoulofFright, 10);
             recipe.AddTile(TileID.TinkerersWorkbench);

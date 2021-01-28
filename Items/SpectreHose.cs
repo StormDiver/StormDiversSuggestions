@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items
           
             item.knockBack = 3f;
 
-            item.shoot = mod.ProjectileType("SpectreGunProj");
+            item.shoot = mod.ProjectileType("SpectreHoseProj");
 
             item.shootSpeed = 6f;
             
@@ -61,7 +61,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SpectreBar, 20);
+            recipe.AddIngredient(ItemID.SpectreBar, 14);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

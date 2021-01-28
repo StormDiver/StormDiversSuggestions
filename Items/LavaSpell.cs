@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Lava Tome");
+            DisplayName.SetDefault("Magma Blast");
             Tooltip.SetDefault("Summons an orb of lava that splashes on impact");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }

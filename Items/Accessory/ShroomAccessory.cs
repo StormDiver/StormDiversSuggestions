@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 14);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 20);
             recipe.AddIngredient(ItemID.RocketI, 250);
             recipe.AddIngredient(ItemID.SoulofSight, 10);
             recipe.AddTile(TileID.TinkerersWorkbench);

@@ -81,6 +81,69 @@ namespace StormDiversSuggestions.Items.Materials
         }
     }
     //____________________________________________________________________________________
+    public class GraniteCore : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Granite Power Cell");
+
+            Tooltip.SetDefault("Seems to be pulsing with energy");
+
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 14;
+            item.height = 20;
+            item.maxStack = 999;
+            ItemID.Sets.ItemIconPulse[item.type] = true;
+
+            item.value = Item.sellPrice(0, 0, 5, 0);
+            item.rare = 1;
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+        public override void AddRecipes()
+        {
+
+        }
+
+
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override void NPCLoot(NPC npc)
+            {
+
+                if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)
+                {
+
+                    if (Main.expertMode)
+                    {
+
+                        if (Main.rand.Next(4) == 0)
+
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
+                        }
+                    }
+
+                    else
+                    {
+                        if (Main.rand.Next(5) == 0)
+
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+    //____________________________________________________________________________________
     public class RedSilk : ModItem
     {
         public override void SetStaticDefaults()
@@ -88,7 +151,7 @@ namespace StormDiversSuggestions.Items.Materials
             DisplayName.SetDefault("Warrior Cloth");
             
            
-                Tooltip.SetDefault("Used to create the armour of a fallen Gladiator");
+                Tooltip.SetDefault("Used to create items of a fallen Gladiator");
             
         }
 
@@ -105,7 +168,7 @@ namespace StormDiversSuggestions.Items.Materials
         public override void AddRecipes()
         {
             
-            //VanillaRecipes
+            //NewRecipes
 
         }
 
@@ -114,24 +177,26 @@ namespace StormDiversSuggestions.Items.Materials
         {
             public override void NPCLoot(NPC npc)
             {
-               
 
-                {
-                    if (npc.type == NPCID.GreekSkeleton)
-                        if (Main.expertMode)
+
+
+                if (npc.type == NPCID.GreekSkeleton)
+                    if (Main.expertMode)
+                    {
+                        if (Main.rand.Next(4) == 0)
+
                         {
-                            
-
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"), Main.rand.Next(1, 3));
-                            
-                        }
-                        else
-                        {
-
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
-
                         }
-                }
+                    }
+                    else
+                    {
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
+                        }
+                    }
+
             }
         }
     }
@@ -346,4 +411,46 @@ namespace StormDiversSuggestions.Items.Materials
         }
     }
     //____________________________________________________________________________________
+   
+    //_____________________________________
+    public class SpaceRock : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Extraterrestrial Rock");
+
+            Tooltip.SetDefault("Seems to be infused with some strange energy");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 999;
+            item.value = Item.sellPrice(0, 0, 10, 0);
+            item.rare = 8;
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            ItemID.Sets.ItemIconPulse[item.type] = true;
+        }
+
+        public override void AddRecipes()
+        {
+            
+
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            return Color.White;
+
+        }
+       
+    }
+   
 }
