@@ -417,7 +417,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Extraterrestrial Rock");
+            DisplayName.SetDefault("Extra-Terrestrial Rock");
 
             Tooltip.SetDefault("Seems to be infused with some strange energy");
 

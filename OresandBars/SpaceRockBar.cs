@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.OresandBars
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Enhanced Space Bar");
+            DisplayName.SetDefault("Extra-Terrestrial Bar");
             Tooltip.SetDefault("Radiating with energy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 79;
         }

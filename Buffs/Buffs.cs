@@ -316,7 +316,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Granite Barrier");
-            Description.SetDefault("Reduces damage taken by by 12% and immunity to knockback");
+            Description.SetDefault("Reduces damage taken by by 12% and grants immunity to knockback");
         }
 
         public override void Update(Player player, ref int buffIndex)

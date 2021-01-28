@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
             item.useStyle = 5;
-            item.useTime = 8;
-            item.useAnimation = 24;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("ChloroStaffProj");
             
-            item.shootSpeed = 10f;
+            item.shootSpeed = 9f;
             
     
 

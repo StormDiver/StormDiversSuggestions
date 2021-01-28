@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extraterrestrial Helmet");
+            DisplayName.SetDefault("Extra-Terrestrial Helmet");
             Tooltip.SetDefault("12% increased damage and critical strike chance");
         }
   
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extraterrestrial Mask");
+            DisplayName.SetDefault("Extra-Terrestrial Mask");
             Tooltip.SetDefault("6% increased damage and critical strike chance\nIncreases max life by 25 and grants immunity to knockback");
         }
 
@@ -158,7 +158,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extraterrestrial Chestplate");
+            DisplayName.SetDefault("Extra-Terrestrial Chestplate");
             Tooltip.SetDefault("7% increased damage and critical strike chance");
         }
 
@@ -200,7 +200,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extraterrestrial Leggings");
+            DisplayName.SetDefault("Extra-Terrestrial Leggings");
             Tooltip.SetDefault("7% increase damage and critical strike chance\n100% increased movement speed");
         }
 
