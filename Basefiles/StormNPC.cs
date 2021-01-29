@@ -75,15 +75,16 @@ namespace StormDiversSuggestions.Basefiles
                 npc.velocity.Y *= 0.9f;
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly && npc.lifeMax > 5)
+            if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly && npc.lifeMax > 5) //If the player has taken a blood potion and the NPC is within a certian radius of the player
             {
                 var player = Main.LocalPlayer;
                 float distanceX = player.Center.X - npc.Center.X;
                 float distanceY = player.Center.Y - npc.Center.Y;
                 float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
                 bool lineOfSight = Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height);
-                if (distance < 110 && lineOfSight)
+                if (distance < 140 && lineOfSight)
                 {
+                   
                     npc.AddBuff(mod.BuffType("BloodDebuff"), 1);
                 }
             }
@@ -351,7 +352,9 @@ namespace StormDiversSuggestions.Basefiles
                 }*/
                 {
                     Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                    var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 5);
+                    var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 95);
+                    dust.noGravity = true;
+                    
                 }
             }
         }
@@ -360,16 +363,16 @@ namespace StormDiversSuggestions.Basefiles
 
 
         }
-        bool heartSteal = false;
+        bool heartSteal = false; //If the npc has been hit when below 30% life
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))
             {
-                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5)
+                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5) //Rolls to see the outcome when firts hit under 30% life
                 {
                     
                     { 
-                        if (Main.rand.Next(8) == 0 )
+                        if (Main.rand.Next(8) == 0 ) //1 in 8 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -380,9 +383,9 @@ namespace StormDiversSuggestions.Basefiles
                                 //dust.noGravity = true;
                             }
                             npc.AddBuff(mod.BuffType("HeartDebuff"), 3600);
-                            heartSteal = true;
+                            heartSteal = true; //Prevents any more hearts from being dropped
                         }
-                        else
+                        else //Otherwise it just prevents the roll from happening again
                         {
                             heartSteal = true;
                         }
@@ -390,7 +393,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
         }
-       
+       //Ditto, but from player projectiles
         public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
         {
             if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))

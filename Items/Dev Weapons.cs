@@ -12,8 +12,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Weapon tester");
-            Tooltip.SetDefault("Honestly I haven't really used this in ages");
+            DisplayName.SetDefault("U shudn't have dis");
+            Tooltip.SetDefault("Y do U have dis?");
             Item.staff[item.type] = true;
         }
         public override void SetDefaults()
@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.width = 14;
             item.height = 14;
             item.maxStack = 1;
-            item.value = Item.sellPrice(127, 00, 00, 0);
-            item.rare = 5;
+            item.value = Item.sellPrice(0, 0, 0, 0);
+            item.rare = -1;
             item.useStyle = 5;
             item.useTime = 1;
             item.useAnimation = 1;

@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Wings");
+            DisplayName.SetDefault("Asteroid Wings");
             Tooltip.SetDefault("Allows flight and slow fall\nProvides a fast acceleration");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
  

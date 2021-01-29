@@ -291,22 +291,15 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Blood Drainer");
-            Description.SetDefault("Enemies within the orbs of blood have their lives drained");
+            DisplayName.SetDefault("Life Decayer");
+            Description.SetDefault("The life is being decayed from nearby enemies");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             player.GetModPlayer<StormPlayer>().BloodOrb = true;
 
-            if (Main.rand.Next(4) < 3)
-            {
-                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 5, player.velocity.X, player.velocity.Y, 100, default, 1f);
-                Main.dust[dust].noGravity = true;
-                Main.dust[dust].velocity *= 1f;
-                Main.dust[dust].velocity.Y -= 0.5f;
-                Main.playerDrawDust.Add(dust);
-            }
+         
         }
     }
    
@@ -316,13 +309,13 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Granite Barrier");
-            Description.SetDefault("Reduces damage taken by by 12% and grants immunity to knockback");
+            Description.SetDefault("Reduces damage taken by by 15% and grants immunity to knockback");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             player.velocity.X *= 0.94f;
-            player.endurance += 0.12f;
+            player.endurance += 0.15f;
             player.noKnockback = true;
             if (Main.rand.Next(4) == 0)
             {
@@ -389,7 +382,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Defence");
-            Description.SetDefault("Damage taken from the next is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing meteors from the sky");
+            Description.SetDefault("Damage taken from the next is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -413,7 +406,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Strike");
-            Description.SetDefault("Your next attack will cause defense-piercing meteors to fall upon the attacked enemy");
+            Description.SetDefault("Your next attack will cause defense-piercing space boulders to fall upon the attacked enemy");
         }
 
         public override void Update(Player player, ref int buffIndex)

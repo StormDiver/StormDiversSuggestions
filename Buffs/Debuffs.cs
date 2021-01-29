@@ -353,8 +353,8 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Blood Drain");
-            Description.SetDefault("Blood is being stolen from you");
+            DisplayName.SetDefault("Decayed");
+            Description.SetDefault("Your life is slowing decaying away");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
         }

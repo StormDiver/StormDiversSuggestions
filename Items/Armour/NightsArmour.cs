@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Helmet");
-            Tooltip.SetDefault("3% increased damage\n3% increased critical strike chance");
+            Tooltip.SetDefault("2% increased damage\n2% increased critical strike chance");
         }
    
         public override void SetDefaults()
@@ -30,11 +30,11 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.03f;
-            player.meleeCrit += 3;
-            player.rangedCrit += 3;
-            player.magicCrit += 3;
-            player.thrownCrit += 3;
+            player.allDamage += 0.02f;
+            player.meleeCrit += 2;
+            player.rangedCrit += 2;
+            player.magicCrit += 2;
+            player.thrownCrit += 2;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Breastplate");
-            Tooltip.SetDefault("4% increased damage\n4% increased critical strike chance");
+            Tooltip.SetDefault("4% increased damage\n2% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -99,10 +99,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.04f;
-            player.meleeCrit += 4;
-            player.rangedCrit += 4;
-            player.magicCrit += 4;
-            player.thrownCrit += 4;
+            player.meleeCrit += 2;
+            player.rangedCrit += 2;
+            player.magicCrit += 2;
+            player.thrownCrit += 2;
 
         }
         public override void AddRecipes()
@@ -126,7 +126,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Greaves");
-            Tooltip.SetDefault("3% increased damage\n3% increased critical strike chance\n20% increased movement speed");
+            Tooltip.SetDefault("2% increased damage\n2% increased critical strike chance\n20% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -142,11 +142,11 @@ namespace StormDiversSuggestions.Items.Armour
         {
             
             player.moveSpeed += 0.2f;
-            player.allDamage += 0.03f;
-            player.meleeCrit += 3;
-            player.rangedCrit += 3;
-            player.magicCrit += 3;
-            player.thrownCrit += 3;
+            player.allDamage += 0.02f;
+            player.meleeCrit += 2;
+            player.rangedCrit += 2;
+            player.magicCrit += 2;
+            player.thrownCrit += 2;
         }
         public override void AddRecipes()
         {

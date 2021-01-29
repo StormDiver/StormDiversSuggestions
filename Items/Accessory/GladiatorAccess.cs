@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Champion's Trophy");
+            DisplayName.SetDefault("Warrior's Trophy");
             Tooltip.SetDefault("While above 70% HP your critical strike chance is increased by 12%");
         }
 

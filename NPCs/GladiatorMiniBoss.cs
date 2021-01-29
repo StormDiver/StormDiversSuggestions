@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fallen Champion"); // Automatic from .lang files
+            DisplayName.SetDefault("Fallen Warrior"); // Automatic from .lang files
                                                  // make sure to set this for your modnpcs.
             
         }

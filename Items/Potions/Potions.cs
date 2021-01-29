@@ -12,8 +12,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blood Potion");
-            Tooltip.SetDefault("Summons a ring of bloody orbs around you that drains the life of enemies");
+            DisplayName.SetDefault("Life Decay Potion");
+            Tooltip.SetDefault("Decays the life of nearby enemies");
         }
 
         public override void SetDefaults()

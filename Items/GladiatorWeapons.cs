@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gladiator's Sword");
-            Tooltip.SetDefault("Very Lightweight");
+            Tooltip.SetDefault("Lightweight");
         }
 
         public override void SetDefaults()
@@ -25,24 +25,21 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 1;
-            item.scale = 1.2f;
+            item.scale = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.useTurn = true;
             item.knockBack = 4;
-          
+         
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-
-
-          
 
 
             return false;

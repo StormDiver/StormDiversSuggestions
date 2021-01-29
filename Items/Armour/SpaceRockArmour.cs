@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extra-Terrestrial Helmet");
+            DisplayName.SetDefault("Asteroid Helmet");
             Tooltip.SetDefault("12% increased damage and critical strike chance");
         }
   
@@ -61,7 +61,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Rain down meteors upon attacked foes";
+            player.setBonus = "Rain down space boulders upon attacked foes";
             //player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
             player.GetModPlayer<StormPlayer>().spaceRockOffence = true;
            
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extra-Terrestrial Mask");
+            DisplayName.SetDefault("Asteroid Mask");
             Tooltip.SetDefault("6% increased damage and critical strike chance\nIncreases max life by 25 and grants immunity to knockback");
         }
 
@@ -131,7 +131,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Oribtal Barrier buff that reduces damage of the next attack by 22%\nSummons meteors from the sky when damaged";
+            player.setBonus = "Grants the Oribtal Barrier buff that reduces damage of the next attack by 22%\nSummons space boulders from the sky when damaged";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 
@@ -158,7 +158,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extra-Terrestrial Chestplate");
+            DisplayName.SetDefault("Asteroid Chestplate");
             Tooltip.SetDefault("7% increased damage and critical strike chance");
         }
 
@@ -200,7 +200,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Extra-Terrestrial Leggings");
+            DisplayName.SetDefault("Asteroid Leggings");
             Tooltip.SetDefault("7% increase damage and critical strike chance\n100% increased movement speed");
         }
 

@@ -217,7 +217,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Boulder");
+            DisplayName.SetDefault("Homing Space Boulder");
         }
         public override void SetDefaults()
         {
@@ -289,7 +289,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 200;
+            float distance = 150;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {

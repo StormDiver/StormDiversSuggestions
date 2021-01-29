@@ -32,7 +32,7 @@ namespace StormDiversSuggestions
         public bool PreventOreSpawn { get; set; }
 
         [Label("Prevent modded pillar enemies from spawning")]
-        [Tooltip("This will prevent the pillar enemies in this mod from spawning, enabel this if you don't want the pillars to be any more difficult than vanilla")]
+        [Tooltip("This will prevent the new pillar enemies in this mod from spawning")]
         //[ReloadRequired] //No reload required as it just changes the spawn chance and doesn't disable the enemy itself
         public bool PreventPillarEnemies { get; set; }
     }

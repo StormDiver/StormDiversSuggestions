@@ -14,8 +14,8 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Meteorite Minion");
-            Description.SetDefault("Sentient Meteors will fight for you");
+            DisplayName.SetDefault("Asteroid Minion");
+            Description.SetDefault("Mini Asteroid will fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
@@ -37,8 +37,8 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Meteoroid Staff");
-            Tooltip.SetDefault("Summons sentient Meteors to fight for you");
+            DisplayName.SetDefault("Asteroid Staff");
+            Tooltip.SetDefault("Summons Mini Asteroids to fight for you");
             ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
             ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 
@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Rock Minion");
+            DisplayName.SetDefault("Asteroid Minion");
             // Sets the amount of frames this minion has on its spritesheet
             Main.projFrames[projectile.type] = 4;
             // This is necessary for right-click targeting
@@ -227,7 +227,7 @@ namespace StormDiversSuggestions.Items.Minions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Minion Fragment");
+            DisplayName.SetDefault("Asteroid Minion Fragment");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }

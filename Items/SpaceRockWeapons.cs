@@ -14,8 +14,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Meteorite Globe");
-            Tooltip.SetDefault("Summons a meteorite at the cursor's location that explodes into fragments");
+            DisplayName.SetDefault("Asteroid Globe");
+            Tooltip.SetDefault("Summons a floating boulder at the cursor's location that explodes into fragments");
             
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
@@ -83,8 +83,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Comet Blade");
-            Tooltip.SetDefault("Rains down meteor fragments from the sky");
+            DisplayName.SetDefault("Asteroid Blade");
+            Tooltip.SetDefault("Rains down rock fragments from the sky");
         }
 
         public override void SetDefaults()

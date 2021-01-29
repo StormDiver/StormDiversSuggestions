@@ -94,7 +94,6 @@ namespace StormDiversSuggestions.Basefiles
         public int stomptrail; //Delay of the projectuiles of the trail when falling with the boots
         public int bloodtime; //Cooldown for the orbs from the Hemo Armour set bonus
         public int frosttime; //Cooldown of the forst shards from the Cryo Core
-        public int bloodorbspawn; //How often the blood orbs spawn from the potion
         public int desertdusttime; //Cooldown for the sand balst from the Phar0oh's Urn
         public int granitebufftime; //Cooldown for the granite Accessory Buff to be reapplied
         public bool granitesurge; //Makes it so the granite accessory cooldown can start and makes it so the next attack removes the buff
@@ -138,7 +137,6 @@ namespace StormDiversSuggestions.Basefiles
             bloodtime = 0;
             frosttime = 0;
             falling = false;
-            bloodorbspawn = 0;
             desertdusttime = 0;
             granitebufftime = 0;
             granitesurge = false;
@@ -197,21 +195,6 @@ namespace StormDiversSuggestions.Basefiles
             }
            
 
-            //Spawns the blood ring around the player======================
-            if (BloodOrb)
-            {
-                bloodorbspawn++;
-                if (bloodorbspawn > 10)
-                {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("BloodOrbitProj"), 0, 0, player.whoAmI);
-
-                    bloodorbspawn = 0;
-                }
-            } 
-            if (!BloodOrb)
-            {
-                bloodorbspawn = 0;
-            }
 
             //For Betsy's Flame======================
             if (flameCore)
@@ -222,22 +205,7 @@ namespace StormDiversSuggestions.Basefiles
                 
                     player.dash = 3;
                
-              /* if (player.controlUp) Maybe add to new item in 1.7
-                {
-                    player.jumpSpeedBoost += 3;
-                    if (player.velocity.Y < 1)
-                    {
-
-
-                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6);
-                        dust.scale = 1.5f;
-                        dust.noGravity = true;
-
-
-                    }
-                }*/
-               
-                //player.moveSpeed *= 0.4f;
+             
             }
             //For the Mechanical Spikes===========================
             if (primeSpin)
@@ -402,17 +370,17 @@ namespace StormDiversSuggestions.Basefiles
                 player.maxFallSpeed *= 1.5f;
                 player.noKnockback = true;
             }
-            //For the granite accessory cooldown
-            if (granitesurge)//This bool is set to true when you take damage and begins the cooldown timer
+            //OLD granite accessory cooldown
+            /*if (granitesurge)//This bool is set to true when you take damage and begins the cooldown timer
             {
                 granitebufftime++;
             }
-            if (granitebufftime >= 1200) //The cooldown for when the buff can be applied again, 20 seconds
+            if (granitebufftime >= 300) //The cooldown for when the buff can be applied again, 5 seconds
             {
             
                 granitesurge = false; // Allows the buff to be applied again
                 granitebufftime = 0;
-            }
+            }*/
             if (!graniteBuff)//If the player removes the accessory the buff is gone
             {
                 player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
@@ -422,8 +390,8 @@ namespace StormDiversSuggestions.Basefiles
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
         {
-            
-            if (granitesurge)//Clear the buff when attacking an enemy
+
+            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")))//Clear the buff when attacking an enemy
             {
                 player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
             }
@@ -523,10 +491,10 @@ namespace StormDiversSuggestions.Basefiles
             player.ClearBuff(mod.BuffType("HeartBarrierBuff")); //Removes buff on hit
             attackdmg = (int)damage; //Int for the damage taken
 
-            //First trigger for the granite accessory buff for 20 seconds
-            if (graniteBuff && !granitesurge)
+            //triggers the grnaite accessory buff for 5 seconds, and it cannot be refreshed until the buff has ran out and takes at least 5 damage
+            if (graniteBuff && !player.HasBuff(mod.BuffType("GraniteAccessBuff")) && damage > 5)
             {
-                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 1200);
+                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 300);
                 Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
                 for (int i = 0; i < 25; i++)
                 {
@@ -536,7 +504,7 @@ namespace StormDiversSuggestions.Basefiles
                     dust.scale = 2f;
                     dust.velocity *= 2;
                 }
-                granitesurge = true; //Prevents the buff from being refreshed
+                
             }
             
             //For Space Armour with Mask (Defence)
@@ -658,7 +626,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                    
                     player.lifeRegen = -10;
-                    
+                   
                 }
                 if (superBoulderDB)
                 {

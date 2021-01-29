@@ -1,4 +1,4 @@
-displayName = Storm Diver's Additions Mod
+displayName = [c/22DD97:Storm Diver's Additions Mod]
 author = Storm Diver
-version = 1.7
+version = 1.7.0.1
 homepage = https://forums.terraria.org/index.php?threads/storm-divers-additions-and-changes.88234/
