@@ -370,9 +370,9 @@ namespace StormDiversSuggestions.Basefiles
             {
                 if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5) //Rolls to see the outcome when firts hit under 30% life
                 {
-                    
-                    { 
-                        if (Main.rand.Next(8) == 0 ) //1 in 8 chance to have the debuff applied and drop a heart
+
+                    {
+                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
                             Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
@@ -389,7 +389,7 @@ namespace StormDiversSuggestions.Basefiles
                         {
                             heartSteal = true;
                         }
-                }
+                    }
                 }
             }
         }

@@ -36,7 +36,6 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 12;
             player.thrownCrit += 12;
           
-
         }
 
         public override void ArmorSetShadows(Player player)
@@ -76,7 +75,7 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddRecipe();
 
         }
-
+   
     }
     //__________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Head)]

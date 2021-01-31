@@ -24,7 +24,3 @@ This mod includes:
 -14 new enemies
 -A way to remove the shields from the pillars prematurely 
 -And more 
-
-
-
-

@@ -171,7 +171,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.OceanShard>();
             item.UseSound = SoundID.Item85;
 
-            item.damage = 9;
+            item.damage = 10;
             //item.crit = 0;
             item.knockBack = 1f;
 

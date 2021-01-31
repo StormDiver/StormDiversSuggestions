@@ -46,7 +46,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.wingTimeMax = 150;
-
+        
             /*if (player.controlDown && player.controlJump && player.wingTime > 0)
             { 
                 if (Main.rand.Next(4) == 0)     //this defines how many dust to spawn

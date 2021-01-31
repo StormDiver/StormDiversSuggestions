@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jar of Hearts");
-            Tooltip.SetDefault("While below 75% life, enemies below 30% life have a chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
+            Tooltip.SetDefault("When not at max health, enemies below 30% life have a one time chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.statLife <= (player.statLifeMax2 * 0.75f))
+            if (player.statLife < (player.statLifeMax2))
             {
                 
                 player.AddBuff(mod.BuffType("JarBuff"), 1);

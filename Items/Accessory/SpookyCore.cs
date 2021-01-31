@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         //CREATE NEW FROST MOON ACCESSORY THAT DOES THIS, AND TURN THIS INTO A GENERIC MULTICLASS THINGY
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spooky Core");
+            DisplayName.SetDefault("Spooky Emblem");
             Tooltip.SetDefault("Creates Spooky flames that home in on enemies when using any weapon");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;

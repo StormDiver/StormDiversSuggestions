@@ -42,41 +42,11 @@ namespace StormDiversSuggestions.Items.Tools
             float shootToY = Main.MouseWorld.Y - player.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
 
-            
-            if (distance >= 750)
+            pitch = distance / 500 - 0.6f; //Lowest possible pitch is -0.6f;
+            if (pitch > 0.8f) //Caps the pitch at 0.8f;
             {
                 pitch = 0.8f;
             }
-            else if (distance < 750 && distance >= 625)
-            {
-                pitch = 0.6f;
-            }
-            else if (distance < 625 && distance >= 500)
-            {
-                pitch = 0.4f;
-            }
-            else if (distance < 500 && distance >= 375)
-            {
-                pitch = 0.2f;
-            }
-            else if (distance < 375 && distance >= 250)
-            {
-                pitch = 0f;
-            }
-            else if (distance < 250 && distance >= 125)
-            {
-                pitch = -0.2f;
-            }
-            else if (distance < 125 && distance >= 25)
-            {
-                pitch = -0.4f;
-            }
-            else
-            {
-                pitch = -0.6f;
-            }
-
-
             Main.PlaySound(29, (int)player.Center.X, (int)player.Center.Y, 12, 1, pitch);
 
             return true;

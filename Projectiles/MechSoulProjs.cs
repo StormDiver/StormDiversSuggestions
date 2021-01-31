@@ -735,36 +735,27 @@ namespace StormDiversSuggestions.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
-            //reflect = true;
-            /*if (reflect <= 0)
+            if (!reflect) //Projectile will be destroyed if it hits a wall before an enemy, but once it hits an enemy it can bounce off walls
             {
-                projectile.Kill();
-
-            }*/
-            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
-
-
-            {
-                Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-
-                if (projectile.velocity.X != oldVelocity.X)
-                {
-                    projectile.velocity.X = -oldVelocity.X * 1;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y * 1f;
-                }
-
-
+                return true;
             }
-            for (int i = 0; i < 10; i++)
+            else
             {
+                {
+                    Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 5);
+                    if (projectile.velocity.X != oldVelocity.X)
+                    {
+                        projectile.velocity.X = -oldVelocity.X * 1;
+                    }
+                    if (projectile.velocity.Y != oldVelocity.Y)
+                    {
+                        projectile.velocity.Y = -oldVelocity.Y * 1f;
+                    }
+
+                }
+                return false;
             }
-            return false;
         }
         public override void AI()
         {
@@ -825,7 +816,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            reflect = true;
+            reflect = true; //Once this projectile has hit an enemy it will home in and bounce off walls
             if (Main.rand.Next(2) == 0) // the chance
             { 
                 target.AddBuff(BuffID.OnFire, 240);
@@ -844,20 +835,24 @@ namespace StormDiversSuggestions.Projectiles
 
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
                 Main.PlaySound(SoundID.Item10, projectile.position);
-                for (int i = 0; i < 10; i++)
+
+                for (int i = 0; i < 20; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 5);
+                    dust.velocity *= 2;
                 }
             }
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/SkullSeek_Glow");
+            if (reflect)
+            {
+                Texture2D texture = mod.GetTexture("Projectiles/SkullSeek_Glow");
 
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
+                spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+            }
+            else return;
 
         }
     }
