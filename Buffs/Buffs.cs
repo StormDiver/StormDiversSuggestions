@@ -95,7 +95,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Ranged Enchancement");
+            DisplayName.SetDefault("Ranged Enhancement");
             Description.SetDefault("Increased ranged projectile velocity and knockback");
         }
         //Increase extra updates of all ranaged projectiles?
@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Magic Enchancement");
+            DisplayName.SetDefault("Magic Enhancement");
             Description.SetDefault("Magic projectiles inflict a damaging debuff on enemies");
         }
         //Maybe move the spectre orbitor abiltiy here??
@@ -136,7 +136,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Melee Enchancement");
+            DisplayName.SetDefault("Melee Enhancement");
             Description.SetDefault("Increases armour penetration for melee weapons");
         }
         //Perhaps an on hit effect, inflicts beetled?

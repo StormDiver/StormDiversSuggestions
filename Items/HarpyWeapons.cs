@@ -21,19 +21,19 @@ namespace StormDiversSuggestions.Items
             item.width = 20;
             item.height = 34;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 0, 25, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 1;
             item.useStyle = 5;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 19;
+            item.useAnimation = 19;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 7;
+            item.mana = 8;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 15;
+            item.damage = 19;
          
             item.knockBack = 1f;
 
@@ -78,7 +78,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.Items
             item.width = 30;
             item.height = 40;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 0, 25, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 1;
             item.useStyle = 5;
             item.useTime = 20;
@@ -145,12 +145,12 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item5;
 
-            item.damage = 16;
+            item.damage = 18;
             //item.crit = 4;
             item.knockBack = 3f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
-            item.shootSpeed = 6f;
+            item.shootSpeed = 7f;
             item.useAmmo = AmmoID.Arrow;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -178,7 +178,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
@@ -202,7 +202,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 13;
+            item.damage = 15;
             //item.crit = 0;
             item.melee = true;
             item.width = 20;
@@ -210,7 +210,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 0, 25, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.channel = true;
@@ -241,7 +241,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
             recipe.AddIngredient(ItemID.Feather, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

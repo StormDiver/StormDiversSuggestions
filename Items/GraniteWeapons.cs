@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
         
             item.UseSound = SoundID.Item40;
 
-            item.damage = 17;
+            item.damage = 16;
             
             item.knockBack = 2f;
        
@@ -97,7 +97,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 15;
+            item.damage = 13;
             item.crit = 0;
             item.melee = true;
             item.width = 50;
@@ -175,10 +175,10 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = false;
 
             item.magic = true;
-            item.mana = 10;
+            item.mana = 7;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 19;
+            item.damage = 12;
 
             item.knockBack = 3f;
 

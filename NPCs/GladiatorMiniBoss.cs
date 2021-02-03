@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (spawnInfo.marble && !NPC.AnyNPCs(mod.NPCType("GladiatorMiniBoss")))
             {
-                return SpawnCondition.Cavern.Chance * 0.06f;
+                return SpawnCondition.Cavern.Chance * 0.07f;
             }
             else
             return SpawnCondition.Cavern.Chance * 0f;
@@ -160,7 +160,15 @@ namespace StormDiversSuggestions.NPCs
                     var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 5);
                     dust.alpha = 150;
                 }
-              
+                for (int i = 0; i < 30; i++)
+                {
+
+                    int dustIndex = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
+                }
+
 
             }
         }

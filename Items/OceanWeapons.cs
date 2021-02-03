@@ -24,13 +24,13 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 1;
             item.useStyle = 5;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 27;
+            item.useAnimation = 27;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 7;
+            item.mana = 6;
             item.UseSound = SoundID.Item20;
 
             item.damage = 16;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("OceanSpellProj");
 
-            item.shootSpeed = 10f;
+            item.shootSpeed = 12f;
             item.scale = 0.9f;
             //item.useAmmo = AmmoID.Arrow;
 
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 18;
+            item.damage = 16;
             item.crit = 0;
             item.melee = true;
             item.width = 30;

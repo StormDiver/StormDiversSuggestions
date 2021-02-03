@@ -233,7 +233,7 @@ namespace StormDiversSuggestions.Projectiles
             DisplayName.SetDefault("Harpy Yoyo");
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 5f;
 
-            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 165f;
+            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 180f;
 
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 16f;
         }

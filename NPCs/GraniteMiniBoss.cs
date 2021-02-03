@@ -30,10 +30,10 @@ namespace StormDiversSuggestions.NPCs
             aiType = NPCID.Parrot;
             animationType = NPCID.FlyingSnake;
             
-            npc.damage = 25;
+            npc.damage = 22;
             
             npc.defense = 10;
-            npc.lifeMax = 150;
+            npc.lifeMax = 140;
             npc.noGravity = true;
             npc.rarity = 2;
 
