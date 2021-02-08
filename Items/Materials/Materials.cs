@@ -160,7 +160,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 26;
             item.height = 26;
             item.maxStack = 999;
-            item.value = Item.sellPrice(0, 0, 3, 0);
+            item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 1;
 
         }

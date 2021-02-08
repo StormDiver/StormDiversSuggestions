@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tombstone Staff");
-            Tooltip.SetDefault("Fires out magical tombstones that bounce around\nTombstones spawn a miniture ghost upon hitting an enemy");
+            Tooltip.SetDefault("Fires out magical tombstones that bounce around\nTombstones spawn a miniature ghost upon hitting an enemy");
             Item.staff[item.type] = true;
 
 

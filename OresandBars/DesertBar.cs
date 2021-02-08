@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.OresandBars
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Arid Ore");
-            Tooltip.SetDefault("Retrived from the depths of the deserted caves");
+            Tooltip.SetDefault("Retrieved from the depths of the deserted caves");
 
         }
 
@@ -120,25 +120,17 @@ namespace StormDiversSuggestions.OresandBars
         public class ModGlobalNPC : GlobalNPC
         {
             public override bool InstancePerEntity => true;
-            int dropchance;
             public override void NPCLoot(NPC npc)
             {
 
-                if (!GetInstance<Configurations>().PreventOreSpawn)
-                {
-                    dropchance = 3;
-                }
-                else
-                {
-                    dropchance = 2;
-                }
+             
            
                 if (StormWorld.SpawnDesertOre)
                 {
                     // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
                     {
-                        if (Main.rand.Next(dropchance) == 0)
+                        if (Main.rand.Next(3) == 0)
 
                         {
                             if (Main.expertMode)

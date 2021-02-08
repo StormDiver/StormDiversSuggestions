@@ -95,15 +95,10 @@ namespace StormDiversSuggestions.Projectiles
             var player = Main.player[projectile.owner];
             if (Main.rand.Next(1) == 0) // the chance
             {
-                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
-                {
-                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
-                }
-                else
-                {
+               
                     target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
 
-                }
+                
 
             }
         }
@@ -167,15 +162,10 @@ namespace StormDiversSuggestions.Projectiles
             var player = Main.player[projectile.owner];
             if (Main.rand.Next(1) == 0) // the chance
             {
-                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
-                {
-                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
-                }
-                else
-                {
+                
                     target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
 
-                }
+                
 
             }
         }
@@ -320,15 +310,10 @@ namespace StormDiversSuggestions.Projectiles
                 var player = Main.player[projectile.owner];
                 if (Main.rand.Next(1) == 0) // the chance
                 {
-                    if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
-                    {
-                        target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
-                    }
-                    else
-                    {
+                   
                         target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
 
-                    }
+                    
 
                 }
             }
@@ -446,15 +431,10 @@ namespace StormDiversSuggestions.Projectiles
             var player = Main.player[projectile.owner];
             if (Main.rand.Next(1) == 0) // the chance
             {
-                if (player.GetModPlayer<StormPlayer>().FrostCryoSet == true)
-                {
-                    target.AddBuff(mod.BuffType("SuperFrostBurn"), 900);
-                }
-                else
-                {
+                
                     target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
 
-                }
+                
 
             }
         }

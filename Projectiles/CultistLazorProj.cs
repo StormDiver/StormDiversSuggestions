@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Projectiles
             target.immune[projectile.owner] = 7;
             for (int i = 0; i < 20; i++)
             {
-                int dust = Dust.NewDust(target.Center, 0, 0, 135, projectile.velocity.X * 5, projectile.velocity.Y * 5, 50, default, 2f);
+                int dust = Dust.NewDust(target.position, target.width, target.height, 135, projectile.velocity.X * 5, projectile.velocity.Y * 5, 50, default, 2f);
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 5f;
             }

@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Items
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Grenade, 10);
             recipe.AddIngredient(ItemID.IceTorch);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

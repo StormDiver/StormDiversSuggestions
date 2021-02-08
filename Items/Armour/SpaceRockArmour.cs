@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("6% increased damage and critical strike chance\nIncreases max life by 25 and grants immunity to knockback");
+            Tooltip.SetDefault("6% increased damage and critical strike chance\nGrants immunity to knockback");
         }
 
         public override void SetDefaults()
@@ -106,7 +106,6 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 6;
             player.thrownCrit += 6;
             player.noKnockback = true;
-            player.statLifeMax2 += 25;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -200,7 +199,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Leggings");
-            Tooltip.SetDefault("7% increase damage and critical strike chance\n100% increased movement speed");
+            Tooltip.SetDefault("7% increased damage and critical strike chance\n100% increased movement speed");
         }
 
         public override void SetDefaults()

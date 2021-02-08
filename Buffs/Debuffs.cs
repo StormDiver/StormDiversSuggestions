@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Burning sands");
+            DisplayName.SetDefault("SandBurn");
             Description.SetDefault("The ancient sand burns you");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;

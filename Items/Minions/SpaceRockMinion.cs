@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Minions
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Asteroid Minion");
-            Description.SetDefault("Mini Asteroid will fight for you");
+            Description.SetDefault("A mini Asteroid will fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items.Minions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Staff");
-            Tooltip.SetDefault("Summons Mini Asteroids to fight for you");
+            Tooltip.SetDefault("Summons a mini Asteroid to fight for you");
             ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
             ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 

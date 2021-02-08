@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items
             item.width = 20;
             item.height = 30;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = 3;
             item.useStyle = 5;
             item.useTime = 26;

@@ -61,7 +61,7 @@ namespace StormDiversSuggestions.Items.Tools
             recipe.AddIngredient(ItemID.Silk, 20);
             recipe.AddIngredient(ItemID.Cobweb, 45);
             recipe.AddIngredient(ItemID.BlackThread, 10);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(this);
             recipe.AddRecipe();
 

@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items
 			item.useTime = 17;
 			item.useAnimation = 17;
 			item.useStyle = 1;
-            item.value = Item.sellPrice(0, 0, 30, 0);
+            item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = false;
@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 21;
             item.useAnimation = 21;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 0, 30, 0);
+            item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
@@ -151,7 +151,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
-            item.value = Item.sellPrice(0, 0, 30, 0);
+            item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.channel = true;
