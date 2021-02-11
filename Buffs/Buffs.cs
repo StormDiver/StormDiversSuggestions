@@ -382,7 +382,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Defence");
-            Description.SetDefault("Damage taken from the next is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
+            Description.SetDefault("Damage taken from the next attack is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
         }
 
         public override void Update(Player player, ref int buffIndex)
