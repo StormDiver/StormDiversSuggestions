@@ -220,7 +220,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Life Vial");
+            DisplayName.SetDefault("Life Up");
             Description.SetDefault("Max life increased by 20");
 
         }
@@ -236,7 +236,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Life Fruit Vial");
+            DisplayName.SetDefault("Life Fruit Up");
             Description.SetDefault("Max life increased by 25");
 
         }

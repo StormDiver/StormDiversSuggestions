@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Items
             item.useTime = 30;
             item.useAnimation = 30;
             item.useTurn = false;
-            item.autoReuse = false;
-            item.damage = 18;
+            item.autoReuse = true;
+            item.damage = 25;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneProj");

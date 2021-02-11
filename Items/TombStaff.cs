@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = 2;
             item.useStyle = 5;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.useTime = 21;
+            item.useAnimation = 21;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("TombProj");
 
-            item.shootSpeed = 13f;
+            item.shootSpeed = 16f;
    
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

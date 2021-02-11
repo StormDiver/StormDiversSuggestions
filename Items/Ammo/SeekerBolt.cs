@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Ammo
             recipe.AddIngredient(ItemID.HallowedBar, 1);
             recipe.AddIngredient(ItemID.SoulofSight, 1);
             recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 250);
+            recipe.SetResult(this, 333);
             recipe.AddRecipe();
         }
        

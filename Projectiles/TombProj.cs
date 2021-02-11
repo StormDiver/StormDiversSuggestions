@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Collision.HitTiles(projectile.Center + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-
+            projectile.damage = (projectile.damage * 9) / 10;
             reflect--;
             if (reflect <= 0)
             {

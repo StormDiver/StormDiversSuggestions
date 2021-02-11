@@ -83,6 +83,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool spaceRockDefence; //Player has the Space armour with mask equipped
 
+        public bool shroomaccess; //Player has the Shroomite Accesseoy equipped
+
 
         //Ints and Bools activated from this file
 
@@ -99,6 +101,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool granitesurge; //Makes it so the granite accessory cooldown can start and makes it so the next attack removes the buff
         public int spaceStrikecooldown; //Cooldown for the Offensive Space Armour set bonus
         public int spaceBarriercooldown; //Cooldown for the Defensive Space Armour set bonus
+        public int shroomshotCount = 0; //Count show many times the player has fired with the shroomite access
+        public bool shotrocket; //Wheter the shroomite rocket has been fired or not
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -130,6 +134,7 @@ namespace StormDiversSuggestions.Basefiles
             graniteBuff = false;
             spaceRockOffence = false;
             spaceRockDefence = false;
+            shroomaccess = false;
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -142,6 +147,8 @@ namespace StormDiversSuggestions.Basefiles
             granitesurge = false;
             spaceStrikecooldown = 0;
             spaceBarriercooldown = 0;
+            shroomshotCount = 0;
+            shotrocket = false;
         }
      
        
@@ -304,6 +311,35 @@ namespace StormDiversSuggestions.Basefiles
             {
                 falling = false;
             }
+            // For the Shroomite Launcher Accessory
+            if (shroomaccess)
+            {
+                if (player.itemTime > 1 && player.HeldItem.ranged) //If the player is holding a ranged weapon and usetime cooldown is above 1
+                {
+
+                    if (!shotrocket) //If the rocket hasn't already been fired this use then it it fire it
+                    {
+                        shroomshotCount++;
+                        if (shroomshotCount >= 5) //Every 5 shots fires a rocket
+                        {
+
+                            shroomshotCount = 0; //Resets the shot count
+                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
+                            float velocity = 10f;
+                            int type = mod.ProjectileType("ShroomSetRocketProj");
+                            int damage = (int)(player.HeldItem.damage * 1.5f);
+                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
+                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
+                        }
+
+                    }
+                    shotrocket = true; //This prevents a rocket from spawning every frame
+                }
+                else
+                {
+                    shotrocket = false; //Once the usetime is back to 0 this bool can be set to false again
+                }
+            }
             //For the Spooky Core ======================
             if (spooked)
             {
@@ -312,7 +348,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(7) == 0)
+                        if (Main.rand.Next(8) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
@@ -326,7 +362,7 @@ namespace StormDiversSuggestions.Basefiles
 
                             Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 34);
 
-                            float numberProjectiles = 2 + Main.rand.Next(2);
+                            float numberProjectiles = 2;
 
                             for (int i = 0; i < numberProjectiles; i++)
                             {
@@ -335,7 +371,7 @@ namespace StormDiversSuggestions.Basefiles
 
                                 float speedX = 0f;
                                 float speedY = -2f;
-                                int damage = (int)(player.HeldItem.damage * 1f);
+                                int damage = (int)(player.HeldItem.damage * 0.8f);
                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
@@ -399,13 +435,13 @@ namespace StormDiversSuggestions.Basefiles
             //For the SpaceArmour with the helmet (offence)
             if (spaceRockOffence && spaceStrikecooldown == 300)
             {
-                Projectile.NewProjectile(victim.Center.X, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned directly above and goes stright down
-                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned directly above and moves slighly left
-                Projectile.NewProjectile(victim.Center.X + 0, victim.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI);  //Summoned directly above and moves slighly right
-                Projectile.NewProjectile(victim.Center.X - 60, victim.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned to the left and slighlty moves left
-                Projectile.NewProjectile(victim.Center.X + 60, victim.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned to the right and slightly moves right
-                Projectile.NewProjectile(victim.Center.X - 250, victim.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned far to the left and moves right
-                Projectile.NewProjectile(victim.Center.X + 250, victim.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), 90, 6f, player.whoAmI); //Summoned far to the right and moves left
+                Projectile.NewProjectile(victim.Center.X, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned directly above and goes stright down
+                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned directly above and moves slighly left
+                Projectile.NewProjectile(victim.Center.X + 0, victim.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI);  //Summoned directly above and moves slighly right
+                Projectile.NewProjectile(victim.Center.X - 60, victim.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned to the left and slighlty moves left
+                Projectile.NewProjectile(victim.Center.X + 60, victim.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned to the right and slightly moves right
+                Projectile.NewProjectile(victim.Center.X - 250, victim.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned far to the left and moves right
+                Projectile.NewProjectile(victim.Center.X + 250, victim.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), 100, 6f, player.whoAmI); //Summoned far to the right and moves left
                 for (int i = 0; i < 30; i++)
                 {
 

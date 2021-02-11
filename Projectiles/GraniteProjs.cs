@@ -75,6 +75,7 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 70, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
                 dust.noGravity = true;
             }
+            projectile.damage = (projectile.damage * 9) / 10;
         }
 
         public override void Kill(int timeLeft)
@@ -200,7 +201,7 @@ namespace StormDiversSuggestions.Projectiles
             }
 
         }
-
+      
 
     }
 

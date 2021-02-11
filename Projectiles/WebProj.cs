@@ -68,7 +68,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             //stick = true;
-            projectile.damage -= 2;
+            projectile.damage = (projectile.damage * 9) / 10;
 
         }
         public override void OnHitPvp(Player target, int damage, bool crit)

@@ -71,7 +71,10 @@ namespace StormDiversSuggestions.Projectiles
         }
 
 
-
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage = (projectile.damage * 9) / 10;
+        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
@@ -139,6 +142,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
             Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 13);
         }
 

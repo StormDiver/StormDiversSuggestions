@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
+            projectile.damage = (projectile.damage * 9) / 10;
             reflect--;
             if (reflect <= 0)
             {
@@ -212,6 +212,8 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 244);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
@@ -320,8 +322,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
-             reflect--;
+            projectile.damage = (projectile.damage * 9) / 10;
+            reflect--;
              if (reflect <= 0)
              {
                  projectile.Kill();
@@ -449,6 +451,8 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 110);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
@@ -560,7 +564,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
+            projectile.damage = (projectile.damage * 9) / 10;
             reflect--;
             if (reflect <= 0)
             {
@@ -690,6 +694,8 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 112);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
@@ -817,7 +823,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
+            projectile.damage = (projectile.damage * 9) / 10;
             reflect--;
             if (reflect <= 0)
             {
@@ -958,6 +964,8 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 111);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
 
 

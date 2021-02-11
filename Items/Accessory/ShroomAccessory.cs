@@ -4,6 +4,7 @@ using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using StormDiversSuggestions.Basefiles;
 
 using Terraria;
 using Terraria.GameContent.Dyes;
@@ -41,39 +42,14 @@ namespace StormDiversSuggestions.Items.Accessory
             item.accessory = true;
             
         }
-        int shotCount = 0;
-        bool shot;
+      
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 
 
-           
+            player.GetModPlayer<StormPlayer>().shroomaccess = true;
 
-            if (player.itemTime > 1 && player.HeldItem.ranged) //ranged item is in use
-                {
 
-                    if (!shot)
-                    {
-                        shotCount++;
-                        if (shotCount >= 4)
-                        {
-                            shotCount = 0;
-                            float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 15f;
-                            int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 1.5f);
-                            Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
-                        }
-
-                    }
-                    shot = true;
-                }
-                else
-                {
-                    shot = false;
-                }
-  
 
         }
 

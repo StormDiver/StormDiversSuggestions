@@ -129,6 +129,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
+            projectile.damage = (projectile.damage * 9) / 10;
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
@@ -350,6 +351,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
             target.AddBuff(mod.BuffType("AridSandDebuff"), 300);
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
@@ -427,6 +429,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType("AridSandDebuff"), 180);
+            projectile.damage = (projectile.damage * 9) / 10;
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 

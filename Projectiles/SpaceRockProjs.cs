@@ -177,9 +177,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-           
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
-        
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();

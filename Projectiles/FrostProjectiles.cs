@@ -427,7 +427,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-
+            projectile.damage = (projectile.damage * 9) / 10;
             var player = Main.player[projectile.owner];
             if (Main.rand.Next(1) == 0) // the chance
             {
@@ -488,8 +488,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            
-                target.AddBuff(mod.BuffType("SuperFrostBurn"), 180);
+            projectile.damage = (projectile.damage * 9) / 10;
+            target.AddBuff(mod.BuffType("SuperFrostBurn"), 180);
 
             
         }

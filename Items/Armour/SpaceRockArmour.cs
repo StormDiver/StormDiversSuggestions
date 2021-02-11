@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Rain down space boulders upon attacked foes";
+            player.setBonus = "Grants the Orbital Strike buff that summons damaging space rocks to fall upon the next attacked enemy";
             //player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
             player.GetModPlayer<StormPlayer>().spaceRockOffence = true;
            
@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Oribtal Barrier buff that reduces damage of the next attack by 22%\nSummons space boulders from the sky when damaged";
+            player.setBonus = "Grants the Orbital Barrier buff that reduces damage of the next attack by 22%\nSummons space boulders from the sky when damaged";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 

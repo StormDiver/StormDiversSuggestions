@@ -115,6 +115,7 @@ namespace StormDiversSuggestions.Projectiles
 
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
         }
 
         public override void Kill(int timeLeft)
@@ -222,6 +223,8 @@ namespace StormDiversSuggestions.Projectiles
 
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
 
         public override void Kill(int timeLeft)
@@ -685,8 +688,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 7;
-            projectile.height = 7;
+            projectile.width = 14;
+            projectile.height = 14;
 
 
             //projectile.light = 0.6f;
@@ -702,7 +705,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             projectile.timeLeft = 300;
-            drawOffsetX = -4;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
         }
         int reflect = 3;
@@ -764,6 +767,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
 
 
         }
