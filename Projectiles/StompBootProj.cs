@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
-            
+            projectile.damage = (projectile.damage * 100) / 101;
             if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {
                 if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn

@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Barrier buff that reduces damage of the next attack by 22%\nSummons space boulders from the sky when damaged";
+            player.setBonus = "Grants the Orbital Barrier buff that reduces damage of the next attack by 25%\nSummons space boulders from the sky when taking more than 1 damage";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 

@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.NPCs
         {
             if (NPC.downedPlantBoss)
             { 
-                return SpawnCondition.UndergroundJungle.Chance * 1f;
+                return SpawnCondition.UndergroundJungle.Chance * 0.5f;
             }
             return SpawnCondition.UndergroundJungle.Chance * 0f;
         }
@@ -91,14 +91,14 @@ namespace StormDiversSuggestions.NPCs
             
             if (Main.expertMode)
             {
-                if (Main.rand.Next(5) == 0)
+                if (Main.rand.Next(2) == 0)
                 {
 
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingVine"));
                 }
             }
             else
-             if (Main.rand.Next(6) == 0)
+             if (Main.rand.Next(3) == 0)
             {
 
                 Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingVine"));

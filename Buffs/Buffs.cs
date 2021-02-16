@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Celestial Guardian");
-            Description.SetDefault("The powers of the Celestial spirits rapidly regenerate your life and grant additonal defense");
+            Description.SetDefault("The powers of the Celestial spirits rapidly regenerate your life and grant additional defense");
         }
         int particle = 10;
         public override void Update(Player player, ref int buffIndex)
@@ -382,13 +382,13 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Defence");
-            Description.SetDefault("Damage taken from the next attack is reduced by 22% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
+            Description.SetDefault("Damage taken from the next attack is reduced by 25% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.endurance += .22f;
+            player.endurance += .25f;
             player.longInvince = true;
             if (Main.rand.Next(3) == 0)
             {

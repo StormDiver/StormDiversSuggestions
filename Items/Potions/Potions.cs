@@ -191,8 +191,9 @@ namespace StormDiversSuggestions.Items.Potions
             {
 
 
-                if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()) && projectile.owner == Main.myPlayer)
                 {
+                   
                     if (Main.rand.Next(3) == 0)
                     {
                         Dust dust;
@@ -208,7 +209,7 @@ namespace StormDiversSuggestions.Items.Potions
             if (projectile.ranged && projectile.friendly)
             {
                 rangedincrease++;
-                if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()) && projectile.owner == Main.myPlayer)
                 {
                     if (Main.rand.Next(3) == 0)
                     {
@@ -236,7 +237,7 @@ namespace StormDiversSuggestions.Items.Potions
             }
             if (projectile.magic && projectile.friendly)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
                 {
                     if (Main.rand.Next(3) == 0)
                     {
@@ -253,7 +254,7 @@ namespace StormDiversSuggestions.Items.Potions
         {
             if (projectile.magic && projectile.friendly)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
                 {
                     if (Main.rand.Next(1) == 0)
                     {
@@ -267,7 +268,7 @@ namespace StormDiversSuggestions.Items.Potions
         {
             if (projectile.magic && projectile.friendly)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
                 {
                     if (Main.rand.Next(1) == 0)
                     {

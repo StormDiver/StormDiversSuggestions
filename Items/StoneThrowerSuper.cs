@@ -22,11 +22,11 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 8;
             item.useStyle = 5;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useTurn = false;
             item.autoReuse = true;
-            item.damage = 70;
+            item.damage = 75;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneSuperProj");
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items
             for (int i = 0; i < numberProjectiles; i++)
             {
 
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                 Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("StoneSuperProj"), damage, knockBack, player.whoAmI);
             }
 

@@ -177,7 +177,6 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            projectile.damage = (projectile.damage * 9) / 10;
 
         }
 
@@ -215,7 +214,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     }
     //______________________________________________
     public class SpaceArmourProj : ModProjectile
-    {
+    { //For the armour set bonus
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Homing Space Boulder");
@@ -355,7 +354,118 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 1f);
             }
 
+            float numberProjectiles = 2 + Main.rand.Next(2);
+            float rotation = MathHelper.ToRadians(180);
+            //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                float speedX = 0f;
+                float speedY = -8f;
 
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
+                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpaceArmourProj2"), (int)(projectile.damage * 0.66f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+            }
+
+        }
+    }
+    //__________________________________________________________________________________________________________________________________________________
+    public class SpaceArmourProj2 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Space Boulder Fragment");
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.ignoreWater = true;
+            projectile.aiStyle = 14;
+            projectile.penetrate = 2;
+            projectile.timeLeft = 180;
+            projectile.light = 0.4f;
+            projectile.scale = 1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+            projectile.tileCollide = true;
+            drawOffsetX = 0;
+            drawOriginOffsetY = -6;
+        }
+        int rotate;
+        public override void AI()
+        {
+            rotate += 2;
+            projectile.rotation = rotate * 0.1f;
+            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
+            if (projectile.timeLeft > 125)
+            {
+                projectile.timeLeft = 125;
+            }
+            if (projectile.ai[0] > 0f)  //this defines where the flames starts
+            {
+                if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+                {
+
+
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, projectile.velocity.X, projectile.velocity.Y, 130, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust].velocity *= -0.3f;
+                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 0, projectile.velocity.X, projectile.velocity.Y, 130, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
+                    Main.dust[dust2].velocity *= -0.3f;
+
+                }
+            }
+            else
+            {
+                projectile.ai[0] += 1f;
+            }
+
+        }
+
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage = (projectile.damage * 8) / 10;
+
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            projectile.Kill();
+            return false;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 0.5f);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1f);
+            }
+            Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+            return true;
 
         }
     }
@@ -376,7 +486,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            projectile.magic = true;
+            projectile.melee = true;
             projectile.aiStyle = 14;
             projectile.penetrate = 1;
             projectile.timeLeft = 200;

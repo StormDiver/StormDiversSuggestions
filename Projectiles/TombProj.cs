@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Projectiles
             //target.AddBuff(BuffID.Wet, 300);
         }
 
-        int reflect = 3;
+        int reflect = 4;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -102,11 +102,11 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 0.75f;
+                    projectile.velocity.X = -oldVelocity.X * 0.9f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.75f;
+                    projectile.velocity.Y = -oldVelocity.Y * 0.9f;
                 }
             }
             if (reflect >= 1)
