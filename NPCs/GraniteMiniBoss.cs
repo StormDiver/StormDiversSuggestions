@@ -30,10 +30,10 @@ namespace StormDiversSuggestions.NPCs
             aiType = NPCID.Parrot;
             animationType = NPCID.FlyingSnake;
             
-            npc.damage = 22;
+            npc.damage = 25;
             
-            npc.defense = 10;
-            npc.lifeMax = 140;
+            npc.defense = 12;
+            npc.lifeMax = 160;
             npc.noGravity = true;
             npc.rarity = 2;
 
@@ -54,9 +54,9 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (spawnInfo.granite && !NPC.AnyNPCs(mod.NPCType("GraniteMiniBoss")))
+            if (spawnInfo.granite && !NPC.AnyNPCs(mod.NPCType("GraniteMiniBoss")) && NPC.downedBoss1)
             {
-                return SpawnCondition.Cavern.Chance * 0.1f;
+                return SpawnCondition.Cavern.Chance * 0.12f;
             }
             else
                 return SpawnCondition.Cavern.Chance * 0f;
@@ -188,19 +188,17 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.expertMode)
             {
-                if (Main.rand.Next(4) == 0)
+                if (Main.rand.Next(100) < 33)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCoreAccess"));
                 }
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCore"), Main.rand.Next(1, 3));
             }
             else
             {
-                if (Main.rand.Next(5) == 0)
+                if (Main.rand.Next(100) < 25)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCoreAccess"));
                 }
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
             }
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)

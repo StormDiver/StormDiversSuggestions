@@ -15,8 +15,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 12;
+            projectile.width = 10;
+            projectile.height = 10;
 
             projectile.aiStyle = 1;
             
@@ -42,6 +42,7 @@ namespace StormDiversSuggestions.Projectiles
         
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
 
             reflect--;
             if (reflect <= 0)
@@ -66,6 +67,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
+            projectile.damage = (projectile.damage * 8) / 10;
 
             projectile.velocity.X = projectile.velocity.X * -0.6f;
 
@@ -79,12 +81,14 @@ namespace StormDiversSuggestions.Projectiles
              int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("BouncyArrow")) : 0;
              Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
              Main.PlaySound(SoundID.Item10, projectile.position);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
 
-                
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 72);
-                dust.noLight = true;
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 100, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
             }
 
         }

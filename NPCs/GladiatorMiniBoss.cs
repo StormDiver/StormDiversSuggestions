@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.NPCs
             npc.damage = 30;
             
             npc.defense = 10;
-            npc.lifeMax = 150;
+            npc.lifeMax = 180;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
@@ -53,9 +53,9 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (spawnInfo.marble && !NPC.AnyNPCs(mod.NPCType("GladiatorMiniBoss")))
+            if (spawnInfo.marble && !NPC.AnyNPCs(mod.NPCType("GladiatorMiniBoss")) && NPC.downedBoss1)
             {
-                return SpawnCondition.Cavern.Chance * 0.07f;
+                return SpawnCondition.Cavern.Chance * 0.1f;
             }
             else
             return SpawnCondition.Cavern.Chance * 0f;
@@ -177,19 +177,17 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.expertMode)
             {
-                if (Main.rand.Next(4) == 0)
+                if (Main.rand.Next(100) < 33)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GladiatorAccess"));
                 }
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("RedSilk"), Main.rand.Next(1, 3));
             }
             else
             {
-                if (Main.rand.Next(5) == 0)
+                if (Main.rand.Next(100) < 25)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GladiatorAccess"));
                 }
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
             }
         }
         public override Color? GetAlpha(Color lightColor)

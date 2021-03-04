@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Items.Armour
                 if (Main.raining)
                 {
 
-                    player.AddBuff(mod.BuffType("RainBuff"), 1);
+                    player.AddBuff(mod.BuffType("RainBuff"), 2);
                 }
                 player.setBonus = "50% increased Movement Speed while raining";
      
@@ -59,7 +59,8 @@ namespace StormDiversSuggestions.Items.Armour
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(20) == 0)
+                if (Main.rand.Next(100) < 5)
+
                 {
                     if (npc.type == NPCID.ZombieRaincoat)
                     {

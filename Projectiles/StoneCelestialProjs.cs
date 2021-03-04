@@ -268,7 +268,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 26;
             projectile.height = 26;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 0;
@@ -304,6 +304,15 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 110);
+            }
+            int numberProjectiles = 5 + Main.rand.Next(3); //This defines how many projectiles to shot.
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+
+                float speedX = Main.rand.NextFloat(-6f, 6f);
+                float speedY = Main.rand.NextFloat(-6f, 6f);
+
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
             }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)

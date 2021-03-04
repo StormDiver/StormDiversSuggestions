@@ -75,33 +75,21 @@ namespace StormDiversSuggestions.Items
         {
             public override void NPCLoot(NPC npc)
             {
-                
-                    if (npc.type == NPCID.WallCreeper || npc.type == NPCID.WallCreeperWall )
+
+                if (npc.type == NPCID.WallCreeper || npc.type == NPCID.WallCreeperWall)
+                {
+
+                    if (Main.rand.Next(200) < 1)
+
                     {
 
-                    if (Main.expertMode)
-                    {
-                        if (Main.rand.Next(150) == 0)
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WebStaff"));
 
-                        {
-
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WebStaff"));
-                        }
                     }
 
-                    else
-                     if (Main.rand.Next(200) == 0)
 
-                    {
-                        {
-
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WebStaff"));
-
-                        }
-                    
-                        
-                    }
                 }
+                
             }
         }
     }

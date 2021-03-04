@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             
             DisplayName.SetDefault("Warrior's Trophy");
-            Tooltip.SetDefault("While above 70% HP your critical strike chance is increased by 12%");
+            Tooltip.SetDefault("While above 75% HP your critical strike chance is increased by 15%");
         }
 
         public override void SetDefaults()
@@ -33,9 +33,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             //player.GetModPlayer<StormPlayer>().graniteBuff = true;
-            if (player.statLife >= player.statLifeMax2 * 0.7f)
+            if (player.statLife >= player.statLifeMax2 * 0.75f)
             {
-                player.AddBuff(mod.BuffType("GladiatorAccessBuff"), 1);
+                player.AddBuff(mod.BuffType("GladiatorAccessBuff"), 2);
 
                
             }

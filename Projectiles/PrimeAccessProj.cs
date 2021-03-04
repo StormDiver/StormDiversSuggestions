@@ -65,8 +65,9 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 20; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust2 = Dust.NewDustDirect(projectile.Center, 0, 0, 55);
+                    var dust2 = Dust.NewDustDirect(projectile.Center, 0, 0, 6);
+                    dust2.velocity *= 2;
+                    dust2.scale = 1.5f;
                 }
                 projectile.Kill();
                 return;

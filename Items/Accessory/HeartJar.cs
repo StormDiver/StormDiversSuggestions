@@ -50,7 +50,7 @@ namespace StormDiversSuggestions.Items.Accessory
             if (player.statLife < (player.statLifeMax2))
             {
                 
-                player.AddBuff(mod.BuffType("JarBuff"), 1);
+                player.AddBuff(mod.BuffType("JarBuff"), 2);
                 
             }
            
@@ -72,26 +72,15 @@ namespace StormDiversSuggestions.Items.Accessory
              {
                 if (NPC.downedBoss3)
                 {
-                    if (Main.expertMode)
-                    {
-                        if (Main.rand.Next(50) == 0)
+                    
+                        if (Main.rand.Next(100) < 2)
                         {
                             if (npc.type == NPCID.Demon)
                             {
                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
                             }
                         }
-                    }
-                    else
-                    {
-                        if (Main.rand.Next(60) == 0)
-                        {
-                            if (npc.type == NPCID.Demon)
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartJar"));
-                            }
-                        }
-                    }
+                    
                 }
              }
          }

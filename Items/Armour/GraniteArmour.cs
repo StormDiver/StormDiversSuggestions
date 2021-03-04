@@ -65,7 +65,7 @@ namespace StormDiversSuggestions.Items.Armour
             if (player.controlDown && player.velocity.Y == 0)
             {
                          
-                player.AddBuff(mod.BuffType("GraniteBuff"), 1);
+                player.AddBuff(mod.BuffType("GraniteBuff"), 2);
 
             }
 

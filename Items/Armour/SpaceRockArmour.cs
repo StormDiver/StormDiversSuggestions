@@ -133,8 +133,6 @@ namespace StormDiversSuggestions.Items.Armour
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 
-
-
         }
 
 

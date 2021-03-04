@@ -100,10 +100,9 @@ namespace StormDiversSuggestions.Projectiles
         {
             
             Player player = Main.player[projectile.owner];
-            if (Main.rand.Next(1) == 0)
-            {
-                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
-            }
+            
+                player.AddBuff(mod.BuffType("TurtleBuff"), 90);
+            
             
            
         }
@@ -193,7 +192,6 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0);
                 dust.noGravity = true;
             }
@@ -201,10 +199,9 @@ namespace StormDiversSuggestions.Projectiles
             Player player = Main.player[projectile.owner];
 
             
-            if (Main.rand.Next(2) == 0)
-            {
-                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
-            }
+            
+                player.AddBuff(mod.BuffType("TurtleBuff"), 90);
+            
         }
 
         public override void Kill(int timeLeft)
@@ -302,10 +299,9 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             Player player = Main.player[projectile.owner];
-            if (Main.rand.Next(3) == 0)
-            {
-                player.AddBuff(mod.BuffType("TurtleBuff"), 120);
-            }
+            
+                player.AddBuff(mod.BuffType("TurtleBuff"), 90);
+            
         }
 
     }

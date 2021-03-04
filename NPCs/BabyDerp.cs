@@ -76,26 +76,6 @@ namespace StormDiversSuggestions.NPCs
                 }
             }
         }
-        /*
-        public override void NPCLoot()
-        {
-            
-                if (Main.expertMode)
-                {
-                    if (Main.rand.Next(8) == 0)
-                    {
-
-                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
-                    }
-                }
-                else
-                {
-                    if (Main.rand.Next(10) == 0)
-                    {
-                        Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
-                    }
-                }
-               
-        } */
+       
     }
 }

@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = Main.rand.NextFloat(-4f, 4f);
                     float speedY = Main.rand.NextFloat(-4f, 4f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneFragProj"), (int)(projectile.damage * 0.3), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -363,7 +363,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 9;
             projectile.height = 9;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = 2;
             projectile.ranged = true;
             projectile.timeLeft = 300;
             projectile.aiStyle = 14;

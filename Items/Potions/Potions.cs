@@ -50,8 +50,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ranged Enhancement Potion");
-            Tooltip.SetDefault("Increases the velocity and knockback of most ranged projectiles");
+            DisplayName.SetDefault("Shroomite Reservation Potion");
+            Tooltip.SetDefault("Grants a 50% chance to not consume ammo");
         }
 
         public override void SetDefaults()
@@ -89,8 +89,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magic Enhancement Potion");
-            Tooltip.SetDefault("All magic projectiles can inflict a damaging debuff on enemies");
+            DisplayName.SetDefault("Spectre Empowerment Potion");
+            Tooltip.SetDefault("Increases maximum mana by 60");
         }
 
         public override void SetDefaults()
@@ -136,8 +136,8 @@ namespace StormDiversSuggestions.Items.Potions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Melee Enhancement Potion");
-            Tooltip.SetDefault("Increases armor penetration of all melee weapons by 40");
+            DisplayName.SetDefault("Beetle Penetration Potion");
+            Tooltip.SetDefault("Increases armor penetration of all melee weapons by 30");
         }
 
         public override void SetDefaults()
@@ -182,6 +182,7 @@ namespace StormDiversSuggestions.Items.Potions
 
     public class BuffedProjs : GlobalProjectile
     {
+        /*
         public override bool InstancePerEntity => true;
         int rangedincrease;
         public override void AI(Projectile projectile)
@@ -223,13 +224,7 @@ namespace StormDiversSuggestions.Items.Potions
 
                     if (rangedincrease == 1)
                     {
-                        /*if (projectile.penetrate >= 1)
-                        {
-                            projectile.penetrate = (projectile.penetrate + 1);
-                        }
-
-                        projectile.usesLocalNPCImmunity = true;
-                        projectile.localNPCHitCooldown = 10;*/
+                       
                         projectile.knockBack *= 1.5f;
                         projectile.extraUpdates += (int)1f;
                     }
@@ -250,7 +245,7 @@ namespace StormDiversSuggestions.Items.Potions
                 }
             }
         }
-             public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
         {
             if (projectile.magic && projectile.friendly)
             {
@@ -277,7 +272,7 @@ namespace StormDiversSuggestions.Items.Potions
 
                 }
             }
-        }
+        }*/
 
     }
     

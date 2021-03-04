@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Solar Blades");
+            DisplayName.SetDefault("Selenian Blades");
             Tooltip.SetDefault("Can be thrown out and spin in place upon striking an enemy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
@@ -47,7 +47,8 @@ namespace StormDiversSuggestions.Items
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
+
                 {
                     if (npc.type == NPCID.SolarSolenian)
                     {

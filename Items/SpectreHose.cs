@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spectre Hose");
+            DisplayName.SetDefault("Spectre Scepter");
             Tooltip.SetDefault("Rapidly fires mini Spectre skulls that speed up rapidly\nDeals more damage the faster the skulls travels");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
 

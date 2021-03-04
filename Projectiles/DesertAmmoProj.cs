@@ -188,7 +188,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.light = 0.5f;
             projectile.friendly = true;
             projectile.timeLeft = 600;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.arrow = true;
             projectile.tileCollide = true;
 
@@ -197,7 +197,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.arrow = true;
 
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = -1;
+            projectile.localNPCHitCooldown = 10;
 
             drawOffsetX = -4;
             drawOriginOffsetY = 0;
@@ -205,9 +205,8 @@ namespace StormDiversSuggestions.Projectiles
         int spinspeed = 0;
         
 
-        int reflect = 2;
+        int reflect = 3;
         bool spin = false;
-        int enlarge = 0;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
@@ -222,11 +221,11 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 0.8f;
+                    projectile.velocity.X = -oldVelocity.X * 1.1f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 0.8f;
+                    projectile.velocity.Y = -oldVelocity.Y * 1.1f;
                 }
                 spin = true;
             }
@@ -242,16 +241,11 @@ namespace StormDiversSuggestions.Projectiles
             {
                
                 spinspeed++;
-                projectile.rotation = (0.4f * spinspeed);
+                projectile.rotation = (0.4f * spinspeed) * projectile.direction;
                 projectile.penetrate = -1;
-               drawOffsetX = 6;
-                //drawOriginOffsetY = -8;
-                enlarge++;
-                if (enlarge >= 3)
-                {
-                    projectile.width = 32;
-                    projectile.height = 32;
-                }
+             
+                drawOriginOffsetY = -16;
+              
 
 
                 int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0f, 0f, 100, default, 0.7f);

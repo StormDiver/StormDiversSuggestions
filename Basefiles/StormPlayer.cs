@@ -178,8 +178,8 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (spaceBarriercooldown == 480)
             {
-                player.AddBuff(mod.BuffType("SpaceRockDefence"), 1);
-
+                player.AddBuff(mod.BuffType("SpaceRockDefence"), 2);
+                
             }
             if (!spaceRockDefence) //Clears buff if player removes armour
             {
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (spaceStrikecooldown == 240)
             {
-                player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
+                player.AddBuff(mod.BuffType("SpaceRockOffence"), 2);
 
             }
             if (!spaceRockOffence)
@@ -435,7 +435,7 @@ namespace StormDiversSuggestions.Basefiles
             //For the SpaceArmour with the helmet (offence)
             int offencedmg = 100;
             int offenceknb = 5;
-            if (spaceRockOffence && spaceStrikecooldown == 240)
+            if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
                 Projectile.NewProjectile(victim.Center.X, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes stright down
                 Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and moves slighly left
@@ -548,7 +548,7 @@ namespace StormDiversSuggestions.Basefiles
             //For Space Armour with Mask (Defence)
             int defencedmg = 200; //Boulder damage
             int defenceknb = 6; //Boulder Knockback
-            if (spaceRockDefence && spaceBarriercooldown == 480 && damage > 2)
+            if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage > 2)
             {
                 Projectile.NewProjectile(player.Center.X, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
                 Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly right
@@ -650,7 +650,7 @@ namespace StormDiversSuggestions.Basefiles
         public override void UpdateLifeRegen()
         {
             //Regeneration, can also be done in buffs.cs
-            if (Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
+            if (player.HasBuff(BuffType<CelestialBuff>()))
             {
                 
                 player.lifeRegen += 30;
@@ -714,6 +714,16 @@ namespace StormDiversSuggestions.Basefiles
            
     
         }
-      
+        public override bool ConsumeAmmo(Item weapon, Item ammo)
+        {
+            if (player.HasBuff(BuffType<ShroomiteBuff>()) && Main.rand.Next(2) == 0)//If the player has the shroomite potion then 50% chance not to consume ammo
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

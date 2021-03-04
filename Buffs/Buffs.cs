@@ -41,31 +41,9 @@ namespace StormDiversSuggestions.Buffs
             }
         }
     }
-    //____________________________________________________________________________________
-    public class DerpBuff : ModBuff
-    {
-        public override void SetDefaults()
-        {
-            DisplayName.SetDefault("Derpling Legs");
-            Description.SetDefault("Grants you the jump power of a true Derpling");
-        }
-        public override void Update(Player player, ref int buffIndex)
-        {
-
-            player.jumpSpeedBoost += 10f;
-
-            player.autoJump = true;
-
-          
-
-            player.noFallDmg = true;
-
-            //player.runAcceleration += 1f;
-        }
-    }
+   
     //______________________________________________________________________________
     
-  
     public class TurtleBuff : ModBuff
     {
         public override void SetDefaults()
@@ -95,20 +73,10 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Ranged Enhancement");
-            Description.SetDefault("Increased ranged projectile velocity and knockback");
+            DisplayName.SetDefault("Shroomite Enhancement");
+            Description.SetDefault("50% Chance not to consume ammo");
         }
-        //Increase extra updates of all ranaged projectiles?
-        public override void Update(Player player, ref int buffIndex)
-        {
-            
-            
-            if (player.HeldItem.ranged)
-            {
-                
-                
-            }
-        }
+        // code in StormPlayer.cs
     }
     //_______________________________________________________________________________
 
@@ -116,18 +84,13 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Magic Enhancement");
-            Description.SetDefault("Magic projectiles inflict a damaging debuff on enemies");
+            DisplayName.SetDefault("Spectre Enhancement");
+            Description.SetDefault("Increases maximum mana by 60");
         }
-        //Maybe move the spectre orbitor abiltiy here??
         public override void Update(Player player, ref int buffIndex)
         {
 
-            if (player.HeldItem.magic)
-            {
-                
-               
-            }
+            player.statManaMax2 += 60;
         }
     }
     //_______________________________________________________________________________
@@ -136,17 +99,16 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Melee Enhancement");
+            DisplayName.SetDefault("Beetle Enhancement");
             Description.SetDefault("Increases armour penetration for melee weapons");
         }
-        //Perhaps an on hit effect, inflicts beetled?
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
-                player.armorPenetration = 40;
-             
-                
+                player.armorPenetration = 30;
+            
+              
             }
 
         }
@@ -159,6 +121,7 @@ namespace StormDiversSuggestions.Buffs
         {
             DisplayName.SetDefault("Sprinting in the rain");
             Description.SetDefault("Your movement speed is increased");
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -199,7 +162,7 @@ namespace StormDiversSuggestions.Buffs
         {
             DisplayName.SetDefault("Heart Collector");
             Description.SetDefault("Steal the hearts of your enemies, literally");
-           
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -221,14 +184,14 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Life Up");
-            Description.SetDefault("Max life increased by 20");
+            Description.SetDefault("Max life is increased by 40");
 
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
             
-            player.statLifeMax2 += 20;
+            player.statLifeMax2 += 40;
         }
     }
     //___________________________________________________________________
@@ -237,14 +200,14 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Life Fruit Up");
-            Description.SetDefault("Max life increased by 25");
+            Description.SetDefault("Max life is increased by 50");
 
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.statLifeMax2 += 25;
+            player.statLifeMax2 += 50;
         }
     }
     //___________________________________________________________________
@@ -310,6 +273,7 @@ namespace StormDiversSuggestions.Buffs
         {
             DisplayName.SetDefault("Granite Barrier");
             Description.SetDefault("Reduces damage taken by by 15% and grants immunity to knockback");
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -338,7 +302,11 @@ namespace StormDiversSuggestions.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.allDamage += 1f;
+            player.meleeDamage += 1;
+            player.rangedDamage += 1;
+            player.magicDamage += 1;
+            player.thrownDamage += 1;
+
             if (Main.rand.Next(4) == 0)
             {
                 int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 70, player.velocity.X, player.velocity.Y, 100, default, 1.5f);
@@ -354,17 +322,18 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Champion's Gift");
-            Description.SetDefault("Increases critical strike chance by 12%");
+            DisplayName.SetDefault("Warrior's Gift");
+            Description.SetDefault("Increases critical strike chance by 15%");
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.meleeCrit += 12;
-            player.rangedCrit += 12;
-            player.magicCrit += 12;
-            player.thrownCrit += 12;
+            player.meleeCrit += 15;
+            player.rangedCrit += 15;
+            player.magicCrit += 15;
+            player.thrownCrit += 15;
 
             if (Main.rand.Next(5) == 0)
             {
@@ -381,8 +350,9 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Orbital Defence");
+            DisplayName.SetDefault("Orbital Defense");
             Description.SetDefault("Damage taken from the next attack is reduced by 25% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -407,6 +377,7 @@ namespace StormDiversSuggestions.Buffs
         {
             DisplayName.SetDefault("Orbital Strike");
             Description.SetDefault("Your next attack will cause defense-piercing space boulders to fall upon the attacked enemy");
+            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)

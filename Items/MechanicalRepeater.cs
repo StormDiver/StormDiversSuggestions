@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mechanical Repeater");
-            Tooltip.SetDefault("Rapidly fires arrows in bursts of three");
+            Tooltip.SetDefault("Rapidly fires arrows in bursts of three\nOnly the first shot consumes ammo");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items
             item.height = 24;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
+            item.rare = 5;
             item.useStyle = 5;
             item.useTime = 6;
             item.useAnimation = 18;
@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items
         
             item.damage = 40;
             //item.crit = 4;
-            item.knockBack = 5f;
+            item.knockBack = 2f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
             //item.shoot = ProjectileID.GrenadeI;
@@ -69,12 +69,11 @@ namespace StormDiversSuggestions.Items
                 {
                     case NPCID.Steampunker:
 
-                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                        {
+                       
                             shop.item[nextSlot].SetDefaults(mod.ItemType("ShroomiteRepeater"));
                             nextSlot++;
 
-                        }
+                        
 
                         break;
                 }

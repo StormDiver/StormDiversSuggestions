@@ -50,7 +50,8 @@ namespace StormDiversSuggestions.Items
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(25) == 0)
+                if (Main.rand.Next(100) < 4)
+
                 {
                     if (npc.type == NPCID.CultistArcherBlue || npc.type == NPCID.CultistDevote || npc.type == NPCID.CultistBoss)
                     {

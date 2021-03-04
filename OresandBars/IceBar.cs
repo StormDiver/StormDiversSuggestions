@@ -130,7 +130,7 @@ namespace StormDiversSuggestions.OresandBars
                     //if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
                     {
-                        if (Main.rand.Next(3) == 0)
+                        if (Main.rand.Next(100) < 33)
 
                         {
                             if (Main.expertMode)

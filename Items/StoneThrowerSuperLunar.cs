@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stone Launcher MKIV");
+            DisplayName.SetDefault("Lunar Stone Launcher");
             Tooltip.SetDefault("Empowers boulders with the power of the celestial fragments\nRequires Compact Boulders to work");
         }
         public override void SetDefaults()

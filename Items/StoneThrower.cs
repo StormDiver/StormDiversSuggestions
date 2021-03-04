@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stone Launcher MKI");
+            DisplayName.SetDefault("Stone Launcher");
             Tooltip.SetDefault("Fire out all your unwanted stone at your foes\nRequires Compact Boulders to work");
         }
         public override void SetDefaults()
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 2;
             item.useStyle = 5;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 35;
+            item.useAnimation = 35;
             item.useTurn = false;
             item.autoReuse = true;
             item.damage = 25;
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 0;
             item.knockBack = 6f;
 
-            item.shootSpeed = 10f;
+            item.shootSpeed = 7.5f;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }

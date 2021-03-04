@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Helmet");
-            Tooltip.SetDefault("2% increased damage\n2% increased critical strike chance");
+            Tooltip.SetDefault("2% increased damage and critical strike chance");
         }
    
         public override void SetDefaults()
@@ -126,7 +126,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Greaves");
-            Tooltip.SetDefault("2% increased damage\n2% increased critical strike chance\n20% increased movement speed");
+            Tooltip.SetDefault("2% increased damage and critical strike chance\n20% increased movement speed");
         }
 
         public override void SetDefaults()

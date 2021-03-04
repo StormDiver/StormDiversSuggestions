@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Items.Ammo
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Arid Arrow");
-            Tooltip.SetDefault("Bounces once, spins after bouncing");
+            Tooltip.SetDefault("Bounces twice, spins after bouncing");
         }
         public override void SetDefaults()
         {

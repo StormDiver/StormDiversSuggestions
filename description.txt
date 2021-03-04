@@ -9,18 +9,18 @@ This mod is constantly updated, adding new content and tweaking existing, so joi
 
 This mod includes:
 
--74 New unique weapons
+-80 New unique weapons
 -15 new ammos
 -10 new tools
 -New recipes for certain uncraftable vanilla items
 -3 new bars and 2 new ores 
 -17 new accessories
 -18 new buffs and 7 new potions
--11 new debuffs
+-10 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
 -Some new shop items
 -2 new pets
--14 new enemies
+-15 new enemies
 -A way to remove the shields from the pillars prematurely 
 -And more 

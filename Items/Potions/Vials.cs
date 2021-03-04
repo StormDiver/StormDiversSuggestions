@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Life Vial");
-            Tooltip.SetDefault("Temporarily increases maximum health by 20");
+            Tooltip.SetDefault("Temporarily increases maximum health by 40");
         }
 
         public override void SetDefaults()
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Life Fruit Vial");
-            Tooltip.SetDefault("Temporarily increases maximum health by 25");
+            Tooltip.SetDefault("Temporarily increases maximum health by 50");
         }
 
         public override void SetDefaults()

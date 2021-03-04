@@ -63,7 +63,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
                 {
                     if (npc.type == NPCID.VortexRifleman)
                     {
@@ -242,7 +242,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
                 {
                     if (npc.type == NPCID.SolarSolenian)
                     {
@@ -421,7 +421,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
                 {
                     if (npc.type == NPCID.NebulaSoldier)
                     {
@@ -599,7 +599,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
                 {
                     if (npc.type == NPCID.StardustSoldier)
                     {

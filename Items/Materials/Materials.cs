@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(5) == 0)
+                        if (Main.rand.Next(100) < 20)
                         {
                             if (npc.type == NPCID.ChaosElemental)
                             {
@@ -67,7 +67,8 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     else
                     {
-                        if (Main.rand.Next(7) == 0)
+                        if (Main.rand.Next(100) < 15)
+
                         {
                             if (npc.type == NPCID.ChaosElemental)
                             {
@@ -122,7 +123,7 @@ namespace StormDiversSuggestions.Items.Materials
                     if (Main.expertMode)
                     {
 
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(100) < 25)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -131,7 +132,7 @@ namespace StormDiversSuggestions.Items.Materials
 
                     else
                     {
-                        if (Main.rand.Next(5) == 0)
+                        if (Main.rand.Next(100) < 20)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -183,7 +184,7 @@ namespace StormDiversSuggestions.Items.Materials
                 if (npc.type == NPCID.GreekSkeleton)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(100) < 25)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
@@ -191,7 +192,7 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     else
                     {
-                        if (Main.rand.Next(5) == 0)
+                        if (Main.rand.Next(100) < 20)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
                         }
@@ -281,15 +282,15 @@ namespace StormDiversSuggestions.Items.Materials
                 if (npc.type == NPCID.Derpling)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(2) == 0)
+                        if (Main.rand.Next(100) < 75)
                         {
 
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"), Main.rand.Next(1, 3));
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
                         }
                     }
                 else
                 {
-                        if (Main.rand.Next(2) == 0)
+                        if (Main.rand.Next(100) < 50)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
                         }
@@ -324,27 +325,7 @@ namespace StormDiversSuggestions.Items.Materials
         }
         public class ModGlobalNPC : GlobalNPC
         {
-            public override void NPCLoot(NPC npc)
-            {
-                if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
-                {
-                    if (Main.expertMode && npc.lifeMax >= 80)
-                    {
-                        if (Main.rand.Next(9) == 0)
-                        {
-
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
-                        }
-                    }
-                    if (!Main.expertMode && npc.lifeMax >= 40)
-                    {
-                        if (Main.rand.Next(10) == 0)
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CrackedHeart"));
-                        }
-                    }
-                }
-            }
+          //Dropped by Broken soul
         }
     }
     //____________________________________________________________________________________
@@ -389,19 +370,19 @@ namespace StormDiversSuggestions.Items.Materials
                             if (Main.expertMode)
                             {
 
-                            if (Main.rand.Next(5) == 0)
+                            if (Main.rand.Next(100) < 25)
 
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 2));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
                             }
                             }
 
                             else
                             {
-                            if (Main.rand.Next(6) == 0)
+                            if (Main.rand.Next(100) < 20)
 
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"), Main.rand.Next(1, 2));
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
                             }
                           }
                         

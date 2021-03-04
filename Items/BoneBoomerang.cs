@@ -52,9 +52,10 @@ namespace StormDiversSuggestions.Items
 
                 if (Main.expertMode)
                 {
-                    if (Main.rand.Next(150) == 0)
+                    if (Main.rand.Next(100) < 1)
+
                     {
-                        if (npc.type == NPCID.Skeleton)
+                        if (npc.type == NPCID.Skeleton || npc.type == NPCID.MisassembledSkeleton || npc.type == NPCID.PantlessSkeleton || npc.type == NPCID.HeadacheSkeleton)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodBoomerang"));
                         }
@@ -62,11 +63,12 @@ namespace StormDiversSuggestions.Items
                 }
                 else
                 {
-                    if (Main.rand.Next(200) == 0)
+                    if (Main.rand.Next(200) < 1)
+
                     {
-                        if (npc.type == NPCID.ChaosElemental)
+                        if (npc.type == NPCID.Skeleton || npc.type == NPCID.MisassembledSkeleton || npc.type == NPCID.PantlessSkeleton || npc.type == NPCID.HeadacheSkeleton)
                         {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChaosShard"));
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodBoomerang"));
                         }
                     }
                 }

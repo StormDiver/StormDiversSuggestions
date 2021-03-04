@@ -327,6 +327,30 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.placeStyle = 0;
         }
     }
+    public class HellSoulBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Heartless Soul Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Heartless Soul");
+        }
+        public override void SetDefaults()
+        {
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
+            item.consumable = true;
+            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("HellSoulBannerPlace");  //This defines what type of tile this item will place	
+            item.placeStyle = 0;
+        }
+    }
 }
 
 ////then add this to the custom npc you want to drop the banner and in public override void SetDefaults()

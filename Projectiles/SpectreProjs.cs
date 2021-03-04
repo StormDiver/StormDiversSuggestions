@@ -33,18 +33,17 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
-            drawOffsetX = 0;
+            drawOffsetX = -2;
             drawOriginOffsetY = 0;
             
         }
-
+    
         int speedup = 0;
         public override void AI()
         {
             
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             //Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);
-            projectile.spriteDirection = projectile.direction;
 
             AnimateProjectile();
            
@@ -78,7 +77,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
             }
         }
 
@@ -94,7 +93,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
             }
 
         }

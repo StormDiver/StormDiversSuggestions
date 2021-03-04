@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Ammo
            
         }
 
-        public class VanillaShops : GlobalNPC
+        public class GrenadeShop : GlobalNPC
         {
             public override void SetupShop(int type, Chest shop, ref int nextSlot)
             {

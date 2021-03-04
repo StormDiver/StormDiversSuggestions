@@ -88,20 +88,22 @@ namespace StormDiversSuggestions.NPCs
         {
            
                 Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.ChlorophyteOre, Main.rand.Next(8, 12));
-            
+
             if (Main.expertMode)
             {
-                if (Main.rand.Next(2) == 0)
+                if (Main.rand.Next(100) < 50)
                 {
 
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingVine"));
                 }
             }
             else
-             if (Main.rand.Next(3) == 0)
             {
+                if (Main.rand.Next(100) < 33)
+                {
 
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingVine"));
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DerplingVine"));
+                }
             }
         } 
     }

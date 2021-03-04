@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Pets
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(50) == 0)
+                if (Main.rand.Next(100) < 2)
                 {
                     if (npc.type == NPCID.VortexRifleman)
                     {

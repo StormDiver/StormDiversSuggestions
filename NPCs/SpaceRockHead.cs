@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (NPC.downedPlantBoss)
             {
-                return SpawnCondition.Sky.Chance * 0.75f;
+                return SpawnCondition.Sky.Chance * 0.7f;
             }
             return SpawnCondition.Sky.Chance * 0f;
             

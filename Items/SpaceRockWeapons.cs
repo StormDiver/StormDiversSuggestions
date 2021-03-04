@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
             item.UseSound = SoundID.Item78;
 
-            item.damage = 55;
+            item.damage = 60;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -76,7 +76,7 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-
+    
     }
     //________________________________________________________________
     public class SpaceRockSword : ModItem
@@ -89,8 +89,8 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 75;
-
+            item.damage = 85;
+        
             item.melee = true;
             item.width = 40;
             item.height = 50;
@@ -178,7 +178,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item40;
 
-            item.damage = 32;
+            item.damage = 35;
             
             item.knockBack = 2f;
 

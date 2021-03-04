@@ -54,7 +54,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback";
 
             player.GetModPlayer<StormPlayer>().derpJump = true;
-
+         
         }
         public override void AddRecipes()
         {
@@ -67,22 +67,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         }
 
-        /*
-        public class ModGlobalNPC : GlobalNPC
-        {
-            public override void NPCLoot(NPC npc)
-            {
-
-                    if (npc.type == NPCID.Derpling)
-                {
-                    if (Main.rand.Next(50) == 0)
-                    {
-
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingHelmet"));
-                    }
-                }
-            }
-        }*/
+        
     }
 
     //___________________________________________________________________________________________________________________________
@@ -180,7 +165,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("Increases summon damage by 12%\nIncreases your max number of minions by 1");
+            Tooltip.SetDefault("Increases summon damage by 10%\nIncreases your max number of minions by 1");
         }
 
         public override void SetDefaults()
@@ -196,7 +181,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
        
             player.maxMinions += 1;
-            player.minionDamage += 0.12f;
+            player.minionDamage += 0.1f;
 
         }
 

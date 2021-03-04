@@ -189,7 +189,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = true;
             projectile.knockBack = 8f;
             projectile.ranged = true;
-            
+            projectile.extraUpdates = 1;
             projectile.arrow = true;
             //Creates no immunity frames
             
