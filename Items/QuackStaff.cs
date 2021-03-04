@@ -71,7 +71,10 @@ namespace StormDiversSuggestions.Items
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.GetItem("Quack"), 1);
             recipe.AddIngredient(ItemID.HallowedBar, 15);
-            recipe.AddIngredient(ItemID.SoulofFright, 10);
+            recipe.AddIngredient(ItemID.SoulofMight, 8);
+            recipe.AddIngredient(ItemID.SoulofSight, 8);
+            recipe.AddIngredient(ItemID.SoulofFright, 8);
+
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
