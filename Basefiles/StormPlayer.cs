@@ -33,6 +33,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool lunarBoulderDB; //The player has the Lunar Boulder Debuff
 
+        public bool superBurn; //The player has the Blazing Fire debuff
+
         public bool sandBurn; //The player has the Aridburn Debuff
 
         public bool superFrost; //The player has the CryoBurn Debuff
@@ -47,7 +49,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool flameCore; //The player has Betsy's Flame equipped
 
-        public bool frostSpike; //The PLayer has the Cryo Core equipped
+        public bool frostSpike; //The Player has the Cryo Core equipped
 
         public bool lunarBarrier; //The player has the Celestial Barrier equipped
 
@@ -109,6 +111,7 @@ namespace StormDiversSuggestions.Basefiles
             boulderDB = false;
             superBoulderDB = false;
             lunarBoulderDB = false;
+            superBurn = false;
             sandBurn = false;
             superFrost = false;
             turtled = false;
@@ -426,11 +429,8 @@ namespace StormDiversSuggestions.Basefiles
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
         {
-
-            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")))//Clear the buff when attacking an enemy
-            {
-                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
-            }
+            
+            
 
             //For the SpaceArmour with the helmet (offence)
             int offencedmg = 100;
@@ -633,11 +633,21 @@ namespace StormDiversSuggestions.Basefiles
 
         }
         //===================================Other hooks======================================
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) //True Melee Only
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) //Hitting enemies with True Melee Only
         {
-
+            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")) && !item.summon)//Clear the buff when attacking an enemy
+            {
+                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+            }
         }
-
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
+        {
+            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")) && (proj.melee || proj.ranged || proj.magic || proj.thrown))//Clear the buff when attacking an enemy excet with minions
+            {
+                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+            }
+        }
+        
         public override void OnHitByNPC(NPC npc, int damage, bool crit) //Hit by melee only
         {
 
@@ -646,7 +656,6 @@ namespace StormDiversSuggestions.Basefiles
         {
 
         }
-
         public override void UpdateLifeRegen()
         {
             //Regeneration, can also be done in buffs.cs
@@ -702,6 +711,12 @@ namespace StormDiversSuggestions.Basefiles
 
 
                     player.lifeRegen = -18;
+                }
+                if (superBurn)
+                {
+
+
+                    player.lifeRegen = -8;
                 }
             }
         }

@@ -150,7 +150,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Coral Blaster");
-            Tooltip.SetDefault("Fires out pieces of coral that are not affected by water\nRequires Coral Shards");
+            Tooltip.SetDefault("Fires out pieces of coral that are not affected by water\nRequires Coral Shards, craft more with coral");
         }
         public override void SetDefaults()
         {

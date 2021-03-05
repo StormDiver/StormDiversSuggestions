@@ -92,10 +92,10 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-           
-                target.AddBuff(BuffID.OnFire, 600);
-                
-            
+
+            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 600);
+
+
             projectile.Kill();
         }
 

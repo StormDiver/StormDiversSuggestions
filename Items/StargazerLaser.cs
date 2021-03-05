@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stargazer Core");
-            Tooltip.SetDefault("Summons a stardust portal that fires piercing projectiles at nearby enemies in bursts");
+            Tooltip.SetDefault("Summons a floating Stardust Portal that fires piercing projectiles at nearby enemies in bursts");
             
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }

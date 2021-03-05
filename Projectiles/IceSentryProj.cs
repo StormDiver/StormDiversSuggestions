@@ -190,7 +190,6 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.ranged = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 75;
             projectile.extraUpdates = 1;

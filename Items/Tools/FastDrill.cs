@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items.Tools
             item.width = 40;
             item.height = 22;
         
-            item.useTime = 6;
-            item.useAnimation = 25;
+            item.useTime = 5;
+            item.useAnimation = 10;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 1;

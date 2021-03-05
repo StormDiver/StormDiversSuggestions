@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stone Launcher");
-            Tooltip.SetDefault("Fire out all your unwanted stone at your foes\nRequires Compact Boulders to work");
+            Tooltip.SetDefault("Fire out all your unwanted stone at your foes\nRequires Compact Boulders, craft more with stone");
         }
         public override void SetDefaults()
         {

@@ -49,6 +49,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool bloodDebuff;
 
+        public bool superburnDebuff;
+
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -63,6 +65,7 @@ namespace StormDiversSuggestions.Basefiles
             heartDebuff = false;
             superFrost = false;
             bloodDebuff = false;
+            superburnDebuff = false;
         }
         public override void AI(NPC npc)
 
@@ -85,7 +88,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (distance < 140 && lineOfSight)
                 {
                    
-                    npc.AddBuff(mod.BuffType("BloodDebuff"), 1);
+                    npc.AddBuff(mod.BuffType("BloodDebuff"), 2);
                 }
             }
             //COVER YOURSELF IN OIL
@@ -119,6 +122,12 @@ namespace StormDiversSuggestions.Basefiles
 
                 damage = 10;
 
+            }
+            if (superburnDebuff)
+            {
+                npc.lifeRegen -= 30;
+
+                damage = 5;
             }
             if (sandBurn)
             {
@@ -356,6 +365,17 @@ namespace StormDiversSuggestions.Basefiles
                     dust.noGravity = true;
                     
                 }
+            }
+            if (superburnDebuff)
+            {
+                
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+
+                    int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, npc.velocity.X, npc.velocity.Y, 0, default, 1f);
+                    Main.dust[dust].velocity *= 0.5f;
+                
+
             }
         }
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)

@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mega Stone Launcher");
-            Tooltip.SetDefault("An upgraded stone launcher which makes stone far more deadly\nRequires Compact Boulders to work");
+            Tooltip.SetDefault("An upgraded stone launcher which makes stone far more deadly\nRequires Compact Boulders, craft more with stone");
         }
         public override void SetDefaults()
         {

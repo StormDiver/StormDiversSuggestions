@@ -94,6 +94,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void Kill(int timeLeft)
         {
+            int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("SilverKnive")) : 0;
 
             Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y);
             for (int i = 0; i < 5; i++)
@@ -192,6 +193,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void Kill(int timeLeft)
         {
+            int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("TungstenBullet")) : 0;
 
             Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y);
             for (int i = 0; i < 5; i++)

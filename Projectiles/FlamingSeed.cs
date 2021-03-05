@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 3;
             projectile.ranged = true;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 300;
             projectile.aiStyle = 1;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
@@ -47,12 +47,12 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.OnFire, 300);
+            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 300);
             projectile.damage = (projectile.damage * 9 / 10);
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.OnFire, 300);
+            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 300);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

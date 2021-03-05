@@ -54,6 +54,8 @@ namespace StormDiversSuggestions.Items
         {
             player.AddBuff(mod.BuffType("SuperFrostBurn"), 1);
             player.AddBuff(mod.BuffType("AridSandDebuff"), 1);
+            player.AddBuff(mod.BuffType("SuperBurnDebuff"), 1);
+
             player.AddBuff(mod.BuffType("BoulderDebuff"), 1);
             player.AddBuff(mod.BuffType("SuperBoulderDebuff"), 1);
             player.AddBuff(mod.BuffType("LunarBoulderDebuff"), 1);

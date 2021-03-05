@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using System.Linq;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions.Buffs;
+
 
 namespace StormDiversSuggestions.NPCs
 
@@ -66,6 +68,7 @@ namespace StormDiversSuggestions.NPCs
         public override void AI()
         {
             npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
 
 
             shoottime++;
@@ -164,7 +167,7 @@ namespace StormDiversSuggestions.NPCs
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
 
-            target.AddBuff(BuffID.OnFire, 300);
+            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 600);
 
 
         }

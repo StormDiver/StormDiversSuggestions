@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frozen Queen's Staff");
-            Tooltip.SetDefault("Summons an Ice Sentry that fires out a stream of ice at nearby enemies");
+            Tooltip.SetDefault("Summons a floating Ice Sentry that fires out a stream of ice at nearby enemies");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
             //Item.staff[item.type] = true;
         }

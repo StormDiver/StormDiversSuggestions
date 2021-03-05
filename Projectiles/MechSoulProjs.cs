@@ -220,7 +220,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ChainSaw");
+            DisplayName.SetDefault("Mechanical ChainSaw");
             Main.projFrames[projectile.type] = 2;
         }
         public override void SetDefaults()
@@ -291,23 +291,9 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            if (Main.rand.NextBool(10))
-            {
-                target.AddBuff(BuffID.OnFire, 180, false);
-            }
-
-
+          
         }
 
-
-
-        public override void OnHitPvp(Player target, int damage, bool crit)
-        {
-            if (Main.rand.NextBool(10))
-            {
-                target.AddBuff(BuffID.OnFire, 180, false);
-            }
-        }
 
         public void AnimateProjectile() // Call this every frame, for example in the AI method.
         {
@@ -356,7 +342,6 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            target.AddBuff(BuffID.OnFire, 500);
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 108);
         }
@@ -613,11 +598,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(3) == 0) // the chance
-            {
-                target.AddBuff(BuffID.OnFire, 240);
-
-            }
+          
 
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -661,10 +642,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(5) == 0) // the chance
-            {
-                target.AddBuff(BuffID.OnFire, 240);
-            }
+           
 
         }
         int bouncesound = 0;
@@ -817,10 +795,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             reflect = true; //Once this projectile has hit an enemy it will home in and bounce off walls
-            if (Main.rand.Next(2) == 0) // the chance
-            { 
-                target.AddBuff(BuffID.OnFire, 240);
-            }
+           
             for (int i = 0; i < 10; i++)
             {
 

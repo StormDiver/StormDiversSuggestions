@@ -75,8 +75,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.ShroomiteBar, 2);
-            recipe.AddIngredient(ItemID.Moonglow, 3);
+            recipe.AddIngredient(ItemID.ShroomiteBar, 1);
+            recipe.AddIngredient(ItemID.Moonglow, 2);
             recipe.AddIngredient(ItemID.DoubleCod);
 
             recipe.AddTile(TileID.Bottles);
@@ -114,8 +114,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.Ectoplasm, 4);
-            recipe.AddIngredient(ItemID.Waterleaf, 3);
+            recipe.AddIngredient(ItemID.Ectoplasm, 3);
+            recipe.AddIngredient(ItemID.Waterleaf, 2);
             recipe.AddIngredient(ItemID.PrincessFish);
 
             recipe.AddTile(TileID.Bottles);
@@ -161,8 +161,8 @@ namespace StormDiversSuggestions.Items.Potions
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.BeetleHusk, 3);
-            recipe.AddIngredient(ItemID.Fireblossom, 3);
+            recipe.AddIngredient(ItemID.BeetleHusk, 2);
+            recipe.AddIngredient(ItemID.Fireblossom, 2);
             recipe.AddIngredient(ItemID.Hemopiranha);
 
             recipe.AddTile(TileID.Bottles);
@@ -170,8 +170,8 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.BeetleHusk, 3);
-            recipe.AddIngredient(ItemID.Fireblossom, 3);
+            recipe.AddIngredient(ItemID.BeetleHusk, 2);
+            recipe.AddIngredient(ItemID.Fireblossom, 2);
             recipe.AddIngredient(ItemID.Ebonkoi);
 
             recipe.AddTile(TileID.Bottles);

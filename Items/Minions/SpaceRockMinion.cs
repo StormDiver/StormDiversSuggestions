@@ -239,7 +239,6 @@ namespace StormDiversSuggestions.Items.Minions
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            projectile.magic = true;
             projectile.aiStyle = 14;
             projectile.penetrate = 1;
             projectile.timeLeft = 60;

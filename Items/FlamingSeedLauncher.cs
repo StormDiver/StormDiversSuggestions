@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Flaming Seed Launcher");
-            Tooltip.SetDefault("Sets seeds ablaze");
+            Tooltip.SetDefault("Sets seeds ablaze\nObtain more from the Witch Doctor");
         }
         public override void SetDefaults()
         {
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = 3;
             item.useStyle = 5;
-            item.useTime = 27;
-            item.useAnimation = 27;
+            item.useTime = 18;
+            item.useAnimation = 18;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = true;
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = AmmoID.Dart;
             item.UseSound = SoundID.Item64;
 
-            item.damage = 27;
+            item.damage = 20;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 13f;
@@ -60,6 +60,7 @@ namespace StormDiversSuggestions.Items
             if (type == ProjectileID.Seed)
             {
                 type = mod.ProjectileType("FlamingSeed");
+                damage += (damage /3);
             }
       
             for (int i = 0; i < 1; i++)
@@ -75,7 +76,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Blowgun, 1);
-            recipe.AddIngredient(ItemID.HellstoneBar, 10);
+            recipe.AddIngredient(ItemID.HellstoneBar, 12);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -89,7 +90,7 @@ namespace StormDiversSuggestions.Items
                 {
                     case NPCID.WitchDoctor:
 
-                        if (Main.LocalPlayer.HasItem(mod.ItemType("SeedLauncher")))
+                        if (Main.LocalPlayer.HasItem(mod.ItemType("FlamingSeedLauncher")))
                         {
                             shop.item[nextSlot].SetDefaults(ItemID.Seed);
                             nextSlot++;

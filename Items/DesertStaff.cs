@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Staff");
-            Tooltip.SetDefault("Summons an Ancient Sentry that blasts sand in all directions");
+            Tooltip.SetDefault("Summons a floating Ancient Sentry that blasts sand in all directions");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
             //Item.staff[item.type] = true;
         }

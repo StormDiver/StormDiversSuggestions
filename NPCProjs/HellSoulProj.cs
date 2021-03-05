@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.NPCProjs
      
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.OnFire, 150);
+            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 300);
 
             projectile.Kill();
         }

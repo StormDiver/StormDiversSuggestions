@@ -39,17 +39,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.shootSpeed = 3f;
             item.ammo = item.type;
         }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Grenade, 50);
-            recipe.AddIngredient(ItemID.ExplosivePowder, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 50);
-            recipe.AddRecipe();
-
-           
-        }
+       
 
         public class GrenadeShop : GlobalNPC
         {

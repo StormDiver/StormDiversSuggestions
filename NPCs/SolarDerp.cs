@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using System.Linq;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions.Buffs;
+
 
 namespace StormDiversSuggestions.NPCs
 
@@ -64,7 +66,8 @@ namespace StormDiversSuggestions.NPCs
         int firetime = 0;
         public override void AI()
         {
-
+            npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
             if (Main.rand.NextFloat() < 0.8f)
             {
                 Dust dust;

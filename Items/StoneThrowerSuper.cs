@@ -11,8 +11,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Super Stone Launcher");
-            Tooltip.SetDefault("Superheats the boulders and fires 2 to 3 at a time\nRequires Compact Boulders to work");
+            DisplayName.SetDefault("Flaming Stone Launcher");
+            Tooltip.SetDefault("Superheats the boulders and fires 2 to 3 at a time\nRequires Compact Boulders to work, craft more with stone");
         }
         public override void SetDefaults()
         {

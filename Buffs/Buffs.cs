@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Spectre Enhancement");
-            Description.SetDefault("Increases maximum mana by 60");
+            Description.SetDefault("Maximum mana increased by 60");
         }
         public override void Update(Player player, ref int buffIndex)
         {
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enhancement");
-            Description.SetDefault("Increases armour penetration for melee weapons");
+            Description.SetDefault("30 armour penetration for melee weapons");
         }
         public override void Update(Player player, ref int buffIndex)
         {
