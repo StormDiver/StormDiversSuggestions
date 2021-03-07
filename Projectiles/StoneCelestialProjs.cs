@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.Projectiles
                     Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
                 }
             }
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
              
                 return false;
             
@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -238,7 +238,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -363,7 +363,7 @@ namespace StormDiversSuggestions.Projectiles
                     Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
             }
             }
-            Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
             
             return false;
         }
@@ -373,7 +373,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -486,7 +486,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -606,7 +606,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-            Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
 
             return false;
         }
@@ -616,7 +616,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -729,7 +729,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -865,7 +865,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
             
             return false;
         }
@@ -875,7 +875,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -988,7 +988,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
                 for (int i = 0; i < 3; i++)
                 {

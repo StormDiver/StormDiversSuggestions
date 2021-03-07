@@ -24,9 +24,9 @@ namespace StormDiversSuggestions.Items
 			item.height = 50;
 			item.useTime = 30;
 			item.useAnimation = 30;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 2, 0, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.useTurn = false;

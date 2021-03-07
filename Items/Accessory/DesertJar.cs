@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.width = 30;
             item.height = 34;
             item.value = Item.sellPrice(0, 2, 0, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
 
 
             item.accessory = true;
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items.Accessory
                         Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("DesertJarProj"), 35, 0f, player.whoAmI);
                         dropdust = 0;
 
-                        //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 13);
+                        //Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 13);
                     
                 }
                

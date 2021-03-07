@@ -89,7 +89,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
 
                     var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 31);
-                    Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 0.5f, 0.2f);
+                    Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 0.5f, 0.2f);
 
 
                 }
@@ -102,7 +102,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 0.5f, 0.2f);
+                Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 0.5f, 0.2f);
                 for (int i = 0; i < 15; i++)
                 {
 

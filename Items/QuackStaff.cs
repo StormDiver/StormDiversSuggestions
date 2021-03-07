@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.height = 54;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 5;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 18;
             item.useAnimation = 18;
             item.useTurn = false;
@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items
 
                 Projectile.NewProjectile(posX, posY, speedX, speedY, type, damage, knockBack, player.whoAmI);
             }
-            Main.PlaySound(30, (int)player.position.X, (int)player.position.Y);
+            Main.PlaySound(SoundID.Duck, (int)player.position.X, (int)player.position.Y);
 
 
             return false;

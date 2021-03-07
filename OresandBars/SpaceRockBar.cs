@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.OresandBars
             item.height = 24;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 9;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Cyan;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.useTurn = true;
             item.useAnimation = 15;
             item.useTime = 10;

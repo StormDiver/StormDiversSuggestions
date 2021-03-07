@@ -88,12 +88,12 @@ namespace StormDiversSuggestions.NPCs
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
 
 
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 12);
+                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 12);
 
 
                     for (int i = 0; i < 1; i++)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(0)); 
                                                                                                                                   

@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
 			item.useAnimation = 10;
 			item.useStyle = 100;
             item.value = Item.sellPrice(0, 2, 0, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item7;
 			item.autoReuse = false;
             item.useTurn = false;

@@ -125,7 +125,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);
+            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 60);
             return true;
         }
         public override void Kill(int timeLeft)

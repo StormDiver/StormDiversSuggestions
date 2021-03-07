@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.NPCs
                     int damage = 40; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("StormDerpProj");
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 17);
+                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 17);
 
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) -
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
@@ -96,7 +96,7 @@ namespace StormDiversSuggestions.NPCs
 
                     for (int i = 0; i < 5; i++)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
                                                                                                                                     // If you want to randomize the speed to stagger the projectiles
@@ -140,7 +140,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (NPC.ShieldStrengthTowerVortex > 0)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, 629, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(422));
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ProjectileID.TowerDamageBolt, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(422));
                 }
             }
         }

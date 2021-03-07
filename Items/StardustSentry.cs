@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.height = 50;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 10;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Red;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.useTime = 30;
             item.useAnimation = 30;
             item.damage = 100;

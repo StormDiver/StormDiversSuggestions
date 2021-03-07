@@ -128,7 +128,7 @@ namespace StormDiversSuggestions.Projectiles
                                 }
                                 firerate = 0;
                             }
-                            //Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 60);
+                            //Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 60);
                             if (stopfire >= 25)
                             {
                                 shoottime = 0;
@@ -153,7 +153,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
 
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);
+            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 45);
             for (int i = 0; i < 50; i++)
             {
 
@@ -245,7 +245,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(4, projectile.Center, 7);
+                Main.PlaySound(SoundID.NPCKilled, projectile.Center, 7);
 
                 for (int i = 0; i < 20; i++) //this i a for loop tham make the dust spawn , the higher is the value the more dust will spawn
                 {

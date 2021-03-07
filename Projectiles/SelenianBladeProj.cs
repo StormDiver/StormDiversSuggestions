@@ -72,7 +72,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
 
-            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 2);
+            //Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 2);
             Player player = Main.player[projectile.owner];
 
             target.AddBuff(BuffID.Daybreak, 300);
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 
-            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 2);
+            //Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 2);
             for (int i = 0; i < 10; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
@@ -110,7 +110,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 27);
 
 
 

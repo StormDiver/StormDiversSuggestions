@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endurance Healing Potion");
-            Tooltip.SetDefault("Reduces the damage of the next incoming attack by 33%");
+            Tooltip.SetDefault("Reduces the damage of the next incoming attack by 25%");
         }
         public override void SetDefaults()
         {
@@ -27,8 +27,8 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 30;
             item.consumable = true;
-            item.rare = 4;
-            item.healLife = 99;
+            item.rare = ItemRarityID.LightRed;
+            item.healLife = 125;
             item.value = Item.sellPrice(0, 0, 10, 0);
             item.potion = true;
            
@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 30;
             item.consumable = true;
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
             item.healLife = 90;
             item.value = Item.sellPrice(0, 0, 15, 0);
             item.potion = true;
@@ -143,7 +143,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.buffType = BuffType<Buffs.HeartBuff>(); //Specify an existing buff to be applied when used.
@@ -183,7 +183,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
 
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.buffType = BuffType<Buffs.FruitHeartBuff>(); //Specify an existing buff to be applied when used.

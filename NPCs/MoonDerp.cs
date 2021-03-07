@@ -97,7 +97,7 @@ namespace StormDiversSuggestions.NPCs
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.
                                                                                                                                         // If you want to randomize the speed to stagger the projectiles
@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.NPCs
                                 Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
                                 
                             }
-                            Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 124);
+                            Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 124);
                         }
                         shootspeed = 0;
                     }
@@ -117,18 +117,18 @@ namespace StormDiversSuggestions.NPCs
                     }
                     if (halflife3 && eyetime > 240 && Main.expertMode)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Projectile.NewProjectile(npc.Center.X, npc.Top.Y, 0, -4, mod.ProjectileType("MoonDerpEyeProj"), 35, 6f);
                             
                         }
-                        Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 103);
+                        Main.PlaySound(SoundID.Zombie, (int)npc.position.X, (int)npc.position.Y, 103);
                         eyetime = 0;
                     }
                 }
                if (npc.life < npc.lifeMax * 0.4f && halflife3 == false && Main.expertMode)
                 {
-                    Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 101);
+                    Main.PlaySound(SoundID.Zombie, (int)npc.position.X, (int)npc.position.Y, 101);
                     halflife3 = true;
                 }
             }

@@ -21,13 +21,13 @@ namespace StormDiversSuggestions.Items.Tools
             item.height = 32;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 10;
-            item.useStyle = 4;
+            item.rare = ItemRarityID.Red;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 60;
             item.useAnimation = 60;
             item.useTurn = false;
             item.autoReuse = false;
-                item.shoot = 629;
+                item.shoot = ProjectileID.TowerDamageBolt;
                 item.shootSpeed = 0f;
 
             item.noMelee = true; 
@@ -38,12 +38,12 @@ namespace StormDiversSuggestions.Items.Tools
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-           // Main.PlaySound(4, (int)position.X, (int)position.Y, 59);
+           // Main.PlaySound(SoundID.NPCKilled, (int)position.X, (int)position.Y, 59);
             //for (int i = 0; i < 15; i++)
             {
                 if (NPC.ShieldStrengthTowerVortex > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerStardust > 0)
                 {
-                    Main.PlaySound(2, (int)position.X, (int)position.Y, 122);
+                    Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 122);
                     //Projectile.NewProjectile(position.X, position.Y, 0, 0, 629, damage, knockBack, player.whoAmI, NPC.FindFirstNPC(422));
 
                     NPC.ShieldStrengthTowerVortex = 0;
@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.Items.Tools
                 }
                 else
                 {
-                    Main.PlaySound(4, (int)position.X, (int)position.Y, 6);
+                    Main.PlaySound(SoundID.NPCKilled, (int)position.X, (int)position.Y, 6);
                     for (int i = 0; i < 10; i++)
                     {
 

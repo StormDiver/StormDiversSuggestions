@@ -160,7 +160,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
                 
                 for (int i = 0; i < 50; i++)
                 {
@@ -279,7 +279,7 @@ namespace StormDiversSuggestions.Projectiles
                          Main.projectile[proj].timeLeft = 30;
                          Main.projectile[proj].netUpdate = true;
                          projectile.netUpdate = true;
-                         Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 34);
+                         Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 34);
                          projectile.ai[0] = -60f;
                      }
                  }
@@ -343,7 +343,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 108);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 108);
         }
         public override void Kill(int timeLeft)
         {
@@ -351,7 +351,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -547,7 +547,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.netUpdate = true;
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
                 // Play the sound
-                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+                Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
             }
 
             return false;

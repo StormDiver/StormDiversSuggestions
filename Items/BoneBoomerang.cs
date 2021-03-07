@@ -26,9 +26,9 @@ namespace StormDiversSuggestions.Items
             item.height = 32;
             item.useTime = 15;
             item.useAnimation = 15;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 18, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.useTurn = false;

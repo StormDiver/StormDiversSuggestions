@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.NPCs
                     {
                         for (int i = 0; i < 1; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 15 degree spread.
                                                                                                                                         // If you want to randomize the speed to stagger the projectiles
@@ -108,7 +108,7 @@ namespace StormDiversSuggestions.NPCs
                                 perturbedSpeed = perturbedSpeed * scale;
                                 Projectile.NewProjectile(npc.Center.X, npc.Top.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
                             }
-                            Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 92);
+                            Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 92);
                             firerate = 0;
                         }
                     }
@@ -152,7 +152,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (NPC.ShieldStrengthTowerVortex > 0)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, 629, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(422));
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ProjectileID.TowerDamageBolt, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(422));
                 }
             }
         }

@@ -101,7 +101,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Projectiles
             if (shoottime >= 20)
             {
 
-                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
                 Vector2 perturbedSpeed = new Vector2(0, -2).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -226,7 +226,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
 
             for (int i = 0; i < 10; i++)
@@ -241,7 +241,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
             }
         }
@@ -256,7 +256,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.Kill();
 
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 3);
 
 
             if (Main.rand.Next(5) == 0)
@@ -264,7 +264,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-                Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
 
             }
             {
@@ -295,7 +295,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 89);
 
 
                 for (int i = 0; i < 25; i++)
@@ -375,7 +375,7 @@ namespace StormDiversSuggestions.Projectiles
             if (Main.rand.Next(2) == 0)
             {
                 target.AddBuff(mod.BuffType("BeetleDebuff"), 480);
-                //Main.PlaySound(29, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                //Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
             }
             projectile.Kill();
         }

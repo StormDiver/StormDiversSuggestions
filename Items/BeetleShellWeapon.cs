@@ -25,10 +25,10 @@ namespace StormDiversSuggestions.Items
             item.useTime = 15;
             item.useAnimation = 15;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("BeetleShellProj");
             //item.UseSound = SoundID.Item1;
@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-            Main.PlaySound(2, (int)position.X, (int)position.Y, 1);
+            Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 1);
             /*for (int i = 0; i < 3; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(18)); // This defines the projectiles random spread . 10 degree spread.

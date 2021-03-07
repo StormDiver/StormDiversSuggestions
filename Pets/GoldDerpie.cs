@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Pets
             
             item.shoot = ProjectileType<GoldDerpie>();
             item.buffType = BuffType<GoldDerpieBuff>();
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
 
 

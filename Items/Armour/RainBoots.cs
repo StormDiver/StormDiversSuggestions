@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 2, 0);
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.defense = 1;
         }
 

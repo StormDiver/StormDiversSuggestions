@@ -112,7 +112,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
 
 
 
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+                Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
                 for (int i = 0; i < 5; i++)
                 {

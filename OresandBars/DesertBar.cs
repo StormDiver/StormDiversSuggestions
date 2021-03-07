@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.OresandBars
             item.height = 24;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 30, 0);
-            item.rare = 5;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.useTurn = true;
             item.useAnimation = 15;
             item.useTime = 10;
@@ -81,8 +81,8 @@ namespace StormDiversSuggestions.OresandBars
             item.height = 16;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 10, 0);
-            item.rare = 5;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.useTurn = true;
             item.useAnimation = 15;
             item.useTime = 10;
@@ -180,7 +180,7 @@ namespace StormDiversSuggestions.OresandBars
 
             dustType = 189;
             drop = ItemType<DesertOre>();
-            soundType = 21;
+            soundType = SoundID.Tink;
             soundStyle = 1;
             mineResist = 4f;
             minPick = 100;

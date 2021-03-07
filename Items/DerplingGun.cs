@@ -20,8 +20,8 @@ namespace StormDiversSuggestions.Items
             item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
-            item.useStyle = 5;
+                     item.rare = ItemRarityID.Lime;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 4;
             item.useAnimation = 12;
             item.reuseDelay = 13;
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items
         //int secondfire = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+            Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);

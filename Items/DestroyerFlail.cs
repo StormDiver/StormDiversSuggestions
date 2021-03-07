@@ -23,12 +23,12 @@ namespace StormDiversSuggestions.Items
             item.width = 30;
             item.height = 34;
             item.value = Item.sellPrice(0, 3, 0, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.crit = 4;
            
             item.knockBack = 6f;
             item.damage = 65;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.UseSound = SoundID.Item1;
             item.melee = true;
             item.noMelee = true;

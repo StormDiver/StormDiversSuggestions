@@ -102,7 +102,7 @@ namespace StormDiversSuggestions.Projectiles
                             Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(8));
                             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("IceSentryProj2"), (int)(projectile.damage * 1f), projectile.knockBack, Main.myPlayer, 0f, 0f);
 
-                            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+                            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 20);
 
                             shoottime = 0;
                         }
@@ -165,7 +165,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
 
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);
+            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 45);
             for (int i = 0; i < 50; i++)
             {
 

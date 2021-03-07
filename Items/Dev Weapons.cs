@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Items
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = -1;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 1;
             item.useAnimation = 1;
             item.useTurn = false;

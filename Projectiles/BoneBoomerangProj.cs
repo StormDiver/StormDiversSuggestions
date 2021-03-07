@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
            
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 2);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 2);
 
 
 
@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
            
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 2);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 2);
 
             return true;
         }
@@ -68,7 +68,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 27);
 
 
 

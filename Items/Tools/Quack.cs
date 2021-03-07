@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items.Tools
             item.height = 20;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 0;
-            item.useStyle = 4;
+            item.rare = ItemRarityID.White;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 70;
             item.useAnimation = 70;
             item.useTurn = true;
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items.Tools
             {
                 pitch = 0.8f;
             }
-            Main.PlaySound(29, (int)player.Center.X, (int)player.Center.Y, 12, 1, pitch);
+            Main.PlaySound(SoundID.Zombie, (int)player.Center.X, (int)player.Center.Y, 12, 1, pitch);
 
             return true;
         }

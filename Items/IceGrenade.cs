@@ -26,10 +26,10 @@ namespace StormDiversSuggestions.Items
             item.useTime = 40;
             item.useAnimation = 40;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 0, 0, 16);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.shootSpeed = 7f;
             item.shoot = mod.ProjectileType("IceGrenadeProj");
             //item.UseSound = SoundID.Item1;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-            Main.PlaySound(2, (int)position.X, (int)position.Y, 1);
+            Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 1);
            
                 return true;
             

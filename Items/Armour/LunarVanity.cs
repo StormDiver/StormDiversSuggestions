@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
             
         }
@@ -114,7 +114,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -161,7 +161,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -208,7 +208,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
         }
         /*
@@ -292,7 +292,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -339,7 +339,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -386,7 +386,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
         }
         /*
@@ -471,7 +471,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -518,7 +518,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -565,7 +565,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
         }
         /*
@@ -649,7 +649,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }
@@ -696,7 +696,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
 
         }

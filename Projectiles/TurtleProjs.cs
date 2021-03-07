@@ -182,7 +182,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 3);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 3);
 
             return false;
         }
@@ -209,7 +209,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 89);
 
                 for (int i = 0; i < 25; i++)
                 {
@@ -285,7 +285,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     // Calculate new speeds for other projectiles.
                     // Rebound at 40% to 70% speed, plus a random amount between -8 and 8
-                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
                     Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 

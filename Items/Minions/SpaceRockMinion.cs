@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.Items.Minions
             item.height = 46;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 25;
             item.useAnimation = 25;

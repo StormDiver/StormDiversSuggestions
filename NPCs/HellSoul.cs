@@ -107,7 +107,7 @@ namespace StormDiversSuggestions.NPCs
                     int damage = 20; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("HellSoulProj");
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 8);
+                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 8);
 
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) -
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
@@ -115,7 +115,7 @@ namespace StormDiversSuggestions.NPCs
 
                     for (int i = 0; i < 3; i++)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
 
                             float speedX = 0f;

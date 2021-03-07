@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items.Tools
             item.height = 38;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 0;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 120;
             item.useAnimation = 120;
             item.useTurn = true;

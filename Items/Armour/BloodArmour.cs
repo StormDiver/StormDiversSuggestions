@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 60, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.defense = 5;
         }
 
@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 60, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.defense = 6;
         }
 
@@ -131,7 +131,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 60, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.defense = 5;
         }
 

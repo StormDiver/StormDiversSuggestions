@@ -314,7 +314,7 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.velocity.Y = -oldVelocity.Y * 0.5f;
                 }
             
-           // Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
+           // Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 56);
             return false;
         }
         int timeleft = 240;
@@ -342,7 +342,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
 
 
 
@@ -618,7 +618,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
 
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74);
 
             projectile.alpha = 255;
 
@@ -730,7 +730,7 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.velocity.Y = -oldVelocity.Y * 1.5f;
                 }
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 53);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 53);
             return false;
         }
 

@@ -87,7 +87,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
             for (int i = 0; i < 10; i++)
             {
@@ -194,7 +194,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (distime == orbittime - 1)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 30);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 30);
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -249,7 +249,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 30);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 30);
                
                 //for (int i = 0; i < 10; i++)
                 {
@@ -289,7 +289,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 8);
             for (int i = 0; i < 10; i++)
             {
 
@@ -536,7 +536,7 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 8);
             }
 
             //projectile.damage += 12;
@@ -548,7 +548,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 5; i++)
             {
 
@@ -648,7 +648,7 @@ namespace StormDiversSuggestions.Projectiles
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 15);
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 8);
             }
 
             //projectile.damage += 12;
@@ -660,7 +660,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 5; i++)
             {
 

@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 30);
+            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 30);
             if (Main.rand.Next(2) == 0) // the chance
             {
                 Dust dust;
@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
             for (int i = 0; i < 10; i++)
             {
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(10, 10), Main.rand.NextFloat(-10, -10));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202);
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 11);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 11);
 
         }
 
@@ -146,7 +146,7 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202);
                 
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 11);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 11);
 
         }
 
@@ -156,14 +156,14 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202);
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 11);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 11);
         }
        
     }
@@ -213,14 +213,14 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202);
             }
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 11);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 11);
         }
 
     }
@@ -274,7 +274,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     // Calculate new speeds for other projectiles.
                     // Rebound at 40% to 70% speed, plus a random amount between -8 and 8
-                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
                     Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 

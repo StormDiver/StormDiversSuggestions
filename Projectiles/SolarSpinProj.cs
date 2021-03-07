@@ -42,7 +42,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
                 var dust = Dust.NewDustDirect(target.position, target.width, target.height, 6);
                 dust.scale = 2f;
                 dust.noGravity = true;
-                Main.PlaySound(2, (int)target.Center.X, (int)target.Center.Y, 74);
+                Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 74);
             }
 
         }
@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 7);    
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 7);    
                 projectile.soundDelay = 25;    
             }
             //-----------------------------------------------How the projectile works---------------------------------------------------------------------
@@ -190,7 +190,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
                             int choice = Main.rand.Next(2);
                             if (choice == 0)
                             {
-                                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 56);
+                                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 56);
                                 //projectile.Kill();
                                 projectile.velocity.X *= -1f;
 

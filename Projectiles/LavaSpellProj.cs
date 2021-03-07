@@ -76,7 +76,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 86, 1, -2);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 86, 1, -2);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -177,7 +177,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 85, 1, -2);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 85, 1, -2);
 
                 for (int i = 0; i < 5; i++)
                 {

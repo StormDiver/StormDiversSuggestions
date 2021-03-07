@@ -246,7 +246,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (player.controlDown && player.velocity.Y != 0)
                 {
                    
-                    //Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 15, 2, -0.5f);
+                    //Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 15, 2, -0.5f);
                     player.gravity += 5;
                     player.maxFallSpeed *= 1.5f;
 
@@ -288,7 +288,7 @@ namespace StormDiversSuggestions.Basefiles
                         }
                         Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 5, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
                         Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -5, 0, mod.ProjectileType("StompBootProj"), 40, 12f, player.whoAmI);
-                        Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 14);
+                        Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 14);
                         falling = false;
 
                     }
@@ -332,7 +332,7 @@ namespace StormDiversSuggestions.Basefiles
                             int type = mod.ProjectileType("ShroomSetRocketProj");
                             int damage = (int)(player.HeldItem.damage * 1.5f);
                             Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 92);
+                            Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 92);
                         }
 
                     }
@@ -363,7 +363,7 @@ namespace StormDiversSuggestions.Basefiles
                                 
                             }
 
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 34);
+                            Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 34);
 
                             float numberProjectiles = 2;
 
@@ -397,7 +397,7 @@ namespace StormDiversSuggestions.Basefiles
             //For the Celestial Barrier ======================
             if (lifeBarrier)
             {
-                player.endurance += 0.33f;
+                player.endurance += 0.25f;
                 player.noKnockback = true;
             }
             //for Derpling armour
@@ -456,10 +456,12 @@ namespace StormDiversSuggestions.Basefiles
                     dust.velocity *= 2;
 
                 }
-                Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 45);
+                Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
                 spaceStrikecooldown = 0;
+                player.ClearBuff(mod.BuffType("SpaceRockOffence"));
 
             }
+
             //For the Hemogoblin armour setbonus ======================
 
             if (player.HeldItem.melee)
@@ -470,7 +472,7 @@ namespace StormDiversSuggestions.Basefiles
                     if (bloodtime < 1 && !player.dead)
                     {
 
-                        Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
+                        Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 9);
 
                         float numberProjectiles = 7 + Main.rand.Next(3);
 
@@ -499,7 +501,7 @@ namespace StormDiversSuggestions.Basefiles
                 if (desertdusttime < 1 && !player.dead)
                 {
 
-                    Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 20);
+                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 20);
 
                     
                     float numberProjectiles = 8 + Main.rand.Next(0);
@@ -533,7 +535,7 @@ namespace StormDiversSuggestions.Basefiles
             if (graniteBuff && !player.HasBuff(mod.BuffType("GraniteAccessBuff")) && damage > 5)
             {
                 player.AddBuff(mod.BuffType("GraniteAccessBuff"), 300);
-                Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
+                Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
                 for (int i = 0; i < 25; i++)
                 {
 
@@ -566,9 +568,11 @@ namespace StormDiversSuggestions.Basefiles
                     dust.noGravity = true;
                     dust.velocity *= 2;
                 }
-                Main.PlaySound(2, (int)player.Center.X, (int)player.Center.Y, 45);
+                Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
 
                 spaceBarriercooldown = 0;
+                player.ClearBuff(mod.BuffType("SpaceRockDefence"));
+
             }
 
             //Grant buff for celestial barrier based on incoming damage======================
@@ -582,7 +586,7 @@ namespace StormDiversSuggestions.Basefiles
                     
                         //if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
                         {
-                            Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
+                            Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 122);
                             player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
 
                         }
@@ -592,7 +596,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     //if (!Main.LocalPlayer.HasBuff(mod.BuffType("CelestialBuff")))
                     {
-                        Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 122);
+                        Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 122);
                         player.AddBuff(mod.BuffType("CelestialBuff"), (int)(attackdmg * 4f));
                     }
                 }
@@ -602,7 +606,7 @@ namespace StormDiversSuggestions.Basefiles
             {
                 if (frosttime < 1)
                 {
-                    Main.PlaySound(4, (int)player.position.X, (int)player.position.Y, 56);
+                    Main.PlaySound(SoundID.NPCKilled, (int)player.position.X, (int)player.position.Y, 56, 0.5f);
                     float numberProjectiles = 10 + Main.rand.Next(4);
                     for (int i = 0; i < numberProjectiles; i++)
                     {

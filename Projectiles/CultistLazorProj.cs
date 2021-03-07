@@ -153,7 +153,7 @@ namespace StormDiversSuggestions.Projectiles
             if (IsAtMaxCharge && firesound == false)
             {
                 //Only plays once, when the laser begins to fire
-               Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 125, 1.5f, -0.3f);
+               Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 125, 1.5f, -0.3f);
                 for (int i = 0; i < 100; i++) 
                 {
                     int dust = Dust.NewDust(pos, 0, 0, 135, projectile.velocity.X * 2, projectile.velocity.Y * 2, 50, default, 3f);   
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Projectiles
                 
                 if (projectile.soundDelay <= 0)
                 {
-                    Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 13, 1.5f, -0.2f);
+                    Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 13, 1.5f, -0.2f);
                     projectile.soundDelay = 30;
                 }
                 if (player.statMana >= 0)
@@ -253,7 +253,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     if (projectile.soundDelay <= 0)
                     {
-                        Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15, 2, -0.5f);
+                        Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 15, 2, -0.5f);
                         projectile.soundDelay = 15;
                     }
                 }

@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
+                //Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 22);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -148,7 +148,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 22);
             for (int i = 0; i < 10; i++)
             {
 
@@ -225,7 +225,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
             //Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            //Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 22);
+            //Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 22);
             for (int i = 0; i < 3; i++)
             {
 

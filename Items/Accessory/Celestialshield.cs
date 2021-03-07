@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
+using static Terraria.ModLoader.ModContent;            
 using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items.Accessory
@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.width = 30;
             item.height = 30;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
            
             item.accessory = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;

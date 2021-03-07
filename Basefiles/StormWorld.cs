@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             if (WorldGen.genRand.NextBool(4))
                             {
@@ -121,7 +121,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             if (WorldGen.genRand.NextBool(3))
                             {
@@ -146,7 +146,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             if (WorldGen.genRand.NextBool(1))
                             {
@@ -164,7 +164,7 @@ namespace StormDiversSuggestions.Basefiles
 
                 }
 
-                //For the Granite Rifle in Granite chests
+                //For the Granite weapons
                 int[] ChestGraniteRanged = { ItemType<GraniteRifle>() };
                 int ChestGraniteRangedCount = 0;
                 int[] ChestGraniteAmmo = { ItemID.MusketBall };
@@ -178,7 +178,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             int choice = Main.rand.Next(3);
 
@@ -221,7 +221,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        if (chest.item[inventoryIndex].type == 0)
+                        if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             int choice = Main.rand.Next(3);
 

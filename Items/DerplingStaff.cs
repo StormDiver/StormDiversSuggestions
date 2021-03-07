@@ -20,8 +20,8 @@ namespace StormDiversSuggestions.Items
             item.height = 54;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
-            item.useStyle = 5;
+                     item.rare = ItemRarityID.Lime;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 8;
             item.useAnimation = 8;  
             item.autoReuse = true;
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Items
 
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
                     Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * .6f), (float)(perturbedSpeed.Y * .6f), mod.ProjectileType("DerpMagicProj"), (int)(damage * 1.5f), knockBack, player.whoAmI);
-                    Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 20);
+                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 20);
 
                 }
             }

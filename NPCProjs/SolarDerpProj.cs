@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.NPCProjs
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(4, 4), Main.rand.NextFloat(-4, -4));
                 var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 244);
-                //Main.PlaySound(3, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
+                //Main.PlaySound(SoundID.NPCHit, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
         }

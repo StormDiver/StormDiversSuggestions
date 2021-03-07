@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("NebulaStaffProj2"), (int)(projectile.damage * .8f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
 
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 45);
 
 
 

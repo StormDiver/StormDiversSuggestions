@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Pets
             
             item.shoot = ProjectileType<StormLightProj>();
             item.buffType = BuffType<StormLightBuff>();
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
 
         }
 

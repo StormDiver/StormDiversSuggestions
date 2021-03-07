@@ -80,8 +80,8 @@ namespace StormDiversSuggestions.NPCs
                     int type = mod.NPCType("StardustMiniDerp");
 
 
-                    Main.PlaySound(3, (int)npc.Center.X, (int)npc.Center.Y, 5);
-                    if (Main.netMode != 1)
+                    Main.PlaySound(SoundID.NPCHit, (int)npc.Center.X, (int)npc.Center.Y, 5);
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         NPC.NewNPC((int)Math.Round(npc.Center.X), (int)Math.Round(npc.Center.Y), type);
                         
@@ -130,7 +130,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (NPC.ShieldStrengthTowerStardust > 0)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, 629, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(493));
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ProjectileID.TowerDamageBolt, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(493));
                 }
                 
             }

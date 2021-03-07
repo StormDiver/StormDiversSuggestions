@@ -103,11 +103,11 @@ namespace StormDiversSuggestions.NPCs
                     //Projectile.NewProjectile(npc.Center.X + npc.width / 2, npc.Center.Y + npc.height / 2, velocity.X, velocity.Y, type, damage, knockBack, Main.myPlayer);
 
 
-                    //Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    //Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     firetime++;
                     if (firetime >= 10)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(45));
 
@@ -116,7 +116,7 @@ namespace StormDiversSuggestions.NPCs
 
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
                         }
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 7);
                         
                         for (int i = 0; i < 10; i++)
                         {
@@ -164,7 +164,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (NPC.ShieldStrengthTowerSolar > 0)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, 629, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(517));
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ProjectileID.TowerDamageBolt, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(517));
                 }
             }
         }

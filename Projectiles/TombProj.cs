@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (reflect >= 1)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62, 0.5f, 1.5f);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62, 0.5f, 1.5f);
             }
             for (int i = 0; i < 5; i++)
             {
@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
                 for (int i = 0; i < 15; i++)
                 {
 
@@ -206,7 +206,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
            
-            Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 6, 0.5f, 1);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 6, 0.5f, 1);
             
             projectile.Kill();
         }

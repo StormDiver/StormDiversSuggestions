@@ -216,7 +216,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Life Barrier");
-            Description.SetDefault("The next incoming attack will be reduced by 33% and will deal no knockback");
+            Description.SetDefault("The next incoming attack will be reduced by 25% and will deal no knockback");
         }
 
         public override void Update(Player player, ref int buffIndex)

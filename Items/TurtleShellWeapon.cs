@@ -25,10 +25,10 @@ namespace StormDiversSuggestions.Items
             item.useTime = 18;
             item.useAnimation = 18;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 2, 40, 0);
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TurtleShellProj");
             //item.UseSound = SoundID.Item1;
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items
         }*/
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Main.PlaySound(2, (int)position.X, (int)position.Y, 1);
+            Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 1);
            
                 
                 return true;

@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.height = 24;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 8;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Yellow;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 30;
             item.useAnimation = 30;
             item.useTurn = false;
@@ -78,14 +78,14 @@ namespace StormDiversSuggestions.Items
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
                 Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 0.8), (float)(perturbedSpeed.Y * 0.8), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
+                Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 61);
             }
             else
             {
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X ,perturbedSpeed.Y, mod.ProjectileType("ShroomRocketProj"), damage, knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)position.X, (int)position.Y, 92);
+                Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 92);
             }
            
 

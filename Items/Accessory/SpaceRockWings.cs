@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.height = 36;
 
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
            
             item.accessory = true;
             

@@ -25,10 +25,10 @@ namespace StormDiversSuggestions.Items
             item.useTime = 14;
             item.useAnimation = 14;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.knockBack = 3f;
             item.value = Item.sellPrice(0, 0, 0, 15);
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("SilverKniveProj");
             //item.UseSound = SoundID.Item1;
@@ -68,10 +68,10 @@ namespace StormDiversSuggestions.Items
             item.useTime = 14;
             item.useAnimation = 14;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.knockBack = 2.5f;
             item.value = Item.sellPrice(0, 0, 0, 15);
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("TungstenKniveProj");
             //item.UseSound = SoundID.Item1;

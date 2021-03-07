@@ -24,9 +24,9 @@ namespace StormDiversSuggestions.Items.Tools
 
             item.useTime = 7;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
             item.knockBack = 1f;
            
             item.useTurn = true;
@@ -72,9 +72,9 @@ namespace StormDiversSuggestions.Items.Tools
             item.height = 20;
             item.useTime = 7;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
             item.knockBack = 4.6f;
           
             item.useTurn = true;
@@ -119,9 +119,9 @@ namespace StormDiversSuggestions.Items.Tools
             item.height = 20;
             item.useTime = 7;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
             item.knockBack = 5.2f;
 
             item.useTurn = true;

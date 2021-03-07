@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.NPCProjs
         {
 
             Collision.HitTiles(projectile.Center, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 55);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 55);
             for (int i = 0; i < 15; i++)
             {
 
@@ -240,7 +240,7 @@ namespace StormDiversSuggestions.NPCProjs
         {
 
             Collision.HitTiles(projectile.Center, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 43);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 43);
             for (int i = 0; i < 40; i++)
             {
 

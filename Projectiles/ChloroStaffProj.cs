@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         {
 
 
-            //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 45);
+            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 45);
             for (int i = 0; i < 10; i++)
             {
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 44);

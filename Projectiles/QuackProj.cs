@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void Kill(int timeLeft)
         {
 
-            Main.PlaySound(30, (int)projectile.position.X, (int)projectile.position.Y, 0, 0.3f, -0.6f);
+            Main.PlaySound(SoundID.Duck, (int)projectile.position.X, (int)projectile.position.Y, 0, 0.3f, -0.6f);
 
             for (int i = 0; i < 10; i++)
             {

@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.height = 12;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 3);
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
 
 
             item.ranged = true;
@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.height = 12;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 3);
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
 
 
             item.ranged = true;

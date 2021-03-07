@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.height = 24;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 4, 0, 0);
-            item.rare = 5;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 6;
             item.useAnimation = 18;
             item.reuseDelay = 10;
@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Main.PlaySound(2, (int)position.X, (int)position.Y, 5);
+            Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 5);
             return true;
         }
         public override bool ConsumeAmmo(Player player)

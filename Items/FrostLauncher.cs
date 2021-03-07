@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 2, 0, 0);
-            item.rare = 5;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 28;
             item.useAnimation = 28;
             //item.reuseDelay = 30;
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); 
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostGrenadeProj"), (int)(damage * 1f), knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)position.X, (int)position.Y, 61);
+                Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 61);
 
             }
 

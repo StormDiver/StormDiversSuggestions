@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Ammo
             item.height = 14;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 0, 6);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 
             //item.melee = true;
             item.ranged = true;

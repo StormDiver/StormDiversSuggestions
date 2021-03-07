@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Items
             item.height = 30;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
-            item.useStyle = 4;
+            item.rare = ItemRarityID.Cyan;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 25;
             item.useAnimation = 25;
             item.useTurn = false;
@@ -96,9 +96,9 @@ namespace StormDiversSuggestions.Items
             item.height = 50;
             item.useTime = 10;
             item.useAnimation = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = false;
@@ -137,7 +137,7 @@ namespace StormDiversSuggestions.Items
                     float SpeedY = num17 + (float)Main.rand.Next(-10, 10) * 0.02f;  //this defines the projectile Y position speed and randomnes
                     Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX * 1.5f, SpeedY * 1.5f, type, (int)(damage * 0.75f), 0.5f, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
                 }
-                Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 13);
+                Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 13);
               
             return false;
         }
@@ -168,8 +168,8 @@ namespace StormDiversSuggestions.Items
             item.height = 22;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Cyan;
+            item.useStyle = ItemUseStyleID.HoldingOut;
 
             item.useTurn = false;
             item.autoReuse = true;
@@ -207,7 +207,7 @@ namespace StormDiversSuggestions.Items
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                //Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                //Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
             }
     
             return false;

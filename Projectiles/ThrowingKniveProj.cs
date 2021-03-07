@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
                 spin = true;
             }
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 10);
             return false;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -96,7 +96,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("SilverKnive")) : 0;
 
-            Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(SoundID.Dig, (int)projectile.Center.X, (int)projectile.Center.Y);
             for (int i = 0; i < 5; i++)
             {
 
@@ -182,7 +182,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
                 spin = true;
             }
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 10);
             return false;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -195,7 +195,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             int item = Main.rand.NextBool(5) ? Item.NewItem(projectile.getRect(), mod.ItemType("TungstenBullet")) : 0;
 
-            Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(SoundID.Dig, (int)projectile.Center.X, (int)projectile.Center.Y);
             for (int i = 0; i < 5; i++)
             {
 

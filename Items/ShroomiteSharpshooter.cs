@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.height = 22;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 8;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Yellow;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             
             item.useTurn = false;
             item.autoReuse = true;
@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Items
                         Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 
                     }
-                    //Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+                    //Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
                 }
             }
 

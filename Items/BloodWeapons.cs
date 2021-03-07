@@ -23,9 +23,9 @@ namespace StormDiversSuggestions.Items
 			item.height = 42;
 			item.useTime = 17;
 			item.useAnimation = 17;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 75, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = false;
             //item.useTurn = true;
@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.Items
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
                 }
-                Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
+                Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 9);
                 weaponattack = 2;
             }
             return false;
@@ -83,9 +83,9 @@ namespace StormDiversSuggestions.Items
             item.height = 64;
             item.useTime = 21;
             item.useAnimation = 21;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 75, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.useTurn = false;
@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Items
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
                     Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.7f), (float)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
                 }*/
-                Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
+                Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 9);
                 
             return true;
         }
@@ -150,9 +150,9 @@ namespace StormDiversSuggestions.Items
             item.height = 26;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 75, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.channel = true;
             item.useTurn = true;

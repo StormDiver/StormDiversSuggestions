@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
         }
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Items.Materials
             ItemID.Sets.ItemIconPulse[item.type] = true;
 
             item.value = Item.sellPrice(0, 0, 5, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
         }
         public override void PostUpdate()
         {
@@ -162,7 +162,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.height = 26;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 5, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
 
         }
 
@@ -220,7 +220,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.maxStack = 999;
             
             item.value = Item.sellPrice(0, 0, 1, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()
@@ -270,7 +270,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 10, 0);
             
-            item.rare = 7;
+                     item.rare = ItemRarityID.Lime;
 
         }
 
@@ -320,7 +320,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
        
         }
         public class ModGlobalNPC : GlobalNPC
@@ -346,7 +346,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.maxStack = 999;
 
             item.value = Item.sellPrice(0, 0, 0, 50);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
         }
 
         public override void AddRecipes()
@@ -411,7 +411,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.height = 20;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 0, 10, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
         }

@@ -88,12 +88,12 @@ namespace StormDiversSuggestions.NPCs
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
 
 
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 13);
+                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 13);
 
 
                     for (int i = 0; i < 4; i++)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(180)); // 30 degree spread.
                                                                                                                                      // If you want to randomize the speed to stagger the projectiles

@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.value = Item.sellPrice(0, 0, 2, 50);
             item.buffType = BuffType<Buffs.BloodBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 18000; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
@@ -65,7 +65,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.ShroomiteBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
@@ -104,7 +104,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.SpectreBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
@@ -151,7 +151,7 @@ namespace StormDiversSuggestions.Items.Potions
             item.UseSound = SoundID.Item3;
             item.maxStack = 99;
             item.consumable = true;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.buffType = BuffType<Buffs.BeetleBuff>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.

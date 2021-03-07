@@ -173,7 +173,7 @@ namespace StormDiversSuggestions.Projectiles
                             if (choice == 0)
                             {
                                 projCheck = true;
-                                Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 4);
+                                Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 4);
                                 projectile.Kill();
 
                             }

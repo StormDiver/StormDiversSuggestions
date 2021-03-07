@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.defense = 15;
         }
 
@@ -63,7 +63,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.setBonus = "Grants the Orbital Strike buff that summons damaging space rocks to fall upon the next attacked enemy";
             //player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
             player.GetModPlayer<StormPlayer>().spaceRockOffence = true;
-           
+         
 
         }
         public override void AddRecipes()
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.defense = 30;
         }
 
@@ -163,7 +163,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.defense = 22;
         }
 
@@ -205,7 +205,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.width = 18;
             item.height = 18;
             item.value = Item.sellPrice(0,  10, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.defense = 18;
         }
 

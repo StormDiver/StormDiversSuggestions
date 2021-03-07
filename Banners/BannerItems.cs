@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace StormDiversSuggestions.Banners          //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
@@ -20,9 +21,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;  
             item.useAnimation = 15;  
             item.useTime = 10;  
-            item.useStyle = 1;  
-            item.consumable = true;  
-            item.rare = 1; 
+            item.useStyle = ItemUseStyleID.SwingThrow;  
+            item.consumable = true;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);  
             item.createTile = mod.TileType("BabyDerpBannerPlace"); //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -45,9 +46,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("VineDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -70,9 +71,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("ScanDroneBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -95,9 +96,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("StormDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -120,9 +121,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("VortCannonBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -145,9 +146,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("NebulaDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -170,9 +171,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("StardustDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -195,9 +196,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("SolarDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -220,9 +221,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0); 
             item.createTile = mod.TileType("MoonDerpBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -245,9 +246,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.createTile = mod.TileType("SpaceRockHeadBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -270,9 +271,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.createTile = mod.TileType("SpaceRockHeadLargeBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -295,9 +296,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.createTile = mod.TileType("GladiatorMiniBossBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -319,9 +320,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.createTile = mod.TileType("GraniteMiniBossBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;
@@ -343,9 +344,9 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.consumable = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(0, 0, 2, 0);
             item.createTile = mod.TileType("HellSoulBannerPlace");  //This defines what type of tile this item will place	
             item.placeStyle = 0;

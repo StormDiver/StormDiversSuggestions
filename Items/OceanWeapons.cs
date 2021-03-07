@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.height = 30;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 27;
             item.useAnimation = 27;
             item.useTurn = false;
@@ -87,9 +87,9 @@ namespace StormDiversSuggestions.Items
             item.height = 38;
             item.useTime = 21;
             item.useAnimation = 21;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.useTurn = true;
@@ -108,7 +108,7 @@ namespace StormDiversSuggestions.Items
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
             }
-            Main.PlaySound(19, (int)player.Center.X, (int)player.Center.Y, 1);
+            Main.PlaySound(SoundID.Splash, (int)player.Center.X, (int)player.Center.Y, 1);
 
 
             return false;
@@ -158,8 +158,8 @@ namespace StormDiversSuggestions.Items
             item.height = 20;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 9;
             item.useAnimation = 9;
             item.useTurn = false;

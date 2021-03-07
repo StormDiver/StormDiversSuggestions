@@ -89,11 +89,11 @@ namespace StormDiversSuggestions.NPCs
                     
                     if (firerate >= 5)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Projectile.NewProjectile(npc.Center.X, npc.Top.Y + 10, 0, -3, type, damage, knockBack, Main.myPlayer);
                         }
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 34);
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 34);
                         firerate = 0;
 
                         if (Main.rand.NextFloat() < 1f)
@@ -143,7 +143,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (NPC.ShieldStrengthTowerNebula > 0)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, 629, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(507));
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ProjectileID.TowerDamageBolt, 0, 0f, Main.myPlayer, NPC.FindFirstNPC(507));
                 }
             }
         }

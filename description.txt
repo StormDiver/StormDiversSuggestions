@@ -16,7 +16,7 @@ This mod includes:
 -3 new bars and 2 new ores 
 -17 new accessories
 -18 new buffs and 7 new potions
--10 new debuffs
+-11 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
 -Some new shop items

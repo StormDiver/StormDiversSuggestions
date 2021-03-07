@@ -101,7 +101,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpaceGlobeProj2"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
             for (int i = 0; i < 30; i++)
             {
 
@@ -194,7 +194,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 0.5f);
                 var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1f);
             }
-            Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
@@ -345,7 +345,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void Kill(int timeLeft)
         {
            
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
             for (int i = 0; i < 30; i++)
             {
                 float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
@@ -451,7 +451,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 0.5f);
                 var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1f);
             }
-            Main.PlaySound(21, (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(SoundID.Tink, (int)projectile.Center.X, (int)projectile.Center.Y);
 
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
@@ -562,7 +562,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, speedX, speedY, 130, default, 1.5f);
                 var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 1f);
             }
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62, 0.5f, 0.2f);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62, 0.5f, 0.2f);
 
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player

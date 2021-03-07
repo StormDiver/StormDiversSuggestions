@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.NPCs
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             npc.life -= 9999;
-            Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+            Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 7);
             for (int i = 0; i < 10; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));

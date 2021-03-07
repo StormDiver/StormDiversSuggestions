@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.width = 30;
             item.height = 30;
             item.value = Item.sellPrice(0, 1, 25, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 
             item.defense = 3;
             item.accessory = true;
@@ -64,9 +64,9 @@ namespace StormDiversSuggestions.Items.Accessory
             item.width = 30;
             item.height = 30;
             item.value = Item.sellPrice(0, 1, 50, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 
-            item.defense = 3;
+             item.defense = 3;
             item.accessory = true;
         }
 

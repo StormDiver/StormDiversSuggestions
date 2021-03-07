@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.height = 22;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             
             item.useTurn = false;
             item.autoReuse = false;
@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.Items
 
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
             Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-            //Main.PlaySound(2, (int)position.X, (int)position.Y, 40);
+            //Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
 
 
             return false;
@@ -104,9 +104,9 @@ namespace StormDiversSuggestions.Items
             item.height = 64;
             item.useTime = 40;
             item.useAnimation = 40;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.useTurn = false;
@@ -131,10 +131,10 @@ namespace StormDiversSuggestions.Items
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 2f), (float)(perturbedSpeed.Y * 2f), mod.ProjectileType("GraniteSpearProj2"), (int)(damage * 1f), knockBack, player.whoAmI);
-                Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 8);
+                Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 8);
                 fireproj = 0;
             }
-            //Main.PlaySound(3, (int)player.position.X, (int)player.position.Y, 9);
+            //Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 9);
 
             return true;
         }
@@ -167,8 +167,8 @@ namespace StormDiversSuggestions.Items
             item.height = 18;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 32;
             item.useAnimation = 32;
             item.useTurn = false;

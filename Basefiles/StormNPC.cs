@@ -395,7 +395,7 @@ namespace StormDiversSuggestions.Basefiles
                         if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                            Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                            Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {
                                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
@@ -425,7 +425,7 @@ namespace StormDiversSuggestions.Basefiles
                         if (Main.rand.Next(8) == 0)
                         {
                             Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                            Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                            Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {
                                 Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));

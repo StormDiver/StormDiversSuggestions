@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 34);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 34);
 
                 for (int i = 0; i < 10; i++)
                 {
@@ -117,7 +117,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 107);
                 dust.noGravity = true;
-                //Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+                //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74);
             }
 
            
@@ -138,7 +138,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
 
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
             for (int i = 0; i < 10; i++)
             {
@@ -234,7 +234,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
             
-           Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+           Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
             for (int i = 0; i < 10; i++)
             {
 

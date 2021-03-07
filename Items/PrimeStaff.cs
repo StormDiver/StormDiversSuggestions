@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
             item.height = 52;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 3, 0, 0);
-            item.rare = 5;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Pink;
+            item.useStyle = ItemUseStyleID.HoldingOut;
        
             item.autoReuse = true;
             item.UseSound = SoundID.Item43;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("SkullSeek");
             item.shootSpeed = 16f;
    
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
 
             item.noMelee = true; 
 

@@ -72,7 +72,7 @@ namespace StormDiversSuggestions.NPCProjs
             {
                
                
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 20);
                 for (int i = 0; i < 10; i++)
                 {
 
@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.NPCProjs
                 for (int i = 0; i < 1; i++)
                 {
                     Player player = Main.player[i];
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
 
                         //target = Main.MouseWorld;
@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.NPCProjs
         {
 
 /*
-            Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
 
             for (int i = 0; i < 10; i++)
             {
@@ -218,7 +218,7 @@ namespace StormDiversSuggestions.NPCProjs
         {
 
 
-            //Main.PlaySound(4, (int)projectile.position.X, (int)projectile.position.Y, 6);
+            //Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
             for (int i = 0; i < 10; i++)
             {
 

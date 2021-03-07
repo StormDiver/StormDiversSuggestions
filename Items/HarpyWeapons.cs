@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.height = 34;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 19;
             item.useAnimation = 19;
             item.useTurn = false;
@@ -102,8 +102,8 @@ namespace StormDiversSuggestions.Items
             item.height = 40;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 20;
             item.useAnimation = 20;
             item.useTurn = false;
@@ -177,9 +177,9 @@ namespace StormDiversSuggestions.Items
             item.height = 26;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.channel = true;
             item.useTurn = true;
@@ -200,7 +200,7 @@ namespace StormDiversSuggestions.Items
              {
                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
                  Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1f), (float)(perturbedSpeed.Y * 1f), mod.ProjectileType("TurtleProj"), (int)(damage * 1.5), knockBack, player.whoAmI);
-                 Main.PlaySound(3, (int)player.Center.X, (int)player.Center.Y, 24);
+                 Main.PlaySound(SoundID.NPCHit, (int)player.Center.X, (int)player.Center.Y, 24);
                  projshoot = 0;
              }*/
             return true;

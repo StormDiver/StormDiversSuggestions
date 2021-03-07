@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.height = 28;
 
             item.value = Item.sellPrice(0, 3, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.defense = 10;
             item.accessory = true;
             
@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items.Accessory
                     soundDelay++;
                     if (soundDelay >= 5 )
                     {
-                        Main.PlaySound(17, (int)player.Center.X, (int)player.Center.Y);
+                        Main.PlaySound(SoundID.Run, (int)player.Center.X, (int)player.Center.Y);
                         soundDelay = 0;
                     }
                 }

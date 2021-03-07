@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.NPCProjs
         {
 
             Collision.HitTiles(projectile.Center, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74);
             
             for (int i = 0; i < 60; i++)
             {
