@@ -40,7 +40,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item92;
 
-            item.damage = 64;
+            item.damage = 45;
             
             item.knockBack = 5f;
 
@@ -48,8 +48,8 @@ namespace StormDiversSuggestions.Items
             item.shootSpeed = 18f;
            
             item.useAmmo = AmmoID.Rocket;
-            item.useTime = 24;
-            item.useAnimation = 24;
+            item.useTime = 30;
+            item.useAnimation = 30;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
 
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Items
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 3f;
                 for (int i = 0; i < 2; i++)
                 {
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2.5f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2f), knockBack, player.whoAmI);
                 }
 
             }
@@ -114,7 +114,7 @@ namespace StormDiversSuggestions.Items
                 {
                     type = mod.ProjectileType("VortexRocketProj");
                 }*/
-                int numberProjectiles = 7 + Main.rand.Next(3);
+                int numberProjectiles = 5;
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));

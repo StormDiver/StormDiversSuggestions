@@ -58,12 +58,12 @@ namespace StormDiversSuggestions.Items
             }
             if (type == ProjectileID.IchorDart)
             {
-                damage = (damage * 15 /20);
+                damage = (damage * 6 / 10);
             }
 
             for (int i = 0; i < 1; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); 
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); 
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 
             }

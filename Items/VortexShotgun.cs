@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Red;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item36;
 
-            item.damage = 100;
+            item.damage = 58;
             item.crit = 20;
             item.knockBack = 5f;
 

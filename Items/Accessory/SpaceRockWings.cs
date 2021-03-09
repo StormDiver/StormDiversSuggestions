@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items.Accessory
        
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         { 
-                ascentWhenFalling = 4f;
+                ascentWhenFalling = 2f;
                 ascentWhenRising = 0.15f;
                 maxCanAscendMultiplier = 1f;
                 maxAscentMultiplier = 2f;
@@ -67,8 +67,8 @@ namespace StormDiversSuggestions.Items.Accessory
         }
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-                speed *= 3;
-                acceleration *= 3;
+            speed = 9;
+                acceleration *= 2;
         }
 
         public override void AddRecipes()

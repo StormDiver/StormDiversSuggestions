@@ -161,9 +161,9 @@ namespace StormDiversSuggestions.Basefiles
             
             if (superBoulderDB)
             {
-                npc.lifeRegen -= 160;
+                npc.lifeRegen -= 120;
 
-                damage = 18;
+                damage = 12;
 
             }
            
@@ -174,9 +174,9 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (lunarBoulderDB)
             {
-                npc.lifeRegen -= 400;
+                npc.lifeRegen -= 300;
 
-                damage = 40;
+                damage = 30;
 
             }
            
