@@ -85,7 +85,9 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool spaceRockDefence; //Player has the Space armour with mask equipped
 
-        public bool shroomaccess; //Player has the Shroomite Accesseoy equipped
+        public bool shroomaccess; //Player has the Shroomite Accessory equipped
+
+        public bool hellblazeSet; //TBA
 
 
         //Ints and Bools activated from this file
@@ -105,6 +107,7 @@ namespace StormDiversSuggestions.Basefiles
         public int spaceBarriercooldown; //Cooldown for the Defensive Space Armour set bonus
         public int shroomshotCount = 0; //Count show many times the player has fired with the shroomite access
         public bool shotrocket; //Wheter the shroomite rocket has been fired or not
+        public int hellblazetime; //TBA
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -138,6 +141,9 @@ namespace StormDiversSuggestions.Basefiles
             spaceRockOffence = false;
             spaceRockDefence = false;
             shroomaccess = false;
+            hellblazeSet = false;
+            
+
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -152,6 +158,7 @@ namespace StormDiversSuggestions.Basefiles
             spaceBarriercooldown = 0;
             shroomshotCount = 0;
             shotrocket = false;
+            hellblazetime = 0;
         }
      
        
@@ -161,6 +168,10 @@ namespace StormDiversSuggestions.Basefiles
             if (bloodtime > 0)
             {
                 bloodtime--;
+            }
+            if (hellblazetime > 0)
+            {
+                hellblazetime--;
             }
             if (frosttime > 0)
             {
@@ -493,6 +504,14 @@ namespace StormDiversSuggestions.Basefiles
                         }
                     }
                 }
+            }
+            //For the Mell HellBlaze armour setbonus ======================
+
+            if (hellblazeSet)
+            {
+                
+
+                   //TBA
             }
             //For the Desert urn
             if (desertJar)

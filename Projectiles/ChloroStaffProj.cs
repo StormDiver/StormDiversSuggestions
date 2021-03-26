@@ -64,8 +64,12 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            
+            target.AddBuff(BuffID.Venom, 300);
 
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+        {
+            target.AddBuff(BuffID.Venom, 300);
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

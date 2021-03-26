@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.width = 40;
             item.height = 22;
 
-            item.useTime = 7;
+            item.useTime = 6;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);
@@ -70,7 +70,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 60;
             item.height = 20;
-            item.useTime = 7;
+            item.useTime = 6;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);
@@ -117,7 +117,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 50;
             item.height = 20;
-            item.useTime = 7;
+            item.useTime = 6;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 4, 0, 0);

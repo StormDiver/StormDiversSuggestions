@@ -25,7 +25,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 28;
             item.useAnimation = 28;
             item.useTurn = false;
-            item.autoReuse = false;
+            item.autoReuse = true;
 
             item.ranged = true;
 

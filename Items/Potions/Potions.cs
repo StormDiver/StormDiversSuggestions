@@ -85,6 +85,7 @@ namespace StormDiversSuggestions.Items.Potions
 
         }
     }
+    //______________________________________________________________________
     public class SpectrePotion : ModItem
     {
         public override void SetStaticDefaults()
@@ -132,6 +133,7 @@ namespace StormDiversSuggestions.Items.Potions
 
         }
     }
+    //______________________________________________________________________
     public class BeetlePotion : ModItem
     {
         public override void SetStaticDefaults()
@@ -179,101 +181,47 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddRecipe();
         }
     }
+    //____________________________________________________
 
-    public class BuffedProjs : GlobalProjectile
+    public class SpookyPotion : ModItem
     {
-        /*
-        public override bool InstancePerEntity => true;
-        int rangedincrease;
-        public override void AI(Projectile projectile)
+        public override void SetStaticDefaults()
         {
-            var player = Main.player[projectile.owner];
-            if (projectile.melee && projectile.friendly)
-            {
-
-
-                if (Main.LocalPlayer.HasBuff(BuffType<BeetleBuff>()) && projectile.owner == Main.myPlayer)
-                {
-                   
-                    if (Main.rand.Next(3) == 0)
-                    {
-                        Dust dust;
-                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                        Vector2 position = projectile.position;
-                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 98, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                        dust.noGravity = true;
-
-                        
-                    }
-                }
-            }
-            if (projectile.ranged && projectile.friendly)
-            {
-                rangedincrease++;
-                if (Main.LocalPlayer.HasBuff(BuffType<ShroomiteBuff>()) && projectile.owner == Main.myPlayer)
-                {
-                    if (Main.rand.Next(3) == 0)
-                    {
-                        Dust dust;
-                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                        Vector2 position = projectile.position;
-                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 59, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                        dust.noGravity = true;
-                    }
-
-
-                    if (rangedincrease == 1)
-                    {
-                       
-                        projectile.knockBack *= 1.5f;
-                        projectile.extraUpdates += (int)1f;
-                    }
-                }
-            }
-            if (projectile.magic && projectile.friendly)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
-                {
-                    if (Main.rand.Next(3) == 0)
-                    {
-                        Dust dust;
-                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                        Vector2 position = projectile.position;
-                        dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 16, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                        dust.noGravity = true;
-                    }
-                }
-            }
+            DisplayName.SetDefault("Spooky Curse Potion");
+            Tooltip.SetDefault("Increases Minion damage and knockback by 10%");
         }
-        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockBack, bool crit)
-        {
-            if (projectile.magic && projectile.friendly)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
-                {
-                    if (Main.rand.Next(1) == 0)
-                    {
-                        target.AddBuff(mod.BuffType("SpectreDebuff"), 600);
-                    }
 
-                }
-            }
+        public override void SetDefaults()
+        {
+            item.width = 12;
+            item.height = 32;
+            item.useStyle = ItemUseStyleID.EatingUsing;
+            item.useAnimation = 15;
+            item.useTime = 15;
+            item.useTurn = true;
+            item.UseSound = SoundID.Item3;
+            item.maxStack = 99;
+            item.consumable = true;
+            item.rare = ItemRarityID.Yellow;
+            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.buffType = BuffType<Buffs.SpookyBuff>(); //Specify an existing buff to be applied when used.
+            item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }
-        public override void OnHitPvp(Projectile projectile, Player target, int damage, bool crit)
+
+        public override void AddRecipes()
         {
-            if (projectile.magic && projectile.friendly)
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<SpectreBuff>()) && projectile.owner == Main.myPlayer)
-                {
-                    if (Main.rand.Next(1) == 0)
-                    {
-                        target.AddBuff(mod.BuffType("SpectreDebuff"), 600);
-                    }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddIngredient(ItemID.SpookyWood, 40);
+            recipe.AddIngredient(ItemID.Shiverthorn, 2);
+            recipe.AddIngredient(ItemID.FrostMinnow);
 
-                }
-            }
-        }*/
+            recipe.AddTile(TileID.Bottles);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 
+        }
     }
-    
+
+
 }

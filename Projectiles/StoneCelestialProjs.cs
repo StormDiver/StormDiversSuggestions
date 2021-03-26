@@ -106,14 +106,14 @@ namespace StormDiversSuggestions.Projectiles
             if (reflect >= 1)
             {
 
-                int numberProjectiles = 25 + Main.rand.Next(5); //This defines how many projectiles to shot.
+                int numberProjectiles = 20 + Main.rand.Next(5); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
 
                     float speedX =  Main.rand.NextFloat(-12f, 12f);
                     float speedY =  Main.rand.NextFloat(-12f, 12f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
                 }
             }
                 Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -137,14 +137,14 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-          int numberProjectiles = 30 + Main.rand.Next(5); //This defines how many projectiles to shot.
+          int numberProjectiles = 20 + Main.rand.Next(5); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 
                 float speedX =  Main.rand.NextFloat(-13f, 13f);
                 float speedY =  Main.rand.NextFloat(-13f, 13f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneSolarFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
             }
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
@@ -312,7 +312,7 @@ namespace StormDiversSuggestions.Projectiles
                 float speedX = Main.rand.NextFloat(-6f, 6f);
                 float speedY = Main.rand.NextFloat(-6f, 6f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
             }
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
@@ -353,14 +353,14 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (reflect >= 1)
             {
-            int numberProjectiles = 8 + Main.rand.Next(3); //This defines how many projectiles to shot.
+            int numberProjectiles = 7 + Main.rand.Next(3); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 
                     float speedX = Main.rand.NextFloat(-8f, 8f);
                     float speedY = Main.rand.NextFloat(-8f, 8f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
             }
             }
             Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 62);
@@ -383,14 +383,14 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-             int numberProjectiles = 12 + Main.rand.Next(3); //This defines how many projectiles to shot.
+             int numberProjectiles = 10 + Main.rand.Next(3); //This defines how many projectiles to shot.
              for (int i = 0; i < numberProjectiles; i++)
              {
 
                 float speedX = Main.rand.NextFloat(-10f, 10f);
                 float speedY = Main.rand.NextFloat(-10f, 10f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneVortexFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
              }
 
 
@@ -602,7 +602,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = Main.rand.NextFloat(-7f, 7f);
                     float speedY = Main.rand.NextFloat(-7f, 7f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneNebulaFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneNebulaFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
                 }
             }
 
@@ -626,14 +626,14 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            int numberProjectiles = 6 + Main.rand.Next(2); //This defines how many projectiles to shot.
+            int numberProjectiles = 5 + Main.rand.Next(2); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 
                 float speedX = Main.rand.NextFloat(-9f, 9f);
                 float speedY = Main.rand.NextFloat(-9f, 9f);
 
-                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneNebulaFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneNebulaFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
             }
 
 
@@ -785,7 +785,7 @@ namespace StormDiversSuggestions.Projectiles
             dust.fadeIn = 1;
             projectile.rotation += (float)projectile.direction * -0.2f;
 
-            if (Main.rand.Next(10) == 0)
+            if (Main.rand.Next(12) == 0)
             {
                 int numberProjectiles = 1 + Main.rand.Next(2); //This defines how many projectiles to shot.
                 for (int j = 0; j < numberProjectiles; j++)
@@ -794,7 +794,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = Main.rand.NextFloat(-3f, 3f);
                     float speedY = Main.rand.NextFloat(-3f, 3f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneStardustFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneStardustFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
 
 
                 }
@@ -854,14 +854,14 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (reflect >= 1)
             {
-                int numberProjectiles = 5 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
 
                     float speedX = Main.rand.NextFloat(-7f, 7f);
                     float speedY = Main.rand.NextFloat(-7f, 7f);
 
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneStardustFrag"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("StoneStardustFrag"), (int)(projectile.damage * 0.33), 0f, projectile.owner, 0f, 0f);
                 }
             }
 
@@ -885,7 +885,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
 
-            int numberProjectiles = 7 + Main.rand.Next(2); //This defines how many projectiles to shot.
+            int numberProjectiles = 4 + Main.rand.Next(2); //This defines how many projectiles to shot.
             for (int i = 0; i < numberProjectiles; i++)
             {
 

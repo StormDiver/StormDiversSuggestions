@@ -23,11 +23,11 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.Pink;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 28;
-            item.useAnimation = 28;
+            item.useTime = 30;
+            item.useAnimation = 30;
             //item.reuseDelay = 30;
             item.useTurn = false;
-            item.autoReuse = false;
+            item.autoReuse = true;
 
             item.ranged = true;
 

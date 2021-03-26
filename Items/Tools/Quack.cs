@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Tools
         {
             public override void NPCLoot(NPC npc)
             {
-                if (Main.rand.Next(100) < 2)
+                if (Main.rand.Next(100) < 4)
                 {
                     if (npc.type == NPCID.Duck || npc.type == NPCID.Duck2 || npc.type == NPCID.DuckWhite || npc.type == NPCID.DuckWhite2)
                     {

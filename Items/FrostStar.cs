@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("FrostStarProj");
             //item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
+            item.autoReuse = true;
         }
 
         public override bool CanUseItem(Player player)

@@ -75,8 +75,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Blowgun, 1);
-            recipe.AddIngredient(ItemID.HellstoneBar, 12);
+            recipe.AddIngredient(ItemID.HellstoneBar, 16);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

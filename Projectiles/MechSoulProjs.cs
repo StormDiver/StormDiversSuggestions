@@ -669,8 +669,9 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 20; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 55);
+                    var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
+                    
+                    dust2.scale = 1.5f;
                 }
 
             }

@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
 			item.melee = true;
 			item.width = 30;
 			item.height = 42;
-			item.useTime = 17;
-			item.useAnimation = 17;
+			item.useTime = 16;
+			item.useAnimation = 16;
 			item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = ItemRarityID.Green;
@@ -35,13 +35,22 @@ namespace StormDiversSuggestions.Items
 
             item.shootSpeed = 7f;
         }
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.Next(4) < 2)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 5, 0f, 0f, 100, default, 1f);
+                Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+            }
+        }
         int weaponattack = 2;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             weaponattack--;
             if (weaponattack <= 0)
             {
-    
+   
                 
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
@@ -105,12 +114,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
            
-
-
-                /*{
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.7f), (float)(perturbedSpeed.Y * 1.7f), mod.ProjectileType("BloodSwordProj"), (int)(damage * 1f), knockBack, player.whoAmI);
-                }*/
+            
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 9);
                 
             return true;

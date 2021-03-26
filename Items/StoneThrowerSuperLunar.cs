@@ -23,11 +23,11 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 20, 0, 0);
             item.rare = ItemRarityID.Red;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useTurn = false;
             item.autoReuse = true;
-            item.damage = 100;
+            item.damage = 90;
             item.ranged = true;
 
             item.shoot = mod.ProjectileType("StoneSuperProj");

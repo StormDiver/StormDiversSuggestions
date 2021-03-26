@@ -114,6 +114,21 @@ namespace StormDiversSuggestions.Buffs
         }
     }
     //_______________________________________________________________________________
+    public class SpookyBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Spooky Enhancement");
+            Description.SetDefault("Increases Minion damage and knockback by 10%");
+        }
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            player.minionDamage += 0.1f;
+            player.minionKB += 0.1f;
+        }
+    }
+    //_______________________________________________________________________________
 
     public class RainBuff : ModBuff
     {

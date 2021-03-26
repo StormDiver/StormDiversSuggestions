@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 8;
+            item.mana = 6;
             item.UseSound = SoundID.Item13;
 
             item.damage = 38;
@@ -38,7 +38,7 @@ namespace StormDiversSuggestions.Items
 
             item.shoot = mod.ProjectileType("ChloroStaffProj");
             
-            item.shootSpeed = 9f;
+            item.shootSpeed = 10f;
             
     
 
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items
             }
            
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-                float scale = 1f - (Main.rand.NextFloat() * .2f);
+                float scale = 1f - (Main.rand.NextFloat() * .1f);
                 perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             
@@ -74,6 +74,6 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-       
+
     }
 }
