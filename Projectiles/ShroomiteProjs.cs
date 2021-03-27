@@ -568,8 +568,8 @@ namespace StormDiversSuggestions.Projectiles
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 projectile.position = projectile.Center;
 
-                projectile.width = 100;
-                projectile.height = 100;
+                projectile.width = 150;
+                projectile.height = 150;
                 projectile.Center = projectile.position;
 
 
@@ -600,7 +600,16 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74);
 
             projectile.alpha = 255;
+            for (int i = 0; i < 35; i++)
+            {
 
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 45);
+                dust.noGravity = true;
+                dust.scale = 2f;
+                dust.velocity *= 5f;
+                dust.fadeIn = 1f;
+
+            }
             for (int i = 0; i < 50; i++)
             {
                 Dust dust;

@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Helmet");
-            Tooltip.SetDefault("12% increased damage and critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n12% increased critical strike chance");
         }
   
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.12f;
+            player.allDamage += 0.15f;
             player.meleeCrit += 12;
             player.rangedCrit += 12;
             player.magicCrit += 12;
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("6% increased damage and critical strike chance\nGrants immunity to knockback");
+            Tooltip.SetDefault("8% increased damage\n6% incresed critical strike chance\nGrants immunity to knockback");
         }
 
         public override void SetDefaults()
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.06f;
+            player.allDamage += 0.08f;
             player.meleeCrit += 6;
             player.rangedCrit += 6;
             player.magicCrit += 6;

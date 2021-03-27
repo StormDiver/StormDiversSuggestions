@@ -186,11 +186,11 @@ namespace StormDiversSuggestions.Basefiles
                 desertdusttime--;
             }
             
-            if (spaceBarriercooldown < 480 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
+            if (spaceBarriercooldown < 420 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
             {
                 spaceBarriercooldown++;
             }
-            if (spaceBarriercooldown == 480)
+            if (spaceBarriercooldown == 420)
             {
                 player.AddBuff(mod.BuffType("SpaceRockDefence"), 2);
                 
@@ -339,9 +339,9 @@ namespace StormDiversSuggestions.Basefiles
 
                             shroomshotCount = 0; //Resets the shot count
                             float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
-                            float velocity = 10f;
+                            float velocity = 13f;
                             int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 1.5f);
+                            int damage = (int)(player.HeldItem.damage * 2f) + 40;
                             Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
                             Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 92);
                         }
@@ -385,7 +385,7 @@ namespace StormDiversSuggestions.Basefiles
 
                                 float speedX = 0f;
                                 float speedY = -2f;
-                                int damage = (int)(player.HeldItem.damage * 0.8f);
+                                int damage = (int)(player.HeldItem.damage) + 20;
                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
@@ -444,7 +444,7 @@ namespace StormDiversSuggestions.Basefiles
             
 
             //For the SpaceArmour with the helmet (offence)
-            int offencedmg = 100;
+            int offencedmg = 80 + (int)(player.HeldItem.damage);
             int offenceknb = 5;
             if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
@@ -567,9 +567,9 @@ namespace StormDiversSuggestions.Basefiles
             }
 
             //For Space Armour with Mask (Defence)
-            int defencedmg = 200; //Boulder damage
+            int defencedmg = 180 + attackdmg; //Boulder damage
             int defenceknb = 6; //Boulder Knockback
-            if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage > 2)
+            if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage >= 2)
             {
                 Projectile.NewProjectile(player.Center.X, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
                 Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly right

@@ -21,7 +21,7 @@ namespace StormDiversSuggestions.Items.Tools
 			item.melee = true;
 			item.width = 40;
 			item.height = 42;
-			item.useTime = 14;
+			item.useTime = 13;
 			item.useAnimation = 25;
 			item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 0, 75, 0);
@@ -75,7 +75,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 40;
             item.height = 48;
-            item.useTime = 19;
+            item.useTime = 17;
             item.useAnimation = 40;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 0, 75, 0);

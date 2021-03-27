@@ -9,13 +9,13 @@ This mod is constantly updated, adding new content and tweaking existing, so joi
 
 This mod includes:
 
--80 New unique weapons
+-83 New unique weapons
 -15 new ammos
--10 new tools
+-14 new tools
 -New recipes for certain uncraftable vanilla items
 -3 new bars and 2 new ores 
 -17 new accessories
--18 new buffs and 7 new potions
+-19 new buffs and 9 new potions
 -11 new debuffs
 -New armour and Vanity sets
 -A new way to get the Rod of Discord :)
