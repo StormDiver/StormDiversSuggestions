@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items
             
             item.magic = true;
     
-            item.damage = 60;
+            item.damage = 50;
       
             item.knockBack = 0f;
 

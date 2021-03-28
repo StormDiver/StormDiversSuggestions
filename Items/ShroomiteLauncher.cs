@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = ItemRarityID.Yellow;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 35;
+            item.useAnimation = 35;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = ProjectileID.RocketI;
             item.useAmmo = AmmoID.Rocket;
            // item.UseSound = SoundID.Item92;
-            item.damage = 50;
+            item.damage = 47;
             //item.crit = 4;
             item.knockBack = 6f;
             item.shootSpeed = 10f;
@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Items
             if (player.altFunctionUse == 2)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 0.8), (float)(perturbedSpeed.Y * 0.8), mod.ProjectileType("ShroomGrenProj"), (int)(damage * 0.75), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 0.8), (float)(perturbedSpeed.Y * 0.8), mod.ProjectileType("ShroomGrenProj"), (int)(damage), knockBack, player.whoAmI);
                 Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 61);
             }
             else

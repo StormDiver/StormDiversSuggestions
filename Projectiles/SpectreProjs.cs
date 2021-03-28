@@ -145,7 +145,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 8;
             projectile.light = 0.1f;
 
 
@@ -156,7 +156,6 @@ namespace StormDiversSuggestions.Projectiles
         int distime = 0;
         readonly int orbit = Main.rand.Next(1, 5); //The intial random value selected
         int orbittime = 0;
-        int direction;
         int speed;
         bool lineOfSight;
         public override void AI()
@@ -166,25 +165,21 @@ namespace StormDiversSuggestions.Projectiles
             {
                 orbittime = 60; //max distance, disttime counts up to this and when it reaches it it stops increasing
                 speed = 8; //speed
-                direction = 10; // orbit direciton and speed
             }
             else if (orbit == 2)
             {
                 orbittime = 140;
                 speed = 7;
-                direction = 10;
             }
             if (orbit == 3)
             {
                 orbittime = 100;
                 speed = -8;
-                direction = -10;
             }
             else if (orbit == 4)
             {
                 orbittime = 180;
                 speed = -7;
-                direction = -10;
             }
 
 
@@ -206,7 +201,6 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-            int distanceproj = (distime) + direction; //The direction it spins
 
 
             //Making player variable "p" set as the projectile's owner
@@ -216,7 +210,7 @@ namespace StormDiversSuggestions.Projectiles
 
             double deg = (double)projectile.ai[1] * speed; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
-            double dist = distanceproj; //Distance away from the player
+            double dist = distime; //Distance away from the player
 
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
@@ -352,7 +346,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = true;
             projectile.aiStyle = 0;
             projectile.tileCollide = true;
-            projectile.penetrate = 4;
+            projectile.penetrate = 3;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             projectile.light = 0.1f;
@@ -450,7 +444,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.scale = 1f;
             projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 15;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
             projectile.penetrate = 5;

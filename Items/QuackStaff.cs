@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Pink;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 19;
-            item.useAnimation = 19;
+            item.useTime = 21;
+            item.useAnimation = 21;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 9;
             
 
-            item.damage = 38;
+            item.damage = 35;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -70,7 +70,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.GetItem("Quack"), 1);
-            recipe.AddIngredient(ItemID.HallowedBar, 15);
+            recipe.AddIngredient(ItemID.HallowedBar, 25);
    
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

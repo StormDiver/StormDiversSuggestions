@@ -328,9 +328,10 @@ namespace StormDiversSuggestions.Basefiles
             // For the Shroomite Launcher Accessory
             if (shroomaccess)
             {
-                if (player.itemTime > 1 && player.HeldItem.ranged) //If the player is holding a ranged weapon and usetime cooldown is above 1
+                if (player.itemTime > 1 && player.HeldItem.ranged && player.HeldItem.useAmmo == AmmoID.Bullet) //If the player is holding a ranged weapon and usetime cooldown is above 1
                 {
-
+                    
+                    
                     if (!shotrocket) //If the rocket hasn't already been fired this use then it it fire it
                     {
                         shroomshotCount++;
@@ -341,7 +342,7 @@ namespace StormDiversSuggestions.Basefiles
                             float rotation = player.itemRotation + (player.direction == -1 ? (float)Math.PI : 0); //the direction the item points in
                             float velocity = 13f;
                             int type = mod.ProjectileType("ShroomSetRocketProj");
-                            int damage = (int)(player.HeldItem.damage * 2f) + 40;
+                            int damage = (int)((player.HeldItem.damage * 2f) * player.rangedDamage);
                             Projectile.NewProjectile(player.Center, new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * velocity, type, damage, 2f, player.whoAmI);
                             Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 92);
                         }
@@ -385,7 +386,7 @@ namespace StormDiversSuggestions.Basefiles
 
                                 float speedX = 0f;
                                 float speedY = -2f;
-                                int damage = (int)(player.HeldItem.damage) + 20;
+                                int damage = (int)((player.HeldItem.damage * 0.75f) * player.allDamage);
                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
@@ -440,11 +441,10 @@ namespace StormDiversSuggestions.Basefiles
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
         {
-            
-            
 
+            
             //For the SpaceArmour with the helmet (offence)
-            int offencedmg = 80 + (int)(player.HeldItem.damage);
+            int offencedmg = (int) (100 * player.allDamage);
             int offenceknb = 5;
             if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
@@ -567,7 +567,7 @@ namespace StormDiversSuggestions.Basefiles
             }
 
             //For Space Armour with Mask (Defence)
-            int defencedmg = 180 + attackdmg; //Boulder damage
+            int defencedmg = 160 + (attackdmg); //Boulder damage
             int defenceknb = 6; //Boulder Knockback
             if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage >= 2)
             {

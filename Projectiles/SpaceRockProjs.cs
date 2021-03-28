@@ -365,7 +365,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                 perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpaceArmourProj2"), (int)(projectile.damage * 0.66f), projectile.knockBack, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpaceArmourProj2"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer, 0f, 0f);
             }
 
         }

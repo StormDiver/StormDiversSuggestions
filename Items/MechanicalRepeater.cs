@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 6;
             item.useAnimation = 18;
-            item.reuseDelay = 10;
+            item.reuseDelay = 16;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
 
             //item.UseSound = SoundID.Item5;
         
-            item.damage = 40;
+            item.damage = 32;
             //item.crit = 4;
             item.knockBack = 2f;
 
@@ -68,12 +68,13 @@ namespace StormDiversSuggestions.Items
                 switch (type)
                 {
                     case NPCID.Steampunker:
+                        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                        {
 
-                       
                             shop.item[nextSlot].SetDefaults(mod.ItemType("ShroomiteRepeater"));
                             nextSlot++;
 
-                        
+                        }
 
                         break;
                 }

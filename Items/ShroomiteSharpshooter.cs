@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds, with extra damage at max accuracy\nRight Click to zoom out");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds\nRight Click to zoom out");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item40;
 
-            item.damage = 70;
+            item.damage = 65;
             item.crit = 16;
             item.knockBack = 2f;
        
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Items
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(accuracy));
                     if (accuracy == 0)//When at full accuracy damage and knockback of the projectile is increased by 10%
                     {
-                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.1f), knockBack * 1.1f, player.whoAmI);
+                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
 
                     }
                     else

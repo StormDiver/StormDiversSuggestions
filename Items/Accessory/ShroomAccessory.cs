@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Launcher Attachment");
-            Tooltip.SetDefault("Makes all ranged weapons fire exploding projectiles");
+            Tooltip.SetDefault("Makes all guns fire out rockets");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }

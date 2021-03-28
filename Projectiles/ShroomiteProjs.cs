@@ -687,7 +687,7 @@ namespace StormDiversSuggestions.Projectiles
             //aiType = 225;
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.aiStyle = 1;
-            projectile.penetrate = 6;
+            projectile.penetrate = 2;
             projectile.tileCollide = true;
             projectile.ranged = true;
             projectile.usesLocalNPCImmunity = true;
@@ -711,14 +711,14 @@ namespace StormDiversSuggestions.Projectiles
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X * 1.5f;
+                    projectile.velocity.X = -oldVelocity.X * 1.3f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y * 1.5f;
+                    projectile.velocity.Y = -oldVelocity.Y * 1.3f;
                 }
             }
-            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 53);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 56);
             return false;
         }
 
