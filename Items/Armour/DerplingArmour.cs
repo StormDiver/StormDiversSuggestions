@@ -121,7 +121,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Greaves");
-            Tooltip.SetDefault("7% increased critical strike chance\n50% increased movement speed and immunity to fall damage");
+            Tooltip.SetDefault("8% increased critical strike chance\n50% increased movement speed and immunity to fall damage");
         }
 
         public override void SetDefaults()
@@ -136,10 +136,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
             //player.allDamage += 0.04f;
-            player.meleeCrit += 7;
-            player.rangedCrit += 7;
-            player.magicCrit += 7;
-            player.thrownCrit += 7;
+            player.meleeCrit += 8;
+            player.rangedCrit += 8;
+            player.magicCrit += 8;
+            player.thrownCrit += 8;
             player.moveSpeed += 0.5f;
 
             player.noFallDmg = true;
