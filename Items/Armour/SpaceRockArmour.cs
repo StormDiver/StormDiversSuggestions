@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Helmet");
-            Tooltip.SetDefault("15% increased damage\n12% increased critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n10% increased critical strike chance");
         }
   
         public override void SetDefaults()
@@ -31,10 +31,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.15f;
-            player.meleeCrit += 12;
-            player.rangedCrit += 12;
-            player.magicCrit += 12;
-            player.thrownCrit += 12;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
+            player.thrownCrit += 10;
           
         }
 
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("8% increased damage\n6% incresed critical strike chance\nGrants immunity to knockback");
+            Tooltip.SetDefault("9% increased damage\n6% incresed critical strike chance\nGrants immunity to knockback");
         }
 
         public override void SetDefaults()
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.08f;
+            player.allDamage += 0.09f;
             player.meleeCrit += 6;
             player.rangedCrit += 6;
             player.magicCrit += 6;
@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Barrier buff that reduces damage of the next attack by 25%\nSummons space boulders from the sky when taking more than 1 damage";
+            player.setBonus = "Grants the Orbital Defense buff that reduces damage of the next attack by 25%\nSummons space boulders from the sky when taking more than 1 damage";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 
@@ -197,7 +197,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Leggings");
-            Tooltip.SetDefault("7% increased damage and critical strike chance\n100% increased movement speed");
+            Tooltip.SetDefault("6% increased damage and critical strike chance\n100% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -211,11 +211,11 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.07f;
-            player.meleeCrit += 7;
-            player.rangedCrit += 7;
-            player.magicCrit += 7;
-            player.thrownCrit += 7;
+            player.allDamage += 0.06f;
+            player.meleeCrit += 6;
+            player.rangedCrit += 6;
+            player.magicCrit += 6;
+            player.thrownCrit += 6;
             player.moveSpeed += 1f;
         }
         public override void AddRecipes()

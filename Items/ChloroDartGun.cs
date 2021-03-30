@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items
             if (type == ProjectileID.IchorDart)
             {
                 damage = (damage * 8 / 10);
-                numberProjectiles -= 1;
+                numberProjectiles = 3;
             }
             if (type == ProjectileID.CrystalDart)
             {

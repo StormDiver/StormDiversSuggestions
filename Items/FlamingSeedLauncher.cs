@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.Orange;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            item.useTime = 22;
+            item.useAnimation = 22;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = true;
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = AmmoID.Dart;
             item.UseSound = SoundID.Item64;
 
-            item.damage = 20;
+            item.damage = 18;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 13f;
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items
             if (type == ProjectileID.Seed)
             {
                 type = mod.ProjectileType("FlamingSeed");
-                damage += (damage /3);
+                damage += (damage /2);
             }
       
             for (int i = 0; i < 1; i++)

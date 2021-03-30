@@ -121,7 +121,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 4;
         
 
-            item.damage = 90;
+            item.damage = 100;
             //item.crit = 4;
             item.knockBack = 1f;
 

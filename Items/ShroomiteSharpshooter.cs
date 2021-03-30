@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Sharpshooter");
-            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds\nRight Click to zoom out");
+            Tooltip.SetDefault("33% Chance not to consume Ammo\nBuilds up accuracy over several seconds, dealing extra damage at full accuracy\nRight Click to zoom out");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
 
             item.ranged = true;
 
-            item.UseSound = SoundID.Item40;
+            //item.UseSound = SoundID.Item40;
 
             item.damage = 65;
             item.crit = 16;
@@ -82,14 +82,21 @@ namespace StormDiversSuggestions.Items
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(accuracy));
                     if (accuracy == 0)//When at full accuracy damage and knockback of the projectile is increased by 10%
                     {
-                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage), knockBack, player.whoAmI);
+                        if (type == ProjectileID.Bullet)
+                            {
+                                type = ProjectileID.BulletHighVelocity;
+                            }
+                        Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1.15f), knockBack * 2f, player.whoAmI);
+                        Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40, 1, 0.5f);
 
                     }
                     else
                     {
                         Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                        Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
 
                     }
+
                     //Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 40);
                 }
             }
