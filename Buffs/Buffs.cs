@@ -100,13 +100,13 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Enhancement");
-            Description.SetDefault("30 armour penetration for melee weapons");
+            Description.SetDefault("25 armour penetration for melee weapons");
         }
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.HeldItem.melee)
             {
-                player.armorPenetration = 30;
+                player.armorPenetration = 25;
             
               
             }

@@ -34,10 +34,12 @@ namespace StormDiversSuggestions.Items
             //item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.UseSound = SoundID.Item1;
+            item.noMelee = true;
+
         }
 
 
-    
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -77,9 +79,11 @@ namespace StormDiversSuggestions.Items
             //item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.UseSound = SoundID.Item1;
+            item.noMelee = true;
+
         }
 
-       
+
 
         public override void AddRecipes()
         {

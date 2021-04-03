@@ -33,6 +33,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("TurtleShellProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = true;
+            item.noMelee = true;
         }
         /*public override bool AltFunctionUse(Player player)
         {

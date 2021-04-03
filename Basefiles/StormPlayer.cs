@@ -186,11 +186,11 @@ namespace StormDiversSuggestions.Basefiles
                 desertdusttime--;
             }
             
-            if (spaceBarriercooldown < 420 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
+            if (spaceBarriercooldown < 360 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
             {
                 spaceBarriercooldown++;
             }
-            if (spaceBarriercooldown == 420)
+            if (spaceBarriercooldown == 360)
             {
                 player.AddBuff(mod.BuffType("SpaceRockDefence"), 2);
                 
@@ -200,11 +200,11 @@ namespace StormDiversSuggestions.Basefiles
                 player.ClearBuff(mod.BuffType("SpaceRockDefence"));
                 spaceBarriercooldown = 0;
             }
-            if (spaceStrikecooldown < 240) //Ditto for offence
+            if (spaceStrikecooldown < 210) //Ditto for offence
             {
                 spaceStrikecooldown++;
             }
-            if (spaceStrikecooldown == 240)
+            if (spaceStrikecooldown == 210)
             {
                 player.AddBuff(mod.BuffType("SpaceRockOffence"), 2);
 
@@ -448,13 +448,13 @@ namespace StormDiversSuggestions.Basefiles
             int offenceknb = 5;
             if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
-                Projectile.NewProjectile(victim.Center.X, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes stright down
-                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and moves slighly left
-                Projectile.NewProjectile(victim.Center.X + 0, victim.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned directly above and moves slighly right
-                Projectile.NewProjectile(victim.Center.X - 60, victim.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and slighlty moves left
-                Projectile.NewProjectile(victim.Center.X + 60, victim.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and slightly moves right
-                Projectile.NewProjectile(victim.Center.X - 250, victim.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned far to the left and moves right
-                Projectile.NewProjectile(victim.Center.X + 250, victim.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned far to the right and moves left
+                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes straight down
+                Projectile.NewProjectile(victim.Center.X - 50, victim.Top.Y - 450, 0, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned slightly left and moves straight down
+                Projectile.NewProjectile(victim.Center.X + 50, victim.Top.Y - 450, 0, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned slightly right and moves straight down
+                Projectile.NewProjectile(victim.Center.X - 150, victim.Top.Y - 500, 2, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and moves left
+                Projectile.NewProjectile(victim.Center.X + 150, victim.Top.Y - 500, -2, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and moves right
+                Projectile.NewProjectile(victim.Center.X - 200, victim.Top.Y - 450, 2, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the left and moves right
+                Projectile.NewProjectile(victim.Center.X + 200, victim.Top.Y - 450, -2, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the right and moves left
                 for (int i = 0; i < 30; i++)
                 {
 
@@ -567,17 +567,17 @@ namespace StormDiversSuggestions.Basefiles
             }
 
             //For Space Armour with Mask (Defence)
-            int defencedmg = 160 + (attackdmg); //Boulder damage
+            int defencedmg = 100 + (attackdmg * 2); //Boulder damage
             int defenceknb = 6; //Boulder Knockback
             if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage >= 2)
             {
-                Projectile.NewProjectile(player.Center.X, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
-                Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 450, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly right
-                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 450, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI);  //Summoned above and moves slightly left
-                Projectile.NewProjectile(player.Center.X - 60, player.Top.Y - 550, -0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the left and moves slightly left
-                Projectile.NewProjectile(player.Center.X + 60, player.Top.Y - 550, 0.8f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the right and moves slightly right
-                Projectile.NewProjectile(player.Center.X - 250, player.Top.Y - 500, 3f, 6, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the left and moves quickly right
-                Projectile.NewProjectile(player.Center.X + 250, player.Top.Y - 500, -3f, 6, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the right and moves quickly left
+                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
+                Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 400, -1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly left
+                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 400, 1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI);  //Summoned above and moves slightly right
+                Projectile.NewProjectile(player.Center.X - 60, player.Top.Y - 450, -1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the left and moves  left
+                Projectile.NewProjectile(player.Center.X + 60, player.Top.Y - 450, 1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the right and moves  right
+                Projectile.NewProjectile(player.Center.X - 120, player.Top.Y - 500, -1f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the left and moves left
+                Projectile.NewProjectile(player.Center.X + 120, player.Top.Y - 500, 1f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the right and moves right
                 for (int i = 0; i < 30; i++)
                 {
 

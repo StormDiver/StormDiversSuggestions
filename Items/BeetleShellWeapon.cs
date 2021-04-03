@@ -33,28 +33,30 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("BeetleShellProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-        }
-       /* public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-        public override bool CanUseItem(Player player)       
-        {
-            
-            if (player.altFunctionUse == 2)
-            {
-                item.useTime = 30;
-                item.useAnimation = 30;
+            item.noMelee = true;
 
-            }
-            else
-            {
-                item.useTime = 12;
-                item.useAnimation = 12;
-                
-            }
-            return player.ownedProjectileCounts[item.shoot] < 8;
-        }*/
+        }
+        /* public override bool AltFunctionUse(Player player)
+         {
+             return true;
+         }
+         public override bool CanUseItem(Player player)       
+         {
+
+             if (player.altFunctionUse == 2)
+             {
+                 item.useTime = 30;
+                 item.useAnimation = 30;
+
+             }
+             else
+             {
+                 item.useTime = 12;
+                 item.useAnimation = 12;
+
+             }
+             return player.ownedProjectileCounts[item.shoot] < 8;
+         }*/
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 

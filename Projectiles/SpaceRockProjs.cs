@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Boulder");
+            DisplayName.SetDefault("Space Magic Boulder");
         }
         public override void SetDefaults()
         {
@@ -118,7 +118,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Boulder Fragment");
+            DisplayName.SetDefault("Space Magic Fragment");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
@@ -375,7 +375,7 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Boulder Fragment");
+            DisplayName.SetDefault("Homing Space Boulder Fragment");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
@@ -391,7 +391,6 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             projectile.penetrate = 2;
             projectile.timeLeft = 180;
             projectile.light = 0.4f;
-            projectile.scale = 1;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             projectile.tileCollide = true;

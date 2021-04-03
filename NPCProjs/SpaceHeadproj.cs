@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.NPCProjs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Rock");
+            DisplayName.SetDefault("Space Rock Bolt");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             
         }

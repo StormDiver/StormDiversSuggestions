@@ -34,8 +34,10 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("IceGrenadeProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = false;
+            item.noMelee = true;
+
         }
-       
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 

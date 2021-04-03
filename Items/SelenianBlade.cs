@@ -34,9 +34,11 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("SelenianBladeProj");
             item.UseSound = SoundID.Item7;
             item.autoReuse = true;
+            item.noMelee = true;
+
         }
 
-        
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 1);

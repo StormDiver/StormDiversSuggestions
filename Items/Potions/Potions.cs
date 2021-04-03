@@ -77,7 +77,6 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.ShroomiteBar, 1);
             recipe.AddIngredient(ItemID.Moonglow, 2);
-            recipe.AddIngredient(ItemID.DoubleCod);
 
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
@@ -117,7 +116,6 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.Ectoplasm, 3);
             recipe.AddIngredient(ItemID.Waterleaf, 2);
-            recipe.AddIngredient(ItemID.PrincessFish);
 
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
@@ -139,7 +137,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Penetration Potion");
-            Tooltip.SetDefault("Increases armor penetration of all melee weapons by 30");
+            Tooltip.SetDefault("Increases armor penetration of all melee weapons by 25");
         }
 
         public override void SetDefaults()
@@ -165,16 +163,10 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.BeetleHusk, 2);
             recipe.AddIngredient(ItemID.Fireblossom, 2);
-            recipe.AddIngredient(ItemID.Hemopiranha);
 
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddIngredient(ItemID.BeetleHusk, 2);
-            recipe.AddIngredient(ItemID.Fireblossom, 2);
-            recipe.AddIngredient(ItemID.Ebonkoi);
+    
 
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
@@ -214,7 +206,6 @@ namespace StormDiversSuggestions.Items.Potions
             recipe.AddIngredient(ItemID.BottledWater);
             recipe.AddIngredient(ItemID.SpookyWood, 40);
             recipe.AddIngredient(ItemID.Shiverthorn, 2);
-            recipe.AddIngredient(ItemID.FrostMinnow);
 
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
