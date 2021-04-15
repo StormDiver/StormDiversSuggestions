@@ -61,10 +61,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 12);
-            recipe.AddIngredient(ItemID.JungleSpores, 8);
-            recipe.AddIngredient(ItemID.Bone, 40);
-            recipe.AddIngredient(ItemID.HellstoneBar, 12);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
+            recipe.AddIngredient(ItemID.JungleSpores, 6);
+            recipe.AddIngredient(ItemID.Bone, 30);
+            recipe.AddIngredient(ItemID.HellstoneBar, 10);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -108,10 +108,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 18);
-            recipe.AddIngredient(ItemID.JungleSpores, 12);
-            recipe.AddIngredient(ItemID.Bone, 60);
-            recipe.AddIngredient(ItemID.HellstoneBar, 18);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 15);
+            recipe.AddIngredient(ItemID.JungleSpores, 10);
+            recipe.AddIngredient(ItemID.Bone, 50);
+            recipe.AddIngredient(ItemID.HellstoneBar, 15);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -151,10 +151,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 15);
-            recipe.AddIngredient(ItemID.JungleSpores, 10);
-            recipe.AddIngredient(ItemID.Bone, 50);
-            recipe.AddIngredient(ItemID.HellstoneBar, 15);
+            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 12);
+            recipe.AddIngredient(ItemID.JungleSpores, 8);
+            recipe.AddIngredient(ItemID.Bone, 40);
+            recipe.AddIngredient(ItemID.HellstoneBar, 12);
 
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);

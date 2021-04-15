@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items
             {
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(13));
-                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("StoneSuperProj"), damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X + player.velocity.X, perturbedSpeed.Y + player.velocity.Y, mod.ProjectileType("StoneSuperProj"), damage, knockBack, player.whoAmI);
             }
 
             return false;

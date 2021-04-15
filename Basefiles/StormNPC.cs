@@ -51,6 +51,9 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool superburnDebuff;
 
+        public bool heartStolen; //If the npc has been hit when below 50% life
+
+
         public override void ResetEffects(NPC npc)
         {
             boulderDB = false;
@@ -118,9 +121,9 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (heartDebuff)
             {
-                npc.lifeRegen -= 100;
+                npc.lifeRegen -= 50;
 
-                damage = 10;
+                damage = 5;
 
             }
             if (superburnDebuff)
@@ -383,65 +386,14 @@ namespace StormDiversSuggestions.Basefiles
 
 
         }
-        bool heartSteal = false; //If the npc has been hit when below 30% life
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))
-            {
-                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5) //Rolls to see the outcome when firts hit under 30% life
-                {
-
-                    {
-                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
-                        {
-                            Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                            Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 7);
-                            for (int i = 0; i < 15; i++)
-                            {
-                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
-                                //dust.noGravity = true;
-                            }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 3600);
-                            heartSteal = true; //Prevents any more hearts from being dropped
-                        }
-                        else //Otherwise it just prevents the roll from happening again
-                        {
-                            heartSteal = true;
-                        }
-                    }
-                }
-            }
+            
         }
        //Ditto, but from player projectiles
         public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<JarBuff>()))
-            {
-                if (npc.life <= (npc.lifeMax * 0.30f) && !npc.boss && !npc.friendly && !heartSteal && npc.lifeMax > 5)
-                {
-                    
-                    {
-                        if (Main.rand.Next(8) == 0)
-                        {
-                            Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, ItemID.Heart);
-                            Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 7);
-                            for (int i = 0; i < 15; i++)
-                            {
-                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
-                                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 72);
-                                //dust.noGravity = true;
-                            }
-                            npc.AddBuff(mod.BuffType("HeartDebuff"), 3600);
-                            heartSteal = true;
-                        }
-                        else
-                        {
-                            heartSteal = true;
-                        }
-                    }
-                }
-            }
+           
         }
         public override void HitEffect(NPC npc, int hitDirection, double damage)
         {

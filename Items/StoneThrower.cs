@@ -52,6 +52,9 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
+            speedX = speedX + player.velocity.X;
+            speedY = speedY + player.velocity.Y;
+
             return true;
         }
 

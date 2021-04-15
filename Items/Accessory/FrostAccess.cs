@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo Core");
-            Tooltip.SetDefault("Multiple frost shards explode out of you when taking damage, each dealing 100% of the damage taken\nIncreases critical strike chance and movement speed for 6 seconds afterwards");
+            Tooltip.SetDefault("Multiple frost shards explode out of you when taking more than 1 damage\nIncreases critical strike chance and movement speed for 6 seconds afterwards");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()

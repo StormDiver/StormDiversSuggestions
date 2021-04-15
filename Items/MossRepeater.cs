@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Moss Covered Repeater");
+            DisplayName.SetDefault("Mossy Repeater");
             Tooltip.SetDefault("Seems a little old and neglected, but should still work");
         }
         public override void SetDefaults()
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items
 
             //item.UseSound = SoundID.Item5;
         
-            item.damage = 20;
+            item.damage = 22;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items
 
             pitch = scale - 1;
             Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 5, 1, pitch);
-
+            
             return false;
         }
         

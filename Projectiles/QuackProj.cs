@@ -459,7 +459,7 @@ namespace StormDiversSuggestions.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (10 * projectile.velocity + move) / 9f;
+                projectile.velocity = (10 * projectile.velocity + move) / 9.1f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 

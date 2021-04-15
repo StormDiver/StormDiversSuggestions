@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.NPCs
             npc.damage = 125;
 
             npc.defense = 60;
-            npc.lifeMax = 10000;
+            npc.lifeMax = 12000;
             npc.alpha = 3;
 
 

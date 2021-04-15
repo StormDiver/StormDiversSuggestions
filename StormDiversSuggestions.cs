@@ -24,7 +24,7 @@ namespace StormDiversSuggestions
 		{
 
 		}
-        public override void AddRecipeGroups()
+        public override void AddRecipeGroups() //Recipe Groups
         {
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Bar", new int[]
             {
@@ -53,13 +53,7 @@ namespace StormDiversSuggestions
                 ItemID.TissueSample
             });
             RecipeGroup.RegisterGroup("StormDiversSuggestions:EvilMaterial", group);
-
-            group = new RecipeGroup(() => "Ruby or Diamond Staff", new int[]
-            {
-                ItemID.RubyStaff,
-                ItemID.DiamondStaff
-            });
-            RecipeGroup.RegisterGroup("StormDiversSuggestions:RDStaffs", group);
+    
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Running Boots", new int[]
             {

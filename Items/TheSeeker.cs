@@ -58,7 +58,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.IllegalGunParts, 1);
             recipe.AddIngredient(ItemID.ExplosivePowder, 20);
             recipe.AddIngredient(ItemID.SoulofSight, 20);
             recipe.AddIngredient(ItemID.HallowedBar, 10);

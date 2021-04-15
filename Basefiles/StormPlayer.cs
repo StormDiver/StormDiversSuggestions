@@ -87,6 +87,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool shroomaccess; //Player has the Shroomite Accessory equipped
 
+        public bool heartSteal; //Player has the Jar of Hearts equipped
+
         public bool hellblazeSet; //TBA
 
 
@@ -142,7 +144,7 @@ namespace StormDiversSuggestions.Basefiles
             spaceRockDefence = false;
             shroomaccess = false;
             hellblazeSet = false;
-            
+            heartSteal = false;
 
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
@@ -184,6 +186,11 @@ namespace StormDiversSuggestions.Basefiles
             if (desertdusttime > 0)
             {
                 desertdusttime--;
+            }
+
+            if (granitebufftime > 0)
+            {
+                granitebufftime--;
             }
             
             if (spaceBarriercooldown < 360 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
@@ -419,19 +426,10 @@ namespace StormDiversSuggestions.Basefiles
 
                 player.autoJump = true;
                 player.maxFallSpeed *= 1.5f;
+                
                 player.noKnockback = true;
             }
-            //OLD granite accessory cooldown
-            /*if (granitesurge)//This bool is set to true when you take damage and begins the cooldown timer
-            {
-                granitebufftime++;
-            }
-            if (granitebufftime >= 300) //The cooldown for when the buff can be applied again, 5 seconds
-            {
             
-                granitesurge = false; // Allows the buff to be applied again
-                granitebufftime = 0;
-            }*/
             if (!graniteBuff)//If the player removes the accessory the buff is gone
             {
                 player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
@@ -446,15 +444,17 @@ namespace StormDiversSuggestions.Basefiles
             //For the SpaceArmour with the helmet (offence)
             int offencedmg = (int) (100 * player.allDamage);
             int offenceknb = 5;
+            float offenceveloX = victim.velocity.X * 0.6f;
+            
             if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
-                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes straight down
-                Projectile.NewProjectile(victim.Center.X - 50, victim.Top.Y - 450, 0, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned slightly left and moves straight down
-                Projectile.NewProjectile(victim.Center.X + 50, victim.Top.Y - 450, 0, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned slightly right and moves straight down
-                Projectile.NewProjectile(victim.Center.X - 150, victim.Top.Y - 500, 2, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and moves left
-                Projectile.NewProjectile(victim.Center.X + 150, victim.Top.Y - 500, -2, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and moves right
-                Projectile.NewProjectile(victim.Center.X - 200, victim.Top.Y - 450, 2, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the left and moves right
-                Projectile.NewProjectile(victim.Center.X + 200, victim.Top.Y - 450, -2, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the right and moves left
+                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 350, 0 + offenceveloX, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes straight down
+                Projectile.NewProjectile(victim.Center.X - 50, victim.Top.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned slightly left and moves straight down
+                Projectile.NewProjectile(victim.Center.X + 50, victim.Top.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned slightly right and moves straight down
+                Projectile.NewProjectile(victim.Center.X - 150, victim.Top.Y - 500, 2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and moves left
+                Projectile.NewProjectile(victim.Center.X + 150, victim.Top.Y - 500, -2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and moves right
+                Projectile.NewProjectile(victim.Center.X - 200, victim.Top.Y - 450, 4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the left and moves right
+                Projectile.NewProjectile(victim.Center.X + 200, victim.Top.Y - 450, -4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the right and moves left
                 for (int i = 0; i < 30; i++)
                 {
 
@@ -464,7 +464,6 @@ namespace StormDiversSuggestions.Basefiles
                     dust.noGravity = true;
                     dust.velocity *= 2;
                     dust.noGravity = true;
-                    dust.velocity *= 2;
 
                 }
                 Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
@@ -550,10 +549,10 @@ namespace StormDiversSuggestions.Basefiles
             player.ClearBuff(mod.BuffType("HeartBarrierBuff")); //Removes buff on hit
             attackdmg = (int)damage; //Int for the damage taken
 
-            //triggers the grnaite accessory buff for 5 seconds, and it cannot be refreshed until the buff has ran out and takes at least 5 damage
-            if (graniteBuff && !player.HasBuff(mod.BuffType("GraniteAccessBuff")) && damage > 5)
+            //triggers the grnaite accessory buff for 5 seconds, and it cannot be refreshed until the 10 second timer hjas ran out
+            if (graniteBuff && !player.HasBuff(mod.BuffType("GraniteAccessBuff"))  && granitebufftime == 0 && damage > 1)
             {
-                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 300);
+                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 180);
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
                 for (int i = 0; i < 25; i++)
                 {
@@ -563,35 +562,37 @@ namespace StormDiversSuggestions.Basefiles
                     dust.scale = 2f;
                     dust.velocity *= 2;
                 }
-                
+                granitebufftime = 600;
             }
-
             //For Space Armour with Mask (Defence)
             int defencedmg = 100 + (attackdmg * 2); //Boulder damage
             int defenceknb = 6; //Boulder Knockback
+            float defenceVeloX = player.velocity.X * 0.25f;
+
             if (spaceRockDefence && player.HasBuff(mod.BuffType("SpaceRockDefence")) && damage >= 2)
             {
-                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 350, 0, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
-                Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 400, -1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly left
-                Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 400, 1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI);  //Summoned above and moves slightly right
-                Projectile.NewProjectile(player.Center.X - 60, player.Top.Y - 450, -1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the left and moves  left
-                Projectile.NewProjectile(player.Center.X + 60, player.Top.Y - 450, 1, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the right and moves  right
-                Projectile.NewProjectile(player.Center.X - 120, player.Top.Y - 500, -1f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the left and moves left
-                Projectile.NewProjectile(player.Center.X + 120, player.Top.Y - 500, 1f, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the right and moves right
-                for (int i = 0; i < 30; i++)
-                {
+                
+                    Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 350, 0 + defenceVeloX, 8f, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and goes straight down
+                    Projectile.NewProjectile(player.Center.X - 0, player.Top.Y - 400, -1 + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned above and moves slighly left
+                    Projectile.NewProjectile(player.Center.X + 0, player.Top.Y - 400, 1 + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI);  //Summoned above and moves slightly right
+                    Projectile.NewProjectile(player.Center.X - 60, player.Top.Y - 450, -1 + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the left and moves  left
+                    Projectile.NewProjectile(player.Center.X + 60, player.Top.Y - 450, 1 + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned to the right and moves  right
+                    Projectile.NewProjectile(player.Center.X - 120, player.Top.Y - 500, -1f + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the left and moves left
+                    Projectile.NewProjectile(player.Center.X + 120, player.Top.Y - 500, 1f + defenceVeloX, 8, mod.ProjectileType("SpaceArmourProj"), defencedmg, defenceknb, player.whoAmI); //Summoned far to the right and moves right
+                    for (int i = 0; i < 30; i++)
+                    {
 
-                    float speedX =  Main.rand.NextFloat(-5f, 5f);
-                    float speedY =  Main.rand.NextFloat(-5f, 5f);
-                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6, speedX, speedY, 130, default, 1.5f);
-                    dust.noGravity = true;
-                    dust.velocity *= 2;
-                }
-                Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
+                        float speedX = Main.rand.NextFloat(-5f, 5f);
+                        float speedY = Main.rand.NextFloat(-5f, 5f);
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6, speedX, speedY, 130, default, 1.5f);
+                        dust.noGravity = true;
+                        dust.velocity *= 2;
+                    }
+                    Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
 
-                spaceBarriercooldown = 0;
-                player.ClearBuff(mod.BuffType("SpaceRockDefence"));
-
+                    spaceBarriercooldown = 0;
+                    player.ClearBuff(mod.BuffType("SpaceRockDefence"));
+                 
             }
 
             //Grant buff for celestial barrier based on incoming damage======================
@@ -623,7 +624,7 @@ namespace StormDiversSuggestions.Basefiles
             //Creates the shards for the frost core when hit ======================
             if (frostSpike)
             {
-                if (frosttime < 1)
+                if (frosttime < 1 && damage > 1)
                 {
                     Main.PlaySound(SoundID.NPCKilled, (int)player.position.X, (int)player.position.Y, 56, 0.5f);
                     float numberProjectiles = 10 + Main.rand.Next(4);
@@ -636,7 +637,7 @@ namespace StormDiversSuggestions.Basefiles
                         Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(150));
                         float scale = 1f - (Main.rand.NextFloat() * .5f);
                         perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), (int)((attackdmg * 1f)), 3f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("FrostAccessProj"), (int)((attackdmg * .75f)), 3f, player.whoAmI);
 
 
                     }
@@ -658,16 +659,63 @@ namespace StormDiversSuggestions.Basefiles
         //===================================Other hooks======================================
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) //Hitting enemies with True Melee Only
         {
-            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")) && !item.summon)//Clear the buff when attacking an enemy
+            if (heartSteal) //For the Jar of hearts 
             {
-                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && !target.GetGlobalNPC<StormNPC>().heartDebuff && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                {
+
+                    {
+                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
+                        {
+                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, ItemID.Heart);
+                            Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
+                            for (int i = 0; i < 15; i++)
+                            {
+                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                                var dust = Dust.NewDustDirect(new Vector2(target.Center.X, target.Center.Y), 5, 5, 72);
+                                //dust.noGravity = true;
+                            }
+                            target.AddBuff(mod.BuffType("HeartDebuff"), 3600);
+                            target.GetGlobalNPC<StormNPC>().heartDebuff = true; //prevnets more hearts from being dropped
+
+                        }
+                        else //Otherwise it just prevents the roll from happening again
+                        {
+                            target.GetGlobalNPC<StormNPC>().heartDebuff = true;
+                        }
+                    }
+                }
             }
         }
+
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
         {
-            if (player.HasBuff(mod.BuffType("GraniteAccessBuff")) && (proj.melee || proj.ranged || proj.magic || proj.thrown))//Clear the buff when attacking an enemy excet with minions
+            if (heartSteal) //For the Jar of hearts
             {
-                player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
+                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && !target.GetGlobalNPC<StormNPC>().heartStolen && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                {
+
+                    {
+                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
+                        {
+                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, ItemID.Heart);
+                            Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
+                            for (int i = 0; i < 15; i++)
+                            {
+                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
+                                var dust = Dust.NewDustDirect(new Vector2(target.Center.X, target.Center.Y), 5, 5, 72);
+                                //dust.noGravity = true;
+                            }
+                            target.AddBuff(mod.BuffType("HeartDebuff"), 3600);
+                            target.GetGlobalNPC<StormNPC>().heartStolen = true; //prevnets more hearts from being dropped
+
+                        }
+                        else //Otherwise it just prevents the roll from happening again
+                        {
+                            target.GetGlobalNPC<StormNPC>().heartStolen = true;
+                        }
+                    }
+                }
             }
         }
         

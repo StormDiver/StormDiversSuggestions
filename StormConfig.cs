@@ -19,7 +19,7 @@ using Terraria.UI;
 
 namespace StormDiversSuggestions
 {
-    public class Configurations : ModConfig
+    public class Configurations : ModConfig //configuration settings
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 

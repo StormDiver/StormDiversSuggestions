@@ -81,7 +81,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (distance <= 1000f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 250)
+                if (shoottime >= 250)//starts the casting animation
                 {
                     //npc.velocity.X = 0;
                     npc.velocity.Y *= 0.95f;
@@ -99,7 +99,7 @@ namespace StormDiversSuggestions.NPCs
                 {
                     casting = false;
                 }
-                if (shoottime >= 300)
+                if (shoottime >= 300)//fires the projectiles
                 {
 
 
@@ -173,7 +173,7 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 0;
+            shoottime = 180;
 
             for (int i = 0; i < 3; i++)
             {

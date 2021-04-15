@@ -33,8 +33,8 @@ namespace StormDiversSuggestions.Items
             item.damage = 40;
             item.knockBack = 4f;
 
-            item.useTime = 28;
-            item.useAnimation = 28;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.mana = 12;
             item.shoot = mod.ProjectileType("SkullSeek");
             item.shootSpeed = 16f;
@@ -67,8 +67,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:RDStaffs");
-           
             recipe.AddIngredient(ItemID.CrystalShard, 20);
             recipe.AddIngredient(ItemID.UnicornHorn, 2);
             recipe.AddIngredient(ItemID.SoulofFright, 20);

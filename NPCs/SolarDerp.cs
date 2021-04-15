@@ -141,7 +141,7 @@ namespace StormDiversSuggestions.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 0;
+            shoottime = 120;
 
             for (int i = 0; i < 2; i++)
             {

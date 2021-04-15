@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.NPCs
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0.85f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.buyPrice(0, 0, 50, 0);
             npc.rarity = 2;
 
             banner = npc.type;

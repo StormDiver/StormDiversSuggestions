@@ -54,7 +54,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DaoofPow, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 15);
             recipe.AddIngredient(ItemID.SoulofMight, 20);
             recipe.AddTile(TileID.MythrilAnvil);

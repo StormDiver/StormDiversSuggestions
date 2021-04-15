@@ -50,9 +50,9 @@ namespace StormDiversSuggestions.NPCs
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (NPC.downedPlantBoss)
+            if (NPC.downedPlantBoss && !NPC.AnyNPCs(mod.NPCType("VineDerp")))
             { 
-                return SpawnCondition.UndergroundJungle.Chance * 0.5f;
+                return SpawnCondition.UndergroundJungle.Chance * 0.6f;
             }
             return SpawnCondition.UndergroundJungle.Chance * 0f;
         }

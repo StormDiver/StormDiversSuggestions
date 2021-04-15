@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 9;
             
 
-            item.damage = 35;
+            item.damage = 27;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -121,13 +121,13 @@ namespace StormDiversSuggestions.Items
             item.mana = 4;
         
 
-            item.damage = 100;
+            item.damage = 120;
             //item.crit = 4;
             item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("QuackProj");
 
-            item.shootSpeed = 12f;
+            item.shootSpeed = 15f;
 
             //item.useAmmo = AmmoID.Arrow;
 
@@ -150,6 +150,7 @@ namespace StormDiversSuggestions.Items
             else if (choice == 1)
             {
                 type = mod.ProjectileType("QuackVortexProj");
+                damage = damage / 10 * 12;
             }
             else if (choice == 2)
             {

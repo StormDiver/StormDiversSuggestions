@@ -120,7 +120,7 @@ namespace StormDiversSuggestions.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 0;
+            shoottime = 60;
             for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));

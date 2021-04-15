@@ -41,7 +41,7 @@ namespace StormDiversSuggestions.NPCs
             npc.HitSound = SoundID.NPCHit7;
             npc.DeathSound = SoundID.NPCDeath44;
             npc.knockBackResist = 0.6f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.buyPrice(0, 0, 50, 0);
 
            banner = npc.type;
             bannerItem = mod.ItemType("GraniteMiniBossBannerItem");
@@ -161,7 +161,7 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 0;
+            shoottime = 60;
 
             for (int i = 0; i < 3; i++)
             {

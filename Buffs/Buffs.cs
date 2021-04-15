@@ -312,15 +312,15 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Granite Surge");
-            Description.SetDefault("Damage of the next attack is doubled");
+            Description.SetDefault("50% increased damage");
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.meleeDamage += 1;
-            player.rangedDamage += 1;
-            player.magicDamage += 1;
-            player.thrownDamage += 1;
+            player.meleeDamage += 0.5f;
+            player.rangedDamage += 0.5f;
+            player.magicDamage += 0.5f;
+            player.thrownDamage += 0.5f;
 
             if (Main.rand.Next(4) == 0)
             {
@@ -338,17 +338,17 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Warrior's Gift");
-            Description.SetDefault("Increases critical strike chance by 15%");
+            Description.SetDefault("12% increased critical strike chance");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.meleeCrit += 15;
-            player.rangedCrit += 15;
-            player.magicCrit += 15;
-            player.thrownCrit += 15;
+            player.meleeCrit += 12;
+            player.rangedCrit += 12;
+            player.magicCrit += 12;
+            player.thrownCrit += 12;
 
             if (Main.rand.Next(5) == 0)
             {

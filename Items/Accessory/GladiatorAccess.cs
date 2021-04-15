@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             
             DisplayName.SetDefault("Warrior's Trophy");
-            Tooltip.SetDefault("While above 75% HP your critical strike chance is increased by 15%");
+            Tooltip.SetDefault("While above 75% HP your critical strike chance is increased by 12%");
         }
 
         public override void SetDefaults()

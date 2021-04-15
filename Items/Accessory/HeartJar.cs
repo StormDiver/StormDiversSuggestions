@@ -22,14 +22,14 @@ using StormDiversSuggestions.Basefiles;
 
 namespace StormDiversSuggestions.Items.Accessory
 {
-  
+ 
     public class HeartJar : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Jar of Hearts");
-            Tooltip.SetDefault("When not at max health, enemies below 30% life have a one time chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly\n'Heart Stealer'");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
+            DisplayName.SetDefault("Heart Emblem");
+            Tooltip.SetDefault("Makes enemies below half life have a one time chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
 
@@ -47,24 +47,9 @@ namespace StormDiversSuggestions.Items.Accessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.statLife < (player.statLifeMax2))
-            {
-                
-                player.AddBuff(mod.BuffType("JarBuff"), 2);
-                
-            }
-           
-        }
+            player.GetModPlayer<StormPlayer>().heartSteal = true;
 
-       /* public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ClayPot);
-            recipe.AddIngredient(mod.GetItem("CrackedHeart"), 4);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }*/
+        }
 
          public class ModGlobalNPC : GlobalNPC
          {

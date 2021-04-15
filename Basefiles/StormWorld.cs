@@ -28,6 +28,8 @@ namespace StormDiversSuggestions.Basefiles
         public static bool SpawnDesertOre; //Ditto with Sand Elemental
         public  bool IceSpawned; //This is for when the frost ore first generates, so it will not generate again
         public  bool DesertSpawned; //Ditto with Arid ore
+        public static bool PlanteraMessage; //For the message that appears when planter ais defeated
+        public static bool EocMessage; //For the message when the eoc is defeated
 
         public override void Initialize()
         {
@@ -35,6 +37,8 @@ namespace StormDiversSuggestions.Basefiles
             SpawnDesertOre = false;
             IceSpawned = false;
             DesertSpawned = false;
+            PlanteraMessage = false;
+            EocMessage = false;
         }
 
         public override TagCompound Save()
@@ -45,6 +49,9 @@ namespace StormDiversSuggestions.Basefiles
                 {"SpawnDesertOre", SpawnDesertOre },
                 {"IceSpawned", IceSpawned },
                 {"DesertSpawned", DesertSpawned },
+                {"PlanteraMessage", PlanteraMessage },
+                {"EocMessage", EocMessage }
+
             };
         }
         public override void Load(TagCompound tag)
@@ -53,6 +60,8 @@ namespace StormDiversSuggestions.Basefiles
             SpawnDesertOre = tag.GetBool("SpawnDesertOre");
             IceSpawned = tag.GetBool("IceSpawned");
             DesertSpawned = tag.GetBool("DesertSpawned");
+            PlanteraMessage = tag.GetBool("PlanteraMessage");
+            EocMessage = tag.GetBool("EocMessage");
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -62,6 +71,8 @@ namespace StormDiversSuggestions.Basefiles
             flags[1] = SpawnDesertOre;
             flags[2] = IceSpawned;
             flags[3] = DesertSpawned;
+            flags[4] = PlanteraMessage;
+            flags[5] = EocMessage;
             writer.Write(flags);
         }
         public override void NetReceive(BinaryReader reader)
@@ -71,6 +82,8 @@ namespace StormDiversSuggestions.Basefiles
             SpawnDesertOre = flags[1];
             IceSpawned = flags[2];
             DesertSpawned = flags[3];
+            PlanteraMessage = flags[4];
+            EocMessage = flags[5];
         }
 
         public override void PostWorldGen()
@@ -80,6 +93,32 @@ namespace StormDiversSuggestions.Basefiles
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
+
+                //For the Mossy Repeater in Jungle Chest
+                int[] ChestMossyRep = { ItemType<MossRepeater>() };
+                int ChestMossyRepCount = 0;
+
+
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 10 * 36) //Look in Tiles_21 for the tile, start from 0
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == ItemID.None)
+                        {
+                            if (WorldGen.genRand.NextBool(4))
+                            {
+
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMossyRep));
+                                ChestMossyRepCount = (ChestMossyRepCount + 1) % ChestMossyRep.Length;
+                               
+                            }
+
+                            break;
+                        }
+                    }
+
+                }
+
 
                 //For the Proto Launcher in Dungeons
                 int[] ChestLauncher = { ItemType<ProtoLauncher>() };
@@ -258,14 +297,25 @@ namespace StormDiversSuggestions.Basefiles
         
         public override void PreUpdate()
         {
+            //For the messages when a boss is defeated
+            if (NPC.downedPlantBoss && !PlanteraMessage)
+            {
+                Main.NewText("Sentient asteroids have entered the atomosphere", 112, 88, 163);
+                PlanteraMessage = true;
+            }
+            if (NPC.downedBoss1 && !EocMessage)
+            {
+                Main.NewText("A stronger life force radiates from the Granite and Marble Caves", 197, 185, 101);
+                EocMessage = true;
+            }
             //To spawn the ores
             if (SpawnIceOre && !IceSpawned)
             {
-                if (!GetInstance<Configurations>().PreventOreSpawn)
+                if (!GetInstance<Configurations>().PreventOreSpawn) 
                 {
                     Main.NewText("Frozen ores can now be obtained from the depths of the Frozen Caves", 0, 255, 255);
                 }
-                else
+                else  //If generating ore is disabled
                 {
                     Main.NewText("Frozen ores now drop from the creatures in the depths of the Frozen Caves", 0, 255, 255);
 
@@ -293,7 +343,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     Main.NewText("Arid ores can now be obtained from the depths of the Sandy Tunnels", 204, 132, 0);
                 }
-                else
+                else //If generating ore is disabled
                 {
                     Main.NewText("Arid ores now drop from creatures in the depths of the Sandy Tunnels", 204, 132, 0);
 

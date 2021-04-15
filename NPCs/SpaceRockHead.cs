@@ -40,7 +40,7 @@ namespace StormDiversSuggestions.NPCs
             npc.HitSound = SoundID.NPCHit7;
             npc.DeathSound = SoundID.NPCDeath43;
             npc.knockBackResist = 0.1f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.buyPrice(0, 0, 20, 0);
 
            banner = npc.type;
             bannerItem = mod.ItemType("SpaceRockHeadBannerItem");
@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.NPCs
             
             if (distance  <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 300)
+                if (shoottime >= 240)
                 {
                     float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).
                     int damage = 30; // The damage your projectile deals.

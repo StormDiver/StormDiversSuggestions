@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items
                 {
 
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1f), (float)(perturbedSpeed.Y * 1f), mod.ProjectileType("StoneSolar"), damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1f) + player.velocity.X, (float)(perturbedSpeed.Y * 1f) + player.velocity.Y, mod.ProjectileType("StoneSolar"), damage, knockBack, player.whoAmI);
                 }
             }
             else if (choice == 1)
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items
                 {
 
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.3f), (float)(perturbedSpeed.Y * 1.3f), mod.ProjectileType("StoneVortex"), damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.3f) + player.velocity.X, (float)(perturbedSpeed.Y * 1.3f) + player.velocity.Y, mod.ProjectileType("StoneVortex"), damage, knockBack, player.whoAmI);
                 }
             }
             else if (choice == 2)
@@ -76,7 +76,7 @@ namespace StormDiversSuggestions.Items
                 {
 
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("StoneNebula"), damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X) + player.velocity.X, (float)(perturbedSpeed.Y) + player.velocity.Y, mod.ProjectileType("StoneNebula"), damage, knockBack, player.whoAmI);
                 }
             }
             else if (choice == 3)
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items
                 {
 
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("StoneStardust"), damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X) + player.velocity.X, (float)(perturbedSpeed.Y) + player.velocity.Y, mod.ProjectileType("StoneStardust"), damage, knockBack, player.whoAmI);
                 }
             }
             /*for (int i = 0; i < 3; i++)

@@ -47,9 +47,8 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SawtoothShark, 1);
-            recipe.AddIngredient(ItemID.SoulofFright, 20);
             recipe.AddIngredient(ItemID.Chain, 20);
+            recipe.AddIngredient(ItemID.SoulofFright, 20);
             recipe.AddIngredient(ItemID.HallowedBar, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
