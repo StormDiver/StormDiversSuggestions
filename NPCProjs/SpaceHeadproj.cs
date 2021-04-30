@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.NPCProjs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Rock Bolt");
+            DisplayName.SetDefault("Asteroid Bolt");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             
         }
@@ -96,8 +96,8 @@ namespace StormDiversSuggestions.NPCProjs
 
 
                         distance = 3f / distance;
-                        shootToX *= distance * 5;
-                        shootToY *= distance * 5;
+                        shootToX *= distance * 6;
+                        shootToY *= distance * 6;
                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("SpaceHeadProj2"), projectile.damage, projectile.knockBack);
 
                         projectile.Kill();
@@ -152,7 +152,7 @@ namespace StormDiversSuggestions.NPCProjs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Space Rock Bolt");
+            DisplayName.SetDefault("Asteroid Bolt");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 3;
         }

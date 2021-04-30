@@ -37,9 +37,9 @@ namespace StormDiversSuggestions.Projectiles
         {
             /*projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             Dust.NewDust(projectile.Center + projectile.velocity, projectile.width, projectile.height, 175);*/
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-
-
+            
+                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+           
 
             //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 30);
             if (Main.rand.Next(2) == 0) // the chance
@@ -136,9 +136,12 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            
-                
-            
+
+            projectile.damage = (projectile.damage * 5) / 10;
+            projectile.velocity.X *= 0.5f;
+            projectile.velocity.Y *= 0.5f;
+
+
             for (int i = 0; i < 10; i++)
             {
 
@@ -184,14 +187,13 @@ namespace StormDiversSuggestions.Projectiles
            
             projectile.friendly = true;
             projectile.timeLeft = 300;
-            projectile.penetrate = 1;
+            projectile.penetrate = 5;
             projectile.arrow = true;
             projectile.tileCollide = true;
             projectile.knockBack = 8f;
             projectile.ranged = true;
             projectile.extraUpdates = 1;
             projectile.arrow = true;
-            //Creates no immunity frames
             
 
             drawOffsetX = -4;
@@ -205,10 +207,27 @@ namespace StormDiversSuggestions.Projectiles
             /* int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 0.7f);
              Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
              Main.dust[dustIndex].noGravity = true;*/
+            if (Main.rand.Next(2) == 0) // the chance
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Terraria.Dust.NewDustDirect(position, projectile.width, projectile.height, 202, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                dust.noGravity = true;
+
+            }
         }
 
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage = (projectile.damage * 9) / 10;
+            for (int i = 0; i < 5; i++)
+            {
 
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f);
+            }
+        }
 
         public override void Kill(int timeLeft)
         {
@@ -217,7 +236,6 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 202);
             }
             Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 11);

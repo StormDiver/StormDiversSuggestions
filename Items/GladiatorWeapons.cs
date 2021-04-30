@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gladiator's Sword");
-            Tooltip.SetDefault("Lightweight");
+            Tooltip.SetDefault("Lightweight but sturdy");
         }
 
         public override void SetDefaults()
@@ -25,8 +25,8 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 16;
+            item.useAnimation = 16;
             item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
@@ -79,7 +79,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gladiator's Bow");
-            Tooltip.SetDefault("Has a lot of power in its shots");
+            Tooltip.SetDefault("Fires arrows at a high velocity");
 
         }
         public override void SetDefaults()
@@ -104,7 +104,7 @@ namespace StormDiversSuggestions.Items
             item.knockBack = 3f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
-            item.shootSpeed = 16f;
+            item.shootSpeed = 18f;
             item.useAmmo = AmmoID.Arrow;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -147,7 +147,7 @@ namespace StormDiversSuggestions.Items
             DisplayName.SetDefault("Gladiator's Staff");
             Tooltip.SetDefault("Fires out a magical piercing beam");
             Item.staff[item.type] = true;
-
+        
         }
         public override void SetDefaults()
         {

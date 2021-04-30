@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 
 namespace StormDiversSuggestions.Projectiles
 {
-    public class AridArrowProj : ModProjectile
+    public class AncientArrowProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Arrow");
+            DisplayName.SetDefault("Ancient Arrow");
         }
 
         public override void SetDefaults()

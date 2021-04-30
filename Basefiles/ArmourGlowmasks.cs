@@ -22,7 +22,7 @@ using Terraria.DataStructures;
 
 namespace StormDiversSuggestions.Basefiles
 {
-    public class ArmourGlowmasks : ModPlayer
+    public class ArmourGlowmasks : ModPlayer //armours
     {
        
         public static readonly PlayerLayer StormDiverMaskGlowmask = new PlayerLayer("StormDiversSuggestions", "StormDiverMaskGlowmask", PlayerLayer.Head, delegate (PlayerDrawInfo drawInfo)
@@ -601,7 +601,9 @@ namespace StormDiversSuggestions.Basefiles
             };
             Main.playerDrawData.Add(drawData);
         });
-       
+
+
+
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
         {
             int headLayer = layers.FindIndex(i => i == PlayerLayer.Head);

@@ -52,16 +52,7 @@ namespace StormDiversSuggestions.NPCProjs
             dust.noGravity = true;
 
             AnimateProjectile();
-            /*
-                if (Main.rand.Next(75) == 0)
-                {
-
-                    float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-                    float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
-                }
-            */
+            
 
         }
         

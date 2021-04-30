@@ -33,8 +33,9 @@ namespace StormDiversSuggestions.NPCProjs
             
             projectile.tileCollide = true;
             projectile.scale = 1.1f;
+            projectile.tileCollide = false;
 
-            
+
             projectile.extraUpdates = 1;
             
            
@@ -78,7 +79,12 @@ namespace StormDiversSuggestions.NPCProjs
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            //projectile.Kill();
+            for (int i = 0; i < 15; i++)
+            {
+
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 229, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
+                dust.noGravity = true;
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -147,12 +153,11 @@ namespace StormDiversSuggestions.NPCProjs
             projectile.penetrate = 1;
 
 
-            projectile.tileCollide = true;
             projectile.scale = 1.1f;
 
 
             projectile.extraUpdates = 1;
-
+            projectile.tileCollide = false;
 
             projectile.timeLeft = 600;
             //aiType = ProjectileID.LostSoulHostile;
@@ -183,10 +188,11 @@ namespace StormDiversSuggestions.NPCProjs
 
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-
-            if (hometime >= 120)
+           
+            if (hometime >= 180)
             {
-                for (int i = 0; i < 200; i++)
+
+                for (int i = 0; i < 100; i++)
                 {
                     Player target = Main.player[i];
                     //If the npc is hostile
@@ -203,34 +209,32 @@ namespace StormDiversSuggestions.NPCProjs
                         distance = 0.5f / distance;
 
                         //Multiply the distance by a multiplier proj faster
-                        shootToX *= distance * 10;
+                        shootToX *= distance * 12;
                         shootToY *= distance * 0;
 
                         //Set the velocities to the shoot values
                         projectile.velocity.X = shootToX;
                         projectile.velocity.Y = shootToY;
                     }
-                    if (projectile.Center.Y >= target.Center.Y)
-                    {
-                        projectile.velocity.Y = 4;
-                    }
-                    if (projectile.Center.Y < target.Center.Y)
-                    {
-                        projectile.velocity.Y = 3;
-                    }
+                    
+                        projectile.velocity.Y = 4.5f;
+                  
+
                 }
                 
             }
 
+
+
         }
-       /* private void AdjustMagnitude(ref Vector2 vector)
-        {
-            float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > 4f)
-            {
-                vector *= 4f / magnitude;
-            }
-        }*/
+        /* private void AdjustMagnitude(ref Vector2 vector)
+         {
+             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+             if (magnitude > 4f)
+             {
+                 vector *= 4f / magnitude;
+             }
+         }*/
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             projectile.Kill();

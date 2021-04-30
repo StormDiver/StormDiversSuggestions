@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.NPCs
             }
             else
             {
-                shoottime = 0;
+                shoottime = 90;
             }
         }
         

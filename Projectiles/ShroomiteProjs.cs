@@ -69,17 +69,7 @@ namespace StormDiversSuggestions.Projectiles
         {
 
              dusttime++;
-            /* if (Main.rand.Next(10) == 0)
-             {
-                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("ShroomDust"));
-
-             }*/
            
-                /*Dust dust;
-
-                Vector2 position = projectile.Center;
-                dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);*/
-            //dust.noGravity = true;
             if (dusttime > 3)
             {
                 for (int i = 0; i < 10; i++)
@@ -97,16 +87,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-            /*
-                if (Main.rand.Next(75) == 0)
-                {
-
-                    float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-                    float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
-                }
-            */
+           
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -182,7 +163,7 @@ namespace StormDiversSuggestions.Projectiles
                 int speedX = 0;
                 int speedY = 0;
 
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speedX, speedY, mod.ProjectileType("ShroomMush"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
                 spwmushroom = 8;
             }
            /* trail++;
@@ -344,7 +325,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
                     float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
 
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.4f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("ShroomMush"), (int)(projectile.damage * 0.4f), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -448,7 +429,7 @@ namespace StormDiversSuggestions.Projectiles
                     float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
                     float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
 
-                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("ShroomMush"), (int)(projectile.damage * 0.4), 0f, projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -462,7 +443,7 @@ namespace StormDiversSuggestions.Projectiles
         }
     }
     //______________________________________________________________________________________________
-    public class Rangedmushroom : ModProjectile
+    public class ShroomMush : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -496,6 +477,14 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 50;
+            return color;
+
         }
 
     }

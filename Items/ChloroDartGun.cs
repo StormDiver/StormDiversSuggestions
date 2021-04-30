@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chlorophyte Dart Shotgun");
-            Tooltip.SetDefault("Fires out a burst of darts");
+            Tooltip.SetDefault("Fires out a burst of darts\nMerges Crystal Darts into a single much more damaging dart");
         }
         public override void SetDefaults()
         {
@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Lime;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 32;
-            item.useAnimation = 32;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
         
@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = AmmoID.Dart;
             //item.UseSound = SoundID.Item99;
 
-            item.damage = 25;
+            item.damage = 18;
             item.knockBack = 3f;
             item.shootSpeed = 13f;
             item.noMelee = true; 
@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items
         {
             return new Vector2(-2, 0);
         }
-
+        int accuracy;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
@@ -53,21 +53,30 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            int numberProjectiles = 3 + Main.rand.Next(2); ; //This defines how many projectiles to shot.
+            int numberProjectiles = 3 + Main.rand.Next(2);//This defines how many projectiles to shot.
             if (type == ProjectileID.IchorDart)
             {
-                damage = (damage * 8 / 10);
+                
                 numberProjectiles = 3;
+                accuracy = 15;
+
             }
-            if (type == ProjectileID.CrystalDart)
+            else if (type == ProjectileID.CrystalDart)
             {
-                damage = (damage / 8 * 10);
+                damage = (damage * 3);
+                numberProjectiles = 1;
+                accuracy = 0;
             }
-           
+            else
+               
+            {
+                accuracy = 10;
+            }
+
             for (int i = 0; i < numberProjectiles; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // This defines the projectiles random spread . 10 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(accuracy)); // This defines the projectiles random spread . 10 degree spread.
+                Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 1f), knockBack, player.whoAmI);
             }
             Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 98, 1.5f, -0.4f);
 

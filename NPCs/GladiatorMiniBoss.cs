@@ -68,7 +68,8 @@ namespace StormDiversSuggestions.NPCs
         public override void AI()
         {
             shoottime++;
-           
+
+            Lighting.AddLight(npc.Center, Color.WhiteSmoke.ToVector3() * 0.3f * Main.essScale);
 
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
@@ -76,28 +77,33 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-            /*if (distance  >= 500f )
+            if (distance <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+                
             {
 
-                float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).
-                    int damage = 15; // The damage your projectile deals.
+                if (shoottime >= 300)
+                {
+                    float projectileSpeed = 1f; // The speed of your projectile (in pixels per second).
+                    int damage = 15; // The damage your projectile deals. normal x2, expert x4
                     float knockBack = 1;
-                    int type = mod.ProjectileType("Projectile");
+                    int type = mod.ProjectileType("GladiatorMiniBossProj");
 
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) -
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
 
 
-                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 12);
-
-
-                    for (int i = 0; i < 1; i++)
+                    Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 8);
+                    
+                    for (int i = 0; i < 3; i++)
                     {
+                        float posX = npc.position.X + Main.rand.NextFloat(60f, -60f);
+                        float posY = npc.position.Y + Main.rand.NextFloat(60f, -60f);
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(0)); 
-                                                                                                                                  
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
+
+                            Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(0));
+
+                            Projectile.NewProjectile(posX, posY, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, Main.myPlayer);
                         }
                     }
                     for (int i = 0; i < 20; i++)
@@ -106,12 +112,20 @@ namespace StormDiversSuggestions.NPCs
                         var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 57);
                         dust.noGravity = true;
                         dust.velocity *= 3;
+                        dust.scale = 2;
 
                     }
-
                     shoottime = 0;
-        }*/
 
+                }
+               
+            }
+            else
+            {
+                shoottime = 160;
+
+
+            }
 
 
             if (Main.rand.Next(5) == 0)     //this defines how many dust to spawn
@@ -140,7 +154,7 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 0;
+            shoottime = 160;
 
             for (int i = 0; i < 3; i++)
             {

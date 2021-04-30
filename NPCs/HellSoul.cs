@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.NPCs
             }
             else
             {
-                shoottime = 0;
+                shoottime = 140;
                 casting = false;
             }
             var dust3 = Dust.NewDustDirect(new Vector2(npc.position.X, npc.Bottom.Y - 2), npc.width, 2, 6, 0, 5);
@@ -173,7 +173,7 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 180;
+            shoottime = 140;
 
             for (int i = 0; i < 3; i++)
             {

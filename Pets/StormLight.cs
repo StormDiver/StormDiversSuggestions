@@ -139,13 +139,13 @@ namespace StormDiversSuggestions.Pets
             //AnimateProjectile();
 
         }
-        /* public void AnimateProjectile() // Call this every frame, for example in the AI method.
+         /*public void AnimateProjectile() // Call this every frame, for example in the AI method.
          {
              projectile.frameCounter++;
-             if (projectile.frameCounter >= 3) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+             if (projectile.frameCounter >= 8) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
              {
                  projectile.frame++;
-                 projectile.frame %= 3; // Will reset to the first frame if you've gone through them all.
+                 projectile.frame %= 7; // Will reset to the first frame if you've gone through them all.
                  projectile.frameCounter = 0;
              }
          }*/
@@ -159,10 +159,10 @@ namespace StormDiversSuggestions.Pets
 
         }*/
        
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+         public override Color? GetAlpha(Color lightColor)
+         {
+             return Color.White;
+         }
     }
 }
 

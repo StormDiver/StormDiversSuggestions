@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spectre Skull");
-            Tooltip.SetDefault("Mana usage is reduced to a third when under the effects of mana sickness\nIncreases maximum mana by 40");
+            Tooltip.SetDefault("Mana usage is negated when under the effects of mana sickness\nIncreases maximum mana by 40");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items.Accessory
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 
-                player.manaCost *= 0.33f;
+                player.manaCost *= 0f;
                 
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.

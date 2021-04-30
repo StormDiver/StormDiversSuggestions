@@ -13,8 +13,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Extraterrestrial Dart Launcher");
-            Tooltip.SetDefault("Rapidly fires out darts somewhat innaccurately\n50% chance not to consume darts");
+            DisplayName.SetDefault("Martian Dart Launcher");
+            Tooltip.SetDefault("Rapidly fires out darts\n50% chance not to consume darts");
         }
         public override void SetDefaults()
         {
@@ -24,26 +24,26 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Yellow;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 6;
-            item.useAnimation = 6;
+            item.useTime = 12;
+            item.useAnimation = 12;
             //item.reuseDelay = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.ranged = true;
-
+        
             //item.shoot = mod.ProjectileType("ProtoGrenadeProj");
             item.shoot = ProjectileID.Seed;
             item.useAmmo = AmmoID.Dart;
-            item.UseSound = SoundID.Item108;
+            item.UseSound = SoundID.Item91;
 
-            item.damage = 45;
+            item.damage = 65;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 13f;
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
-
+    
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-2, 0);
@@ -58,13 +58,13 @@ namespace StormDiversSuggestions.Items
             }
             if (type == ProjectileID.IchorDart)
             {
-                damage = (damage * 6 / 10);
+                damage = (damage * 8 / 10);
             }
 
             for (int i = 0; i < 1; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); 
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); 
+                Projectile.NewProjectile(position.X, position.Y - 2, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 
             }
 

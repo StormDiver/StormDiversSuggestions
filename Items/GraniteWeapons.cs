@@ -169,8 +169,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 32;
-            item.useAnimation = 32;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = false;
 
@@ -178,13 +178,13 @@ namespace StormDiversSuggestions.Items
             item.mana = 7;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 12;
+            item.damage = 13;
 
             item.knockBack = 3f;
 
             item.shoot = mod.ProjectileType("GraniteStaffProj");
            
-            item.shootSpeed = 10f;
+            item.shootSpeed = 12f;
 
 
             item.noMelee = true; //Does the weapon itself inflict damage?

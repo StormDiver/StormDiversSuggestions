@@ -68,7 +68,8 @@ namespace StormDiversSuggestions.NPCs
         public override void AI()
         {
             shoottime++;
-            
+
+            Lighting.AddLight(npc.Center, Color.WhiteSmoke.ToVector3() * 0.3f * Main.essScale);
 
 
             Player player = Main.player[npc.target];
@@ -77,7 +78,7 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance  <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if (distance  <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
                 if (shoottime >= 100)
                 {
@@ -94,7 +95,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (shoottime >= 160)
                 {
-                    float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).
+                    float projectileSpeed = 15f; // The speed of your projectile (in pixels per second).
                     int damage = 15; // The damage your projectile deals.
                     float knockBack = 1;
                     int type = mod.ProjectileType("GraniteMiniBossProj");
@@ -129,14 +130,14 @@ namespace StormDiversSuggestions.NPCs
             }
             else
             {
-                shoottime = 0;
+                shoottime = 60;
             }
 
             if (Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
                 npc.noTileCollide = false;
-                npc.velocity.X *= 0.95f;
-                npc.velocity.Y *= 0.95f;
+                npc.velocity.X *= 0.96f;
+                npc.velocity.Y *= 0.96f;
             }
             else
             {

@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.NPCProjs
 
              dusttime++;
            
-            if (dusttime > 1)
+            if (dusttime > 4)
             {
                 for (int i = 0; i < 10; i++)
                 {

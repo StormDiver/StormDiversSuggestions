@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Feather Scepter");
-            Tooltip.SetDefault("Fires out damaging feathers\nHas a chance to fire out a larger spinning feather");
+            Tooltip.SetDefault("Fires out a spread of damaging feathers");
             Item.staff[item.type] = true;
 
 
@@ -24,22 +24,22 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 19;
-            item.useAnimation = 19;
+            item.useTime = 36;
+            item.useAnimation = 36;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 8;
+            item.mana = 10;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 19;
+            item.damage = 12;
          
             item.knockBack = 1f;
 
-            item.shoot = mod.ProjectileType("HarpyProj");
+            item.shoot = mod.ProjectileType("HarpyProj2");
 
-            item.shootSpeed = 8.5f;
+            item.shootSpeed = 9f;
    
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -54,25 +54,17 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            int choice = Main.rand.Next(3);
-            if (choice == 0)
+            float numberProjectiles = 4;
+            float rotation = MathHelper.ToRadians(15);
+
+            for (int i = 0; i < numberProjectiles; i++)
             {
-                {
 
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1.25f), (float)(perturbedSpeed.Y * 1.25f), mod.ProjectileType("HarpyProj2"), (int)(damage * 1.25f), knockBack, player.whoAmI);
-
-                }
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1)));
+                Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("HarpyProj"), damage, knockBack, player.whoAmI);
             }
-            else 
-            {
-                {
+            Projectile.NewProjectile(position.X, position.Y, (float)(speedX), (float)(speedY), mod.ProjectileType("HarpyProj2"), (int)(damage * 1.5f), knockBack, player.whoAmI);
 
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1f), (float)(perturbedSpeed.Y * 1f), mod.ProjectileType("HarpyProj"), damage, knockBack * 2, player.whoAmI);
-
-                }
-            }
             return false;
         }
         public override void AddRecipes()
@@ -93,7 +85,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Feathered Bow");
-            Tooltip.SetDefault("Converts Wooden Arrows into Feather Arrows that ignore gravity");
+            Tooltip.SetDefault("Converts Wooden Arrows into Feather Arrows that ignore gravity and pierce");
             
         }
         public override void SetDefaults()
@@ -104,16 +96,16 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
-            item.autoReuse = false;
+            item.autoReuse = true;
 
             item.ranged = true;
 
             item.UseSound = SoundID.Item5;
 
-            item.damage = 18;
+            item.damage = 17;
             //item.crit = 4;
             item.knockBack = 3f;
 
@@ -192,7 +184,7 @@ namespace StormDiversSuggestions.Items
         }
 
 
-
+    
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             /* projshoot++;

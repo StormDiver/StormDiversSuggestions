@@ -89,6 +89,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool heartSteal; //Player has the Jar of Hearts equipped
 
+        public bool mushset; //Player has a set of Glowing mushroom armour equipped
+
         public bool hellblazeSet; //TBA
 
 
@@ -110,6 +112,7 @@ namespace StormDiversSuggestions.Basefiles
         public int shroomshotCount = 0; //Count show many times the player has fired with the shroomite access
         public bool shotrocket; //Wheter the shroomite rocket has been fired or not
         public int hellblazetime; //TBA
+        public int mushtime; //Cooldown for mushrooms summoned with mushroom armour
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -145,12 +148,13 @@ namespace StormDiversSuggestions.Basefiles
             shroomaccess = false;
             hellblazeSet = false;
             heartSteal = false;
+            mushset = false;
 
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
             bearcool = 0;
-            bloodtime = 0;
+            bloodtime = 60;
             frosttime = 0;
             falling = false;
             desertdusttime = 0;
@@ -160,7 +164,9 @@ namespace StormDiversSuggestions.Basefiles
             spaceBarriercooldown = 0;
             shroomshotCount = 0;
             shotrocket = false;
-            hellblazetime = 0;
+            hellblazetime = 60;
+            mushtime = 60;
+            
         }
      
        
@@ -192,7 +198,10 @@ namespace StormDiversSuggestions.Basefiles
             {
                 granitebufftime--;
             }
-            
+            if (mushtime > 0)
+            {
+                mushtime--;
+            }
             if (spaceBarriercooldown < 360 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
             {
                 spaceBarriercooldown++;
@@ -439,8 +448,21 @@ namespace StormDiversSuggestions.Basefiles
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
         {
+            int mushdamage = (int)(15 * player.rangedDamage); //Looks like you didn't deal mush damage with this 
+            if (mushset && mushtime == 0)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    Projectile.NewProjectile(victim.Center.X - 150, victim.Center.Y - 150, 12, 12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
+                }
+                else
+                {
+                    Projectile.NewProjectile(victim.Center.X + 150, victim.Center.Y - 150, -12, +12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
 
-            
+                }
+
+                mushtime = 90;
+            }
             //For the SpaceArmour with the helmet (offence)
             int offencedmg = (int) (100 * player.allDamage);
             int offenceknb = 5;
@@ -448,13 +470,13 @@ namespace StormDiversSuggestions.Basefiles
             
             if (spaceRockOffence && player.HasBuff(mod.BuffType("SpaceRockOffence")))
             {
-                Projectile.NewProjectile(victim.Center.X - 0, victim.Top.Y - 350, 0 + offenceveloX, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes straight down
-                Projectile.NewProjectile(victim.Center.X - 50, victim.Top.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned slightly left and moves straight down
-                Projectile.NewProjectile(victim.Center.X + 50, victim.Top.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned slightly right and moves straight down
-                Projectile.NewProjectile(victim.Center.X - 150, victim.Top.Y - 500, 2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and moves left
-                Projectile.NewProjectile(victim.Center.X + 150, victim.Top.Y - 500, -2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and moves right
-                Projectile.NewProjectile(victim.Center.X - 200, victim.Top.Y - 450, 4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the left and moves right
-                Projectile.NewProjectile(victim.Center.X + 200, victim.Top.Y - 450, -4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the right and moves left
+                Projectile.NewProjectile(victim.Center.X - 0, victim.Center.Y - 350, 0 + offenceveloX, 8f, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned directly above and goes straight down
+                Projectile.NewProjectile(victim.Center.X - 50, victim.Center.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned slightly left and moves straight down
+                Projectile.NewProjectile(victim.Center.X + 50, victim.Center.Y - 450, 0 + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI);  //Summoned slightly right and moves straight down
+                Projectile.NewProjectile(victim.Center.X - 150, victim.Center.Y - 500, 2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the left and moves left
+                Projectile.NewProjectile(victim.Center.X + 150, victim.Center.Y - 500, -2f + offenceveloX, 8, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned to the right and moves right
+                Projectile.NewProjectile(victim.Center.X - 200, victim.Center.Y - 450, 4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the left and moves right
+                Projectile.NewProjectile(victim.Center.X + 200, victim.Center.Y - 450, -4 + offenceveloX, 6, mod.ProjectileType("SpaceArmourProj"), offencedmg, offenceknb, player.whoAmI); //Summoned further to the right and moves left
                 for (int i = 0; i < 30; i++)
                 {
 

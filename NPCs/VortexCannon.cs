@@ -70,7 +70,7 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance <= 750f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if (distance <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
                 
 
@@ -120,7 +120,7 @@ namespace StormDiversSuggestions.NPCs
             }
             else
             {
-                shoottime = 0;
+                shoottime = 150;
                 firerate = 0;
             }
         }

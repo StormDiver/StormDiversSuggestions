@@ -59,16 +59,7 @@ namespace StormDiversSuggestions.NPCProjs
             }
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             AnimateProjectile();
-            /*
-                if (Main.rand.Next(75) == 0)
-                {
-
-                    float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-                    float speedY = -projectile.velocity.Y * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-16f, 16f);
-
-                    Projectile.NewProjectile(projectile.Center.X + speedX, projectile.Center.Y + speedY, speedX, speedY, mod.ProjectileType("Rangedmushroom"), (int)(projectile.damage * 1.25), 0f, projectile.owner, 0f, 0f);
-                }
-            */
+           
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {

@@ -288,6 +288,45 @@ namespace StormDiversSuggestions.Basefiles
                     }
 
                 }
+                //For the Mushroom weapons
+                int[] ChestMushroomRanged = { ItemType<MushroomBow>() };
+                int ChestMushroomRangedCount = 0;
+                int[] ChestMushroomMelee = { ItemType<MushroomSword>() };
+                int ChestMushroomMeleeCount = 0;
+                int[] ChestMushroomMage = { ItemType<MushroomStaff>() };
+                int ChestMushroomMageCount = 0;
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 32 * 36)//Look in Tiles_21 for the tile, start from 0
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == ItemID.None)
+                        {
+                            int choice = Main.rand.Next(3);
+
+                            //if (WorldGen.genRand.NextBool(2))
+                            if (choice == 0)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMushroomRanged));
+                                ChestMushroomRangedCount = (ChestMushroomRangedCount + 1) % ChestMushroomRanged.Length;
+
+
+                            }
+                            if (choice == 1)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMushroomMelee));
+                                ChestMushroomMeleeCount = (ChestMushroomMeleeCount + 1) % ChestMushroomMelee.Length;
+                            }
+                            if (choice == 2)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestMushroomMage));
+                                ChestMushroomMageCount = (ChestMushroomMageCount + 1) % ChestMushroomMage.Length;
+                            }
+
+                            break;
+                        }
+                    }
+
+                }
 
             }
 
@@ -301,11 +340,13 @@ namespace StormDiversSuggestions.Basefiles
             if (NPC.downedPlantBoss && !PlanteraMessage)
             {
                 Main.NewText("Sentient asteroids have entered the atomosphere", 112, 88, 163);
+                Main.NewText("The ancient temple defenses have greatly weakened", 141, 56, 0);
+
                 PlanteraMessage = true;
             }
             if (NPC.downedBoss1 && !EocMessage)
             {
-                Main.NewText("A stronger life force radiates from the Granite and Marble Caves", 197, 185, 101);
+                Main.NewText("A stronger life force radiates from the minor underground biomes", 197, 185, 101);
                 EocMessage = true;
             }
             //To spawn the ores

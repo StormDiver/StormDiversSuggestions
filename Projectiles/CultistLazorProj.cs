@@ -176,17 +176,15 @@ namespace StormDiversSuggestions.Projectiles
                     {
                     if (player.GetModPlayer<StormPlayer>().SpectreSkull == true) //if the player has the spectre skull and is under the effetc of mana sickness than drian 1 mana every 3 frames on average
                         {
-                        if (Main.rand.Next(3) == 0)
-                        {
-                            player.statMana -= 1;
-                        }
+                        
+                            player.statMana -= 0;
+                        
                     }
                     else
                     {
-                        if (Main.rand.Next(1) == 0) //if not then drain mana every frame
-                        {
+                       
                             player.statMana -= 1;
-                        }
+                        
                     }
                 }
                 if (player.statMana <= 0) //If the player runs out of mana kill the projectile

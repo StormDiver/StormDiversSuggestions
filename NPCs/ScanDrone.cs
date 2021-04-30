@@ -26,9 +26,9 @@ namespace StormDiversSuggestions.NPCs
             npc.width = 40;
             npc.height = 20;
 
-            npc.aiStyle = 14; // This npc has a completely unique AI, so we set this to -1. The default aiStyle 0 will face the player, which might conflict with custom AI code.
-            aiType = NPCID.CaveBat;
-            animationType = NPCID.CaveBat;
+            npc.aiStyle = 14; 
+            aiType = NPCID.GiantFlyingFox;
+            //animationType = NPCID.CaveBat;
 
             npc.damage = 60;
             
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-
+        
             if (!GetInstance<Configurations>().PreventPillarEnemies)
             {
                 return SpawnCondition.VortexTower.Chance * 0.15f;
@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.NPCs
         int shoottime = 0;
         //private float rotation;
         //private float scale;
-
+        bool shooting;
         public override void AI()
         {
             shoottime++;
@@ -79,11 +79,25 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance  <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if (distance  <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
+                if (shoottime >= 100)
+                {
+                    shooting = true;
+                    npc.velocity *= 0f;
+
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        Dust dust;
+                        // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                        dust = Terraria.Dust.NewDustPerfect(new Vector2(npc.Center.X + 12 * npc.direction, npc.Center.Y), 156, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+                        dust.noGravity = true;
+                        dust.scale = 1.5f;
+                    }
+                }
                 if (shoottime >= 120)
                 {
-                    float projectileSpeed = 5f; // The speed of your projectile (in pixels per second).
+                    float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
                     int damage = 30; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("ScanDroneProj");
@@ -107,20 +121,46 @@ namespace StormDiversSuggestions.NPCs
                                                                                                                                     // If you want to randomize the speed to stagger the projectiles
                             float scale = 1f - (Main.rand.NextFloat() * .3f);
                             perturbedSpeed = perturbedSpeed * scale;
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                            Projectile.NewProjectile(npc.Center.X + 10 * npc.direction, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
                         }
                     }
-                                       
+                                      
                     shoottime = 0;
+                    shooting = false;
                 }
             }
             else
             {
-                shoottime = 0;
+                shoottime = 60;
+                shooting = false;
+
             }
         }
 
+        int npcframe = 0;
+        public override void FindFrame(int frameHeight)
+        {
+            npc.spriteDirection = npc.direction;
+            if (shooting)
+            {
+                npc.frame.Y = 4 * frameHeight; //Picks frame 4 when shooting
+            }
+            else
+            {
+                npc.frame.Y = npcframe * frameHeight;
+                npc.frameCounter++;
+                if (npc.frameCounter > 10)
+                {
+                    npcframe++;
+                    npc.frameCounter = 0;
+                }
+                if (npcframe == 4) //Cycles through frames 0-3 when not casting
+                {
+                    npcframe = 0;
+                }
+            }
 
+        }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             
@@ -130,6 +170,7 @@ namespace StormDiversSuggestions.NPCs
         public override void HitEffect(int hitDirection, double damage)
         {
             shoottime = 60;
+            shooting = false;
 
             for (int i = 0; i < 3; i++)
             {
@@ -159,8 +200,9 @@ namespace StormDiversSuggestions.NPCs
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = mod.GetTexture("NPCs/ScanDrone_Glow");
+            Vector2 drawPos = new Vector2(0, 2) + npc.Center - Main.screenPosition;
 
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, drawPos, npc.frame, Color.White, npc.rotation, npc.frame.Size() / 2f, npc.scale, npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 
 
         }
