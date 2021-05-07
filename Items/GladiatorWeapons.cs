@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.scale = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
-            item.useTurn = true;
+            item.useTurn = false;
             item.knockBack = 4;
          
         }
@@ -65,7 +65,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddIngredient(mod.GetItem("RedSilk"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
@@ -131,7 +131,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddIngredient(mod.GetItem("RedSilk"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
@@ -209,7 +209,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
             recipe.AddIngredient(mod.GetItem("RedSilk"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

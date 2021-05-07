@@ -80,28 +80,28 @@ namespace StormDiversSuggestions.NPCs
                 move *= movespeed / magnitude;
             }
             npc.velocity = move;
-
-            if (poschoice == 1) //The 4 posotions it can be in after firing
+            //The 5 positions it can be in after firing
+            if (poschoice == 1) //Top 
             {
-                xpostion = 300f;
-                ypostion = -100f;
+                xpostion = 0f;
+                ypostion = -150f;
             }
-            else if (poschoice == 2)
+            else if (poschoice == 2) // left
             {
-                xpostion = -300f;
-                ypostion = 100f;
+                xpostion = -200f;
+                ypostion = 0;
             }
-            else if (poschoice == 3)
+            else if (poschoice == 3) //  right
             {
-                xpostion = -300f;
-                ypostion = -100f;
+                xpostion = 200f;
+                ypostion = 0f;
             }
-            else if (poschoice == 4)
+            else if (poschoice == 4) //Bottom 
             {
-                xpostion = 300f;
-                ypostion = 100f;
+                xpostion = 0f;
+                ypostion = 150f;
             }
-            else if (poschoice == 5)
+            else if (poschoice == 5) //On top of player
             {
                 xpostion = 0f;
                 ypostion = -20f;

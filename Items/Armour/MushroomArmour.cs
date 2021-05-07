@@ -6,6 +6,8 @@ using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Buffs;
 using StormDiversSuggestions.Basefiles;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace StormDiversSuggestions.Items.Armour
 {
@@ -25,7 +27,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Blue;
-            item.defense = 2;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)
@@ -59,11 +61,18 @@ namespace StormDiversSuggestions.Items.Armour
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 30);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomMask_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
 
@@ -98,13 +107,19 @@ namespace StormDiversSuggestions.Items.Armour
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 18);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 40);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 35);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
        
         }
-   
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomChestplate_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
     //______________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -123,7 +138,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Blue;
-            item.defense = 2;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)
@@ -134,12 +149,19 @@ namespace StormDiversSuggestions.Items.Armour
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 15);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 35);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
 
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomGreaves_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
     //__________________________________________________________________________________________________________________________

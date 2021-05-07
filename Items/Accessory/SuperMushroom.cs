@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Enchanced Mushroom");
+            DisplayName.SetDefault("Enchanted Mushroom");
             Tooltip.SetDefault("Empowers you with more defense and increases damage dealt when losing health");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
         }
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.rare = ItemRarityID.Blue;
             
             item.accessory = true;
-            
+            item.maxStack = 1;
             
         }
         int dustchance;
@@ -63,8 +63,8 @@ namespace StormDiversSuggestions.Items.Accessory
             
             if (player.statLife >= player.statLifeMax2 * .75f)
             {
-                item.defense = 4;
-                player.allDamage += 0.04f;
+                item.defense = 3;
+                player.allDamage += 0.03f;
                 dustchance = 16;
             }
             else if (player.statLife >= player.statLifeMax2 * .5f && player.statLife < player.statLifeMax2 * .75f)
@@ -75,14 +75,14 @@ namespace StormDiversSuggestions.Items.Accessory
             }
             else if (player.statLife >= player.statLifeMax2 * .25f && player.statLife < player.statLifeMax2 * .5f)
             {
-                item.defense = 10;
-                player.allDamage += 0.10f;
+                item.defense = 9;
+                player.allDamage += 0.09f;
                 dustchance = 4;
             }
             else 
             {
-                item.defense = 15;
-                player.allDamage += 0.15f;
+                item.defense = 12;
+                player.allDamage += 0.12f;
                 dustchance = 2;
             }
             

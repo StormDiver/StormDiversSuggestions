@@ -173,11 +173,11 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.expertMode)
             {
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceRock"), Main.rand.Next(2, 5));
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceRock"), Main.rand.Next(1, 5));
             }
             else
             {
-                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceRock"), Main.rand.Next(2, 4));
+                Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceRock"), Main.rand.Next(1, 4));
             }
         }
         public override Color? GetAlpha(Color lightColor)

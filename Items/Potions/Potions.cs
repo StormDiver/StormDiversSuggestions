@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroomite Reservation Potion");
-            Tooltip.SetDefault("Grants a 50% chance to not consume ammo");
+            Tooltip.SetDefault("Grants a 75% chance not to consume ammo");
         }
 
         public override void SetDefaults()

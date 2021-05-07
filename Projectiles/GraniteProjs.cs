@@ -181,7 +181,7 @@ namespace StormDiversSuggestions.Projectiles
             // These dusts are added later, for the 'ExampleMod' effect
             if (Main.rand.NextBool(3))
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 65, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 1, Scale: 1.2f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 70, projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 1, Scale: 1.2f);
                 dust.noGravity = true;
                 dust.velocity += projectile.velocity * 0.3f;
                 dust.velocity *= 0.2f;

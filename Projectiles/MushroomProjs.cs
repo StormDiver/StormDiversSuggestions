@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
-            projectile.light = 0.5f;
+            projectile.light = 0.2f;
         }
         int reflect = 4;
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -96,14 +96,19 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6, 0.5f);
-
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 10; i++)
                 {
 
                     var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 113);
-                    dust.velocity *= 0.75f;
+                    dust.velocity *= 0.1f;
+                }
+                for (int i = 0; i < 15; i++)
+                {
+
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
                 }
             }
         }
@@ -131,13 +136,13 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 20;
+            projectile.timeLeft = 22;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
-            projectile.light = 0.5f;
+            projectile.light = 0.2f;
         }
         bool spawntime;
         public override void AI()
@@ -192,15 +197,20 @@ namespace StormDiversSuggestions.Projectiles
             if (projectile.owner == Main.myPlayer)
             {
 
-                Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6, 0.5f);
-                
-
-
-                for (int i = 0; i < 20; i++)
+   
+                for (int i = 0; i < 10; i++)
                 {
 
                     var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 113);
-                    dust.velocity *= 0.5f;
+                    dust.velocity *= 0.1f;
+                }
+                for (int i = 0; i < 15; i++)
+                {
+
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
                 }
             }
         }

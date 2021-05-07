@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hemoglobin Helmet");
-            Tooltip.SetDefault("7% increased melee critical strike chance");
+            Tooltip.SetDefault("8% increased melee critical strike chance");
         }
 
         public override void SetDefaults()
@@ -25,13 +25,13 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = ItemRarityID.Green;
-            item.defense = 5;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
 
-            player.meleeCrit += 7;
+            player.meleeCrit += 8;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hemoglobin Breastplate");
-            Tooltip.SetDefault("7% increased melee damage");
+            Tooltip.SetDefault("8% increased melee damage");
         }
 
         public override void SetDefaults()
@@ -97,7 +97,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.meleeDamage += 0.07f;
+            player.meleeDamage += 0.08f;
          
       
         }
@@ -132,7 +132,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = ItemRarityID.Green;
-            item.defense = 5;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.Items
 {
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.scale = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
-            item.useTurn = true;
+            item.useTurn = false;
             item.knockBack = 4;
             item.shoot = ProjectileID.Mushroom;
             item.shootSpeed = 22f;
@@ -68,13 +68,19 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 35);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomSword_Glow");
 
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
     //______________________________________
     public class MushroomBow : ModItem
@@ -133,12 +139,19 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 35);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomBow_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
     //__________________________________________________
@@ -168,9 +181,9 @@ namespace StormDiversSuggestions.Items
             item.mana = 7;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 18;
+            item.damage = 19;
 
-            item.knockBack = 1f;
+            item.knockBack = 5f;
 
             item.shoot = mod.ProjectileType("MagicMushProj");
 
@@ -187,7 +200,7 @@ namespace StormDiversSuggestions.Items
         {
             if (Main.rand.Next(4) == 0)
             {
-                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 57, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 65, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }
@@ -211,13 +224,19 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 12);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 35);
+            recipe.AddRecipeGroup("StormDiversSuggestions:GoldBars", 10);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/MushroomStaff_Glow");
 
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
 }

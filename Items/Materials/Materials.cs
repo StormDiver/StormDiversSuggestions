@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(100) < 20)
+                        if (Main.rand.Next(100) < 25)
                         {
                             if (npc.type == NPCID.ChaosElemental)
                             {
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     else
                     {
-                        if (Main.rand.Next(100) < 15)
+                        if (Main.rand.Next(100) < 20)
 
                         {
                             if (npc.type == NPCID.ChaosElemental)
@@ -123,7 +123,7 @@ namespace StormDiversSuggestions.Items.Materials
                     if (Main.expertMode)
                     {
 
-                        if (Main.rand.Next(100) < 25)
+                        if (Main.rand.Next(100) < 33)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -132,7 +132,7 @@ namespace StormDiversSuggestions.Items.Materials
 
                     else
                     {
-                        if (Main.rand.Next(100) < 20)
+                        if (Main.rand.Next(100) < 25)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -184,7 +184,7 @@ namespace StormDiversSuggestions.Items.Materials
                 if (npc.type == NPCID.GreekSkeleton)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(100) < 25)
+                        if (Main.rand.Next(100) < 33)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     else
                     {
-                        if (Main.rand.Next(100) < 20)
+                        if (Main.rand.Next(100) < 25)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
                         }
@@ -313,7 +313,10 @@ namespace StormDiversSuggestions.Items.Materials
             Tooltip.SetDefault("'Almost devoid of life'");
             ItemID.Sets.ItemIconPulse[item.type] = true;
         }
-
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.2f * Main.essScale);
+        }
         public override void SetDefaults()
         {
             item.width = 20;
@@ -323,10 +326,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.rare = ItemRarityID.Orange;
        
         }
-        public class ModGlobalNPC : GlobalNPC
-        {
-          //Dropped by Broken soul
-        }
+       
     }
     //____________________________________________________________________________________
     public class BloodDrop : ModItem
@@ -370,7 +370,7 @@ namespace StormDiversSuggestions.Items.Materials
                             if (Main.expertMode)
                             {
 
-                            if (Main.rand.Next(100) < 25)
+                            if (Main.rand.Next(100) < 33)
 
                             {
                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
@@ -379,7 +379,7 @@ namespace StormDiversSuggestions.Items.Materials
 
                             else
                             {
-                            if (Main.rand.Next(100) < 20)
+                            if (Main.rand.Next(100) < 25)
 
                             {
                                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
@@ -433,5 +433,77 @@ namespace StormDiversSuggestions.Items.Materials
         }
        
     }
-   
+
+    //_____________________________________
+    public class SoulFire : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("HellSoul Flame");
+
+            Tooltip.SetDefault("Burns with the true heat of hell");
+
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 999;
+            item.value = Item.sellPrice(0, 0, 5, 0);
+            item.rare = ItemRarityID.LightPurple;
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+        }
+
+        public override void AddRecipes()
+        {
+
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            return Color.White;
+
+        }
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override bool InstancePerEntity => true;
+            public override void NPCLoot(NPC npc)
+            {
+
+
+                if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                {
+                    if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
+                    {
+                        if (Main.rand.Next(100) < 20)
+
+                        {
+                            if (Main.expertMode)
+
+
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 3));
+                            }
+
+                            else
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 2));
+
+                            }
+                        }
+                    }
+                    
+                }
+
+            }
+        }
+
+    }
 }

@@ -39,7 +39,6 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool nebula;
 
-        public bool heartDrop;
 
         public bool spectreDebuff;
 
@@ -53,6 +52,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool heartStolen; //If the npc has been hit when below 50% life
 
+        public bool hellSoulFire;
+
 
         public override void ResetEffects(NPC npc)
         {
@@ -60,15 +61,14 @@ namespace StormDiversSuggestions.Basefiles
             lunarBoulderDB = false;
             superBoulderDB = false;
             sandBurn = false;
-           
             beetled = false;
             nebula = false;
-            heartDrop = false;
             spectreDebuff = false;
             heartDebuff = false;
             superFrost = false;
             bloodDebuff = false;
             superburnDebuff = false;
+            hellSoulFire = false;
         }
         public override void AI(NPC npc)
 
@@ -145,6 +145,12 @@ namespace StormDiversSuggestions.Basefiles
 
                 damage = 6;
 
+            }
+            if (hellSoulFire)
+            {
+                npc.lifeRegen -= 60;
+
+                damage = 8;
             }
             if (boulderDB)
             {
@@ -378,6 +384,17 @@ namespace StormDiversSuggestions.Basefiles
                     int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, npc.velocity.X, npc.velocity.Y, 0, default, 1f);
                     Main.dust[dust].velocity *= 0.5f;
                 
+
+            }
+            if (hellSoulFire)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 173, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 0, default, 2f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+
+                    
+                }
 
             }
         }

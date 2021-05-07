@@ -29,14 +29,14 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             DisplayName.SetDefault("Heart Emblem");
             Tooltip.SetDefault("Makes enemies below half life have a one time chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 7));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }
 
         public override void SetDefaults()
         {
             item.width = 22;
-            item.height = 28;
+            item.height = 26;
 
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = ItemRarityID.Green;

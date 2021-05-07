@@ -404,4 +404,38 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    //________________________________________________
+    public class HellSoulFireDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Hell Fire");
+            Description.SetDefault("This might not be fine");
+            Main.debuff[Type] = true;
+            Main.pvpBuff[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            //player.GetModPlayer<StormPlayer>().hellSoulFire = true;
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4,173, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 2f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+
+            }
+            player.GetModPlayer<StormPlayer>().hellSoulDebuff = true;
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StormNPC>().hellSoulFire = true;
+
+
+
+        }
+    }
 }

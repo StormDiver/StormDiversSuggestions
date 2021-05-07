@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Shroomite Enhancement");
-            Description.SetDefault("50% Chance not to consume ammo");
+            Description.SetDefault("75% Chance not to consume ammo");
         }
         // code in StormPlayer.cs
     }

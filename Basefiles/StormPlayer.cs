@@ -91,8 +91,9 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool mushset; //Player has a set of Glowing mushroom armour equipped
 
-        public bool hellblazeSet; //TBA
+        public bool hellSoulSet; //Player has full set of SOul Fire armour eqipped
 
+        public bool hellSoulDebuff; //Player has the Hell Soul debuff
 
         //Ints and Bools activated from this file
 
@@ -113,6 +114,7 @@ namespace StormDiversSuggestions.Basefiles
         public bool shotrocket; //Wheter the shroomite rocket has been fired or not
         public int hellblazetime; //TBA
         public int mushtime; //Cooldown for mushrooms summoned with mushroom armour
+        public int hellsoultime; //Cooldown for the souls created by hell soul armour
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -146,10 +148,10 @@ namespace StormDiversSuggestions.Basefiles
             spaceRockOffence = false;
             spaceRockDefence = false;
             shroomaccess = false;
-            hellblazeSet = false;
+            hellSoulSet = false;
             heartSteal = false;
             mushset = false;
-
+            hellSoulDebuff = false;
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -199,6 +201,10 @@ namespace StormDiversSuggestions.Basefiles
                 granitebufftime--;
             }
             if (mushtime > 0)
+            {
+                mushtime--;
+            }
+            if (hellblazetime > 0)
             {
                 mushtime--;
             }
@@ -448,7 +454,7 @@ namespace StormDiversSuggestions.Basefiles
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
         {
-            int mushdamage = (int)(15 * player.rangedDamage); //Looks like you didn't deal mush damage with this 
+            int mushdamage = (int)(16 * player.rangedDamage); //Looks like you didn't deal mush damage with this 
             if (mushset && mushtime == 0)
             {
                 if (Main.rand.Next(2) == 0)
@@ -526,14 +532,7 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
-            //For the Mell HellBlaze armour setbonus ======================
-
-            if (hellblazeSet)
-            {
-                
-
-                   //TBA
-            }
+        
             //For the Desert urn
             if (desertJar)
             {
@@ -683,9 +682,10 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts 
             {
-                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && !target.GetGlobalNPC<StormNPC>().heartDebuff && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
                 {
 
+                    if (!target.GetGlobalNPC<StormNPC>().heartStolen) //Makes sure this only happens once
                     {
                         if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
                         {
@@ -698,12 +698,12 @@ namespace StormDiversSuggestions.Basefiles
                                 //dust.noGravity = true;
                             }
                             target.AddBuff(mod.BuffType("HeartDebuff"), 3600);
-                            target.GetGlobalNPC<StormNPC>().heartDebuff = true; //prevnets more hearts from being dropped
+                            target.GetGlobalNPC<StormNPC>().heartStolen = true; //prevents more hearts from being dropped
 
                         }
                         else //Otherwise it just prevents the roll from happening again
                         {
-                            target.GetGlobalNPC<StormNPC>().heartDebuff = true;
+                            target.GetGlobalNPC<StormNPC>().heartStolen = true;
                         }
                     }
                 }
@@ -714,9 +714,10 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts
             {
-                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && !target.GetGlobalNPC<StormNPC>().heartStolen && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
                 {
 
+                    if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once
                     {
                         if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
                         {
@@ -729,7 +730,7 @@ namespace StormDiversSuggestions.Basefiles
                                 //dust.noGravity = true;
                             }
                             target.AddBuff(mod.BuffType("HeartDebuff"), 3600);
-                            target.GetGlobalNPC<StormNPC>().heartStolen = true; //prevnets more hearts from being dropped
+                            target.GetGlobalNPC<StormNPC>().heartStolen = true; //prevents more hearts from being dropped
 
                         }
                         else //Otherwise it just prevents the roll from happening again
@@ -738,6 +739,40 @@ namespace StormDiversSuggestions.Basefiles
                         }
                     }
                 }
+            }
+            //For the Soul Fire armour setbonus ======================
+            int hellsouldmg = (int)(35 * player.allDamage);
+            if (hellSoulSet && hellblazetime == 0)
+            {
+                float numberProjectiles = 7;
+                
+                float rotation = MathHelper.ToRadians(120);
+                //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    float speedX = 8f;
+                    float speedY = 0f;
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.3f));
+                    Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
+                }
+
+                for (int i = 0; i < 20; i++)
+                {
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 173);
+                    dust.scale = 2;
+                    dust.velocity *= 3;
+
+                }
+                for (int i = 0; i < 20; i++)
+                {
+                    var dust = Dust.NewDustDirect(target.position, target.width, target.height, 173);
+                    dust.scale = 2;
+                    dust.velocity *= 3;
+
+                }
+                Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
+
+                hellblazetime = 240;
             }
         }
         
@@ -811,6 +846,10 @@ namespace StormDiversSuggestions.Basefiles
 
                     player.lifeRegen = -8;
                 }
+                if (hellSoulDebuff)
+                {
+                    player.lifeRegen = -16;
+                }
             }
         }
 
@@ -824,7 +863,7 @@ namespace StormDiversSuggestions.Basefiles
         }
         public override bool ConsumeAmmo(Item weapon, Item ammo)
         {
-            if (player.HasBuff(BuffType<ShroomiteBuff>()) && Main.rand.Next(2) == 0)//If the player has the shroomite potion then 50% chance not to consume ammo
+            if (player.HasBuff(BuffType<ShroomiteBuff>()) && Main.rand.Next(100) <= 75)//If the player has the shroomite potion then 50% chance not to consume ammo
             {
                 return false;
             }

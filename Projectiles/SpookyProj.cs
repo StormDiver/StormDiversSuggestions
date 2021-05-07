@@ -38,6 +38,9 @@ namespace StormDiversSuggestions.Projectiles
         {
            
             AnimateProjectile();
+
+            projectile.rotation = projectile.velocity.X / 20;
+
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = projectile.position;

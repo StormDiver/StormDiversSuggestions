@@ -30,6 +30,7 @@ namespace StormDiversSuggestions.Basefiles
         public  bool DesertSpawned; //Ditto with Arid ore
         public static bool PlanteraMessage; //For the message that appears when planter ais defeated
         public static bool EocMessage; //For the message when the eoc is defeated
+        public static bool MechMessage; //For the message when a mech boss is defeated
 
         public override void Initialize()
         {
@@ -39,6 +40,7 @@ namespace StormDiversSuggestions.Basefiles
             DesertSpawned = false;
             PlanteraMessage = false;
             EocMessage = false;
+            MechMessage = false;
         }
 
         public override TagCompound Save()
@@ -50,8 +52,8 @@ namespace StormDiversSuggestions.Basefiles
                 {"IceSpawned", IceSpawned },
                 {"DesertSpawned", DesertSpawned },
                 {"PlanteraMessage", PlanteraMessage },
-                {"EocMessage", EocMessage }
-
+                {"EocMessage", EocMessage },
+                {"MechMessage", MechMessage }
             };
         }
         public override void Load(TagCompound tag)
@@ -62,6 +64,7 @@ namespace StormDiversSuggestions.Basefiles
             DesertSpawned = tag.GetBool("DesertSpawned");
             PlanteraMessage = tag.GetBool("PlanteraMessage");
             EocMessage = tag.GetBool("EocMessage");
+            MechMessage = tag.GetBool("MechMessage");
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -73,6 +76,7 @@ namespace StormDiversSuggestions.Basefiles
             flags[3] = DesertSpawned;
             flags[4] = PlanteraMessage;
             flags[5] = EocMessage;
+            flags[6] = MechMessage;
             writer.Write(flags);
         }
         public override void NetReceive(BinaryReader reader)
@@ -84,6 +88,7 @@ namespace StormDiversSuggestions.Basefiles
             DesertSpawned = flags[3];
             PlanteraMessage = flags[4];
             EocMessage = flags[5];
+            MechMessage = flags[6];
         }
 
         public override void PostWorldGen()
@@ -339,14 +344,20 @@ namespace StormDiversSuggestions.Basefiles
             //For the messages when a boss is defeated
             if (NPC.downedPlantBoss && !PlanteraMessage)
             {
-                Main.NewText("Sentient asteroids have entered the atomosphere", 112, 88, 163);
-                Main.NewText("The ancient temple defenses have greatly weakened", 141, 56, 0);
+                Main.NewText("Sentient asteroids have entered the atomosphere", 179, 151, 238);
+                Main.NewText("The ancient temple defenses have greatly weakened", 204, 101, 22);
 
                 PlanteraMessage = true;
             }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !MechMessage)
+            {
+                Main.NewText("Firey souls infect those trapped in the underworld", 224, 141, 255);
+
+                MechMessage = true;
+            }
             if (NPC.downedBoss1 && !EocMessage)
             {
-                Main.NewText("A stronger life force radiates from the minor underground biomes", 197, 185, 101);
+                Main.NewText("A stronger life force radiates from the minor underground biomes", 96, 211, 255);
                 EocMessage = true;
             }
             //To spawn the ores

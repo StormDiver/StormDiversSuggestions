@@ -217,7 +217,7 @@ namespace StormDiversSuggestions.NPCProjs
                         projectile.velocity.Y = shootToY;
                     }
                     
-                        projectile.velocity.Y = 4.5f;
+                        projectile.velocity.Y = 4f;
                   
 
                 }

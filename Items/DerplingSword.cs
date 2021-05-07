@@ -28,10 +28,10 @@ namespace StormDiversSuggestions.Items
                      item.rare = ItemRarityID.Lime;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            //item.useTurn = true;
+            item.useTurn = false;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("DerpMeleeProj");
-            item.shootSpeed = 8f;
+            item.shootSpeed = 10f;
         }
         int weaponattack = 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

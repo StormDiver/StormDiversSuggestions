@@ -38,8 +38,10 @@ namespace StormDiversSuggestions.NPCs
             npc.defense = 12;
             npc.lifeMax = 150;
             npc.noGravity = true;
-            
-            
+            npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
+
+
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.7f;
@@ -58,7 +60,7 @@ namespace StormDiversSuggestions.NPCs
         {
 
            
-                return SpawnCondition.Underworld.Chance * 0.1f;
+                return SpawnCondition.Underworld.Chance * 0.07f;
            
 
         }
@@ -67,8 +69,8 @@ namespace StormDiversSuggestions.NPCs
         bool casting;
         public override void AI()
         {
-            npc.buffImmune[BuffID.OnFire] = true;
-            npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
+
+            npc.rotation = npc.velocity.X / 15;
 
 
             shoottime++;

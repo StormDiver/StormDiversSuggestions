@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.OresandBars
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(147, 112, 219), Language.GetText("Space Bar")); // localized text for "Metal Bar"
+            AddMapEntry(new Color(147, 112, 219), Language.GetText("Asteroid Bar")); // localized text for "Metal Bar"
         }
 
         public override bool Drop(int i, int j)

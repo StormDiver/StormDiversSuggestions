@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.shoot = mod.ProjectileType("FastDrillProj");
             item.shootSpeed = 25f;
             item.pick = 55;
-            item.tileBoost = -2;
+            item.tileBoost = -1;
             item.UseSound = SoundID.Item23;
             item.noMelee = true;
             item.noUseGraphic = true; 
