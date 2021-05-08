@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Wings");
-            Tooltip.SetDefault("Allows flight and slow fall\nProvides a fast acceleration");
+            Tooltip.SetDefault("Allows flight and slow fall\nHas a fast horizontal acceleration");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
  
         }
@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Accessory
     
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.wingTimeMax = 150;
+            player.wingTimeMax = 210;
         
             /*if (player.controlDown && player.controlJump && player.wingTime > 0)
             { 
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         { 
                 ascentWhenFalling = 2f;
-                ascentWhenRising = 0.15f;
+                ascentWhenRising = 0.3f;
                 maxCanAscendMultiplier = 1f;
                 maxAscentMultiplier = 2f;
                 constantAscend = 0.15f;
@@ -68,7 +68,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 9;
-                acceleration *= 2;
+                acceleration *= 3;
         }
 
         public override void AddRecipes()

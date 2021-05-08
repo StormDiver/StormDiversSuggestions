@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Tools
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Shroom Pickaxe"); 
-			Tooltip.SetDefault("'Can mine Meteorite'");
+			Tooltip.SetDefault("Can mine Meteorite");
 		}
     
 		public override void SetDefaults() 

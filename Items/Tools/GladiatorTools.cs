@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items.Tools
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Gladiator's Pickaxe"); 
-			Tooltip.SetDefault("'Can mine Meteorite'");
+			Tooltip.SetDefault("Can mine Meteorite");
 		}
     
 		public override void SetDefaults() 
@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gladiator's Waraxe");
-            //Tooltip.SetDefault("''");
+            Tooltip.SetDefault("Used to be a mighty weapon, now merely used to chop down trees");
         }
 
         public override void SetDefaults()
@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gladiator's Warhammer");
-            //Tooltip.SetDefault("''");
+            Tooltip.SetDefault("Used to be a mighty weapon, now merely used to smash down walls");
         }
    
         public override void SetDefaults()

@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Cauldron Minion"); // Automatic from .lang files
+            DisplayName.SetDefault("Soul Cauldron Servant"); // Automatic from .lang files
                                                  // make sure to set this for your modnpcs.
             
         }

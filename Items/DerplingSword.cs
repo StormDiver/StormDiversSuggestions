@@ -16,13 +16,13 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 65;
+			item.damage = 60;
          
 			item.melee = true;
 			item.width = 40;
 			item.height = 50;
-			item.useTime = 11;
-			item.useAnimation = 11;
+			item.useTime = 14;
+			item.useAnimation = 14;
 			item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 4, 0, 0);
                      item.rare = ItemRarityID.Lime;
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("DerpMeleeProj");
-            item.shootSpeed = 10f;
+            item.shootSpeed = 7f;
         }
         int weaponattack = 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
                 }
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 22);
                 weaponattack = 3;

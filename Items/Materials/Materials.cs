@@ -441,7 +441,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("HellSoul Flame");
 
-            Tooltip.SetDefault("Burns with the true heat of hell");
+            Tooltip.SetDefault("A soul that never stops burning");
 
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }

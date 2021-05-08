@@ -741,18 +741,18 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
             //For the Soul Fire armour setbonus ======================
-            int hellsouldmg = (int)(35 * player.allDamage);
+            int hellsouldmg = (int)(50 * player.allDamage);
             if (hellSoulSet && hellblazetime == 0)
             {
-                float numberProjectiles = 7;
+                float numberProjectiles = 9;
                 
-                float rotation = MathHelper.ToRadians(120);
+                float rotation = MathHelper.ToRadians(140);
                 //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     float speedX = 8f;
                     float speedY = 0f;
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.3f));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.27f));
                     Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
                 }
 
@@ -772,7 +772,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
-                hellblazetime = 240;
+                hellblazetime = 180;
             }
         }
         
@@ -848,7 +848,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 if (hellSoulDebuff)
                 {
-                    player.lifeRegen = -16;
+                    player.lifeRegen = -14;
                 }
             }
         }

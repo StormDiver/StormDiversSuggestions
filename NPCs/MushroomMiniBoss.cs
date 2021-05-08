@@ -27,13 +27,13 @@ namespace StormDiversSuggestions.NPCs
             npc.height = 34;
 
             npc.aiStyle = 1; 
-            aiType = NPCID.CorruptSlime;
+            aiType = NPCID.Crimslime;
             //animationType = NPCID.BlueSlime;
             
             npc.damage = 30;
             
             npc.defense = 5;
-            npc.lifeMax = 200;
+            npc.lifeMax = 175;
             
             npc.rarity = 2;
             
@@ -158,10 +158,10 @@ namespace StormDiversSuggestions.NPCs
             }
 
 
-            if (Main.rand.Next(10) == 0)
+            if (Main.rand.Next(6) == 0)
             {
                 
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 113, npc.velocity.X, npc.velocity.Y, 100, default, 1f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 113, npc.velocity.X, npc.velocity.Y);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1f;
                     Main.dust[dust].velocity.Y -= 0.5f;

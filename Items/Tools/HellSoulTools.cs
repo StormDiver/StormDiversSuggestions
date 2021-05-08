@@ -11,12 +11,12 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("HellSoul Pickaxe");
-            Tooltip.SetDefault("Empowered with the lost souls of hell");
+            Tooltip.SetDefault("Empowered with the burning souls of hell");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 25;
+            item.damage = 40;
             item.crit = 0;
             item.melee = true;
             item.width = 40;
@@ -54,6 +54,10 @@ namespace StormDiversSuggestions.Items.Tools
             }
             target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 300);
         }
+        public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 480);
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -69,12 +73,12 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("HellSoul Hamaxe");
-            Tooltip.SetDefault("Empowered with the lost souls of hell");
+            Tooltip.SetDefault("Empowered with the burning souls of hell");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 60;
 
             item.melee = true;
             item.width = 40;
@@ -113,6 +117,10 @@ namespace StormDiversSuggestions.Items.Tools
 
             }
             target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 300);
+        }
+        public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 480);
         }
         public override void AddRecipes()
         {

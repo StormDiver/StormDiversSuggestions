@@ -160,7 +160,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mushy Staff");
-            Tooltip.SetDefault("Summons a bouncing mushroom");
+            Tooltip.SetDefault("Summons a ricocheting mushroom");
             Item.staff[item.type] = true;
         
         }

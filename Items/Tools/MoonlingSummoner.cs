@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.consumable = true;
             item.noMelee = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
-            ItemID.Sets.ItemIconPulse[item.type] = true;
+            //ItemID.Sets.ItemIconPulse[item.type] = true;
         }
         public override void PostUpdate()
         {

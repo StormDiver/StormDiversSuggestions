@@ -23,8 +23,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 24;
-            item.useAnimation = 24;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -32,13 +32,13 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item5;
 
-            item.damage = 45;
+            item.damage = 50;
             //item.crit = 4;
             item.knockBack = 3f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
 
-            item.shootSpeed = 12f;
+            item.shootSpeed = 15f;
             
             item.useAmmo = AmmoID.Arrow;
                 
@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("HellSoul Rifle");
-            Tooltip.SetDefault("Converts regualr bullets into soul bullets that pierce and inflict soulburn\nRight Click to zoom out");
+            Tooltip.SetDefault("Converts regular bullets into soul bullets that pierce and inflict soulburn\nRight Click to zoom out");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
         public override void SetDefaults()
@@ -111,13 +111,13 @@ namespace StormDiversSuggestions.Items
 
             //item.UseSound = SoundID.Item40;
 
-            item.damage = 60;
+            item.damage = 66;
             item.knockBack = 3f;
 
             item.shoot = ProjectileID.Bullet;
             item.shootSpeed = 16f;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 19;
+            item.useAnimation = 19;
             item.useAmmo = AmmoID.Bullet;
 
             item.noMelee = true;
@@ -187,13 +187,13 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 60;
 
             item.melee = true;
             item.width = 40;
             item.height = 50;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.LightPurple;
@@ -203,6 +203,8 @@ namespace StormDiversSuggestions.Items
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("HellSoulSwordProj");
             item.shootSpeed = 13f;
+            
+            
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -220,7 +222,7 @@ namespace StormDiversSuggestions.Items
             if (weaponattack <= 0)
             {
       
-               Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, (int)(damage * 1.5f), knockBack, player.whoAmI);
+               Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, (int)(damage * 2f), knockBack, player.whoAmI);
                 
                 Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 8);
                 weaponattack = 2;
@@ -237,9 +239,12 @@ namespace StormDiversSuggestions.Items
 
 
             }
-            target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 300);
+            target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 480);
         }
-      
+        public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType("HellSoulFireDebuff"), 480);
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -282,7 +287,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 28;
+            item.damage = 35;
             //item.crit = 4;
             item.knockBack = 1f;
 

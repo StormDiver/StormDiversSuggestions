@@ -148,9 +148,9 @@ namespace StormDiversSuggestions.Basefiles
             }
             if (hellSoulFire)
             {
-                npc.lifeRegen -= 60;
+                npc.lifeRegen -= 80;
 
-                damage = 8;
+                damage = 10;
             }
             if (boulderDB)
             {

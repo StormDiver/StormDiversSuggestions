@@ -344,14 +344,14 @@ namespace StormDiversSuggestions.Basefiles
             //For the messages when a boss is defeated
             if (NPC.downedPlantBoss && !PlanteraMessage)
             {
-                Main.NewText("Sentient asteroids have entered the atomosphere", 179, 151, 238);
+                Main.NewText("Sentient asteroids have entered the atmosphere", 179, 151, 238);
                 Main.NewText("The ancient temple defenses have greatly weakened", 204, 101, 22);
 
                 PlanteraMessage = true;
             }
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !MechMessage)
             {
-                Main.NewText("Firey souls infect those trapped in the underworld", 224, 141, 255);
+                Main.NewText("Fiery souls infect those trapped in the underworld", 224, 141, 255);
 
                 MechMessage = true;
             }

@@ -155,7 +155,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("HellSoul Hood");
-            Tooltip.SetDefault("11% increased magic damage\n6% increased critical strike chance\nIncreases maximum mana by 40");
+            Tooltip.SetDefault("12% increased magic damage\n6% increased critical strike chance\nIncreases maximum mana by 40");
         }
     
         public override void SetDefaults()
@@ -170,7 +170,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
         
-            player.magicDamage += 0.11f;
+            player.magicDamage += 0.12f;
             player.magicCrit += 6;
             player.statManaMax2 += 40;
         }
@@ -289,7 +289,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("HellSoul Breastplate");
-            Tooltip.SetDefault("7% increased damage\n5% increased critical strike chance");
+            Tooltip.SetDefault("7% increased damage\n6% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -305,10 +305,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.07f;
-            player.rangedCrit += 5;
-            player.meleeCrit += 5;
-            player.magicCrit += 5;
-            player.thrownCrit += 5;
+            player.rangedCrit += 6;
+            player.meleeCrit += 6;
+            player.magicCrit += 6;
+            player.thrownCrit += 6;
 
         }
         public override void AddRecipes()
@@ -335,7 +335,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("HellSoul Greaves");
-            Tooltip.SetDefault("4% increased damage\n6% increased critical strike chance\n40% increased movement speed");
+            Tooltip.SetDefault("5% increased damage\n6% increased critical strike chance\n40% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -349,7 +349,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.04f;
+            player.allDamage += 0.05f;
             player.rangedCrit += 6;
             player.meleeCrit += 6;
             player.magicCrit += 6;

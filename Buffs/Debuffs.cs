@@ -409,7 +409,7 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Hell Fire");
+            DisplayName.SetDefault("SoulBurn");
             Description.SetDefault("This might not be fine");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
