@@ -171,23 +171,28 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }
+        int damagetime = 0;
+        public override bool CanDamage()
+        {
+            if (damagetime <= 25)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         public override void AI()
         {
+            damagetime++;
             projectile.width = 22;
             projectile.height = 22;
 
             AnimateProjectile();
 
-            //for (int i = 0; i < 7; i++)
-           /* {
-
-
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 31);
-
-                dust.noGravity = true;
-
-            }*/
+           
         }
         
         public override bool OnTileCollide(Vector2 oldVelocity)

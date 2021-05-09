@@ -160,7 +160,7 @@ namespace StormDiversSuggestions.Buffs
         {
 
             player.runAcceleration *= 1.5f;
-            player.maxRunSpeed *= 1.5f;
+            player.maxRunSpeed += 2f;
             player.meleeCrit += 10;
             player.rangedCrit += 10;
             player.magicCrit += 10;

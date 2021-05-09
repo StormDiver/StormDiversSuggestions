@@ -197,7 +197,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Leggings");
-            Tooltip.SetDefault("6% increased damage and critical strike chance\n100% increased movement speed");
+            Tooltip.SetDefault("6% increased damage and critical strike chance\n30% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -216,7 +216,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.rangedCrit += 6;
             player.magicCrit += 6;
             player.thrownCrit += 6;
-            player.moveSpeed += 1f;
+            player.moveSpeed += 0.3f;
         }
         public override void AddRecipes()
         {

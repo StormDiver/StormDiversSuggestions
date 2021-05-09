@@ -466,7 +466,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 2;
            
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 180;
             projectile.aiStyle = 14;
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;

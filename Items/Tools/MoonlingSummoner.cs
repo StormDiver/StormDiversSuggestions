@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using StormDiversSuggestions.NPCs;
+using Terraria.DataStructures;
+
 
 namespace StormDiversSuggestions.Items.Tools
 {
@@ -14,6 +16,8 @@ namespace StormDiversSuggestions.Items.Tools
             DisplayName.SetDefault("Moonling Core");
             Tooltip.SetDefault("Summons a Moonling that will try to kill you\nSafer to use near solid ground");
             ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 6));
+
         }
         public override void SetDefaults()
         {
@@ -29,6 +33,8 @@ namespace StormDiversSuggestions.Items.Tools
             item.autoReuse = false;
             item.consumable = true;
             item.noMelee = true;
+            item.noUseGraphic = true;
+
             ItemID.Sets.ItemNoGravity[item.type] = true;
             //ItemID.Sets.ItemIconPulse[item.type] = true;
         }
@@ -50,7 +56,15 @@ namespace StormDiversSuggestions.Items.Tools
             //Main.NewText("The Storm God has awoken!", 175, 75, 255);
             NPC.SpawnOnPlayer(player.whoAmI , ModContent.NPCType<NPCs.MoonDerp>());
             Main.PlaySound(SoundID.Roar, player.position, 0);
+            for (int i = 0; i < 50; i++)
+            {
 
+                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
+                int dust2 = Dust.NewDust(new Vector2(player.Center.X - 5, player.Top.Y), 10, 10, 229, 0f, 0f, 200, default, 0.8f);
+                Main.dust[dust2].velocity *= 2f;
+                Main.dust[dust2].noGravity = true;
+                Main.dust[dust2].scale = 1.5f;
+            }
             return true;
         }
         public class ModGlobalNPC : GlobalNPC
@@ -67,6 +81,14 @@ namespace StormDiversSuggestions.Items.Tools
 
                 }
             }
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+
+            Color color = Color.White;
+            color.A = 255;
+            return color;
+
         }
     }
 }

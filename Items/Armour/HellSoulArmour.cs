@@ -335,7 +335,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("HellSoul Greaves");
-            Tooltip.SetDefault("5% increased damage\n6% increased critical strike chance\n40% increased movement speed");
+            Tooltip.SetDefault("5% increased damage\n6% increased critical strike chance\n25% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -355,7 +355,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 6;
             player.thrownCrit += 6;
 
-            player.moveSpeed += 0.4f;
+            player.moveSpeed += 0.25f;
         }
         public override void AddRecipes()
         {

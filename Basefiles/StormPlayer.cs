@@ -741,7 +741,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
             //For the Soul Fire armour setbonus ======================
-            int hellsouldmg = (int)(50 * player.allDamage);
+            int hellsouldmg = (int)(50 * player.allDamage * ((player.meleeDamage + player.rangedDamage + player.magicDamage + player.minionDamage) / 4));
             if (hellSoulSet && hellblazetime == 0)
             {
                 float numberProjectiles = 9;

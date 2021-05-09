@@ -16,7 +16,7 @@ This mod includes:
 -15 new ammos
 -25 new tools
 -3 new bars and 2 new ores 
--19 new buffs and 9 new potions
+-18 new buffs and 9 new potions
 -12 new debuffs
 -5 new Vanity sets
 -2 new pets
