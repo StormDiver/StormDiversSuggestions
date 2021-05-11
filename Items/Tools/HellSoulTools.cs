@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.useTime = 6;
             item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.SwingThrow;  
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.pick = 200;
             item.UseSound = SoundID.Item1;
@@ -86,7 +86,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.useTime = 8;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.SwingThrow;  
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.axe = 32;
             item.hammer = 90;

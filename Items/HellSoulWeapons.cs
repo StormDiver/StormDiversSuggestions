@@ -20,7 +20,7 @@ namespace StormDiversSuggestions.Items
             item.width = 20;
             item.height = 46;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 20;
@@ -99,7 +99,7 @@ namespace StormDiversSuggestions.Items
             item.width = 50;
             item.height = 22;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
 
             item.useStyle = ItemUseStyleID.HoldingOut;
@@ -195,7 +195,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 15;
             item.useAnimation = 15;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
@@ -276,7 +276,7 @@ namespace StormDiversSuggestions.Items
             item.width = 25;
             item.height = 30;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 30;

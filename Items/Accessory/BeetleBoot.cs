@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Boots");
-            Tooltip.SetDefault("Allows flight, and massively increases movement speed and acceleration\nGrants longer immunity frames and immunity to knockback while holding any melee weapon");
+            Tooltip.SetDefault("Massively increases movement speed and acceleration while Holding any melee weapon\nAllows flight and immunity to knokback");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
@@ -33,55 +33,47 @@ namespace StormDiversSuggestions.Items.Accessory
         int soundDelay = 0;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed = (10f - player.moveSpeed);
-            player.runAcceleration *= 3f;
-            player.rocketBoots = 2;
-
-            if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y == 0 || player.sliding))
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Dust dust;
-                    dust = Dust.NewDustDirect(new Vector2(player.Center.X - 5, player.Bottom.Y - 6), 10, 0, 27, 0, -1);
-                    //dust.noGravity = true;
-                    dust.scale = 1.25f;
-                }
-                if (Main.rand.Next(1) == 0)
-                {
-
-
-                    int dustSmoke = Dust.NewDust(new Vector2(player.Center.X, player.Bottom.Y - 5), 5, 5, 31, 0f, -2f, 0, default, 1f);
-                    Main.dust[dustSmoke].scale = 0.5f + (float)Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustSmoke].fadeIn = 3f + (float)Main.rand.Next(5) * 0.1f;
-                    Main.dust[dustSmoke].noGravity = true;
-                    Main.dust[dustSmoke].velocity *= 0.1f;
-                }
-
-                soundDelay++;
-                if (soundDelay >= 6)
-                {
-                    Main.PlaySound(SoundID.Run, (int)player.Center.X, (int)player.Center.Y);
-                    soundDelay = 0;
-                }
-            }
-            if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y != 0) && !player.releaseMount)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Dust dust;
-                    dust = Dust.NewDustDirect(new Vector2(player.Center.X - 5, player.Bottom.Y - 8), 10, 0, 27);
-                    dust.noGravity = true;
-                    dust.scale = 1.25f;
-                }
-
-            }
             if (player.HeldItem.melee)
             {
-                player.longInvince = true;
+                player.maxRunSpeed = (9f - player.moveSpeed);
+                player.runAcceleration *= 3f;
+                player.rocketBoots = 2;
+
+                //player.longInvince = true;
                 player.noKnockback = true;
+                if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y == 0 || player.sliding))
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Dust dust;
+                        dust = Dust.NewDustDirect(new Vector2(player.Center.X - 5, player.Bottom.Y - 6), 10, 0, 27, 0, -1);
+                        //dust.noGravity = true;
+                        dust.scale = 1.25f;
+                    }
+                    if (Main.rand.Next(1) == 0)
+                    {
+
+
+                        int dustSmoke = Dust.NewDust(new Vector2(player.Center.X, player.Bottom.Y - 5), 5, 5, 31, 0f, -2f, 0, default, 1f);
+                        Main.dust[dustSmoke].scale = 0.5f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustSmoke].fadeIn = 3f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustSmoke].noGravity = true;
+                        Main.dust[dustSmoke].velocity *= 0.1f;
+                    }
+
+                    soundDelay++;
+                    if (soundDelay >= 6)
+                    {
+                        Main.PlaySound(SoundID.Run, (int)player.Center.X, (int)player.Center.Y);
+                        soundDelay = 0;
+                    }
+
+
+
+
+                }
 
             }
-
         }
 
 

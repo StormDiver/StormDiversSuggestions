@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.defense = 21;
         }
@@ -93,7 +93,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.LightPurple;
             item.defense = 10;
         }
@@ -124,10 +124,10 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "20% chance not to consume ammo\nEnemies struck with any projectile will create a burst of homing souls";
+            player.setBonus = "25% chance not to consume ammo\nEnemies struck with any projectile will create a burst of homing souls";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
-            player.ammoCost80 = true;
+            player.ammoCost75 = true;
 
         }
         public override void AddRecipes()
@@ -162,7 +162,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.defense = 7;
         }
@@ -229,7 +229,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.defense = 2;
         }
@@ -296,7 +296,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.defense = 17;
         }
@@ -342,7 +342,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.LightPurple;
             item.defense = 13;
         }

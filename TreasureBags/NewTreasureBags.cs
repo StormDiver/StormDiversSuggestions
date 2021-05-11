@@ -27,7 +27,7 @@ namespace StormDiversSuggestions.TreasureBags
             }
             if (context == "bossBag" && arg == ItemID.MoonLordBossBag)
             {
-                if (Main.rand.Next(100) < 20)
+                if (Main.rand.Next(100) < 15)
                 {
                     player.QuickSpawnItem(ItemType<QuackStaffSuper>(), Main.rand.Next(1, 1));
                 }

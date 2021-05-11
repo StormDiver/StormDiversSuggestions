@@ -94,7 +94,7 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = ItemRarityID.Blue;
-            item.defense = 3;
+            item.defense = 4;
         }
 
         public override void UpdateEquip(Player player)

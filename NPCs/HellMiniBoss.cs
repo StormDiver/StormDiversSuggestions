@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.NPCs
             npc.damage = 60;
             
             npc.defense = 15;
-            npc.lifeMax = 1200;
+            npc.lifeMax = 1600;
             
             npc.rarity = 3;
             
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.NPCs
             npc.HitSound = SoundID.NPCHit3;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 1, 0, 0);
+            npc.value = Item.buyPrice(0, 2, 0, 0);
 
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
@@ -235,7 +235,7 @@ namespace StormDiversSuggestions.NPCs
                 shoottime++;
                 npc.defense = 100;
                 npc.velocity *= 0f;
-                if (distance <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+                if (distance <= 1200f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                 {
                     if (shoottime >= 60)
                     {

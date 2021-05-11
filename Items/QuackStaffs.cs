@@ -183,7 +183,7 @@ namespace StormDiversSuggestions.Items
             {
                 if (!Main.expertMode)
                 {
-                    if (Main.rand.Next(100) < 15)
+                    if (Main.rand.Next(100) < 10)
                     {
 
                         if (npc.type == NPCID.MoonLordCore)

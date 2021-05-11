@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.NPCs
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0f;
-            npc.value = Item.buyPrice(0, 0, 50, 0);
+            npc.value = Item.buyPrice(0, 2, 0, 0);
 
            banner = npc.type;
            bannerItem = mod.ItemType("GolemMinionBannerItem");
@@ -115,7 +115,7 @@ namespace StormDiversSuggestions.NPCs
                 npc.velocity.Y = 8;
             }
 
-            if (distance <= 500f)
+            if (distance <= 700f)
             {
                 if (shoottime >= 60)//starts the shooting animation
                 {

@@ -40,6 +40,7 @@ namespace StormDiversSuggestions.NPCs
             npc.noGravity = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
+            npc.rarity = 1;
 
 
             npc.HitSound = SoundID.NPCHit1;
