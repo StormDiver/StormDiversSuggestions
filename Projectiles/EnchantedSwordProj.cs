@@ -23,15 +23,15 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-            
+            projectile.penetrate = 5;
+
             projectile.magic = true;
             projectile.timeLeft = 300;
             //aiType = ProjectileID.Bullet;
             projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+          
             drawOffsetX = 2;
             drawOriginOffsetY = -10;
         }
@@ -47,7 +47,6 @@ namespace StormDiversSuggestions.Projectiles
             if (speedup < 60)
             {
                 projectile.rotation = (0.4f * speedup);
-                projectile.penetrate = -1;
             }
             if (speedup == 60)
             {
@@ -100,6 +99,8 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 60);
             }
+            projectile.damage = (projectile.damage * 8) / 10;
+
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -185,8 +186,10 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 
             }
+            projectile.damage = (projectile.damage * 9) / 10;
+
         }
-    int reflect = 2;
+        int reflect = 2;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 1, 60, 0);
             item.rare = ItemRarityID.LightRed;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 27;
+            item.useAnimation = 27;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 45;
+            item.damage = 38;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -83,7 +83,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PearlwoodSword);
             recipe.AddIngredient(ItemID.SoulofLight, 8);
             recipe.AddIngredient(ItemID.CrystalShard, 25);
             recipe.AddIngredient(ItemID.LightShard);
@@ -110,8 +109,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 1, 60, 0);
             item.rare = ItemRarityID.LightRed;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 32;
-            item.useAnimation = 32;
+            item.useTime = 33;
+            item.useAnimation = 33;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -119,7 +118,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 35;
+            item.damage = 30;
             //item.crit = 4;
             item.knockBack = 2f;
 
@@ -167,7 +166,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PearlwoodHammer);
             recipe.AddIngredient(ItemID.SoulofNight, 8);
             recipe.AddIngredient(ItemID.Ichor, 15);
             recipe.AddIngredient(ItemID.DarkShard);
@@ -203,7 +201,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item8;
 
-            item.damage = 35;
+            item.damage = 32;
             //item.crit = 4;
             item.knockBack = 2f;
 
@@ -252,7 +250,6 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PearlwoodHammer);
             recipe.AddIngredient(ItemID.SoulofNight, 8);
             recipe.AddIngredient(ItemID.CursedFlame, 15);
             recipe.AddIngredient(ItemID.DarkShard);

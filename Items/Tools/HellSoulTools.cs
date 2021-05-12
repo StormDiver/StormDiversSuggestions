@@ -83,7 +83,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 40;
             item.height = 50;
-            item.useTime = 8;
+            item.useTime = 13;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 4, 0, 0);

@@ -55,10 +55,10 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases melee speed by 25%\nEnemies struck with any projectile will create a burst of homing souls";
+            player.setBonus = "Increases melee speed by 20%\nAttacking enemies releases a bunch of damaging homing souls from them";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
-            player.meleeSpeed += 0.25f;
+            player.meleeSpeed += 0.2f;
 
         }
         public override void AddRecipes()
@@ -124,7 +124,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "25% chance not to consume ammo\nEnemies struck with any projectile will create a burst of homing souls";
+            player.setBonus = "25% chance not to consume ammo\nAttacking enemies releases a bunch of damaging homing souls from them";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
             player.ammoCost75 = true;
@@ -193,7 +193,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "18% reduced mana usage\nEnemies struck with any projectile will create a burst of homing souls";
+            player.setBonus = "18% reduced mana usage\nAttacking enemies releases a bunch of damaging homing souls from them";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
             player.manaCost -= 0.18f;
@@ -259,7 +259,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases maximum number of minions by 2\nEnemies struck with any projectile will create a burst of homing souls";
+            player.setBonus = "Increases maximum number of minions by 2\nAttacking enemies releases a bunch of damaging homing souls from them";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
             player.maxMinions += 2;

@@ -23,15 +23,15 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.6f;
             projectile.friendly = true;
-           
+            projectile.penetrate = 5;
+
             projectile.magic = true;
             projectile.timeLeft = 180;
             //aiType = ProjectileID.Bullet;
             projectile.aiStyle = 0;
             projectile.scale = 1f;
             projectile.tileCollide = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+          
             drawOffsetX = -3;
             drawOriginOffsetY = -10;
         }
@@ -49,7 +49,6 @@ namespace StormDiversSuggestions.Projectiles
             if (speedup < 60)
             {
                 projectile.rotation = (0.4f * speedup);
-                projectile.penetrate = -1;
             }
             if (speedup == 60)
             {
@@ -66,19 +65,20 @@ namespace StormDiversSuggestions.Projectiles
                 }
                
                 
-                {
-
                     projectile.velocity.X *= 12f;
                     projectile.velocity.Y *= 12f;
-                }
+                
+                projectile.penetrate = 2;
+                projectile.usesLocalNPCImmunity = true;
+                projectile.localNPCHitCooldown = 10;
             }
 
-                if (speedup >= 60)
-                {
+            if (speedup >= 60)
+            {
 
 
-                    projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-                   
+                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+
 
                 if (shoottime >= 17)
                 {
@@ -100,10 +100,7 @@ namespace StormDiversSuggestions.Projectiles
                 }
 
             }
-            if (speedup == 60)
-            {
-                projectile.penetrate = 2;
-            }
+           
 
 
 
@@ -125,6 +122,16 @@ namespace StormDiversSuggestions.Projectiles
                 target.AddBuff(BuffID.CursedInferno, 600);
 
             }
+            if (speedup < 60)
+            {
+                projectile.damage = (projectile.damage * 8) / 10;
+            }
+            else
+            {
+                projectile.damage = (projectile.damage * 9) / 10;
+
+            }
+
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -226,9 +233,10 @@ namespace StormDiversSuggestions.Projectiles
             
                 target.AddBuff(BuffID.CursedInferno, 400);
 
-            
 
-        
+            projectile.damage = (projectile.damage * 9) / 10;
+
+
         }
 
 

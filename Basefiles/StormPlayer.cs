@@ -708,6 +708,40 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
+            //For the Soul Fire armour setbonus with true melee
+            int hellsouldmg = (int)(50 * player.allDamage);
+            if (hellSoulSet && hellblazetime == 0)
+            {
+                float numberProjectiles = 9;
+
+                float rotation = MathHelper.ToRadians(140);
+                //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    float speedX = 8f;
+                    float speedY = 0f;
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.27f));
+                    Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
+                }
+
+                for (int i = 0; i < 20; i++)
+                {
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 173);
+                    dust.scale = 2;
+                    dust.velocity *= 3;
+
+                }
+                for (int i = 0; i < 20; i++)
+                {
+                    var dust = Dust.NewDustDirect(target.position, target.width, target.height, 173);
+                    dust.scale = 2;
+                    dust.velocity *= 3;
+
+                }
+                Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
+
+                hellblazetime = 180;
+            }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
@@ -740,7 +774,7 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
             }
-            //For the Soul Fire armour setbonus ======================
+            //For the Soul Fire armour setbonus with projectiles ======================
             int hellsouldmg = (int)(50 * player.allDamage);
             if (hellSoulSet && hellblazetime == 0)
             {
