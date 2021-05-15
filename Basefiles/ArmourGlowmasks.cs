@@ -1050,7 +1050,270 @@ namespace StormDiversSuggestions.Basefiles
             Main.playerDrawData.Add(drawData);
         });
         //____________________________
-       
+        //____________________________________Asteroid Armour_____________________________________
+        //_______________________________________________________________________________________
+        public static readonly PlayerLayer SpaceRockMaskGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockMaskGlowmask", PlayerLayer.Head, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.head != mod.GetEquipSlot("SpaceRockMask", EquipType.Head))
+            {
+
+
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Armour/SpaceRockMask_Head");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.bodyFrame.Height / 2 - 1f;
+
+            Vector2 origin = drawInfo.headOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.headPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.bodyFrame;
+
+            float rotation = drawPlayer.bodyRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.headArmorShader
+
+
+            };
+            Main.playerDrawData.Add(drawData);
+        });
+        //_________________________________________________________________________
+        public static readonly PlayerLayer SpaceRockHelmetGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockHelmetGlowmask", PlayerLayer.Head, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.head != mod.GetEquipSlot("SpaceRockHelmet", EquipType.Head))
+            {
+
+
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Armour/SpaceRockHelmet_Head");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.bodyFrame.Height / 2 - 1f;
+
+            Vector2 origin = drawInfo.headOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.headPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.bodyFrame;
+
+            float rotation = drawPlayer.bodyRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.headArmorShader
+
+
+            };
+            Main.playerDrawData.Add(drawData);
+        });
+      
+        //_________________________________________________________________________
+        public static readonly PlayerLayer SpaceRockChestplateGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockChestplateGlowmask", PlayerLayer.Body, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.body != mod.GetEquipSlot("SpaceRockChestplate", EquipType.Body))
+            {
+                return;
+            }
+
+            Texture2D texture = drawPlayer.Male ?
+                mod.GetTexture("Items/Armour/SpaceRockChestplate_Body") :
+                mod.GetTexture("Items/Armour/SpaceRockChestplate_FemaleBody");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.bodyFrame.Height / 2 + 4f;
+
+            Vector2 origin = drawInfo.bodyOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.bodyPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.bodyFrame;
+
+            float rotation = drawPlayer.bodyRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.bodyArmorShader
+            };
+
+            Main.playerDrawData.Add(drawData);
+        });
+        //_________________________________________________________________________
+        public static readonly PlayerLayer SpaceRockChestplateArmsGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockChestplateArmsGlowmask", PlayerLayer.Arms, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.body != mod.GetEquipSlot("SpaceRockChestplate", EquipType.Body))
+            {
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Armour/SpaceRockChestplate_Arms");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.bodyFrame.Height / 2 + 4f;
+
+            Vector2 origin = drawInfo.bodyOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.bodyPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.bodyFrame;
+
+            float rotation = drawPlayer.bodyRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.bodyArmorShader
+            };
+
+            Main.playerDrawData.Add(drawData);
+        });
+        //_________________________________________________________________________
+
+        public static readonly PlayerLayer SpaceRockLeggingsGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockLeggingsGlowmask", PlayerLayer.Legs, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.legs != mod.GetEquipSlot("SpaceRockLeggings", EquipType.Legs))
+            {
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Armour/SpaceRockLeggings_Legs");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.legFrame.Height / 2 + 17f;
+
+            Vector2 origin = drawInfo.legOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.legPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.legFrame;
+
+            float rotation = drawPlayer.legRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.legArmorShader
+            };
+
+            Main.playerDrawData.Add(drawData);
+        });
+        //_________________________________________________________________________
+       /* public static readonly PlayerLayer SpaceRockWingsGlowmask = new PlayerLayer("StormDiversSuggestions", "SpaceRockWingsGlowmask", PlayerLayer.Wings, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.wings != mod.GetEquipSlot("SpaceRockWings", EquipType.Wings))
+            {
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Accessory/SpaceRockWings_Wings");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.bodyFrame.Height / 2 + 4f;
+
+            Vector2 origin = drawInfo.bodyOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.bodyPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.bodyFrame;
+
+            float rotation = drawPlayer.bodyRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.wingShader
+            };
+
+            Main.playerDrawData.Add(drawData);
+        });*/
+        //____________________________
 
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
         {
@@ -1069,6 +1332,8 @@ namespace StormDiversSuggestions.Basefiles
                 layers.Insert(headLayer + 1, HellSoulHelmetGlowmask);
                 layers.Insert(headLayer + 1, HellSoulHoodGlowmask);
                 layers.Insert(headLayer + 1, HellSoulCrownGlowmask);
+                layers.Insert(headLayer + 1, SpaceRockMaskGlowmask);
+                layers.Insert(headLayer + 1, SpaceRockHelmetGlowmask);
 
                 //Main.NewText("HEAD", 204, 132, 0);
             }
@@ -1083,8 +1348,26 @@ namespace StormDiversSuggestions.Basefiles
                 layers.Insert(bodyLayer + 1, StargazerBodyGlowmask);
                 layers.Insert(bodyLayer + 1, MushroomChestplateGlowmask);
                 layers.Insert(bodyLayer + 1, HellSoulChestplateGlowmask);
+                layers.Insert(bodyLayer + 1, SpaceRockChestplateGlowmask);
 
             }
+
+            int armLayer = layers.FindIndex(l => l == PlayerLayer.Arms);
+
+            if (armLayer > -1)
+            {
+                layers.Insert(armLayer + 1, SpaceRockChestplateArmsGlowmask);
+
+            }
+
+            /*int wingLayer = layers.FindIndex(l => l == PlayerLayer.Wings);
+
+            if (wingLayer > -1)
+            {
+                layers.Insert(wingLayer + 1, SpaceRockWingsGlowmask);
+
+            }*/
+
             int legLayer = layers.FindIndex(m => m == PlayerLayer.Legs);
 
             if (legLayer > -1)
@@ -1095,6 +1378,7 @@ namespace StormDiversSuggestions.Basefiles
                 layers.Insert(legLayer + 1, StargazerLegsGlowmask);
                 layers.Insert(legLayer + 1, MushroomGreavesGlowmask);
                 layers.Insert(legLayer + 1, HellSoulLeggingsGlowmask);
+                layers.Insert(legLayer + 1, SpaceRockLeggingsGlowmask);
 
             }
         }

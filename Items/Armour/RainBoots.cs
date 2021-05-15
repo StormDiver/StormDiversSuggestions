@@ -69,6 +69,10 @@ namespace StormDiversSuggestions.Items.Armour
                 }
             }
         }
+        public override bool DrawLegs()
+        {
+            return true;
+        }
     }
 
    

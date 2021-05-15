@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 4;
             item.knockBack = 1f;
 
-            item.shoot = ProjectileID.Bullet;
+            item.shoot = mod.ProjectileType("SawBladeProj");
             //item.shoot = ProjectileID.Meowmere;
             item.shootSpeed = 15f;
 

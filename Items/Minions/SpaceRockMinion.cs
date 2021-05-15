@@ -234,8 +234,8 @@ namespace StormDiversSuggestions.Items.Minions
         public override void SetDefaults()
         {
 
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 12;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;

@@ -176,7 +176,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Heart Collector");
-            Description.SetDefault("Steal the hearts of your enemies, literally");
+            Description.SetDefault("RIP");
             Main.buffNoTimeDisplay[Type] = true;
         }
 

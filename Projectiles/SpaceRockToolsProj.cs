@@ -64,7 +64,10 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
 
     }
    
@@ -90,7 +93,6 @@ namespace StormDiversSuggestions.Projectiles
 
             drawOffsetX = 9;
             drawOriginOffsetY = 0;
-
 
         }
 
@@ -118,6 +120,9 @@ namespace StormDiversSuggestions.Projectiles
             }
         }
 
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 }

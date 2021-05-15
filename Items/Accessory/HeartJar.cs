@@ -28,7 +28,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heart Emblem");
-            Tooltip.SetDefault("Makes enemies below half life have a one time chance to drop a heart when hit\nEnemies that drop a heart lose life rapidly");
+            Tooltip.SetDefault("Some enemies will drop a super heart when hit below half life\nEnemies that drop the heart lose life rapidly");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 93;
         }

@@ -687,9 +687,9 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen) //Makes sure this only happens once
                     {
-                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
                         {
-                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, ItemID.Heart);
+                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {
@@ -753,9 +753,10 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once
                     {
-                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
                         {
-                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, ItemID.Heart);
+                            Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
+                            
                             Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {

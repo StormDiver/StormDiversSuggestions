@@ -292,7 +292,7 @@ namespace StormDiversSuggestions.NPCs
 
         public override void NPCLoot()
         {
-            int heartdrop = 2 + Main.rand.Next(2);
+            int heartdrop = 3 + Main.rand.Next(3);
 
             {
                 if (Main.expertMode)

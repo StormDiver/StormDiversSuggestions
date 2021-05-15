@@ -159,7 +159,7 @@ namespace StormDiversSuggestions.Items
                     position += muzzleOffset;
                 }
 
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 3f;
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY) * 2.5f;
                 for (int i = 0; i < 2; i++)
                 {
                     Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("VortexRocketProj2"), (int)(damage * 2f), knockBack, player.whoAmI);

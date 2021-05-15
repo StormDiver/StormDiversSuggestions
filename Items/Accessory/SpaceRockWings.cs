@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Accessory
             }*/
 
         }
-       
+      
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         { 
                 ascentWhenFalling = 2f;
@@ -81,6 +81,9 @@ namespace StormDiversSuggestions.Items.Accessory
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 }

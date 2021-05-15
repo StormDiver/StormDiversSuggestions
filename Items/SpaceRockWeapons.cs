@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
             item.UseSound = SoundID.Item78;
 
-            item.damage = 60;
+            item.damage = 52;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 0f;
 
-            item.mana = 14;
+            item.mana = 16;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -76,7 +76,11 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-    
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
     }
     //________________________________________________________________
     public class SpaceRockSword : ModItem
@@ -94,8 +98,8 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 40;
             item.height = 50;
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useTime = 12;
+            item.useAnimation = 12;
             item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Cyan;
@@ -105,7 +109,7 @@ namespace StormDiversSuggestions.Items
             item.scale = 1.3f;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("SpaceSwordProj");
-            item.shootSpeed = 8f;
+            item.shootSpeed = 14f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -150,7 +154,10 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //____________________________________________________________________
     public class SpaceRockGun : ModItem
@@ -230,6 +237,9 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 }

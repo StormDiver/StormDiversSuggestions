@@ -34,8 +34,8 @@ namespace StormDiversSuggestions.NPCs
             
             npc.damage = 60;
             
-            npc.defense = 15;
-            npc.lifeMax = 1600;
+            npc.defense = 25;
+            npc.lifeMax = 3000;
             
             npc.rarity = 3;
             
@@ -100,7 +100,7 @@ namespace StormDiversSuggestions.NPCs
                     phasetime++;
                     shoottime++;
 
-                    if (shoottime >= 120)
+                    if (shoottime >= 90)
                     {
                         float projectileSpeed = 4.5f; // The speed of your projectile (in pixels per second).
                         int damage = 30; // The damage your projectile deals. normal x2, expert x4
@@ -142,7 +142,7 @@ namespace StormDiversSuggestions.NPCs
                 }
                 else
                 {
-                    shoottime = 70;
+                    shoottime = 60;
 
                 }
                 if (Main.rand.Next(5) == 0)
@@ -269,7 +269,7 @@ namespace StormDiversSuggestions.NPCs
                     dust2.scale = 1.5f;
                 }
 
-                if (phasetime >= 150) //Phase 3 to 1
+                if (phasetime >= 210) //Phase 3 to 1
                 {
                     shoottime = 0;
 

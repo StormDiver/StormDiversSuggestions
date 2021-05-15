@@ -175,26 +175,21 @@ namespace StormDiversSuggestions.Projectiles
                 }
                 for (int i = 0; i < 30; i++)
                 {
-                    Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
-                    //dust.noGravity = true;
-                   
 
-
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 0, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
                 }
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 40; i++)
                 {
-                    Dust dust;
-                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                    Vector2 position = projectile.position;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 203, 0f, 0f, 0, new Color(255, 255, 255), 1.5f)];
-                    //dust.noGravity = true;
 
+                    var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
 
-
+                    dust2.scale = 1.5f;
+                    dust2.velocity *= 2;
                 }
+
 
 
             }
@@ -213,7 +208,11 @@ namespace StormDiversSuggestions.Projectiles
             return true;
 
         }
-       
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
     }
     //_______________________________________________________________________________________
     public class SawBladeChain : ModProjectile
@@ -256,35 +255,11 @@ namespace StormDiversSuggestions.Projectiles
                     Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(25));
                     float scale = 1f - (Main.rand.NextFloat() * .3f);
                     perturbedSpeed = perturbedSpeed * scale;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float) (perturbedSpeed.X * 0.22f), (float)(perturbedSpeed.Y * 0.22f), ProjectileID.MolotovFire, (int)(projectile.damage * 0.5f), 0, player.whoAmI);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float) (perturbedSpeed.X * 0.22f), (float)(perturbedSpeed.Y * 0.22f), ProjectileID.MolotovFire, (int)(projectile.damage * 0.4f), 0, player.whoAmI); 
                 
             }
 
-            /* for (int i = 0; i < 100; i++)
-             {
-                 NPC target = Main.npc[i];
-                 target.TargetClosest(true);
-                 float shootToX = target.Center.X - projectile.Center.X;
-                 float shootToY = target.Center.Y - projectile.Center.Y;
-                 float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
-                 bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
-                 if (distance < 300f && !target.friendly && target.active && lineOfSight)
-                 {
-                     if (projectile.ai[0] > 10f)
-                     {
-                         distance = 3f / distance;
-                         shootToX *= distance * 5;
-                         shootToY *= distance * 5;
-                         int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("SawBladeProj"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
-                         Main.projectile[proj].timeLeft = 30;
-                         Main.projectile[proj].netUpdate = true;
-                         projectile.netUpdate = true;
-                         Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 34);
-                         projectile.ai[0] = -60f;
-                     }
-                 }
-             }
-             projectile.ai[0] += 1f;*/
+           
             AnimateProjectile();
         }
 
@@ -305,11 +280,14 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
 
     }
     //_______________________________________________________________________________________
-    public class SawBladeProj : ModProjectile
+    public class SawBladeProj : ModProjectile //This is so old and unused that if you find this I'll add your name to something maybe
     {
         public override void SetStaticDefaults()
         {
@@ -336,7 +314,31 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
             var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
-
+            /* for (int i = 0; i < 100; i++) //The old code for the old unused projectile
+            {
+                NPC target = Main.npc[i];
+                target.TargetClosest(true);
+                float shootToX = target.Center.X - projectile.Center.X;
+                float shootToY = target.Center.Y - projectile.Center.Y;
+                float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+                bool lineOfSight = Collision.CanHitLine(target.position, target.width, target.height, projectile.position, projectile.width, projectile.height);
+                if (distance < 300f && !target.friendly && target.active && lineOfSight)
+                {
+                    if (projectile.ai[0] > 10f)
+                    {
+                        distance = 3f / distance;
+                        shootToX *= distance * 5;
+                        shootToY *= distance * 5;
+                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX, shootToY, mod.ProjectileType("SawBladeProj"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Main.projectile[proj].timeLeft = 30;
+                        Main.projectile[proj].netUpdate = true;
+                        projectile.netUpdate = true;
+                        Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 34);
+                        projectile.ai[0] = -60f;
+                    }
+                }
+            }
+            projectile.ai[0] += 1f;*/
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -344,6 +346,8 @@ namespace StormDiversSuggestions.Projectiles
 
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
             Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 108);
+            Main.NewText("Wait WHAT? This shouldn't be usable!!!!!", 255, 0, 0);
+
         }
         public override void Kill(int timeLeft)
         {
@@ -656,7 +660,7 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     Main.PlaySound(SoundID.Item10, projectile.position);
                 }
-                
+            
             }
             return true;
         }
@@ -672,6 +676,15 @@ namespace StormDiversSuggestions.Projectiles
                     var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
                     
                     dust2.scale = 1.5f;
+                    dust2.velocity *= 2;
+                }
+                for (int i = 0; i < 25; i++)
+                {
+
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 0, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
                 }
 
             }
@@ -810,13 +823,23 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(SoundID.Item10, projectile.position);
+                Main.PlaySound(SoundID.Item14, projectile.position);
 
+                for (int i = 0; i < 15; i++)
+                {
+
+                    var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
+
+                    dust2.scale = 1.25f;
+                    dust2.velocity *= 2;
+                }
                 for (int i = 0; i < 20; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 5);
-                    dust.velocity *= 2;
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 0, default, 1f);
+                    Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                    Main.dust[dustIndex].noGravity = true;
                 }
             }
         }
@@ -826,7 +849,8 @@ namespace StormDiversSuggestions.Projectiles
             {
                 Texture2D texture = mod.GetTexture("Projectiles/SkullSeek_Glow");
 
-                spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, new Rectangle(0, projectile.frame * (Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]), Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height)
+, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
             }
             else return;
 

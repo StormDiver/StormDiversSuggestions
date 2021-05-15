@@ -55,6 +55,7 @@ namespace StormDiversSuggestions.OresandBars
             return Color.White;
 
         }
+
     }
     //______________________________________________________________________________
     public class SpaceRockBarPlaced : ModTile
@@ -84,6 +85,7 @@ namespace StormDiversSuggestions.OresandBars
             }
             return base.Drop(i, j);
         }
+
     }
    
 }

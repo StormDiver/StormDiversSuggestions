@@ -35,9 +35,10 @@ namespace StormDiversSuggestions.Items.Armour
             player.rangedCrit += 10;
             player.magicCrit += 10;
             player.thrownCrit += 10;
-          
-        }
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
+        }
+    
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawShadow = true;
@@ -50,9 +51,8 @@ namespace StormDiversSuggestions.Items.Armour
                 player.armorEffectDrawOutlines = false;
 
             }
-
+        
         }
-
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             return body.type == ItemType<SpaceRockChestplate>() && legs.type == ItemType<SpaceRockLeggings>();
@@ -75,7 +75,14 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddRecipe();
 
         }
-   
+        public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
+        {
+            
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //__________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Head)]
@@ -106,6 +113,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 6;
             player.thrownCrit += 6;
             player.noKnockback = true;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
         }
 
         public override void ArmorSetShadows(Player player)
@@ -145,6 +154,10 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddRecipe();
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -175,7 +188,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.rangedCrit += 7;
             player.magicCrit += 7;
             player.thrownCrit += 7;
-            
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
 
         }
         public override void AddRecipes()
@@ -187,7 +201,10 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //______________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -217,6 +234,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 6;
             player.thrownCrit += 6;
             player.moveSpeed += 0.3f;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
         }
         public override void AddRecipes()
         {
@@ -227,7 +246,10 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
 
     }
    

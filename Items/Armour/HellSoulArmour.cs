@@ -34,6 +34,7 @@ namespace StormDiversSuggestions.Items.Armour
 
             player.meleeDamage += 0.14f;
             player.meleeCrit += 5;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
         }
 
@@ -103,6 +104,7 @@ namespace StormDiversSuggestions.Items.Armour
         
             player.rangedDamage += 0.10f;
             player.rangedCrit += 8;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
         }
 
@@ -173,6 +175,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicDamage += 0.12f;
             player.magicCrit += 6;
             player.statManaMax2 += 40;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
         }
 
         public override void ArmorSetShadows(Player player)
@@ -239,6 +243,8 @@ namespace StormDiversSuggestions.Items.Armour
 
             player.minionDamage += 0.10f;
             player.maxMinions += 1;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
         }
 
         public override void ArmorSetShadows(Player player)
@@ -279,6 +285,10 @@ namespace StormDiversSuggestions.Items.Armour
             spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
                 new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawAltHair = true;
+         }
     }
     //___________________________________________________________________________________________________________________________
     [AutoloadEquip(EquipType.Body)]
@@ -309,6 +319,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.meleeCrit += 6;
             player.magicCrit += 6;
             player.thrownCrit += 6;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
         }
         public override void AddRecipes()
@@ -356,6 +367,8 @@ namespace StormDiversSuggestions.Items.Armour
             player.thrownCrit += 6;
 
             player.moveSpeed += 0.25f;
+            Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
+
         }
         public override void AddRecipes()
         {

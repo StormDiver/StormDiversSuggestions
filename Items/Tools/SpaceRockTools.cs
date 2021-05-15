@@ -52,6 +52,10 @@ namespace StormDiversSuggestions.Items.Tools
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
    
     public class SpaceRockJackhammer : ModItem
@@ -89,7 +93,6 @@ namespace StormDiversSuggestions.Items.Tools
 
         }
 
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -97,6 +100,10 @@ namespace StormDiversSuggestions.Items.Tools
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
     }
 }

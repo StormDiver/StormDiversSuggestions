@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.Projectiles
 {
@@ -133,6 +134,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.frameCounter = 0;
             }
         }
+      
         public override Color? GetAlpha(Color lightColor)
         {
 

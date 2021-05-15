@@ -6,6 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace StormDiversSuggestions.Items
@@ -18,10 +19,9 @@ namespace StormDiversSuggestions.Items
             DisplayName.SetDefault("The Vaporiser");
             Tooltip.SetDefault("Launches out an unchained ball every throw");
         }
-
+    
         public override void SetDefaults()
         {
-   
             item.width = 30;
             item.height = 34;
             item.value = Item.sellPrice(0, 3, 0, 0);
@@ -62,7 +62,13 @@ namespace StormDiversSuggestions.Items
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/DestroyerFlail_Glow");
 
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
 
     //_______________________________________________________________________________
@@ -113,6 +119,13 @@ namespace StormDiversSuggestions.Items
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/SawBlade_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
     //_______________________________________________________________________________
@@ -174,6 +187,13 @@ namespace StormDiversSuggestions.Items
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/TheSeeker_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
     //_______________________________________________________________________________
     public class PrimeStaff : ModItem
@@ -199,7 +219,7 @@ namespace StormDiversSuggestions.Items
 
             item.magic = true;
 
-
+        
             item.damage = 40;
             item.knockBack = 4f;
 
@@ -245,6 +265,13 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
 
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/PrimeStaff_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
 }

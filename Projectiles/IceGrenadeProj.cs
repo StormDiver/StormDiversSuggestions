@@ -112,7 +112,14 @@ namespace StormDiversSuggestions.Projectiles
 
 
             }
+            for (int i = 0; i < 20; i++)
+            {
 
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 0, default, 1f);
+                Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+            }
         }
     }
 

@@ -17,8 +17,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void SetDefaults()
         {
 
-            projectile.width = 30;
-            projectile.height = 30;
+            projectile.width = 32;
+            projectile.height = 32;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -112,6 +112,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
 
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //__________________________________________________________________________________________________________________________________________________
     public class SpaceGlobeProj2 : ModProjectile
@@ -125,8 +129,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void SetDefaults()
         {
 
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 12;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -211,6 +215,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             return true;
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //______________________________________________
     public class SpaceArmourProj : ModProjectile
@@ -222,8 +230,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void SetDefaults()
         {
 
-            projectile.width = 22;
-            projectile.height = 22;
+            projectile.width = 24;
+            projectile.height = 24;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -369,6 +377,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             }
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //__________________________________________________________________________________________________________________________________________________
     public class SpaceArmourProj2 : ModProjectile
@@ -382,8 +394,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void SetDefaults()
         {
 
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 12;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -467,6 +479,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             return true;
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //__________________________________________________________________________________________________________________________________________________
     public class SpaceSwordProj : ModProjectile
@@ -480,8 +496,8 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
         public override void SetDefaults()
         {
 
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 12;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
@@ -577,6 +593,10 @@ namespace StormDiversSuggestions.Projectiles       //We need this to basically i
             }
             return true;
 
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
     }
 }
