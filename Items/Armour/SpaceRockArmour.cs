@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.Items.Armour
             player.magicCrit += 10;
             player.thrownCrit += 10;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
-
+        
         }
     
         public override void ArmorSetShadows(Player player)

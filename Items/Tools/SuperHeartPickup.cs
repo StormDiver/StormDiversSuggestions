@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Super Heart");
-            Tooltip.SetDefault("Heals 30 health when picked up");
+            Tooltip.SetDefault("Heals 25 health when picked up");
         
         }
         public override void SetDefaults()
@@ -34,12 +34,12 @@ namespace StormDiversSuggestions.Items.Tools
            
             if (player.HasBuff(BuffID.Heartreach))
             {
-                grabRange = 500;
+                grabRange = 400;
                 
             }
             else
             {
-                grabRange = 250;
+                grabRange = 150;
 
             }
         }
@@ -55,8 +55,8 @@ namespace StormDiversSuggestions.Items.Tools
         {
             Main.PlaySound(SoundID.Grab, (int)player.position.X, (int)player.position.Y);
 
-            player.statLife += 30;
-            player.HealEffect(30, true);
+            player.statLife += 25;
+            player.HealEffect(25, true);
             return false;
         }
        
