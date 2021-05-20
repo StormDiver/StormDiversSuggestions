@@ -16,21 +16,21 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 35;
+			item.damage = 30;
             item.crit = 0;
 			item.melee = true;
 			item.width = 30;
 			item.height = 30;
-			item.useTime = 8;
-			item.useAnimation = 8;
-			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.useTime = 12;
+			item.useAnimation = 12;
+			item.useStyle = ItemUseStyleID.Stabbing;
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.useTurn = true;
-            item.knockBack = 4;
-           
+            item.knockBack = 3;
+            item.scale = 1.2f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -54,7 +54,7 @@ namespace StormDiversSuggestions.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HellstoneBar, 16);
-
+       
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -231,7 +231,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Beetle Swarm");
-            Description.SetDefault("Lowered Defense and speed");
+            Description.SetDefault("Beetles have greatly reduced your speed");
             Main.debuff[Type] = true;
             // Main.pvpBuff[Type] = true;
         }
@@ -244,7 +244,6 @@ namespace StormDiversSuggestions.Buffs
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.GetGlobalNPC<StormNPC>().beetled = true;
-            npc.defense -= 60;
             
 
         }

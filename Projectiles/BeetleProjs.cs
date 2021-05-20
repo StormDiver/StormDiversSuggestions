@@ -101,7 +101,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Projectiles
             if (shoottime >= 20)
             {
 
-                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
                 Vector2 perturbedSpeed = new Vector2(0, -2).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -241,7 +241,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
             }
         }
@@ -264,7 +264,7 @@ namespace StormDiversSuggestions.Projectiles
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
-                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
             }
             {
@@ -374,7 +374,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (Main.rand.Next(2) == 0)
             {
-                target.AddBuff(mod.BuffType("BeetleDebuff"), 480);
+                target.AddBuff(mod.BuffType("BeetleDebuff"), 300);
                 //Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
             }
             projectile.Kill();

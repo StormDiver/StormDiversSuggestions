@@ -200,8 +200,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Prime Staff");
-            Tooltip.SetDefault("Fires out spinning skulls that will latch onto any enemy they touch");
+            DisplayName.SetDefault("The Obliterator");
+            Tooltip.SetDefault("Fires out spinning skulls that will home onto any enemy they touch");
             Item.staff[item.type] = true;
         }
 

@@ -98,7 +98,10 @@ namespace StormDiversSuggestions.Items.Minions
             recipe.AddRecipe();
 
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
 
     //CCOPY Spazmini MINION AI
@@ -220,7 +223,10 @@ namespace StormDiversSuggestions.Items.Minions
             }
         }
 
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
     }
     //__________________________________________________________________________________________________________________________________________________
     public class SpaceRockMinionProj2 : ModProjectile
@@ -327,6 +333,10 @@ namespace StormDiversSuggestions.Items.Minions
             }
             return true;
 
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
     }
 }

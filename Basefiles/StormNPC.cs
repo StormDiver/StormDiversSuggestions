@@ -77,8 +77,8 @@ namespace StormDiversSuggestions.Basefiles
 
             if (beetled && !npc.boss)
             {
-                npc.velocity.X *= 0.9f;
-                npc.velocity.Y *= 0.9f;
+                npc.velocity.X *= 0.92f;
+                npc.velocity.Y *= 0.92f;
 
             }
             if (Main.LocalPlayer.HasBuff(BuffType<BloodBuff>()) && !npc.friendly && npc.lifeMax > 5) //If the player has taken a blood potion and the NPC is within a certian radius of the player
