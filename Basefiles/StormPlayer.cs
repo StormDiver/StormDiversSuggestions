@@ -115,6 +115,8 @@ namespace StormDiversSuggestions.Basefiles
         public int hellblazetime; //TBA
         public int mushtime; //Cooldown for mushrooms summoned with mushroom armour
         public int hellsoultime; //Cooldown for the souls created by hell soul armour
+        public bool flamefalling; //Falling at speed with betsy's flame
+        public int stopflamefall; //Player has stoppd falling with flame core
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -170,8 +172,8 @@ namespace StormDiversSuggestions.Basefiles
             mushtime = 60;
             
         }
-     
-       
+
+
         public override void PostUpdateEquips() //Updates every frame
         {
             //Reduces ints if they are above 0======================
@@ -215,7 +217,7 @@ namespace StormDiversSuggestions.Basefiles
             if (spaceBarriercooldown == 360)
             {
                 player.AddBuff(mod.BuffType("SpaceRockDefence"), 2);
-                
+
             }
             if (!spaceRockDefence) //Clears buff if player removes armour
             {
@@ -236,20 +238,79 @@ namespace StormDiversSuggestions.Basefiles
                 player.ClearBuff(mod.BuffType("SpaceRockOffence"));
                 spaceStrikecooldown = 0;
             }
-           
+
 
 
             //For Betsy's Flame======================
             if (flameCore)
             {
 
-                player.wingTimeMax *= (int)3f;
+                //player.wingTimeMax *= (int)3f;
+                player.wingTime += 1;
+                //Create flames upon landing
 
-                
-                    player.dash = 3;
-               
-             
+                if (player.velocity.Y > 10)
+                {
+
+
+                    flamefalling = true;
+                    stopflamefall = 0;
+                    int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 6, 0f, 0f, 50, default, 1f);
+
+
+                }
+
+
+                //For impacting the ground at speed
+                if (player.velocity.Y == 0 && flamefalling)
+                {
+
+
+                    for (int i = 0; i < 30; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 6, 0f, 0f, 50, default, 1.5f);
+                        Main.dust[dustIndex].velocity *= 3;
+                    }
+                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 74, 0.5f);
+                    float numberProjectiles = 6 + Main.rand.Next(4);
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+
+
+                        float speedX = 0f;
+                        float speedY = -8f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(120));
+                        float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        Projectile.NewProjectile(player.Center.X, player.Bottom.Y - 7, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.MolotovFire, 30, 3f, player.whoAmI);
+
+
+                    }
+                    flamefalling = false;
+
+                }
+
+                //If the player slows down too much then the falling bool is cancelled
+                if (player.velocity.Y <= 2)
+                {
+
+                    stopflamefall++;
+                }
+                else
+                {
+                    stopflamefall = 0;
+                }
+                if (stopflamefall > 1)
+                {
+                    flamefalling = false;
+                }
             }
+            if (!flameCore)
+            {
+                flamefalling = false;
+            }
+
             //For the Mechanical Spikes===========================
             if (primeSpin)
             {
@@ -280,9 +341,10 @@ namespace StormDiversSuggestions.Basefiles
                 {
                    
                     //Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 15, 2, -0.5f);
-                    player.gravity += 5;
-                    player.maxFallSpeed *= 1.5f;
-
+                    player.gravity += 4;
+                    player.maxFallSpeed *= 1.4f;
+                    player.dash = 0;
+                    player.velocity.X *= 0.75f;
                     if (player.velocity.Y > 12)
                     {
 

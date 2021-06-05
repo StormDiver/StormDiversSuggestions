@@ -148,12 +148,7 @@ namespace StormDiversSuggestions.OresandBars
                             }
                         }
                     }
-                    if(npc.type == NPCID.IceTortoise)
-                    {
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 4));
-                        }
-                    }
+                   
                 }
                
             }

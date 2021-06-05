@@ -398,7 +398,7 @@ namespace StormDiversSuggestions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Asteroid Rock");
+            DisplayName.SetDefault("Asteroid Fragment");
 
             Tooltip.SetDefault("Seems to be infused with some strange energy");
 

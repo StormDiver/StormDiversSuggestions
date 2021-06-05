@@ -66,6 +66,7 @@ namespace StormDiversSuggestions.Items
             player.AddBuff(mod.BuffType("BloodDebuff"), 1);
             player.AddBuff(mod.BuffType("BeetleDebuff"), 1);
             player.AddBuff(mod.BuffType("HeartDebuff"), 1);
+            player.AddBuff(mod.BuffType("HellSoulFireDebuff"), 1);
 
 
 

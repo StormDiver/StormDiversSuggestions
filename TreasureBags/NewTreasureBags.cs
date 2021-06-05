@@ -39,7 +39,13 @@ namespace StormDiversSuggestions.TreasureBags
                     player.QuickSpawnItem(ItemType<PrimeAccess>(), Main.rand.Next(1, 1));
                 }
             }
-
+            if (context == "bossBag" && arg == ItemID.GolemBossBag)
+            {
+                if (Main.rand.Next(100) < 15)
+                {
+                    player.QuickSpawnItem(ItemType<LizardFlame>(), Main.rand.Next(1, 1));
+                }
+            }
             if (context == "bossBag" && Main.hardMode)
             {
                 if (Main.rand.Next(100) < 2)

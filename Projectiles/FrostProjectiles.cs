@@ -404,7 +404,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 125;
-            projectile.extraUpdates = 3;
+            projectile.extraUpdates = 2;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
         }

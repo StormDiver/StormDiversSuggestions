@@ -24,8 +24,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = ItemRarityID.Green;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 21;
-            item.useAnimation = 21;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 10;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 30;
+            item.damage = 24;
          
             item.knockBack = 10f;
 
@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Items
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Tombstone, 5);
             recipe.AddRecipeGroup("StormDiversSuggestions:EvilMaterial", 20);
-            recipe.AddTile(TileID.HeavyWorkBench);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
 

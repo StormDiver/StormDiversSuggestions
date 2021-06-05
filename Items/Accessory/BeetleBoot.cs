@@ -26,7 +26,6 @@ namespace StormDiversSuggestions.Items.Accessory
 
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = ItemRarityID.Yellow;
-            item.defense = 10;
             item.accessory = true;
             
         }
@@ -35,10 +34,15 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             if (player.HeldItem.melee)
             {
-                player.maxRunSpeed = (9f - player.moveSpeed);
+                player.maxRunSpeed = (8f);
                 player.runAcceleration *= 3f;
                 player.rocketBoots = 2;
+                player.moveSpeed = 1;
+                if (player.moveSpeed > 1)
+                {
+                    player.moveSpeed = 1;
 
+                }
                 //player.longInvince = true;
                 player.noKnockback = true;
                 if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y == 0 || player.sliding))

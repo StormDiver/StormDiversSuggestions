@@ -24,16 +24,16 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 27;
-            item.useAnimation = 27;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 6;
+            item.mana = 8;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 16;
+            item.damage = 14;
             //item.crit = 4;
             item.knockBack = 1f;
 
