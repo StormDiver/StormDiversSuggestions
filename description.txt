@@ -21,10 +21,4 @@ This mod includes:
 -A way to remove the shields from the pillars prematurely 
 -New recipes for certain uncraftable vanilla items
 
-You can find update changes on the Github release page: https://github.com/StormDiver/StormDiversSuggestions/releases
-
-Also join the Discord server for sneek peaks at upcoming content: 
-https://discord.gg/Qc32asc
-
-Check out the wiki for more information: 
-https://terrariamods.fandom.com/wiki/Storm_Diver%27s_Additions_Mod
+Links to the Discord Server, Changelog, and Wiki can be found on the forums page

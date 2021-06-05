@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items
             item.useAmmo = ItemType<Ammo.StickyBomb>();
             item.UseSound = SoundID.Item61;
         
-            item.damage = 110;
+            item.damage = 80;
             //item.crit = 4;
             item.knockBack = 3f;
             item.shootSpeed = 10;

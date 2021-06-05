@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             var player = Main.player[projectile.owner];
 
-            if ((player.controlUseTile && !player.controlDown && player.HeldItem.type == mod.ItemType("StickyLauncher") && boomtime > 25) || player.dead) //will go BOOM
+            if ((player.controlUseTile && !player.controlDown && player.HeldItem.type == mod.ItemType("StickyLauncher") && boomtime > 30) || player.dead) //will go BOOM
             {
                 if (projectile.timeLeft > 3)
                 {
