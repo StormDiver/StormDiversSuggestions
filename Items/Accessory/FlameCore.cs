@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Betsy's Flame");
-            Tooltip.SetDefault("Grants infinite flight\nCreates a burst of flames upon landing with enough speed\n'This came before the Soaring Insignia'");
+            Tooltip.SetDefault("Grants infinite wing flight\nCreates a burst of flames upon landing with enough speed\n'This came before the Soaring Insignia'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
 

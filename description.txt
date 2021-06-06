@@ -6,17 +6,17 @@ This mod is constantly updated, adding new content and tweaking existing, so joi
 
 This mod includes:
 
--90 New unique weapons
+-92 New unique weapons
 -19 new accessories
 -7 new armour sets
--15 new ammos
+-16 new ammos
 -25 new tools
 -3 new bars and 2 new ores 
 -18 new buffs and 9 new potions
 -12 new debuffs
 -5 new Vanity sets
 -2 new pets
--19 new enemies
+-21 new enemies
 -Some new shop items
 -A way to remove the shields from the pillars prematurely 
 -New recipes for certain uncraftable vanilla items

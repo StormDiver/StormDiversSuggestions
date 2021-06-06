@@ -11,8 +11,8 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spikey Bomb");
-            Tooltip.SetDefault("Very sticky and explosive\nFor use with the Spikey Bomb Launcher\n'What makes a good Demoman?'");
+            DisplayName.SetDefault("Spiky Bomb");
+            Tooltip.SetDefault("Very sticky and explosive\nFor use with the Spiky Bomb Launcher\n'What makes a good Demoman?'");
 
         }
         public override void SetDefaults()

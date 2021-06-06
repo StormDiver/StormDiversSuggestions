@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spikey Bomb");
+            DisplayName.SetDefault("Spiky Bomb");
         }
 
         public override void SetDefaults()

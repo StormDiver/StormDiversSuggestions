@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.NPCs
             npc.damage = 50;
             npc.lavaImmune = true;
             npc.defense = 10;
-            npc.lifeMax = 1500;
+            npc.lifeMax = 1250;
             npc.noGravity = true;
             npc.noTileCollide = false;
 
@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.NPCs
             if (!NPC.AnyNPCs(mod.NPCType("IceCore")) && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
             {
                 {
-                    return SpawnCondition.Cavern.Chance * 0.05f;
+                    return SpawnCondition.Cavern.Chance * 0.04f;
                 }
             }
             
@@ -109,7 +109,7 @@ namespace StormDiversSuggestions.NPCs
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             if (!Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                movespeed = 2;
+                movespeed = 1.5f;
                 ypos = 0;
                 npc.noTileCollide = true;
             }

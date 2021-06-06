@@ -11,9 +11,9 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spikey Bomb Launcher");
-            Tooltip.SetDefault("Fires out sticky bombs that can be detonated by right clicking while holding the weapon\nRight clicking while holding down will unstick all bombs and make them explode on enemy impact" +
-                "\nShoots further depending on your cursor location\nRequires Spikey Bombs, purchase more from the Demolitionist");
+            DisplayName.SetDefault("Spiky Bomb Launcher");
+            Tooltip.SetDefault("Fires out Spiky Bombs that stick to surfaces can be detonated by right clicking while holding the weapon\nRight clicking while holding down will unstick all bombs and make them explode on enemy impact" +
+                "\nShoots further depending on your cursor location\nRequires Spiky Bombs, purchase more from the Demolitionist");
         }
         public override void SetDefaults()
         {
