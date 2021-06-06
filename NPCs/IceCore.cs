@@ -49,6 +49,9 @@ namespace StormDiversSuggestions.NPCs
 
            banner = npc.type;
            bannerItem = mod.ItemType("IceCoreBannerItem");
+
+            npc.buffImmune[BuffID.Frostburn] = true;
+            npc.buffImmune[(BuffType<SuperFrostBurn>())] = true;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -137,17 +140,9 @@ namespace StormDiversSuggestions.NPCs
                     if (shoottime >= 12 && (npc.position.Y < player.position.Y - 100))//fires the projectiles
                     {
 
-                        //xpostion = Main.rand.NextFloat(200f, -200f);
-                        //ypostion = Main.rand.NextFloat(-100f, -250f);
-
-                        //int type = mod.ProjectileType("GolemMinionProj");
-
-                        //Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 33);
-
-                        /*Vector2 velocity = Vector2.Normalize(new Vector2(player.Center.X, player.Center.Y) -
-                        new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;*/
 
 
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 30, 1, 0.25f);
 
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
@@ -191,6 +186,8 @@ namespace StormDiversSuggestions.NPCs
                     shoottime++;
                     if (shoottime >= 80 && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                     {
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 30);
+
                         float numberProjectiles = 10 + Main.rand.Next(4);
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {

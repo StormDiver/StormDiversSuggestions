@@ -45,6 +45,9 @@ namespace StormDiversSuggestions.NPCs
 
            banner = npc.type;
            bannerItem = mod.ItemType("SandCoreBannerItem");
+
+            npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[(BuffType<AridSandDebuff>())] = true;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
