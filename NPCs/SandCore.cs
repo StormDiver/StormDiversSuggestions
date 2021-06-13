@@ -48,6 +48,9 @@ namespace StormDiversSuggestions.NPCs
 
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[(BuffType<AridSandDebuff>())] = true;
+
+            npc.rarity = 2;
+
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -58,7 +61,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (!NPC.AnyNPCs(mod.NPCType("SandCore")) && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
+            if (!NPC.AnyNPCs(mod.NPCType("SandCore")) && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert && Main.hardMode)
             {
                 {
                     return SpawnCondition.Cavern.Chance * 0.1f;

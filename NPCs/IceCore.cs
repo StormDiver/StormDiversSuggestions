@@ -52,6 +52,8 @@ namespace StormDiversSuggestions.NPCs
 
             npc.buffImmune[BuffID.Frostburn] = true;
             npc.buffImmune[(BuffType<SuperFrostBurn>())] = true;
+
+            npc.rarity = 2;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -62,7 +64,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (!NPC.AnyNPCs(mod.NPCType("IceCore")) && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
+            if (!NPC.AnyNPCs(mod.NPCType("IceCore")) && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow && Main.hardMode)
             {
                 {
                     return SpawnCondition.Cavern.Chance * 0.04f;
