@@ -355,6 +355,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void AI()
         {
+            projectile.melee = true;
+            projectile.magic = false;
             AnimateProjectile();
         }
         public override bool OnTileCollide(Vector2 oldVelocity)

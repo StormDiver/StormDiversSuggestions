@@ -39,14 +39,25 @@ namespace StormDiversSuggestions.Items.Tools
         {
             return new Vector2(-4, 0);
         }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.GetModPlayer<StormPlayer>().bearcool > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public override bool UseItem(Player player)
         {
             //player.AddBuff(BuffID.Regeneration, 300);
             //player.AddBuff(BuffID.Lovestruck, 300);
             if (player.GetModPlayer<StormPlayer>().bearcool == 0)
             {
-                player.AddBuff(mod.BuffType("TeddyBuff"), 600);
-                player.GetModPlayer<StormPlayer>().bearcool = 1200;
+                player.AddBuff(mod.BuffType("TeddyBuff"), 300);
+                player.GetModPlayer<StormPlayer>().bearcool = 600;
             }
             return true;
         }
