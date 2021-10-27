@@ -16,8 +16,8 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("SandBurn");
-            Description.SetDefault("The ancient sand burns you");
+            DisplayName.SetDefault("Forbidden Burn");
+            Description.SetDefault("The forbidden sand burns you");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
         }
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Buffs
 
             if (Main.rand.Next(4) < 3)
             {
-                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 138, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 10, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 1f;
                 Main.dust[dust].velocity.Y -= 0.5f;
@@ -68,10 +68,10 @@ namespace StormDiversSuggestions.Buffs
             player.GetModPlayer<StormPlayer>().superFrost = true;
             if (Main.rand.Next(4) < 3)
             {
-                int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 156, player.velocity.X, player.velocity.Y, 130, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 156, player.velocity.X, player.velocity.Y, 135, default, 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
                 Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                 
-                int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 156, player.velocity.X, player.velocity.Y, 130, default, .3f);
+                int dust2 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 156, player.velocity.X, player.velocity.Y, 135, default, .3f);
                 Main.dust[dust2].velocity *= 0.5f;
             }
             Lighting.AddLight(player.position, 0f, 1f, 1f);
@@ -391,7 +391,6 @@ namespace StormDiversSuggestions.Buffs
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 1f;
                 Main.dust[dust].velocity.Y -= 0.5f;
-              
             }
 
         }
@@ -432,6 +431,64 @@ namespace StormDiversSuggestions.Buffs
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.GetGlobalNPC<StormNPC>().hellSoulFire = true;
+
+
+
+        }
+    }
+    //________________________________________________
+    public class TwilightDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Twilight Warped");
+            Description.SetDefault("You are unable to perform another Twilight Warp");
+            Main.debuff[Type] = true;
+            
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            //player.GetModPlayer<StormPlayer>().hellSoulFire = true;
+
+            if (Main.rand.Next(4) < 2)
+            {
+                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179, 0, -3);
+                dust.scale = 1.25f;
+                dust.noGravity = true;
+                dust.velocity *= 0.75f;
+            }
+            //player.GetModPlayer<StormPlayer>().hellSoulDebuff = true;
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+           
+
+
+
+        }
+    }
+    //_______________________________________________
+    public class DerpDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Launched");
+            Description.SetDefault("You have been launched into the air by the power of the Derplings");
+            Main.debuff[Type] = true;
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().derplaunched = true;
 
 
 

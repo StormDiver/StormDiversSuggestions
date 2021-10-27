@@ -6,6 +6,9 @@ using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Buffs;
 using StormDiversSuggestions.Basefiles;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions;
+
 
 namespace StormDiversSuggestions.Items.Armour
 {
@@ -15,8 +18,8 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Twilight Helmet");
-            Tooltip.SetDefault("3% increased damage\n2% increased critical strike chance");
+            DisplayName.SetDefault("Twilight Hood");
+            Tooltip.SetDefault("3% increased damage and critical strike chance\n8% reduced mana usage");
         }
    
         public override void SetDefaults()
@@ -25,16 +28,17 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 6;
+            item.defense = 7;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.allDamage += 0.03f;
-            player.meleeCrit += 2;
-            player.rangedCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
+            player.meleeCrit += 3;
+            player.rangedCrit += 3;
+            player.magicCrit += 3;
+            player.thrownCrit += 3;
+            player.manaCost -= 0.08f;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -42,6 +46,22 @@ namespace StormDiversSuggestions.Items.Armour
             player.armorEffectDrawShadow = true;
             //player.armorEffectDrawOutlines = true;
            
+
+            
+            if (player.GetModPlayer<StormPlayer>().twilightcharged == true)
+            {
+                player.armorEffectDrawOutlines = true;
+                if (Main.rand.Next(4) == 0)
+                {
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62, 0, -5);
+                    dust.scale = 0.8f;
+                    dust.noGravity = true;
+                }
+            }
+            else
+            {
+                player.armorEffectDrawOutlines = false;
+            }
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -51,13 +71,14 @@ namespace StormDiversSuggestions.Items.Armour
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants a chance to dodge attacks";
+            player.setBonus = "Press the 'Armor Special Ability' hotkey to teleport to the cursor's location within a limited range\nRequires a direct line of sight to work and has a 15 second cooldown"; 
 
             //player.endurance += 0.1f;
-            player.blackBelt = true;
-   
+            //player.blackBelt = true;
+            player.GetModPlayer<StormPlayer>().twilightSet = true;
+
         }
-     
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -72,6 +93,13 @@ namespace StormDiversSuggestions.Items.Armour
           
 
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/NightsHelmet_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
 
     //___________________________________________________________________________________________________________________________
@@ -82,8 +110,8 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Twilight Breastplate");
-            Tooltip.SetDefault("4% increased damage\n3% increased critical strike chance");
+            DisplayName.SetDefault("Twilight Robe");
+            Tooltip.SetDefault("4% increased damage\nSlighlty increased health regeneration");
         }
 
         public override void SetDefaults()
@@ -99,11 +127,11 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.04f;
-            player.meleeCrit += 3;
+            /*player.meleeCrit += 3;
             player.rangedCrit += 3;
             player.magicCrit += 3;
-            player.thrownCrit += 3;
-
+            player.thrownCrit += 3;*/
+            player.lifeRegen += 1;
         }
         public override void AddRecipes()
         {
@@ -116,7 +144,13 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-   
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/NightsChainmail_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
     }
     //______________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -125,8 +159,8 @@ namespace StormDiversSuggestions.Items.Armour
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Twilight Greaves");
-            Tooltip.SetDefault("3% increased damage\n2% increased critical strike chance\n20% increased movement speed");
+            DisplayName.SetDefault("Twilight Leggings");
+            Tooltip.SetDefault("3% increased damage and critical strike chance\n10% increased melee and movement speed");
         }
 
         public override void SetDefaults()
@@ -141,12 +175,13 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
             
-            player.moveSpeed += 0.2f;
+            player.moveSpeed += 0.1f;
+            player.meleeSpeed += 0.1f;
             player.allDamage += 0.03f;
-            player.meleeCrit += 2;
-            player.rangedCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
+            player.meleeCrit += 3;
+            player.rangedCrit += 3;
+            player.magicCrit += 3;
+            player.thrownCrit += 3;
         }
         public override void AddRecipes()
         {
@@ -159,6 +194,13 @@ namespace StormDiversSuggestions.Items.Armour
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Items/Glowmasks/NightsGreaves_Glow");
+
+            spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width * 0.5f, item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f),
+                new Rectangle(0, 0, texture.Width, texture.Height), Color.White, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
         }
     }
     //__________________________________________________________________________________________________________________________

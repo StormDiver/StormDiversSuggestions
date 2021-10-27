@@ -105,8 +105,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = true;
             //projectile.magic = true;
 
-            projectile.penetrate = 2;
-            projectile.timeLeft = 40;
+            projectile.penetrate = 3;
+            projectile.timeLeft = 50;
             projectile.knockBack = 1f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
@@ -373,13 +373,13 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             shoottime++;
-            if (shoottime >= 5)
+            if (shoottime >= 7)
             {
-
+                
 
                
                     
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodSwordProj"), (int)(projectile.damage * .6f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodYoyoProj2"), (int)(projectile.damage * .4f), 0f, projectile.owner, 0f, 0f);
                     shoottime = 0;
                 
             }
@@ -388,5 +388,76 @@ namespace StormDiversSuggestions.Projectiles
 
 
     }
+    //____________________________________________________________________________________________
+    public class BloodYoyoProj2 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Blood Yoyo trail");
+        }
+        public override void SetDefaults()
+        {
 
+            projectile.width = 20;
+            projectile.height = 20;
+            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.ignoreWater = true;
+            //projectile.magic = true;
+
+            projectile.penetrate = 1;
+            projectile.timeLeft = 25;
+            projectile.knockBack = 1f;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 10;
+        }
+        //bool bloodspray = true;
+        public override void AI()
+        {
+
+
+            if (Main.rand.Next(1) == 0)     //this defines how many dust to spawn
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+            }
+
+
+            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+
+
+            }
+
+
+            return;
+        }
+
+      
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 13);
+
+            projectile.Kill();
+            return false;
+        }
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+
+            }
+        }
+    }
 }

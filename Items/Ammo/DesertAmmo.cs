@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Bullet");
+            DisplayName.SetDefault("Forbidden Bullet");
             Tooltip.SetDefault("Has a chance to spilt into two mid-flight");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.Items.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Arrow");
+            DisplayName.SetDefault("Forbidden Arrow");
             Tooltip.SetDefault("Bounces twice, spins after bouncing");
         }
         public override void SetDefaults()

@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spooky Emblem");
-            Tooltip.SetDefault("Creates Spooky flames that home in on enemies when using any weapon");
+            Tooltip.SetDefault("Has a chance to create spooky flames that home in on enemies when using any weapon");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
 

@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.NPCs
         {
             DisplayName.SetDefault("Fallen Warrior"); // Automatic from .lang files
                                                  // make sure to set this for your modnpcs.
-            
+           
         }
         public override void SetDefaults()
         {
@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.NPCs
             animationType = NPCID.FlyingSnake;
 
             npc.damage = 30;
-            
+           
             npc.defense = 10;
             npc.lifeMax = 180;
             npc.noGravity = true;

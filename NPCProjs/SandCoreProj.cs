@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.NPCProjs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Burning Sand");
+            DisplayName.SetDefault("Forbidden Sand");
         }
         public override void SetDefaults()
         {
@@ -36,10 +36,10 @@ namespace StormDiversSuggestions.NPCProjs
             {
                 if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
                 {
-                    int dust = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
+                    int dust = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 10, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                     Main.dust[dust].velocity *= 0.5f;
-                    int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                    int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 54, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                     Main.dust[dust2].velocity *= 0.5f;
 
                 }

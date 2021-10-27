@@ -11,27 +11,27 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Derpling Sword"); 
-			Tooltip.SetDefault("Sends out a bunch of Derpling heads every third swing");
+			Tooltip.SetDefault("Fire out multiple Derpling Shell Shards every third swing");
 		}
 
 		public override void SetDefaults() 
 		{
-			item.damage = 60;
+			item.damage = 75;
          
 			item.melee = true;
 			item.width = 40;
 			item.height = 50;
-			item.useTime = 14;
-			item.useAnimation = 14;
+			item.useTime = 13;
+			item.useAnimation = 13;
 			item.useStyle = ItemUseStyleID.SwingThrow;  
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.useTurn = false;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("DerpMeleeProj");
-            item.shootSpeed = 10f;
+            item.shootSpeed = 15f;
         }
         int weaponattack = 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -39,11 +39,11 @@ namespace StormDiversSuggestions.Items
             weaponattack--;
             if (weaponattack <= 0)
             {
-                int numberProjectiles = 2 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.8f), knockBack, player.whoAmI);
                 }
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 22);
                 weaponattack = 3;
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Rifle");
-            Tooltip.SetDefault("I know it looks cruel, but it had to be done\nThree round burst, only the first shot consumes ammo");
+            Tooltip.SetDefault("I know it looks cruel, but it had to be done\nFour round burst, only the first shot consumes ammo");
         }
         public override void SetDefaults()
         {
@@ -75,11 +75,11 @@ namespace StormDiversSuggestions.Items
             item.width = 50;
             item.height = 26;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Lime;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 4;
-            item.useAnimation = 12;
+            item.useAnimation = 16;
             item.reuseDelay = 13;
             item.useTurn = false;
             item.autoReuse = true;
@@ -87,7 +87,7 @@ namespace StormDiversSuggestions.Items
             item.ranged = true;
 
 
-            item.damage = 32;
+            item.damage = 35;
             item.crit = 6;
             item.knockBack = 2f;
 
@@ -140,7 +140,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Derpling Scepter");
-            Tooltip.SetDefault("Rapidly fires out mini derpling heads\nHas a small chance to fire out a slow moving head that explodes into smaller heads");
+            Tooltip.SetDefault("Rapidly fires out magical Derpling Shell Shards\nHas a small chance to fire out a larger shard that homes and explodes into smaller shards");
             Item.staff[item.type] = true;
         }
         public override void SetDefaults()
@@ -148,20 +148,20 @@ namespace StormDiversSuggestions.Items
             item.width = 40;
             item.height = 54;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Lime;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 8;
-            item.useAnimation = 8;
+            item.useTime = 7;
+            item.useAnimation = 7;
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
             item.magic = true;
-            item.damage = 44;
+            item.damage = 52;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item13;
             item.shoot = mod.ProjectileType("DerpMagicProj2");
-            item.shootSpeed = 16f;
-            item.mana = 4;
+            item.shootSpeed = 18f;
+            item.mana = 3;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
 
@@ -180,8 +180,8 @@ namespace StormDiversSuggestions.Items
             {
                 {
 
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
-                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * .6f), (float)(perturbedSpeed.Y * .6f), mod.ProjectileType("DerpMagicProj"), (int)(damage * 1.5f), knockBack, player.whoAmI);
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(18));
+                    Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * .6f), (float)(perturbedSpeed.Y * .6f), mod.ProjectileType("DerpMagicProj"), (int)(damage), knockBack, player.whoAmI);
                     Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 20);
 
                 }
@@ -190,7 +190,7 @@ namespace StormDiversSuggestions.Items
             {
                 {
 
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(7));
                     Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X * 1f), (float)(perturbedSpeed.Y * 1f), mod.ProjectileType("DerpMagicProj2"), damage, knockBack, player.whoAmI);
 
                 }

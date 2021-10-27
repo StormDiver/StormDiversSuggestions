@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 8;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 14;
+            item.damage = 17;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -80,24 +80,24 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 16;
-            item.crit = 0;
+            item.damage = 17;
+            
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 21;
-            item.useAnimation = 21;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.useTurn = true;
             item.knockBack = 4;
             item.shoot = mod.ProjectileType("OceanSmallProj");
-            
+            item.scale = 1.2f;
 
-            item.shootSpeed = 7f;
+            item.shootSpeed = 10f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -106,7 +106,7 @@ namespace StormDiversSuggestions.Items
 
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4)); // This defines the projectiles random spread . 10 degree spread.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.8f), knockBack, player.whoAmI);
             }
             Main.PlaySound(SoundID.Splash, (int)player.Center.X, (int)player.Center.Y, 1);
 

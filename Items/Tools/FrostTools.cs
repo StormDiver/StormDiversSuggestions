@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items.Tools
         {
             if (Main.rand.Next(4) < 3)
             {
-                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 92, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 135, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Tools
         {
             if (Main.rand.Next(4) < 3)
             {
-                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 92, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 135, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }

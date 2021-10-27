@@ -20,28 +20,28 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 14;
+            item.damage = 15;
             item.crit = 0;
             item.melee = true;
             item.width = 30;
             item.height = 38;
-            item.useTime = 27;
-            item.useAnimation = 27;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
-            item.scale = 1;
+            item.scale = 1.1f;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.useTurn = false;
             item.knockBack = 4;
             item.shoot = ProjectileID.Mushroom;
-            item.shootSpeed = 22f;
+            item.shootSpeed = 35f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, (int)(damage * 1f), knockBack, player.whoAmI);
 
 
             return false;

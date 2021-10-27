@@ -621,7 +621,7 @@ namespace StormDiversSuggestions.Projectiles
         int damagetime = 0;
         public override bool CanDamage()
         {
-            if (damagetime <= 15)
+            if (damagetime <= 10)
             {
                 return false;
             }
@@ -643,7 +643,7 @@ namespace StormDiversSuggestions.Projectiles
             dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 173, projectile.velocity.X * -0.5f, projectile.velocity.Y * -0.5f, 0, new Color(255, 255, 255), 1f)];
             dust.noGravity = true;
             dust.scale = 0.8f;
-            if (damagetime > 15)
+            if (damagetime > 10)
             {
                 if (projectile.localAI[0] == 0f)
                 {
@@ -680,7 +680,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         private void AdjustMagnitude(ref Vector2 vector)
         {
-            if (damagetime > 15)
+            if (damagetime > 10)
             {
                 float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
                 if (magnitude > 12f)
@@ -691,7 +691,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (damagetime <= 15)
+            if (damagetime <= 10)
             {
                 return false;
             }

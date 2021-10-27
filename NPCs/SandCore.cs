@@ -173,7 +173,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.rand.Next(4) == 0) //Dust effects
             {
-                var dust3 = Dust.NewDustDirect(new Vector2(npc.position.X, npc.Bottom.Y - 15), npc.width, 20, 138, 0, 10);
+                var dust3 = Dust.NewDustDirect(new Vector2(npc.position.X, npc.Bottom.Y - 15), npc.width, 20, 10, 0, 10);
                 dust3.noGravity = true;
             }
        
@@ -227,7 +227,7 @@ namespace StormDiversSuggestions.NPCs
 
             for (int i = 0; i < 2; i++)
             {
-                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 5, npc.Center.Y - 5), 10, 10, 138);
+                var dust = Dust.NewDustDirect(new Vector2(npc.Center.X - 5, npc.Center.Y - 5), 10, 10, 54);
             }
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) they will spawn this
             {
@@ -240,7 +240,7 @@ namespace StormDiversSuggestions.NPCs
 
                 for (int i = 0; i < 40; i++)
                 {
-                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 138);
+                    var dust = Dust.NewDustDirect(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 54);
                     dust.scale = 2;
                     dust.velocity *= 3;
                     dust.noGravity = true;
@@ -253,7 +253,7 @@ namespace StormDiversSuggestions.NPCs
         {
             if (Main.expertMode)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(5, 8));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(12, 18));
                 if (Main.rand.Next(2) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.AncientBattleArmorMaterial);
@@ -263,16 +263,13 @@ namespace StormDiversSuggestions.NPCs
             else
             {
 
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(4, 7));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(9, 15));
                 if (Main.rand.Next(3) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.AncientBattleArmorMaterial);
                 }
             }
-            if (!StormWorld.SpawnDesertOre)
-            {
-                StormWorld.SpawnDesertOre = true;
-            }
+         
         }
         /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {

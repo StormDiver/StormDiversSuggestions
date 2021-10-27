@@ -136,7 +136,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 22;
+            projectile.timeLeft = 16;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;

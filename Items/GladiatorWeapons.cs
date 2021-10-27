@@ -17,7 +17,6 @@ namespace StormDiversSuggestions.Items
             DisplayName.SetDefault("Gladiator's Sword");
             Tooltip.SetDefault("Lightweight but sturdy");
         }
-
         public override void SetDefaults()
         {
             item.damage = 14;
@@ -32,7 +31,7 @@ namespace StormDiversSuggestions.Items
             item.rare = ItemRarityID.Blue;
             item.scale = 1;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.useTurn = false;
             item.knockBack = 4;
          
@@ -90,16 +89,16 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 36;
-            item.useAnimation = 36;
-            item.useTurn = false;
+            item.useTime = 32;
+            item.useAnimation = 32;
+            item.useTurn = true;
             item.autoReuse = true;
 
             item.ranged = true;
 
             item.UseSound = SoundID.Item5;
 
-            item.damage = 13;
+            item.damage = 15;
             //item.crit = 4;
             item.knockBack = 3f;
 

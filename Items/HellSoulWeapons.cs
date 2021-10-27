@@ -299,7 +299,7 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 35;
+            item.damage = 40;
             //item.crit = 4;
             item.knockBack = 1f;
 

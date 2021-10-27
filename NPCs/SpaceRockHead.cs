@@ -30,10 +30,10 @@ namespace StormDiversSuggestions.NPCs
             aiType = NPCID.FlyingSnake;
             animationType = NPCID.FlyingSnake;
 
-            npc.damage = 70;
+            npc.damage = 80;
             
-            npc.defense = 10;
-            npc.lifeMax = 600;
+            npc.defense = 15;
+            npc.lifeMax = 750;
             npc.noGravity = true;
 
 
@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (NPC.downedPlantBoss)
+            if (NPC.downedGolemBoss)
             {
                 return SpawnCondition.Sky.Chance * 0.4f;
             }
@@ -80,7 +80,7 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 240)
                 {
                     float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).
-                    int damage = 30; // The damage your projectile deals.
+                    int damage = 40; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("SpaceHeadProj");
 

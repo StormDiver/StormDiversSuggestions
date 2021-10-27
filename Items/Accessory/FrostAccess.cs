@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.Items.Accessory
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.Pink;
 
-            
+           
             item.accessory = true;
         }
 

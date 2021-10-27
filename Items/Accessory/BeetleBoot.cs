@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beetle Boots");
-            Tooltip.SetDefault("Massively increases movement speed and acceleration while Holding any melee weapon\nAlso allows flight and immunity to knockback");
+            Tooltip.SetDefault("Massively increases movement speed and acceleration\nAlso allows flight and immunity to knockback");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 67;
         }
@@ -32,7 +32,7 @@ namespace StormDiversSuggestions.Items.Accessory
         int soundDelay = 0;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.HeldItem.melee)
+            //if (player.HeldItem.melee)
             {
                 player.maxRunSpeed = (8f);
                 player.runAcceleration *= 3f;

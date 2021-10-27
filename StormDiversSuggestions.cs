@@ -20,12 +20,28 @@ namespace StormDiversSuggestions
 {
 	public class StormDiversSuggestions : Mod
 	{
-		public StormDiversSuggestions()
+        public static ModHotKey ArmourSpecialHotkey;
+        public override void Load()
+        {
+            
+            {
+                ArmourSpecialHotkey = RegisterHotKey("Armor Special Ability", "V");
+                //if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed) 
+            }
+        }
+        public override void Unload()
+        {
+            ArmourSpecialHotkey = null;
+        }
+        public StormDiversSuggestions()
 		{
 
 		}
         public override void AddRecipeGroups() //Recipe Groups
         {
+            //recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
+
+
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Bar", new int[]
             {
                 ItemID.DemoniteBar,
@@ -71,6 +87,13 @@ namespace StormDiversSuggestions
             });
             RecipeGroup.RegisterGroup("StormDiversSuggestions:Anvils", group);
 
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mid Tier Hardmode Bar", new int[]
+           {
+                ItemID.MythrilBar,
+                ItemID.OrichalcumBar,
+
+           });
+            RecipeGroup.RegisterGroup("StormDiversSuggestions:MidHMBars", group);
 
         }
     }

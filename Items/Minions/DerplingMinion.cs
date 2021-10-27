@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items.Minions
             item.width = 40;
             item.height = 46;
             item.maxStack = 1;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 25;
@@ -56,8 +56,8 @@ namespace StormDiversSuggestions.Items.Minions
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
 
-            item.damage = 48;
-            item.knockBack = 3f;
+            item.damage = 32;
+            item.knockBack = 3.5f;
             item.UseSound = SoundID.Item43;
 
             
@@ -172,7 +172,7 @@ namespace StormDiversSuggestions.Items.Minions
                 projectile.extraUpdates = 0;
             }
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 15;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

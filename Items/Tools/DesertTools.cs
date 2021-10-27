@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items.Tools
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Ancient Pickaxe"); 
+			DisplayName.SetDefault("Forbidden Pickaxe"); 
 			Tooltip.SetDefault("Can mine Adamantite and Titanium");
 		}
 
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items.Tools
         {
             if (Main.rand.Next(4) < 3)
             {
-                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 189, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 10, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items.Tools
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Hamaxe");
+            DisplayName.SetDefault("Forbidden Hamaxe");
             Tooltip.SetDefault("Strong enough to destroy Altars");
         }
 
@@ -85,7 +85,7 @@ namespace StormDiversSuggestions.Items.Tools
         {
             if (Main.rand.Next(4) < 3)
             {
-                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 189, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 10, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }

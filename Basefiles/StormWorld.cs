@@ -24,71 +24,62 @@ namespace StormDiversSuggestions.Basefiles
     {
         //All of this is to save a boolean for ever per world
 
-        public static bool SpawnIceOre; //This is for when you kill the Ice Golem
-        public static bool SpawnDesertOre; //Ditto with Sand Elemental
-        public  bool IceSpawned; //This is for when the frost ore first generates, so it will not generate again
-        public  bool DesertSpawned; //Ditto with Arid ore
-        public static bool PlanteraMessage; //For the message that appears when planter ais defeated
+        
+        public static bool PlanteraMessage; //For the message that appears when plantera is defeated
         public static bool EocMessage; //For the message when the eoc is defeated
         public static bool MechMessage; //For the message when a mech boss is defeated
+        public static bool GolemMessage; //For the message when the Golem is defeated
+
 
         public override void Initialize()
         {
-            SpawnIceOre = false;
-            SpawnDesertOre = false;
-            IceSpawned = false;
-            DesertSpawned = false;
+          
             PlanteraMessage = false;
             EocMessage = false;
             MechMessage = false;
+            GolemMessage = false;
         }
 
         public override TagCompound Save()
         {
             return new TagCompound
             {
-                {"SpawnIceOre", SpawnIceOre },
-                {"SpawnDesertOre", SpawnDesertOre },
-                {"IceSpawned", IceSpawned },
-                {"DesertSpawned", DesertSpawned },
+       
                 {"PlanteraMessage", PlanteraMessage },
                 {"EocMessage", EocMessage },
-                {"MechMessage", MechMessage }
+                {"MechMessage", MechMessage },
+                {"GolemMessage", GolemMessage }
             };
         }
         public override void Load(TagCompound tag)
         {
-            SpawnIceOre = tag.GetBool("SpawnIceOre");
-            SpawnDesertOre = tag.GetBool("SpawnDesertOre");
-            IceSpawned = tag.GetBool("IceSpawned");
-            DesertSpawned = tag.GetBool("DesertSpawned");
+      
             PlanteraMessage = tag.GetBool("PlanteraMessage");
             EocMessage = tag.GetBool("EocMessage");
             MechMessage = tag.GetBool("MechMessage");
+            GolemMessage = tag.GetBool("GolemMessage");
+
         }
 
         public override void NetSend(BinaryWriter writer)
         {
             var flags = new BitsByte();
-            flags[0] = SpawnIceOre;
-            flags[1] = SpawnDesertOre;
-            flags[2] = IceSpawned;
-            flags[3] = DesertSpawned;
+    
             flags[4] = PlanteraMessage;
             flags[5] = EocMessage;
             flags[6] = MechMessage;
+            flags[7] = GolemMessage;
             writer.Write(flags);
         }
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
-            SpawnIceOre = flags[0];
-            SpawnDesertOre = flags[1];
-            IceSpawned = flags[2];
-            DesertSpawned = flags[3];
+  
             PlanteraMessage = flags[4];
             EocMessage = flags[5];
             MechMessage = flags[6];
+            GolemMessage = flags[7];
+
         }
 
         public override void PostWorldGen()
@@ -340,12 +331,13 @@ namespace StormDiversSuggestions.Basefiles
 
         }
         
-        public override void PreUpdate()
+            public override void PreUpdate()
         {
             //For the messages when a boss is defeated
             if (NPC.downedPlantBoss && !PlanteraMessage)
             {
-                Main.NewText("Sentient asteroids have entered the atmosphere", 179, 151, 238);
+                Main.NewText("The Derplings begin to shed their shells", 47, 86, 146);
+
                 Main.NewText("The ancient temple defenses have greatly weakened", 204, 101, 22);
 
                 PlanteraMessage = true;
@@ -361,8 +353,13 @@ namespace StormDiversSuggestions.Basefiles
                 Main.NewText("A stronger life force radiates from the minor underground biomes", 96, 211, 255);
                 EocMessage = true;
             }
+            if (NPC.downedGolemBoss && !GolemMessage)
+            {
+                Main.NewText("Sentient asteroids have entered the atmosphere", 179, 151, 238);
+                GolemMessage = true;
+            }
             //To spawn the ores
-            if (SpawnIceOre && !IceSpawned)
+            /*if (SpawnIceOre && !IceSpawned)
             {
                 if (!GetInstance<Configurations>().PreventOreSpawn) 
                 {
@@ -416,13 +413,13 @@ namespace StormDiversSuggestions.Basefiles
                     }
                 }
                 DesertSpawned = true;
-            }
+            }*/
 
         }
     }
     public class WorldOre : GlobalNPC
     {
-        public override void NPCLoot(NPC npc)
+        /*public override void NPCLoot(NPC npc)
         {
             //set bools when the enemy is killed for the first time, these are saved at the top
             if (npc.type == NPCID.IceGolem) //this is where you choose what vanilla npc you want  , for a modded npc add this instead  if (npc.type == mod.NPCType("ModdedNpcName"))
@@ -441,6 +438,6 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
-        }
+        }*/
     }
 }

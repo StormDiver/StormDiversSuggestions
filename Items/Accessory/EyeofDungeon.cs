@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eye of the Dungeon");
-            Tooltip.SetDefault("Summons spinning bones where you stand");
+            Tooltip.SetDefault("Summons homing spinning bones from where you stand");
         }
         public override void SetDefaults()
         {
@@ -35,11 +35,11 @@ namespace StormDiversSuggestions.Items.Accessory
             
             
 
-            if (skulltime >=20)
+            if (skulltime >=40)
             {
                 
                
-                int damage = 20;
+                int damage = 16;
                 float speedX = 0f;
                 float speedY = -24f;
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(360));

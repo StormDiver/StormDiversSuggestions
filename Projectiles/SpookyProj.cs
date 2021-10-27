@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 600f;
+            float distance = 400f;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {

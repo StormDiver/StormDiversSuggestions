@@ -104,13 +104,13 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 13;
+            item.damage = 14;
             item.crit = 0;
             item.melee = true;
             item.width = 50;
             item.height = 64;
-            item.useTime = 40;
-            item.useAnimation = 40;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
@@ -119,7 +119,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.knockBack = 5f;
             item.shoot = mod.ProjectileType("GraniteSpearProj");
-            item.shootSpeed = 3.5f;
+            item.shootSpeed = 5f;
             item.noMelee = true;
             item.noUseGraphic = true;
 
@@ -192,7 +192,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 7;
             item.UseSound = SoundID.Item8;
 
-            item.damage = 13;
+            item.damage = 14;
 
             item.knockBack = 3f;
 

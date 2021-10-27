@@ -30,10 +30,10 @@ namespace StormDiversSuggestions.NPCs
             aiType = NPCID.SolarCorite;
             animationType = NPCID.FlyingSnake;
             npc.noGravity = true;
-            npc.damage = 65;
+            npc.damage = 75;
             
-            npc.defense = 20;
-            npc.lifeMax = 750;
+            npc.defense = 25;
+            npc.lifeMax = 900;
             
 
             npc.HitSound = SoundID.NPCHit7;
@@ -52,7 +52,7 @@ namespace StormDiversSuggestions.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (NPC.downedPlantBoss)
+            if (NPC.downedGolemBoss)
             {
                 return SpawnCondition.Sky.Chance * 0.4f;
             }

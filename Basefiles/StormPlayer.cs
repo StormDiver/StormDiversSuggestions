@@ -22,6 +22,24 @@ using StormDiversSuggestions.Buffs;
 
 namespace StormDiversSuggestions.Basefiles
 {
+    public class NoRoD : GlobalItem
+    {
+        /*public override bool CanUseItem(Item item, Player player) //use this to disable the RoD if you want 
+        {
+            if (item.type == ItemID.RodofDiscord)
+            {
+                if (player.HasBuff(mod.BuffType("TwilightDebuff")))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }*/
+    }
     public class StormPlayer : ModPlayer
     {
         //Bools activated from Armours and accessories
@@ -95,6 +113,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool hellSoulDebuff; //Player has the Hell Soul debuff
 
+        public bool twilightSet; //Player has full set of Twilight armour
+
         //Ints and Bools activated from this file
 
         public bool shotflame; //Indicates whether the SPooky Core has fired its flames or not
@@ -112,11 +132,13 @@ namespace StormDiversSuggestions.Basefiles
         public int spaceBarriercooldown; //Cooldown for the Defensive Space Armour set bonus
         public int shroomshotCount = 0; //Count show many times the player has fired with the shroomite access
         public bool shotrocket; //Wheter the shroomite rocket has been fired or not
-        public int hellblazetime; //TBA
+        public int hellblazetime; //Cooldown for the flames created from HellSoul armour set
         public int mushtime; //Cooldown for mushrooms summoned with mushroom armour
         public int hellsoultime; //Cooldown for the souls created by hell soul armour
         public bool flamefalling; //Falling at speed with betsy's flame
         public int stopflamefall; //Player has stoppd falling with flame core
+        public bool twilightcharged; //Activates when the player is able to teleport with the twilight armour
+        public int derplinglaunchcooldown; //How long until the player can launch enemies in the air with the Derplign armour set
 
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
@@ -154,6 +176,8 @@ namespace StormDiversSuggestions.Basefiles
             heartSteal = false;
             mushset = false;
             hellSoulDebuff = false;
+            twilightSet = false;
+            
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -168,15 +192,17 @@ namespace StormDiversSuggestions.Basefiles
             spaceBarriercooldown = 0;
             shroomshotCount = 0;
             shotrocket = false;
-            hellblazetime = 60;
+            hellblazetime = 45;
             mushtime = 60;
-            
+            twilightcharged = false;
+            derplinglaunchcooldown = 60;
         }
 
 
         public override void PostUpdateEquips() //Updates every frame
         {
             //Reduces ints if they are above 0======================
+          
             if (bloodtime > 0)
             {
                 bloodtime--;
@@ -206,9 +232,9 @@ namespace StormDiversSuggestions.Basefiles
             {
                 mushtime--;
             }
-            if (hellblazetime > 0)
+           if (derplinglaunchcooldown > 0)
             {
-                mushtime--;
+                derplinglaunchcooldown--;
             }
             if (spaceBarriercooldown < 360 && spaceRockDefence) // counts up and when it reaches int the buff is applied, so players must wait after equipping armour
             {
@@ -239,8 +265,125 @@ namespace StormDiversSuggestions.Basefiles
                 spaceStrikecooldown = 0;
             }
 
+            if (derplinglaunchcooldown == 0 && derpJump)
+            {
+                player.AddBuff(mod.BuffType("DerpBuff"), 2);
+
+            }
+
+            float xWarplimit = 560;
+            float yWarplimit = 320;
+            //For Twilight Armour
+            if (twilightSet)
+            {
+                float distanceX = player.Center.X - Main.MouseWorld.X;
+                float distanceY = player.Center.Y - Main.MouseWorld.Y;
+                float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+
+                if ( Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height) && !player.HasBuff(mod.BuffType("TwilightDebuff"))) //Checks if mouse is in valid postion
+                {
+                   
+                    twilightcharged = true; //Activates the outline effect on the armour
+
+                    if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed) //Activates when player presses button
+                    {
+                        player.AddBuff(BuffID.Obstructed, 10); //Hopefully this covers up the janky teleport :thePain:
+                        player.AddBuff(mod.BuffType("TwilightDebuff"), 900);
 
 
+                        {
+                            for (int i = 0; i < 30; i++) //Dust pre-teleport
+                            {
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
+                                dust.scale = 1.1f;
+                                dust.velocity *= 2;
+                                //dust.noGravity = true;
+
+                            }
+                            for (int i = 0; i < 30; i++)
+                            {
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
+                                dust.scale = 1.5f;
+                                dust.noGravity = true;
+                                dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+
+
+                            }
+
+                            //X postion 
+                            {
+                                if (distanceX <= xWarplimit && distanceX >= -xWarplimit)
+                                {
+                                    player.position.X = Main.MouseWorld.X - (player.width / 2);
+                                    //Main.NewText("Little mouse X", 0, 146, 0);
+                                }
+                                else
+                                {
+                                    if (distanceX < -xWarplimit)
+                                    {
+                                        player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX + xWarplimit);
+                                        //Main.NewText("Mouse it to the right", 146, 0, 0);
+                                    }
+                                    else if (distanceX > xWarplimit)
+                                    {
+                                        player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX - xWarplimit);
+                                        //Main.NewText("Mouse it to the left", 146, 0, 0);
+                                    }
+                                }
+                            }
+                            //Y postion 
+                             {
+                                 if (distanceY <= yWarplimit && distanceY >= -yWarplimit)
+                                 {
+                                     player.position.Y = Main.MouseWorld.Y - (player.height);
+                                     //Main.NewText("Little mouse Y", 0, 146, 0);
+                                 }
+                                 else
+                                 {
+                                     if (distanceY < -yWarplimit)
+                                     {
+                                         player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY + yWarplimit);
+                                         //Main.NewText("Mouse it to the down", 0, 0, 146);
+
+                                     }
+                                     else if (distanceY > yWarplimit)
+                                     {
+                                         player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY - yWarplimit);
+                                         //Main.NewText("Mouse it to the up", 0, 0, 146);
+                                     }
+                                 }
+                             }
+
+                            for (int i = 0; i < 30; i++) //Dust post-teleport
+                            {
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
+                                dust.scale = 1.1f;
+                                dust.velocity *= 2;
+                                //dust.noGravity = true;
+
+                            }
+                            for (int i = 0; i < 30; i++)
+                            {
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
+                                dust.scale = 1.5f;
+                                dust.noGravity = true;
+                                dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+
+                            }
+                            Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 8, 2f, -0.5f);
+
+                        
+
+                        }
+                    }
+
+                }
+                else
+                {
+                    twilightcharged = false; //Removes the outline effect if the player is unable to charge
+                }
+            }
+         
             //For Betsy's Flame======================
             if (flameCore)
             {
@@ -447,7 +590,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.Next(4) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
@@ -470,7 +613,7 @@ namespace StormDiversSuggestions.Basefiles
 
                                 float speedX = 0f;
                                 float speedY = -2f;
-                                int damage = (int)((player.HeldItem.damage * 0.75f) * player.allDamage);
+                                int damage = (int)((player.HeldItem.damage * 0.5f) * player.allDamage);
                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
@@ -499,12 +642,48 @@ namespace StormDiversSuggestions.Basefiles
             //for Derpling armour
             if (derpJump)
             {
-                player.jumpSpeedBoost += 5;
+                player.jumpSpeedBoost += 6;
 
                 player.autoJump = true;
-                player.maxFallSpeed *= 1.5f;
-                
+                player.maxFallSpeed *= 2f;
+
                 player.noKnockback = true;
+
+                if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed && derplinglaunchcooldown <= 0) //Activates when player presses button
+                {
+
+                    player.ClearBuff(mod.BuffType("DerpBuff"));
+
+                    Main.PlaySound(SoundID.NPCKilled, (int)player.Center.X, (int)player.Center.Y, 25, 1.5f, -0.5f);
+
+                    for (int i = 0; i < 40; i++)
+                    {
+                        float speedX = Main.rand.NextFloat(-2f, 2f);
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, speedX, -3, 130, default, 1.5f);
+                        dust.noGravity = true;
+                        dust.velocity *= 2;
+                        
+                    }
+                    for (int i = 0; i < 20; i++)
+                    {
+                        
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, -10, 0, 130, default, 1.5f);
+                        dust.noGravity = true;
+                        dust.velocity *= 2;
+
+                    }
+                    for (int i = 0; i < 20; i++)
+                    {
+
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, 10, 0, 130, default, 1.5f);
+                        dust.noGravity = true;
+                        dust.velocity *= 2;
+
+                    }
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("DerpWaveProj"), 50, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("DerpWaveProj"), 50, 0, player.whoAmI);
+                    derplinglaunchcooldown = 120;
+                }
             }
             
             if (!graniteBuff)//If the player removes the accessory the buff is gone
@@ -521,11 +700,11 @@ namespace StormDiversSuggestions.Basefiles
             {
                 if (Main.rand.Next(2) == 0)
                 {
-                    Projectile.NewProjectile(victim.Center.X - 150, victim.Center.Y - 150, 12, 12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
+                    Projectile.NewProjectile(victim.Center.X - 100, victim.Center.Y - 100, 12, 12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
                 }
                 else
                 {
-                    Projectile.NewProjectile(victim.Center.X + 150, victim.Center.Y - 150, -12, +12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
+                    Projectile.NewProjectile(victim.Center.X + 100, victim.Center.Y - 100, -12, +12f, mod.ProjectileType("MagicMushArmourProj"), mushdamage, 0, player.whoAmI); //Summoned directly above and goes straight down
 
                 }
 
@@ -553,7 +732,6 @@ namespace StormDiversSuggestions.Basefiles
                     var dust = Dust.NewDustDirect(player.position, player.width, player.height, 6, speedX, speedY, 130, default, 1.5f);
                     dust.noGravity = true;
                     dust.velocity *= 2;
-                    dust.noGravity = true;
 
                 }
                 Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 45);
@@ -605,7 +783,7 @@ namespace StormDiversSuggestions.Basefiles
                     Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 20);
 
                     
-                    float numberProjectiles = 8 + Main.rand.Next(0);
+                    float numberProjectiles = 4 + Main.rand.Next(0);
                     float rotation = MathHelper.ToRadians(180);
                     //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                     for (int i = 0; i < numberProjectiles; i++)
@@ -613,7 +791,7 @@ namespace StormDiversSuggestions.Basefiles
                         float speedX = -1f;
                         float speedY = 0f;
                         Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles)));
-                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), 35, 0f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DesertSpellProj"), 15, 0f, player.whoAmI);
 
                         desertdusttime = 240;
 
@@ -632,10 +810,10 @@ namespace StormDiversSuggestions.Basefiles
             player.ClearBuff(mod.BuffType("HeartBarrierBuff")); //Removes buff on hit
             attackdmg = (int)damage; //Int for the damage taken
 
-            //triggers the grnaite accessory buff for 5 seconds, and it cannot be refreshed until the 10 second timer hjas ran out
+            //triggers the granite accessory buff for 5 seconds, and it cannot be refreshed until the 10 second timer hjas ran out
             if (graniteBuff && !player.HasBuff(mod.BuffType("GraniteAccessBuff"))  && granitebufftime == 0 && damage > 1)
             {
-                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 180);
+                player.AddBuff(mod.BuffType("GraniteAccessBuff"), 240);
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 41, 1, -0.3f);
                 for (int i = 0; i < 25; i++)
                 {
@@ -645,7 +823,7 @@ namespace StormDiversSuggestions.Basefiles
                     dust.scale = 2f;
                     dust.velocity *= 2;
                 }
-                granitebufftime = 600;
+                granitebufftime = 600; //Activates the 10 second cooldown
             }
             //For Space Armour with Mask (Defence)
             int defencedmg = 100 + (attackdmg * 2); //Boulder damage
@@ -749,13 +927,12 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen) //Makes sure this only happens once
                     {
-                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(5) == 0) //1 in 5 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {
-                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                                 var dust = Dust.NewDustDirect(new Vector2(target.Center.X, target.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
@@ -771,10 +948,9 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
             //For the Soul Fire armour setbonus with true melee
-            int hellsouldmg = (int)(50 * player.allDamage);
             if (hellSoulSet && hellblazetime == 0)
             {
-                float numberProjectiles = 9;
+                /*float numberProjectiles = 9;
 
                 float rotation = MathHelper.ToRadians(140);
                 //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
@@ -784,7 +960,12 @@ namespace StormDiversSuggestions.Basefiles
                     float speedY = 0f;
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.27f));
                     Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
-                }
+                }*/
+                float speedX = 0f;
+                float speedY = -8f;
+
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(100)); // This defines the projectiles random spread . 10 degree spread.
+                Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), 80, 0, player.whoAmI);
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -802,7 +983,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
-                hellblazetime = 180;
+                hellblazetime = 45;
             }
         }
 
@@ -815,14 +996,13 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once
                     {
-                        if (Main.rand.Next(8) == 0) //1 in 8 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(5) == 0) //1 in 5 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             
                             Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
                             for (int i = 0; i < 15; i++)
                             {
-                                Vector2 vel = new Vector2(Main.rand.NextFloat(-5, -5), Main.rand.NextFloat(5, 5));
                                 var dust = Dust.NewDustDirect(new Vector2(target.Center.X, target.Center.Y), 5, 5, 72);
                                 //dust.noGravity = true;
                             }
@@ -838,10 +1018,10 @@ namespace StormDiversSuggestions.Basefiles
                 }
             }
             //For the Soul Fire armour setbonus with projectiles ======================
-            int hellsouldmg = (int)(50 * player.allDamage);
+           
             if (hellSoulSet && hellblazetime == 0)
             {
-                float numberProjectiles = 9;
+                /*float numberProjectiles = 9;
                 
                 float rotation = MathHelper.ToRadians(140);
                 //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
@@ -851,7 +1031,15 @@ namespace StormDiversSuggestions.Basefiles
                     float speedY = 0f;
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.27f));
                     Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
-                }
+                }*/
+
+                //Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, -8, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
+                float speedX = 0f;
+                float speedY = -8f;
+                
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(100)); // This defines the projectiles random spread . 10 degree spread.
+                    Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), 65, 0, player.whoAmI);
+                
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -869,7 +1057,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
-                hellblazetime = 180;
+                hellblazetime = 45;
             }
         }
         
@@ -881,6 +1069,8 @@ namespace StormDiversSuggestions.Basefiles
         {
 
         }
+
+         
         public override void UpdateLifeRegen()
         {
             //Regeneration, can also be done in buffs.cs

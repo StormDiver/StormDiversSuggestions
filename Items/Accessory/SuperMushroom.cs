@@ -63,26 +63,26 @@ namespace StormDiversSuggestions.Items.Accessory
             
             if (player.statLife >= player.statLifeMax2 * .75f)
             {
-                item.defense = 3;
-                player.allDamage += 0.03f;
+                item.defense = 4;
+                player.allDamage += 0.04f;
                 dustchance = 16;
             }
             else if (player.statLife >= player.statLifeMax2 * .5f && player.statLife < player.statLifeMax2 * .75f)
             {
-                item.defense = 6;
-                player.allDamage += 0.06f;
+                item.defense = 8;
+                player.allDamage += 0.8f;
                 dustchance = 8;
             }
             else if (player.statLife >= player.statLifeMax2 * .25f && player.statLife < player.statLifeMax2 * .5f)
             {
-                item.defense = 9;
-                player.allDamage += 0.09f;
+                item.defense = 12;
+                player.allDamage += 0.12f;
                 dustchance = 4;
             }
             else 
             {
-                item.defense = 12;
-                player.allDamage += 0.12f;
+                item.defense = 16;
+                player.allDamage += 0.16f;
                 dustchance = 2;
             }
             

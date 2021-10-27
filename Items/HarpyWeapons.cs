@@ -96,8 +96,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Blue;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -162,7 +162,7 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 15;
+            item.damage = 18;
             //item.crit = 0;
             item.melee = true;
             item.width = 20;

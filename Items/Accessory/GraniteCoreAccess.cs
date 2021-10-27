@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             
             DisplayName.SetDefault("Granite Core");
-            Tooltip.SetDefault("Taking more than 1 damage grants the Granite Surge buff, granting 50% increased damage for 3 seconds\nHas a 10 second cooldown between activation");
+            Tooltip.SetDefault("Taking more than 1 damage grants the Granite Surge buff, granting 50% increased damage for 4 seconds\nHas a 10 second cooldown between activation");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }
         public override void PostUpdate()

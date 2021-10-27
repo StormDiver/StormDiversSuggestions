@@ -30,10 +30,10 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 9;
+            item.mana = 8;
             
 
-            item.damage = 27;
+            item.damage = 37;
             //item.crit = 4;
             item.knockBack = 1f;
 

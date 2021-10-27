@@ -16,8 +16,8 @@ namespace StormDiversSuggestions.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 18;
-            item.crit = 0;
+			item.damage = 20;
+            
 			item.melee = true;
 			item.width = 30;
 			item.height = 42;
@@ -27,13 +27,14 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
             //item.useTurn = true;
-            item.knockBack = 3;
+            item.knockBack = 4;
+            item.scale = 1.15f;
             //item.shoot = mod.ProjectileType("BloodSwordProj");
             item.shoot = mod.ProjectileType("BloodSwordProj");
 
-            item.shootSpeed = 7f;
+            item.shootSpeed = 8f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -90,13 +91,13 @@ namespace StormDiversSuggestions.Items
             item.melee = true;
             item.width = 50;
             item.height = 64;
-            item.useTime = 21;
-            item.useAnimation = 21;
+            item.useTime = 24;
+            item.useAnimation = 24;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 75, 0);
             item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.useTurn = false;
             item.knockBack = 4f;
             item.shoot = mod.ProjectileType("BloodSpearProj");

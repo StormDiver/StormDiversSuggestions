@@ -9,6 +9,7 @@ using StormDiversSuggestions.Items.Accessory;
 using StormDiversSuggestions.Items.Armour;
 using StormDiversSuggestions.Items;
 using StormDiversSuggestions.Items.Ammo;
+using StormDiversSuggestions.Items.Materials;
 using StormDiversSuggestions.Basefiles;
 using StormDiversSuggestions.OresandBars;
 using static Terraria.ModLoader.ModContent;
@@ -69,7 +70,7 @@ namespace StormDiversSuggestions.TreasureBags
 
             if (context == "crate" && arg == ItemID.WoodenCrate)
             {
-                if (StormWorld.SpawnIceOre)
+                if (Main.hardMode)
                 {
                     // if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneSnow && Main.hardMode)
 
@@ -78,7 +79,7 @@ namespace StormDiversSuggestions.TreasureBags
                         player.QuickSpawnItem(ItemType<IceOre>(), Main.rand.Next(8, 16));
                     }
                 }
-                if (StormWorld.SpawnDesertOre)
+                if (Main.hardMode)
                     //if (Main.player[Player.FindClosest(player.position, player.width, player.height)].ZoneDesert && Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 7)
@@ -86,14 +87,14 @@ namespace StormDiversSuggestions.TreasureBags
                         player.QuickSpawnItem(ItemType<DesertOre>(), Main.rand.Next(8, 16));
                     }
                 }
-                if (StormWorld.SpawnIceOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 5)
                     {
                         player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(1, 4));
                     }
                 }
-                if (StormWorld.SpawnDesertOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 5)
                     {
@@ -104,14 +105,14 @@ namespace StormDiversSuggestions.TreasureBags
 
             if (context == "crate" && arg == ItemID.IronCrate)
             {
-                if (StormWorld.SpawnIceOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 7)
                     {
                         player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(5, 10));
                     }
                 }
-                if (StormWorld.SpawnDesertOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 7)
                     {
@@ -121,14 +122,14 @@ namespace StormDiversSuggestions.TreasureBags
             }
             if (context == "crate" && arg == ItemID.GoldenCrate)
             {
-                if (StormWorld.SpawnIceOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 10)
                     {
                         player.QuickSpawnItem(ItemType<IceBar>(), Main.rand.Next(10, 14));
                     }
                 }
-                if (StormWorld.SpawnDesertOre)
+                if (Main.hardMode)
                 {
                     if (Main.rand.Next(100) < 10)
                     {

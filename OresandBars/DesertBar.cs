@@ -7,6 +7,7 @@ using Terraria.ObjectData;
 using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Basefiles;
+using StormDiversSuggestions.Items.Materials;
 
 namespace StormDiversSuggestions.OresandBars
 {
@@ -14,8 +15,8 @@ namespace StormDiversSuggestions.OresandBars
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Bar");
-            Tooltip.SetDefault("Used in the creation of ancient armour and weapons");
+            DisplayName.SetDefault("Forbidden Bar");
+            Tooltip.SetDefault("Used in the creation of forbidden armour and weapons");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 80;
         }
 
@@ -50,7 +51,7 @@ namespace StormDiversSuggestions.OresandBars
                 TileObjectData.newTile.LavaDeath = false;
                 TileObjectData.addTile(Type);
 
-                AddMapEntry(new Color(204, 132, 0), Language.GetText("Arid Bar")); // localized text for "Metal Bar"
+                AddMapEntry(new Color(238, 204, 34), Language.GetText("Forbidden Bar")); // localized text for "Metal Bar"
             }
 
             public override bool Drop(int i, int j)
@@ -66,94 +67,7 @@ namespace StormDiversSuggestions.OresandBars
         }
     }
     //____________________________________________________________________________________________________
-    public class DesertOre : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Arid Ore");
-            Tooltip.SetDefault("Retrieved from the depths of the deserted caves");
-
-        }
-
-        public override void SetDefaults()
-        {
-            item.width = 16;
-            item.height = 16;
-            item.maxStack = 999;
-            item.value = Item.sellPrice(0, 0, 10, 0);
-            item.rare = ItemRarityID.Pink;
-            item.useStyle = ItemUseStyleID.SwingThrow;  
-            item.useTurn = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.createTile = TileType<DesertOrePlaced>();
-            item.consumable = true;
-            item.autoReuse = true;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(this, 3);
-            recipe.AddTile(TileID.Hellforge);
-            recipe.SetResult(mod.GetItem("DesertBar"));
-            recipe.AddRecipe();
-            if (GetInstance<Configurations>().PreventOreSpawn)
-            {
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.AdamantiteBar, 20);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
-                recipe.AddTile(TileID.Hellforge);
-                recipe.SetResult(mod.GetItem("DesertBar"), 20);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TitaniumBar, 20);
-                recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
-                recipe.AddTile(TileID.Hellforge);
-                recipe.SetResult(mod.GetItem("DesertBar"), 20);
-                recipe.AddRecipe();
-            }
-        }
-
-
-        public class ModGlobalNPC : GlobalNPC
-        {
-            public override bool InstancePerEntity => true;
-            public override void NPCLoot(NPC npc)
-            {
-
-             
-           
-                if (StormWorld.SpawnDesertOre)
-                {
-                    // if (npc.type == NPCID.DesertBeast || npc.type == NPCID.DesertScorpionWalk || npc.type == NPCID.DesertScorpionWall || npc.type == NPCID.DesertGhoul || npc.type == NPCID.DesertLamiaDark || npc.type == NPCID.DesertLamiaLight || npc.type == NPCID.DesertGhoulHallow || npc.type == NPCID.DesertGhoulCorruption || npc.type == NPCID.DesertGhoulCrimson)
-                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
-                    {
-                        if (Main.rand.Next(100) < 33)
-
-                        {
-                            if (Main.expertMode)
-
-
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(2, 4));
-                            }
-
-                            else
-                            {
-
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(1, 4));
-
-                            }
-                        }
-                    }
-                   
-                }
-               
-            }
-        }
-    }
+   
     //____________________________________________________________________________________
     public class DesertOrePlaced : ModTile
     {
@@ -170,10 +84,10 @@ namespace StormDiversSuggestions.OresandBars
             Main.tileBlockLight[Type] = true;
 
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Arid Ore");
-            AddMapEntry(new Color(204, 132, 0), name);
+            name.SetDefault("Forbidden Ore");
+            AddMapEntry(new Color(238, 204, 34), name);
 
-            dustType = 189;
+            dustType = 54;
             drop = ItemType<DesertOre>();
             soundType = SoundID.Tink;
             soundStyle = 1;

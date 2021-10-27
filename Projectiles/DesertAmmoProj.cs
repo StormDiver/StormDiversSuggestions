@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Bullet");
+            DisplayName.SetDefault("Forbidden Bullet");
           
         }
 
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Projectiles
                     {
 
                         Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                        var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                        var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 10);
                         dust2.noGravity = true;
                     }
 
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 54);
                 dust2.noGravity = true;
             }
             return true;
@@ -109,7 +109,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Bullet");
+            DisplayName.SetDefault("Forbidden Bullet");
             
         }
 
@@ -156,7 +156,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 54);
                 dust2.noGravity = true;
             }
 
@@ -176,7 +176,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Arrow");
+            DisplayName.SetDefault("Forbidden Arrow");
         }
 
         public override void SetDefaults()
@@ -248,7 +248,7 @@ namespace StormDiversSuggestions.Projectiles
               
 
 
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0f, 0f, 100, default, 0.7f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 10, 0f, 0f, 100, default, 0.7f);
                 Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
             }
@@ -265,7 +265,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 54);
                 dust2.noGravity = true;
             }
         }

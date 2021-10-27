@@ -40,7 +40,7 @@ namespace StormDiversSuggestions.NPCProjs
         bool dustspawn = false;
         public override void AI()
         {
-            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0f, 0f, 100, default, 0.7f);
+            int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 135, 0f, 0f, 100, default, 0.7f);
             Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
             Main.dust[dustIndex].noGravity = true;
 
@@ -51,7 +51,7 @@ namespace StormDiversSuggestions.NPCProjs
                 for (int i = 0; i < 15; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 187);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 135);
                     dust.velocity *= 2;
                 }
                 dustspawn = true;
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.NPCProjs
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 187);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 135);
                 }
 
             

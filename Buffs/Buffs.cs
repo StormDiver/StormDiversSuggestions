@@ -338,17 +338,17 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Warrior's Gift");
-            Description.SetDefault("12% increased critical strike chance");
+            Description.SetDefault("20% increased critical strike chance");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
 
-            player.meleeCrit += 12;
-            player.rangedCrit += 12;
-            player.magicCrit += 12;
-            player.thrownCrit += 12;
+            player.meleeCrit += 20;
+            player.rangedCrit += 20;
+            player.magicCrit += 20;
+            player.thrownCrit += 20;
 
             if (Main.rand.Next(5) == 0)
             {
@@ -366,7 +366,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Defense");
-            Description.SetDefault("Damage taken from the next attack is reduced by 25% and will grant longer invincibility frames\nTaking damage summons defense-piercing space boulders from the sky");
+            Description.SetDefault("Damage taken from the next attack is reduced by 25% and will grant longer invincibility frames\nTaking damage summons asteroids from the sky");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
@@ -391,7 +391,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Strike");
-            Description.SetDefault("Your next attack will cause defense-piercing space boulders to fall upon the attacked enemy");
+            Description.SetDefault("Your next attack will cause asteroids to fall upon the attacked enemy");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
@@ -407,6 +407,23 @@ namespace StormDiversSuggestions.Buffs
                 Main.dust[dust].velocity.Y -= 0.5f;
                 Main.playerDrawDust.Add(dust);
             }
+        }
+    }
+    //_______________________________________________________
+    public class DerpBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Derpling Launch");
+            Description.SetDefault("In Terraria, Derpling Jump you");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+
+           
         }
     }
 }

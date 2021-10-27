@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Helmet");
-            Tooltip.SetDefault("13% increased damage\n10% increased critical strike chance");
+            Tooltip.SetDefault("14% increased damage\n10% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -41,7 +41,16 @@ namespace StormDiversSuggestions.Items.Armour
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawShadow = true;
-            
+
+            if (player.HasBuff(mod.BuffType("DerpBuff")))
+            {
+                player.armorEffectDrawOutlines = true;
+                
+            }
+            else
+            {
+                player.armorEffectDrawOutlines = false;
+            }
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -51,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback";
+            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nPress the 'Armor Special Ability' hot key to launch nearby grounded enemies into the air";
 
             player.GetModPlayer<StormPlayer>().derpJump = true;
          
@@ -79,7 +88,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Breastplate");
-            Tooltip.SetDefault("8% increased damage");
+            Tooltip.SetDefault("10% increased damage");
         }
 
         public override void SetDefaults()
@@ -88,13 +97,13 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
-            item.defense = 15;
+            item.defense = 18;
         }
 
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.08f;
+            player.allDamage += 0.1f;
             /*player.meleeCrit += 4;
             player.rangedCrit += 4;
             player.magicCrit += 4;
@@ -121,7 +130,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Greaves");
-            Tooltip.SetDefault("8% increased critical strike chance\n20% increased movement speed and immunity to fall damage");
+            Tooltip.SetDefault("10% increased critical strike chance\n25% increased movement speed and immunity to fall damage");
         }
 
         public override void SetDefaults()
@@ -130,17 +139,17 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
-            item.defense = 10;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player)
         {
             //player.allDamage += 0.04f;
-            player.meleeCrit += 8;
-            player.rangedCrit += 8;
-            player.magicCrit += 8;
-            player.thrownCrit += 8;
-            player.moveSpeed += 0.2f;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
+            player.thrownCrit += 10;
+            player.moveSpeed += 0.25f;
 
             player.noFallDmg = true;
         }
@@ -165,7 +174,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("Increases summon damage by 10%\nIncreases your max number of minions by 1");
+            Tooltip.SetDefault("Increases summon damage by 20%\nIncreases your max number of minions by 1");
         }
 
         public override void SetDefaults()
@@ -174,14 +183,14 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
-            item.defense = 5;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
        
             player.maxMinions += 1;
-            player.minionDamage += 0.1f;
+            player.minionDamage += 0.2f;
 
         }
 
@@ -198,7 +207,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nIncreases your max number of minions by 2";
+            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nIncreases your max number of minions by 2\nPress the 'Armor Special Ability' hot key to launch nearby grounded enemies into the air";
 
             player.maxMinions += 2;
 

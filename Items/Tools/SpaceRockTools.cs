@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetDefaults()
         {
             
-            item.damage = 40;
+            item.damage = 45;
             item.melee = true;
             item.width = 40;
             item.height = 22;
@@ -32,9 +32,9 @@ namespace StormDiversSuggestions.Items.Tools
             item.useTurn = true;
             item.shoot = mod.ProjectileType("SpaceRockDrillSawProj");
             item.shootSpeed = 30f;
-            item.pick = 200;
+            item.pick = 210;
             item.axe = 30;
-            item.tileBoost = 2;
+            item.tileBoost = 3;
             item.UseSound = SoundID.Item23;
             item.noMelee = true;
             item.noUseGraphic = true; 
@@ -69,7 +69,7 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 50;
+            item.damage = 60;
             item.melee = true;
             item.width = 50;
             item.height = 20;
@@ -84,7 +84,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.shoot = mod.ProjectileType("SpaceRockJackhammerProj");
             item.shootSpeed = 35f;
             item.hammer = 100;
-            item.tileBoost = 2;
+            item.tileBoost = 3;
             item.UseSound = SoundID.Item23;
             item.noMelee = true;
             item.noUseGraphic = true;

@@ -4,6 +4,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StormDiversSuggestions.Basefiles;
+
 
 namespace StormDiversSuggestions.Items.Materials
 {
@@ -123,7 +125,7 @@ namespace StormDiversSuggestions.Items.Materials
                     if (Main.expertMode)
                     {
 
-                        if (Main.rand.Next(100) < 33)
+                        if (Main.rand.Next(100) < 75)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -132,7 +134,7 @@ namespace StormDiversSuggestions.Items.Materials
 
                     else
                     {
-                        if (Main.rand.Next(100) < 25)
+                        if (Main.rand.Next(100) < 50)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GraniteCore"));
@@ -184,7 +186,7 @@ namespace StormDiversSuggestions.Items.Materials
                 if (npc.type == NPCID.GreekSkeleton)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(100) < 33)
+                        if (Main.rand.Next(100) < 75)
 
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
@@ -192,7 +194,7 @@ namespace StormDiversSuggestions.Items.Materials
                     }
                     else
                     {
-                        if (Main.rand.Next(100) < 25)
+                        if (Main.rand.Next(100) < 50)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedSilk"));
                         }
@@ -268,9 +270,8 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 16;
             item.height = 24;
             item.maxStack = 999;
-            item.value = Item.sellPrice(0, 0, 10, 0);
-            
-                     item.rare = ItemRarityID.Lime;
+            item.value = Item.sellPrice(0, 0, 25, 0);
+             item.rare = ItemRarityID.Lime;
 
         }
 
@@ -279,22 +280,23 @@ namespace StormDiversSuggestions.Items.Materials
         {
             public override void NPCLoot(NPC npc)
             {
-                if (npc.type == NPCID.Derpling)
-                    if (Main.expertMode)
-                    {
-                        if (Main.rand.Next(100) < 75)
-                        {
-
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
-                        }
-                    }
-                else
+                if (NPC.downedPlantBoss)
                 {
-                        if (Main.rand.Next(100) < 50)
+                    if (npc.type == NPCID.Derpling)
+                        if (Main.expertMode)
                         {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
+                           
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"), Main.rand.Next(1, 3));
+                            
                         }
-                    }
+                        else
+                        {
+                            
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
+                            
+                        }
+                }
             }
         }
        
@@ -370,20 +372,20 @@ namespace StormDiversSuggestions.Items.Materials
                             if (Main.expertMode)
                             {
 
-                            if (Main.rand.Next(100) < 33)
+                                if (Main.rand.Next(100) < 50)
 
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
-                            }
+                                {
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
+                                }
                             }
 
                             else
                             {
-                            if (Main.rand.Next(100) < 25)
+                                if (Main.rand.Next(100) < 33)
 
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
-                            }
+                                {
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BloodDrop"));
+                                }
                           }
                         
                     }
@@ -410,7 +412,7 @@ namespace StormDiversSuggestions.Items.Materials
             item.width = 20;
             item.height = 20;
             item.maxStack = 999;
-            item.value = Item.sellPrice(0, 0, 10, 0);
+            item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = ItemRarityID.Yellow;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
@@ -505,5 +507,153 @@ namespace StormDiversSuggestions.Items.Materials
             }
         }
 
+    }
+    //____________________________________________________________________________________
+    public class IceOre : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Frost Shard");
+
+            Tooltip.SetDefault("Retrieved from the depths of the frozen caves");
+
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 10;
+            item.height = 10;
+            item.maxStack = 999;
+
+            item.value = Item.sellPrice(0, 0, 10, 0);
+            item.rare = ItemRarityID.Pink;
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+        public override void AddRecipes()
+        {
+
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this, 3);
+            //recipe.AddIngredient(ItemID.MythrilBar, 1);
+            recipe.AddRecipeGroup("StormDiversSuggestions:MidHMBars", 1);
+
+            recipe.AddTile(TileID.Hellforge);
+            recipe.SetResult(mod.GetItem("IceBar"));
+            recipe.AddRecipe();
+
+        }
+
+
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override bool InstancePerEntity => true;
+            public override void NPCLoot(NPC npc)
+            {
+
+
+                if (Main.hardMode)
+                {
+
+                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
+                    {
+                        if (Main.rand.Next(100) < 50)
+
+                        {
+                            if (Main.expertMode)
+
+
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 5));
+                            }
+
+                            else
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 4));
+
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+    //_________________________________________________________________________________________________
+    public class DesertOre : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Forbidden Shard");
+            Tooltip.SetDefault("Retrieved from the depths of the deserted caves");
+
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 16;
+            item.height = 16;
+            item.maxStack = 999;
+            item.value = Item.sellPrice(0, 0, 10, 0);
+            item.rare = ItemRarityID.Pink;
+      
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this, 3);
+            //recipe.AddIngredient(ItemID.MythrilBar, 1);
+            recipe.AddRecipeGroup("StormDiversSuggestions:MidHMBars", 1);
+
+            recipe.AddTile(TileID.Hellforge);
+            recipe.SetResult(mod.GetItem("DesertBar"));
+            recipe.AddRecipe();
+        }
+
+
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override bool InstancePerEntity => true;
+            public override void NPCLoot(NPC npc)
+            {
+
+
+
+                if (Main.hardMode)
+                {
+                    
+                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
+                    {
+                        if (Main.rand.Next(100) < 50)
+
+                        {
+                            if (Main.expertMode)
+
+
+                            {
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
+                            }
+
+                            else
+                            {
+
+                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(2, 4));
+
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
     }
 }

@@ -14,12 +14,12 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sand Sentry");
+            DisplayName.SetDefault("Forbidden Sentry");
             Main.projFrames[projectile.type] = 8;
         }
         public override void SetDefaults()
         {
-       
+      
             projectile.width = 50;
             projectile.height = 50;
             projectile.friendly = true;
@@ -55,11 +55,11 @@ namespace StormDiversSuggestions.Projectiles
             {
                 if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
                 {
-                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 138, 0, 10, 130, default, 1f);
+                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 10, 0, 10, 130, default, 1f);
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                     Main.dust[dust].velocity *= 0.5f;
-                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 54, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
 
@@ -156,7 +156,7 @@ namespace StormDiversSuggestions.Projectiles
             {
 
                 Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 138);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 54);
                 dust2.noGravity = true;
             }
         }
@@ -167,7 +167,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Burning Sand");
+            DisplayName.SetDefault("Forbidden Sand");
         }
         public override void SetDefaults()
         {
@@ -191,11 +191,11 @@ namespace StormDiversSuggestions.Projectiles
             {
                 if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
                 {
-                    int dust = Dust.NewDust(new Vector2(projectile.Center.X - 10, projectile.Center.Y - 10), 20, 20, 138, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
+                    int dust = Dust.NewDust(new Vector2(projectile.Center.X - 10, projectile.Center.Y - 10), 20, 20, 10, projectile.velocity.X * 1f, projectile.velocity.Y * 1f, 130, default, 1.5f);
 
                     Main.dust[dust].noGravity = true; //this make so the dust has no gravity
                     Main.dust[dust].velocity *= 0.5f;
-                    int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 55, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
+                    int dust2 = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 54, projectile.velocity.X, projectile.velocity.Y, 130, default, 0.5f);
                 }
             }
             else

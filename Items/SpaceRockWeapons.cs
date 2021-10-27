@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Globe");
-            Tooltip.SetDefault("Summons a floating boulder at the cursor's location that explodes into fragments");
+            Tooltip.SetDefault("Summons a floating asteroid at the cursor's location that explodes into fragments");
             
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
@@ -27,15 +27,15 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Cyan;
             item.useStyle = ItemUseStyleID.HoldingUp;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 24;
+            item.useAnimation = 24;
             item.useTurn = false;
             //item.channel = true;
             item.magic = true;
             item.autoReuse = true;
             item.UseSound = SoundID.Item78;
 
-            item.damage = 52;
+            item.damage = 60;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -43,7 +43,7 @@ namespace StormDiversSuggestions.Items
             
             item.shootSpeed = 0f;
 
-            item.mana = 16;
+            item.mana = 15;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
         }
@@ -88,12 +88,12 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Blade");
-            Tooltip.SetDefault("Rains down rock fragments from the sky");
+            Tooltip.SetDefault("Rains down asteroid fragments from the sky");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 85;
+            item.damage = 100;
         
             item.melee = true;
             item.width = 40;
@@ -109,7 +109,7 @@ namespace StormDiversSuggestions.Items
             item.scale = 1.3f;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("SpaceSwordProj");
-            item.shootSpeed = 14f;
+            item.shootSpeed = 16f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -137,9 +137,9 @@ namespace StormDiversSuggestions.Items
                     float num15 = item.shootSpeed / num14;
                     float num16 = num12 * num15;
                     float num17 = num13 * num15;
-                    float SpeedX = num16 + (float)Main.rand.Next(-10, 10) * 0.02f;  //this defines the projectile X position speed and randomnes
-                    float SpeedY = num17 + (float)Main.rand.Next(-10, 10) * 0.02f;  //this defines the projectile Y position speed and randomnes
-                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX * 1.5f, SpeedY * 1.5f, type, (int)(damage * 0.75f), 0.5f, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
+                    float SpeedX = num16 + (float)Main.rand.Next(-10, 10) * 0.05f;  //this defines the projectile X position speed and randomnes
+                    float SpeedY = num17 + (float)Main.rand.Next(-10, 10) * 0.05f;  //this defines the projectile Y position speed and randomnes
+                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, type, (int)(damage * 0.75f), 0.5f, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
                 }
                 Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 13);
               
@@ -185,7 +185,7 @@ namespace StormDiversSuggestions.Items
 
             item.UseSound = SoundID.Item40;
 
-            item.damage = 35;
+            item.damage = 40;
             
             item.knockBack = 2f;
 

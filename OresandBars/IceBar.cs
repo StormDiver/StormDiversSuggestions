@@ -8,6 +8,8 @@ using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Basefiles;
 
+using StormDiversSuggestions.Items.Materials;
+
 namespace StormDiversSuggestions.OresandBars
 {
     public class IceBar : ModItem
@@ -66,96 +68,9 @@ namespace StormDiversSuggestions.OresandBars
         }
     }
     //___________________________________________________________________________
-    public class IceOre : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Frost Ore");
-            Tooltip.SetDefault("Retrieved from the depths of the frozen caves");
-
-        }
-
-        public override void SetDefaults()
-        {
-            item.width = 16;
-            item.height = 16;
-            item.maxStack = 999;
-            item.value = Item.sellPrice(0, 0, 10, 0);
-            item.rare = ItemRarityID.Pink;
-            item.useStyle = ItemUseStyleID.SwingThrow;  
-            item.useTurn = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.createTile = TileType<IceOrePlaced>();
-            item.consumable = true;
-            item.autoReuse = true;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(this, 3);
-            recipe.AddTile(TileID.Hellforge);
-            recipe.SetResult(mod.GetItem("IceBar"));
-            recipe.AddRecipe();
-            if (GetInstance<Configurations>().PreventOreSpawn)
-            {
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.AdamantiteBar, 20);
-                recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddTile(TileID.Hellforge);
-                recipe.SetResult(mod.GetItem("IceBar"), 20);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.TitaniumBar, 20);
-                recipe.AddIngredient(ItemID.FrostCore);
-                recipe.AddTile(TileID.Hellforge);
-                recipe.SetResult(mod.GetItem("IceBar"), 20);
-                recipe.AddRecipe();
-            }
-
-        }
-
-
-        public class ModGlobalNPC : GlobalNPC
-        {
-            public override bool InstancePerEntity => true;
-            public override void NPCLoot(NPC npc)
-            {
-                
-               
-                    if (StormWorld.SpawnIceOre)
-                {
-                    //if (npc.type == NPCID.IceTortoise || npc.type == NPCID.IceElemental || npc.type == NPCID.IcyMerman || npc.type == NPCID.ArmoredViking || npc.type == NPCID.PigronHallow || npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson)
-                    if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
-                    {
-                        if (Main.rand.Next(100) < 33)
-
-                        {
-                            if (Main.expertMode)
-
-                           
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 4));
-                            }
-
-                            else
-                            {
-                               
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(1, 4));
-                              
-                            }
-                        }
-                    }
-                   
-                }
-               
-            }
-        }
-    }
+    
     //___________________________________________________________________________
-    public class IceOrePlaced : ModTile
+    public class IceOrePlaced : ModTile //Legacy item, cannot be generated anymore or placed
     {
 
         public override void SetDefaults()

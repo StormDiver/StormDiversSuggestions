@@ -62,9 +62,9 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Holding down while grounded grants damage resistance but lowers movement speed";
+            player.setBonus = "Holding down the 'Armor Special Ability' hotkey while grounded grants damage resistance but lowers movement speed";
 
-            if (player.controlDown && player.velocity.Y == 0)
+            if (StormDiversSuggestions.ArmourSpecialHotkey.Current && player.velocity.Y == 0)
             {
                          
                 player.AddBuff(mod.BuffType("GraniteBuff"), 2);

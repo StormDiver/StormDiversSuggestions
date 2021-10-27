@@ -10,8 +10,8 @@ namespace StormDiversSuggestions.Items
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Ancient Pike"); 
-			Tooltip.SetDefault("Unleash the power of the ancient sands");
+			DisplayName.SetDefault("Forbidden Pike"); 
+			Tooltip.SetDefault("Unleash the power of the forbidden sands");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
 
@@ -22,8 +22,8 @@ namespace StormDiversSuggestions.Items
 			item.melee = true;
 			item.width = 30;
 			item.height = 50;
-			item.useTime = 30;
-			item.useAnimation = 30;
+			item.useTime = 28;
+			item.useAnimation = 28;
 			item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 2, 0, 0);
             item.rare = ItemRarityID.Pink;
@@ -66,8 +66,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arid Fury");
-            Tooltip.SetDefault("Converts all arrows to ancient arrows that rain down the heat of the Desert");
+            DisplayName.SetDefault("Forbidden Fury");
+            Tooltip.SetDefault("Converts all arrows to Forbidden arrows that rain down the heat of the Desert");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -127,8 +127,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SandStorm");
-            Tooltip.SetDefault("Summons Burning sand");
+            DisplayName.SetDefault("Forbidden Storm");
+            Tooltip.SetDefault("Summons the Forbidden sands");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -148,7 +148,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 12;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 32;
+            item.damage = 37;
             //item.crit = 4;
             item.knockBack = 1f;
 
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Items
         {
             for (int i = 0; i < 3; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25)); // This defines the projectiles random spread . 10 degree spread.
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
             return false;
@@ -191,8 +191,8 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Staff");
-            Tooltip.SetDefault("Summons a floating Ancient Sentry that blasts sand in all directions");
+            DisplayName.SetDefault("Forbidden Staff");
+            Tooltip.SetDefault("Summons a floating Forbidden Sentry that blasts sand in all directions");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
             //Item.staff[item.type] = true;
         }

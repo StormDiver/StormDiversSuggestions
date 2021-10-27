@@ -17,15 +17,15 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetDefaults()
         {
             
-            item.damage = 35;
+            item.damage = 40;
             item.melee = true;
             item.width = 40;
             item.height = 22;
 
-            item.useTime = 6;
+            item.useTime = 5;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
             item.knockBack = 1f;
            
@@ -66,21 +66,21 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 50;
+            item.damage = 55;
             item.melee = true;
             item.width = 60;
             item.height = 20;
-            item.useTime = 6;
+            item.useTime = 5;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
             item.knockBack = 4.6f;
           
             item.useTurn = true;
             item.shoot = mod.ProjectileType("DerpChainProj");
             item.shootSpeed = 40f;
-            item.axe = 23;
+            item.axe = 24;
             item.tileBoost = 1;
             item.UseSound = SoundID.Item23;
             item.noMelee = true;
@@ -113,21 +113,21 @@ namespace StormDiversSuggestions.Items.Tools
         public override void SetDefaults()
         {
 
-            item.damage = 45;
+            item.damage = 50;
             item.melee = true;
             item.width = 50;
             item.height = 20;
-            item.useTime = 6;
+            item.useTime = 5;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
             item.knockBack = 5.2f;
 
             item.useTurn = true;
             item.shoot = mod.ProjectileType("DerpJackProj");
             item.shootSpeed = 35f;
-            item.hammer = 90;
+            item.hammer = 100;
             item.tileBoost = 1;
             item.UseSound = SoundID.Item23;
             item.noMelee = true;

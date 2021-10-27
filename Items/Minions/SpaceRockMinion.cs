@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Minions
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
 
-            item.damage = 45;
+            item.damage = 38;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item43;
 
@@ -216,9 +216,14 @@ namespace StormDiversSuggestions.Items.Minions
             }
             if (projspeed >= 90)
             {
-                Projectile.NewProjectile(target.Right.X + 200, target.Center.Y, -15, 0f, mod.ProjectileType("SpaceRockMinionProj2"), projectile.damage, 0, Main.myPlayer, 0f, 0f);
-                Projectile.NewProjectile(target.Left.X - 200, target.Center.Y, 15, 0f, mod.ProjectileType("SpaceRockMinionProj2"), projectile.damage, 0, Main.myPlayer, 0f, 0f);
-
+                if (Main.rand.Next(2) == 0)
+                {
+                    Projectile.NewProjectile(target.Right.X + 200, target.Center.Y - 200, -15, 15f, mod.ProjectileType("SpaceRockMinionProj2"), (int)(projectile.damage * 0.5f), 0, Main.myPlayer, 0f, 0f);
+                }
+                else
+                {
+                    Projectile.NewProjectile(target.Left.X - 200, target.Center.Y - 200, 15, 15f, mod.ProjectileType("SpaceRockMinionProj2"), (int)(projectile.damage * 0.5f), 0, Main.myPlayer, 0f, 0f);
+                }
                 projspeed = 0;
             }
         }
@@ -314,11 +319,13 @@ namespace StormDiversSuggestions.Items.Minions
 
         public override void Kill(int timeLeft)
         {
-           
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1.5f);
-                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 1f);
-           
 
+            for (int i = 0; i < 10; i++)
+            {
+
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 0.5f);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1f);
+            }
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
         {
