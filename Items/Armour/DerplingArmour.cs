@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Helmet");
-            Tooltip.SetDefault("14% increased damage\n10% increased critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n10% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.14f;
+            player.allDamage += 0.15f;
             player.meleeCrit += 10;
             player.rangedCrit += 10;
             player.magicCrit += 10;

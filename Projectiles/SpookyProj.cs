@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 1;
             //projectile.melee = true;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 300;
             projectile.light = 0.5f;
             projectile.scale = 1f;
             
@@ -40,12 +40,14 @@ namespace StormDiversSuggestions.Projectiles
             AnimateProjectile();
 
             projectile.rotation = projectile.velocity.X / 20;
-
-            Dust dust;
-            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = projectile.position;
-            dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-            dust.noGravity = true;
+            if (Main.rand.Next(2) == 0)
+            {
+                Dust dust;
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = projectile.position;
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust.noGravity = true;
+            }
 
             if (projectile.localAI[0] == 0f)
             {
@@ -53,7 +55,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 400f;
+            float distance = 350f;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {
@@ -75,7 +77,7 @@ namespace StormDiversSuggestions.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (15 * projectile.velocity + move) / 5f;
+                projectile.velocity = (15 * projectile.velocity + move) / 6f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 
@@ -108,11 +110,10 @@ namespace StormDiversSuggestions.Projectiles
             {
 
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 15; i++)
                 {
 
-                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 6);
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 6);
 
                     dust.noGravity = true;
 

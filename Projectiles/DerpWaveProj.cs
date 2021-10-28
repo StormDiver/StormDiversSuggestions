@@ -35,7 +35,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void AI()
         {
             projectile.damage = (projectile.damage * 100) / 101;
-            airknock -= 0.1f;
+            airknock -= 0.15f;
 
             if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (!target.friendly && target.lifeMax > 5 && !target.boss && target.velocity.Y == 0 && target.knockBackResist != 0f)
             {
-                target.velocity.Y = (-airknock * (target.knockBackResist + 0.5f));
+                target.velocity.Y = -airknock;
                 target.AddBuff(mod.BuffType("DerpDebuff"), 45);
 
                 /*if (airknock > 0)

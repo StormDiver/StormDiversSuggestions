@@ -35,5 +35,10 @@ namespace StormDiversSuggestions
         [Tooltip("This will prevent the new pillar enemies in this mod from spawning")]
         //[ReloadRequired] //No reload required as it just changes the spawn chance and doesn't disable the enemy itself
         public bool PreventPillarEnemies { get; set; }
+
+        [Label("Disable buffed Derplings")]
+        [Tooltip("This will prevent Derplings from gaining massively increased stats post-plantera")]
+        //[ReloadRequired] //No reload required as it just changes the spawn chance and doesn't disable the enemy itself
+        public bool PreventBuffedDerps { get; set; }
     }
 }

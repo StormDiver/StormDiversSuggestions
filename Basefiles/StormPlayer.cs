@@ -288,7 +288,7 @@ namespace StormDiversSuggestions.Basefiles
                     if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed) //Activates when player presses button
                     {
                         player.AddBuff(BuffID.Obstructed, 10); //Hopefully this covers up the janky teleport :thePain:
-                        player.AddBuff(mod.BuffType("TwilightDebuff"), 900);
+                        player.AddBuff(mod.BuffType("TwilightDebuff"), 1080);
 
 
                         {
@@ -590,12 +590,11 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(5) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
 
-                                Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
                                 var dust = Dust.NewDustDirect(player.position, player.width, player.height, 244);
 
                                 dust.noGravity = true;
@@ -613,8 +612,8 @@ namespace StormDiversSuggestions.Basefiles
 
                                 float speedX = 0f;
                                 float speedY = -2f;
-                                int damage = (int)((player.HeldItem.damage * 0.5f) * player.allDamage);
-                                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
+                                int damage = (int)((player.HeldItem.damage * 0.4f) * player.allDamage);
+                                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
                                 Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpookyProj"), damage, 1f, player.whoAmI);
@@ -680,9 +679,9 @@ namespace StormDiversSuggestions.Basefiles
                         dust.velocity *= 2;
 
                     }
-                    Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("DerpWaveProj"), 50, 0, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("DerpWaveProj"), 50, 0, player.whoAmI);
-                    derplinglaunchcooldown = 120;
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    derplinglaunchcooldown = 90;
                 }
             }
             
