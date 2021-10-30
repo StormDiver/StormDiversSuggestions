@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Blade of Light");
-            Tooltip.SetDefault("Summons mini Enchanted Swords that charge at the cursor and pierce\n'Not to be confused with The Blade of Night'");
+            Tooltip.SetDefault("Summons mini Enchanted Swords that charge and ricochet towards the cursor and pierce\n'Not to be confused with The Blade of Night'");
             Item.staff[item.type] = true;
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }

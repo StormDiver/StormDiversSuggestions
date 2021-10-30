@@ -31,11 +31,11 @@ namespace StormDiversSuggestions.Projectiles
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }
-        float airknock = 12;
+        float airknock = 15;
         public override void AI()
         {
             projectile.damage = (projectile.damage * 100) / 101;
-            airknock -= 0.15f;
+            airknock -= 0.14f;
 
             if (projectile.ai[0] > 0f)  //this defines where the flames starts
             {

@@ -155,7 +155,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 30;
             projectile.light = 0.3f;
             projectile.friendly = true;
-            projectile.penetrate = 4;
+            projectile.penetrate = 10;
             projectile.magic = true;
             projectile.timeLeft = 200;
             //aiType = ProjectileID.Bullet;
@@ -186,10 +186,12 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 
             }
-            projectile.damage = (projectile.damage * 9) / 10;
+            projectile.damage = (projectile.damage * 99) / 100;
 
+           
         }
-        int reflect = 2;
+       
+        int reflect = 5;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -201,7 +203,7 @@ namespace StormDiversSuggestions.Projectiles
             }
 
             {
-                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+                /*Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 
                 if (projectile.velocity.X != oldVelocity.X)
                 {
@@ -210,12 +212,45 @@ namespace StormDiversSuggestions.Projectiles
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
                     projectile.velocity.Y = -oldVelocity.Y * 1f;
+                }*/
+
+                if (projectile.owner == Main.myPlayer)
+                {
+                    
+                    float shootToX = Main.MouseWorld.X - projectile.Center.X;
+                    float shootToY = Main.MouseWorld.Y - projectile.Center.Y;
+                    float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+                    bool lineOfSight = Collision.CanHitLine(Main.MouseWorld, 0, 0, projectile.position, projectile.width, projectile.height);
+
+                    distance = 3f / distance;
+                    shootToX *= distance * 7;
+                    shootToY *= distance * 7;
+                    if (lineOfSight)
+                    {
+                        projectile.velocity.X = shootToX;
+                        projectile.velocity.Y = shootToY;
+                    }
+                    else
+                    {
+                        if (projectile.velocity.X != oldVelocity.X)
+                        {
+                            projectile.velocity.X = -oldVelocity.X * 1f;
+                        }
+                        if (projectile.velocity.Y != oldVelocity.Y)
+                        {
+                            projectile.velocity.Y = -oldVelocity.Y * 1f;
+                        }
+                    }
+
                 }
-
-                Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
-
+                if (reflect > 0)
+                {
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 8);
+                }
                 return false;
             }
+
+
         }
         
        
@@ -228,10 +263,9 @@ namespace StormDiversSuggestions.Projectiles
 
 
             Main.PlaySound(SoundID.NPCKilled, (int)projectile.position.X, (int)projectile.position.Y, 6);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 30; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
             }
 

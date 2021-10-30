@@ -182,13 +182,13 @@ namespace StormDiversSuggestions.Items
             item.mana = 13;
             item.UseSound = SoundID.Item20;
 
-            item.damage = 21;
+            item.damage = 24;
             //item.crit = 4;
             item.knockBack = 1f;
 
             item.shoot = mod.ProjectileType("LavaSpellProj");
             item.scale = 0.9f;
-            item.shootSpeed = 10f;
+            item.shootSpeed = 14f;
 
             //item.useAmmo = AmmoID.Arrow;
 

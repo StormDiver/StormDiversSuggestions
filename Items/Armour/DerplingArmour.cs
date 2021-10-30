@@ -174,7 +174,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("Increases summon damage by 20%\nIncreases your max number of minions by 1");
+            Tooltip.SetDefault("18% increased summoner damage\nIncreases your max number of minions by 1");
         }
 
         public override void SetDefaults()
@@ -190,7 +190,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
        
             player.maxMinions += 1;
-            player.minionDamage += 0.2f;
+            player.minionDamage += 0.18f;
 
         }
 

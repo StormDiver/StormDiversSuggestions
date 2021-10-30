@@ -11,7 +11,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Feather Scepter");
-            Tooltip.SetDefault("Fires out a spread of damaging feathers");
+            Tooltip.SetDefault("Fires out a spread of 3 feathers\nThe center feather deals more damage and pierces once");
             Item.staff[item.type] = true;
 
 
@@ -54,8 +54,8 @@ namespace StormDiversSuggestions.Items
             {
                 position += muzzleOffset;
             }
-            float numberProjectiles = 4;
-            float rotation = MathHelper.ToRadians(15);
+            float numberProjectiles = 2;
+            float rotation = MathHelper.ToRadians(6);
 
             for (int i = 0; i < numberProjectiles; i++)
             {

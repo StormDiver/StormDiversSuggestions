@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Items.Armour
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Press the 'Armor Special Ability' hotkey to teleport to the cursor's location within a limited range\nRequires a direct line of sight to work and has a 15 second cooldown"; 
+            player.setBonus = "Press the 'Armor Special Ability' hotkey to teleport to the cursor's location within a limited range\nRequires a direct line of sight to work and has a 18 second cooldown"; 
 
             //player.endurance += 0.1f;
             //player.blackBelt = true;

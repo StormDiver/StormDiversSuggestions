@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Granite Mask");
-            Tooltip.SetDefault("Increases critical strike chance by 2%");
+            Tooltip.SetDefault("2% increased melee damage and critical strike chance");
         }
    
         public override void SetDefaults()
@@ -33,9 +33,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
             player.meleeCrit += 2;
-            player.rangedCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
+            player.meleeDamage += 0.02f;
 
         }
 
@@ -101,7 +99,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Granite Chestplate");
-            Tooltip.SetDefault("Increases damage and critical strike chance by 2%");
+            Tooltip.SetDefault("4% increased melee damage\n10% increased melee speed");
         }
 
         public override void SetDefaults()
@@ -144,7 +142,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Granite Greaves");
-            Tooltip.SetDefault("Increases damage by 2%");
+            Tooltip.SetDefault("2% increased damage and critical strike chance");
         }
 
         public override void SetDefaults()
@@ -158,8 +156,8 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.02f;
-           
+            player.meleeDamage += 0.02f;
+            player.meleeCrit += 2;
         }
         public override void AddRecipes()
         {

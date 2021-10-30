@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hemoglobin Helmet");
-            Tooltip.SetDefault("8% increased melee critical strike chance");
+            Tooltip.SetDefault("4% increased melee damage and critical strike chance");
         }
 
         public override void SetDefaults()
@@ -30,8 +30,8 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-
-            player.meleeCrit += 8;
+            player.meleeDamage += 0.04f;
+            player.meleeCrit += 4;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -82,7 +82,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hemoglobin Breastplate");
-            Tooltip.SetDefault("8% increased melee damage");
+            Tooltip.SetDefault("6% increased melee damage");
         }
 
         public override void SetDefaults()
@@ -97,7 +97,7 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.meleeDamage += 0.08f;
+            player.meleeDamage += 0.06f;
          
       
         }
@@ -123,7 +123,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hemoglobin Greaves");
-            Tooltip.SetDefault("12% increased melee and movement speed");
+            Tooltip.SetDefault("4% increased melee critical strike chance\n12% increased melee and movement speed");
         }
 
         public override void SetDefaults()
@@ -137,6 +137,8 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
+            player.meleeCrit += 4;
+
             player.meleeSpeed += 0.12f;
             player.moveSpeed += 0.12f;
            

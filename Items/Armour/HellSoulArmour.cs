@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases melee speed by 20%\nAttacking enemies releases damaging homing souls from them";
+            player.setBonus = "20% increased melee speed\nAttacking enemies releases damaging homing souls from them";
 
             player.GetModPlayer<StormPlayer>().hellSoulSet = true;
             player.meleeSpeed += 0.2f;
