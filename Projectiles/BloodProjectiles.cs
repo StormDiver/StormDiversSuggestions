@@ -373,7 +373,7 @@ namespace StormDiversSuggestions.Projectiles
 
             }
             shoottime++;
-            if (shoottime >= 7)
+            if (shoottime >= 8)
             {
                 
 
@@ -406,7 +406,7 @@ namespace StormDiversSuggestions.Projectiles
             //projectile.magic = true;
 
             projectile.penetrate = 1;
-            projectile.timeLeft = 25;
+            projectile.timeLeft = 20;
             projectile.knockBack = 1f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
