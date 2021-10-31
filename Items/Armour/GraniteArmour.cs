@@ -142,7 +142,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Granite Greaves");
-            Tooltip.SetDefault("2% increased damage and critical strike chance");
+            Tooltip.SetDefault("2% increased melee damage and critical strike chance");
         }
 
         public override void SetDefaults()
