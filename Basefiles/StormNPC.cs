@@ -58,10 +58,6 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool derplaunched; //If the npc has been launched by the Derpling armour
 
-        public bool rotate; //Wheter the npc should spin or not
-
-        public float rotation; //Records the npc rotation prior to speen
-
         public int direction; //records the direction prior to speen
 
         public int spintime; //how long until rotation can be reset
@@ -95,32 +91,27 @@ namespace StormDiversSuggestions.Basefiles
 
             }
             //speen________________________________________________
-            if (derplaunched)
             {
-                rotate = true; //begins the rotation
+                if (derplaunched)
+                {
+                    spintime++;
+                }
+                if (spintime == 0) 
+                {
+                    direction = npc.direction; //Saves the direction prior to rotate
 
-                npc.velocity.X = 0f;
-                
-            }
-          
-            if (spintime == 0)
-            {
-                rotation = npc.rotation; //Saves the npc rotation when not rotating
-                direction = npc.direction; //Saves the direction prior to rotate
-            }
-            if (rotate)
-            {
-                npc.rotation += (0.14f * -direction); //Speen speed and direction
-                spintime++; //As soon as rotation beings the rotation and direction int stops recording
-            }
-            if (spintime == 45)
-            {
-                rotate = false; //Stops the npc from rotating
-            }
-            if (spintime >= 50)
-            {
-                npc.rotation = rotation; //Resets the NPC rotation after 5 frames to that before the spin
-                spintime = 0; //Allows the rotation to be recorded again
+                }
+                if (spintime > 0 && spintime < 45) //begins the rotation 
+                {
+                    npc.rotation += (0.14f * -direction); //Speen speed and direction
+                }
+                if (spintime == 45)
+                {
+                    npc.rotation = 0; //reset the rotation to 0 for 1 frame
+                    spintime = 0; //Allows the rotation to be recorded again
+                    
+                }
+
             }
             //__________________________________________________________________________________________________
 

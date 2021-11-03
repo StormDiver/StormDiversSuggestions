@@ -19,17 +19,20 @@ namespace StormDiversSuggestions.Projectiles
         {
 
             projectile.width = 12;
-            projectile.height = 36;
+            projectile.height = 120;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
             //projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 40;
+            projectile.timeLeft = 60;
             projectile.extraUpdates = 1;
             projectile.knockBack = 8f;
-            projectile.usesLocalNPCImmunity = true;
+            //projectile.usesLocalNPCImmunity = true;
+            //projectile.usesIDStaticNPCImmunity = true;
+            
             projectile.localNPCHitCooldown = 10;
+            projectile.tileCollide = false;
         }
         float airknock = 15;
         public override void AI()
@@ -65,9 +68,20 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (!target.friendly && target.lifeMax > 5 && !target.boss && target.velocity.Y == 0 && target.knockBackResist != 0f)
+            if (!target.friendly && target.lifeMax > 5 && !target.boss  && target.knockBackResist != 0f)
             {
-                target.velocity.Y = -airknock;
+                if (target.velocity.Y == 0)
+                {
+                    target.velocity.Y = -airknock - (target.knockBackResist * 2);
+                    target.velocity.X = 4f * -target.direction;
+                }
+                else
+                {
+                    projectile.knockBack = 20;
+                    target.velocity.Y = (-airknock * 0.5f) - (target.knockBackResist * 2);
+                    target.velocity.X = 7f * -target.direction;
+
+                }
                 target.AddBuff(mod.BuffType("DerpDebuff"), 45);
 
                 /*if (airknock > 0)
@@ -80,7 +94,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
+            //projectile.Kill();
             return false;
         }
     }

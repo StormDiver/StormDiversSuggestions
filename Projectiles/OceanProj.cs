@@ -149,7 +149,15 @@ namespace StormDiversSuggestions.Projectiles
             projectile.rotation += (float)projectile.direction * -0.2f;
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.Wet, 180);
 
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+        {
+            target.AddBuff(BuffID.Wet, 180);
+        }
 
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -221,6 +229,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Wet, 300);
+
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
         {

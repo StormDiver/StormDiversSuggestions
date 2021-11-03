@@ -666,21 +666,18 @@ namespace StormDiversSuggestions.Basefiles
                     for (int i = 0; i < 20; i++)
                     {
                         
-                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, -10, 0, 130, default, 1.5f);
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, -5, 0, 130, default, 1.5f);
                         dust.noGravity = true;
                         dust.velocity *= 2;
-
+                        var dust2 = Dust.NewDustDirect(player.position, player.width, player.height, 68, 5, 0, 130, default, 1.5f);
+                        dust2.noGravity = true;
+                        dust2.velocity *= 2;
                     }
-                    for (int i = 0; i < 20; i++)
-                    {
-
-                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, 10, 0, 130, default, 1.5f);
-                        dust.noGravity = true;
-                        dust.velocity *= 2;
-
-                    }
-                    Projectile.NewProjectile(player.Center.X, player.Right.Y + 2, 7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.Left.Y + 2, -7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y -15, 7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 15, -7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y - 15, 7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 15, -7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
                     derplinglaunchcooldown = 90;
                 }
             }

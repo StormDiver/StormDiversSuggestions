@@ -379,7 +379,7 @@ namespace StormDiversSuggestions.Projectiles
 
                
                     
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodYoyoProj2"), (int)(projectile.damage * .4f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("BloodYoyoProj2"), (int)(projectile.damage * .5f), 0f, projectile.owner, 0f, 0f);
                     shoottime = 0;
                 
             }

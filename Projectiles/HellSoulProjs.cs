@@ -651,7 +651,7 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.localAI[0] = 1f;
                 }
                 Vector2 move = Vector2.Zero;
-                float distance = 300f;
+                float distance = 450f;
                 bool target = false;
                 for (int k = 0; k < 200; k++)
                 {
@@ -673,7 +673,7 @@ namespace StormDiversSuggestions.Projectiles
                 if (target)
                 {
                     AdjustMagnitude(ref move);
-                    projectile.velocity = (15 * projectile.velocity + move) / 15f;
+                    projectile.velocity = (15 * projectile.velocity + move) / 16f;
                     AdjustMagnitude(ref projectile.velocity);
                 }
             }
@@ -683,15 +683,15 @@ namespace StormDiversSuggestions.Projectiles
             if (damagetime > 10)
             {
                 float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-                if (magnitude > 12f)
+                if (magnitude > 10f)
                 {
-                    vector *= 12f / magnitude;
+                    vector *= 15f / magnitude;
                 }
             }
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (damagetime <= 10)
+            if (damagetime <= 20)
             {
                 return false;
             }
