@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Helmet");
-            Tooltip.SetDefault("16% increased damage\n10% increased critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n10% increased critical strike chance");
         }
   
         public override void SetDefaults()
@@ -24,13 +24,13 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Cyan;
-            item.defense = 16;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.16f;
+            player.allDamage += 0.15f;
             player.meleeCrit += 10;
             player.rangedCrit += 10;
             player.magicCrit += 10;
@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("10% increased damage\n6% increased critical strike chance\nGrants immunity to knockback");
+            Tooltip.SetDefault("5% increased damage\n2% increased critical strike chance\nGrants immunity to knockback and increased health regeneration");
         }
 
         public override void SetDefaults()
@@ -101,18 +101,19 @@ namespace StormDiversSuggestions.Items.Armour
             item.height = 18;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Cyan;
-            item.defense = 32;
+            item.defense = 30;
         }
 
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.10f;
-            player.meleeCrit += 6;
-            player.rangedCrit += 6;
-            player.magicCrit += 6;
-            player.thrownCrit += 6;
+            player.allDamage += 0.05f;
+            player.meleeCrit += 2;
+            player.rangedCrit += 2;
+            player.magicCrit += 2;
+            player.thrownCrit += 2;
             player.noKnockback = true;
+            player.lifeRegen += 2;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
         }
@@ -168,7 +169,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Chestplate");
-            Tooltip.SetDefault("8% increased damage and critical strike chance");
+            Tooltip.SetDefault("7% increased damage and critical strike chance");
         }
 
         public override void SetDefaults()
@@ -183,11 +184,11 @@ namespace StormDiversSuggestions.Items.Armour
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.08f;
-            player.meleeCrit += 8;
-            player.rangedCrit += 8;
-            player.magicCrit += 8;
-            player.thrownCrit += 8;
+            player.allDamage += 0.07f;
+            player.meleeCrit += 7;
+            player.rangedCrit += 7;
+            player.magicCrit += 7;
+            player.thrownCrit += 7;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
 

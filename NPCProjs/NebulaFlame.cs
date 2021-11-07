@@ -23,7 +23,7 @@ namespace StormDiversSuggestions.NPCProjs       //We need this to basically indi
             projectile.ignoreWater = true;
             
             projectile.penetrate = -1;
-            projectile.timeLeft = 120;
+            projectile.timeLeft = 150;
             projectile.extraUpdates = 3;
         }
 

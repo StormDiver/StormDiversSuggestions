@@ -59,7 +59,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Coral, 10);
             recipe.AddIngredient(ItemID.Starfish, 2);
             recipe.AddIngredient(ItemID.Seashell, 2);
 
@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Coral, 10);
             recipe.AddIngredient(ItemID.Starfish, 2);
             recipe.AddIngredient(ItemID.Seashell, 2);
 
@@ -195,7 +195,7 @@ namespace StormDiversSuggestions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 12);
+            recipe.AddIngredient(ItemID.Coral, 10);
             recipe.AddIngredient(ItemID.Starfish, 2);
             recipe.AddIngredient(ItemID.Seashell, 2);
 

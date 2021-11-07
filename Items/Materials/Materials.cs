@@ -283,19 +283,21 @@ namespace StormDiversSuggestions.Items.Materials
                 if (NPC.downedPlantBoss)
                 {
                     if (npc.type == NPCID.Derpling)
+                    {
                         if (Main.expertMode)
                         {
-                           
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"), Main.rand.Next(1, 3));
-                            
+
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"), Main.rand.Next(1, 3));
+
                         }
                         else
                         {
-                            
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
-                            
+
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DerplingShell"));
+
                         }
+                    }
                 }
             }
         }
@@ -483,25 +485,28 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                     {
-                        if (Main.rand.Next(100) < 20)
+                        if (!npc.friendly && npc.lifeMax > 5)
 
                         {
-                            if (Main.expertMode)
-
+                            if (Main.rand.Next(100) < 20)
 
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 3));
-                            }
+                                if (Main.expertMode)
 
-                            else
-                            {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 2));
+                                {
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 3));
+                                }
 
+                                else
+                                {
+
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulFire"), Main.rand.Next(1, 2));
+
+                                }
                             }
                         }
                     }
-                    
                 }
 
             }
@@ -559,21 +564,25 @@ namespace StormDiversSuggestions.Items.Materials
 
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneSnow)
                     {
-                        if (Main.rand.Next(100) < 50)
+                        if (!npc.friendly && npc.lifeMax > 5)
 
                         {
-                            if (Main.expertMode)
-
-
-                            {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 5));
-                            }
-
-                            else
+                            if (Main.rand.Next(100) < 50)
                             {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 4));
+                                if (Main.expertMode)
 
+
+                                {
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(3, 5));
+                                }
+
+                                else
+                                {
+
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceOre"), Main.rand.Next(2, 4));
+
+                                }
                             }
                         }
                     }
@@ -632,21 +641,25 @@ namespace StormDiversSuggestions.Items.Materials
                     
                     if (!Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUndergroundDesert)
                     {
-                        if (Main.rand.Next(100) < 50)
+                        if (!npc.friendly && npc.lifeMax > 5)
 
                         {
-                            if (Main.expertMode)
-
+                            if (Main.rand.Next(100) < 50)
 
                             {
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
-                            }
+                                if (Main.expertMode)
 
-                            else
-                            {
 
-                                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(2, 4));
+                                {
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(3, 5));
+                                }
 
+                                else
+                                {
+
+                                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DesertOre"), Main.rand.Next(2, 4));
+
+                                }
                             }
                         }
                     }

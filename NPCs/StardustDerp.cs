@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (distance <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 180)
+                if (shoottime >= 180 && npc.velocity.Y == 0)
                 {
                     
                     int type = mod.NPCType("StardustMiniDerp");

@@ -57,15 +57,11 @@ namespace StormDiversSuggestions.NPCs
             }
         }
 
-       
-        
-       
-        int shoottime = 0;
+   
         int firerate = 0;
         public override void AI()
         {
-            shoottime++;
-            
+         
 
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
@@ -73,25 +69,23 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if ((distanceX <= 100f && distanceX >= -100f) && (distanceY <= 0f && distanceY >= -500f) && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 120)
+                //if (shoottime >= 120 )
                 {
                    // float projectileSpeed = 5f; // The speed of your projectile (in pixels per second).
-                    int damage = 30; // The damage your projectile deals.
+                    int damage = 25; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("NebulaFlame");
                     
 
                     firerate++;
 
-
-                    
                     if (firerate >= 5)
                     {
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Top.Y + 10, 0, -3, type, damage, knockBack, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Top.Y + 10, 0, -2.5f, type, damage, knockBack, Main.myPlayer);
                         }
                         Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 34);
                         firerate = 0;
@@ -106,21 +100,15 @@ namespace StormDiversSuggestions.NPCs
                         }
                     }
 
-                    if (shoottime >= 180)
-                    {
-                        shoottime = 0;
-                    }
+                   
                 }
             }
-            else
-            {
-                shoottime = 60;
-            }
+     
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 60;
+            firerate = -30;
             for (int i = 0; i < 2; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));

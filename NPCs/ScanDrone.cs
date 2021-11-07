@@ -26,8 +26,8 @@ namespace StormDiversSuggestions.NPCs
             npc.width = 40;
             npc.height = 20;
 
-            npc.aiStyle = 14; 
-            aiType = NPCID.GiantFlyingFox;
+            //npc.aiStyle = 14; 
+            //aiType = NPCID.GiantFlyingFox;
             //animationType = NPCID.CaveBat;
 
             npc.damage = 60;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.NPCs
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
-            npc.knockBackResist = 0.9f;
+            npc.knockBackResist = 0f;
             npc.value = Item.buyPrice(0, 0, 0, 0);
 
             banner = npc.type;
@@ -67,24 +67,48 @@ namespace StormDiversSuggestions.NPCs
         //private float rotation;
         //private float scale;
         bool shooting;
+        float movespeed = 10f; //Speed of the npc
+
+        float xpostion = 150; // The picked x postion
+        float ypostion = 0f;
         public override void AI()
+            //Makes it fly to either the left or right of the player, and switch sides each shot 
         {
+
+            Player player = Main.player[npc.target]; //Code to move towards player
+            npc.TargetClosest();
+            Vector2 moveTo = player.Center;
+            Vector2 move = moveTo - npc.Center + new Vector2(xpostion, ypostion); //Postion around player
+            float magnitude = (float)Math.Sqrt(move.X * move.X + move.Y * move.Y);
+            if (magnitude > movespeed)
+            {
+                move *= movespeed / magnitude;
+            }
+            npc.velocity = move;
+            npc.velocity.X *= 0.9f;
+
             shoottime++;
             npc.noTileCollide = true;
-            
 
-            Player player = Main.player[npc.target];
+            if (player.dead)
+            {
+                npc.velocity.Y = -10;
+            }
+
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             float distanceX = player.Center.X - npc.Center.X;
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
-            if (distance  <= 800f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+                xpostion = 150 * -player.direction;
+            if ((distanceX <= 600f && distanceX >= -600f) && (distanceY <= 200f && distanceY >= -200f) && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 100)
+                if (shoottime >= 50)
                 {
                     shooting = true;
-                    npc.velocity *= 0f;
+                    npc.velocity.X = 0f;
+                    //npc.velocity.Y = 0f;
+
 
                     if (Main.rand.Next(3) == 0)
                     {
@@ -95,7 +119,7 @@ namespace StormDiversSuggestions.NPCs
                         dust.scale = 1.5f;
                     }
                 }
-                if (shoottime >= 120)
+                if (shoottime >= 60)
                 {
                     float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
                     int damage = 30; // The damage your projectile deals.
@@ -124,14 +148,14 @@ namespace StormDiversSuggestions.NPCs
                             Projectile.NewProjectile(npc.Center.X + 10 * npc.direction, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
                         }
                     }
-                                      
+                    //xpostion *= -1;
                     shoottime = 0;
                     shooting = false;
                 }
             }
             else
             {
-                shoottime = 60;
+                shoottime = 0;
                 shooting = false;
 
             }
@@ -169,9 +193,10 @@ namespace StormDiversSuggestions.NPCs
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 60;
+            shoottime = 0;
             shooting = false;
-
+            npc.velocity.X = 0f;
+            npc.velocity.Y = 0f;
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));

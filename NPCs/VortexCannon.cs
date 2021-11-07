@@ -30,14 +30,14 @@ namespace StormDiversSuggestions.NPCs
 
             npc.damage = 80;
             
-            npc.defense = 16;
+            npc.defense = 20;
             npc.lifeMax = 750;
 
 
             
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
-            npc.knockBackResist = 0.3f;
+            npc.knockBackResist = 0f;
             Item.buyPrice(0, 0, 0, 0);
             
             
@@ -74,7 +74,7 @@ namespace StormDiversSuggestions.NPCs
             {
                 
 
-                if (shoottime >= 300)
+                if (shoottime >= 180)
                 {
                     npc.velocity.X = 0;
                     //float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
@@ -83,8 +83,6 @@ namespace StormDiversSuggestions.NPCs
                     int projectileSpeed = 5;
                     int type = mod.ProjectileType("VortCannonProj");
                     //int type = ProjectileID.PinkLaser;
-
-                   
 
                     Vector2 velocity = Vector2.Normalize(new Vector2(player.position.X + player.width / 2, player.position.Y + player.height / 2) -
                    new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
@@ -112,16 +110,18 @@ namespace StormDiversSuggestions.NPCs
                             firerate = 0;
                         }
                     }
-                    if (shoottime >= 340)
+                    if (shoottime >= 220)
                     {
                         shoottime = 0;
                     }
                 }
+               
             }
             else
             {
-                shoottime = 150;
+                shoottime = 100;
                 firerate = 0;
+    
             }
         }
 
@@ -129,7 +129,7 @@ namespace StormDiversSuggestions.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 150;
+            //shoottime = 100;
             for (int i = 0; i < 3; i++)
             {
                 Vector2 vel = new Vector2(Main.rand.NextFloat(-2, -2), Main.rand.NextFloat(2, 2));

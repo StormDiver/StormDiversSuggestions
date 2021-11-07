@@ -76,9 +76,9 @@ namespace StormDiversSuggestions.NPCs
            
             if (distance <= 600f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 180)
+                if (shoottime >= 180 && npc.velocity.Y == 0)
                 {
-                    float projectileSpeed = 7f; // The speed of your projectile (in pixels per second).
+                    float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).
                     int damage = 40; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("StormDerpProj");

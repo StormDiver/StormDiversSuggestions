@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.NPCs
             
             if (distance <= 500f && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
             {
-                if (shoottime >= 240)
+                if (shoottime >= 240 && npc.velocity.Y == 0)
                 {
                     float projectileSpeed = 2f; // The speed of your projectile (in pixels per second).
                     int damage = 30; // The damage your projectile deals.
@@ -100,23 +100,22 @@ namespace StormDiversSuggestions.NPCs
                     new Vector2(npc.Center.X, npc.Center.Y)) * projectileSpeed;
 
 
-                    //Projectile.NewProjectile(npc.Center.X + npc.width / 2, npc.Center.Y + npc.height / 2, velocity.X, velocity.Y, type, damage, knockBack, Main.myPlayer);
-
-
-                    //Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     firetime++;
-                    if (firetime >= 10)
+                    //if (firetime >= 10)
                     {
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(45));
+                            for (int i = 0; i < 6; i++)
+                            {
+                                Vector2 perturbedSpeed = new Vector2(0, -8).RotatedByRandom(MathHelper.ToRadians(45));
 
-                            float scale = 1f - (Main.rand.NextFloat() * .3f);
-                            perturbedSpeed = perturbedSpeed * scale;
+                                float scale = 1f - (Main.rand.NextFloat() * .3f);
+                                perturbedSpeed = perturbedSpeed * scale;
 
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack);
+                            }
                         }
-                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 7);
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 74);
                         
                         for (int i = 0; i < 10; i++)
                         {
@@ -124,24 +123,21 @@ namespace StormDiversSuggestions.NPCs
                             var dust = Dust.NewDustDirect(new Vector2(npc.Center.X, npc.Center.Y), 5, 5, 244);
                         }
 
-                        firetime = 0;
-                    }
-                    
-                    if (shoottime >= 300)
-                    {
                         shoottime = 0;
                     }
+
+                    
                 }
             }
             else
             {
-                shoottime = 120;
+                shoottime = 60;
             }
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            shoottime = 120;
+            shoottime = 60;
 
             for (int i = 0; i < 2; i++)
             {
