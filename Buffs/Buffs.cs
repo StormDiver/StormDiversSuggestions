@@ -426,4 +426,103 @@ namespace StormDiversSuggestions.Buffs
            
         }
     }
+
+    //_______________________________________________________
+    //Mushroom Buffs
+    public class MushBuff1 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Shroom Power");
+            Description.SetDefault("Increases damage by 2%");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.allDamage += 0.02f;
+
+            if (Main.rand.Next(16) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 113, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+
+        }
+    }
+    public class MushBuff2 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Shroom Power");
+            Description.SetDefault("Increases damage by 5%");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.allDamage += 0.05f;
+
+            if (Main.rand.Next(8) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 113, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+
+        }
+    }
+    public class MushBuff3 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Shroom Power");
+            Description.SetDefault("Increases damage by 10%");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.allDamage += 0.1f;
+
+            if (Main.rand.Next(4) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 113, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+
+        }
+    }
+    public class MushBuff4 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Shroom Power");
+            Description.SetDefault("Increases damage by 16%");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.allDamage += 0.16f;
+
+            if (Main.rand.Next(2) == 0)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 113, player.velocity.X, player.velocity.Y, 100, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+                Main.playerDrawDust.Add(dust);
+            }
+
+        }
+    }
 }

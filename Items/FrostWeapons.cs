@@ -111,7 +111,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryo Launcher");
+            DisplayName.SetDefault("Frost Launcher");
             Tooltip.SetDefault("Fires out impact-exploding grenades that inflict CryoBurn\nRequires Prototype Grenades, purchase more from the Demolitionist");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
@@ -130,7 +130,6 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
 
             item.ranged = true;
-
             item.shoot = mod.ProjectileType("ProtoGrenadeProj");
             item.useAmmo = ItemType<Ammo.ProtoGrenade>();
             item.UseSound = SoundID.Item61;
@@ -145,7 +144,7 @@ namespace StormDiversSuggestions.Items
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-10, 0);
+            return new Vector2(0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -186,7 +185,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryo Freezer");
+            DisplayName.SetDefault("Cryofreezer");
             Tooltip.SetDefault("Fires out frozen gas which inflicts CryoBurn\nUses gel for ammo");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }

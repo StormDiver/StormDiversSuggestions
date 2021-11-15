@@ -339,7 +339,7 @@ namespace StormDiversSuggestions.Items.Materials
         {
             DisplayName.SetDefault("Bloody Drop");
 
-            Tooltip.SetDefault("A drop of blood that is somehow able to hold its shape");
+            Tooltip.SetDefault("A drop of blood that's somehow able to hold its shape");
 
         }
 

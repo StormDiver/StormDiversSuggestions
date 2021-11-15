@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nPress the 'Armor Special Ability' hot key to launch nearby enemies into the air, has a greater effect on grounded enemies";
+            player.setBonus = "Greatly increases ascent and max falling speed\nPress the 'Armor Special Ability' hot key to launch nearby enemies into the air, has a greater effect on grounded enemies";
 
             player.GetModPlayer<StormPlayer>().derpJump = true;
          
@@ -207,7 +207,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases ascent and max falling speed, and provides immunity to knockback\nIncreases your max number of minions by 2\nPress the 'Armor Special Ability' hot key to launch nearby enemies into the air, has a greater effect on grounded enemies";
+            player.setBonus = "Greatly increases ascent and max falling speed\nIncreases your max number of minions by 2\nPress the 'Armor Special Ability' hot key to launch nearby enemies into the air, has a greater effect on grounded enemies";
 
             player.maxMinions += 2;
 

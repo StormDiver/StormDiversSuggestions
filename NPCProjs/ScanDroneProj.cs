@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.NPCProjs
             projectile.penetrate = 4;
 
             
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.scale = 1.2f;
 
             

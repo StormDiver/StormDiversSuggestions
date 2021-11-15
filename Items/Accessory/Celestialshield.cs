@@ -42,10 +42,6 @@ namespace StormDiversSuggestions.Items.Accessory
             player.noKnockback = true;
             player.GetModPlayer<StormPlayer>().lunarBarrier = true;
 
-            if (player.statLife <= ((player.statLifeMax2) * 0.5f))
-            { 
-                
-            }
         }
         
         public override void AddRecipes()

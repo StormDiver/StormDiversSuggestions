@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.NPCs
             //aiType = NPCID.GiantFlyingFox;
             //animationType = NPCID.CaveBat;
 
-            npc.damage = 60;
+            npc.damage = 50;
             
             npc.defense = 15;
             npc.lifeMax = 300;
@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.NPCs
         
             if (!GetInstance<Configurations>().PreventPillarEnemies)
             {
-                return SpawnCondition.VortexTower.Chance * 0.15f;
+                return SpawnCondition.VortexTower.Chance * 0.14f;
             }
             else
             {
@@ -101,7 +101,7 @@ namespace StormDiversSuggestions.NPCs
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
             
                 xpostion = 150 * -player.direction;
-            if ((distanceX <= 600f && distanceX >= -600f) && (distanceY <= 200f && distanceY >= -200f) && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+            if ((distanceX <= 600f && distanceX >= -600f) && (distanceY <= 200f && distanceY >= -200f))
             {
                 if (shoottime >= 50)
                 {
@@ -122,7 +122,7 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 60)
                 {
                     float projectileSpeed = 8f; // The speed of your projectile (in pixels per second).
-                    int damage = 30; // The damage your projectile deals.
+                    int damage = 25; // The damage your projectile deals.
                     float knockBack = 3;
                     int type = mod.ProjectileType("ScanDroneProj");
                     //int type = ProjectileID.PinkLaser;

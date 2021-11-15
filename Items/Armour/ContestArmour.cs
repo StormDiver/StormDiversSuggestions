@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Mask");
-            Tooltip.SetDefault("Created by Storm Diver");
+            Tooltip.SetDefault("Cold and Misty");
         }
 
         public override void SetDefaults()
@@ -49,6 +49,15 @@ namespace StormDiversSuggestions.Items.Armour
 
             }
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.GetItem("IceBar"), 6);
+            recipe.AddIngredient(mod.GetItem("BlueCloth"), 12);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Items/Glowmasks/ContestArmourHelmet_Glow");
@@ -66,7 +75,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Chestplate");
-            Tooltip.SetDefault("Created by Storm Diver");
+            //Tooltip.SetDefault("Concept by Storm Diver");
         }
     
         public override void SetDefaults()
@@ -78,7 +87,15 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
-    
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.GetItem("IceBar"), 10);
+            recipe.AddIngredient(mod.GetItem("BlueCloth"), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
     //_________________________________________________________________________________________
     [AutoloadEquip(EquipType.Legs)]
@@ -88,7 +105,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cryogenic Greaves");
-            Tooltip.SetDefault("Created by Storm Diver");
+            //Tooltip.SetDefault("Concept by Storm Diver");
         }
 
         public override void SetDefaults()
@@ -100,5 +117,15 @@ namespace StormDiversSuggestions.Items.Armour
             item.vanity = true;
 
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.GetItem("IceBar"), 8);
+            recipe.AddIngredient(mod.GetItem("BlueCloth"), 15);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
+
 }

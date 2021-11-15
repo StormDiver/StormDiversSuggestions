@@ -152,6 +152,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frost Spinner");
+
         }
         public override void SetDefaults()
         {
@@ -416,7 +417,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.timeLeft = 125;
             }
-            if (projectile.ai[0] > 12f)  //this defines where the flames starts
+            if (projectile.ai[0] > 16f)  //this defines where the flames starts
             {
                 if (Main.rand.Next(3) == 0)     //this defines how many dust to spawn
                 {

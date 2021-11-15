@@ -49,7 +49,7 @@ namespace StormDiversSuggestions.NPCs
         {
             if (!GetInstance<Configurations>().PreventPillarEnemies)
             {
-                return SpawnCondition.VortexTower.Chance * 0.25f;
+                return SpawnCondition.VortexTower.Chance * 0.22f;
             }
             else
             {

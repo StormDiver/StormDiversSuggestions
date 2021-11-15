@@ -64,8 +64,8 @@ namespace StormDiversSuggestions.Items.Accessory
         { 
             if (player.controlUp)
             {
-                ascentWhenRising = 0.3f;
-                maxAscentMultiplier = 3.5f;
+                ascentWhenRising = 0.25f;
+                maxAscentMultiplier = 2.5f;
 
             }
             else

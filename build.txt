@@ -1,4 +1,4 @@
 displayName = [c/22DD97:Storm Diver's Additions Mod]
 author = Storm Diver
-version = 1.8.2.3
+version = 1.8.2.4
 homepage = https://forums.terraria.org/index.php?threads/storm-divers-additions-and-changes.88234/

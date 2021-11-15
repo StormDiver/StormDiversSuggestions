@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("5% increased damage\n2% increased critical strike chance\nGrants immunity to knockback and increased health regeneration");
+            Tooltip.SetDefault("5% increased damage\n2% increased critical strike chance\nIncreases health regeneration and grants immunity to knockback");
         }
 
         public override void SetDefaults()

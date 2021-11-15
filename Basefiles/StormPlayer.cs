@@ -115,6 +115,7 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool twilightSet; //Player has full set of Twilight armour
 
+
         //Ints and Bools activated from this file
 
         public bool shotflame; //Indicates whether the SPooky Core has fired its flames or not
@@ -139,7 +140,7 @@ namespace StormDiversSuggestions.Basefiles
         public int stopflamefall; //Player has stoppd falling with flame core
         public bool twilightcharged; //Activates when the player is able to teleport with the twilight armour
         public int derplinglaunchcooldown; //How long until the player can launch enemies in the air with the Derplign armour set
-
+        public bool celestialspin; //Has the spinning projectile fo the celestial shell been summoned?
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
             boulderDB = false;
@@ -177,7 +178,6 @@ namespace StormDiversSuggestions.Basefiles
             mushset = false;
             hellSoulDebuff = false;
             twilightSet = false;
-            
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -196,6 +196,7 @@ namespace StormDiversSuggestions.Basefiles
             mushtime = 60;
             twilightcharged = false;
             derplinglaunchcooldown = 60;
+            celestialspin = false;
         }
 
 
@@ -632,7 +633,7 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
             }
-            //For the Celestial Barrier ======================
+            //For the Endurance Healing Potion Barrier ======================
             if (lifeBarrier)
             {
                 player.endurance += 0.25f;
@@ -646,7 +647,6 @@ namespace StormDiversSuggestions.Basefiles
                 player.autoJump = true;
                 player.maxFallSpeed *= 2f;
 
-                player.noKnockback = true;
 
                 if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed && derplinglaunchcooldown <= 0) //Activates when player presses button
                 {
@@ -686,7 +686,19 @@ namespace StormDiversSuggestions.Basefiles
             {
                 player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
             }
-           
+            //For the Celestial Barrier Projectile
+            if (lunarBarrier)
+            {
+                if (!celestialspin)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("CelestialShieldProj"), 0, 0f, player.whoAmI);
+                    celestialspin = true;
+                }
+            }
+            if (!lunarBarrier)
+            {
+                celestialspin = false;
+            }
         }
        //=====================For attacking an enemy with anything===========================================
         public override void OnHitAnything(float x, float y, Entity victim) 
@@ -855,8 +867,8 @@ namespace StormDiversSuggestions.Basefiles
             //Grant buff for celestial barrier based on incoming damage======================
             if (lunarBarrier)
             {
-                
-           
+              
+
                 if ((attackdmg >= 90 && Main.expertMode))
                 {
                    

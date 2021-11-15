@@ -47,7 +47,7 @@ namespace StormDiversSuggestions.TreasureBags
                     player.QuickSpawnItem(ItemType<LizardFlame>(), Main.rand.Next(1, 1));
                 }
             }
-            if (context == "bossBag" && Main.hardMode)
+            /*if (context == "bossBag" && Main.hardMode)
             {
                 if (Main.rand.Next(100) < 2)
 
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.TreasureBags
                     player.QuickSpawnItem(ItemType<ContestArmourLeggings>(), Main.rand.Next(1, 1));
                 }
 
-            }
+            }*/
             if (context == "lockBox")
             {
                 if (Main.rand.Next(100) < 20)

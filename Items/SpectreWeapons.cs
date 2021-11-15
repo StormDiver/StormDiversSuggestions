@@ -187,7 +187,7 @@ namespace StormDiversSuggestions.Items
             //item.reuseDelay = 20;
             item.shoot = mod.ProjectileType("SpectreStaffSpinProj");
             item.shootSpeed = 4.5f;
-            item.mana = 8;
+            item.mana = 15;
 
 
 

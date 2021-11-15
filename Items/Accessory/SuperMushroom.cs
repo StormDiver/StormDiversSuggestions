@@ -21,14 +21,14 @@ namespace StormDiversSuggestions.Items.Accessory
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            foreach (TooltipLine line in tooltips)
+            /*foreach (TooltipLine line in tooltips)
             {
                 if (line.mod == "Terraria" && line.Name == "Defense")
                 {
-                    line.text = line.text + " and increased damage percentage";
+                    line.text = line.text + " and % increased damage";
                 }
 
-            }
+            }*/
         }
         public override void PostUpdate()
         {
@@ -46,47 +46,67 @@ namespace StormDiversSuggestions.Items.Accessory
             item.maxStack = 1;
             
         }
-        int dustchance;
+        //int dustchance;
         public override void UpdateEquip(Player player)
         {
-            if (Main.rand.Next(dustchance) == 0)
+            /*if (Main.rand.Next(dustchance) == 0)
             {
                 int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 113, player.velocity.X, player.velocity.Y, 100, default, 1f);
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 1f;
                 Main.dust[dust].velocity.Y -= 0.5f;
                 Main.playerDrawDust.Add(dust);
-            }
+            }*/
         }
-        public override void UpdateAccessory(Player player, bool hideVisual)
+        public override void UpdateAccessory(Player player, bool hideVisual) //Maybe add buffs for the levels
         {
             
             if (player.statLife >= player.statLifeMax2 * .75f)
             {
-                item.defense = 4;
-                player.allDamage += 0.04f;
-                dustchance = 16;
+                item.defense = 2;
+                /*player.allDamage += 0.02f;
+                dustchance = 16;*/
+                player.ClearBuff(mod.BuffType("MushBuff2"));
+                player.ClearBuff(mod.BuffType("MushBuff3"));
+                player.ClearBuff(mod.BuffType("MushBuff4"));
+
+                player.AddBuff(mod.BuffType("MushBuff1"), 2);
+
             }
             else if (player.statLife >= player.statLifeMax2 * .5f && player.statLife < player.statLifeMax2 * .75f)
             {
-                item.defense = 8;
-                player.allDamage += 0.8f;
-                dustchance = 8;
+                item.defense = 5;
+
+                player.ClearBuff(mod.BuffType("MushBuff1"));
+                player.ClearBuff(mod.BuffType("MushBuff3"));
+                player.ClearBuff(mod.BuffType("MushBuff4"));
+
+                player.AddBuff(mod.BuffType("MushBuff2"), 2);
             }
             else if (player.statLife >= player.statLifeMax2 * .25f && player.statLife < player.statLifeMax2 * .5f)
             {
-                item.defense = 12;
-                player.allDamage += 0.12f;
-                dustchance = 4;
+                item.defense = 10;
+
+                player.ClearBuff(mod.BuffType("MushBuff1"));
+                player.ClearBuff(mod.BuffType("MushBuff2"));
+                player.ClearBuff(mod.BuffType("MushBuff4"));
+
+                player.AddBuff(mod.BuffType("MushBuff3"), 3);
+
             }
             else 
             {
                 item.defense = 16;
-                player.allDamage += 0.16f;
-                dustchance = 2;
+
+                player.ClearBuff(mod.BuffType("MushBuff1"));
+                player.ClearBuff(mod.BuffType("MushBuff2"));
+                player.ClearBuff(mod.BuffType("MushBuff3"));
+
+                player.AddBuff(mod.BuffType("MushBuff4"), 2);
+
             }
-            
-        
+
+
 
         }
         

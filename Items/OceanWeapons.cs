@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Items
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-            item.useTurn = true;
+            item.useTurn = false;
             item.knockBack = 4;
             item.shoot = mod.ProjectileType("OceanSmallProj");
             item.scale = 1.2f;

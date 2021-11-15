@@ -143,7 +143,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = true;
 
             projectile.tileCollide = false;
-            projectile.penetrate = -1;
+            projectile.penetrate = 15;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 8;
             projectile.light = 0.1f;
