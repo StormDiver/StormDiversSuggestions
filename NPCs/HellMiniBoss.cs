@@ -48,6 +48,8 @@ namespace StormDiversSuggestions.NPCs
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
             npc.buffImmune[(BuffType<HellSoulFireDebuff>())] = true;
+            npc.buffImmune[(BuffType<UltraBurnDebuff>())] = true;
+
             npc.lavaImmune = true;
             banner = npc.type;
             bannerItem = mod.ItemType("HellMiniBossBannerItem");

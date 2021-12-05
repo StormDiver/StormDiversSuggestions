@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace StormDiversSuggestions.Items.Armour
+namespace StormDiversSuggestions.Items.Vanitysets
 {
     [AutoloadEquip(EquipType.Head)]
     public class StormDiverMask : ModItem

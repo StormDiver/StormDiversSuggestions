@@ -52,6 +52,8 @@ namespace StormDiversSuggestions.NPCs
 
             npc.buffImmune[BuffID.Frostburn] = true;
             npc.buffImmune[(BuffType<SuperFrostBurn>())] = true;
+            npc.buffImmune[(BuffType<UltraFrostDebuff>())] = true;
+
 
             npc.rarity = 2;
         }

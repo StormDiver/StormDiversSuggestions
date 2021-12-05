@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            //projectile.magic = true;
+            projectile.melee = true;
             projectile.aiStyle = 2;
             //projectile.CloneDefaults(48);
             //aiType = 48;
@@ -103,7 +103,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            //projectile.magic = true;
+            projectile.melee = true;
 
             projectile.penetrate = 3;
             projectile.timeLeft = 50;

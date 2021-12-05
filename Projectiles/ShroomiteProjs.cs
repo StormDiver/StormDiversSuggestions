@@ -658,7 +658,7 @@ namespace StormDiversSuggestions.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mushroom arrow");
+            DisplayName.SetDefault("Shroomite Glowing arrow");
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
         }
@@ -764,7 +764,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/MushroomArrowProj_Glow");
+            Texture2D texture = mod.GetTexture("Projectiles/MushroomArrowProj");
 
             spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 

@@ -198,9 +198,10 @@ namespace StormDiversSuggestions.Projectiles
 
             Player player = Main.player[projectile.owner];
 
-            
-            
-                player.AddBuff(mod.BuffType("TurtleBuff"), 90);
+            projectile.damage = (projectile.damage * 9) / 10;
+
+
+            player.AddBuff(mod.BuffType("TurtleBuff"), 90);
             
         }
 

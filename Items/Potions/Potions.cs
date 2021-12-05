@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items.Potions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Life Decay Potion");
-            Tooltip.SetDefault("Decays the life of nearby enemies");
+            Tooltip.SetDefault("Grants a chance to decay the life of attacked enemies");
         }
 
         public override void SetDefaults()

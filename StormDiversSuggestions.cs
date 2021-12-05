@@ -87,7 +87,7 @@ namespace StormDiversSuggestions
             });
             RecipeGroup.RegisterGroup("StormDiversSuggestions:Anvils", group);
 
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mid Tier Hardmode Bar", new int[]
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 2 Hardmode Bar", new int[]
            {
                 ItemID.MythrilBar,
                 ItemID.OrichalcumBar,
@@ -95,6 +95,13 @@ namespace StormDiversSuggestions
            });
             RecipeGroup.RegisterGroup("StormDiversSuggestions:MidHMBars", group);
 
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 3 Hardmode Bar", new int[]
+           {
+                ItemID.AdamantiteBar,
+                ItemID.TitaniumBar,
+
+           });
+            RecipeGroup.RegisterGroup("StormDiversSuggestions:T3HMBars", group);
         }
     }
 }

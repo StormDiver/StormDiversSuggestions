@@ -485,7 +485,7 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                     {
-                        if (!npc.friendly && npc.lifeMax > 5)
+                        if (!npc.friendly && npc.lifeMax > 5 && npc.type != NPCID.TheHungry && npc.type != NPCID.TheHungryII)
 
                         {
                             if (Main.rand.Next(100) < 20)
@@ -665,6 +665,57 @@ namespace StormDiversSuggestions.Items.Materials
                     }
 
                 }
+
+            }
+        }
+    }
+    //_________________________________________________________________________________________________
+    public class SantankScrap : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Mechanical Scrap");
+            Tooltip.SetDefault("All that remains of the mighty Santank");
+
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 16;
+            item.height = 16;
+            item.maxStack = 999;
+            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.rare = ItemRarityID.Yellow;
+
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.5f * Main.essScale);
+        }
+      
+        public class ModGlobalNPC : GlobalNPC
+        {
+            public override bool InstancePerEntity => true;
+            public override void NPCLoot(NPC npc)
+            {
+
+
+                if (npc.type == NPCID.SantaNK1)
+                { 
+                    if (Main.expertMode)
+
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SantankScrap"), Main.rand.Next(4, 7));
+                    }
+
+                    else
+                    {
+
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SantankScrap"), Main.rand.Next(3, 6));
+
+                    }
+                }
+
 
             }
         }

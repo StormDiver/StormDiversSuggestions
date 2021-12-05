@@ -494,4 +494,95 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    //_______________________________________________
+    public class DarkShardDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Essence of Dark");
+            Description.SetDefault("You have been surrounded by the darkness");
+            Main.debuff[Type] = true;
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().darknessDebuff = true;
+
+
+
+        }
+    }
+    //_______________________________________________
+    public class UltraBurnDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("UltraBurn");
+            Description.SetDefault("This most certainly is NOT fine!!!!");
+            Main.debuff[Type] = true;
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().ultraBurn = true;
+
+            
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 6, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 2.5f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 2f;
+            
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().ultraburnDebuff = true;
+
+
+
+        }
+    }
+    //_______________________________________________
+    public class UltraFrostDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("UltraFreeze Burn");
+            Description.SetDefault("This really really REALLY hurts!!!!");
+            Main.debuff[Type] = true;
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<StormPlayer>().ultraFrost = true;
+
+
+            int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 135, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 0, default, 2.5f);
+            Main.dust[dust].noGravity = true;
+            Main.dust[dust].velocity *= 1f;
+            Main.dust[dust].velocity.Y -= 2f;
+
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().ultrafrostDebuff = true;
+
+
+
+        }
+    }
 }

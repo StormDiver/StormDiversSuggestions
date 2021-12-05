@@ -7,8 +7,7 @@ using Terraria.ModLoader;
 
 namespace StormDiversSuggestions.Projectiles       
 {
-   
-    
+ 
     public class DerpWaveProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -25,7 +24,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ignoreWater = true;
             //projectile.magic = true;
             projectile.penetrate = -1;
-            projectile.timeLeft = 60;
+            projectile.timeLeft = 40;
             projectile.extraUpdates = 1;
             projectile.knockBack = 8f;
             //projectile.usesLocalNPCImmunity = true;
@@ -34,7 +33,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
             projectile.tileCollide = false;
         }
-        float airknock = 15;
+        float airknock = 13;
         public override void AI()
         {
             projectile.damage = (projectile.damage * 100) / 101;
@@ -73,13 +72,13 @@ namespace StormDiversSuggestions.Projectiles
                 if (target.velocity.Y == 0)
                 {
                     target.velocity.Y = -airknock - (target.knockBackResist * 2);
-                    target.velocity.X = 4f * -target.direction;
+                    target.velocity.X = 4f * projectile.direction;
                 }
                 else
                 {
                     projectile.knockBack = 20;
                     target.velocity.Y = (-airknock * 0.5f) - (target.knockBackResist * 2);
-                    target.velocity.X = 7f * -target.direction;
+                    target.velocity.X = 7f * projectile.direction;
 
                 }
                 target.AddBuff(mod.BuffType("DerpDebuff"), 45);

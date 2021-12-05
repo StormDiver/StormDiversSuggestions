@@ -115,7 +115,19 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool twilightSet; //Player has full set of Twilight armour
 
+        public bool derpEye; //Player had the Derpling Eye equipped
 
+        public bool skyKnightSet; //Player hasa full set of SkyKnight Armour
+
+        public bool santankSet; //Player had a full set of Santank armour
+
+        public bool blueCuffs; //Player has insulated cuffs equipped
+
+        public bool lunaticHood; //Player has the Luantic Hood equipped
+
+        public bool ultraBurn; //Player ahs the ultra burn debuff
+
+        public bool ultraFrost; //Player has Ultra Frost burn debuff
         //Ints and Bools activated from this file
 
         public bool shotflame; //Indicates whether the SPooky Core has fired its flames or not
@@ -136,11 +148,16 @@ namespace StormDiversSuggestions.Basefiles
         public int hellblazetime; //Cooldown for the flames created from HellSoul armour set
         public int mushtime; //Cooldown for mushrooms summoned with mushroom armour
         public int hellsoultime; //Cooldown for the souls created by hell soul armour
-        public bool flamefalling; //Falling at speed with betsy's flame
-        public int stopflamefall; //Player has stoppd falling with flame core
+        public bool derpfalling; //Falling at speed with derp leg
+        public int stopderpfall; //Player has stoppd falling with derp leg
         public bool twilightcharged; //Activates when the player is able to teleport with the twilight armour
-        public int derplinglaunchcooldown; //How long until the player can launch enemies in the air with the Derplign armour set
+        public int derplinglaunchcooldown; //How long until the player can launch enemies in the air with the Derpling armour set
         public bool celestialspin; //Has the spinning projectile fo the celestial shell been summoned?
+        public bool skysentry; //Has the Sky Knight sentry been summoned>
+        public int santankcharge; //Charging up the santank missle
+        public int santankmissleup; //Adds one to the charge every 10 frames
+        public bool santanktrigger; //Has the player triggered the missiles
+        public bool lunaticsentry; //Has the lunatic sentry been summoned?
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
             boulderDB = false;
@@ -178,6 +195,13 @@ namespace StormDiversSuggestions.Basefiles
             mushset = false;
             hellSoulDebuff = false;
             twilightSet = false;
+            derpEye = false;
+            skyKnightSet = false;
+            santankSet = false;
+            blueCuffs = false;
+            lunaticHood = false;
+            ultraBurn = false;
+            ultraFrost = false;
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -195,8 +219,13 @@ namespace StormDiversSuggestions.Basefiles
             hellblazetime = 45;
             mushtime = 60;
             twilightcharged = false;
-            derplinglaunchcooldown = 60;
+            derplinglaunchcooldown = 90;
             celestialspin = false;
+            skysentry = false;
+            santankcharge = 0;
+            santankmissleup = 0;
+            santanktrigger = false;
+            lunaticsentry = false;
         }
 
 
@@ -272,9 +301,122 @@ namespace StormDiversSuggestions.Basefiles
 
             }
 
+
+            //For santank set ======================================================================
+            if (santankSet)
+            {
+                if (santankcharge <= 100 && !santanktrigger) //Charges up the rockets
+                {
+                    santankmissleup++;
+                }
+                if (santankmissleup >= 6) //Adds 1 int to the charge every n frames
+                {
+                    santankcharge++;
+                    santankmissleup = 0;
+                }
+                if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed && santankcharge >= 10 && !santanktrigger) //Activates when player presses button
+                {
+                    santanktrigger = true;
+
+                }
+                if (santanktrigger) //Drains the rocket charge and clears buffs
+                {
+                    santankcharge--;
+                    player.ClearBuff(mod.BuffType("SantankBuff1"));
+                    player.ClearBuff(mod.BuffType("SantankBuff2"));
+                    player.ClearBuff(mod.BuffType("SantankBuff3"));
+                }
+                if (!santanktrigger && santankmissleup == 0 && (santankcharge == 10 || santankcharge == 20 || santankcharge == 30 || santankcharge == 40 || santankcharge == 50 || santankcharge == 60 || santankcharge == 70 || santankcharge == 80 || santankcharge == 90 || santankcharge == 100)) 
+                    //Creates a particle and sound effect at these times
+                {
+                    for (int i = 0; i < 30; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.Center.X - (15 * player.direction) -4, player.Center.Y - 8), 0, 0, 6, 0f, 0f, 50, default, 1.5f);
+                        Main.dust[dustIndex].velocity *= 2;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 61, 0.5f, 0.5f);
+                }
+                else if (santanktrigger && (santankcharge == 10 || santankcharge == 20 || santankcharge == 30 || santankcharge == 40 || santankcharge == 50 || santankcharge == 60 || santankcharge == 70 || santankcharge == 80 || santankcharge == 90 || santankcharge == 100))
+                //Fires missles at these times
+                {
+                    for (int i = 0; i < 30; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.Center.X - (15 * player.direction) - 4, player.Center.Y - 8), 0, 0, 6, 0f, 0f, 50, default, 1.5f);
+                        Main.dust[dustIndex].velocity *= 2;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        int dustIndex = Dust.NewDust(new Vector2(player.Center.X - (15 * player.direction) - 4, player.Center.Y - 8), 0, 0, 31, 0, -3, 100, default, 1f);
+                        Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                        Main.dust[dustIndex].noGravity = true;
+                    }
+                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 92);
+
+
+                    float speedX = 0f;
+                    float speedY = -8f;
+                    int damage = (int)(100 * player.rangedDamage);
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(50));
+                    float scale = 1f - (Main.rand.NextFloat() * .1f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(player.Center.X - (15 * player.direction), player.Center.Y - 6, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SantankMissleProj"), damage, 1f, player.whoAmI);
+
+                }
+
+                if (santankcharge <= -10) //Reset trigger once all missile are fired (negative creaets a recharge delay, delay is 10 = 2 seconds (10+10) delay ect...)
+                {
+                    santanktrigger = false;
+                    
+                }
+                //For the buffs, Tier 1 = 1-4 rockets, Tier 2 = 5-9, Tier 3 = 10
+                if (santankcharge >= 10 && santankcharge < 50 && !santanktrigger)
+                {
+                    player.ClearBuff(mod.BuffType("SantankBuff2"));
+                    player.ClearBuff(mod.BuffType("SantankBuff3"));
+
+                    player.AddBuff(mod.BuffType("SantankBuff1"), 2);
+
+                }
+                else if (santankcharge >= 50 && santankcharge < 100 && !santanktrigger)
+                {
+                    player.ClearBuff(mod.BuffType("SantankBuff1"));
+                    player.ClearBuff(mod.BuffType("SantankBuff3"));
+
+                    player.AddBuff(mod.BuffType("SantankBuff2"), 2);
+                }
+                else if (santankcharge >= 100 && !santanktrigger)
+                {
+                    player.ClearBuff(mod.BuffType("SantankBuff1"));
+                    player.ClearBuff(mod.BuffType("SantankBuff2"));
+
+                    player.AddBuff(mod.BuffType("SantankBuff3"), 2);
+                }
+                else
+                {
+                    player.ClearBuff(mod.BuffType("SantankBuff1"));
+                    player.ClearBuff(mod.BuffType("SantankBuff2"));
+                    player.ClearBuff(mod.BuffType("SantankBuff3"));
+
+                }
+
+            }
+            if (!santankSet) //Reset values if armour is removed
+            {
+                santankcharge = -10;
+                santankmissleup = 0;
+                santanktrigger = false;
+            }
+
+            //For Twilight Armour ====================================================================
+
             float xWarplimit = 560;
             float yWarplimit = 320;
-            //For Twilight Armour
             if (twilightSet)
             {
                 float distanceX = player.Center.X - Main.MouseWorld.X;
@@ -384,76 +526,58 @@ namespace StormDiversSuggestions.Basefiles
                     twilightcharged = false; //Removes the outline effect if the player is unable to charge
                 }
             }
-         
-            //For Betsy's Flame======================
-            if (flameCore)
+
+            //For Spooky Core======================
+            if (spooked)
             {
-
-                //player.wingTimeMax *= (int)3f;
-                player.wingTime += 1;
-                //Create flames upon landing
-
-                if (player.velocity.Y > 10)
+                if (Main.rand.Next(5) == 0)
                 {
-
-
-                    flamefalling = true;
-                    stopflamefall = 0;
-                    int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 6, 0f, 0f, 50, default, 1f);
-
-
+                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 259, 0, -3);
+                    dust.noGravity = true;
+                    dust.scale = 1f;
                 }
 
-
-                //For impacting the ground at speed
-                if (player.velocity.Y == 0 && flamefalling)
+                for (int i = 0; i < 200; i++)
                 {
+                    NPC target = Main.npc[i];
+                    var player = Main.LocalPlayer;
+
+                    float shootToX = target.position.X + (float)target.width * 0.5f - player.Center.X;
+                    float shootToY = target.position.Y + (float)target.height * 0.5f - player.Center.Y;
+                    float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
 
 
-                    for (int i = 0; i < 30; i++)
+                    /*float distanceX = player.Center.X - target.Center.X;
+                    float distanceY = player.Center.Y - target.Center.Y;
+                    float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));*/
+                    if (distance < 260 && !target.friendly && target.lifeMax > 5 && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0)) 
                     {
+                        if (!target.buffImmune[(BuffType<UltraBurnDebuff>())])
+                        {
+                            distance = 1.6f / distance;
 
-                        int dustIndex = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 6, 0f, 0f, 50, default, 1.5f);
-                        Main.dust[dustIndex].velocity *= 3;
-                    }
-                    Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 74, 0.5f);
-                    float numberProjectiles = 6 + Main.rand.Next(4);
-                    for (int i = 0; i < numberProjectiles; i++)
-                    {
+                            //Multiplying the shoot trajectory with distance times a multiplier if you so choose to
+                            shootToX *= distance * 15f;
+                            shootToY *= distance * 15f;
+                            if (Main.rand.Next(3) == 0)
+                            {
+                                Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(8));
+
+                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 259, perturbedSpeed.X, perturbedSpeed.Y);
+                                dust.fadeIn = 1f + (float)Main.rand.Next(5) * 0.1f;
+                                dust.noGravity = true;
+                                dust.scale = 1.5f;
+                            }
 
 
-                        float speedX = 0f;
-                        float speedY = -8f;
-                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(120));
-                        float scale = 1f - (Main.rand.NextFloat() * .5f);
-                        perturbedSpeed = perturbedSpeed * scale;
-                        Projectile.NewProjectile(player.Center.X, player.Bottom.Y - 7, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.MolotovFire, 30, 3f, player.whoAmI);
-
-
-                    }
-                    flamefalling = false;
-
+                            target.AddBuff(mod.BuffType("UltraBurnDebuff"), 2);
+                        }
+                        }
+                    
                 }
 
-                //If the player slows down too much then the falling bool is cancelled
-                if (player.velocity.Y <= 2)
-                {
-
-                    stopflamefall++;
-                }
-                else
-                {
-                    stopflamefall = 0;
-                }
-                if (stopflamefall > 1)
-                {
-                    flamefalling = false;
-                }
             }
-            if (!flameCore)
-            {
-                flamefalling = false;
-            }
+
 
             //For the Mechanical Spikes===========================
             if (primeSpin)
@@ -583,15 +707,18 @@ namespace StormDiversSuggestions.Basefiles
                     shotrocket = false; //Once the usetime is back to 0 this bool can be set to false again
                 }
             }
-            //For the Spooky Core ======================
-            if (spooked)
+            //For betsy's Flame ======================
+            if (flameCore)
             {
-                if (player.itemAnimation > 1 && (player.HeldItem.melee || player.HeldItem.ranged || player.HeldItem.magic || player.HeldItem.summon || player.HeldItem.thrown)) //ranged item is in use
+
+                player.runAcceleration += 0.25f;
+
+                if (player.itemAnimation > 1 && (player.HeldItem.melee || player.HeldItem.ranged || player.HeldItem.magic || player.HeldItem.summon || player.HeldItem.thrown)) //weapon is in use
                 {
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(5) == 0)
+                        if (Main.rand.Next(4) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
@@ -612,12 +739,12 @@ namespace StormDiversSuggestions.Basefiles
 
 
                                 float speedX = 0f;
-                                float speedY = -2f;
+                                float speedY = -7f;
                                 int damage = (int)((player.HeldItem.damage * 0.4f) * player.allDamage);
                                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
-                                Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("SpookyProj"), damage, 1f, player.whoAmI);
+                                Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BetsyFlameProj"), damage, 1f, player.whoAmI);
 
                                 
                             }
@@ -642,18 +769,17 @@ namespace StormDiversSuggestions.Basefiles
             //for Derpling armour
             if (derpJump)
             {
-                player.jumpSpeedBoost += 6;
+                player.jumpSpeedBoost += 4.5f;
 
                 player.autoJump = true;
-                player.maxFallSpeed *= 2f;
-
-
-                if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed && derplinglaunchcooldown <= 0) //Activates when player presses button
+                player.maxFallSpeed *= 1.5f;
+                //Creates the wave upon jumping
+                if (player.velocity.Y == 0 && player.controlJump && derplinglaunchcooldown <= 0)
                 {
 
                     player.ClearBuff(mod.BuffType("DerpBuff"));
 
-                    Main.PlaySound(SoundID.NPCKilled, (int)player.Center.X, (int)player.Center.Y, 25, 1.5f, -0.5f);
+                    Main.PlaySound(SoundID.NPCHit, (int)player.Center.X, (int)player.Center.Y, 22, 1.5f, -0.5f);
 
                     for (int i = 0; i < 40; i++)
                     {
@@ -661,11 +787,11 @@ namespace StormDiversSuggestions.Basefiles
                         var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, speedX, -3, 130, default, 1.5f);
                         dust.noGravity = true;
                         dust.velocity *= 2;
-                        
+
                     }
                     for (int i = 0; i < 20; i++)
                     {
-                        
+
                         var dust = Dust.NewDustDirect(player.position, player.width, player.height, 68, -5, 0, 130, default, 1.5f);
                         dust.noGravity = true;
                         dust.velocity *= 2;
@@ -673,15 +799,19 @@ namespace StormDiversSuggestions.Basefiles
                         dust2.noGravity = true;
                         dust2.velocity *= 2;
                     }
-                    
-                    Projectile.NewProjectile(player.Center.X, player.Right.Y -15, 7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 15, -7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.Right.Y - 15, 7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
-                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 15, -7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
-                    derplinglaunchcooldown = 90;
+
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y - 12, 7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 12, -7, 0, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Right.Y - 12, 7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X, player.Left.Y - 12, -7, -2.5f, mod.ProjectileType("DerpWaveProj"), 75, 0, player.whoAmI);
+                    derplinglaunchcooldown = 60;
                 }
             }
-            
+            if (!derpJump)
+            {
+                derplinglaunchcooldown = 60;
+            }
+           
             if (!graniteBuff)//If the player removes the accessory the buff is gone
             {
                 player.ClearBuff(mod.BuffType("GraniteAccessBuff"));
@@ -698,6 +828,44 @@ namespace StormDiversSuggestions.Basefiles
             if (!lunarBarrier)
             {
                 celestialspin = false;
+            }
+            //For the Sky Knight set
+            if (skyKnightSet)
+            {
+                player.AddBuff(mod.BuffType("SkyKnightSentryBuff"), 2);
+
+                if (!skysentry)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("SkyKnightSentryProj"), 0, 0f, player.whoAmI);
+                    skysentry = true;
+
+                }
+            }
+            if (!skyKnightSet)
+            {
+                skysentry = false;
+                player.ClearBuff(mod.BuffType("SkyKnightSentryBuff"));
+
+            }
+            //For the Lunatic Cultist accessory
+            if (lunaticHood)
+            {
+                //player.AddBuff(mod.BuffType("SkyKnightSentryBuff"), 2);
+
+                if (!lunaticsentry)
+                {
+                    Projectile.NewProjectile(player.Center.X - 80, player.Center.Y - 40, 0, 0, mod.ProjectileType("LunaticExpertSentryProj"), 0, 0f, player.whoAmI);
+                    Projectile.NewProjectile(player.Center.X + 80, player.Center.Y - 40, 0, 0, mod.ProjectileType("LunaticExpertSentryProj"), 0, 0f, player.whoAmI);
+
+                    lunaticsentry = true;
+
+                }
+            }
+            if (!lunaticHood)
+            {
+                lunaticsentry = false;
+                //player.ClearBuff(mod.BuffType("SkyKnightSentryBuff"));
+
             }
         }
        //=====================For attacking an enemy with anything===========================================
@@ -993,6 +1161,16 @@ namespace StormDiversSuggestions.Basefiles
 
                 hellblazetime = 45;
             }
+
+            //For the Blood potion
+            if (BloodOrb)
+            {
+                if (Main.rand.Next(3) == 0)
+                {
+                    target.AddBuff(mod.BuffType("BloodDebuff"), 300);
+                }
+            }
+
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
@@ -1066,6 +1244,14 @@ namespace StormDiversSuggestions.Basefiles
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
                 hellblazetime = 45;
+            }
+            //Blood potion
+            if (BloodOrb)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    target.AddBuff(mod.BuffType("BloodDebuff"), 300);
+                }
             }
         }
         
@@ -1141,9 +1327,20 @@ namespace StormDiversSuggestions.Basefiles
 
                     player.lifeRegen = -8;
                 }
+               
                 if (hellSoulDebuff)
                 {
                     player.lifeRegen = -14;
+                }
+                if (ultraBurn)
+                {
+
+                    player.lifeRegen = -25;
+                }
+                if (ultraFrost)
+                {
+                    player.lifeRegen = -25;
+
                 }
             }
         }

@@ -43,7 +43,8 @@ namespace StormDiversSuggestions.Projectiles
         int shoottime = 0;
         //int supershot = 0;
         int opacity = 0;
-        
+        bool floatup = true;
+        int floattime;
         public override void AI()
         {
             projectile.alpha = (int)0.5f;
@@ -151,6 +152,44 @@ namespace StormDiversSuggestions.Projectiles
             }
             //projectile.ai[0] += 1f;
 
+            if (floatup) //Floating upwards
+            {
+                floattime++;
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                else
+                {
+                    projectile.velocity.Y += 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = false;
+                    floattime = 0;
+                }
+            }
+            if (!floatup) //Floating downwards
+            {
+                floattime++;
+
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y += 0.01f;
+                }
+                else
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = true;
+                    floattime = 0;
+                }
+            }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

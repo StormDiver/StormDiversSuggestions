@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 
 namespace StormDiversSuggestions.Projectiles
 {
-    public class AncientArrowProj : ModProjectile
+    public class DesertBowProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Forbidden Arrow");
+            DisplayName.SetDefault("Forbidden Bow Arrow");
         }
 
         public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             dropdust--;
             if ((projectile.velocity.X >= 3 || projectile.velocity.X <= -3))
-                if (Main.rand.Next(15) == 0)
+                if (Main.rand.Next(13) == 0)
                 {
                 int speedX = 0;
                 int speedY = 3;

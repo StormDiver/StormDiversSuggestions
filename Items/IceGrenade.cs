@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Items
         public override void SetDefaults()
         {
             
-            item.damage = 75;
+            item.damage = 60;
             item.thrown = true;
             item.width = 10;
             item.height = 14;
@@ -26,11 +26,11 @@ namespace StormDiversSuggestions.Items
             item.useTime = 40;
             item.useAnimation = 40;
             item.noUseGraphic = true;
-            item.useStyle = ItemUseStyleID.SwingThrow;  
+            item.useStyle = ItemUseStyleID.HoldingOut;  
             item.knockBack = 8;
             item.value = Item.sellPrice(0, 0, 0, 16);
             item.rare = ItemRarityID.Blue;
-            item.shootSpeed = 7f;
+            item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("IceGrenadeProj");
             //item.UseSound = SoundID.Item1;
             item.autoReuse = false;

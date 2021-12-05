@@ -160,8 +160,17 @@ namespace StormDiversSuggestions.Basefiles
                 recipe.SetResult(ItemID.AncientBattleArmorPants);
                 recipe.AddRecipe();
 
-               
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("SantankScrap"), 18);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.ChainGun);
+                recipe.AddRecipe();
 
+                recipe = new ModRecipe(mod);
+                recipe.AddIngredient(mod.GetItem("SantankScrap"), 18);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(ItemID.EldMelter);
+                recipe.AddRecipe();
             }
         }
         public class VanillaShops : GlobalNPC

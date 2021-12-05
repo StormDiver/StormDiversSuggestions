@@ -72,7 +72,7 @@ namespace StormDiversSuggestions.Items.Potions
             {
                 if (line.mod == "Terraria" && line.Name == "HealLife")
                 {
-                    line.text = "Restores 50% of your maximum life";
+                    line.text = "Restores 50% of your maximum life up to 300";
                 }
 
             }
@@ -108,9 +108,16 @@ namespace StormDiversSuggestions.Items.Potions
             }
             
         }
-         public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
-         {
-             healValue = (player.statLifeMax2 / 2);
+        public override void GetHealLife(Player player, bool quickHeal, ref int healValue)
+        {
+            if (player.statLifeMax2 > 600)
+            {
+                healValue = (player.statLifeMax2 / 2) - ((player.statLifeMax2 / 2) - 300);
+            }
+            else
+            {
+                healValue = (player.statLifeMax2 / 2);
+            }
          }
         public override void AddRecipes()
         {

@@ -10,7 +10,7 @@ namespace StormDiversSuggestions.Items.Tools
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryo Pickaxe");
+            DisplayName.SetDefault("Frost Pickaxe");
             Tooltip.SetDefault("Can mine Adamantite and Titanium");
         }
 
@@ -57,7 +57,7 @@ namespace StormDiversSuggestions.Items.Tools
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryo Hamaxe");
+            DisplayName.SetDefault("Frost Hamaxe");
             Tooltip.SetDefault("Strong enough to destroy Altars");
         }
 

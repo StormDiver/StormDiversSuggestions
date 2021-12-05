@@ -52,22 +52,26 @@ namespace StormDiversSuggestions.Items
         }
         public override void HoldItem(Player player)
         {
-            player.AddBuff(mod.BuffType("SuperFrostBurn"), 1);
-            player.AddBuff(mod.BuffType("AridSandDebuff"), 1);
-            player.AddBuff(mod.BuffType("SuperBurnDebuff"), 1);
+            player.AddBuff(mod.BuffType("SuperFrostBurn"), 2);
+            player.AddBuff(mod.BuffType("AridSandDebuff"), 2);
+            player.AddBuff(mod.BuffType("SuperBurnDebuff"), 2);
 
-            player.AddBuff(mod.BuffType("BoulderDebuff"), 1);
-            player.AddBuff(mod.BuffType("SuperBoulderDebuff"), 1);
-            player.AddBuff(mod.BuffType("LunarBoulderDebuff"), 1);
-            player.AddBuff(mod.BuffType("SpectreDebuff"), 1);
-            player.AddBuff(mod.BuffType("ScanDroneDebuff"), 1);
-            player.AddBuff(mod.BuffType("NebulaDebuff"), 1);
+            player.AddBuff(mod.BuffType("BoulderDebuff"), 2);
+            player.AddBuff(mod.BuffType("SuperBoulderDebuff"), 2);
+            player.AddBuff(mod.BuffType("LunarBoulderDebuff"), 2);
+            player.AddBuff(mod.BuffType("SpectreDebuff"), 2);
+            player.AddBuff(mod.BuffType("ScanDroneDebuff"), 2);
+            player.AddBuff(mod.BuffType("NebulaDebuff"), 2);
 
-            player.AddBuff(mod.BuffType("BloodDebuff"), 1);
-            player.AddBuff(mod.BuffType("BeetleDebuff"), 1);
-            player.AddBuff(mod.BuffType("HeartDebuff"), 1);
-            player.AddBuff(mod.BuffType("HellSoulFireDebuff"), 1);
+            player.AddBuff(mod.BuffType("BloodDebuff"), 2);
+            player.AddBuff(mod.BuffType("BeetleDebuff"), 2);
+            player.AddBuff(mod.BuffType("HeartDebuff"), 2);
+            player.AddBuff(mod.BuffType("HellSoulFireDebuff"), 2);
 
+            player.AddBuff(mod.BuffType("TwilightDebuff"), 2);
+
+            player.AddBuff(mod.BuffType("UltraBurnDebuff"), 2);
+            player.AddBuff(mod.BuffType("UltraFrostDebuff"), 2);
 
 
         }

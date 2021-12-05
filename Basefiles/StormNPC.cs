@@ -54,11 +54,17 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool hellSoulFire;
 
+        public bool darknessDebuff;
+
+        public bool ultraburnDebuff;
+
+        public bool ultrafrostDebuff;
+
         //All this for a speen----------------------------------------------
 
         public bool derplaunched; //If the npc has been launched by the Derpling armour
 
-        public int direction; //records the direction prior to speen
+        public float direction; //records the direction prior to speen
 
         public int spintime; //how long until rotation can be reset
 
@@ -78,6 +84,9 @@ namespace StormDiversSuggestions.Basefiles
             superburnDebuff = false;
             hellSoulFire = false;
             derplaunched = false;
+            darknessDebuff = false;
+            ultraburnDebuff = false;
+            ultrafrostDebuff = false;
         }
         public override void AI(NPC npc)
 
@@ -98,7 +107,14 @@ namespace StormDiversSuggestions.Basefiles
                 }
                 if (spintime == 0) 
                 {
-                    direction = npc.direction; //Saves the direction prior to rotate
+                    if (npc.velocity.X > 0)
+                    {
+                        direction = 1;
+                    }
+                    else
+                    {
+                        direction = -1;
+                    }
 
                 }
                 if (spintime > 0 && spintime < 45) //begins the rotation 
@@ -115,7 +131,7 @@ namespace StormDiversSuggestions.Basefiles
             }
             //__________________________________________________________________________________________________
 
-            var player = Main.LocalPlayer;
+            /*var player = Main.LocalPlayer;
             float distanceX = player.Center.X - npc.Center.X;
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
@@ -128,7 +144,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     npc.AddBuff(mod.BuffType("BloodDebuff"), 2);
                 }
-            }
+            }*/
            
                 //COVER YOURSELF IN OIL
                 /*if (npc.HasBuff(BuffID.Oiled) && Main.raining && !npc.boss)
@@ -173,12 +189,19 @@ namespace StormDiversSuggestions.Basefiles
             {
                 npc.lifeRegen -= 50;
 
-                damage = 6;
+                damage = 5;
 
             }
             if (superFrost)
             {
                 npc.lifeRegen -= 50;
+
+                damage = 5;
+
+            }
+            if (darknessDebuff)
+            {
+                npc.lifeRegen -= 60;
 
                 damage = 6;
 
@@ -196,7 +219,16 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 8;
 
             }
-           
+            if (ultraburnDebuff)
+            {
+                npc.lifeRegen -= 100;
+                damage = 10;
+            }
+            if (ultrafrostDebuff)
+            {
+                npc.lifeRegen -= 100;
+                damage = 10;
+            }
             if (spectreDebuff)
             {
                 npc.lifeRegen -= 120;
@@ -212,7 +244,7 @@ namespace StormDiversSuggestions.Basefiles
                 damage = 12;
 
             }
-           
+         
             if (nebula)
             {
                 npc.lifeRegen -= 180;
@@ -443,6 +475,42 @@ namespace StormDiversSuggestions.Basefiles
 
                 
             }
+            if (darknessDebuff)
+            {
+               
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 54, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 0, default, 1.5f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                
+            }
+            if (ultraburnDebuff)
+            {
+
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+
+                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, npc.velocity.X, -1, 0, default, 1.5f);
+                Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
+
+
+            }
+            if (ultrafrostDebuff)
+            {
+
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 135, npc.velocity.X * 1.2f, npc.velocity.Y * 1.2f, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+
+                int dust2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 135, npc.velocity.X, -1, 0, default, 1.5f);
+                Main.dust[dust2].noGravity = true; //this make so the dust has no gravity
+
+
+            }
         }
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
         {
@@ -462,8 +530,48 @@ namespace StormDiversSuggestions.Basefiles
         {
             
         }
-        
+        public class ModGlobalNPC : GlobalNPC
+        {
+            //Readd the Cultist treasure bag
+            public override void NPCLoot(NPC npc)
+            {
+                if (npc.type == NPCID.CultistBoss)
+                {
+                    if (Main.expertMode)
+                    {
+
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CultistBossBag);
+
+                    }
+                    else
+                    {
+                        int choice = Main.rand.Next(4);
+
+                        if (choice == 0)
+                        {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CultistBow"));
+
+
+                        }
+                        if (choice == 1)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CultistSpear"));
+
+                        }
+                        if (choice == 2)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CultistTome"));
+                        }
+                        if (choice == 3)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CultistStaff"));
+                        }
+                    }
+                }
+            }
+        }
 
     }
+
         
 }

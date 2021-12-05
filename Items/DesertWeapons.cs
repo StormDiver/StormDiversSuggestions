@@ -90,7 +90,7 @@ namespace StormDiversSuggestions.Items
             //item.crit = 4;
             item.knockBack = 5f;
 
-            item.shoot = mod.ProjectileType("AncientArrowProj");
+            item.shoot = mod.ProjectileType("DesertBowProj");
             item.shootSpeed = 8f;
             item.useAmmo = AmmoID.Arrow;
 
@@ -103,7 +103,7 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(0));
-            Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("AncientArrowProj"), damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, (float)(perturbedSpeed.X), (float)(perturbedSpeed.Y), mod.ProjectileType("DesertBowProj"), damage, knockBack, player.whoAmI);
             /* if (type == ProjectileID.WoodenArrowFriendly || type == ProjectileID.FlamingArrow) 
              {
                  type = mod.ProjectileType("DesertArrowProj");
@@ -214,7 +214,7 @@ namespace StormDiversSuggestions.Items
             item.mana = 10;
             item.UseSound = SoundID.Item78;
 
-            item.damage = 40;
+            item.damage = 32;
             //item.crit = 4;
             item.knockBack = 1f;
 

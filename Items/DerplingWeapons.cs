@@ -11,18 +11,18 @@ namespace StormDiversSuggestions.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Derpling Sword"); 
-			Tooltip.SetDefault("Fire out multiple Derpling Shell Shards every third swing");
+			Tooltip.SetDefault("Fire out multiple Derpling Shell Shards every other swing");
 		}
 
 		public override void SetDefaults() 
 		{
-			item.damage = 75;
+			item.damage = 80;
          
 			item.melee = true;
 			item.width = 40;
 			item.height = 50;
-			item.useTime = 13;
-			item.useAnimation = 13;
+			item.useTime = 12;
+			item.useAnimation = 12;
 			item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
@@ -33,7 +33,7 @@ namespace StormDiversSuggestions.Items
             item.shoot = mod.ProjectileType("DerpMeleeProj");
             item.shootSpeed = 15f;
         }
-        int weaponattack = 3;
+        int weaponattack = 2;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             weaponattack--;
@@ -42,11 +42,11 @@ namespace StormDiversSuggestions.Items
                 int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // This defines the projectiles random spread . 10 degree spread.
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.8f), knockBack, player.whoAmI);
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12)); // This defines the projectiles random spread . 10 degree spread.
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, (int)(damage * 0.75f), knockBack, player.whoAmI);
                 }
                 Main.PlaySound(SoundID.NPCHit, (int)player.position.X, (int)player.position.Y, 22);
-                weaponattack = 3;
+                weaponattack = 2;
             }
             return false;
         }

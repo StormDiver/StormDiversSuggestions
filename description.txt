@@ -4,15 +4,15 @@ There's over 200 total modded items for you to discover; including weapons, acce
 
 This mod includes:
 
--92 new unique weapons
--19 new accessories
--7 new armour sets with unique set bonuses
--16 new ammos
+-104 new unique weapons
+-22 new accessories
+-9 new armour sets with unique set bonuses
+-17 new ammos
 -25 new tools
 -3 New bars and other crafting materials
--19 new buffs and 9 new potions
--13 new debuffs
--5 new Vanity sets
+-23 new buffs and 9 new potions
+-16 new debuffs
+-5 new Vanity sets and a speical vanity mask
 -2 new pets
 -21 new enemies
 -Some new shop items

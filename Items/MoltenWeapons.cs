@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.World.Generation;
+
 
 namespace StormDiversSuggestions.Items
 {
@@ -203,6 +205,83 @@ namespace StormDiversSuggestions.Items
         {
 
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.HellstoneBar, 16);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+        }
+    }
+    //_______________________________________________________________
+    public class FireSentry : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Magma Orb Staff");
+            Tooltip.SetDefault("Summons a magma orb sentry that launches bouncing fireballs at enemies");
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
+            //Item.staff[item.type] = true;
+        }
+        public override void SetDefaults()
+        {
+            item.width = 30;
+            item.height = 50;
+            item.maxStack = 1;
+            item.value = Item.sellPrice(0, 0, 60, 0);
+            item.rare = ItemRarityID.Orange;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            item.useTurn = false;
+            item.autoReuse = true;
+
+            item.summon = true;
+            item.sentry = true;
+            item.mana = 10;
+            item.UseSound = SoundID.Item45;
+
+            item.damage = 20;
+            //item.crit = 4;
+            item.knockBack = 1.5f;
+
+            item.shoot = mod.ProjectileType("MagmaSentryProj");
+
+            //item.shootSpeed = 3.5f;
+
+
+
+            item.noMelee = true;
+        }
+        public override bool CanUseItem(Player player)
+        {
+            /*if (Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }*/
+            return true;
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+
+            position = Main.MouseWorld;
+            position.ToTileCoordinates();
+            while (!WorldUtils.Find(position.ToTileCoordinates(), Searches.Chain(new Searches.Down(1), new GenCondition[] { new Conditions.IsSolid() }), out _))
+            {
+                position.Y++;
+                position.ToTileCoordinates();
+            }
+            position.Y -= 34;
+            return true;
+
         }
 
         public override void AddRecipes()

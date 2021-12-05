@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 namespace StormDiversSuggestions.Projectiles
 {
     
-    public class SpookyProj : ModProjectile
+    public class BetsyFlameProj : ModProjectile
     {
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spooky Flame");
+            DisplayName.SetDefault("Betsy's Flame");
             Main.projFrames[projectile.type] = 4;
         }
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Projectiles
             //drawOffsetX = -9;
             //drawOriginOffsetY = -9;
             
-           
+          
         }
        
        
@@ -39,14 +39,14 @@ namespace StormDiversSuggestions.Projectiles
            
             AnimateProjectile();
 
-            projectile.rotation = projectile.velocity.X / 20;
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
             if (Main.rand.Next(2) == 0)
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 6, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-                dust.noGravity = true;
+                
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0);
+                    dust.noGravity = true;
+                    dust.scale = 1.5f;
+                
             }
 
             if (projectile.localAI[0] == 0f)
@@ -55,7 +55,7 @@ namespace StormDiversSuggestions.Projectiles
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 350f;
+            float distance = 450f;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {
@@ -77,7 +77,7 @@ namespace StormDiversSuggestions.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (15 * projectile.velocity + move) / 6f;
+                projectile.velocity = (15 * projectile.velocity + move) / 8f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 
@@ -85,9 +85,9 @@ namespace StormDiversSuggestions.Projectiles
         private void AdjustMagnitude(ref Vector2 vector)
         {
             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > 5f)
+            if (magnitude > 6f)
             {
-                vector *= 5f / magnitude;
+                vector *= 6f / magnitude;
             }
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 600);
+            target.AddBuff(mod.BuffType("UltraBurnDebuff"), 300);
 
 
             projectile.Kill();

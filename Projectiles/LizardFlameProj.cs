@@ -62,7 +62,7 @@ namespace StormDiversSuggestions.Projectiles
             if (Main.rand.Next(1) == 0) // the chance
             {
                 
-                    target.AddBuff(mod.BuffType("SuperBurnDebuff"), 300);
+                    target.AddBuff(mod.BuffType("UltraBurnDebuff"), 300);
 
                 
 
@@ -71,7 +71,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperBurnDebuff"), 300);
+            target.AddBuff(mod.BuffType("UltraBurnDebuff"), 300);
         }
         int reflect = 3;
         public override bool OnTileCollide(Vector2 oldVelocity)

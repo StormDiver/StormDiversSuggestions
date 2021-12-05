@@ -225,6 +225,7 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
 
             Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 7);
 
@@ -236,7 +237,7 @@ namespace StormDiversSuggestions.Projectiles
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 186);
                 dust.noGravity = true;
             }
-            if (Main.rand.Next(5) == 0)
+            if (Main.rand.Next(4) == 0)
             {
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -259,7 +260,7 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 3);
 
 
-            if (Main.rand.Next(5) == 0)
+            if (Main.rand.Next(4) == 0)
             {
                 Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
@@ -351,12 +352,27 @@ namespace StormDiversSuggestions.Projectiles
             drawOriginOffsetY = -9;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-        }
 
+        }
+        int damagetime = 0;
+        public override bool CanDamage()
+        {
+            if (damagetime <= 30)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public override void AI()
         {
+            damagetime ++;
             projectile.melee = true;
             projectile.magic = false;
+            projectile.extraUpdates = 1;
+
             AnimateProjectile();
         }
         public override bool OnTileCollide(Vector2 oldVelocity)

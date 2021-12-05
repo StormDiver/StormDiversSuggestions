@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Hood");
-            Tooltip.SetDefault("3% increased damage and critical strike chance\n8% reduced mana usage");
+            Tooltip.SetDefault("4% increased damage and critical strike chance");
         }
    
         public override void SetDefaults()
@@ -33,12 +33,11 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.03f;
-            player.meleeCrit += 3;
-            player.rangedCrit += 3;
-            player.magicCrit += 3;
-            player.thrownCrit += 3;
-            player.manaCost -= 0.08f;
+            player.allDamage += 0.04f;
+            player.meleeCrit += 4;
+            player.rangedCrit += 4;
+            player.magicCrit += 4;
+            player.thrownCrit += 4;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -111,7 +110,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Robe");
-            Tooltip.SetDefault("4% increased damage\nSlighlty increased health regeneration");
+            Tooltip.SetDefault("4% increased damage\nSlighlty increases player acceleration");
         }
 
         public override void SetDefaults()
@@ -127,11 +126,8 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.04f;
-            /*player.meleeCrit += 3;
-            player.rangedCrit += 3;
-            player.magicCrit += 3;
-            player.thrownCrit += 3;*/
-            player.lifeRegen += 1;
+            player.runAcceleration += 0.1f;
+            //player.lifeRegen += 1;
         }
         public override void AddRecipes()
         {
@@ -160,7 +156,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Leggings");
-            Tooltip.SetDefault("3% increased damage and critical strike chance\n10% increased melee and movement speed");
+            Tooltip.SetDefault("2% increased damage and critical strike chance\nSlightly increases jump speed and height");
         }
 
         public override void SetDefaults()
@@ -174,14 +170,13 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            
-            player.moveSpeed += 0.1f;
-            player.meleeSpeed += 0.1f;
-            player.allDamage += 0.03f;
-            player.meleeCrit += 3;
-            player.rangedCrit += 3;
-            player.magicCrit += 3;
-            player.thrownCrit += 3;
+
+            player.jumpSpeedBoost += 0.75f;
+            player.allDamage += 0.02f;
+            player.meleeCrit += 2;
+            player.rangedCrit += 2;
+            player.magicCrit += 2;
+            player.thrownCrit += 2;
         }
         public override void AddRecipes()
         {

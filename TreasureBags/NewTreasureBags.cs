@@ -47,6 +47,37 @@ namespace StormDiversSuggestions.TreasureBags
                     player.QuickSpawnItem(ItemType<LizardFlame>(), Main.rand.Next(1, 1));
                 }
             }
+            if (context == "bossBag" && arg == ItemID.CultistBossBag)
+            {
+                player.QuickSpawnItem(ItemType<LunaticHood>(), Main.rand.Next(1, 1));
+
+                if (Main.rand.Next(100) < 5)
+
+                {
+                    player.QuickSpawnItem(ItemType<CultistLazor>(), Main.rand.Next(1, 1));
+                   
+
+                }
+                int choice = Main.rand.Next(4);
+
+                if (choice == 0)
+                {
+                    player.QuickSpawnItem(ItemType<CultistBow>(), Main.rand.Next(1, 1));
+                }
+                if (choice == 1)
+                {
+                    player.QuickSpawnItem(ItemType<CultistSpear>(), Main.rand.Next(1, 1));
+                }
+                if (choice == 2)
+                {
+                    player.QuickSpawnItem(ItemType<CultistTome>(), Main.rand.Next(1, 1));
+                }
+                if (choice == 3)
+                {
+                    player.QuickSpawnItem(ItemType<CultistStaff>(), Main.rand.Next(1, 1));
+
+                }
+            }
             /*if (context == "bossBag" && Main.hardMode)
             {
                 if (Main.rand.Next(100) < 2)

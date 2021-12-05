@@ -69,8 +69,9 @@ namespace StormDiversSuggestions.NPCProjs
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            
-            
+            target.AddBuff(mod.BuffType("UltraBurnDebuff"), 180);
+
+
         }
 
         public override void Kill(int timeLeft)

@@ -3,12 +3,13 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.World.Generation;
+
 
 namespace StormDiversSuggestions.Items
 {
     public class MossRepeater : ModItem
     {
-        //Actually MechanicalRepeater but can't rename without issues
 
         public override void SetStaticDefaults()
         {
@@ -81,6 +82,86 @@ namespace StormDiversSuggestions.Items
                     }
                 }
             }
+        }
+    }
+    //___________________________________________________________________________________________
+    public class JungleSentry : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Jungle Tree Staff");
+            Tooltip.SetDefault("Summons a jungle tree that launches out a bunch of thorn balls");
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
+            //Item.staff[item.type] = true;
+        }
+        public override void SetDefaults()
+        {
+            item.width = 30;
+            item.height = 50;
+            item.maxStack = 1;
+            item.value = Item.sellPrice(0, 0, 50, 0);
+            item.rare = ItemRarityID.Green;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            item.useTurn = false;
+            item.autoReuse = true;
+
+            item.summon = true;
+            item.sentry = true;
+            item.mana = 10;
+            item.UseSound = SoundID.Item45;
+
+            item.damage = 25;
+            //item.crit = 4;
+            item.knockBack = 1.5f;
+
+            item.shoot = mod.ProjectileType("JungleSentryProj");
+
+            //item.shootSpeed = 3.5f;
+
+
+
+            item.noMelee = true;
+        }
+        public override bool CanUseItem(Player player)
+        {
+            /*if (Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }*/
+            return true;
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+
+            position = Main.MouseWorld;
+            position.ToTileCoordinates();
+            while (!WorldUtils.Find(position.ToTileCoordinates(), Searches.Chain(new Searches.Down(1), new GenCondition[] { new Conditions.IsSolid() }), out _))
+            {
+                position.Y++;
+                position.ToTileCoordinates();
+            }
+            position.Y -= 32;
+            return true;
+
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.RichMahogany, 50);
+            recipe.AddIngredient(ItemID.Vine, 15);
+            recipe.AddIngredient(ItemID.JungleSpores, 10);
+
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
         }
     }
 }

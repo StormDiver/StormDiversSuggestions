@@ -68,6 +68,8 @@ namespace StormDiversSuggestions.NPCs
         {
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
+            npc.buffImmune[(BuffType<UltraBurnDebuff>())] = true;
+
             if (Main.rand.NextFloat() < 0.8f)
             {
                 Dust dust;

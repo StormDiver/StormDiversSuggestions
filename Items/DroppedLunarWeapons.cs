@@ -343,6 +343,8 @@ namespace StormDiversSuggestions.Items
             item.useTime = 45;
             item.useAnimation = 45;
             item.useTurn = false;
+            item.autoReuse = true;
+
             //item.channel = true;
             item.summon = true;
 

@@ -270,7 +270,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Life Decayer");
-            Description.SetDefault("The life is being decayed from nearby enemies");
+            Description.SetDefault("Attacking enemies has a chance to decay their life");
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -415,7 +415,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Derpling Launch");
-            Description.SetDefault("In Terraria, Derpling Jump you");
+            Description.SetDefault("In Terraria, Derpling launch you");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
@@ -522,6 +522,62 @@ namespace StormDiversSuggestions.Buffs
                 Main.dust[dust].velocity.Y -= 0.5f;
                 Main.playerDrawDust.Add(dust);
             }
+
+        }
+    }
+    public class SkyKnightSentryBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Star Warrior's Sentry");
+            Description.SetDefault("A Star sentry attacks for you");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            
+        }
+    }
+    public class SantankBuff1 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Ho-Ho-Homing Missile");
+            Description.SetDefault("Some of your missiles are ready to launch");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+        }
+    }
+    public class SantankBuff2 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Ho-Ho-Homing Missile");
+            Description.SetDefault("Most of your missiles are ready to launch");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+        }
+    }
+    public class SantankBuff3 : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Ho-Ho-Homing Missile");
+            Description.SetDefault("All of your missiles are ready to launch");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
 
         }
     }

@@ -354,7 +354,7 @@ namespace StormDiversSuggestions.Items
             item.knockBack = 3f;
             item.mana = 10;
             item.useTurn = false;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.shoot = mod.ProjectileType("StardustSentryProj");
             item.summon = true;
             item.sentry = true;

@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spooky Emblem");
-            Tooltip.SetDefault("Has a chance to create spooky flames that home in on enemies when using any weapon");
+            Tooltip.SetDefault("Sends out a stream of fire particles to nearby enemies while holding a melee weapon");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
 
@@ -31,8 +31,11 @@ namespace StormDiversSuggestions.Items.Accessory
         }
       
         public override void UpdateAccessory(Player player, bool hideVisual)
-        { 
-            player.GetModPlayer<StormPlayer>().spooked = true;
+        {
+            if (player.HeldItem.melee)
+            {
+                player.GetModPlayer<StormPlayer>().spooked = true;
+            }
         }
 
 

@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void SetDefaults()
         {
-       
+      
             projectile.width = 34;
             projectile.height = 40;
             projectile.friendly = true;
@@ -42,7 +42,8 @@ namespace StormDiversSuggestions.Projectiles
         bool animate1 = false; //For making the core open up
         bool animate2 = false; //This bool is used to indicate that the core is open
         bool animate3 = false; //For closing the core
-
+        bool floatup = true;
+        int floattime;
 
         public override void AI()
         {
@@ -96,7 +97,7 @@ namespace StormDiversSuggestions.Projectiles
                         shootToY *= distance * 4f;
 
                         
-                        if (shoottime > 10)
+                        if (shoottime > 12)
                         {
 
                             Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(8));
@@ -156,6 +157,46 @@ namespace StormDiversSuggestions.Projectiles
                 {
                     projectile.frame = 0;
                     animate3 = false; //The bool then makes itself false to stop the count
+                }
+            }
+
+
+            if (floatup) //Floating upwards
+            {
+                floattime++;
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                else
+                {
+                    projectile.velocity.Y += 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = false;
+                    floattime = 0;
+                }
+            }
+            if (!floatup) //Floating downwards
+            {
+                floattime++;
+
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y += 0.01f;
+                }
+                else
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = true;
+                    floattime = 0;
                 }
             }
         }
@@ -219,14 +260,15 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
 
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+            target.AddBuff(mod.BuffType("UltraFrostDebuff"), 180);
 
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
 
         {
-            target.AddBuff(mod.BuffType("SuperFrostBurn"), 300);
+            target.AddBuff(mod.BuffType("UltraFrostDebuff"), 180);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

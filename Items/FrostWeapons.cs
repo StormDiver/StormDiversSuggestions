@@ -210,7 +210,7 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 22;
             item.knockBack = 0.25f;
-            item.shoot = mod.ProjectileType("Frostthrowerproj"); ;
+            item.shoot = mod.ProjectileType("Frostthrowerproj");
 
             item.shootSpeed = 3f;
 
@@ -220,9 +220,12 @@ namespace StormDiversSuggestions.Items
         }
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(3, 0);
+            return new Vector2(0, 0);
         }
-
+        public override void HoldItem(Player player)
+        {
+            player.armorPenetration = 10;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

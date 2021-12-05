@@ -195,13 +195,13 @@ namespace StormDiversSuggestions.Items
 
         public override void SetDefaults()
         {
-            item.damage = 60;
+            item.damage = 65;
 
             item.melee = true;
             item.width = 40;
             item.height = 50;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 14;
+            item.useAnimation = 14;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 4, 0, 0);
             item.rare = ItemRarityID.LightPurple;
@@ -210,7 +210,7 @@ namespace StormDiversSuggestions.Items
             item.useTurn = false;
             item.knockBack = 6;
             item.shoot = mod.ProjectileType("HellSoulSwordProj");
-            item.shootSpeed = 13f;
+            item.shootSpeed = 20f;
             
             
         }

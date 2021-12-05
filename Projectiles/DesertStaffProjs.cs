@@ -40,6 +40,9 @@ namespace StormDiversSuggestions.Projectiles
         int opacity = 255;
         int shoottime = 0;
         bool animate = false;
+
+        bool floatup = true;
+        int floattime;
         public override void AI()
         {
             if (opacity > 0)
@@ -116,6 +119,46 @@ namespace StormDiversSuggestions.Projectiles
             if (animate)
             {
                 AnimateProjectile();
+            }
+
+
+            if (floatup) //Floating upwards
+            {
+                floattime++;
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                else
+                {
+                    projectile.velocity.Y += 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = false;
+                    floattime = 0;
+                }
+            }
+            if (!floatup) //Floating downwards
+            {
+                floattime++;
+
+                if (floattime <= 30)
+                {
+                    projectile.velocity.Y += 0.01f;
+                }
+                else
+                {
+                    projectile.velocity.Y -= 0.01f;
+
+                }
+                if (floattime >= 60) //Halfway through it slows down
+                {
+                    floatup = true;
+                    floattime = 0;
+                }
             }
         }
         public void AnimateProjectile() // Call this every frame, for example in the AI method.
@@ -207,6 +250,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            projectile.damage = (projectile.damage * 9) / 10;
+
             target.AddBuff(mod.BuffType("AridSandDebuff"), 180);
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
