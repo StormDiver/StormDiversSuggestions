@@ -471,6 +471,54 @@ namespace StormDiversSuggestions.Banners          //We need this to basically in
             item.placeStyle = 0;
         }
     }
+    public class MeteorDropperBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Meteor Bomber Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Meteor Bomber");
+        }
+        public override void SetDefaults()
+        {
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.consumable = true;
+            item.rare = ItemRarityID.Blue;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("MeteorDropperBannerPlace");  //This defines what type of tile this item will place
+            item.placeStyle = 0;
+        }
+    }
+    public class GolemSentryBannerItem : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Lihzahrd Flametrap Banner");
+            Tooltip.SetDefault("Nearby players get a bonus against: Lihzahrd Flametrap");
+        }
+        public override void SetDefaults()
+        {
+            item.width = 10;
+            item.height = 24;
+            item.maxStack = 99;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.consumable = true;
+            item.rare = ItemRarityID.Blue;
+            item.value = Item.sellPrice(0, 0, 2, 0);
+            item.createTile = mod.TileType("GolemSentryBannerPlace");  //This defines what type of tile this item will place
+            item.placeStyle = 0;
+        }
+    }
 }
 
 ////then add this to the custom npc you want to drop the banner and in public override void SetDefaults()

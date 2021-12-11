@@ -485,6 +485,8 @@ namespace StormDiversSuggestions.Items.Materials
                 {
                     if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneUnderworldHeight)
                     {
+
+
                         if (!npc.friendly && npc.lifeMax > 5 && npc.type != NPCID.TheHungry && npc.type != NPCID.TheHungryII)
 
                         {

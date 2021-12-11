@@ -10,6 +10,7 @@ using StormDiversSuggestions.Items.Armour;
 using StormDiversSuggestions.Items;
 using StormDiversSuggestions.Items.Ammo;
 using StormDiversSuggestions.Items.Materials;
+using StormDiversSuggestions.Pets;
 using StormDiversSuggestions.Basefiles;
 using StormDiversSuggestions.OresandBars;
 using static Terraria.ModLoader.ModContent;
@@ -95,6 +96,10 @@ namespace StormDiversSuggestions.TreasureBags
                 {
                     player.QuickSpawnItem(ItemType<ProtoLauncher>(), Main.rand.Next(1, 1));
                     player.QuickSpawnItem(ItemType<ProtoGrenade>(), Main.rand.Next(52, 80));
+                }
+                if (Main.rand.Next(100) < 20)
+                {
+                    player.QuickSpawnItem(ItemType<TwilightPetItem>(), Main.rand.Next(1, 1));
                 }
             }
 

@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Projectiles     //We need this to basically ind
             Main.dust[dust].scale = 2f;
             Main.dust[dust].noGravity = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 8;
+            projectile.localNPCHitCooldown = 7;
            /* if (hitbox == 300)
             {
                 hitboxup = false;

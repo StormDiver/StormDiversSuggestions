@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Sandblast Staff");
+            DisplayName.SetDefault("Arid Sandblast Staff");
             Tooltip.SetDefault("Creates an explosive blast of sand at the cursor's location");
             Item.staff[item.type] = true;
 
@@ -96,7 +96,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Throwing Knives");
+            DisplayName.SetDefault("Arid Throwing Knives");
             Tooltip.SetDefault("Throw out serveral knives at once that pierce after spinning");
 
         }
@@ -153,7 +153,7 @@ namespace StormDiversSuggestions.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Sandblaster");
+            DisplayName.SetDefault("Arid Sandblaster");
             Tooltip.SetDefault("Fires out a stream of burning sand\nUses gel for ammo");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }

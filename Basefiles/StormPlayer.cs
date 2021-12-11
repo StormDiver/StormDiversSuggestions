@@ -61,6 +61,9 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool stormHelmet; //The player has the Storm Diver Pet
 
+        public bool twilightPet; //The player has the Twilight Light Pet
+
+
         public bool turtled; //The Player has the turtled Buff
 
         public bool shroombuff; //The Player has the Ranged enhancement potion buff
@@ -158,6 +161,7 @@ namespace StormDiversSuggestions.Basefiles
         public int santankmissleup; //Adds one to the charge every 10 frames
         public bool santanktrigger; //Has the player triggered the missiles
         public bool lunaticsentry; //Has the lunatic sentry been summoned?
+        public int templeWarning; //Warning until Temple Guardians spawn
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
             boulderDB = false;
@@ -169,6 +173,7 @@ namespace StormDiversSuggestions.Basefiles
             turtled = false;
             goldDerpie = false;
             stormHelmet = false;
+            twilightPet = false;
             shroombuff = false;
             flameCore = false;
             frostSpike = false;
@@ -226,13 +231,45 @@ namespace StormDiversSuggestions.Basefiles
             santankmissleup = 0;
             santanktrigger = false;
             lunaticsentry = false;
+            templeWarning = 0;
+            skulltime = 0;
         }
-
 
         public override void PostUpdateEquips() //Updates every frame
         {
+
+            //Detect if player is in Temple and immediatly summon up to 8 Guardians
+            int xtilepos = (int)(player.position.X + (float)(player.width / 2)) / 16;
+            int ytilepos = (int)(player.position.Y + (float)(player.height / 2)) / 16;
+            if (Main.tile[xtilepos, ytilepos].wall == WallID.LihzahrdBrickUnsafe)
+            {
+
+                if (!NPC.downedPlantBoss && NPC.CountNPCS(mod.NPCType("GolemMinion")) < 8)
+                {
+                    templeWarning++;
+                    if (templeWarning == 1 && !NPC.AnyNPCs(mod.NPCType("GolemMinion")))
+                    {
+                        Main.NewText("The ancient temple defenses begin to wake up!!!", 204, 101, 22);
+                    }
+
+                    if (templeWarning >= 300)
+                    {
+                        if (Main.rand.Next(60) == 0)
+                        {
+                            NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.GolemMinion>());
+                        }
+                    }
+                }
+            }
+            else
+            {
+                templeWarning = 0;
+            }
+            
+
+
             //Reduces ints if they are above 0======================
-          
+
             if (bloodtime > 0)
             {
                 bloodtime--;
@@ -309,7 +346,7 @@ namespace StormDiversSuggestions.Basefiles
                 {
                     santankmissleup++;
                 }
-                if (santankmissleup >= 6) //Adds 1 int to the charge every n frames
+                if (santankmissleup >= 4) //Adds 1 int to the charge every n frames
                 {
                     santankcharge++;
                     santankmissleup = 0;
@@ -327,7 +364,7 @@ namespace StormDiversSuggestions.Basefiles
                     player.ClearBuff(mod.BuffType("SantankBuff3"));
                 }
                 if (!santanktrigger && santankmissleup == 0 && (santankcharge == 10 || santankcharge == 20 || santankcharge == 30 || santankcharge == 40 || santankcharge == 50 || santankcharge == 60 || santankcharge == 70 || santankcharge == 80 || santankcharge == 90 || santankcharge == 100)) 
-                    //Creates a particle and sound effect at these times
+                    //Creates a particle and sound effect at these times, times by 4 to get excat frame
                 {
                     for (int i = 0; i < 30; i++)
                     {
@@ -369,7 +406,7 @@ namespace StormDiversSuggestions.Basefiles
 
                 }
 
-                if (santankcharge <= -10) //Reset trigger once all missile are fired (negative creaets a recharge delay, delay is 10 = 2 seconds (10+10) delay ect...)
+                if (santankcharge <= -20) //Reset trigger once all missile are fired (negative creaets a recharge delay, delay is 1 = 4, so 20 = 80 frames, plus the 10 * 4 (40frame) delay for the first charge (120 frames, 2 seconds))
                 {
                     santanktrigger = false;
                     
@@ -530,6 +567,7 @@ namespace StormDiversSuggestions.Basefiles
             //For Spooky Core======================
             if (spooked)
             {
+                player.armorPenetration = 25;
                 if (Main.rand.Next(5) == 0)
                 {
                     var dust = Dust.NewDustDirect(player.position, player.width, player.height, 259, 0, -3);
@@ -550,7 +588,7 @@ namespace StormDiversSuggestions.Basefiles
                     /*float distanceX = player.Center.X - target.Center.X;
                     float distanceY = player.Center.Y - target.Center.Y;
                     float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));*/
-                    if (distance < 260 && !target.friendly && target.lifeMax > 5 && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0)) 
+                    if (distance < 260 && !target.friendly && target.lifeMax > 5 && !target.dontTakeDamage && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0))
                     {
                         if (!target.buffImmune[(BuffType<UltraBurnDebuff>())])
                         {
@@ -570,9 +608,9 @@ namespace StormDiversSuggestions.Basefiles
                             }
 
 
-                            target.AddBuff(mod.BuffType("UltraBurnDebuff"), 2);
+                            target.AddBuff(mod.BuffType("SpookedDebuff"), 2);
                         }
-                        }
+                    }
                     
                 }
 
@@ -582,21 +620,21 @@ namespace StormDiversSuggestions.Basefiles
             //For the Mechanical Spikes===========================
             if (primeSpin)
             {
-                if (!player.dead)
+                if (!player.dead && skulltime <= 50)
                 {
                     skulltime++;
                 }
-                if (skulltime == 24)
+                if (skulltime == 1 || skulltime == 25 || skulltime == 49) //24 frames between spawns
                 {
 
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PrimeAccessProj"), 75, 0f, player.whoAmI);
 
-                    skulltime = 0;
+                    
                 }
 
               
             }
-            if (!primeSpin || player.dead)
+            if (!primeSpin)//reset timer
             {
                 skulltime = 0;
             }
@@ -718,7 +756,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!shotflame)
                     {
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.Next(3) == 0)
                         {
                             for (int i = 0; i < 20; i++)
                             {
@@ -726,12 +764,12 @@ namespace StormDiversSuggestions.Basefiles
                                 var dust = Dust.NewDustDirect(player.position, player.width, player.height, 244);
 
                                 dust.noGravity = true;
-                                
+                               
                             }
 
                             Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 34);
 
-                            float numberProjectiles = 2;
+                            float numberProjectiles = 2 + Main.rand.Next(2);
 
                             for (int i = 0; i < numberProjectiles; i++)
                             {
@@ -739,9 +777,9 @@ namespace StormDiversSuggestions.Basefiles
 
 
                                 float speedX = 0f;
-                                float speedY = -7f;
-                                int damage = (int)((player.HeldItem.damage * 0.4f) * player.allDamage);
-                                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(180));
+                                float speedY = -6f;
+                                int damage = (int)((player.HeldItem.damage * 0.5f) * player.allDamage);
+                                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(90));
                                 float scale = 1f - (Main.rand.NextFloat() * .5f);
                                 perturbedSpeed = perturbedSpeed * scale;
                                 Projectile.NewProjectile(player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BetsyFlameProj"), damage, 1f, player.whoAmI);
@@ -959,7 +997,7 @@ namespace StormDiversSuggestions.Basefiles
                     Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 20);
 
                     
-                    float numberProjectiles = 4 + Main.rand.Next(0);
+                    float numberProjectiles = 6 + Main.rand.Next(0);
                     float rotation = MathHelper.ToRadians(180);
                     //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
                     for (int i = 0; i < numberProjectiles; i++)
@@ -1364,5 +1402,7 @@ namespace StormDiversSuggestions.Basefiles
                 return true;
             }
         }
+
+
     }
 }

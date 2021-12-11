@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.NPCs
         {
             
             npc.width = 22;
-            npc.height = 50;
+            npc.height = 45;
 
             npc.aiStyle = 22;
 

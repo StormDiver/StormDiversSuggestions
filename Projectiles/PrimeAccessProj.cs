@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = -1;
             projectile.knockBack = 0;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 72;
+            projectile.timeLeft = 99999999;
             projectile.tileCollide = false;
             projectile.MaxUpdates = 1;
             projectile.usesLocalNPCImmunity = true;

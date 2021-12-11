@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Strike buff that summons defense-piercing asteroids upon the next attacked enemy";
+            player.setBonus = "Grants the Orbital Strike buff that summons defense-piercing asteroid fragments upon the next attacked enemy";
             //player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
             player.GetModPlayer<StormPlayer>().spaceRockOffence = true;
          
@@ -139,7 +139,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Defense buff that reduces damage of the next attack by 25%\nSummons defense-piercing asteroids from the sky when taking more than 1 damage";
+            player.setBonus = "Grants the Orbital Defense buff that reduces damage of the next attack by 25% while summoning defense-piercing asteroid fragments from the sky";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 

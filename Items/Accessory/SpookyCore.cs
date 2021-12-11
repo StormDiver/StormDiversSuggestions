@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spooky Emblem");
-            Tooltip.SetDefault("Sends out a stream of fire particles to nearby enemies while holding a melee weapon");
+            Tooltip.SetDefault("Inflict fear upon nearby enemies while holding any melee weapon");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
 

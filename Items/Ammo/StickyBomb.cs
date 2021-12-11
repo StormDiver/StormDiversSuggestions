@@ -29,7 +29,7 @@ namespace StormDiversSuggestions.Items.Ammo
             //item.summon = true;
             //item.thrown = true;
 
-            item.damage = 50;
+            item.damage = 60;
 
             item.knockBack = 1f;
             item.consumable = true;

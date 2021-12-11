@@ -16,6 +16,7 @@ using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Items;
 using StormDiversSuggestions.Items.Ammo;
 using StormDiversSuggestions.Items.Accessory;
+using StormDiversSuggestions.Pets;
 
 
 namespace StormDiversSuggestions.Basefiles
@@ -116,12 +117,16 @@ namespace StormDiversSuggestions.Basefiles
                 }
 
 
-                //For the Proto Launcher in Dungeons
+                //For Dungeon Chests
                 int[] ChestLauncher = { ItemType<ProtoLauncher>() };
                 int ChestLauncherCount = 0;
 
                 int[] ChestLauncherAmmo = { ItemType<ProtoGrenade>() };
                 int ChestLauncherAmmoCount = 0;
+
+                int[] ChestTwilightPet = { ItemType<TwilightPetItem>() };
+                int ChestTwilightPetCount = 0;
+
 
                 if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36) //Look in Tiles_21 for the tile, start from 0
                 {
@@ -141,8 +146,14 @@ namespace StormDiversSuggestions.Basefiles
                                 ChestLauncherAmmoCount = (ChestLauncherAmmoCount + 1) % ChestLauncherAmmo.Length;
 
                             }
+                            if (WorldGen.genRand.NextBool(5))
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(ChestTwilightPet));
+                                ChestTwilightPetCount = (ChestTwilightPetCount + 1) % ChestTwilightPet.Length;
 
-                            break;
+                            }
+
+                                break;
                         }
                     }
 

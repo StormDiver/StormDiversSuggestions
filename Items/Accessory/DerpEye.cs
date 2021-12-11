@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eye of the Derpling");
-            Tooltip.SetDefault("Sends most enemies spinning into the air when attacked");
+            Tooltip.SetDefault("Has a chance to sends most enemies spinning into the air when attacked");
         }
         public override void SetDefaults()
         {
@@ -68,13 +68,16 @@ namespace StormDiversSuggestions.Items.Accessory
                     {
                         if (!target.friendly && target.lifeMax > 5 && !target.boss && target.knockBackResist != 0f)
                         {
-                            target.velocity.Y = (-1.2f * projectile.knockBack) - (target.knockBackResist * 2);
-                            target.velocity.X = (0.6f * projectile.knockBack + (target.knockBackResist * 2)) * projectile.direction;
-                            if (!target.HasBuff(mod.BuffType("DerpDebuff")))
-                            {
-                                target.AddBuff(mod.BuffType("DerpDebuff"), 45);
-                            }
 
+                            if (Main.rand.Next(4) == 0)
+                            {
+                                target.velocity.Y = (-1f * projectile.knockBack) - (target.knockBackResist * 2);
+                                target.velocity.X = (0.5f * projectile.knockBack + (target.knockBackResist * 2)) * projectile.direction;
+                                if (!target.HasBuff(mod.BuffType("DerpDebuff")))
+                                {
+                                    target.AddBuff(mod.BuffType("DerpDebuff"), 45);
+                                }
+                            }
                         }
                     }
                 }
@@ -88,11 +91,14 @@ namespace StormDiversSuggestions.Items.Accessory
                 {
                     if (!target.friendly && target.lifeMax > 5 && !target.boss && target.knockBackResist != 0f)
                     {
-                        target.velocity.Y = (-1f * item.knockBack) - (target.knockBackResist * 2);
-                        target.velocity.X = (0.7f * item.knockBack + (target.knockBackResist * 2)) * player.direction;
-                        if (!target.HasBuff(mod.BuffType("DerpDebuff")))
+                        if (Main.rand.Next(4) == 0)
                         {
-                            target.AddBuff(mod.BuffType("DerpDebuff"), 45);
+                            target.velocity.Y = (-1f * item.knockBack) - (target.knockBackResist * 2);
+                            target.velocity.X = (0.6f * item.knockBack + (target.knockBackResist * 2)) * player.direction;
+                            if (!target.HasBuff(mod.BuffType("DerpDebuff")))
+                            {
+                                target.AddBuff(mod.BuffType("DerpDebuff"), 45);
+                            }
                         }
                     }
                 }

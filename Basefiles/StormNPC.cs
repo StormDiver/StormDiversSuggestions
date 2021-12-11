@@ -60,6 +60,8 @@ namespace StormDiversSuggestions.Basefiles
 
         public bool ultrafrostDebuff;
 
+        public bool spookedDebuff;
+
         //All this for a speen----------------------------------------------
 
         public bool derplaunched; //If the npc has been launched by the Derpling armour
@@ -87,12 +89,17 @@ namespace StormDiversSuggestions.Basefiles
             darknessDebuff = false;
             ultraburnDebuff = false;
             ultrafrostDebuff = false;
+            spookedDebuff = false;
         }
         public override void AI(NPC npc)
 
         {
             
-
+            if (spookedDebuff)
+            {
+               
+                
+            }
             if (beetled && !npc.boss)
             {
                 npc.velocity.X *= 0.92f;
@@ -248,6 +255,12 @@ namespace StormDiversSuggestions.Basefiles
             if (nebula)
             {
                 npc.lifeRegen -= 180;
+                damage = 20;
+            }
+
+            if (spookedDebuff)
+            {
+                npc.lifeRegen -= 200;
                 damage = 20;
             }
             if (lunarBoulderDB)
@@ -511,6 +524,17 @@ namespace StormDiversSuggestions.Basefiles
 
 
             }
+            if (spookedDebuff)
+            {
+                if (Main.rand.Next(5) == 0)
+                {
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("SpookDust"), npc.velocity.X * 1.2f, -5, 0, default, 2.5f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+                }
+                drawColor = new Color(255, 68, 0);
+
+            }
+
         }
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
         {

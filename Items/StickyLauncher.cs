@@ -12,7 +12,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spiky Bomb Launcher");
-            Tooltip.SetDefault("Fires out Spiky Bombs that stick to surfaces can be detonated by right clicking while holding the weapon\nRight clicking while holding down will unstick all bombs and make them explode on enemy impact" +
+            Tooltip.SetDefault("Fires out up to 16 Spiky Bombs that stick to surfaces can be detonated by right clicking while holding the weapon\nRight clicking while holding down will unstick all bombs and make them explode on enemy impact" +
                 "\nShoots further depending on your cursor location\nRequires Spiky Bombs, purchase more from the Demolitionist");
         }
         public override void SetDefaults()
@@ -47,8 +47,8 @@ namespace StormDiversSuggestions.Items
         }
         public override bool CanUseItem(Player player)
         {
-            // Ensures no more than 8 bombs
-            return player.ownedProjectileCounts[item.shoot] < 8;
+            // Ensures no more than 16 bombs
+            return player.ownedProjectileCounts[item.shoot] < 16;
         }
         float shootvelo = 1; //Speed multiplers
 

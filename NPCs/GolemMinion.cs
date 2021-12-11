@@ -38,8 +38,9 @@ namespace StormDiversSuggestions.NPCs
             npc.defense = 32;
             npc.lifeMax = 2000;
             npc.noGravity = true;
-            
-            
+            npc.rarity = 3;
+
+
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0f;
@@ -59,11 +60,12 @@ namespace StormDiversSuggestions.NPCs
 
             if (!NPC.downedPlantBoss)
             {
-                return SpawnCondition.JungleTemple.Chance * 100f;
+                //Summoning done in StormPlayer.cs
+                return SpawnCondition.JungleTemple.Chance * 0f;
             }
             else if (NPC.downedPlantBoss && !NPC.AnyNPCs(mod.NPCType("GolemMinion")))
             {
-                return SpawnCondition.JungleTemple.Chance * 0.2f;
+                return SpawnCondition.JungleTemple.Chance * 0.08f;
             }
             else
             {
@@ -74,7 +76,7 @@ namespace StormDiversSuggestions.NPCs
 
         bool shooting;
         float xpostion = 0f; // The picked x postion
-        float ypostion = -200;
+        float ypostion = -150;
 
         public override void AI()
         {
@@ -84,39 +86,41 @@ namespace StormDiversSuggestions.NPCs
             npc.spriteDirection = npc.direction;
 
 
-
             Player player = Main.player[npc.target];
             npc.TargetClosest();
-            Vector2 moveTo = player.Center;
-            Vector2 move = moveTo - npc.Center + new Vector2(xpostion, ypostion);
-            float magnitude = (float)Math.Sqrt(move.X * move.X + move.Y * move.Y);
-            float movespeed = 5f; //Speed of the npc
-
-            if (magnitude > movespeed)
+            if (player.ZoneJungle && player.ZoneRockLayerHeight)
             {
-                move *= movespeed / magnitude;
-            }
-            npc.velocity = move;
+                Vector2 moveTo = player.Center;
+                Vector2 move = moveTo - npc.Center + new Vector2(xpostion, ypostion);
+                float magnitude = (float)Math.Sqrt(move.X * move.X + move.Y * move.Y);
+                float movespeed = 5f; //Speed of the npc
 
+                if (magnitude > movespeed)
+                {
+                    move *= movespeed / magnitude;
+                }
+                npc.velocity = move;
+            }
             npc.rotation = npc.velocity.X / 25;
             npc.spriteDirection = npc.direction;
             npc.velocity.Y *= 0.96f;
 
 
-            shoottime++;
 
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             float distanceX = player.Center.X - npc.Center.X;
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-            if (player.dead)
+            if (player.dead || (!player.ZoneJungle || !player.ZoneRockLayerHeight)) //Now flees if the player leaves the Underground Jungle
             {
                 npc.velocity.Y = 8;
             }
 
             if (distance <= 700f)
             {
+                shoottime++;
+
                 if (shoottime >= 60)//starts the shooting animation
                 {
                     //npc.velocity.X = 0;
@@ -138,8 +142,8 @@ namespace StormDiversSuggestions.NPCs
                 if (shoottime >= 80)//fires the projectiles
                 {
 
-                    xpostion = Main.rand.NextFloat(200f, -200f);
-                    ypostion = Main.rand.NextFloat(-100f, -250f);
+                    xpostion = Main.rand.NextFloat(150f, -150f);
+                    ypostion = Main.rand.NextFloat(-50f, -200f);
 
 
                     float projectileSpeed = 10f; // The speed of your projectile (in pixels per second).

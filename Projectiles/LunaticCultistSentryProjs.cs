@@ -132,7 +132,7 @@ namespace StormDiversSuggestions.Projectiles
                     shootToX *= distance * 6f;
                     shootToY *= distance * 6f;
 
-
+                    int damage = (int)(80 * player.minionDamage);
                     if (shoottime > 40)
                     {
 
@@ -145,7 +145,7 @@ namespace StormDiversSuggestions.Projectiles
 
 
                         Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(8));
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("LunaticExpertSentryProj2"), 75, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("LunaticExpertSentryProj2"), damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
 
                         Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 77, 0.5f, 0.5f);
 

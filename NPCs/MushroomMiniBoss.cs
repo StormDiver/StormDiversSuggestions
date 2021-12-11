@@ -56,7 +56,7 @@ namespace StormDiversSuggestions.NPCs
 
             if (!NPC.AnyNPCs(mod.NPCType("MushroomMiniBoss")) && NPC.downedBoss1 && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneGlowshroom)
             {
-                return SpawnCondition.Cavern.Chance * 0.1f;
+                return SpawnCondition.Cavern.Chance * 0.2f;
             }
             else
             {
@@ -243,14 +243,14 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.expertMode)
             {
-                if (Main.rand.Next(100) < 33)
+                if (Main.rand.Next(100) < 40)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SuperMushroom"));
                 }
             }
             else
             {
-                if (Main.rand.Next(100) < 25)
+                if (Main.rand.Next(100) < 30)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SuperMushroom"));
                 }

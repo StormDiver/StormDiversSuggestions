@@ -7,66 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace StormDiversSuggestions.Items
 {
-    public class CultistLazor : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Mysterious Cultist Hood");
-            Tooltip.SetDefault("Charge up and fire a damaging laser from this strange cultist hood\nWait, What!?");
-        }
-        public override void SetDefaults()
-        {
-            item.width = 30;
-            item.height = 20;
-            item.maxStack = 1;
-            item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = ItemRarityID.Red;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 30;
-            item.useAnimation = 30;
-            item.useTurn = false;
-            item.autoReuse = true;
-            item.magic = true;
-            //item.UseSound = SoundID.Item13;
-            item.channel = true;
-            item.damage = 85;
-            item.knockBack = 2f;
-            item.mana = 10;
-            item.shoot = mod.ProjectileType("CultistLazorProj");
-            item.shootSpeed = 0f;
-
-
-            item.noMelee = true; 
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-5, -4);
-        }
-       
-
-       
-       
-        public class ModGlobalNPC : GlobalNPC
-        {
-            public override void NPCLoot(NPC npc)
-            {
-                if (!Main.expertMode) //Expert drop from treasure bag
-                {
-                    if (Main.rand.Next(100) < 3)
-
-                    {
-                        if (npc.type == NPCID.CultistBoss)
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CultistLazor"));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    //_____________________________________________________________________________________________________________________________________________
-    
     public class CultistSpear : ModItem
     {
         public override void SetStaticDefaults()
@@ -91,7 +31,7 @@ namespace StormDiversSuggestions.Items
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = false;
-            item.knockBack = 3f;
+            item.knockBack = 5f;
             item.shoot = mod.ProjectileType("CultistSpearProj");
             item.shootSpeed = 7.5f;
             item.noMelee = true;
@@ -130,8 +70,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Red;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 22;
+            item.useAnimation = 22;
             item.useTurn = false;
             item.autoReuse = true;
 
@@ -141,7 +81,7 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 65;
             //item.crit = 4;
-            item.knockBack = 3f;
+            item.knockBack = 2f;
 
             item.shoot = ProjectileID.WoodenArrowFriendly;
 
@@ -199,18 +139,18 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Red;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 28;
+            item.useAnimation = 28;
             item.useTurn = false;
             item.autoReuse = true;
 
             item.magic = true;
-            item.mana = 12;
+            item.mana = 15;
             item.UseSound = SoundID.Item9;
 
             item.damage = 60;
 
-            item.knockBack = 3f;
+            item.knockBack = 4f;
 
             item.shoot = mod.ProjectileType("CultistTomeProj"); 
 
@@ -233,7 +173,7 @@ namespace StormDiversSuggestions.Items
                 Main.dust[dust].velocity *= 2.5f;
             }
             return true;
-
+            
 
            
         }
@@ -269,7 +209,7 @@ namespace StormDiversSuggestions.Items
 
             item.damage = 100;
 
-            item.knockBack = 3f;
+            item.knockBack = 1f;
 
             item.shoot = 466;
 

@@ -189,14 +189,14 @@ namespace StormDiversSuggestions.NPCs
 
             if (Main.expertMode)
             {
-                if (Main.rand.Next(100) < 33)
+                if (Main.rand.Next(100) < 40)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCoreAccess"));
                 }
             }
             else
             {
-                if (Main.rand.Next(100) < 25)
+                if (Main.rand.Next(100) < 30)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("GraniteCoreAccess"));
                 }

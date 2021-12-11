@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using System.Linq;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions.Buffs;
+
 
 namespace StormDiversSuggestions.NPCs
 
@@ -23,8 +25,8 @@ namespace StormDiversSuggestions.NPCs
         {
             Main.npcFrameCount[npc.type] = 4;
             
-            npc.width = 48;
-            npc.height = 48;
+            npc.width = 40;
+            npc.height = 40;
 
             npc.aiStyle = 74; 
             aiType = NPCID.SolarCorite;
@@ -43,6 +45,11 @@ namespace StormDiversSuggestions.NPCs
 
             banner = npc.type;
            bannerItem = mod.ItemType("SpaceRockHeadLargeBannerItem");
+
+            npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[(BuffType<SuperBurnDebuff>())] = true;
+            npc.buffImmune[(BuffType<HellSoulFireDebuff>())] = true;
+            npc.buffImmune[(BuffType<UltraBurnDebuff>())] = true;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

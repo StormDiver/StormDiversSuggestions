@@ -4,18 +4,18 @@ There's over 200 total modded items for you to discover; including weapons, acce
 
 This mod includes:
 
--104 new unique weapons
--22 new accessories
+-Over 100 new unique weapons across all classes
+-Over 20 new accessories, including new expert exclusive ones
 -9 new armour sets with unique set bonuses
--17 new ammos
--25 new tools
+-Many new ammos including unique ammo for certain weapons
+-28 new tools
 -3 New bars and other crafting materials
 -23 new buffs and 9 new potions
 -16 new debuffs
 -5 new Vanity sets and a speical vanity mask
--2 new pets
--21 new enemies
--Some new shop items
+-3 new pets
+-22 new enemies
+-Some NPCs now sell new items
 -A way to remove the shields from the pillars prematurely 
 -New recipes for certain uncraftable vanilla items
 

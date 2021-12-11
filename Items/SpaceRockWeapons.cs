@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Globe");
-            Tooltip.SetDefault("Summons a floating asteroid at the cursor's location that explodes into fragments");
+            Tooltip.SetDefault("Summons a floating asteroid fragment at the cursor's location that explodes into smaller fragments");
             
             ItemID.Sets.SortingPriorityMaterials[item.type] = 71;
         }
@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Asteroid Blade");
-            Tooltip.SetDefault("Rains down asteroid fragments from the sky");
+            Tooltip.SetDefault("Rains down tiny asteroid fragments from the sky");
         }
 
         public override void SetDefaults()

@@ -195,7 +195,7 @@ namespace StormDiversSuggestions.NPCProjs
 
             //projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
            
-            if (hometime >= 30 && hometime <= 250)
+            if (hometime >= 30 && hometime <= 180)
             {
 
                 for (int i = 0; i < 100; i++)
@@ -216,7 +216,7 @@ namespace StormDiversSuggestions.NPCProjs
 
                         //Multiply the distance by a multiplier proj faster
                         shootToX *= distance * 7;
-                        shootToY *= distance * 5;
+                        shootToY *= distance * 6;
 
                         //Set the velocities to the shoot values
                         projectile.velocity.X = shootToX;

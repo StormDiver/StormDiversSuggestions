@@ -1,10 +1,13 @@
-using StormDiversSuggestions.Basefiles;
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Linq;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StormDiversSuggestions.Basefiles;
 
 
 namespace StormDiversSuggestions.Pets
@@ -21,7 +24,11 @@ namespace StormDiversSuggestions.Pets
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.ZephyrFish);
+            item.useStyle = 3;
+            item.UseSound = SoundID.Item2;
+            item.useAnimation = 20;
+            item.useTime = 20;
+            item.noMelee = true;
             item.width = 24;
             item.height = 22;
             item.maxStack = 1;
@@ -92,27 +99,40 @@ namespace StormDiversSuggestions.Pets
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.DD2PetGato);
-            aiType = ProjectileID.DD2PetGato;
+            //projectile.CloneDefaults(ProjectileID.DD2PetGato);
+            //aiType = ProjectileID.DD2PetGato;
+            projectile.aiStyle = -1;
             projectile.width = 34;
            projectile.height = 40;
             projectile.scale = 1;
             drawOffsetX = 0;
             drawOriginOffsetY = 0;
+            projectile.timeLeft *= 5;
+            projectile.tileCollide = false;
+
         }
 
         public override bool PreAI()
         {
             Player player = Main.player[projectile.owner];
-            player.petFlagDD2Gato = false; 
+            //player.petFlagDD2Gato = false; 
             return true;
         }
-        
+        float movespeed = 10f; //Speed of the pet
+
+        float xpostion = 50; // The picked x postion
+        float ypostion = -60f;
+        bool yAssend;
+        bool animatefast;
         public override void AI()
         {
-            //Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0.9f / 255f);
             Player player = Main.player[projectile.owner];
             StormPlayer modPlayer = player.GetModPlayer<StormPlayer>();
+            if (!player.active)
+            {
+                projectile.active = false;
+                return;
+            }
             if (player.dead)
             {
                 modPlayer.stormHelmet = false;
@@ -121,36 +141,121 @@ namespace StormDiversSuggestions.Pets
             {
                 projectile.timeLeft = 2;
             }
-            if (projectile.velocity.X >= 8 || projectile.velocity.X <= -8 || projectile.velocity.Y <= -5)
+
+
+
+            float distanceX = player.Center.X - projectile.Center.X;
+            float distanceY = player.Center.Y - projectile.Center.Y;
+            float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+
+            projectile.rotation = projectile.velocity.X / 20;
+
+
+            xpostion = 50 * -player.direction; //Moves to the front of the player
+            projectile.spriteDirection = player.direction; //Flips sprite
+            movespeed = distance / 15 + 0.5f; //Moves faster the further away it is
+
+            //To make bop up and down
+            if (yAssend)
             {
-                /* Dust dust;
-                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                 Vector2 position = projectile.Center;
-                 dust = Terraria.Dust.NewDustPerfect(position, 111, new Vector2(0f, 0f), 0, new Color(255, 100, 0), 1f);
-                 dust.noGravity = true;*/
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = (new Vector2(projectile.Center.X - 3, projectile.Center.Y - 3));
-                dust = Terraria.Dust.NewDustDirect(position, 6, 6, 206, projectile.velocity.X * -0.3f, 3, 0, new Color(255, 255, 255), 1f);
-                
-                
-                
+                ypostion -= 0.1f;
             }
-            //AnimateProjectile();
+            else
+            {
+                ypostion += 0.1f;
+            }
+            if (ypostion <= -65f)
+            {
+                yAssend = false;
+            }
+            if (ypostion >= -55f)
+            {
+                yAssend = true;
+            }
 
+            if (distance < 1000)
+            {
+                Vector2 moveTo = player.Center;
+                Vector2 move = moveTo - projectile.Center + new Vector2(xpostion, ypostion); //Postion around player
+                float magnitude = (float)Math.Sqrt(move.X * move.X + move.Y * move.Y);
+                if (magnitude > movespeed)
+                {
+                    move *= movespeed / magnitude;
+                }
+                projectile.velocity = move;
+            }
+            if (distance >= 1000) //Teleports if too far
+            {
+                projectile.position.X = player.position.X;
+                projectile.position.Y = player.position.Y;
+
+            }
+            if (distance > 100 && projectile.velocity.Y < 5) //Change aniamtion and speed and faster dust
+            {
+                //if (projectile.velocity.Y < 5)
+                {
+                    Dust dust;
+                    Vector2 position = (new Vector2(projectile.Center.X - (7 * projectile.spriteDirection) - 4, projectile.Center.Y - 3));
+                    dust = Terraria.Dust.NewDustDirect(position, 0, 0, 206, -projectile.spriteDirection * 3f, 3, 0, new Color(255, 255, 255), 1f);
+                }
+                animatefast = true;
+            }
+            else
+            {
+                if (Main.rand.Next(6) == 0)
+                {
+                    Dust dust;
+                    Vector2 position = (new Vector2(projectile.Center.X - (7 * projectile.spriteDirection) - 4, projectile.Center.Y - 3));
+                    dust = Terraria.Dust.NewDustDirect(position, 0, 0, 206, -projectile.spriteDirection * 2f, 2, 0, new Color(255, 255, 255), 1f);
+                }
+                animatefast = false;
+            }
+
+
+            // animate
+
+            if (!animatefast)
+            {
+                projectile.frameCounter++;
+                if (projectile.frameCounter >= 6)
+                {
+                    projectile.frame++;
+                    projectile.frameCounter = 0;
+                }
+                if (projectile.frame >= 4)
+                {
+                    projectile.frame = 0;
+
+                }
+            }
+            if (animatefast)
+            {
+                projectile.frameCounter++;
+                if (projectile.frameCounter >= 2)
+                {
+                    projectile.frame++;
+                    projectile.frameCounter = 0;
+                }
+                if (projectile.frame >= 8 || projectile.frame <= 3)
+                {
+                    projectile.frame = 4;
+
+                }
+            }
         }
-         /*public void AnimateProjectile() // Call this every frame, for example in the AI method.
-         {
-             projectile.frameCounter++;
-             if (projectile.frameCounter >= 8) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-             {
-                 projectile.frame++;
-                 projectile.frame %= 7; // Will reset to the first frame if you've gone through them all.
-                 projectile.frameCounter = 0;
-             }
-         }*/
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 30; i++) //Dust post-teleport
+            {
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
+                dust.scale = 1.1f;
+                dust.velocity *= 2;
+                dust.noGravity = true;
 
-        /**public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)//Doesn't work >:(
+            }
+        }
+
+        /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)//Doesn't work >:(
         {
             Texture2D texture = mod.GetTexture("Pets/StormLightProj_Glowmask");
 
@@ -159,8 +264,8 @@ namespace StormDiversSuggestions.Pets
            
 
         }*/
-       
-         public override Color? GetAlpha(Color lightColor)
+
+        public override Color? GetAlpha(Color lightColor)
          {
              return Color.White;
          }

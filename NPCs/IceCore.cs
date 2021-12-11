@@ -26,8 +26,8 @@ namespace StormDiversSuggestions.NPCs
         public override void SetDefaults()
         {
             
-            npc.width = 54;
-            npc.height = 54;
+            npc.width = 40;
+            npc.height = 40;
 
             //npc.aiStyle = 22;
 
@@ -89,7 +89,6 @@ namespace StormDiversSuggestions.NPCs
         {
             Lighting.AddLight(npc.Center, Color.WhiteSmoke.ToVector3() * 0.6f * Main.essScale);
 
-            npc.spriteDirection = npc.direction;
 
 
 

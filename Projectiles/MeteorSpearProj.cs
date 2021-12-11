@@ -116,6 +116,7 @@ namespace StormDiversSuggestions.Projectiles
         bool meteorrain;
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.AddBuff(BuffID.OnFire, 180);
             if (!meteorrain)
             {
                 Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 45, 0.5f, 0.5f);
@@ -235,7 +236,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.timeLeft = 3;
             }
-
+            target.AddBuff(BuffID.OnFire, 180);
 
         }
 

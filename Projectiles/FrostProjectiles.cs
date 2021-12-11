@@ -470,8 +470,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
 
-            projectile.width = 9;
-            projectile.height = 9;
+            projectile.width = 8;
+            projectile.height = 8;
             projectile.friendly = true;
             projectile.penetrate = 2;
            
@@ -480,8 +480,8 @@ namespace StormDiversSuggestions.Projectiles
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            drawOffsetX = -2;
-            drawOriginOffsetY = -2;
+            drawOffsetX = 0;
+            drawOriginOffsetY = 0;
         }
 
         public override void AI()
@@ -491,7 +491,7 @@ namespace StormDiversSuggestions.Projectiles
             Main.dust[dustIndex].noGravity = true;
 
 
-            projectile.rotation += (float)projectile.direction * -0.2f;
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
 
         }
 

@@ -31,7 +31,7 @@ namespace StormDiversSuggestions.Projectiles
             
             drawOffsetX = 9;
             drawOriginOffsetY = 0;
-        
+       
         }
 
         public override void AI()

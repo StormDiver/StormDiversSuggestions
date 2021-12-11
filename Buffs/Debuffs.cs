@@ -502,6 +502,7 @@ namespace StormDiversSuggestions.Buffs
             DisplayName.SetDefault("Essence of Dark");
             Description.SetDefault("You have been surrounded by the darkness");
             Main.debuff[Type] = true;
+            Main.pvpBuff[Type] = true;
 
         }
 
@@ -557,10 +558,10 @@ namespace StormDiversSuggestions.Buffs
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("UltraFreeze Burn");
+            DisplayName.SetDefault("UltraFreeze");
             Description.SetDefault("This really really REALLY hurts!!!!");
             Main.debuff[Type] = true;
-
+            Main.pvpBuff[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -581,6 +582,30 @@ namespace StormDiversSuggestions.Buffs
 
             npc.GetGlobalNPC<StormNPC>().ultrafrostDebuff = true;
 
+
+        }
+    }
+    //_________________________________________________________________
+    public class SpookedDebuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Spooked");
+            Description.SetDefault("You are overwhelmed by fear");
+            Main.debuff[Type] = true;
+
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+          
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+
+            npc.GetGlobalNPC<StormNPC>().spookedDebuff = true;
 
 
         }

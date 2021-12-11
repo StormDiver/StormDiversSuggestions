@@ -366,7 +366,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Defense");
-            Description.SetDefault("Damage taken from the next attack is reduced by 25% and will grant longer invincibility frames\nTaking damage summons asteroids from the sky");
+            Description.SetDefault("25% damage reduction from the next attack\nTaking damage summons asteroid fragments from the sky");
             Main.buffNoTimeDisplay[Type] = true;
         }
 
@@ -391,7 +391,7 @@ namespace StormDiversSuggestions.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Orbital Strike");
-            Description.SetDefault("Your next attack will cause asteroids to fall upon the attacked enemy");
+            Description.SetDefault("Your next attack will cause asteroid fragments to fall upon the attacked enemy");
             Main.buffNoTimeDisplay[Type] = true;
         }
 

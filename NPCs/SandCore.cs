@@ -26,8 +26,8 @@ namespace StormDiversSuggestions.NPCs
         public override void SetDefaults()
         {
             
-            npc.width = 54;
-            npc.height = 54;
+            npc.width = 40;
+            npc.height = 40;
             
             
             npc.damage = 40;
