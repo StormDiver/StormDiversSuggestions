@@ -88,7 +88,7 @@ namespace StormDiversSuggestions.NPCs
 
             Player player = Main.player[npc.target];
             npc.TargetClosest();
-            if (player.ZoneJungle && player.ZoneRockLayerHeight)
+            if ((player.ZoneJungle && player.ZoneRockLayerHeight) || NPC.downedPlantBoss)
             {
                 Vector2 moveTo = player.Center;
                 Vector2 move = moveTo - npc.Center + new Vector2(xpostion, ypostion);
@@ -112,7 +112,7 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-            if (player.dead || (!player.ZoneJungle || !player.ZoneRockLayerHeight)) //Now flees if the player leaves the Underground Jungle
+            if (player.dead || ((!player.ZoneJungle || !player.ZoneRockLayerHeight) && !NPC.downedPlantBoss)) //Now flees if the player leaves the Underground Jungle pre plant
             {
                 npc.velocity.Y = 8;
             }
