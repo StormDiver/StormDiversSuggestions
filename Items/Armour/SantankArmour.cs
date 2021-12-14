@@ -19,7 +19,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Santank Mask");
-            Tooltip.SetDefault("15% increased ranged damage\n5% increased ranged critical strike chance");
+            Tooltip.SetDefault("12% increased ranged damage\n8% increased ranged critical strike chance");
         }
    
         public override void SetDefaults()
@@ -33,8 +33,8 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += 0.15f;
-            player.rangedCrit += 5;
+            player.rangedDamage += 0.12f;
+            player.rangedCrit += 8;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
         }

@@ -91,7 +91,7 @@ namespace StormDiversSuggestions.Projectiles
                 //If the distance between the projectile and the live target is active
 
 
-                if (distance < 500f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5 && target.type != NPCID.TargetDummy && Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
+                if (distance < 500f && !target.friendly && target.active && !target.dontTakeDamage && target.lifeMax > 5 && target.type != NPCID.TargetDummy && Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0) && Collision.CanHitLine(projectile.Center, 0, 0, player.Center, 0, 0))
                 {
 
                     distance = 1.6f / distance;

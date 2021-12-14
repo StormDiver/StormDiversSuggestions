@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Helmet");
-            Tooltip.SetDefault("15% increased damage\n10% increased critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n8% increased critical strike chance");
         }
   
         public override void SetDefaults()
@@ -31,10 +31,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.15f;
-            player.meleeCrit += 10;
-            player.rangedCrit += 10;
-            player.magicCrit += 10;
-            player.thrownCrit += 10;
+            player.meleeCrit += 8;
+            player.rangedCrit += 8;
+            player.magicCrit += 8;
+            player.thrownCrit += 8;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
         
         }
@@ -60,7 +60,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Strike buff that summons defense-piercing asteroid fragments upon the next attacked enemy";
+            player.setBonus = "Grants the Orbital Strike buff that causes asteroid fragments to fall upon the next attacked enemy";
             //player.AddBuff(mod.BuffType("SpaceRockOffence"), 1);
             player.GetModPlayer<StormPlayer>().spaceRockOffence = true;
          
@@ -92,7 +92,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Mask");
-            Tooltip.SetDefault("5% increased damage\n2% increased critical strike chance\nIncreases health regeneration and grants immunity to knockback");
+            Tooltip.SetDefault("5% increased damage\n2% increased critical strike chanceIncreases health regeneration and grants immunity to knockback");
         }
 
         public override void SetDefaults()
@@ -139,7 +139,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Grants the Orbital Defense buff that reduces damage of the next attack by 25% while summoning defense-piercing asteroid fragments from the sky";
+            player.setBonus = "Grants the Orbital Defense buff that reduces damage of the next attack by 25% while summoning damaging asteroid fragments from the sky";
            
                 player.GetModPlayer<StormPlayer>().spaceRockDefence = true;
 
@@ -169,7 +169,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Chestplate");
-            Tooltip.SetDefault("7% increased damage and critical strike chance");
+            Tooltip.SetDefault("7% increased damage\n5% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -185,10 +185,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.07f;
-            player.meleeCrit += 7;
-            player.rangedCrit += 7;
-            player.magicCrit += 7;
-            player.thrownCrit += 7;
+            player.meleeCrit += 5;
+            player.rangedCrit += 5;
+            player.magicCrit += 5;
+            player.thrownCrit += 5;
             Lighting.AddLight(player.Center, Color.White.ToVector3() * 0.4f);
 
 
@@ -215,7 +215,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Asteroid Leggings");
-            Tooltip.SetDefault("6% increased damage and critical strike chance\n50% increased movement speed");
+            Tooltip.SetDefault("6% increased damage\n5% increased critical strike chance\n50% increased movement speed");
         }
 
         public override void SetDefaults()

@@ -103,7 +103,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            if (target.defense <= 1000)
+            if (target.defense <= 500)
             {
                 damage = damage + (int)(target.defense * 0.5f);
             }

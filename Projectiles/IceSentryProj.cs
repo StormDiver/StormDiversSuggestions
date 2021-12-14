@@ -27,6 +27,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.sentry = true;
             projectile.penetrate = 1;
             projectile.timeLeft = Projectile.SentryLifeTime;
+            projectile.tileCollide = false;
 
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;

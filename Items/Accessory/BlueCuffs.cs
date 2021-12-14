@@ -16,7 +16,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Insulated Cuffs");
-            Tooltip.SetDefault("All weapons will inflict frostburn\n'Redirect the coldness into your foes'");
+            Tooltip.SetDefault("All weapons have a chance to inflict frostburn upon attacked enemies\n'Redirect the coldness into your foes'");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
         }
         public override void SetDefaults()
@@ -105,7 +105,10 @@ namespace StormDiversSuggestions.Items.Accessory
 
             if (player.GetModPlayer<StormPlayer>().blueCuffs == true)
             {
-                target.AddBuff(BuffID.Frostburn, 180);
+                if (Main.rand.Next(4) == 0)
+                {
+                    target.AddBuff(BuffID.Frostburn, 180);
+                }
             }
 
         }
@@ -113,7 +116,10 @@ namespace StormDiversSuggestions.Items.Accessory
         {
             if (player.GetModPlayer<StormPlayer>().blueCuffs == true)
             {
-                target.AddBuff(BuffID.Frostburn, 180);
+                if (Main.rand.Next(4) == 0)
+                {
+                    target.AddBuff(BuffID.Frostburn, 180);
+                }
             }
 
         }

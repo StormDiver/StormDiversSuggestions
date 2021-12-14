@@ -98,7 +98,7 @@ namespace StormDiversSuggestions.NPCs
 
 
                     }
-                    else //if cannot detetc player begin docile cooldown
+                    else //if cannot detect player begin docile cooldown
                     {
                       
                         dociletime--;
@@ -109,11 +109,11 @@ namespace StormDiversSuggestions.NPCs
                         fear = true;
 
 
-                        if (distanceX <= -25)
+                        if (distanceX <= -5)
                         {
                             npc.velocity.X = -9;
                         }
-                        if (distanceX >= 25)
+                        if (distanceX >= 5)
                         {
                             npc.velocity.X = 9;
                         }
@@ -127,7 +127,7 @@ namespace StormDiversSuggestions.NPCs
                             npc.velocity.Y = -15;
                             jump = true;
                         }
-                        if (player.position.Y > npc.Bottom.Y && Collision.CanHitLine(npc.Bottom, npc.width, npc.height, player.position, player.width, player.height)) // fall through platforms is player is below
+                        if (player.position.Y > npc.Bottom.Y && Collision.CanHitLine(npc.Center, 0, 0, player.Center, 0, 0)) // fall through platforms is player is below
                         {
                             npc.noTileCollide = true;
                         }
@@ -155,6 +155,7 @@ namespace StormDiversSuggestions.NPCs
                     attackmode = false;
                     fear = false;
                     distancefear = 500; //reset orignal trigger range
+                    npcframe = 0; //Stays on frame 0 if no fear
 
                 }
                 if (npc.velocity.Y == 0)
@@ -163,6 +164,8 @@ namespace StormDiversSuggestions.NPCs
                 }
                 if (player.dead) //victory
                 {
+                    dociletime--;
+
                     fear = false;
                     death = true;
                     npc.velocity.X = 0;

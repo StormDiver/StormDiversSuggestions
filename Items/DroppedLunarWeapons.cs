@@ -340,8 +340,8 @@ namespace StormDiversSuggestions.Items
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Red;
             item.useStyle = ItemUseStyleID.HoldingUp;
-            item.useTime = 45;
-            item.useAnimation = 45;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 

@@ -27,7 +27,8 @@ namespace StormDiversSuggestions.Projectiles
             //projectile.light = 1f;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            
+            projectile.tileCollide = false;
+
             projectile.timeLeft = Projectile.SentryLifeTime;
             projectile.tileCollide = true;
             //drawOffsetX = 2;

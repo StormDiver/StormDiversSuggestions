@@ -15,7 +15,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Helmet");
-            Tooltip.SetDefault("15% increased damage\n10% increased critical strike chance");
+            Tooltip.SetDefault("15% increased damage\n5% increased critical strike chance");
         }
 
         public override void SetDefaults()
@@ -31,10 +31,10 @@ namespace StormDiversSuggestions.Items.Armour
         {
 
             player.allDamage += 0.15f;
-            player.meleeCrit += 10;
-            player.rangedCrit += 10;
-            player.magicCrit += 10;
-            player.thrownCrit += 10;
+            player.meleeCrit += 5;
+            player.rangedCrit += 5;
+            player.magicCrit += 5;
+            player.thrownCrit += 5;
 
         }
 
@@ -174,7 +174,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Mask");
-            Tooltip.SetDefault("18% increased summoner damage\nIncreases your max number of minions by 1");
+            Tooltip.SetDefault("16% increased summoner damage\nIncreases your max number of minions by 1");
         }
 
         public override void SetDefaults()
@@ -190,7 +190,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
        
             player.maxMinions += 1;
-            player.minionDamage += 0.18f;
+            player.minionDamage += 0.16f;
 
         }
 

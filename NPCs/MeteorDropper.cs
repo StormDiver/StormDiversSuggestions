@@ -154,7 +154,7 @@ namespace StormDiversSuggestions.NPCs
             float distanceY = player.Center.Y - npc.Center.Y;
             float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-            if ((distanceX <= 75f && distanceX >= -75f) && (distanceY <= 500f && distanceY >= 0f) && Collision.CanHitLine(npc.position, npc.width, npc.height, player.position, player.width, player.height) && !player.dead)
+            if ((distanceX <= 75f && distanceX >= -75f) && (distanceY <= 500f && distanceY >= 0f) && Collision.CanHitLine(npc.Center, 0, 0, player.Center, 0, 0) && !player.dead)
             {
                 
                     int damage = 13; // The damage your projectile deals.

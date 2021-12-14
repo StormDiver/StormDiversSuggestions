@@ -45,7 +45,7 @@ namespace StormDiversSuggestions.Items.Accessory
                 }
                 //player.longInvince = true;
                 player.noKnockback = true;
-                if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y == 0 || player.sliding))
+                if ((player.velocity.X > 5 || player.velocity.X < -5) && (player.velocity.Y == 0) && (player.controlLeft || player.controlRight) && !player.mount.Active)
                 {
                     if (Main.rand.Next(2) == 0)
                     {

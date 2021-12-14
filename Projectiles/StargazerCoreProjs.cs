@@ -30,7 +30,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.light = 0.6f;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
-            
+            projectile.tileCollide = false;
+
         }
         public override bool CanDamage()
         {

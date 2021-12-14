@@ -317,11 +317,11 @@ namespace StormDiversSuggestions.Basefiles
                 player.ClearBuff(mod.BuffType("SpaceRockDefence"));
                 spaceBarriercooldown = 0;
             }
-            if (spaceStrikecooldown < 210) //Ditto for offence
+            if (spaceStrikecooldown < 240) //Ditto for offence
             {
                 spaceStrikecooldown++;
             }
-            if (spaceStrikecooldown == 210)
+            if (spaceStrikecooldown == 240)
             {
                 player.AddBuff(mod.BuffType("SpaceRockOffence"), 2);
 
@@ -643,7 +643,7 @@ namespace StormDiversSuggestions.Basefiles
             if (bootFall) 
             {
 
-                if (player.controlDown && player.velocity.Y != 0)
+                if (player.controlDown && !player.controlJump && player.velocity.Y != 0 && !player.mount.Active)
                 {
                    
                     //Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 15, 2, -0.5f);
@@ -925,7 +925,7 @@ namespace StormDiversSuggestions.Basefiles
                 mushtime = 90;
             }
             //For the SpaceArmour with the helmet (offence)
-            int offencedmg = (int) (100 * player.allDamage);
+            int offencedmg = (int) (90 * player.allDamage);
             int offenceknb = 5;
             float offenceveloX = victim.velocity.X * 0.6f;
             
@@ -1136,12 +1136,12 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts 
             {
-                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
                 {
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen) //Makes sure this only happens once
                     {
-                        if (Main.rand.Next(5) == 0) //1 in 5 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             Main.PlaySound(SoundID.NPCKilled, (int)target.Center.X, (int)target.Center.Y, 7);
@@ -1215,12 +1215,12 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts
             {
-                if (target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
                 {
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once
                     {
-                        if (Main.rand.Next(5) == 0) //1 in 5 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             
