@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.width = 40;
             item.height = 22;
 
-            item.useTime = 4;
+            item.useTime = 3;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 9, 0, 0);
@@ -39,11 +39,12 @@ namespace StormDiversSuggestions.Items.Tools
             item.noUseGraphic = true; 
             item.channel = true; 
             item.autoReuse = true;
-            
-            
+            item.tileBoost = 1;
+
+
         }
 
-       
+
 
         public override void AddRecipes()
         {
@@ -69,7 +70,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 60;
             item.height = 20;
-            item.useTime = 4;
+            item.useTime = 3;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 9, 0, 0);
@@ -86,8 +87,9 @@ namespace StormDiversSuggestions.Items.Tools
             item.noUseGraphic = true;
             item.channel = true;
             item.autoReuse = true;
-            
-           
+            item.tileBoost = 1;
+
+
         }
 
 
@@ -115,7 +117,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.melee = true;
             item.width = 50;
             item.height = 20;
-            item.useTime = 4;
+            item.useTime = 5;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 9, 0, 0);
@@ -132,8 +134,9 @@ namespace StormDiversSuggestions.Items.Tools
             item.noUseGraphic = true;
             item.channel = true;
             item.autoReuse = true;
+            item.tileBoost = 1;
 
-           
+
         }
 
 

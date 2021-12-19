@@ -226,7 +226,6 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 20;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.light = 0.4f;
             projectile.scale = 1f;

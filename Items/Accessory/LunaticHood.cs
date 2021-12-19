@@ -14,7 +14,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lunatic Hood of Command");
-            Tooltip.SetDefault("Summons 2 mini cultists that fly next to you and fire shadow fireballs at enemies");
+            Tooltip.SetDefault("Summons 2 mini cultists minions that fly next to you and fire shadow fireballs at enemies");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 5));
         }
         public override void SetDefaults()

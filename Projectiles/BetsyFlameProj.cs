@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 14;
-            projectile.height = 26;
+            projectile.height = 14;
             projectile.friendly = true;
             projectile.penetrate = 1;
             //projectile.melee = true;
@@ -113,7 +113,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 15; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 6);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6);
 
                     dust.noGravity = true;
 

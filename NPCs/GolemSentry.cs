@@ -36,7 +36,7 @@ namespace StormDiversSuggestions.NPCs
 
             npc.damage = 50;
             npc.lavaImmune = true;
-            npc.defense = 10;
+            npc.defense = 40;
             npc.lifeMax = 1000;
             npc.noGravity = false;
             

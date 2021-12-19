@@ -398,7 +398,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     float speedX = 0f;
                     float speedY = -8f;
-                    int damage = (int)(100 * player.rangedDamage);
+                    int damage = (int)(125 * player.rangedDamage);
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(50));
                     float scale = 1f - (Main.rand.NextFloat() * .1f);
                     perturbedSpeed = perturbedSpeed * scale;
@@ -590,7 +590,7 @@ namespace StormDiversSuggestions.Basefiles
                     float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));*/
                     if (distance < 260 && !target.friendly && target.lifeMax > 5 && !target.dontTakeDamage && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0))
                     {
-                        if (!target.buffImmune[(BuffType<UltraBurnDebuff>())])
+                        if (!target.buffImmune[(BuffType<SpookedDebuff>())])
                         {
                             distance = 1.6f / distance;
 

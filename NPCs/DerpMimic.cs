@@ -66,7 +66,7 @@ namespace StormDiversSuggestions.NPCs
 
         float distancefear = 500; //Detection ranged
 
-        bool attackmode; //Wheter it is cahsign a player
+        bool attackmode; //Wheter it is chasing a player
 
         int dociletime; //cooldown until stops attacking
         public override void AI()
@@ -194,7 +194,7 @@ namespace StormDiversSuggestions.NPCs
                     npcframe++;
                     npc.frameCounter = 0;
                 }
-                if (npcframe <= 7 || npcframe >= 18) //Cycles through frames 8-17 when FEAR
+                if (npcframe <= 7 || npcframe >= 18) //Cycles through frames 8-17 when FEAR (frame 8 maeks it twitch)
                 {
                     npcframe = 8;
                 }

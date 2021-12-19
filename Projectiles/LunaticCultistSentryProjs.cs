@@ -30,7 +30,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = -1;
             projectile.alpha = 50;
             projectile.timeLeft = 99999999;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             //drawOffsetX = 2;
             //drawOriginOffsetY = 2;
 
@@ -133,7 +133,7 @@ namespace StormDiversSuggestions.Projectiles
                     shootToY *= distance * 6f;
 
                     int damage = (int)(80 * player.minionDamage);
-                    if (shoottime > 40)
+                    if (shoottime > 30)
                     {
 
                         for (int j = 0; j < 25; j++) //this i a for loop tham make the dust spawn , the higher is the value the more dust will spawn
@@ -360,7 +360,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             if (projectile.owner == Main.myPlayer)
             {
-                Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 6, .5f, -0.5f);
+                Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 6, .3f, -0f);
 
                 for (int i = 0; i < 20; i++) //this i a for loop tham make the dust spawn , the higher is the value the more dust will spawn
                 {

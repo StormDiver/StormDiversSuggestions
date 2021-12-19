@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Items.Tools
             item.width = 40;
             item.height = 22;
 
-            item.useTime = 5;
+            item.useTime = 4;
             item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 10, 0, 0);
