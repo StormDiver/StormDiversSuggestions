@@ -131,6 +131,8 @@ namespace StormDiversSuggestions.Basefiles
         public bool ultraBurn; //Player ahs the ultra burn debuff
 
         public bool ultraFrost; //Player has Ultra Frost burn debuff
+
+        public bool beetleFist; //player has the Beetle gauntlet equipped
         //Ints and Bools activated from this file
 
         public bool shotflame; //Indicates whether the SPooky Core has fired its flames or not
@@ -162,6 +164,7 @@ namespace StormDiversSuggestions.Basefiles
         public bool santanktrigger; //Has the player triggered the missiles
         public bool lunaticsentry; //Has the lunatic sentry been summoned?
         public int templeWarning; //Warning until Temple Guardians spawn
+        public int beetlecooldown; //Cooldown until more beetles can be summoned
         public override void ResetEffects() //Resets bools if the item is unequipped
         {
             boulderDB = false;
@@ -207,6 +210,7 @@ namespace StormDiversSuggestions.Basefiles
             lunaticHood = false;
             ultraBurn = false;
             ultraFrost = false;
+            beetleFist = false;
         }
         public override void UpdateDead()//Reset all ints and bools if dead======================
         {
@@ -233,6 +237,7 @@ namespace StormDiversSuggestions.Basefiles
             lunaticsentry = false;
             templeWarning = 0;
             skulltime = 0;
+            beetlecooldown = 0;
         }
 
         public override void PostUpdateEquips() //Updates every frame
@@ -273,6 +278,15 @@ namespace StormDiversSuggestions.Basefiles
             if (bloodtime > 0)
             {
                 bloodtime--;
+            }
+            if (bloodtime <= 0 && BloodDrop)
+            {
+                player.AddBuff(mod.BuffType("BloodBurstBuff"), 2);
+
+            }
+            if (beetlecooldown > 0)
+            {
+                beetlecooldown--;
             }
             if (hellblazetime > 0)
             {
@@ -332,12 +346,22 @@ namespace StormDiversSuggestions.Basefiles
                 spaceStrikecooldown = 0;
             }
 
-            if (derplinglaunchcooldown == 0 && derpJump)
+            if (derplinglaunchcooldown == 0 && derpJump && player.velocity.Y == 0)
             {
                 player.AddBuff(mod.BuffType("DerpBuff"), 2);
 
             }
 
+            if (beetlecooldown == 0 && beetleFist && player.HeldItem.melee)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    int dust = Dust.NewDust(new Vector2(player.position.X - 10, player.position.Y - 5), player.width + 20, player.height + 10, mod.DustType("BeetleDust"));
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.5f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                }
+            }
 
             //For santank set ======================================================================
             if (santankSet)
@@ -452,122 +476,149 @@ namespace StormDiversSuggestions.Basefiles
 
             //For Twilight Armour ====================================================================
 
-            float xWarplimit = 560;
-            float yWarplimit = 320;
+            float xWarplimit = 640;
+            float yWarplimit = 400;
             if (twilightSet)
             {
                 float distanceX = player.Center.X - Main.MouseWorld.X;
                 float distanceY = player.Center.Y - Main.MouseWorld.Y;
                 float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
 
-                if ( Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height) && !player.HasBuff(mod.BuffType("TwilightDebuff"))) //Checks if mouse is in valid postion
+                int xcursor = (int)(Main.MouseWorld.X / 16);
+                int ycursor = (int)(Main.MouseWorld.Y / 16);
+                Tile tile = Main.tile[xcursor, ycursor];
+                if ((tile != null && !tile.nactive() || !Main.tileSolid[tile.type]) && !player.HasBuff(mod.BuffType("TwilightDebuff"))) //Checks if mouse is in valid postion
                 {
-                   
-                    twilightcharged = true; //Activates the outline effect on the armour
-
-                    if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed) //Activates when player presses button
+                    if (((distanceX < -xWarplimit || distanceX > xWarplimit || distanceY < -yWarplimit || distanceY > yWarplimit) && Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height)) ||
+                        (distanceX > -xWarplimit && distanceX < xWarplimit && distanceY > -yWarplimit && distanceY < yWarplimit)) //If there is no line of sight and cursor is past limit, don't allow teleport to prevent gettign stuck in blocks
                     {
-                        player.AddBuff(BuffID.Obstructed, 10); //Hopefully this covers up the janky teleport :thePain:
-                        player.AddBuff(mod.BuffType("TwilightDebuff"), 1080);
+                    
 
+                        twilightcharged = true; //Activates the outline effect on the armour
 
+                        if (StormDiversSuggestions.ArmourSpecialHotkey.JustPressed) //Activates when player presses button
                         {
-                            for (int i = 0; i < 30; i++) //Dust pre-teleport
+                            player.AddBuff(BuffID.Obstructed, 10); //Hopefully this covers up the janky teleport :thePain:
+                            player.AddBuff(mod.BuffType("TwilightDebuff"), 720);
+
+                            player.grappling[0] = -1; //Remove grapple hooks
+                            player.grapCount = 0;
+                            for (int p = 0; p < 1000; p++)
                             {
-                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
-                                dust.scale = 1.1f;
-                                dust.velocity *= 2;
-                                //dust.noGravity = true;
-
-                            }
-                            for (int i = 0; i < 30; i++)
-                            {
-                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
-                                dust.scale = 1.5f;
-                                dust.noGravity = true;
-                                dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-
-
-                            }
-
-                            //X postion 
-                            {
-                                if (distanceX <= xWarplimit && distanceX >= -xWarplimit)
+                                if (Main.projectile[p].active && Main.projectile[p].owner == player.whoAmI && Main.projectile[p].aiStyle == 7)
                                 {
-                                    player.position.X = Main.MouseWorld.X - (player.width / 2);
-                                    //Main.NewText("Little mouse X", 0, 146, 0);
-                                }
-                                else
-                                {
-                                    if (distanceX < -xWarplimit)
-                                    {
-                                        player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX + xWarplimit);
-                                        //Main.NewText("Mouse it to the right", 146, 0, 0);
-                                    }
-                                    else if (distanceX > xWarplimit)
-                                    {
-                                        player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX - xWarplimit);
-                                        //Main.NewText("Mouse it to the left", 146, 0, 0);
-                                    }
+                                    Main.projectile[p].Kill();
                                 }
                             }
-                            //Y postion 
-                             {
-                                 if (distanceY <= yWarplimit && distanceY >= -yWarplimit)
-                                 {
-                                     player.position.Y = Main.MouseWorld.Y - (player.height);
-                                     //Main.NewText("Little mouse Y", 0, 146, 0);
-                                 }
-                                 else
-                                 {
-                                     if (distanceY < -yWarplimit)
-                                     {
-                                         player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY + yWarplimit);
-                                         //Main.NewText("Mouse it to the down", 0, 0, 146);
-
-                                     }
-                                     else if (distanceY > yWarplimit)
-                                     {
-                                         player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY - yWarplimit);
-                                         //Main.NewText("Mouse it to the up", 0, 0, 146);
-                                     }
-                                 }
-                             }
-
-                            for (int i = 0; i < 30; i++) //Dust post-teleport
                             {
-                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
-                                dust.scale = 1.1f;
-                                dust.velocity *= 2;
-                                //dust.noGravity = true;
+                                for (int i = 0; i < 30; i++) //Dust pre-teleport
+                                {
+                                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
+                                    dust.scale = 1.1f;
+                                    dust.velocity *= 2;
+                                    //dust.noGravity = true;
+
+                                }
+                                for (int i = 0; i < 30; i++)
+                                {
+                                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
+                                    dust.scale = 1.5f;
+                                    dust.noGravity = true;
+                                    dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+
+
+                                }
+
+                                //X postion 
+                                {
+                                    if (distanceX <= xWarplimit && distanceX >= -xWarplimit)
+                                    {
+                                        player.position.X = Main.MouseWorld.X - (player.width / 2);
+                                        //Main.NewText("Little mouse X", 0, 146, 0);
+                                    }
+                                    else
+                                    {
+                                        if (distanceX < -xWarplimit)
+                                        {
+                                            player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX + xWarplimit);
+                                            //Main.NewText("Mouse it to the right", 146, 0, 0);
+                                        }
+                                        else if (distanceX > xWarplimit)
+                                        {
+                                            player.position.X = (Main.MouseWorld.X - (player.width / 2)) + (distanceX - xWarplimit);
+                                            //Main.NewText("Mouse it to the left", 146, 0, 0);
+                                        }
+                                    }
+                                }
+                                //Y postion 
+                                {
+                                    if (distanceY <= yWarplimit && distanceY >= -yWarplimit)
+                                    {
+                                        player.position.Y = Main.MouseWorld.Y - (player.height);
+                                        //Main.NewText("Little mouse Y", 0, 146, 0);
+                                    }
+                                    else
+                                    {
+                                        if (distanceY < -yWarplimit)
+                                        {
+                                            player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY + yWarplimit);
+                                            //Main.NewText("Mouse it to the down", 0, 0, 146);
+
+                                        }
+                                        else if (distanceY > yWarplimit)
+                                        {
+                                            player.position.Y = (Main.MouseWorld.Y - (player.height)) + (distanceY - yWarplimit);
+                                            //Main.NewText("Mouse it to the up", 0, 0, 146);
+                                        }
+                                    }
+                                }
+
+                                for (int i = 0; i < 30; i++) //Dust post-teleport
+                                {
+                                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 62);
+                                    dust.scale = 1.1f;
+                                    dust.velocity *= 2;
+                                    //dust.noGravity = true;
+
+                                }
+                                for (int i = 0; i < 30; i++)
+                                {
+                                    var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
+                                    dust.scale = 1.5f;
+                                    dust.noGravity = true;
+                                    dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+
+                                }
+                                Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 8, 2f, -0.5f);
+
+
 
                             }
-                            for (int i = 0; i < 30; i++)
-                            {
-                                var dust = Dust.NewDustDirect(player.position, player.width, player.height, 179);
-                                dust.scale = 1.5f;
-                                dust.noGravity = true;
-                                dust.fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-
-                            }
-                            Main.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, 8, 2f, -0.5f);
-
-                        
-
                         }
-                    }
+                      
 
+                    }
+                    else
+                    {
+                        twilightcharged = false; 
+
+                    }
                 }
-                else
-                {
-                    twilightcharged = false; //Removes the outline effect if the player is unable to charge
-                }
+
+            else
+            {
+                twilightcharged = false; //Removes the outline effect if the player is unable to charge
+            }
             }
 
             //For Spooky Core======================
             if (spooked)
             {
-                player.armorPenetration = 25;
+                float distancehealth = 350 + ((player.statLifeMax2 - player.statLife) / 2);
+                if (distancehealth > 650)
+                {
+                    distancehealth = 650;
+                }
                 if (Main.rand.Next(5) == 0)
                 {
                     var dust = Dust.NewDustDirect(player.position, player.width, player.height, 259, 0, -3);
@@ -588,16 +639,16 @@ namespace StormDiversSuggestions.Basefiles
                     /*float distanceX = player.Center.X - target.Center.X;
                     float distanceY = player.Center.Y - target.Center.Y;
                     float distance = (float)System.Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));*/
-                    if (distance < 260 && !target.friendly && target.lifeMax > 5 && !target.dontTakeDamage && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0))
+                    if (distance < distancehealth && !target.friendly && target.lifeMax > 5 && !target.dontTakeDamage && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(player.Center, 0, 0, target.Center, 0, 0))
                     {
                         if (!target.buffImmune[(BuffType<SpookedDebuff>())])
                         {
                             distance = 1.6f / distance;
 
                             //Multiplying the shoot trajectory with distance times a multiplier if you so choose to
-                            shootToX *= distance * 15f;
-                            shootToY *= distance * 15f;
-                            if (Main.rand.Next(3) == 0)
+                            shootToX *= distance * (12f + (distancehealth / 50));
+                            shootToY *= distance * (12f + (distancehealth / 50));
+                            if (Main.rand.Next(4) == 0)
                             {
                                 Vector2 perturbedSpeed = new Vector2(shootToX, shootToY).RotatedByRandom(MathHelper.ToRadians(8));
 
@@ -808,6 +859,7 @@ namespace StormDiversSuggestions.Basefiles
             if (derpJump)
             {
                 player.jumpSpeedBoost += 4.5f;
+                player.noFallDmg = true;
 
                 player.autoJump = true;
                 player.maxFallSpeed *= 1.5f;
@@ -1179,25 +1231,25 @@ namespace StormDiversSuggestions.Basefiles
                 float speedY = -8f;
 
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(100)); // This defines the projectiles random spread . 10 degree spread.
-                Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), 80, 0, player.whoAmI);
+                Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), 75, 0, player.whoAmI);
 
                 for (int i = 0; i < 20; i++)
                 {
                     var dust = Dust.NewDustDirect(player.position, player.width, player.height, 173);
-                    dust.scale = 2;
+                    dust.scale = 1.5f;
                     dust.velocity *= 3;
 
                 }
                 for (int i = 0; i < 20; i++)
                 {
                     var dust = Dust.NewDustDirect(target.position, target.width, target.height, 173);
-                    dust.scale = 2;
+                    dust.scale = 1.5f;
                     dust.velocity *= 3;
 
                 }
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
-                hellblazetime = 45;
+                hellblazetime = 30;
             }
 
             //For the Blood potion
@@ -1208,7 +1260,52 @@ namespace StormDiversSuggestions.Basefiles
                     target.AddBuff(mod.BuffType("BloodDebuff"), 300);
                 }
             }
+            //for the Beetle Gauntlet
+            if (beetleFist)
+            {
+                if (!player.dead && beetlecooldown == 0 && crit)
+                {
 
+                    Main.PlaySound(SoundID.Zombie, (int)target.Center.X, (int)target.Center.Y, 50, 2, -0.5f);
+
+                    float numberProjectiles = 3 + Main.rand.Next(3);
+
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+
+
+                        float speedX = 0f;
+                        float speedY = -12f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(135));
+                        float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleGloveProj"), 40, 1f, player.whoAmI);
+
+                    }
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        var dust = Dust.NewDustDirect(target.position, target.width, target.height, 186);
+                        dust.velocity *= 2;
+                        dust.noGravity = true;
+                        dust.scale = 1.5f;
+
+                    }
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 186);
+                        dust.velocity *= 2;
+                        dust.noGravity = true;
+                        dust.scale = 1;
+
+                    }
+
+                    beetlecooldown = 10;
+
+                }
+                
+            }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) //Hitting enemy with any projectile
@@ -1220,7 +1317,7 @@ namespace StormDiversSuggestions.Basefiles
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once
                     {
-                        if (Main.rand.Next(6) == 0) //1 in 6 chance to have the debuff applied and drop a heart
+                        if (Main.rand.Next(7) == 0) //1 in 7 chance to have the debuff applied and drop a heart
                         {
                             Item.NewItem((int)target.Center.X, (int)target.Center.Y, target.width, target.height, mod.ItemType("SuperHeartPickup"));
                             
@@ -1243,21 +1340,9 @@ namespace StormDiversSuggestions.Basefiles
             }
             //For the Soul Fire armour setbonus with projectiles ======================
            
-            if (hellSoulSet && hellblazetime == 0)
+            if (hellSoulSet && hellblazetime == 0 && (proj.melee || proj.ranged || proj.magic || proj.thrown))
             {
-                /*float numberProjectiles = 9;
-                
-                float rotation = MathHelper.ToRadians(140);
-                //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
-                for (int i = 0; i < numberProjectiles; i++)
-                {
-                    float speedX = 8f;
-                    float speedY = 0f;
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles) - 0.27f));
-                    Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
-                }*/
-
-                //Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, -8, mod.ProjectileType("HellSoulArmourProj"), hellsouldmg, 0, player.whoAmI);
+               
                 float speedX = 0f;
                 float speedY = -8f;
                 
@@ -1268,20 +1353,20 @@ namespace StormDiversSuggestions.Basefiles
                 for (int i = 0; i < 20; i++)
                 {
                     var dust = Dust.NewDustDirect(player.position, player.width, player.height, 173);
-                    dust.scale = 2;
+                    dust.scale = 1.5f;
                     dust.velocity *= 3;
 
                 }
                 for (int i = 0; i < 20; i++)
                 {
                     var dust = Dust.NewDustDirect(target.position, target.width, target.height, 173);
-                    dust.scale = 2;
+                    dust.scale = 1.5f;
                     dust.velocity *= 3;
 
                 }
                 Main.PlaySound(SoundID.Item, (int)target.Center.X, (int)target.Center.Y, 8);
 
-                hellblazetime = 45;
+                hellblazetime = 30;
             }
             //Blood potion
             if (BloodOrb)
@@ -1289,6 +1374,52 @@ namespace StormDiversSuggestions.Basefiles
                 if (Main.rand.Next(4) == 0)
                 {
                     target.AddBuff(mod.BuffType("BloodDebuff"), 300);
+                }
+            }
+
+            //for the Beetle Gauntlet
+            if (beetleFist)
+            {
+
+                if (!player.dead && proj.melee && beetlecooldown == 0 && crit)
+                {
+                    Main.PlaySound(SoundID.Zombie, (int)target.Center.X, (int)target.Center.Y, 50, 2, -0.5f);
+
+                    float numberProjectiles = 3 + Main.rand.Next(3);
+
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+
+
+                        float speedX = 0f;
+                        float speedY = -12f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(135));
+                        float scale = 1f - (Main.rand.NextFloat() * .5f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        Projectile.NewProjectile(target.Center.X, target.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleGloveProj"), 40, 1f, player.whoAmI);
+
+                    }
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        var dust = Dust.NewDustDirect(target.position, target.width, target.height, 186);
+                        dust.velocity *= 2;
+                        dust.noGravity = true;
+                        dust.scale = 1.5f;
+
+                    }
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        var dust = Dust.NewDustDirect(player.position, player.width, player.height, 186);
+                        dust.velocity *= 2;
+                        dust.noGravity = true;
+                        dust.scale = 1;
+
+                    }
+
+                    beetlecooldown = 10;
+
                 }
             }
         }

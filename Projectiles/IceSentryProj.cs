@@ -16,6 +16,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Ice Sentry");
             Main.projFrames[projectile.type] = 8;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+
         }
         public override void SetDefaults()
         {
@@ -45,7 +47,7 @@ namespace StormDiversSuggestions.Projectiles
         bool animate3 = false; //For closing the core
         bool floatup = true;
         int floattime;
-
+        NPC target;
         public override void AI()
         {
             if (opacity > 0)
@@ -57,29 +59,32 @@ namespace StormDiversSuggestions.Projectiles
             Main.player[projectile.owner].UpdateMaxTurrets();
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);   //this is the light colors
 
-            //if (projectile.ai[0] > 20f)  //this defines where the flames starts
-            {
-                if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
-                {
-                    int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0, 10, 130, default, 1f);
 
-                    Main.dust[dust].noGravity = true; //this make so the dust has no gravity
-                    
-                    int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, projectile.velocity.X, projectile.velocity.Y, 130, default, 1f);
-                }
-            }
-
-            //else
+            if (Main.rand.Next(2) == 0)     //this defines how many dust to spawn
             {
-                //projectile.ai[0] += 1f;
+                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, 0, 10, 130, default, 1f);
+
+                Main.dust[dust].noGravity = true; //this make so the dust has no gravity
+
+                int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 187, projectile.velocity.X, projectile.velocity.Y, 130, default, 1f);
             }
+            
+
+            Player player = Main.player[projectile.owner];
             shoottime++;
             //Getting the npc to fire at
             for (int i = 0; i < 200; i++)
             {
 
-                NPC target = Main.npc[i];
-                target.TargetClosest(true);
+                if (player.HasMinionAttackTargetNPC)
+                {
+                    target = Main.npc[player.MinionAttackTargetNPC];
+                }
+                else
+                {
+                    target = Main.npc[i];
+
+                }
 
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;

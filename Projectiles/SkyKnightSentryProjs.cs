@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Star Warrior Sentry");
             Main.projFrames[projectile.type] = 3;
-            //ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetDefaults()
@@ -30,7 +30,8 @@ namespace StormDiversSuggestions.Projectiles
             projectile.penetrate = -1;
 
             projectile.timeLeft = 99999999;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
             //drawOffsetX = 2;
             //drawOriginOffsetY = 2;
 
@@ -44,6 +45,7 @@ namespace StormDiversSuggestions.Projectiles
         int summontime = 0;
         bool scaleup;
         bool animate;
+        NPC target;
         public override void AI()
         {
             summontime ++;
@@ -76,12 +78,19 @@ namespace StormDiversSuggestions.Projectiles
                 Main.dust[dust].velocity *= 1f;
             }
             shoottime++;
-
             //Getting the npc to fire at
             for (int i = 0; i < 200; i++)
             {
 
-                NPC target = Main.npc[i];
+                if (player.HasMinionAttackTargetNPC)
+                {
+                    target = Main.npc[player.MinionAttackTargetNPC];
+                }
+                else
+                {
+                    target = Main.npc[i];
+
+                }
 
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
@@ -224,7 +233,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         int dusttime = 0;
         int rotate;
-
+        Vector2 newMove;
         public override void AI()
         {
 
@@ -253,7 +262,9 @@ namespace StormDiversSuggestions.Projectiles
                     AdjustMagnitude(ref projectile.velocity);
                     projectile.localAI[0] = 1f;
                 }
-                Vector2 move = Vector2.Zero;
+
+            Player player = Main.player[projectile.owner];
+            Vector2 move = Vector2.Zero;
                 float distance = 100f;
                 bool target = false;
                 for (int k = 0; k < 200; k++)
@@ -262,8 +273,17 @@ namespace StormDiversSuggestions.Projectiles
                     {
                         if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
                         {
-                            Vector2 newMove = Main.npc[k].Center - projectile.Center;
-                            float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (player.HasMinionAttackTargetNPC)
+                        {
+
+                            newMove = Main.npc[player.MinionAttackTargetNPC].Center - projectile.Center;
+                        }
+                        else
+                        {
+                            newMove = Main.npc[k].Center - projectile.Center;
+                        }
+
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
                             if (distanceTo < distance)
                             {
                                 move = newMove;

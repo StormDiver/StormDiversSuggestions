@@ -51,8 +51,8 @@ namespace StormDiversSuggestions.Items.Minions
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 36;
+            item.useAnimation = 36;
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
 
@@ -116,8 +116,6 @@ namespace StormDiversSuggestions.Items.Minions
             Main.projPet[projectile.type] = true;
             // This is needed so your minion can properly spawn when summoned and replaced when other minions are summoned
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            // Don't mistake this with "if this is true, then it will automatically home". It is just for damage reduction for certain NPCs
-            ProjectileID.Sets.Homing[projectile.type] = true;
 
             
         }
@@ -177,17 +175,29 @@ namespace StormDiversSuggestions.Items.Minions
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-           
-
-            /*if (Main.rand.Next(2) == 0) // the chance
+            for (int i = 0; i < 2; i++)
             {
-                target.AddBuff(BuffID.Venom, 600);
 
-            }*/
 
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 68);
+            }
 
         }
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.owner == Main.myPlayer)
+            {
 
+                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+                Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 22);
+                for (int i = 0; i < 15; i++)
+                {
+
+
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 68);
+                }
+            }
+        }
 
     }
 }

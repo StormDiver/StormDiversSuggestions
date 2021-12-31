@@ -34,12 +34,12 @@ namespace StormDiversSuggestions.Items.Tools
            
             if (player.HasBuff(BuffID.Heartreach))
             {
-                grabRange = 400;
+                grabRange = 200;
                 
             }
             else
             {
-                grabRange = 150;
+                grabRange = 100;
 
             }
         }

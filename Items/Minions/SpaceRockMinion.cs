@@ -51,10 +51,9 @@ namespace StormDiversSuggestions.Items.Minions
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Cyan;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 36;
+            item.useAnimation = 36;
             item.autoReuse = true;
-            // item.UseSound = SoundID.Item43;
 
             item.damage = 38;
             item.knockBack = 2f;
@@ -149,7 +148,6 @@ namespace StormDiversSuggestions.Items.Minions
         public override void AI()
         {
             projspeed++;
-            
             projectile.minionSlots = 1f;
             Player player = Main.player[projectile.owner];
             // This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
@@ -227,7 +225,17 @@ namespace StormDiversSuggestions.Items.Minions
                 projspeed = 0;
             }
         }
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 5; i++)
+            {
 
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 0, 0, 0, 130, default, 0.5f);
+                var dust2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, 0, 0, 130, default, 1f);
+            }
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62, 0.5f, 0.2f);
+
+        }
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;

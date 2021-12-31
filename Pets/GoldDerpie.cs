@@ -24,7 +24,7 @@ namespace StormDiversSuggestions.Pets
             item.height = 26;
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 7, 50, 0);
-            
+           
             
             item.shoot = ProjectileType<GoldDerpie>();
             item.buffType = BuffType<GoldDerpieBuff>();
@@ -77,10 +77,10 @@ namespace StormDiversSuggestions.Pets
         {
             projectile.CloneDefaults(ProjectileID.EyeSpring);
             aiType = ProjectileID.EyeSpring;
-            projectile.width = 18;
-           projectile.height = 17;
-            drawOffsetX = -10;
-            drawOriginOffsetY = -13;
+            projectile.width = 34;
+           projectile.height = 24;
+            drawOffsetX = -0;
+            drawOriginOffsetY = -8;
         }
 
         public override bool PreAI()
@@ -89,7 +89,6 @@ namespace StormDiversSuggestions.Pets
             player.eyeSpring = false; 
             return true;
         }
-        int dustime = 0;
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
@@ -102,7 +101,6 @@ namespace StormDiversSuggestions.Pets
             {
                 projectile.timeLeft = 2;
             }
-            dustime++;
            /* if (dustime >= 5 && !projectile.tileCollide)
                 
             {
@@ -110,14 +108,16 @@ namespace StormDiversSuggestions.Pets
                 Main.dust[dust].velocity *= -1f;
                 dustime = 0;
             }*/
-            if (!projectile.tileCollide)
+           if (Main.rand.Next(15) == 0)
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.Center;
-                dust = Terraria.Dust.NewDustPerfect(position, 124, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1.315789f);
-                dust.noGravity = true;
+                {
 
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 124);
+
+                    dust.scale = 0.5f;
+                    dust.velocity *= 0;
+
+                }
             }
 
         }

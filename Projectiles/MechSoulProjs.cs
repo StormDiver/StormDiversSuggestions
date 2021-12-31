@@ -388,9 +388,11 @@ namespace StormDiversSuggestions.Projectiles
             projectile.localNPCHitCooldown = 10;
         }
         int shoottime = 0;
+        bool firedspike = false;
+
         public override void AI()
         {
-
+          
             
             // Spawn some dust visuals
             var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 100, default, 1.5f);
@@ -398,12 +400,33 @@ namespace StormDiversSuggestions.Projectiles
             dust.velocity /= 2f;
 
             var player = Main.player[projectile.owner];
+
+            if (!player.controlUseItem)
+            {
+                firedspike = true;
+
+            }
             shoottime++;
-                if (shoottime == 12)
+            if (shoottime == 14 && player.controlUseItem)
+            {
+                if (!firedspike)
                 {
-                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (int)projectile.velocity.X * 1.5f, (int)(projectile.velocity.Y * 1.5f), mod.ProjectileType("DestroyerFlailProj2"), (int)(projectile.damage), projectile.knockBack, player.whoAmI);
-    
-                 }
+                    float numberProjectiles = 8;
+                    float rotation = MathHelper.ToRadians(180);
+                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                    for (int j = 0; j < numberProjectiles; j++)
+                    {
+                        float speedX = 0f;
+                        float speedY = 11f;
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, j / (numberProjectiles)));
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DestroyerFlailProj3"), (int)(projectile.damage * 0.6f), projectile.knockBack, Main.myPlayer);
+                    }
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 17, 1.5f);
+
+                    firedspike = true;
+                }
+
+            }
             // If owner player dies, remove the flail.
             if (player.dead)
             {
@@ -440,9 +463,8 @@ namespace StormDiversSuggestions.Projectiles
                     // If we reach maxChainLength, we change behavior.
                     projectile.ai[0] = 1f;
                     projectile.netUpdate = true;
-                    
-                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
 
+                    //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
 
 
 
@@ -459,8 +481,8 @@ namespace StormDiversSuggestions.Projectiles
             }
             else if (projectile.ai[0] == 1f)
             {
-                
 
+               
                 // When ai[0] == 1f, the projectile has either hit a tile or has reached maxChainLength, so now we retract the projectile
                 float elasticFactorA = 14f / player.meleeSpeed;
                 float elasticFactorB = 0.9f / player.meleeSpeed;
@@ -517,6 +539,11 @@ namespace StormDiversSuggestions.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+            
+            if (shoottime > 2)
+            {
+                firedspike = true;
+            }
             // This custom OnTileCollide code makes the projectile bounce off tiles at 1/5th the original speed, and plays sound and spawns dust if the projectile was going fast enough.
             bool shouldMakeSound = false;
 
@@ -602,8 +629,24 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-          
+            if (!firedspike)
+            {
 
+                float numberProjectiles = 8;
+                float rotation = MathHelper.ToRadians(180);
+                //position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+                for (int j = 0; j < numberProjectiles; j++)
+                {
+                    float speedX = 0f;
+                    float speedY = 11f;
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, j / (numberProjectiles)));
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DestroyerFlailProj3"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer);
+                }
+
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 17, 1.5f);
+
+                firedspike = true;
+            }
         }
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
@@ -698,7 +741,83 @@ namespace StormDiversSuggestions.Projectiles
 
         }
     }
-    //_________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________________________________________
+    public class DestroyerFlailProj3 : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Vaporiser Spike");
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.aiStyle = 0;
+
+            projectile.friendly = true;
+            projectile.timeLeft = 30;
+            projectile.penetrate = 3;
+
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = -1;
+
+
+            projectile.melee = true;
+
+
+
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+
+            return true;
+        }
+        public override void AI()
+        {
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+
+            projectile.alpha += 15;
+            if (projectile.alpha > 250)
+            {
+                projectile.Kill();
+            }
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage = (projectile.damage * 9) / 10;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+
+            //Main.PlaySound(SoundID.Item10, projectile.position);
+          
+
+        }
+      
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
+        {
+
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+
+            }
+
+            return true;
+
+        }
+
+    }
+
     //_______________________________________________________________________________________
     public class SkullSeek : ModProjectile
     {

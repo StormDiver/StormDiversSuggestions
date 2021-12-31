@@ -17,7 +17,7 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Vaporiser");
-            Tooltip.SetDefault("Launches out an unchained ball every throw");
+            Tooltip.SetDefault("Fires out 8 spikes at full reach or upon impacting an enemy");
         }
     
         public override void SetDefaults()
@@ -37,7 +37,7 @@ namespace StormDiversSuggestions.Items
             item.useTime = 20;
             item.useAnimation = 20;
             item.shoot = mod.ProjectileType("DestroyerFlailProj");
-            item.shootSpeed = 24f;
+            item.shootSpeed = 27f;
             item.channel = true;
             item.noUseGraphic = true;
         }

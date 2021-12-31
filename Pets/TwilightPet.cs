@@ -126,6 +126,8 @@ namespace StormDiversSuggestions.Pets
             drawOriginOffsetY = 0;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
+            projectile.ignoreWater = true;
+
         }
 
         public override bool PreAI()

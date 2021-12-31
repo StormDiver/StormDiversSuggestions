@@ -194,6 +194,8 @@ namespace StormDiversSuggestions.Items
             DisplayName.SetDefault("Forbidden Staff");
             Tooltip.SetDefault("Summons a floating Forbidden Sentry that blasts sand in all directions");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
+            ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
+            ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
             //Item.staff[item.type] = true;
         }
         public override void SetDefaults()

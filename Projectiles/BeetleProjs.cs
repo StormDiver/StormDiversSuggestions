@@ -103,9 +103,9 @@ namespace StormDiversSuggestions.Projectiles
 
                 Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
-                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
+                Vector2 perturbedSpeed = new Vector2(0, -7).RotatedByRandom(MathHelper.ToRadians(360));
 
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.5f), 0f, projectile.owner, 0f, 0f);
 
                 
             }
@@ -171,9 +171,9 @@ namespace StormDiversSuggestions.Projectiles
 
                 Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
-                Vector2 perturbedSpeed = new Vector2(0, -2).RotatedByRandom(MathHelper.ToRadians(360));
+                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
 
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.5f), 0f, projectile.owner, 0f, 0f);
 
 
 
@@ -198,7 +198,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 26;
             projectile.height = 26;
             projectile.friendly = true;
-            projectile.penetrate = 5;
+            projectile.penetrate = 3;
             projectile.melee = true;
             projectile.timeLeft = 400;
             projectile.aiStyle = 14;
@@ -239,9 +239,9 @@ namespace StormDiversSuggestions.Projectiles
             }
             if (Main.rand.Next(4) == 0)
             {
-                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
+                Vector2 perturbedSpeed = new Vector2(0, -7).RotatedByRandom(MathHelper.ToRadians(360));
 
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.5f), 0f, projectile.owner, 0f, 0f);
                 Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
             }
@@ -262,9 +262,9 @@ namespace StormDiversSuggestions.Projectiles
 
             if (Main.rand.Next(4) == 0)
             {
-                Vector2 perturbedSpeed = new Vector2(0, -4).RotatedByRandom(MathHelper.ToRadians(360));
+                Vector2 perturbedSpeed = new Vector2(0, -7).RotatedByRandom(MathHelper.ToRadians(360));
 
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.75f), 0f, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BeetleProj"), (int)(projectile.damage * 0.5f), 0f, projectile.owner, 0f, 0f);
                 Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50, 1, 1.3f);
 
             }
@@ -326,7 +326,7 @@ namespace StormDiversSuggestions.Projectiles
     }
 
     //________________________________________________________________________________________________________________
-    public class BeetleProj : ModProjectile
+    public class BeetleProj : ModProjectile //For beetle Weapons
     {
 
         public override void SetStaticDefaults()
@@ -336,22 +336,23 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void SetDefaults()
         {
+            projectile.width = 18;
+            projectile.height = 18;
 
-            projectile.width = 20;
-            projectile.height = 20;
             projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.melee = true;
+            projectile.penetrate = 3;
+
             projectile.timeLeft = 300;
+            projectile.melee = true;
 
             projectile.scale = 1f;
-            projectile.CloneDefaults(189);
-            aiType = 189;
+            projectile.extraUpdates = 1;
 
-            drawOffsetX = -9;
-            drawOriginOffsetY = -9;
+
+            drawOffsetX = 0;
+            drawOriginOffsetY = 0;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+            projectile.localNPCHitCooldown = 20;
 
         }
         int damagetime = 0;
@@ -368,34 +369,86 @@ namespace StormDiversSuggestions.Projectiles
         }
         public override void AI()
         {
-            damagetime ++;
-            projectile.melee = true;
-            projectile.magic = false;
-            projectile.extraUpdates = 1;
+            damagetime++;
+            if (projectile.velocity.X < 0)
+            {
+                projectile.spriteDirection = -1;
+            }
+            else
+            {
+                projectile.spriteDirection = 1;
 
+            }
+            projectile.rotation = projectile.velocity.X / 20;
+
+            if (damagetime > 30)
+            {
+                if (projectile.localAI[0] == 0f)
+                {
+                    AdjustMagnitude(ref projectile.velocity);
+                    projectile.localAI[0] = 1f;
+                }
+                Vector2 move = Vector2.Zero;
+                float distance = 700f;
+                bool target = false;
+                for (int k = 0; k < 200; k++)
+                {
+                    if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
+                    {
+                        if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
+                        {
+                            Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                            float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                            if (distanceTo < distance)
+                            {
+                                move = newMove;
+                                distance = distanceTo;
+                                target = true;
+                            }
+                        }
+                    }
+                }
+                if (target)
+                {
+                    AdjustMagnitude(ref move);
+                    projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                    AdjustMagnitude(ref projectile.velocity);
+                }
+            }
+          
             AnimateProjectile();
+        }
+        private void AdjustMagnitude(ref Vector2 vector)
+        {
+            if (damagetime > 30)
+            {
+                float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+                if (magnitude > 6f)
+                {
+                    vector *= 6f / magnitude;
+                }
+            }
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             if (projectile.velocity.X != oldVelocity.X)
             {
-                projectile.velocity.X = -oldVelocity.X * 0.6f;
+                projectile.velocity.X = -oldVelocity.X * 0.8f;
             }
             if (projectile.velocity.Y != oldVelocity.Y)
             {
-                projectile.velocity.Y = -oldVelocity.Y * 0.6f;
+                projectile.velocity.Y = -oldVelocity.Y * 0.8f;
             }
             return false;
         }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(2) == 0)
+            if (Main.rand.Next(3) == 0)
             {
                 target.AddBuff(mod.BuffType("BeetleDebuff"), 300);
                 //Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
             }
-            projectile.Kill();
+            projectile.damage = (projectile.damage * 9) / 10;
         }
 
         public override void Kill(int timeLeft)
@@ -420,17 +473,177 @@ namespace StormDiversSuggestions.Projectiles
         public void AnimateProjectile() // Call this every frame, for example in the AI method.
         {
             projectile.frameCounter++;
-            if (projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+            if (projectile.frameCounter >= 5) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
             {
                 projectile.frame++;
-                projectile.frame %= 5; // Will reset to the first frame if you've gone through them all.
+                projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
                 projectile.frameCounter = 0;
             }
         }
 
 
     }
-   
+    //________________________________________________________________________________________________________________
+    public class BeetleGloveProj : ModProjectile //For Gauntlet
+    {
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Mini Beetle");
+            Main.projFrames[projectile.type] = 4;
+        }
+        public override void SetDefaults()
+        {
+
+            projectile.width = 12;
+            projectile.height = 12;
+            projectile.friendly = true;
+            projectile.penetrate = 1;
+            //projectile.melee = true;
+            projectile.timeLeft = 300;
+
+            projectile.scale = 1f;
+            projectile.extraUpdates = 1;
+
+            drawOffsetX = 0;
+            drawOriginOffsetY = 0;
+           
+
+        }
+        int damagetime = 0;
+        public override bool CanDamage()
+        {
+            if (damagetime <= 30)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public override void AI()
+        {
+            damagetime++;
+            if (projectile.velocity.X < 0)
+            {
+                projectile.spriteDirection = -1;
+            }
+            else
+            {
+                projectile.spriteDirection = 1;
+
+            }
+            projectile.rotation = projectile.velocity.X / 20;
+            if (damagetime < 60)
+            {
+                projectile.velocity *= 0.98f;
+            }
+            if (damagetime > 60)
+            {
+                if (projectile.localAI[0] == 0f)
+                {
+                    AdjustMagnitude(ref projectile.velocity);
+                    projectile.localAI[0] = 1f;
+                }
+                Vector2 move = Vector2.Zero;
+                float distance = 500f;
+                bool target = false;
+                for (int k = 0; k < 200; k++)
+                {
+                    if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
+                    {
+                        if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
+                        {
+                            Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                            float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                            if (distanceTo < distance)
+                            {
+                                move = newMove;
+                                distance = distanceTo;
+                                target = true;
+                            }
+                        }
+                    }
+                }
+                if (target)
+                {
+                    AdjustMagnitude(ref move);
+                    projectile.velocity = (10 * projectile.velocity + move) / 10f;
+                    AdjustMagnitude(ref projectile.velocity);
+                }
+            }
+
+            AnimateProjectile();
+        }
+        private void AdjustMagnitude(ref Vector2 vector)
+        {
+            if (damagetime > 60)
+            {
+                float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+                if (magnitude > 5f)
+                {
+                    vector *= 5f / magnitude;
+                }
+            }
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.velocity.X != oldVelocity.X)
+            {
+                projectile.velocity.X = -oldVelocity.X * 0.8f;
+            }
+            if (projectile.velocity.Y != oldVelocity.Y)
+            {
+                projectile.velocity.Y = -oldVelocity.Y * 0.8f;
+            }
+            return false;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                target.AddBuff(mod.BuffType("BeetleDebuff"), 180);
+                //Main.PlaySound(SoundID.Zombie, (int)projectile.Center.X, (int)projectile.Center.Y, 50);
+            }
+            projectile.Kill();
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.owner == Main.myPlayer)
+            {
+
+
+                for (int i = 0; i < 3; i++)
+                {
+
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-10, -10), Main.rand.NextFloat(10, 10));
+                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width = 10, projectile.height = 10, 186);
+
+                    dust.noGravity = true;
+
+                }
+
+            }
+        }
+
+        public void AnimateProjectile() // Call this every frame, for example in the AI method.
+        {
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 4) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
+            {
+                projectile.frame++;
+                projectile.frame %= 4; // Will reset to the first frame if you've gone through them all.
+                projectile.frameCounter = 0;
+            }
+        }
+
+
+    }
+
+
 
 
 }

@@ -16,6 +16,8 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Magma Orb Sentry");
             Main.projFrames[projectile.type] = 7;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+
         }
         public override void SetDefaults()
         {
@@ -42,6 +44,7 @@ namespace StormDiversSuggestions.Projectiles
         int summontime;
         int shoottime = 0;
         bool animate = false;
+        NPC target;
         public override void AI()
         {
 
@@ -79,11 +82,19 @@ namespace StormDiversSuggestions.Projectiles
             }
             shoottime++;
             //Getting the npc to fire at
+            Player player = Main.player[projectile.owner];
+
             for (int i = 0; i < 200; i++)
             {
+                if (player.HasMinionAttackTargetNPC)
+                {
+                    target = Main.npc[player.MinionAttackTargetNPC];
+                }
+                else
+                {
+                    target = Main.npc[i];
 
-                NPC target = Main.npc[i];
-
+                }
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
                 float shootToY = target.position.Y + (float)target.height * 0.5f - projectile.Center.Y;

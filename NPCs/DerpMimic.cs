@@ -111,11 +111,11 @@ namespace StormDiversSuggestions.NPCs
 
                         if (distanceX <= -5)
                         {
-                            npc.velocity.X = -9;
+                            npc.velocity.X = -10;
                         }
                         if (distanceX >= 5)
                         {
-                            npc.velocity.X = 9;
+                            npc.velocity.X = 10;
                         }
                         if (distanceX < 25 && distanceX > -25)
                         {

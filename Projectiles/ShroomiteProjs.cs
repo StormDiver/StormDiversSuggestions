@@ -78,11 +78,12 @@ namespace StormDiversSuggestions.Projectiles
                     float Y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
                   
 
-                    int dust = Dust.NewDust(new Vector2(X, Y), 1, 1, 187, 0, 0, 100, default, 1f);
+                    int dust = Dust.NewDust(new Vector2(X, Y), 0, 0, 206, 0, 0, 100, default, 1f);
                     Main.dust[dust].position.X = X;
                     Main.dust[dust].position.Y = Y;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 0f;
+
 
                 }
             }
@@ -94,7 +95,7 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 25; i++)
             {
 
-                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 130, default, 1.2f);
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206, projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.4f, 206, default, 1.2f);
             }
             projectile.damage = (projectile.damage * 9) / 10;
         }
@@ -107,7 +108,6 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
 
@@ -172,7 +172,7 @@ namespace StormDiversSuggestions.Projectiles
                 Dust dust;
 
                 Vector2 position = projectile.Center;
-                dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+                dust = Terraria.Dust.NewDustPerfect(position, 206, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
                 dust.noGravity = true;
             }*/
         }
@@ -196,7 +196,6 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
 
@@ -239,8 +238,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 12;
+            projectile.width = 10;
+            projectile.height = 10;
 
 
             projectile.light = 0.1f;
@@ -287,7 +286,7 @@ namespace StormDiversSuggestions.Projectiles
             }
             if ((projectile.velocity.X >= 0.5 || projectile.velocity.X <= -0.5) || (projectile.velocity.Y >= 0.5 || projectile.velocity.Y <= -0.5))
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 45, 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 206, 0f, 0f, 100, default, 1.5f);
                 //Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
                 // Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
                 Main.dust[dustIndex].noGravity = true;
@@ -305,14 +304,25 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
 
 
-
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 25; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                int dust2 = Dust.NewDust(projectile.position - projectile.velocity, projectile.width, projectile.height, 172, 0f, 0f, 200, default, 0.8f);
-                Main.dust[dust2].velocity *= -5f;
-                Main.dust[dust2].noGravity = true;
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 31);
+                dust.noGravity = true;
+                dust.scale = 1.5f;
+                dust.velocity *= 4f;
+                dust.fadeIn = 1f;
+
+            }
+            for (int i = 0; i < 25; i++)
+            {
+
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 206);
+                dust.noGravity = true;
+
+                dust.scale = 2f;
+                dust.velocity *= 4f;
+                dust.fadeIn = 1f;
 
             }
             if (projectile.owner == Main.myPlayer)
@@ -348,8 +358,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 12;
+            projectile.width = 14;
+            projectile.height = 14;
 
 
             projectile.light = 0.2f;
@@ -365,7 +375,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.ranged = true;
             
             projectile.timeLeft = 300;
-            drawOffsetX = -3;
+            drawOffsetX = 0;
             drawOriginOffsetY = 0;
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -384,18 +394,33 @@ namespace StormDiversSuggestions.Projectiles
             {
                 projectile.Kill();
             }
-            for (int i = 0; i < 10; i++)
+            /*for (int i = 0; i < 5; i++)
             {
                 float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
                 float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
-                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 45);
+                int j = Dust.NewDust(new Vector2(x2, y2), 0, 0, 206);
                 //Main.dust[num165].alpha = alpha;
                 Main.dust[j].position.X = x2;
                 Main.dust[j].position.Y = y2;
                 Main.dust[j].velocity *= 0.1f;
                 Main.dust[j].noGravity = true;
-                Main.dust[j].scale = 1f;
+                Main.dust[j].scale = 1.5f;
+            }*/
+            for (int i = 0; i < 2; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.Center.X - 5, projectile.Center.Y - 5), 10, 10, 206, 0f, 0f, 100, default, 1.5f);
+                Main.dust[dustIndex].noGravity = true;
+                Main.dust[dustIndex].velocity *= 0.5f;
+
+                Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+
             }
+            int dustIndex2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                Main.dust[dustIndex2].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex2].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex2].noGravity = true;
+            
+
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -410,15 +435,28 @@ namespace StormDiversSuggestions.Projectiles
 
 
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 25; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
-                int dust2 = Dust.NewDust(projectile.position - projectile.velocity, projectile.width, projectile.height, 172, 0f, 0f, 200, default, 0.8f);
-                Main.dust[dust2].velocity *= -5f;
-                Main.dust[dust2].noGravity = true;
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 31);
+                dust.noGravity = true;
+                dust.scale = 1.5f;
+                dust.velocity *= 4f;
+                dust.fadeIn = 1f;
 
             }
+            for (int i = 0; i < 25; i++)
+            {
+
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 206);
+                dust.noGravity = true;
+
+                dust.scale = 2f;
+                dust.velocity *= 4f;
+                dust.fadeIn = 1f;
+
+            }
+            
             if (projectile.owner == Main.myPlayer)
             {
                 int numberProjectiles = 8 + Main.rand.Next(3);
@@ -474,7 +512,6 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
         }
@@ -500,8 +537,8 @@ namespace StormDiversSuggestions.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 8;
+            projectile.width = 14;
+            projectile.height = 14;
 
             projectile.aiStyle = 0;
             projectile.light = 0.1f;
@@ -530,7 +567,7 @@ namespace StormDiversSuggestions.Projectiles
             /*  Dust dust;
 
               Vector2 position = projectile.Center;
-              dust = Terraria.Dust.NewDustPerfect(position, 187, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
+              dust = Terraria.Dust.NewDustPerfect(position, 206, new Vector2(0f, 0f), 0, new Color(255, 255, 255), 1f);
               dust.noGravity = true;*/
 
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
@@ -538,7 +575,7 @@ namespace StormDiversSuggestions.Projectiles
             {
                 float x2 = projectile.Center.X - projectile.velocity.X / 20f * (float)i;
                 float y2 = projectile.Center.Y - projectile.velocity.Y / 20f * (float)i;
-                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 45);
+                int j = Dust.NewDust(new Vector2(x2, y2), 1, 1, 206);
                 //Main.dust[num165].alpha = alpha;
                 Main.dust[j].position.X = x2;
                 Main.dust[j].position.Y = y2;
@@ -546,7 +583,12 @@ namespace StormDiversSuggestions.Projectiles
                 Main.dust[j].noGravity = true;
                 Main.dust[j].scale = 1f;
             }
-
+            
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1f);
+                Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[dustIndex].noGravity = true;
+            
             if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
             {
                 projectile.velocity.X = 0f;
@@ -557,8 +599,8 @@ namespace StormDiversSuggestions.Projectiles
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 projectile.position = projectile.Center;
 
-                projectile.width = 150;
-                projectile.height = 150;
+                projectile.width = 175;
+                projectile.height = 175;
                 projectile.Center = projectile.position;
 
 
@@ -589,25 +631,25 @@ namespace StormDiversSuggestions.Projectiles
             Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74);
 
             projectile.alpha = 255;
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < 50; i++)
             {
 
-                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 45);
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 31);
                 dust.noGravity = true;
-                dust.scale = 2f;
-                dust.velocity *= 5f;
+                dust.scale = 2.5f;
+                dust.velocity *= 4f;
                 dust.fadeIn = 1f;
 
             }
             for (int i = 0; i < 50; i++)
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 31, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-                dust.noGravity = true;
-                dust.scale = 2f;
 
+                var dust = Dust.NewDustDirect(projectile.Center, 0, 0, 206);
+                dust.noGravity = true;
+
+                dust.scale = 3f;
+                dust.velocity *= 4f;
+                dust.fadeIn = 1.5f;
 
             }
             for (int i = 0; i < 80; i++)
@@ -615,7 +657,7 @@ namespace StormDiversSuggestions.Projectiles
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 45, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                dust = Main.dust[Terraria.Dust.NewDust(position, projectile.width, projectile.height, 206, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 dust.noGravity = true;
                 dust.scale = 2f;
             }
@@ -654,7 +696,7 @@ namespace StormDiversSuggestions.Projectiles
 
     }
     //____________________________________________________________________________________________________________________________________________
-    public class MushroomArrowProj : ModProjectile
+    public class ShroomBowArrowProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -757,18 +799,14 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                Vector2 vel = new Vector2(Main.rand.NextFloat(20, 20), Main.rand.NextFloat(-20, -20));
                 var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 206);
             }
 
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+       
+        public override Color? GetAlpha(Color lightColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/MushroomArrowProj");
-
-            spriteBatch.Draw(texture, projectile.Center - Main.screenPosition, null, Color.White, projectile.rotation, projectile.Center, projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-
-
+            return Color.White;
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)  //this make the projectile sprite rotate perfectaly around the player
         {

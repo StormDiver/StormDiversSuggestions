@@ -16,6 +16,8 @@ namespace StormDiversSuggestions.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stargazer Sentry");
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+
         }
         public override void SetDefaults()
         {
@@ -44,7 +46,7 @@ namespace StormDiversSuggestions.Projectiles
         int stopfire = 0;
         int rotate;
         int opacity = 255;
-
+        NPC target;
 
 
         public override void AI()
@@ -79,14 +81,25 @@ namespace StormDiversSuggestions.Projectiles
                 }
             }
 
-           
-        
-        shoottime++;
+
+            Player player = Main.player[projectile.owner];
+            shoottime++;
+            firerate++;
+            if (shoottime > 90)
+            {
+                stopfire++;
+            }
             for (int i = 0; i < 200; i++)
             {
+                if (player.HasMinionAttackTargetNPC)
+                {
+                    target = Main.npc[player.MinionAttackTargetNPC];
+                }
+                else
+                {
+                    target = Main.npc[i];
 
-                NPC target = Main.npc[i];
-                //target.TargetClosest(true);
+                }
 
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
@@ -100,13 +113,11 @@ namespace StormDiversSuggestions.Projectiles
 
                     if (Collision.CanHit(projectile.Center, 0, 0, target.Center, 0, 0))
                     {
-                        target.TargetClosest(true);
 
                         if (shoottime > 90)
                         {
 
-                            firerate++;
-                            stopfire++;
+                            
                             //Dividing the factor of 2f which is the desired velocity by distance
                             distance = 1.6f / distance;
 

@@ -11,9 +11,10 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Frozen Queen's Staff");
-            Tooltip.SetDefault("Summons a floating Ice Sentry that fires out a stream of ice at nearby enemies");
+            Tooltip.SetDefault("Summons a floating Ice Sentry that fires out a stream of ice at nearby enemies\nRight click to target a specific enemy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
-            //Item.staff[item.type] = true;
+            ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
+            ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
         }
         public override void SetDefaults()
         {

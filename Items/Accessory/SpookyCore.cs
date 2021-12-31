@@ -1,10 +1,10 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StormDiversSuggestions.Basefiles;
-using StormDiversSuggestions.Buffs;
-using Microsoft.Xna.Framework;
 
 namespace StormDiversSuggestions.Items.Accessory
 {
@@ -14,8 +14,9 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spooky Emblem");
-            Tooltip.SetDefault("Inflict fear upon nearby enemies while holding any melee weapon");
+            Tooltip.SetDefault("Inflict fear upon nearby enemies\nHas a greater range the lower on health you are");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
+
         }
 
         public override void SetDefaults()
@@ -32,10 +33,9 @@ namespace StormDiversSuggestions.Items.Accessory
       
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.HeldItem.melee)
-            {
+            
                 player.GetModPlayer<StormPlayer>().spooked = true;
-            }
+            
         }
 
 

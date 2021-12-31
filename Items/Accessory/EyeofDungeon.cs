@@ -58,7 +58,7 @@ namespace StormDiversSuggestions.Items.Accessory
                 if (npc.type == NPCID.CursedSkull)
                     if (Main.expertMode)
                     {
-                        if (Main.rand.Next(100) < 8)
+                        if (Main.rand.Next(100) < 5)
 
                         {
 
@@ -67,7 +67,7 @@ namespace StormDiversSuggestions.Items.Accessory
                     }
                     else
                     {
-                        if (Main.rand.Next(100) < 5)
+                        if (Main.rand.Next(100) < 4)
                         {
                             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EyeofDungeon"));
                         }

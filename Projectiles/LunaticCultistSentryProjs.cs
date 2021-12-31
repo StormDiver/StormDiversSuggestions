@@ -18,7 +18,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Cultist Sentry");
             Main.projFrames[projectile.type] = 8;
-            //ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetDefaults()
@@ -33,6 +33,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.tileCollide = false;
             //drawOffsetX = 2;
             //drawOriginOffsetY = 2;
+            projectile.ignoreWater = true;
 
         }
         public override bool CanDamage()
@@ -45,7 +46,7 @@ namespace StormDiversSuggestions.Projectiles
         bool directionright;
         bool animateidle = true;
         bool animateshoot;
-
+        NPC target;
         public override void AI()
         {
             summontime ++;
@@ -103,7 +104,15 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 200; i++)
             {
 
-                NPC target = Main.npc[i];
+                if (player.HasMinionAttackTargetNPC)
+                {
+                    target = Main.npc[player.MinionAttackTargetNPC];
+                }
+                else
+                {
+                    target = Main.npc[i];
+
+                }
 
                 //Getting the shooting trajectory
                 float shootToX = target.position.X + (float)target.width * 0.5f - projectile.Center.X;
@@ -270,7 +279,7 @@ namespace StormDiversSuggestions.Projectiles
         }
         int dusttime = 0;
         int rotate;
-
+        Vector2 newMove;
         public override void AI()
         {
 
@@ -308,7 +317,9 @@ namespace StormDiversSuggestions.Projectiles
                     AdjustMagnitude(ref projectile.velocity);
                     projectile.localAI[0] = 1f;
                 }
-                Vector2 move = Vector2.Zero;
+            Player player = Main.player[projectile.owner];
+
+            Vector2 move = Vector2.Zero;
                 float distance = 300f;
                 bool target = false;
                 for (int k = 0; k < 200; k++)
@@ -317,8 +328,16 @@ namespace StormDiversSuggestions.Projectiles
                     {
                         if (Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
                         {
-                            Vector2 newMove = Main.npc[k].Center - projectile.Center;
-                            float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (player.HasMinionAttackTargetNPC)
+                        {
+
+                            newMove = Main.npc[player.MinionAttackTargetNPC].Center - projectile.Center;
+                        }
+                        else
+                        {
+                            newMove = Main.npc[k].Center - projectile.Center;
+                        }
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
                             if (distanceTo < distance)
                             {
                                 move = newMove;

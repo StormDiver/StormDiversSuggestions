@@ -21,8 +21,8 @@ namespace StormDiversSuggestions.Items
 			item.melee = true;
 			item.width = 40;
 			item.height = 50;
-			item.useTime = 12;
-			item.useAnimation = 12;
+			item.useTime = 16;
+			item.useAnimation = 16;
 			item.useStyle = ItemUseStyleID.SwingThrow;  
             item.value = Item.sellPrice(0, 5, 0, 0);
                      item.rare = ItemRarityID.Lime;
@@ -39,7 +39,7 @@ namespace StormDiversSuggestions.Items
             weaponattack--;
             if (weaponattack <= 0)
             {
-                int numberProjectiles = 3 + Main.rand.Next(2); //This defines how many projectiles to shot.
+                int numberProjectiles = 2 + Main.rand.Next(3); //This defines how many projectiles to shot.
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12)); // This defines the projectiles random spread . 10 degree spread.
@@ -156,12 +156,12 @@ namespace StormDiversSuggestions.Items
             item.autoReuse = true;
             // item.UseSound = SoundID.Item43;
             item.magic = true;
-            item.damage = 52;
+            item.damage = 48;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item13;
             item.shoot = mod.ProjectileType("DerpMagicProj2");
             item.shootSpeed = 18f;
-            item.mana = 3;
+            item.mana = 5;
 
             item.noMelee = true; //Does the weapon itself inflict damage?
 

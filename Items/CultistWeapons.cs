@@ -186,9 +186,10 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lunatic Staff of Lightning");
-            Tooltip.SetDefault("Rapidly shoots out bolts of piercing lightning"); 
+            Tooltip.SetDefault("Summons a lightning orb sentry that rapidly fires lightning bolts at enemies\nRight click to target a specific enemy"); 
             Item.staff[item.type] = true;
-
+            ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
+            ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -197,23 +198,24 @@ namespace StormDiversSuggestions.Items
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Red;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useTurn = false;
             item.autoReuse = true;
 
-            item.magic = true;
-            item.mana = 5;
-            //item.UseSound = SoundID.Item9;
+            item.summon = true;
+            item.sentry = true;
+            item.mana = 10;
+            item.UseSound = SoundID.Item122;
 
-            item.damage = 100;
+            item.damage = 70;
 
             item.knockBack = 1f;
 
-            item.shoot = 466;
+            item.shoot = mod.ProjectileType("CultistSentryProj");
 
-            item.shootSpeed = 15f;
+            item.shootSpeed = 1f;
 
 
             item.noMelee = true; //Does the weapon itself inflict damage?
@@ -225,10 +227,11 @@ namespace StormDiversSuggestions.Items
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
+            position = Main.MouseWorld;
 
 
             //Code for lighting,
-
+            /*
             Main.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 122);
 
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 35f;
@@ -249,9 +252,9 @@ namespace StormDiversSuggestions.Items
                 Main.projectile[projID].scale = 0.5f;
             Main.projectile[projID].timeLeft = 100;
             Main.projectile[projID].magic = true;
+            */
 
-
-            return false;
+            return true;
         }
         //Drop rate in StormNPC/ Luantic Cultist treasure bag
 

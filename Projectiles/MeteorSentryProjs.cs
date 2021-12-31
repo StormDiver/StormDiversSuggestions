@@ -16,6 +16,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Meteor Sentry");
             Main.projFrames[projectile.type] = 6;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
         public override void SetDefaults()
         {
@@ -107,7 +108,7 @@ namespace StormDiversSuggestions.Projectiles
 
                         float xpos = (Main.rand.NextFloat(-10, 10));
 
-                        if (shoottime > 12)
+                        if (shoottime > 15)
                         {
 
                             Projectile.NewProjectile(projectile.Center.X + xpos, projectile.Bottom.Y - 10, xpos / 15, 8, mod.ProjectileType("MeteorSentryProj2"), (int)(projectile.damage * 1f), projectile.knockBack, Main.myPlayer, 0f, 0f);
@@ -225,7 +226,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.width = 10;
             projectile.height = 20;
             projectile.friendly = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.timeLeft = 300;
             projectile.light = 0.4f;
             projectile.scale = 1f;

@@ -16,6 +16,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Forbidden Sentry");
             Main.projFrames[projectile.type] = 8;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
         public override void SetDefaults()
         {

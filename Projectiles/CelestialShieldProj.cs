@@ -53,7 +53,7 @@ namespace StormDiversSuggestions.Projectiles
             //Making player variable "p" set as the projectile's owner
 
             //Factors for calculations
-            double deg = (double)projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+            double deg = ((double)projectile.ai[1] + 90); //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = 50; //Distance away from the player
 

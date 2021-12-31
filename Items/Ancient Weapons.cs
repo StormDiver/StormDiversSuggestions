@@ -48,7 +48,7 @@ namespace StormDiversSuggestions.Items
         }
         public override bool CanUseItem(Player player)
         {
-            if (Collision.CanHitLine(Main.MouseWorld, 1, 1, player.position, player.width, player.height))
+            if (Collision.CanHitLine(Main.MouseWorld, 1, 1, player.Center, 0, 0))
             {
                 return true;
             }

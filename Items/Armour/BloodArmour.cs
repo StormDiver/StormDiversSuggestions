@@ -38,13 +38,16 @@ namespace StormDiversSuggestions.Items.Armour
         {
             //player.armorEffectDrawShadow = true;
             player.armorEffectDrawOutlines = true;
-            if (Main.rand.Next(4) == 0)     //this defines how many dust to spawn
+            if (player.HasBuff(mod.BuffType("BloodBurstBuff")))
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = player.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                if (Main.rand.Next(4) == 0)     //this defines how many dust to spawn
+                {
+                    Dust dust;
+                    // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                    Vector2 position = player.position;
+                    dust = Main.dust[Terraria.Dust.NewDust(position, player.width, player.height, 5, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
 
+                }
             }
         }
 
@@ -55,7 +58,7 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Multiple damaging blood orbs explode out of you upon striking an enemy with a melee weapon";
+            player.setBonus = "Multiple damaging blood orbs burst out of you upon striking an enemy with a melee weapon";
 
             player.GetModPlayer<StormPlayer>().BloodDrop = true;
    

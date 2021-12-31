@@ -114,9 +114,9 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
 
-                    dust.scale = 2;
+                    dust.scale = 1.5f;
                     dust.velocity *= 2;
 
                 }
@@ -204,8 +204,8 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-                dust.scale = 2;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                dust.scale = 1.5f;
 
 
             }
@@ -225,8 +225,8 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
-                    dust.scale = 2;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
+                    dust.scale = 1.5f;
                     dust.velocity *= 2;
                 }
             }
@@ -311,8 +311,8 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-                dust.scale = 2;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                dust.scale = 1.5f;
 
 
             }
@@ -332,8 +332,8 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
-                    dust.scale = 2;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
+                    dust.scale = 1.5f;
                     dust.velocity *= 2;
                 }
             }
@@ -376,7 +376,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.ranged = true;
+            projectile.magic = true;
             projectile.timeLeft = 300;
             projectile.light = 0.4f;
             projectile.scale = 1f;
@@ -460,7 +460,7 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
 
                     dust.velocity *= 2;
 
@@ -503,7 +503,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.height = 12;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.melee = true;
+            projectile.magic = true;
             projectile.timeLeft = 300;
             projectile.light = 0.4f;
             projectile.scale = 1f;
@@ -545,8 +545,8 @@ namespace StormDiversSuggestions.Projectiles
             for (int i = 0; i < 10; i++)
             {
 
-                var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-                dust.scale = 2;
+                var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                dust.scale = 1.5f;
 
 
             }
@@ -566,8 +566,8 @@ namespace StormDiversSuggestions.Projectiles
                 for (int i = 0; i < 10; i++)
                 {
 
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
-                    dust.scale = 2;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
+                    dust.scale = 1.5f;
                     dust.velocity *= 2;
                 }
             }
@@ -651,7 +651,7 @@ namespace StormDiversSuggestions.Projectiles
                     projectile.localAI[0] = 1f;
                 }
                 Vector2 move = Vector2.Zero;
-                float distance = 450f;
+                float distance = 500f;
                 bool target = false;
                 for (int k = 0; k < 200; k++)
                 {
@@ -721,8 +721,8 @@ namespace StormDiversSuggestions.Projectiles
 
                 for (int i = 0; i < 10; i++)
                 {
-                    var dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 173);
-                    dust.scale = 2;
+                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 173);
+                    dust.scale = 1.5f;
                     dust.velocity *= 2;
                 }
 

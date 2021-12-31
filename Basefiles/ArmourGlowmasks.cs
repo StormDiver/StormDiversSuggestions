@@ -1446,6 +1446,50 @@ namespace StormDiversSuggestions.Basefiles
             Main.playerDrawData.Add(drawData);
         });
         //____________________________
+        //Soul Boots?
+        //_________________________________________________________________________
+
+        public static readonly PlayerLayer SoulBootsGlowmask = new PlayerLayer("StormDiversSuggestions", "SoulBootsGlowmask", PlayerLayer.Legs, delegate (PlayerDrawInfo drawInfo)
+        {
+            if (drawInfo.shadow != 0f || drawInfo.drawPlayer.dead)
+            {
+                return;
+            }
+
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("StormDiversSuggestions");
+
+            if (drawPlayer.shoe != mod.GetEquipSlot("SoulBoots", EquipType.Shoes))
+            {
+                return;
+            }
+
+            Texture2D texture = mod.GetTexture("Items/Accessory/SoulBoots_Shoes");
+
+            float drawX = (int)drawInfo.position.X + drawPlayer.width / 2;
+            float drawY = (int)drawInfo.position.Y + drawPlayer.height - drawPlayer.legFrame.Height / 2 + 17f;
+
+            Vector2 origin = drawInfo.legOrigin;
+
+            Vector2 position = new Vector2(drawX, drawY) + drawPlayer.legPosition - Main.screenPosition;
+
+            float alpha = (255 - drawPlayer.immuneAlpha) / 255f;
+
+            Color color = Color.White;
+
+            Rectangle frame = drawPlayer.legFrame;
+
+            float rotation = drawPlayer.legRotation;
+
+            SpriteEffects spriteEffects = drawInfo.spriteEffects;
+
+            DrawData drawData = new DrawData(texture, position, frame, color * alpha, rotation, origin, 1f, spriteEffects, 0)
+            {
+                shader = drawInfo.shoeShader
+            };
+
+            Main.playerDrawData.Add(drawData);
+        });
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
         {
             int headLayer = layers.FindIndex(i => i == PlayerLayer.Head);
@@ -1514,6 +1558,15 @@ namespace StormDiversSuggestions.Basefiles
                 layers.Insert(legLayer + 1, HellSoulLeggingsGlowmask);
                 layers.Insert(legLayer + 1, SpaceRockLeggingsGlowmask);
                 layers.Insert(legLayer + 1, NightsGreavesGlowmask);
+
+
+            }
+            int shoeLayer = layers.FindIndex(m => m == PlayerLayer.ShoeAcc);
+
+            if (shoeLayer > -1)
+            {
+               
+                layers.Insert(shoeLayer + 1, SoulBootsGlowmask);
 
 
             }

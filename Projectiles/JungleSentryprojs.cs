@@ -16,6 +16,7 @@ namespace StormDiversSuggestions.Projectiles
         {
             DisplayName.SetDefault("Jungle Sentry");
             Main.projFrames[projectile.type] = 6;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
         public override void SetDefaults()
         {

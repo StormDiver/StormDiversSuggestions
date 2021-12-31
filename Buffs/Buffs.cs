@@ -581,4 +581,41 @@ namespace StormDiversSuggestions.Buffs
 
         }
     }
+    public class BloodBurstBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Blood Burst");
+            Description.SetDefault("Blood is oozing to burst out of you");
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+        }
+    }
+    public class BeetlePowerBuff : ModBuff
+    {
+        public override void SetDefaults()
+        {
+            DisplayName.SetDefault("Beetle Power");
+            Description.SetDefault("10% increased melee critical strike chance");
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+            if (Main.rand.Next(4) < 3)
+            {
+                int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("BeetleDust"), player.velocity.X, player.velocity.Y, 0, default, 1f);
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].velocity *= 1f;
+                Main.dust[dust].velocity.Y -= 0.5f;
+
+            }
+
+            player.meleeCrit += 10;
+        }
+    }
 }

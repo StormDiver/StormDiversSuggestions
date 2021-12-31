@@ -223,9 +223,11 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Magma Orb Staff");
-            Tooltip.SetDefault("Summons a magma orb sentry that launches bouncing fireballs at enemies");
+            Tooltip.SetDefault("Summons a magma orb sentry that launches bouncing fireballs at enemies\nRight click to target a specific enemy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 46;
             //Item.staff[item.type] = true;
+            ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
+            ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
         }
         public override void SetDefaults()
         {

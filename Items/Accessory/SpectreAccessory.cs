@@ -49,6 +49,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.statManaMax2 += 40;
+            player.manaFlower = true;
             if (Main.LocalPlayer.HasBuff(BuffID.ManaSickness))
             {
                 

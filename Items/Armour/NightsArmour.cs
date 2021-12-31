@@ -19,25 +19,25 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Hood");
-            Tooltip.SetDefault("4% increased damage and critical strike chance");
+            Tooltip.SetDefault("6% increased damage\n10% increased critical strike chance");
         }
    
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = ItemRarityID.Orange;
-            item.defense = 7;
+            item.value = Item.sellPrice(0, 1, 50, 0);
+            item.rare = ItemRarityID.LightRed;
+            item.defense = 10;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.04f;
-            player.meleeCrit += 4;
-            player.rangedCrit += 4;
-            player.magicCrit += 4;
-            player.thrownCrit += 4;
+            player.allDamage += 0.06f;
+            player.meleeCrit += 10;
+            player.rangedCrit += 10;
+            player.magicCrit += 10;
+            player.thrownCrit += 10;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -70,7 +70,7 @@ namespace StormDiversSuggestions.Items.Armour
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Press the 'Armor Special Ability' hotkey to teleport to the cursor's location within a limited range\nRequires a direct line of sight to work and has a 18 second cooldown"; 
+            player.setBonus = "Press the 'Armor Special Ability' hotkey to teleport to the cursor's location within a limited range\nWarping has a hard 12 second cooldown"; 
 
             //player.endurance += 0.1f;
             //player.blackBelt = true;
@@ -81,11 +81,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 10);
-            recipe.AddIngredient(ItemID.JungleSpores, 6);
-            recipe.AddIngredient(ItemID.Bone, 30);
-            recipe.AddIngredient(ItemID.HellstoneBar, 10);
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(ItemID.Silk, 15);
+            recipe.AddIngredient(ItemID.SoulofNight, 6);
+            recipe.AddIngredient(mod.GetItem("ChaosShard"), 2);
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -110,33 +109,32 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Twilight Robe");
-            Tooltip.SetDefault("4% increased damage\nSlighlty increases player acceleration");
+            Tooltip.SetDefault("6% increased damage\nSlighlty increases player acceleration");
         }
 
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = ItemRarityID.Orange;
-            item.defense = 7;
+            item.value = Item.sellPrice(0, 1, 50, 0);
+            item.rare = ItemRarityID.LightRed;
+            item.defense = 11;
         }
 
         public override void UpdateEquip(Player player)
         {
 
-            player.allDamage += 0.04f;
+            player.allDamage += 0.06f;
             player.runAcceleration += 0.1f;
             //player.lifeRegen += 1;
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 15);
-            recipe.AddIngredient(ItemID.JungleSpores, 10);
-            recipe.AddIngredient(ItemID.Bone, 50);
-            recipe.AddIngredient(ItemID.HellstoneBar, 15);
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(ItemID.Silk, 20);
+            recipe.AddIngredient(ItemID.SoulofNight, 9);
+            recipe.AddIngredient(mod.GetItem("ChaosShard"), 3);
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -163,9 +161,9 @@ namespace StormDiversSuggestions.Items.Armour
         {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 1 ,0, 0);
-            item.rare = ItemRarityID.Orange;
-            item.defense = 7;
+            item.value = Item.sellPrice(0, 1 ,50, 0);
+            item.rare = ItemRarityID.LightRed;
+            item.defense = 9;
         }
 
         public override void UpdateEquip(Player player)
@@ -181,12 +179,10 @@ namespace StormDiversSuggestions.Items.Armour
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("StormDiversSuggestions:EvilBars", 12);
-            recipe.AddIngredient(ItemID.JungleSpores, 8);
-            recipe.AddIngredient(ItemID.Bone, 40);
-            recipe.AddIngredient(ItemID.HellstoneBar, 12);
-
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddIngredient(ItemID.Silk, 18);
+            recipe.AddIngredient(ItemID.SoulofNight, 7);
+            recipe.AddIngredient(mod.GetItem("ChaosShard"), 2);
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

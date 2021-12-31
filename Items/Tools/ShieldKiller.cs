@@ -34,7 +34,7 @@ namespace StormDiversSuggestions.Items.Tools
         }
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(5, 0);
+            return new Vector2(4, -10);
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
@@ -100,11 +100,10 @@ namespace StormDiversSuggestions.Items.Tools
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddIngredient(ItemID.FragmentSolar, 45);
-            recipe.AddIngredient(ItemID.FragmentVortex, 45);
-            recipe.AddIngredient(ItemID.FragmentNebula, 45);
-            recipe.AddIngredient(ItemID.FragmentStardust, 45);
+            recipe.AddIngredient(ItemID.FragmentSolar, 50);
+            recipe.AddIngredient(ItemID.FragmentVortex, 50);
+            recipe.AddIngredient(ItemID.FragmentNebula, 50);
+            recipe.AddIngredient(ItemID.FragmentStardust, 50);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

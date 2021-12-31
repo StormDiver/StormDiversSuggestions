@@ -13,7 +13,7 @@ namespace StormDiversSuggestions.Items
 		{
 			DisplayName.SetDefault("Blazing Star"); 
 			Tooltip.SetDefault("Spins around with the force of a star\nKnocks enemies in the direction you're facing\nHas a chance to reflect basic projectiles when spun");
-            ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
+            ItemID.Sets.SortingPriorityMaterials[item.type] = 100;        
         }
 
 		public override void SetDefaults() 
@@ -337,8 +337,11 @@ namespace StormDiversSuggestions.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Star Invader Staff");
-            Tooltip.SetDefault("Summons a floating Stardust Sentry that launches mini Flow Invaders that home into enemies");
+            Tooltip.SetDefault("Summons a floating Stardust Sentry that launches mini Flow Invaders that home into enemies\nRight click to target a specific enemy");
             ItemID.Sets.SortingPriorityMaterials[item.type] = 100;
+            ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
+            ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
+
         }
         public override void SetDefaults()
         {

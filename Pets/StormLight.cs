@@ -109,7 +109,7 @@ namespace StormDiversSuggestions.Pets
             drawOriginOffsetY = 0;
             projectile.timeLeft *= 5;
             projectile.tileCollide = false;
-
+            projectile.ignoreWater = true;
         }
 
         public override bool PreAI()

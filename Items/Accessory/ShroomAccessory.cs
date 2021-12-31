@@ -26,7 +26,7 @@ namespace StormDiversSuggestions.Items.Accessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Launcher Attachment");
-            Tooltip.SetDefault("Makes all guns fire out rockets");
+            Tooltip.SetDefault("Makes all guns fire out mini shroomite rockets");
             //Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.SortingPriorityMaterials[item.type] = 92;
         }
