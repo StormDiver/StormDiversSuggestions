@@ -89,21 +89,21 @@ namespace StormDiversSuggestions.Items.Potions
             item.maxStack = 30;
             item.consumable = true;
                      item.rare = ItemRarityID.Lime;
-            item.healLife = 90;
+            item.healLife = 300;
             item.value = Item.sellPrice(0, 0, 15, 0);
             item.potion = true;
-
+            
         }
         public override void OnConsumeItem(Player player)
         {
-            if (player.pStone)
+            if (!player.pStone)
             {
-                player.AddBuff(BuffID.PotionSickness, 4200);
+                player.AddBuff(BuffID.PotionSickness, 5700);
                 
             }
             else
             {
-                player.AddBuff(BuffID.PotionSickness, 5700);
+                player.AddBuff(BuffID.PotionSickness, 4200);
                 
             }
             
@@ -124,7 +124,9 @@ namespace StormDiversSuggestions.Items.Potions
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.GreaterHealingPotion, 3);
             recipe.AddIngredient(mod.GetItem("CrackedHeart"), 1);
-            recipe.AddIngredient(ItemID.LifeFruit);
+            recipe.AddIngredient(ItemID.LifeFruit, 2);
+            
+
             recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this, 3);
             recipe.AddRecipe();

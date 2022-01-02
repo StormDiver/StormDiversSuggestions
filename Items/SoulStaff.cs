@@ -86,36 +86,34 @@ namespace StormDiversSuggestions.Items
 
             }
 
-            //Factors for calculations
+            //For the radius
             double deg = Main.rand.Next(0, 360); //The degrees
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = 250; //Distance away from the player
 
-            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
-            /distance for the desired distance away from the player minus the projectile's width   /
-            /and height divided by two so the center of the projectile is at the right place.     */
 
             position.X = Main.MouseWorld.X - (int)(Math.Cos(rad) * dist);
             position.Y = Main.MouseWorld.Y - (int)(Math.Sin(rad) * dist);
+
+            //For the direction
 
             float shootToX = Main.MouseWorld.X - position.X;
             float shootToY = Main.MouseWorld.Y - position.Y;
             float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
 
-
             distance = 3f / distance;
-            shootToX *= distance * 6;
-            shootToY *= distance * 6;
+            shootToX *= distance * 7;
+            shootToY *= distance * 7;
             int proj = Projectile.NewProjectile(position.X, position.Y, shootToX, shootToY, type, damage, knockBack, Main.myPlayer, 0f, 0f);
 
             Main.PlaySound(SoundID.Item, (int)position.X, (int)position.Y, 8, 0.5f, 0.5f);
 
-
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 65; //Dust effect
+            //For the dust
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 66; 
             for (int i = 0; i < 10; i++)
             {
 
-                var dust = Dust.NewDustDirect(player.position + muzzleOffset, player.width, player.height, dusttype, speedX * 10, speedY * 10, 100, default, dustscale);
+                var dust = Dust.NewDustDirect((player.Center - new Vector2(15, 15)) + muzzleOffset, 30, 30, dusttype, speedX * 10, speedY * 10, 100, default, dustscale);
                 dust.noGravity = true;
                 dust.velocity *= 0;
             }
@@ -152,7 +150,10 @@ namespace StormDiversSuggestions.Items
             recipe.AddRecipe();
 
         }
-      
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
 
     }
    

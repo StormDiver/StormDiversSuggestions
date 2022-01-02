@@ -1188,7 +1188,7 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts 
             {
-                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5 && !target.buffImmune[(BuffType<HeartDebuff>())]) //Rolls to see the outcome when firts hit under 50% life
                 {
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen) //Makes sure this only happens once
@@ -1312,7 +1312,7 @@ namespace StormDiversSuggestions.Basefiles
         {
             if (heartSteal) //For the Jar of hearts
             {
-                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5) //Rolls to see the outcome when firts hit under 50% life
+                if (!target.SpawnedFromStatue && target.life <= (target.lifeMax * 0.50f) && !target.boss && !target.friendly && target.lifeMax > 5 && !target.buffImmune[(BuffType<HeartDebuff>())]) //Rolls to see the outcome when firts hit under 50% life
                 {
 
                     if (!target.GetGlobalNPC<StormNPC>().heartStolen)//Makes sure this only happens once

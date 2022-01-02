@@ -22,7 +22,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 4;
             projectile.magic = true;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 24;
             projectile.light = 0.5f;
             
             projectile.tileCollide = false;
@@ -145,7 +145,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 4;
             projectile.magic = true;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 24;
             projectile.light = 0.5f;
            
             projectile.tileCollide = false;
@@ -268,7 +268,7 @@ namespace StormDiversSuggestions.Projectiles
             projectile.friendly = true;
             projectile.penetrate = 4;
             projectile.magic = true;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 24;
             projectile.light = 0.5f;
             projectile.tileCollide = false;
             projectile.aiStyle = 0;

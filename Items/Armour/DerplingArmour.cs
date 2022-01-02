@@ -171,7 +171,7 @@ namespace StormDiversSuggestions.Items.Armour
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Derpling Headgear");
-            Tooltip.SetDefault("14% increased magic damage\n7% increased magic critical strike chance\nIncreases maximum mana by 60");
+            Tooltip.SetDefault("14% increased magic damage\n7% increased magic critical strike chance\nIncreases maximum mana by 80");
         }
 
         public override void SetDefaults()
@@ -188,7 +188,7 @@ namespace StormDiversSuggestions.Items.Armour
 
             player.magicDamage += 0.14f;
             player.magicCrit += 7;
-            player.statManaMax2 += 60;
+            player.statManaMax2 += 80;
         }
 
         public override void ArmorSetShadows(Player player)
