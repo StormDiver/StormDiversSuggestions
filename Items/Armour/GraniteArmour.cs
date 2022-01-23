@@ -113,11 +113,8 @@ namespace StormDiversSuggestions.Items.Armour
 
         public override void UpdateEquip(Player player)
         {
-            player.allDamage += 0.02f;
-            player.meleeCrit += 2;
-            player.rangedCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
+            player.meleeDamage += 0.04f;
+            player.meleeSpeed += 0.1f;
 
 
         }
