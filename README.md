@@ -1,4 +1,2 @@
 # StormDiversSuggestions
-My First terraria mod that adds some content;
-Check the release tab for the version history;
-Check the Forum page for more information and to provide feedback; https://forums.terraria.org/index.php?threads/storm-divers-additions-and-changes.88234/
+This version of the mod is no longer worked on, the 1.4 version can be found here: https://github.com/StormDiver/StormDiversMod
