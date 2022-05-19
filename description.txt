@@ -1,8 +1,8 @@
+Note: This mod has been rebranded for tmod 1.4, and is now called the "Vortexia Mod". If you port any world/character over to 1.4 you will lose any of this mod’s items obtained due to an internal name change and file renaming! If this is the case it is highly recommended to start a brand new playthrough!
+
 Storm Diver's Additions Mod is a smallish content mod, that adds content throughout the entire game where it seemed that something was missing, along with unique items thrown in here and there
 
 There's over 200 total modded items for you to discover; including weapons, accessories, ammo, tools, armour, vanity sets, enemies, and more. Many are crafted with vanilla items, but some have their own modded ingredients added to the recipes. There's also some new recipes for certain things that did not have a crafting recipe before.
-
-Note, this mod will soon move to 1.4 Alpha, and this version will receive no further content updates.
 
 This mod includes:
 
