@@ -1,4 +1,4 @@
-Note: This mod has been rebranded for tmod 1.4, and is now called the "Vortexia Mod". If you port any world/character over to 1.4 you will lose any of this mod’s items obtained due to an internal name change and file renaming! If this is the case it is highly recommended to start a brand new playthrough!
+Note: This mod has been renamed to "Storm's Additions Mod" for tmod 1.4, and has a brand new logo (Giant vortex fragment surrounded by smaller fragments, with lightning coming from the middle one). If you port any world/character over to 1.4 you will lose any of this mod’s items obtained due to an internal name change and file renaming! If this is the case it is highly recommended to start a brand new playthrough!
 
 Storm Diver's Additions Mod is a smallish content mod, that adds content throughout the entire game where it seemed that something was missing, along with unique items thrown in here and there
 

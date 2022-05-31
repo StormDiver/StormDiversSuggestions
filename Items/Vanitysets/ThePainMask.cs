@@ -33,7 +33,6 @@ namespace StormDiversSuggestions.Items.Vanitysets
            
         }
 
-
         public class ModGlobalNPC : GlobalNPC
         {
             public override void NPCLoot(NPC npc)
